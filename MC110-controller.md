@@ -6,7 +6,7 @@ Bit 0 is the first byte (so value & 0x01)
 
 This information was compiled with most if it coming from https://github.com/Th3M3/buderus_ems-wiki. Kudos to @Th3M3 for collecting this.
 
-## 0xD1: UBAOutdoorTemp
+## Type 0xD1: UBAOutdoorTemp
 
 Sent every minute. The first 2 bytes is a short value * 10
 
@@ -14,13 +14,13 @@ Sent every minute. The first 2 bytes is a short value * 10
 1 - 2 = outdoor temp, short value * 10
 ```
 
-## 0x14: UBABetriebszeit
+## Type 0x14: UBABetriebszeit
 
 ```
 1 - 2 = total operating time in minutes
 ```
 
-## 0xBF: UBAErrorMessage
+## Type 0xBF: UBAErrorMessage
 
 Sent every 10 minutes
 
@@ -35,7 +35,7 @@ Sent every 10 minutes
 8 - 9 = additional code (status code)
 ```
 
-## 0xE3: UBA??
+## Type 0xE3: UBA??
 
 Sent every 10 seconds
 
@@ -50,7 +50,7 @@ Sent every 10 seconds
 20 = Cool set temperature for DHW preparation in C
 ```
 
-## 0xE4: UBAMonitorFast
+## Type 0xE4: UBAMonitorFast
 
 Sent every 3 seconds
 
@@ -67,7 +67,7 @@ Sent every 3 seconds
 24 - 25 = same as bytes 8-9
 ```
 
-## 0xE5: UBAMonitorSlow
+## Type 0xE5: UBAMonitorSlow
 
 Sent every 60 seconds
 
@@ -117,7 +117,7 @@ Sent every 10 seconds
 26 = same as byte 1, in C
 ```
 
-## 0x07E4: UBA Status
+## Type 0x07E4: UBA Status
 
 Sent every 10 seconds
 
