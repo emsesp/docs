@@ -17,12 +17,13 @@
 * [SM100/200 Solar Modules](SM100)
 * [MC110 Contoller](MC110-controller)
 * [Heat Pumps](HeatPump)
+* **Help**
+* [Supported EMS Device List](Supported-EMS-Devices)
+* [FAQ](FAQ)
+* [Troubleshooting](Troubleshooting)
+* [How to Contribute](Contributing)
 * **For Developers**
 * [Building your own Board](Building-your-own-test-circuit)
 * [Extending the Functionality](How-the-Code-Works)
 * [Testing the Web Interface](Web-test)
 * [Feature Wish List](wish-list)
-* **Getting Help**
-* [FAQ](FAQ)
-* [Troubleshooting](Troubleshooting)
-* [How to Contribute](Contributing)

@@ -4,7 +4,7 @@ Most Bosch branded boilers that support the Logamatic EMS bus protocols work wit
 
 EMS devices are being constantly added to the database (see file `ems_devices.h`) on each new release.
 
-### Thermostats:
+### Thermostats
 
 * Buderus RC10, RC20, RC20F, RC30, R35, RC300, RC310, RC3000
 * Buderus Logamatic TC100 (read-only)
@@ -15,7 +15,7 @@ EMS devices are being constantly added to the database (see file `ems_devices.h`
 * Junkers FR10, FR50, FR100, FR110, FW100, FW120
 * Sieger ES73
 
-### Boilers:
+### Boilers
 
 * Buderus GBx72, GB162, GB152, GB125, Logamax U122, Logamax Plus GB062/GB122/GB192, Logano
 * Bosch Condens 2500
@@ -25,20 +25,20 @@ EMS devices are being constantly added to the database (see file `ems_devices.h`
 * Nefit Proline, Trendline, Topline, Enviline, Smartline
 * Sieger BK13 and BK15 Boiler
 
-### Solar Modules:
+### Solar Modules
 
 * Buderus SM10, SM50, SM100 Solar Module
 * Junkers ISM1 Solar Module
 
-### Mixing Modules:
+### Mixing Modules
 
 * Buderus MM10, MM50, MM100, MM200 Mixer Module
 
-### Heat Pump Modules:
+### Heat Pump Modules
 
 * Buderus HeatPump Module
 
-### Other devices:
+### Other devices
 
 * Generic Buderus MC10 Module
 * Buderus WM10 Switch Module
