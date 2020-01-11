@@ -1,3 +1,5 @@
+![logo](_media/logo/home-assistant.png ':size=100')
+
 The files to read MQTT and parse as sensors and thermostat components into HA can be found [here](integrations/homeassistant/ha) along with a LoveLace dashboard which looks like:
 
 ![Home Assistant panel](_media/home%20assistant/ha.png ':size=500')
