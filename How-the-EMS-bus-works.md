@@ -55,7 +55,7 @@ Following a write request, the `[dest]` doesn't have the 8th bit set and after t
 
 Every telegram sent is echo'd back to Rx, along the same Bus used for all Rx/Tx transmissions.
 
-### Special EMS Types
+### Other EMS Types
 
 `ems.cpp` defines callback functions that handle all the broadcast types listed above (e.g. 0x34, 0x18, 0x19 etc) plus these extra types:
 

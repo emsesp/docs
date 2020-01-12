@@ -2,11 +2,11 @@
 
 The files to read MQTT and parse as sensors and thermostat components into HA can be found [here](integrations/homeassistant/ha) along with a LoveLace dashboard which looks like:
 
-![Home Assistant panel](_media/home%20assistant/ha.png ':size=500')
+![Home Assistant panel](_media/home%20assistant/ha.png ':size=900')
 
 and the alerts on an iOS/Android device using PushBullet, PushOver or any notification service would look like:
 
-![Home Assistant iPhone notify](_media/home%20assistant/ha_notify.jpg ':size=300')
+![Home Assistant iPhone notify](_media/home%20assistant/ha_notify.jpg ':size=400')
 
 ## Supporting multiple thermostat heating circuits
 

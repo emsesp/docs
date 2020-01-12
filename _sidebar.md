@@ -10,13 +10,14 @@
 * [Domoticz](Domoticz)
 * **EMS Protocol**
 * [How the EMS Bus works](How-the-EMS-bus-works)
-* [EMS 1.0 Telegram Types](EMS-Telegram-Types)
-* [EMS+ / EMS 2.0](Deciphering-EMS-Plus)
+* [EMS 1.0](EMS-Telegram-Types)
+* [EMS 2.0 / EMS+](Deciphering-EMS-Plus)
 * [Thermostat modes](Thermostat-Modes-RC35-vs-RC300)
 * [EMS+ Thermostats](RC3xx-Thermostats)
-* [SM100/200 Solar Modules](SM100)
-* [MC110 Contoller](MC110-controller)
+* [Solar Modules](SM100)
+* [Contollers](MC110-controller)
 * [Heat Pumps](HeatPump)
+* [Mixer Modules](Mixer_Module)
 * **Help**
 * [Supported EMS Device List](Supported-EMS-Devices)
 * [FAQ](FAQ)
