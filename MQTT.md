@@ -23,7 +23,7 @@ All the key information from each of the EMS devices connected (Boilers, Thermos
 
 If the data in the payload has not changed since the last publish, it is ignored. Although from version 1.9.4 this can also be configured with the `publish_always` command and WebUI parameter. For example `set publish_always on` will always publish MQTT topics regardless if any of the data parameters have changed.
 
-The table below shows examples of the topics being published:
+The table below list the topics being published:
 
 | Topic               | Description         | Payload Example |
 | ------------------- | ------------------- | --------------- |
@@ -41,7 +41,7 @@ The table below shows examples of the topics being published:
 
 ## Receiving Topics
 
-EMS-ESP subscribes to the following topics used to send commands to the device:
+EMS-ESP subscribes to the following topics used to send commands to the EMS-ESP:
 
 | Topic               | Description         | Payload Format | Example |
 | ------------------- | ------------------- | -------------- | ------- |
@@ -53,8 +53,8 @@ EMS-ESP subscribes to the following topics used to send commands to the device:
 | `shower_data` | for setting the shower timer or alert toggle | JSON as `{"timer|alert":"0|1"}` | `{"timer":"1"}` |
 | `generic_cmd` | for sending a command to the EMS-ESP, e.g. sending a shot of cold water | `coldshot` | `coldshot` |
 | `boiler_cmd` | for sending generic command to control the Boiler | JSON `{"cmd":<command>,"data":<value>` with `command` being `comfort` and `data` = `[hot,comfort,intelligent]` or `flowtemp` with `data` being the desired temperature or `boiler_cmd_wwonetime` | `{"cmd":"flowtemp",data:55}` |
-| `boiler_cmd_wwactivated` | for receiving boiler controls from a HA HVAC component | `"1"` or `"0"` | `"1"` |
-| `boiler_cmd_wwtemp` | for receiving boiler temperature setting from a HA HVAC component | the temperature value | `60` |
+| `boiler_cmd_wwactivated` | for setting warm water on/off, used by the HA HVAC component | `"1"` or `"0"` | `"1"` |
+| `boiler_cmd_wwtemp` | for setting the warm water boiler temperature, used by the HA HVAC component | temperature in degrees C | `60` |
 
 ## Monitoring MQTT
 
