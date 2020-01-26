@@ -102,15 +102,13 @@ SET to Manual mode ( manual temp is 20.5 (0x29) )
 
 # Type 01AF 
 
-Summer - Winter Mode 
+Mode. Summer to Winter. 
 
-change the mode 
-```send 0B 10 FF 00 AF 07 02```
+To change the mode to Forced, e.g.  `send 0B 10 FF 07 01 AF 02`
 
-query the mode 
-```send 0B 90 FF 00 AF 07 01``` 
+To query the mode, e.g. `send 0B 90 FF 07 01 01 AF`
 
-1 Byte value.
+position 7 holds the value.
 
 |Byte value | Meaning | 
 | - | - |
@@ -118,11 +116,9 @@ query the mode
 | 01 | Automatic |
 | 02 | Forced |
 
-Data log example :
-```
-Thermostat -> all, type 0x01AF telegram: 10 00 FF 07 01 AF 00 (Off)
-Thermostat -> all, type 0x01AF telegram: 10 00 FF 07 01 AF 01 (Automatic)
-Thermostat -> all, type 0x01AF telegram: 10 00 FF 07 01 AF 02 (Forced)
-```
+Data log example:
+`Thermostat -> all, type 0x01AF telegram: 10 00 FF 07 01 AF 00` (Off)
+`Thermostat -> all, type 0x01AF telegram: 10 00 FF 07 01 AF 01` (Automatic)
+`Thermostat -> all, type 0x01AF telegram: 10 00 FF 07 01 AF 02` (Forced)
 
 
