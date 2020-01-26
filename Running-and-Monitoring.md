@@ -1,19 +1,21 @@
 
 ## Using Telnet to monitor EMS traffic
 
-Use the telnet client to inform you of all activity and errors real-time. This is an example of the telnet output:
+EMS-ESP has a telnet server that enables clients to connect using a telnet client such as [CoolTerm](http://freeware.the-meiers.org/), [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) or natively via the OS like this example with [Windows 10](https://www.technipages.com/windows-10-enable-telnet).
+
+Connect to the IP address of the EMS-ESP. Type `?` or `help` to see a list of commands:
 
 ![Telnet](_media/telnet/telnet_menu.jpg)
 
-Type `log v` and Enter and you'll be seeing verbose logging messages. ANSI colors with white text for info messages, green are for broadcast telegrams, yellow are the ones sent to us and red are for unknown data or telegrams which have failed the CRC check.
+By default logging to the console is disabled. There are different levels of logging with "verbose" giving you all the real-time data of telegrams and any messages or warnings. Type `log v` and enable verbose logging and you'll see something similar too:
 
 ![Telnet](_media/telnet/telnet_verbose.PNG)
 
-To see the current stats and collected values type 'info'. Note it is normal behavior to see a few CrcErrors as this is usually noise on the line.
+To view the current status of the EMS bus and all its captured values use the `info` command:
 
 ![Telnet](_media/telnet/telnet_stats.PNG)
 
-**Warning: be careful when sending values to the boiler. If in doubt you can always reset the boiler to its original factory settings by following the instructions in the user guide. For example on my Nefit Trendline that is done by holding down the Home and Menu buttons simultaneously for a few seconds, selecting factory settings from the scroll menu followed by pressing the Reset button.**
+> **Warning: be careful when sending values to the boiler. If in doubt you can always reset the boiler to its original factory settings by following the instructions in the user guide. For example on my Nefit Trendline that is done by holding down the Home and Menu buttons simultaneously for a few seconds, selecting factory settings from the scroll menu followed by pressing the Reset button.**
 
 ### Recommended puTTY settings
 
