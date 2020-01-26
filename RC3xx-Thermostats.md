@@ -100,25 +100,27 @@ SET to Manual mode ( manual temp is 20.5 (0x29) )
 | 9 |  |  |  |                                           
 | 10 | manual setpoint temperature  | 1 byte, *2 |  |
 
-# Type 01AF 
+# Type 01AF - 01B2 (HC1 - HC4)
 
-Mode. Summer to Winter. 
+Mode control to Summer, Winter and Auto.
 
-To change the mode to Forced, e.g.  `send 0B 10 FF 07 01 AF 02`
-
-To query the mode, e.g. `send 0B 90 FF 07 01 01 AF`
-
-position 7 holds the value.
+Offset `7` holds the mode as in:
 
 |Byte value | Meaning | 
 | - | - |
-| 00 | Off |
+| 00 | Summer/Off |
 | 01 | Automatic |
-| 02 | Forced |
+| 02 | Winter/Forced |
 
-Data log example:
-`Thermostat -> all, type 0x01AF telegram: 10 00 FF 07 01 AF 00` (Off)
-`Thermostat -> all, type 0x01AF telegram: 10 00 FF 07 01 AF 01` (Automatic)
-`Thermostat -> all, type 0x01AF telegram: 10 00 FF 07 01 AF 02` (Forced)
+e.g.
 
+```
+HC1 Summer - send 0B 10 FF 07 01 AF 00
+HC1 Winter - send 0B 10 FF 07 01 AF 02
+HC1 Auto - send 0B 10 FF 07 01 AF 01
+```
+
+and to query the mode use `send 0B 90 FF 07 01 01 AF`.
+
+Offset `6` holds the temperature threshold, e.g. for 17 degrees on HC1 do a  `send 0B 10 FF 06 01 AF 10`.
 
