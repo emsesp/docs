@@ -58,20 +58,26 @@ EMS-ESP subscribes to the following topics used to send commands to the EMS-ESP:
 
 ## Monitoring MQTT
 
-In Telnet the command `mqttlog` will show you the last messages published as well as which topics are being subscribed to. In the WebUI you also see real-time the last set of published messages in the System Status screen. Below is an example of the telnet command.
+In Telnet the command `mqttlog` will show you the last messages published. In the WebUI you also see in real-time the last set of published messages on the System Status screen. Below is an example of the telnet command output:
 
 ```
-[telnet session]
 mqttlog
 
 MQTT publish log:
-  Topic:start Payload:start
-  Topic:heartbeat Payload:version=1.9.2b6, IP=10.10.10.198, rssid=72%, load=1%, uptime=364secs, freemem=52%
-  Topic:boiler_data Payload:{"wWComfort":"Hot","wWSelTemp":54,"wWDesiredTemp":70,"selFlowTemp":5,"selBurnPow":0,"curBurnPow":0,"pumpMod":0,"wWCircPump":0,"wWCurTmp":36.7,"wWCurFlow":0,"curFlowTemp":43.4,"retTemp":41,"sysPress":1.7,"boilTemp":45.5,"wWActivated":"on","burnGas":"off","flameCurr":0,"heatPmp":"off","fanWork":"off","ignWork":"off","wWCirc":"off","heating_temp":75,"pump_mod_max":90,"pump_mod_min":60,"wWHeat":"on","wWStarts":206017,"wWWorkM":73890,"UBAuptime":3471966,"burnStarts":229866,"burnWorkMin":368989,"heatWorkMin":295099,"ServiceCode":"0H","ServiceCodeNumber":203}
-  Topic:tapwater_active Payload:0
-  Topic:heating_active Payload:0
-  Topic:thermostat_data Payload:{"hc1":{"seltemp":15,"currtemp":20.6,"mode":"auto"}}
+  (20:31:15) Topic:status Payload:online
+  (20:31:15) Topic:start Payload:start
+  (20:29:16) Topic:heartbeat Payload:{"rssid":68,"load":1,"uptime":86285,"freemem":56}
+  (10:22:43) Topic:shower_data Payload:{"timer":"1","alert":"0","duration":"5 minutes and 13 seconds"}
+  (20:29:31) Topic:boiler_data Payload:{"wWComfort":"Hot","wWSelTemp":53,"wWDesinfectionTemp":70,"selFlowTemp":75,"selBurnPow":36,"curBurnPow":36,"pumpMod":69,"wWCircPump":0,"wWCurTmp":44.8,"wWCurFlow":0,"curFlowTemp":53,"retTemp":43.6,"switchTemp":0,"sysPress":1.9,"boilTemp":53.2,"wWActivated":"on","wWOnetime":"off","burnGas":"on","flameCurr":30.2,"heatPmp":"on","fanWork":"on","ignWork":"off","wWCirc":"off","heating_temp":75,"pump_mod_max":90,"pump_mod_min":60,"wWHeat":"off","wWStarts":216429,"wWWorkM":77809,"UBAuptime":3625817,"burnStarts":242849,"burnWorkMin":402077,"heatWorkMin":324268,"ServiceCode":"-H","ServiceCodeNumber":200}
+  (20:05:41) Topic:tapwater_active Payload:0
+  (20:05:41) Topic:heating_active Payload:1
+  (20:29:21) Topic:thermostat_data Payload:{"hc1":{"seltemp":21,"currtemp":20.7,"mode":"auto"}}
+  (20:29:31) Topic:sensors Payload:{"temp_1":20.06}
+  ```
 
+and using `mqttlog all` will give you the subscriptions too:
+
+```
 MQTT subscriptions:
   Topic:home/ems-esp/restart
   Topic:home/ems-esp/start
@@ -86,6 +92,7 @@ MQTT subscriptions:
   Topic:home/ems-esp/thermostat_cmd
   Topic:home/ems-esp/boiler_cmd
   Topic:home/ems-esp/boiler_cmd_wwactivated
+  Topic:home/ems-esp/boiler_cmd_wwonetime
   Topic:home/ems-esp/boiler_cmd_wwtemp
   Topic:home/ems-esp/generic_cmd
   Topic:home/ems-esp/shower_data
