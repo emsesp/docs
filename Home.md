@@ -35,10 +35,10 @@ Paul.
 **January 6 2020**
 
 The next major version is in the works. Here are some of the changes:
-- A re-write of the Web interface. Websocket authentication was problematic in many browsers. The new version moves to a cleaner React and TypeScript
-- Tighter security in the Web and Telnet, using SSL/TLS and tokens.
+- A complete re-write of the Web interface. As Websocket authentication was problematic in many browser this new version moves to a cleaner ReactJS/TypeScript frontend with RESTful interfaces.
+- Tighter security in both the Web and Telnet, using SSL/TLS and tokens.
 - Improved Telnet console with different levels of admin control and multi-client.
-- Refactoring the code to make it easier to read, using more C++11 features now in the Arduino core libraries
+- Refactoring the code to make it easier to read, using more C++11 features now in the Arduino core libraries. All EMS devices are classes and extensible which should make the code easier to read.
  
 <!-- tabs:end -->
 
