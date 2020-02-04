@@ -39,7 +39,7 @@ The table below list the topics being published:
 
 ## Receiving Topics
 
-EMS-ESP subscribes and listens to the following topics, used to send commands to the EMS-ESP:
+EMS-ESP subscribes and listens to the following topics, used to send commands to the EMS-ESP. Please make sure you are using MQTT authentication with username and password. Anonymous access to MQTT isn't allowed to perform any control operation.
 
 | Topic               | Description         | Payload Format | Example |
 | ------------------- | ------------------- | -------------- | ------- |
