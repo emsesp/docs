@@ -22,7 +22,7 @@ Happy new year everyone! 1.9.5 has been in development for a while now but it's 
 
 - Changing heating settings on Junkers thermostats
 - Supporting multiple thermostat heat controllers
-- MM10 Mixer support
+- MM10 Mixeing Module support
 - SM200 Solar module support
 
 Thanks to everyone for providing feedback.

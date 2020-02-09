@@ -32,7 +32,7 @@ EMS devices are being constantly added to the database (see file `ems_devices.h`
 
 ### Mixing Modules
 
-* Buderus MM10, MM50, MM100, MM200 Mixer Module
+* Buderus MM10, MM50, MM100, MM200 Mixing Module
 
 ### Heat Pump Modules
 

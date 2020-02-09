@@ -17,7 +17,7 @@
 * [Solar Modules](SM100)
 * [Contollers](MC110-controller)
 * [Heat Pumps](HeatPump)
-* [Mixer Modules](Mixer_Module)
+* [Mixing Modules](Mixing_Module)
 * **Help**
 * [Supported EMS Device List](Supported-EMS-Devices)
 * [FAQ](FAQ)
