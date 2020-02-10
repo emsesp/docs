@@ -2,18 +2,21 @@ Most Bosch branded boilers that support the Logamatic EMS bus protocols work wit
 
 !> Please make sure you read the **Disclaimer** on the home page carefully before sending ambiguous messages to your EMS bus as you could cause serious damage to your equipment.
 
-EMS devices are being constantly added to the database (see file `ems_devices.h`) on each new release.
+EMS devices are being constantly added to the database on each new release (see file `ems_devices.h`).
 
 ### Thermostats
 
 * Buderus RC10, RC20, RC20F, RC30, R35, RC300, RC310, RC3000
-* Buderus Logamatic TC100 (read-only)
 * Nefit Moduline 100, 300, 400
-* Nefit Moduline 1010, 3000 (read-only)
-* Nefit Moduline Easy (read-only)
-* Bosch CW100, Easy Control/CT200  (read-only)
+* Nefit Moduline 1010, 3000
 * Junkers FR10, FR50, FR100, FR110, FW100, FW120
 * Sieger ES73
+* Buderus Logamatic TC100 (read-only)
+* Nefit Moduline Easy (read-only)
+* Bosch CW100, Easy Control/CT200  (read-only)
+
+> [!NOTE]
+> (read-only) The latest touch type of thermostats (TC100/CW100/CT100) that are connected to the internet and use a mobile app do not transmit or listen to EMS+ commands so although EMS-ESP will recognize them it will not support changing it's values. In some cases even reading out the temperature values is not possible.
 
 ### Boilers
 
