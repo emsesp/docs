@@ -1,6 +1,5 @@
 
-  # boiler
-
+# boiler
 - platform: mqtt
   state_topic: 'home/ems-esp/boiler_data'
   name: 'Warm Water selected temperature'
@@ -102,8 +101,7 @@
   unit_of_measurement: '%'
   value_template: '{{ value_json.pumpMod }}'
 
-  # shower time duration
-
+# shower time duration
 - platform: mqtt
   name: 'Last shower duration'
   state_topic: "home/ems-esp/shower_data"
@@ -113,15 +111,20 @@
   sensors:
     showertime_time:
       value_template: '{{ as_timestamp(states.sensor.last_shower_duration.last_updated) | int | timestamp_custom("%-I:%M on %a %-d %b") }}'
-
     boiler_updated:
       value_template: '{{ as_timestamp(states.sensor.boiler_temperature.last_updated) | timestamp_custom("%H:%M on %d/%b") }}'
-
     boiler_boottime:
       value_template: '{{ as_timestamp(states.automation.see_if_boiler_restarts.attributes.last_triggered) | timestamp_custom("%H:%M:%S %d/%m/%y") }}'
 
 # general
-
 - platform: mqtt
   state_topic: 'home/ems-esp/status'
   name: 'ems-esp status'
+
+# example dallas sensor
+- platform: mqtt
+  state_topic: 'home/ems-esp/sensors'
+  name: 'dallas sensor'
+  value_template: "{{ value_json['28FF47AC90160444'] }}"
+  unit_of_measurement: '°C'
+
