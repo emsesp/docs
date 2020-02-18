@@ -125,6 +125,7 @@
 - platform: mqtt
   state_topic: 'home/ems-esp/sensors'
   name: 'dallas sensor'
-  value_template: "{{ value_json['28FF47AC90160444'] }}"
+#  value_template: "{{ value_json['28FF47AC90160444'] }}"
+  value_template: "{{ value_json.sensor1.temp }}"
   unit_of_measurement: '°C'
-
+  
