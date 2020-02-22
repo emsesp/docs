@@ -129,3 +129,55 @@
   value_template: "{{ value_json.sensor1.temp }}"
   unit_of_measurement: '°C'
   
+# EMS-ESP Statistics - heartbeat
+- platform: mqtt
+  state_topic: 'home/ems-esp/heartbeat'
+  name: 'ems_esp_wifi'
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.rssid }}'
+  availability_topic: 'home/ems-esp/status'
+  payload_available: "online"
+  payload_not_available: "offline"
+
+- platform: mqtt
+  state_topic: 'home/ems-esp/heartbeat'
+  name: 'ems_esp_load'
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.load }}'
+  availability_topic: 'home/ems-esp/status'
+  payload_available: "online"
+  payload_not_available: "offline"
+
+- platform: mqtt
+  state_topic: 'home/ems-esp/heartbeat'
+  name: 'ems_esp_freemem'
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.freemem }}'
+  availability_topic: 'home/ems-esp/status'
+  payload_available: "online"
+  payload_not_available: "offline"
+
+- platform: mqtt
+  state_topic: 'home/ems-esp/heartbeat'
+  name: 'ems_esp_uptime'
+  unit_of_measurement: 's'
+  value_template: '{{ value_json.uptime }}'
+  availability_topic: 'home/ems-esp/status'
+  payload_available: "online"
+  payload_not_available: "offline"
+
+- platform: mqtt
+  state_topic: 'home/ems-esp/heartbeat'
+  name: 'ems_esp_tcpdrops'
+  value_template: '{{ value_json.tcpdrops }}'
+  availability_topic: 'home/ems-esp/status'
+  payload_available: "online"
+  payload_not_available: "offline"
+
+- platform: mqtt
+  state_topic: 'home/ems-esp/heartbeat'
+  name: 'ems_esp_mqttpublishfails'
+  value_template: '{{ value_json.mqttpublishfails }}'
+  availability_topic: 'home/ems-esp/status'
+  payload_available: "online"
+  payload_not_available: "offline"
