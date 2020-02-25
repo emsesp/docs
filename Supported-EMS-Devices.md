@@ -7,10 +7,10 @@ EMS devices are being constantly added to the database on each new release (see 
 ### Thermostats
 
 * Buderus RC10, RC20, RC20F, RC30, R35, RC300, RC310, RC3000
-* Nefit Moduline 100, 300, 400
+* Nefit Moduline 100, 200, 300, 400
 * Nefit Moduline 1010, 3000
 * Junkers FR10, FR50, FR100, FR110, FW100, FW120
-* Sieger ES73
+* Sieger ES72, ES73
 * Buderus Logamatic TC100 (read-only)
 * Nefit Moduline Easy (read-only)
 * Bosch CW100, Easy Control/CT200  (read-only)
