@@ -47,7 +47,7 @@ EMS-ESP subscribes and listens to the following topics, used to send commands to
 | `restart` | restarts the ESP | | |
 | `thermostat_cmd_temp[n]` | sets the thermostat current setpoint temperature to the Heating Circuit `n` (1-4). `n` is optional. (Note: for Home Assistant climate component) | temperature value as a float | `20.8` |
 | `thermostat_cmd_mode[n]` | sets the thermostat current mode to the Heating Circuit `n` (1-4). `n` is optional. (Note: for Home Assistant climate component) | auto, day, night, off, manual | `auto` |
-| `thermostat_cmd` | send a generic command to control the thermostat | JSON `{"cmd":<command>,"data":<value>}` with `<command>` being `temp<hc>`, `mode<hc>`, `nightemp<hc>`, `daytemp<hc>` or `holidaytemp<hc>` and `hc` optionally stating the heating circuit. `value` is a numeric floating point value | `{ "cmd":"temp2", "data": 20 }` |
+| `thermostat_cmd` | send a generic command to control the thermostat | JSON `{"cmd":<command>,"data":<value>}` with `<command>` being `<temp><hc>` with `<temp>` being `nighttemp`, `daytemp`, `holidaytemp`, `nofrosttemp`, `ecotemp` and `heattemp`, and `hc` optionally stating the heating circuit. `value` is a numeric floating point value | `{ "cmd":"daytemp2", "data": 20 }` |
 | `shower_data` | for setting the shower timer or alert toggle | JSON as `{"timer|alert":"0|1"}` | `{"timer":"1"}` |
 | `generic_cmd` | for sending a command to the EMS-ESP, e.g. sending a shot of cold water | `coldshot` | `coldshot` |
 | `boiler_cmd` | for sending generic command to control the Boiler | JSON `{"cmd":<command>,"data":<value>` with `command` being `comfort` and `data` = `[hot,comfort,intelligent]` or `flowtemp` with `data` being the desired temperature or `boiler_cmd_wwonetime` | `{"cmd":"flowtemp",data:55}` |
@@ -55,45 +55,5 @@ EMS-ESP subscribes and listens to the following topics, used to send commands to
 | `boiler_cmd_wwtemp` | for setting the warm water boiler temperature, used by the HA HVAC component | temperature in degrees C | `60` |
 
 ## Monitoring MQTT
-
-In Telnet the command `mqttlog` will show you the last messages published. In the WebUI you also see in real-time the last set of published messages on the System Status screen. Below is an example of the telnet command output:
-
-```
-mqttlog
-
-MQTT publish log:
-  (20:31:15) Topic:status Payload:online
-  (20:31:15) Topic:start Payload:start
-  (20:29:16) Topic:heartbeat Payload:{"rssid":68,"load":1,"uptime":86285,"freemem":56}
-  (10:22:43) Topic:shower_data Payload:{"timer":"1","alert":"0","duration":"5 minutes and 13 seconds"}
-  (20:29:31) Topic:boiler_data Payload:{"wWComfort":"Hot","wWSelTemp":53,"wWDesinfectionTemp":70,"selFlowTemp":75,"selBurnPow":36,"curBurnPow":36,"pumpMod":69,"wWCircPump":0,"wWCurTmp":44.8,"wWCurFlow":0,"curFlowTemp":53,"retTemp":43.6,"switchTemp":0,"sysPress":1.9,"boilTemp":53.2,"wWActivated":"on","wWOnetime":"off","burnGas":"on","flameCurr":30.2,"heatPmp":"on","fanWork":"on","ignWork":"off","wWCirc":"off","heating_temp":75,"pump_mod_max":90,"pump_mod_min":60,"wWHeat":"off","wWStarts":216429,"wWWorkM":77809,"UBAuptime":3625817,"burnStarts":242849,"burnWorkMin":402077,"heatWorkMin":324268,"ServiceCode":"-H","ServiceCodeNumber":200}
-  (20:05:41) Topic:tapwater_active Payload:0
-  (20:05:41) Topic:heating_active Payload:1
-  (20:29:21) Topic:thermostat_data Payload:{"hc1":{"seltemp":21,"currtemp":20.7,"mode":"auto"}}
-  (20:29:31) Topic:sensors Payload:{"temp_1":20.06}
-  ```
-
-and using `mqttlog all` will give you the subscriptions too:
-
-```
-MQTT subscriptions:
-  Topic:home/ems-esp/restart
-  Topic:home/ems-esp/start
-  Topic:home/ems-esp/thermostat_cmd_temp1
-  Topic:home/ems-esp/thermostat_cmd_mode1
-  Topic:home/ems-esp/thermostat_cmd_temp2
-  Topic:home/ems-esp/thermostat_cmd_mode2
-  Topic:home/ems-esp/thermostat_cmd_temp3
-  Topic:home/ems-esp/thermostat_cmd_mode3
-  Topic:home/ems-esp/thermostat_cmd_temp4
-  Topic:home/ems-esp/thermostat_cmd_mode4
-  Topic:home/ems-esp/thermostat_cmd
-  Topic:home/ems-esp/boiler_cmd
-  Topic:home/ems-esp/boiler_cmd_wwactivated
-  Topic:home/ems-esp/boiler_cmd_wwonetime
-  Topic:home/ems-esp/boiler_cmd_wwtemp
-  Topic:home/ems-esp/generic_cmd
-  Topic:home/ems-esp/shower_data
-```
 
 If you want more precise monitoring of the MQTT traffic I suggest using [MQTT Explorer](http://mqtt-explorer.com/).
