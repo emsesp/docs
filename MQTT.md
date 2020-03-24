@@ -52,14 +52,14 @@ EMS-ESP subscribes and listens to the following topics, used to send commands to
 | `thermostat_cmd_temp[n]` | sets the thermostat current setpoint temperature to the Heating Circuit `n` (1-4). `n` is optional. (Note: for Home Assistant climate component) | temperature value as a float | `20.8` |
 | `thermostat_cmd_mode[n]` | sets the thermostat current mode to the Heating Circuit `n` (1-4). `n` is optional. (Note: for Home Assistant climate component) | manual, auto, heat, day, night, eco, comfort, holiday, nofrost, off | `auto` |
 | `thermostat_cmd` | send a generic command to control the thermostat | JSON `{"cmd":<command><hc>,"data":<value>}` with `<command>` being `<temp>`, `<mode>`, `nighttemp`, `daytemp`, `holidaytemp`, `nofrosttemp`, `ecotemp` and `heattemp`, and `hc` optionally stating the heating circuit. `value` is a numeric floating point value | `{ "cmd":"daytemp2", "data": 20 }` |
-| `shower_data` | for setting the shower timer or alert toggle | JSON as `{"timer|alert":"0|1"}` | `{"timer":"1"}` |
+| `shower_data` | for setting the shower timer or alert toggle | JSON as `{"<command>":"<data>"}` with `<command>` being `timer` or `alert` and `<data>` being `0` or `1` | `{"timer":"1"}` |
 | `generic_cmd` | for sending a command to the EMS-ESP, e.g. sending a shot of cold water | `<command>` | `coldshot` |
-| `boiler_cmd` | for sending generic command to control the Boiler | JSON `{"cmd":<command>,"data":<value>` with `command` being `comfort` and `data` = `[hot,comfort,intelligent]` or `flowtemp` with `data` being the desired temperature | `{"cmd":"flowtemp",data:55}` |
+| `boiler_cmd` | for sending generic command to control the Boiler | JSON `{"cmd":<command>,"data":<value>` with `command` being `comfort` and `data` = `[hot,comfort,intelligent]` or `flowtemp` with `data` being the desired temperature | `{"cmd":"flowtemp","data":55}` |
 | `boiler_cmd_wwtemp` | for setting the warm water boiler temperature, used by the HA HVAC component | temperature in degrees C | `60` |
 | `boiler_cmd_wwonetime` | for setting warm water one-time heating  | `"1"` or `"0"` | `"1"` |
 | `boiler_cmd_wwactivated` | for setting warm water on/off, used by the HA HVAC component | `"1"` or `"0"` | `"1"` |
 | `boiler_cmd_wwcirculation` | for setting warm water circulation on/off | `"1"` or `"0"` | `"1"` |
-| `settings_cmd` | for setting basic installation setup | JSON `{"cmd":<command>,"data":<value>` with `command` being `language` and `data` = `[german, french, italian]` (to be confirmed whether it will not be changed to integer), `building` with `data` = `[light, medium, heavy]` to set the building type used to select heating curves, `display` with `data` as a numeric integer value to set the information for display on the thermostat | `{"cmd":"building",data:"medium"}` |
+| `settings_cmd` | for setting basic installation setup | JSON `{"cmd":<command>,"data":<value>` with `command` being `language` and `data` = `[german, french, dutch, italian]` (to be confirmed whether it will not be changed to integer), `building` with `data` = `[light, medium, heavy]` to set the building type used in determining with which delay to take into account external temperature, `display` with `data` as a numeric integer value to set the information for display on the thermostat, `minexttemp` to set the minimal external temperature (used to determine heating curves) and `data` between `-30` and `0`, or `clockoffset` to set the internal clock offset and `data` between `-30` and `30` | `{"cmd":"building","data":"medium"}` |
 
 ## Monitoring MQTT
 
