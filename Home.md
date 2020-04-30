@@ -15,30 +15,22 @@ Currently [this is the list](Supported-EMS-Devices) of EMS heating devices that 
 
 <!-- tabs:start -->
 
-#### **Version 1.9.5 beta**
-**January 6 2020**
+#### **Version 1.9.5**
+**April 30th 2020**
 
-Happy new year everyone! 1.9.5 has been in development for a while now but it's almost ready with a few new features and many bug fixes and improvements such as:
+After 4 months and 60 beta releases I finally pushed 1.9.5 to master. This release has many improvements and new features which you can read about in the [ChangeLog](https://github.com/proddy/EMS-ESP/blob/dev/CHANGELOG.md). A lot of work has gone into supporting more thermostats (Junkers and Bosch) as well as extending support for Heat Pumps, Solar Modules and Mixing Modules.
 
-- Changing heating settings on Junkers thermostats
-- Supporting multiple thermostat heat controllers
-- MM10 Mixeing Module support
-- SM200 Solar module support
+Thanks to all the contributors and testers for providing feedback.
 
-Thanks to everyone for providing feedback.
-
-Also make sure you check out the full [ChangeLog](https://github.com/proddy/EMS-ESP/blob/dev/CHANGELOG.md).
-
-Paul.
 
 #### **Version 2.0**
-**January 6 2020**
+**April 30th 2020**
 
-The next major version is in the works. Here are some of the changes:
-- A complete re-write of the Web interface. As Websocket authentication was problematic in many browser this new version moves to a cleaner ReactJS/TypeScript frontend with RESTful interfaces.
-- Tighter security in both the Web and Telnet, using SSL/TLS and tokens.
-- Improved Telnet console with different levels of admin control and multi-client.
-- Refactoring the code to make it easier to read, using more C++11 features now in the Arduino core libraries. All EMS devices are classes and extensible which should make the code easier to read.
+Version 2.0 is progressing slowly. The core has been written (shell console, telnet, mqtt) and operational for thermostats and boilers now.
+
+The newly designed web-interface has also been coded but not yet merged with the EMS-ESP code as I'm battling with memory issues on the ESP8266.
+
+Looking for alpha testers so ping me if you're interested.
  
 <!-- tabs:end -->
 
