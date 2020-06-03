@@ -1,8 +1,6 @@
 The various types from newer EMS+ controllers like the MC110 found in GB122/125's.
 
-Byte 1 is the 1st byte of the data block (which is the 5th byte of the telegram for EMS 1.0 for example).
-
-Bit 0 is the first byte (so value & 0x01)
+In the schema below the first number represent the byte position, so 1 being the first byte of the message block (which is the 5th byte of an EMS 1.0 telegram). 
 
 This information was compiled with most if it coming from https://github.com/Th3M3/buderus_ems-wiki. Kudos to @Th3M3 for collecting this.
 

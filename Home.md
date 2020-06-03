@@ -24,13 +24,11 @@ Thanks to all the contributors and testers for providing feedback.
 
 
 #### **Version 2.0**
-**April 30th 2020**
+**June 3 2020**
 
-Version 2.0 is progressing slowly. The core has been written (shell console, telnet, mqtt) and operational for thermostats and boilers now.
+A quick update on version 2. There's an alpha version available [branch](https://github.com/proddy/EMS-ESP/tree/v2) for those daring adventurers. The core has been written (shell console, telnet, mqtt) and operational for all the EMS devices as in 1.9.5. Many thanks for @MichaelDvP for his great contributions to the telegram and UART logic, specially the ESP32 support.
 
-The newly designed web-interface has also been coded but not yet merged with the EMS-ESP code as I'm battling with memory issues on the ESP8266.
-
-Looking for alpha testers so ping me if you're interested.
+I'm now working on porting over the newly designed web-interface and then open it up for the first beta testers.
  
 <!-- tabs:end -->
 

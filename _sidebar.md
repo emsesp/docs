@@ -15,7 +15,7 @@
 * [Thermostat modes](Thermostat-Modes-RC35-vs-RC300)
 * [EMS+ Thermostats](RC3xx-Thermostats)
 * [Solar Modules](SM100)
-* [Contollers](MC110-controller)
+* [Controllers](MC110-controller)
 * [Heat Pumps](HeatPump)
 * [Mixing Modules](Mixing_module)
 * **Help**
