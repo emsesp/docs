@@ -28,8 +28,8 @@ The table below list the topics being published:
 
 | Topic               | Description         | Payload Example |
 | ------------------- | ------------------- | --------------- |
-| `start` | this is the first package sent when EMS-ESP boots up | `online` or `offline` |
-| `status` | this is the MQTT will and testament messages | `{"version":"1.9.5b52","IP":"10.10.10.84","boottime":"19:24:45 CET "}` |
+| `start` | this is the first package sent when EMS-ESP boots up | `{"version":"1.9.5b52","IP":"10.10.10.84","boottime":"19:24:45 CET "}` |
+| `status` | this is the MQTT will and testament messages | `online` or `offline` |
 | `heartbeat` | if enabled send out key system stats in JSON | `{"rssid":64,"load":1,"uptime":192,"freemem":62,"tcpdrops":0,"mqttpublishfails":0}` |
 | `tapwater_active` | individual message if using a boolean sensor to show if hot tap water is running | `0` or `1` |
 | `heating_active` | individual message if using a boolean sensor to show if heating is on | `0` or `1` |
