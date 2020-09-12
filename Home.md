@@ -1,50 +1,53 @@
 <img style="margin: 10px 10px; float:right; width:20%" src="_media/logo/boiler.svg" alt="EMS-ESP Logo"></img>
 
+**EMS-ESP** is an open-source firmware for the Espressif ESP8266 and ESP32 microcontroller that communicates with **EMS** (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.
+
 [![version](https://img.shields.io/github/release/proddy/EMS-ESP.svg?label=Latest%20Release)](https://github.com/proddy/EMS-ESP/blob/master/CHANGELOG.md)
 [![release-date](https://img.shields.io/github/release-date/proddy/EMS-ESP.svg?label=Released)](https://github.com/proddy/EMS-ESP/commits/master)
 [![license](https://img.shields.io/github/license/proddy/EMS-ESP.svg)](LICENSE)
-[![travis](https://travis-ci.com/proddy/EMS-ESP.svg?branch=master)](https://travis-ci.com/proddy/EMS-ESP)
+[![travis](https://travis-ci.com/proddy/EMS-ESP.svg?branch=dev)](https://travis-ci.com/proddy/EMS-ESP)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b8880625bdf841d4adb2829732030887)](https://app.codacy.com/app/proddy/EMS-ESP?utm_source=github.com&utm_medium=referral&utm_content=proddy/EMS-ESP&utm_campaign=Badge_Grade_Settings)
 [![downloads](https://img.shields.io/github/downloads/proddy/EMS-ESP/total.svg)](https://github.com/proddy/EMS-ESP/releases)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/proddy/EMS-ESP.svg)](http://isitmaintained.com/project/proddy/EMS-ESP "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/proddy/EMS-ESP.svg)](http://isitmaintained.com/project/proddy/EMS-ESP "Percentage of issues still open")
+<br/>
+[![gitter](https://img.shields.io/gitter/room/EMS-ESP/EMS-ESP.svg)](https://gitter.im/EMS-ESP/community)
 
-**EMS-ESP** is a project to build an electronic controller circuit using an Espressif ESP8266 microcontroller to communicate with EMS (Energy Management System) based Boilers and Thermostats from the Bosch range and compatibles such as Buderus, Nefit, Junkers etc.
+If you like **EMS-ESP**, please give it a star, or fork it and contribute!
 
-Currently [this is the list](Supported-EMS-Devices) of EMS heating devices that have been tested. 
+[![GitHub stars](https://img.shields.io/github/stars/proddy/EMS-ESP.svg?style=social&label=Star)](https://github.com/proddy/EMS-ESP/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/proddy/EMS-ESP.svg?style=social&label=Fork)](https://github.com/proddy/EMS-ESP/network)
+[![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 
 ### What's New?
 
+Important: This Wiki is no longer being maintained. Please refer to https://bbqkees-electronics.nl/wiki/. 
+
 <!-- tabs:start -->
 
-#### **Version 1.9.5**
-**April 30th 2020**
+#### **Version 2.0 (new)**
+**September 2020**
 
-After 4 months and 60 beta releases I finally pushed 1.9.5 to master. This release has many improvements and new features which you can read about in the [ChangeLog](https://github.com/proddy/EMS-ESP/blob/dev/CHANGELOG.md). A lot of work has gone into supporting more thermostats (Junkers and Bosch) as well as extending support for Heat Pumps, Solar Modules and Mixing Modules.
+Version 2.0 is out with many new cool things and improvements:
+
+- Support for both ESP8266 and ESP32 modules
+- A new multi-user Web interface (based on React/TypeScript)
+- A new Console, accessible via Serial and Telnet
+- Tighter security in both Web and Console. Admin privileges required to access core settings and commands.
+- Support for Home Assistant MQTT Discovery (https://www.home-assistant.io/docs/mqtt/discovery/)
+- Can be run standalone as an independent Access Point or join an existing WiFi network
+- Easier first-time configuration via a web Captive Portal
+- Supporting over 70 EMS devices (boilers, thermostats, solar modules, mixing modules, heat pumps, gateways)
 
 Thanks to all the contributors and testers for providing feedback.
 
+#### **Version 1.9.5**
 
-#### **Version 2.0**
-**June 3 2020**
-
-A quick update on version 2. There's an alpha version available [branch](https://github.com/proddy/EMS-ESP/tree/v2) for those daring adventurers. The core has been written (shell console, telnet, mqtt) and operational for all the EMS devices as in 1.9.5. Many thanks for @MichaelDvP for his great contributions to the telegram and UART logic, specially the ESP32 support.
-
-I'm now working on porting over the newly designed web-interface and then open it up for the first beta testers.
+Version 1.9 is no longer being maintained. It's recommended that users upgrade to version 2.0 to get the latest support.
  
 <!-- tabs:end -->
 
-### Community Support
-Go to [Gitter](https://gitter.im/EMS-ESP/community) for quick feedback, questions and troubleshooting.
-
-### Acknowledgments
-
-Kudos out to the following people who have open-sourced their work and helped me build this project:
-
- **susisstrolch** - One of the first working versions of the EMS bridge circuit I found designed for specifically for the ESP8266. I borrowed Juergen's [schematic](https://github.com/susisstrolch/EMS-ESP12) and parts of his code ideas for reading telegrams.
-
- **bbqkees** - Kees built a small SMD commercial grade circuit board which is available for purchase on his [website](https://bbqkees-electronics.nl/).
-
- **EMS Wiki** - A comprehensive [reference](https://emswiki.thefischer.net/doku.php?id=wiki:ems:telegramme) (in German) for the EMS bus which is a little outdated, not always 100% accurate and sadly no longer maintained.
-
+I have merged the guides on installing and configuring over to BBQKees' Wiki to avoid duplicate work. You can find further details at https://bbqkees-electronics.nl/wiki. 
 
 ## DISCLAIMER
 
