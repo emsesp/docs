@@ -1,20 +1,3 @@
-## MQTT configuration options
-
-#### Client ID
- todo
-#### Clean Session
- todo
-#### MQTT Heartbeat
- todo
-#### MQTT Format
- todo
-#### QoS
- todo
-#### Publish Intervals
- todo
-
-----
-
 ## MQTT topics
 
 All topics are prefixed with the ESP's `hostname`, which is defaulted to `ems-esp`.
