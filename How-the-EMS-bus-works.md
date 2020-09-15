@@ -43,8 +43,6 @@ The tables below shows which types are broadcasted regularly by the boiler (in t
 | Thermostat (0x17) | 0x91    | RC30StatusMessage | returns current and set temperatures                | 60 seconds |
 | Thermostat (0x17) | 0xA3    | RCTempMessage     | returns temp values from external (outdoor) sensors | 60 seconds |
 
-Refer to the code in `ems.cpp` for further explanation on how to parse these message types and also reference the EMS Wiki.
-
 ### EMS Reading and Writing
 
 Telegrams can only be sent after the Master (boiler) sends a poll to the receiving device. The response can be a read command to request data or a write command to send data. At the end of the transmission a poll response is sent from the client (`<ID> <BRK>`) to say we're all done and free up the bus for other clients.
@@ -53,17 +51,3 @@ When executing a request to read data the `[src]` is our device `(0x0B)` and the
 
 Following a write request, the `[dest]` doesn't have the 8th bit set and after this write request the destination device will send either a single byte 0x01 for success or 0x04 for failure.
 
-Every telegram sent is echo'd back to Rx, along the same Bus used for all Rx/Tx transmissions.
-
-### Other EMS Types
-
-`ems.cpp` defines callback functions that handle all the broadcast types listed above (e.g. 0x34, 0x18, 0x19 etc) plus these extra types:
-
-| Source (ID)   | Type ID | Name                          | Description                              |
-| ------------- | ------- | ----------------------------- | ---------------------------------------- |
-| Boiler (0x08) | 0x33    | UBAParameterWW                | reads selected & desired warm water temp |
-| Boiler (0x08) | 0x14    | UBATotalUptimeMessage         |                                          |
-| Boiler (0x08) | 0x15    | UBAMaintenanceSettingsMessage |                                          |
-| Boiler (0x08) | 0x16    | UBAParametersMessage          |                                          |
-
-In `ems.cpp` you can add scheduled calls to specific EMS types in the functions         `ems_getThermostatValues()` and `ems_getBoilerValues()`.

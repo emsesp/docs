@@ -19,9 +19,6 @@ If you like **EMS-ESP**, please give it a star, or fork it and contribute!
 [![GitHub forks](https://img.shields.io/github/forks/proddy/EMS-ESP.svg?style=social&label=Fork)](https://github.com/proddy/EMS-ESP/network)
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 
-### What's New?
-
-Important: This Wiki is no longer being maintained. Please refer to https://bbqkees-electronics.nl/wiki/. 
 
 <!-- tabs:start -->
 
@@ -46,8 +43,6 @@ Thanks to all the contributors and testers for providing feedback.
 Version 1.9 is no longer being maintained. It's recommended that users upgrade to version 2.0 to get the latest support.
  
 <!-- tabs:end -->
-
-I have merged the guides on installing and configuring over to BBQKees' Wiki to avoid duplicate work. You can find further details at https://bbqkees-electronics.nl/wiki. 
 
 ## DISCLAIMER
 

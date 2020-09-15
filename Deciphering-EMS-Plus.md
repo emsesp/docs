@@ -1,5 +1,5 @@
 > [!NOTE]
-> This page is a collection of findings to figure out how the EMS+ / EMS 2.0 protocol works.
+> This page is a collection of findings used to figure out how the EMS+ / EMS 2.0 protocol works. It's out-dated and incomplete and here only as a reference.
 
 ***
 
@@ -61,6 +61,5 @@ sr de F9 00 no FF TYPE ??   DATA
 48 90 F9 00 11 FF 019E 00   (read 17 bytes, type 019E)
 10 48 F9 00    FF 019E 00   4B 00 00 00 01 00 00 00 01 00 1B 00 06 00 1B 00 01
 10 00 F7 00    FF 01B9 35   19 (broadcast, type 01B9, value 19)
-
-                                                                                                
+                                                                                            
 ```

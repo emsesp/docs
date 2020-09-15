@@ -1,7 +1,0 @@
-shower_coldshot:
-  sequence:
-    - service: mqtt.publish
-      data_template:
-        topic: 'home/ems-esp/generic_cmd'
-        payload: '{cmd:"coldshot"}'
-        

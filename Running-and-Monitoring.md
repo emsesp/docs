@@ -1,34 +1,34 @@
 
-## Using Telnet to monitor EMS traffic
+## via the Web
+
+![Web](_media/web_status.PNG)
+
+## via the Console
 
 EMS-ESP has a telnet server that enables clients to connect using a telnet client such as [CoolTerm](http://freeware.the-meiers.org/), [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) or natively via the OS like this example with [Windows 10](https://www.technipages.com/windows-10-enable-telnet).
 
+Connecting to the console will give you more insight into the EMS bus traffic, MQTT queues and the full device information.
+
+The console is reachable via Telnet (port 22) or via the Serial port if using an USB (on baud 115200). To change any settings in the console you must be admin (use `su` with the default password `ems-esp-neo`).
+  
+Some of the most common commands are:
+  * `help` lists the commands and keywords. This works in each context.
+  * `exit` will exit the console or exit the current context. `CTRL-D` does the same.
+  * `CTRL-U` for Undo
+  * `<TAB>` for auto-complete
+  * Some specific commands are behind contexts. Think of this as a sub-menu. e.g. `system`, `thermostat`. The path will always show you which context you are in. `$` is the root.
+  * `su` will switch to the Admin super-user. The default password is `ems-esp-neo` and can be changed with `passwd` from the system menu or via the Web interface (called secret password). When in Admin mode the command prompt switches from `$` to `#`.
+  * Some settings can be changed in the console. The `set` command will list them.
+  * `show` shows the data specific to the which context you're in. From the root it will show you all the EMS device information and any external temperature sensors. 
+  * `log` sets the logging level. `log off` disables logging. Use `log debug` for debugging commands and actions. This will be reset next time the console is opened.
+  * `watch` will output the incoming Rx telegrams directly to the console. You can also put on a watch on a specific EMS device ID or telegram ID. Also choose to output as verbose text as raw data bytes.
+
+The `call` command is to execute a command. The command names (`[cmd]`) are the same as the MQTT commands as described in the [MQTT](MQTT.md) section. You can view these from the console directly by teh command `call` without any arguments, as admin.
+
 Connect to the IP address of the EMS-ESP. Type `?` or `help` to see a list of commands:
 
-![Telnet](_media/telnet/telnet_menu.jpg)
+![Console](_media/console.PNG)
 
-By default logging to the console is disabled. There are different levels of logging with "verbose" giving you all the real-time data of telegrams and any messages or warnings. Type `log v` and enable verbose logging and you'll see something similar too:
-
-![Telnet](_media/telnet/telnet_verbose.PNG)
-
-To view the current status of the EMS bus and all its captured values use the `info` command:
-
-![Telnet](_media/telnet/telnet_stats.PNG)
-
-> **Warning: be careful when sending values to the boiler. If in doubt you can always reset the boiler to its original factory settings by following the instructions in the user guide. For example on my Nefit Trendline that is done by holding down the Home and Menu buttons simultaneously for a few seconds, selecting factory settings from the scroll menu followed by pressing the Reset button.**
-
-### Recommended puTTY settings
-
-The Telnet code handles continuous motioning of key strokes, which is useful when monitoring a stream of incoming telegrams and issuing commands at the same time. If you're using puTTY then this will be need to be enabled. I suggest the following settings:
-
-```
-Terminal->Local line editing->Force off
-Terminal->Bell->None
-Window->Columns: 180
-Window->Rows: 70
-Window->Lines of scrollback: 5000
-Window->Appearance->Font quality: Antialiased
-```
 
 
 

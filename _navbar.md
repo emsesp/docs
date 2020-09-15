@@ -1,8 +1,8 @@
 * Download
     * [Download Firmware](https://github.com/proddy/EMS-ESP/releases/latest)
     * [Download Source](https://github.com/proddy/EMS-ESP)
-    * [Download Dev Build](https://github.com/proddy/EMS-ESP/releases/tag/travis-dev-build)
+    * [Download Dev Build](https://github.com/proddy/EMS-ESP/tree/firmware)
 * Help
-    * [FAQ](FAQ)
+    * [Support](Support)
     * [Troubleshooting](Troubleshooting)
     * [Community Help](https://gitter.im/EMS-ESP/community)

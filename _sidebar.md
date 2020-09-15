@@ -1,8 +1,8 @@
 * **Installation**
 * [Getting Started](getting_started)
-* [Building the Firmware](Building-firmware)
-* [Uploading the Firmware](Uploading-firmware)
-* [Configuring your System](Configure-firmware)
+* [Building the firmware](Building-firmware)
+* [Uploading the firmware](Uploading-firmware)
+* [Configuring EMS-ESP](Configure-firmware)
 * [Monitoring the EMS bus](Running-and-Monitoring)
 * **Home Automation Integration**
 * [MQTT](MQTT)
@@ -20,7 +20,7 @@
 * [Mixing Modules](Mixing_module)
 * **Help**
 * [Supported EMS Device List](Supported-EMS-Devices)
-* [FAQ](FAQ)
+* [Support](Support)
 * [Troubleshooting](Troubleshooting)
 * [How to Contribute](Contributing)
 * **For Developers**

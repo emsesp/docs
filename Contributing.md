@@ -1,4 +1,4 @@
-Any contribution helps make EMS-ESP better.
+*Any contribution helps make EMS-ESP better*
 
 This project needs:
 - guides for integrating into home automation systems like Home Assistant and Domoticz
@@ -9,7 +9,3 @@ This project needs:
 !> Warning: You need a GitHub user account to be able to edit!
 
 If you spot an error in an article use the *Improve this article* link at the top of the page to correct it. Note you will need a GitHub account. Make the change, click on "Propose file change" and "Create pull request".
-
-
-
-

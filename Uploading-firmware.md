@@ -1,14 +1,18 @@
+Firmware binaries are available on
+ * Latest Stable Release (https://github.com/proddy/EMS-ESP/releases/latest)
+ * Latest Development Release (https://github.com/proddy/EMS-ESP/tree/firmware)
 
-A pre-baked firmware for the common ESP8266 devices are available in the GitHub [releases](https://github.com/proddy/EMS-ESP/releases) which you can upload yourself using the [esptool](https://github.com/espressif/esptool) bootloader.
+Here we'll use the command-line. You'll need [Python]( https://www.python.org/downloads/) (version 3) installed and these 2 scripts:
 
-### via USB
+- `esptool.py`. Install using `pip install esptool`.
+- `espota.py` downloaded from https://github.com/esp8266/Arduino/blob/master/tools/espota.py
 
-- Install ESPTool by running `pip install esptool`. You'll need [Python](https://www.python.org/downloads/) installed.
-- Download the firmware from `https://github.com/proddy/EMS-ESP/releases/latest`. You can use `wget` for this.
-- `esptool -p COM5 write_flash 0x00000 *.bin` (use COM* for windows, /dev/tty* for Linux/OSX)
+Both these tools are also in the repo in the `scripts` directory.
 
-### via OTA (Over The Air)
+Next step is to fetch the latest firmware binary from https://github.com/proddy/EMS-ESP/releases, and if you're using USB with an ESP8266:
 
-- Download espota. Eg. `wget https://raw.githubusercontent.com/esp8266/Arduino/master/tools/espota.py`
-- Download the firmware from `https://github.com/proddy/EMS-ESP/releases/latest`. You can use `wget` for this.
-- `python espota.py -i ems-esp -f *.bin`
+  `esptool.py -p <COM PORT> -b 921600 write_flash 0x00000 <firmware.bin>` 
+  
+and for OTA:
+  
+  `espota.py --debug --progress --port 8266 --auth ems-esp-neo -i <IP address> -f <firmware.bin>`

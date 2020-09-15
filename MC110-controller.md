@@ -2,7 +2,7 @@ The various types from newer EMS+ controllers like the MC110 found in GB122/125'
 
 In the schema below the first number represent the byte position, so 1 being the first byte of the message block (which is the 5th byte of an EMS 1.0 telegram). 
 
-This information was compiled with most if it coming from https://github.com/Th3M3/buderus_ems-wiki. Kudos to @Th3M3 for collecting this.
+This information was compiled with most if it coming from https://github.com/Th3M3/buderus_ems-wiki.
 
 ## Type 0xD1: UBAOutdoorTemp
 

@@ -1,7 +1,7 @@
 > [!TIP]
 > Another good source of EMS and EMS+ investigation look at https://github.com/Th3M3/buderus_ems-wiki_
 
-## A2
+## Type 0xA2
 
 This message is a EMS 1.0 message 
 
@@ -17,7 +17,7 @@ Display code and Cause
 | 0-2 | Display code | 3 bytes | HEX To Decimal |
 | 3-4 | Cause Code | 2 bytes | HEX To Decimal |
 
-## 3E, 48, 52, 5C
+## Types 0x3E, 0x48, 0x52, 0x5C
 
 These are EMS1.0 type broadcasted from an RC35 compatible thermostat (typically with a device ID of 0x10) as a Heating Controller Monitor Message. The data block is 16 bytes. We use this telegram to read the current room temperature, the setpoint temperature for up to 4 Heating Controllers 0x3E (HC1), 0x48 (HC2), 0x52 (HC3) and 0x5C (HC4)
 
@@ -57,10 +57,4 @@ deciphering each data element from 0 to 15
 | 14 | calculate setpoint flow temperature | 1 byte | this looks wrong |
 | 15 | settings3 | 1 byte as a bit mask | we see two values 0 and 4 |
  
-Questions: 
-
-* how to determine if a heating circuit is not active? Check for data #14 if its 0 ?
-* when to ignore the setpoint temperature being 0? This depends on the bit masks in data #1 and #2 somehow
-* data #0 is sometimes 04 (b0100) always with data#1 being 3 (b0011). This means DWH priority is set and daytime mode, according to https://emswiki.thefischer.net/doku.php?id=wiki:ems:telegramme#wwbetriebsart. Is this correct since one of the examples we're in nightmode?
-
 

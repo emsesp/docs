@@ -1,5 +1,3 @@
-(thanks to @moustic999 for explaining this)
-
 ## RC300
 
 RC300 has 2 modes : Auto and Manual.

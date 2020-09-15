@@ -1,9 +1,7 @@
 <img style="margin: 10px 10px; float:right; width:10%" src="_media/logo/logo-proddy-fw.jpg" alt="EMS-ESP Logo"></img>
 
-Welcome to EMS-ESP! A small project to read and write to EMS controller heating devices.
+Welcome to EMS-ESP! Follow these steps to get EMS-ESP up and running:
 <br>
-
-Follow these steps to get EMS-ESP up and running:
 
 - [Build](Building-your-own-test-circuit) or buy an EMS interface board. I highly recommend purchasing a EMS Gateway from BBQKees ([bbqkees-electronics.nl](https://bbqkees-electronics.nl))
 
@@ -18,5 +16,4 @@ Follow these steps to get EMS-ESP up and running:
 - [Configure the settings](Configure-firmware)
   
 - [Monitor what is happening](Running-and-Monitoring)
-
 

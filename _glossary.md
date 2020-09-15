@@ -6,7 +6,7 @@ TBD
 
 TBD
 
-##### Telegram
+##### Telegram ID
 
 TBD
 

@@ -12,11 +12,11 @@ The schematic used:
 
 **Powering The EMS Circuit**
 
-The EMS circuit will work with both 3.3V and 5V. It's easiest though to power directly from the ESP8266's 3V3 line and run a steady 5V into the microcontroller. Powering the ESP8266 microcontroller can be either:
+The EMS circuit will work with both 3.3V and 5V. It's easiest though to power directly from the ESP8266's 3V3 line and run a steady 5V into the microcontroller. Powering the ESP8266/ESP32 microcontroller can be either:
 
 - via the USB if your dev board has one
 - using an external 5V power supply into the 5V vin on the board
-- powering from the 3.5mm service jack (stereo jack) on the boiler. This will give you 8V so you need a buck converter (like a [Pololu D24C22F5](https://www.pololu.com/product/2858)) to step this down to 5V to provide enough power to the ESP8266 (250mA at least)
+- powering from the 3.5mm service jack (stereo jack) on the boiler. This will give you 8V so you need a buck converter (like a [Pololu D24C22F5](https://www.pololu.com/product/2858)) to step this down to 5V to provide enough power to the ESP (250mA at least)
 - powering direct from the EMS line, which is 15V DC and using a buck converter as described above.
 
 **With Power Circuit**

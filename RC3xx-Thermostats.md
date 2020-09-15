@@ -15,7 +15,7 @@ TTTTT = type, 2 bytes
 
 The data starts at the 7th byte straight after the typeID of `x01A5`. Position 0 is the first byte of the data block.
 
-### Reading from and Writing to an EMS+ Telegram
+### Reading from and writing to an EMS+ Telegram
 
 ```
 Reading 2 bytes of data from 0x1A5 its: send 0B 90 FF 00 02 01 A5
@@ -47,7 +47,7 @@ Thermostat -> me, type 0x01A5, telegram: 10 0B FF 00 01 A5 00 D3 21 22 00 00 22 
 
 
 
-# Type 01A5
+# Type 0x01A5
 
 0x1A5 is a monitoring telegram from the 1st Heat Controller (HC1). The other HCs use `01A6`, `01A7` and `01A8` respectively and share the same format as below.
 
@@ -67,7 +67,7 @@ Thermostat -> me, type 0x01A5, telegram: 10 0B FF 00 01 A5 00 D3 21 22 00 00 22 
 | 15 + 16 | elapsed time in this setpoint | 2 bytes | time in minutes. | 
 
 
-# Type 01B9
+# Type 0x01B9
 
 This telegram type is for managing the Heating mode 
 
@@ -100,7 +100,7 @@ SET to Manual mode ( manual temp is 20.5 (0x29) )
 | 9 |  |  |  |                                           
 | 10 | manual setpoint temperature  | 1 byte, *2 |  |
 
-# Type 01AF - 01B2 (HC1 - HC4)
+# Type 0x01AF - 0x01B2 (HC1 - HC4)
 
 Mode control to Summer, Winter and Auto.
 
