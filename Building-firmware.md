@@ -1,3 +1,5 @@
+These steps show how to build the firmware using PlatformIO.
+
 1. Install [PlatformIO](https://platformio.org/install) and [NodeJS](https://nodejs.org/en/).
 2. Decide how you want to upload the firmware, via USB or OTA (Over The Air). OTA requires that a version of EMS-ESP is already running.
 3. Create a new file called `pio_local.ini` and add these two lines for USB:
@@ -13,5 +15,5 @@ upload_flags =
    --auth=ems-esp-neo
 upload_port = ems-esp.local
 ```
-3. type `pio run -t upload` to build and upload the firmware
+3. Type `pio run -t upload` to build and upload the firmware
    

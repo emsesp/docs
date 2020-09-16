@@ -25,6 +25,4 @@
 * [How to Contribute](Contributing)
 * **For Developers**
 * [Building your own Board](Building-your-own-test-circuit)
-* [Extending the Functionality](How-the-Code-Works)
-* [Testing the Web Interface](Web-test)
-* [Feature Wish List](wish-list)
+* [Coding](Coding)
