@@ -15,5 +15,3 @@ Welcome to EMS-ESP! Follow these steps to get EMS-ESP up and running:
   
 - [Configure the settings](Configure-firmware)
   
-- [Monitor what is happening](Running-and-Monitoring)
-

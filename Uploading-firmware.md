@@ -23,6 +23,7 @@ EMS-ESP will attempt to automatically migrate the 1.9 settings, however there ar
 
 ### MQTT:
    - MQTT base has been removed. All MQTT topics are prefixed with only the hostname, for example `ems-esp/status` as opposed to `home/ems-esp/status`.
+   - Subscribe topic have been renamed and the trailing `_cmd` removed. e.g. `boiler` instead of `boiler_cmd`
    - `heatPmp` renamed to `heatPump`
    - `ServiceCodeNumber` renamed to `serviceCodeNumber`
    - Firmware version has been moved to the `start` topic

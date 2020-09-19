@@ -16,11 +16,11 @@
 
 The code supports auto-detection of Dallas type temperature sensors. The default GPIO pin used on the ESP8266 is D5 but this can be configured via the Web UI. The Dallas chips DS1822, DS18S20, DS18B20, DS1825 are supported including their parasite varieties and can also be daisy-chained on a single line.
 
-## Configuring the settings
+## Settings
 
 ### System Settings
 
-Use the Web UI to further configure the settings. In the `Settings` section you'll find:
+Use the Web UI (http://ems-esp) to further configure the settings. In the `Settings` section you'll find:
 
 #### EMS Bus
 - **Tx Mode**. `1` is default for EMS1.0 systems but also compatible with most other protocols. `2` is designed to work better for EMS2.0/EMS+ systems and `3` for Heatronics3 used by Junkers and Bosch. Choose the mode that works best for your system and watch for Tx errors in the Web Dashboard and `show ems` in the Console. Changing the value has immediate effect.
@@ -53,7 +53,8 @@ These settings can be found in the `MQTT` tab on the Web UI.
 - **Clean Session**. Creates a non-persistent session when enabled.
 - **MQTT Heartbeat**. Sends out EMS-ESP system information every minute on a `heartbeat` topic.
 - **MQTT Format**. The `single` option will send all data as separate topics, `nested` will group the data into a JSON string and `home assistant` will use MQTT Discovery (if available).
-- **QoS**. Quality of Service, 0, 1 or 2. 0 is default and fine for more scenarios. 1 will give a guarantee that the message has been sent, but will create slightly more traffic and overhead.
+- **QoS**. Quality of Service, 0, 1 or 2. 0 is the default and suitable for more scenarios. 1 will give a guarantee that the message has been sent, but will create slightly more traffic and overhead.
+- **Retain Flag**. Default is off. Enable if you want to persist all the messages on the broker.
 - **Publish Intervals**. This section is per device and sets how frequent an MQTT message with the update data is to be sent. When set to 0 EMS-ESP will send data when there is a noticeable change.
 
 ----

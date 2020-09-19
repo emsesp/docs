@@ -3,8 +3,10 @@
 * [Building the firmware](Building-firmware)
 * [Uploading the firmware](Uploading-firmware)
 * [Configuring EMS-ESP](Configure-firmware)
-* [Monitoring the EMS bus](Running-and-Monitoring)
-* **Home Automation Integration**
+* **Modules**
+* [Web Interface](Web)
+* [API](API)
+* [Telnet Console](Console)
 * [MQTT](MQTT)
 * [Home Assistant](Home-Assistant)
 * [Domoticz](Domoticz)
@@ -19,7 +21,7 @@
 * [Heat Pumps](HeatPump)
 * [Mixing Modules](Mixing_module)
 * **Help**
-* [Supported EMS Device List](Supported-EMS-Devices)
+* [EMS Device compatibility list](Supported-EMS-Devices)
 * [Support](Support)
 * [Troubleshooting](Troubleshooting)
 * [How to Contribute](Contributing)
