@@ -123,4 +123,3 @@ HC1 Auto - send 0B 10 FF 07 01 AF 01
 and to query the mode use `send 0B 90 FF 07 01 01 AF`.
 
 Offset `6` holds the temperature threshold, e.g. for 17 degrees on HC1 do a  `send 0B 10 FF 06 01 AF 10`.
-

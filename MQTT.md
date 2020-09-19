@@ -33,5 +33,3 @@ Based on which EMS devices are present EMS-ESP will subscribe its respective top
 If you want more precise monitoring of the MQTT traffic I suggest using [MQTT Explorer](http://mqtt-explorer.com/).
 
 Using the `show mqtt` command in the Telnet console you can see the number of MQTT packages that have failed to publish (after 3 retries). You can also see if there have been any TCP or network disconnects to the MQTT broker.
-
-

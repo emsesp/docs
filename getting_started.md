@@ -11,7 +11,7 @@ Welcome to EMS-ESP! Follow these steps to get EMS-ESP up and running:
   
 - [Upload the firmware](Uploading-firmware)
   
-- Switch it on
+- Power it up, connect to the Boiler or the EMS bus line
   
 - [Configure the settings](Configure-firmware)
   

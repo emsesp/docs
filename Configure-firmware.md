@@ -56,7 +56,3 @@ These settings can be found in the `MQTT` tab on the Web UI.
 - **QoS**. Quality of Service, 0, 1 or 2. 0 is the default and suitable for more scenarios. 1 will give a guarantee that the message has been sent, but will create slightly more traffic and overhead.
 - **Retain Flag**. Default is off. Enable if you want to persist all the messages on the broker.
 - **Publish Intervals**. This section is per device and sets how frequent an MQTT message with the update data is to be sent. When set to 0 EMS-ESP will send data when there is a noticeable change.
-
-----
-
-

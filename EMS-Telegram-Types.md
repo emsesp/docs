@@ -57,4 +57,3 @@ deciphering each data element from 0 to 15
 | 14 | calculate setpoint flow temperature | 1 byte | this looks wrong |
 | 15 | settings3 | 1 byte as a bit mask | we see two values 0 and 4 |
  
-
