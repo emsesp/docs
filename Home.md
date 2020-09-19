@@ -30,8 +30,9 @@ Version 2.0 is out with many new cool things and improvements:
 - Support for both ESP8266 and ESP32 modules
 - A new multi-user Web interface (based on React/TypeScript)
 - A new Console, accessible via Serial and Telnet
+- Simple RESTful API
 - Tighter security in both Web and Console. Admin privileges required to access core settings and commands.
-- Support for Home Assistant MQTT Discovery (https://www.home-assistant.io/docs/mqtt/discovery/)
+- Support for Home Assistant's MQTT Discovery
 - Can be run standalone as an independent Access Point or join an existing WiFi network
 - Easier first-time configuration via a web Captive Portal
 - Supporting over 70 EMS devices (boilers, thermostats, solar modules, mixing modules, heat pumps, gateways)
