@@ -22,7 +22,7 @@ The table below list the topics being published:
 | `shower_data` | the shower timer and alert toggles plus the duration of the last shower taken | `{"timer":"0","alert":"0","duration":"4 minutes 32 seconds"}` |
 | `sm_data` | all data from the Solar Module (if connected) | JSON with `collectortemp` `bottomtemp` `pumpmodulation` `pump` `energylasthour` `energytoday` `energytotal` `pumpWorkMin` |
 | `hp_data` | all data from the Heat Pump (if connected) | `{"pumpmodulation":10, "pumpspeed": 20}` |
-| `sensors` | temperature readings from any external Dallas sensors attached to the ESP | `{"sensor1":{"id":"28FF47AC90160444","temp":20.94}}` |
+| `sensor_data` | temperature readings from any external Dallas sensors attached to the ESP | `{"sensor1":{"id":"28FF47AC90160444","temp":20.94}}` |
 
 ## Receiving Topics
 
