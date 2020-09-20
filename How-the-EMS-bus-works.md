@@ -26,7 +26,7 @@ Polling is also the trigger to start transmitting any packages queued for sendin
 
 When a device is broadcasting to everyone there is no specific destination needed. `[dest]` is always 0x00.
 
-The tables below shows which types are broadcasted regularly by the boiler (in this case ID 0x08) and thermostat (ID 0x17). The **data length** is excluding the 4 byte header and CRC and the **Name** references those in the German [ems wiki](https://emswiki.thefischer.net/doku.php?id=wiki:ems:telegramme).
+The tables below shows which types are broadcasted regularly by the boiler (in this case ID 0x08) and thermostat (ID 0x17). The **data length** is excluding the 4 byte header and CRC and the **Name** references those in the German [EMS wiki](https://emswiki.thefischer.net/doku.php?id=wiki:ems:telegramme).
 
 | Source (ID)   | Type ID | Name                | Description                            | Data length | Frequency  |
 | ------------- | ------- | ------------------- | -------------------------------------- | ----------- | ---------- |

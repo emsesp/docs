@@ -2,6 +2,7 @@ If you're looking for support on **EMS-ESP** there are some options available:
 
 ### Documentation
 
+* [This official documentation](https://emsesp.github.io/docs/#/)
 * [EMS Gateway Documentation](https://bbqkees-electronics.nl/wiki/): For more information on how to build and upload the firmware maintained by @BBQKees
 
 ### Support's Community
