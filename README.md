@@ -1,6 +1,12 @@
 # EMS-ESP Documentation
 This is the documentation for EMS-ESP. Thanks to Tasmota for providing examples.
 
+## Testing locally
+
+```sh
+docsify serve .
+```
+
 ## Editing Files using Docsify
 
 Use normal markdown syntax with some enhancements, see below.
