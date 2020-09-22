@@ -39,10 +39,7 @@ common commands available in all contexts:
   thermostat (enters a context)
   set
   fetch
-  scan devices [deep] *
-  send telegram <"XX XX ..."> *
-  set bus_id <device ID> *
-  set tx_mode <n> *
+  publish
   show
   show devices
   show ems
@@ -50,6 +47,10 @@ common commands available in all contexts:
   show mqtt
   show commands
   read <device ID> <type ID> *
+  scan devices [deep] *
+  send telegram <"XX XX ..."> *
+  set bus_id <device ID> *
+  set tx_mode <n> *
 
 system
   set

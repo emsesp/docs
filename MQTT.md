@@ -4,7 +4,9 @@ All topics are prefixed with the ESP's `hostname`, which is defaulted to `ems-es
 
 ## Publishing Topics
 
-All the key information from each of the EMS devices connected (Boilers, Thermostats, Solar Modules etc) are sent periodically on a single MQTT topic.
+Publishing timing can be configured from the Web UI to be either sent when data changes (which can be quite often) or set to a specific period in seconds.
+
+Note when the MQTT format is set to "`Home Assistant`" the topics may change. Please consult the section in [MQTT](MQTT.md) for further details.
 
 The table below list the topics being published:
 
@@ -30,6 +32,5 @@ Based on which EMS devices are present EMS-ESP will subscribe its respective top
 
 ## Monitoring the MQTT queues
 
-If you want more precise monitoring of the MQTT traffic I suggest using [MQTT Explorer](http://mqtt-explorer.com/).
+If you want more precise monitoring of the MQTT traffic I suggest using [MQTT Explorer](http://mqtt-explorer.com/). The console command `show mqtt` will show the status of the MQTT service and also the topic subscriptions and outbound publishing queue.
 
-Using the `show mqtt` command in the Telnet console you can see the number of MQTT packages that have failed to publish (after 3 retries). You can also see if there have been any TCP or network disconnects to the MQTT broker.
