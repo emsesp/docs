@@ -9,7 +9,7 @@ Some of the most common commands are:
   * `exit` will exit the console or exit the current context. `CTRL-D` does the same.
   * `CTRL-U` for Undo
   * `<TAB>` for auto-complete
-  * Some specific commands are behind contexts. Think of this as a sub-menu. e.g. `system`, `thermostat`. The path will always show you which context you are in. `$` is the root.
+  * `system` to enter the system menu. Use `exit` or CTRL-D to return.
   * `su` will switch to the Admin super-user. The default password is `ems-esp-neo` and can be changed with `passwd` from the system menu or via the Web interface (called secret password). When in Admin mode the command prompt switches from `$` to `#`.
   * Some settings can be changed in the console. The `set` command will list them.
   * `show` shows the data specific to the which context you're in. From the root it will show you all the EMS device information and any external temperature sensors.
@@ -24,19 +24,10 @@ Connect to the IP address of the EMS-ESP. Type `?` or `help` to see a list of co
 ## Console Commands
 
 ```
-* = available when Admin mode (using su)
+* = available when Admin mode (su)
 
-common commands available in all contexts:
-  exit
-  help
-  log [level]
-  watch <on | off | raw> [ID]
+[main]
   su
-
-(from the root)
-  system (enters a context)
-  boiler (enters a context)
-  thermostat (enters a context)
   set
   fetch
   publish
@@ -46,15 +37,22 @@ common commands available in all contexts:
   show values
   show mqtt
   show commands
+  call [device type] [cmd] [data] [n]
   read <device ID> <type ID> *
   scan devices [deep] *
   send telegram <"XX XX ..."> *
   set bus_id <device ID> *
   set tx_mode <n> *
+  exit
+  help
+  log [level]
+  watch <on | off | raw> [ID]
+  set master thermostat [device ID] *
+  system (see below...)
 
-system
+[system]
   set
-  show
+  show system
   format *
   show users *
   passwd *
@@ -63,15 +61,8 @@ system
   set wifi password *
   set wifi ssid <name> *
   wifi reconnect *
-
-boiler
-  read <type ID> *
-  call [cmd] [data] *
-
-thermostat
-  set
-  set master [device ID] *
-  read <type ID> *
-  call [cmd] [data] [heating circuit] *
-
+  exit
+  help
+  log
+  su
  ```

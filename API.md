@@ -1,11 +1,11 @@
 Commands can be sent to EMS-ESP in a few ways
 
- - via the Console with a `call <command> <data> <id>` from the respective device context/menu.
+ - via the Console with a `call <device> <command> <data> <id>` from the respective device context/menu.
  - via MQTT in the payload with `{"cmd":<command> ,"data":<data>, "id":<id>}`. The MQTT topic is the <device>.
  - via the REST API in the URL like `http://ems-esp/api?device=<device>&cmd=<command>&data=<data>&id=<id>`.
 
 where
-* `<device>`'s are `system`, `boiler`, `thermostat`, `solar`, `mixing` and `heatpump`.
+* `<device>`'s are `system`, `sensor`, `boiler`, `thermostat`, `solar`, `mixing` and `heatpump`.
 * `<data>` is the data value to be sent, either a string, bool or numerical value. It is optional.
 * `<id>` is an additional identifier. `<hc>` also works. Both are optional.
 
@@ -13,8 +13,6 @@ where
 > Note unlike the Console and MQTT, the Web restful interface does not yet support any security. Which means anyone with the URL can send commands to control the EMS connected devices. If you're worried, all write operations from the Web API can be disabled via the 'Enable WEB API' option in the Settings configuration.
 
 ### Commands
-
-valid `<device>`'s are `system, boiler, thermostat, solar, mixing, heatpump`.
 
 ## device: `system`
 | command | data | id | comments |
