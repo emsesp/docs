@@ -22,7 +22,7 @@ EMS devices are being constantly added to the database on each new release.
 * Bosch Condens 2500, 5000i, Compress 6000AW
 * Worcester-Bosch Greenstar 550CDi, Greenstar 24i
 * Junkers Cerapur
-* Nefit Proline, Trendline, Topline, Enviline, Smartline
+* Nefit Proline, Trendline, Topline, Enviline, Smartline, EcomLine
 * Sieger BK13, BK15
 
 ### Solar Modules
