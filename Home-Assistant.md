@@ -9,7 +9,7 @@ When the MQTT Setting `MQTT Format` is set to "`Home Assistant`" EMS-ESP will se
 
 ## Thermostat data
 
-The thermostat data is published using MQTT Discovery in the topic `homeassistant/climate/ems-esp/hc1/state`. An example payload may look like `{"hc1":{"seltemp":15,"currtemp":22.6,"mode":"auto"}}`. To use this data in the HA select the standard thermostat card and use the entity called `climate.hc1`.
+The thermostat data is published using MQTT Discovery in the topic `homeassistant/climate/ems-esp/hc1/state`. An example payload may look like `{"hc1":{"seltemp":15,"currtemp":22.6,"mode":"auto"}}`. To use this data in the HA select the standard thermostat card and use the entity called `climate.hc1`. You can check if this is working in HA by going to Developer Tools->States and searching for `climate`.
 
 ## Solar data, Mixing data, Boiler data
 
@@ -144,9 +144,6 @@ For boiler data add these to your `sensors.yaml` and include from your `configur
   name: 'one_time_water'
   value_template: '{{ value_json.wWOnetime }}'
 ```
-
-
-
 
 ## Heartbeat
 

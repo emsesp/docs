@@ -26,5 +26,5 @@
 * [Troubleshooting](Troubleshooting)
 * [How to Contribute](Contributing)
 * **For Developers**
-* [Building your own Board](Building-your-own-test-circuit)
-* [Coding](Coding)
+* [Building an EMS Interface](Building-your-own-test-circuit)
+* [Coding Principles](Coding)
