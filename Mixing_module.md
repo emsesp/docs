@@ -19,7 +19,7 @@ Mixing modules are used for different tasks.
 - setpoint 42°C (2A), temperature 41.9°C (01A3), pump 100% (64) 
 
 ## MM50
-- Same protokoll as MM100 but fixed to address 0x21 (hc2) and Type 0x1D08
+- Same protocol as MM100 but fixed to address 0x21 (hc2) and Type 0x1D08
 
 ## MM100, MM200, MM400
 - Device address selectable by rotary switch 1-0x20 ... 9-0x29

@@ -6,7 +6,7 @@
 
 ## Testing
 
-The Web can developed and tested in real-time by uncommenting the `-D ENABLE_CORS` in `platformio.ini` and then
+The Web can developed and tested in real-time by commenting out the `-D ENABLE_CORS` in `platformio.ini` and then
 ```sh
 cd interface
 npm start

@@ -56,7 +56,6 @@ These settings can be found in the `MQTT` tab on the Web UI.
 
 - **Client ID**. This is used internally to identify EMS-ESP with the broker. Note MQTT topics will be postfixed with the hostname (default `ems-esp`), not this client ID.
 - **Clean Session**. Creates a non-persistent session when enabled.
-- **MQTT Heartbeat**. Sends out EMS-ESP system information every minute on a `heartbeat` topic.
 - **MQTT Format**. The `single` option will send all data as separate topics, `nested` will group the data into a JSON string and `home assistant` will use MQTT Discovery (if available).
 - **QoS**. Quality of Service, 0, 1 or 2. 0 is the default and suitable for more scenarios. 1 will give a guarantee that the message has been sent, but will create slightly more traffic and overhead.
 - **Retain Flag**. Default is off. Enable if you want to persist all the messages on the broker.

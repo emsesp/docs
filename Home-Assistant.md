@@ -1,217 +1,49 @@
 ![logo](_media/logo/home-assistant.png ':size=100')
 
+EMS-ESP has almost-native integration with Home Assistant via the MQTT Discovery protocol. This means MQTT must be enabled and the `MQTT Format` setting set to "`Home Assistant`".
 
-When the MQTT Setting `MQTT Format` is set to "`Home Assistant`" EMS-ESP will send the data using HA's MQTT Discovery protocol.
+For each attached device EMS-ESP will send specific MQTT topics sent in the format `homeassistant/<component>/ems-esp/...`. In the Home Assistant web interface you'll see a new Device called EMS-ESP added under Configuration->Devices. You can then add these to a lovelace UI dashboard by clicking the 'Add to Lovelace' which will add each EMS device's parameters as home assistant entities.
 
+![device](_media/ha_device.PNG ':size=50')
 
-> [!NOTE]
-> MQTT Discovery is still being implemented and only supports Thermostat and Sensor devices in version 2.0.1.
-
-## Thermostat data
-
-The thermostat data is published using MQTT Discovery in the topic `homeassistant/climate/ems-esp/hc1/state`. An example payload may look like `{"hc1":{"seltemp":15,"currtemp":22.6,"mode":"auto"}}`. To use this data in the HA select the standard thermostat card and use the entity called `climate.hc1`. You can check if this is working in HA by going to Developer Tools->States and searching for `climate`.
-
-## Solar data, Mixing data, Boiler data
-
-These devices will use the same topics as described in the [MQTT](MQTT.md) section. So boiler information is in `ems-esp/boiler_data` for example.
-
-For boiler data add these to your `sensors.yaml` and include from your `configuration.yaml` file.
-
-```yaml
-- platform: mqtt
-  name: 'Tap Water'
-  state_topic: 'ems-esp/tapwater_active'
-  payload_on: "1"
-  payload_off: "0"
-  unique_id: ems_esp_warmwater
-
-- platform: mqtt
-  name: 'Heating'
-  state_topic: 'ems-esp/heating_active'
-  payload_on: "1"
-  payload_off: "0"
-  unique_id: ems_esp_heating
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Warm Water selected temperature'
-  unit_of_measurement: '°C'
-  value_template: '{{ value_json.wWSelTemp }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Warm Water current temperature'
-  unit_of_measurement: '°C'
-  value_template: '{{ value_json.wWCurTmp }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Warm Water tapwater flow rate'
-  unit_of_measurement: 'l/min'
-  value_template: '{{ value_json.wWCurFlow }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Warm Water activated'
-  value_template: '{{ value_json.wWActivated }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Warm Water 3-way valve'
-  value_template: '{{ value_json.wWHeat }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Current flow temperature'
-  unit_of_measurement: '°C'
-  value_template: '{{ value_json.curFlowTemp }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Return temperature'
-  unit_of_measurement: '°C'
-  value_template: '{{ value_json.retTemp }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Gas'
-  value_template: '{{ value_json.burnGas }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Boiler pump'
-  value_template: '{{ value_json.heatPmp }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Fan'
-  value_template: '{{ value_json.fanWork }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Ignition'
-  value_template: '{{ value_json.ignWork }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Circulation pump'
-  value_template: '{{ value_json.wWCirc }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Burner max power'
-  unit_of_measurement: '%'
-  value_template: '{{ value_json.selBurnPow }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Burner max power'
-  unit_of_measurement: '%'
-  value_template: '{{ value_json.selBurnPow }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Burner current power'
-  unit_of_measurement: '%'
-  value_template: '{{ value_json.curBurnPow }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'System Pressure'
-  unit_of_measurement: 'bar'
-  value_template: '{{ value_json.sysPress }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Boiler temperature'
-  unit_of_measurement: '°C'
-  value_template: '{{ value_json.boilTemp }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Pump modulation'
-  unit_of_measurement: '%'
-  value_template: '{{ value_json.pumpMod }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'Boiler temperature'
-  unit_of_measurement: '°C'
-  value_template: '{{ value_json.boilTemp }}'
-
-- platform: mqtt
-  state_topic: 'ems-esp/boiler_data'
-  name: 'one_time_water'
-  value_template: '{{ value_json.wWOnetime }}'
-```
+![lovelace](_media/ha_lovelace.PNG ':size=50')
 
 ## Heartbeat
 
-The heartbeat is not part of the HA device yet, so still published under the topic `ems-esp/heartbeat`.
+The Heartbeat has more details stored in the entity's state as individual attributes. You can expose these by adding a new card to the lovelace UI like:
 
 ```yaml
-## EMS-ESP status
-- platform: mqtt
-  state_topic: 'ems-esp/status'
-  name: 'ems-esp status'
-  unique_id: ems_esp_status
-  
-## EMS-ESP heartbeat  
-- platform: mqtt
-  state_topic: 'ems-esp/heartbeat'
-  name: 'ems_esp_wifi'
-  unit_of_measurement: '%'
-  value_template: '{{ value_json.rssid }}'
-  availability_topic: 'ems-esp/status'
-  payload_not_available: "offline"
-  unique_id: ems_esp_wifi
-
-- platform: mqtt
-  state_topic: 'ems-esp/heartbeat'
-  name: 'ems_esp_freemem'
-  unit_of_measurement: '%'
-  value_template: '{{ value_json.freemem }}'
-  availability_topic: 'ems-esp/status'
-  payload_not_available: "offline"
-  unique_id: ems_esp_freemem
-
-- platform: mqtt
-  state_topic: 'ems-esp/heartbeat'
-  name: 'ems_esp_uptime'
-  unit_of_measurement: 's'
-  value_template: '{{ value_json.uptime }}'
-  availability_topic: 'ems-esp/status'
-  payload_not_available: "offline"
-  unique_id: ems_esp_uptime
-
-- platform: mqtt
-  state_topic: 'ems-esp/heartbeat'
-  name: 'ems_esp_mqttpublishfails'
-  value_template: '{{ value_json.mqttpublishfails }}'
-  availability_topic: 'ems-esp/status'
-  payload_not_available: "offline"
-  unique_id: ems_esp_mqttpublishfails
-
-- platform: mqtt
-  state_topic: 'ems-esp/heartbeat'
-  name: 'ems_esp_txfails'
-  value_template: '{{ value_json.txfails }}'
-  availability_topic: 'ems-esp/status'
-  payload_not_available: "offline"
-  unique_id: ems_esp_txfails
-
-- platform: mqtt
-  state_topic: 'ems-esp/heartbeat'
-  name: 'ems_esp_rxfails'
-  value_template: '{{ value_json.rxfails }}'
-  availability_topic: 'ems-esp/status'
-  payload_not_available: "offline"
-  unique_id: ems_esp_rxfails
+type: entities
+title: EMS-ESP Status
+entities:
+  - entity: sensor.ems_esp_status
+    type: attribute
+    attribute: uptime
+    name: Uptime
+    icon: 'mdi:timer-outline'
+  - entity: sensor.ems_esp_status
+    type: attribute
+    attribute: rssid
+    name: RSSID
+    suffix : '%'
+    icon: 'mdi:wifi'
+  - entity: sensor.ems_esp_status
+    type: attribute
+    attribute: freemem
+    name: Free Memory
+    suffix: '%'
+    icon: 'mdi:gauge'
+  - entity: sensor.ems_esp_status
+    type: attribute
+    attribute: txfails
+    name: Tx Errors
+    icon: 'mdi:alert-circle-outline'
+  - entity: sensor.ems_esp_status
+    type: attribute
+    attribute: rxfails
+    name: Rx Errors
+    icon: 'mdi:alert-circle-outline'
 ```
-
-## Dallas temperature sensors
-
-The sensor details will be in the state called `sensor.ems_esp_sensor<n>` for each attached sensor. e.g. `sensor.ems_esp_sensor1`.
 
 ## Example Alerts
 

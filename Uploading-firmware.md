@@ -29,6 +29,7 @@ EMS-ESP will attempt to automatically migrate the 1.9 settings, however there ar
    - `ServiceCodeNumber` renamed to `serviceCodeNumber`
    - Firmware version has been moved to the `start` topic
    - `desinfection` renamed to `disinfection`
+   - `sm_data` renamed to `solar_data`
 
 ### General:
   - There is no "serial mode" anymore like with version 1.9. When the Wifi cannot connect to the SSID it will automatically enter a "safe" mode where the Serial console is activated (note Serial is always available on the ESP32 because it has multiple UARTs). The EMS-ESP's LED will blink fast when in Serial mode. When this happens connect via a USB using baud 115200.

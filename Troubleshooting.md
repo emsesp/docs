@@ -26,6 +26,3 @@ ems-esp:/# call thermostat temp 15
 ```
 You should see a log statement pop in the console like `[thermostat] Setting thermostat temperature to 15.0 for heating circuit 1, mode auto` followed by which telegrams are being sent. If you see errors then reach out via Gitter or create a GitHub issue to get [Support](Support.md).
 
-
-
-
