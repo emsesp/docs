@@ -4,9 +4,9 @@ EMS-ESP has almost-native integration with Home Assistant via the MQTT Discovery
 
 For each attached device EMS-ESP will send specific MQTT topics sent in the format `homeassistant/<component>/ems-esp/...`. In the Home Assistant web interface you'll see a new Device called EMS-ESP added under Configuration->Devices. You can then add these to a lovelace UI dashboard by clicking the 'Add to Lovelace' which will add each EMS device's parameters as home assistant entities.
 
-![device](_media/ha_device.PNG ':size=50')
+![device](_media/ha_device.PNG ':size=50%')
 
-![lovelace](_media/ha_lovelace.PNG ':size=50')
+![lovelace](_media/ha_lovelace.PNG ':size=50%')
 
 ## Heartbeat
 
