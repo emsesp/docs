@@ -1,10 +1,10 @@
 ![logo](_media/logo/home-assistant.png ':size=100')
 
-EMS-ESP has almost-native integration with Home Assistant via the MQTT Discovery protocol. This means MQTT must be enabled and the `MQTT Format` setting set to "`Home Assistant`".
-
-For each attached device EMS-ESP will send specific MQTT topics sent in the format `homeassistant/<component>/ems-esp/...`. In the Home Assistant web interface you'll see a new Device called EMS-ESP added under Configuration->Devices. You can then add these to a lovelace UI dashboard by clicking the 'Add to Lovelace' which will add each EMS device's parameters as home assistant entities.
+EMS-ESP has almost-native integration with Home Assistant via the MQTT Discovery protocol. This means MQTT must be enabled and the `MQTT Format` setting set to "`Home Assistant`". EMS-ESP will create a device called EMS-ESP with the system information as well as individual HA devices for each of the EMS connected devices, for example `EMS-ESP Thermostat`. You can view these all by going into Home Assistant `Configuration->Integrations` and select the devices under `MQTT`, like:
 
 ![device](_media/ha_device.PNG ':size=50%')
+
+and then adding these to lovelace (using the "add to lovelace" button) will look like:
 
 ![lovelace](_media/ha_lovelace.PNG ':size=50%')
 
