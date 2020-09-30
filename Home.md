@@ -25,7 +25,7 @@ If you like **EMS-ESP**, please give it a star, or fork it and contribute!
 #### **Version 2.0 (new)**
 **September 2020**
 
-Version 2.0 is out with many new cool things and improvements:
+Version 2 is out with many new cool things and improvements:
 
 - Support for both ESP8266 and ESP32 modules
 - A new multi-user Web interface (based on React/TypeScript)
@@ -41,7 +41,7 @@ Thanks to all the contributors and testers for providing feedback.
 
 #### **Version 1.9.5**
 
-Version 1.9 is no longer being maintained. It's recommended that users upgrade to version 2.0 to get the latest support.
+Version 1.9 is no longer being maintained. It's recommended that users upgrade to version 2 to get the latest support.
  
 <!-- tabs:end -->
 

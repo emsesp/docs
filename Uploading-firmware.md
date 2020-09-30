@@ -2,20 +2,18 @@ Firmware binaries are available on
  * Latest Stable Release (https://github.com/proddy/EMS-ESP/releases/latest)
  * Latest Development Release (https://github.com/proddy/EMS-ESP/tree/firmware)
 
-Here we'll use the command-line. You'll need [Python]( https://www.python.org/downloads/) (version 3) installed and these 2 scripts:
+Here we'll use the command-line. You'll need [Python]( https://www.python.org/downloads/) (version 3) installed and follow either of these methods depending on how you plan to upload the firmware:
 
-- `esptool.py`. Install using `pip install esptool`.
-- `espota.py` downloaded from https://github.com/esp8266/Arduino/blob/master/tools/espota.py
+### Via USB:
+- attach a USB cable to the ESP. Make sure you have the correct Serial drivers installed. See https://docs.wemos.cc/en/latest/ch340_driver.html.
+- Install `esptool` via `pip install esptool`.
+- then: `esptool.py -p <COM PORT> -b 921600 write_flash 0x00000 <firmware.bin>` 
 
-Both these tools are also in the repo in the `scripts` directory.
+### Wirelessly over the air (OTA):
+- Download `espota.py` from https://github.com/esp8266/Arduino/blob/master/tools/espota.py
+- then: `espota.py --debug --progress --port 8266 --auth ems-esp-neo -i <IP address> -f <firmware.bin>`
 
-Next step is to fetch the latest firmware binary from https://github.com/proddy/EMS-ESP/releases, and if you're using USB with an ESP8266:
-
-  `esptool.py -p <COM PORT> -b 921600 write_flash 0x00000 <firmware.bin>` 
-  
-and for OTA:
-  
-  `espota.py --debug --progress --port 8266 --auth ems-esp-neo -i <IP address> -f <firmware.bin>`
+Note, both these pyhton scripts are also available in the repo under the `scripts` directory.
 
 ## **Updating from version 1.9**
 
@@ -36,4 +34,7 @@ EMS-ESP will attempt to automatically migrate the 1.9 settings, however there ar
 
 If you run into issues try first erasing the ESP8266 with `esptool.py erase_flash` and uploading the new firmware manually.
 
-BBQKees also has a good write-up at https://bbqkees-electronics.nl/wiki/gateway/firmware-update-to-v2.html.
+> [!TIP]
+> BBQKees also has a good write-up at https://bbqkees-electronics.nl/wiki/gateway/firmware-update-to-v2.html.
+
+
