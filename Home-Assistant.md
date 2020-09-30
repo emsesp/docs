@@ -114,3 +114,17 @@ scripts.yaml
           topic: 'ems-esp/boiler'
           payload: '{"cmd":wwonetime ,"data":0}'
 ```
+
+## Calculating values
+
+From @Glitter-ball in https://github.com/proddy/EMS-ESP/issues/519:
+
+```yaml
+- platform: template
+  sensors:
+    differential:
+      friendly_name: "Flow-Ret diff"
+      unit_of_measurement: '°C'
+      icon_template: 'mdi:format-align-middle'
+      value_template: "{{ (states('sensor.flow_temperature') | float - states('sensor.return_temp') | float) | round(1) }}"
+```
