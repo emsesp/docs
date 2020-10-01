@@ -65,4 +65,8 @@ These settings can be found in the `MQTT` tab on the Web UI.
 
 - **Enable Web API**. When set EMS-ESP will allow write commands via the RESTFUL api. When disabled only read operations are allowed (e.g. `ems-esp/api?device=boiler&cmd=info`).
 - **Boolean Format**. Set's how booleans are rendered in MQTT and in the Console.
+
+### Analog Input
+
+- **Enable ADC**. This enables analog GPIO (A0) on the ESP for attaching analog sensors.
   
