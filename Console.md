@@ -63,7 +63,7 @@ The full list of console commands are shown below:
 
 [system]
   set
-  show system
+  show
   format *
   show users *
   passwd *
