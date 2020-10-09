@@ -105,14 +105,14 @@ scripts.yaml
       - service: mqtt.publish
         data_template:
           topic: 'ems-esp/boiler'
-          payload: '{"cmd":wwonetime ,"data":1}'
+          payload: '{"cmd":"wwonetime","data":1}'
           
   one_time_water_off:
     sequence:
       - service: mqtt.publish
         data_template:
           topic: 'ems-esp/boiler'
-          payload: '{"cmd":wwonetime ,"data":0}'
+          payload: '{"cmd":"wwonetime","data":0}'
 ```
 
 ## Calculating values
