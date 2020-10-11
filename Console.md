@@ -25,7 +25,7 @@ Note you have `su` first to get access to all the `call` commands.
 ![Console](_media/console1.PNG ':size=80%')
 
 ### Showing device values
-![Console](_media/console2.PNG ':size=80%')
+![Console](_media/console.PNG ':size=80%')
 
 ### Monitoring the EMS traffic
 ![Console](_media/console3.PNG ':size=80%')

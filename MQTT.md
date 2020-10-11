@@ -8,7 +8,7 @@ Publishing timing can be configured from the Web UI to be either sent when data 
 
 Note when the MQTT format is set to "`Home Assistant`" the topics and payload formats may change to allow auto-discovery by Home Assistant. Standard format is `Nested` which uses a single topic to show multiple entries in the payload. Format `Single` will send each group as single payloads on multiple topics.
 
-For booleans, the values will depend on the Boolean setting, either on/off, true/false or 1/0. The boolean setting 1/0 will also use numbers for enummerated values, i.e. building `light`, `medium`, `heavy` becomes `0`, `1`, `2`. Command can be written in any format, `false`, `off`, `0` can be used.
+For booleans, the values will depend on the Boolean setting, either on/off, true/false or 1/0. The boolean setting 1/0 will also use numbers for enumerated values, i.e. building `light`, `medium`, `heavy` becomes `0`, `1`, `2`. Command can be written in any format, `false`, `off`, `0` can be used.
 
 The table below list the topics being published:
 
@@ -53,10 +53,10 @@ If you want more precise monitoring of the MQTT traffic I suggest using [MQTT Ex
 Below is the english description for each of the JSON keys per device type.
 
 ### boiler
-   * `heatingActive` = Heating Active
-   * `tapwaterActive` = Warm water/DHW Active
+   * `heatingActive` = Heating active
+   * `tapwaterActive` = Warm water/DHW active
    * `serviceCode` = Service Code
-   * `serviceCodeNumber` = Service Code Number
+   * `serviceCodeNumber` = Service code number
    * `wWSelTemp` = Warm water selected temperature
    * `wWSetTemp` = Warm water set temperature
    * `wWDisinfectionTemp` = Warm water disinfection temperature
@@ -66,7 +66,7 @@ Below is the english description for each of the JSON keys per device type.
    * `pumpMod` = Pump modulation
    * `pumpMod2` = Heat pump modulation
    * `wWType` = Warm water type
-   * `wWChargeType` = Warm Water charging type
+   * `wWChargeType` = Warm water charging type
    * `wWCircPump` = Warm water circulation pump available
    * `wWCircPumpMode` = Warm water circulation pump freq
    * `wWCirc` = Warm water circulation active
@@ -127,15 +127,13 @@ Below is the english description for each of the JSON keys per device type.
    * `energyTotal` = Energy total
    * `solarPump` = Solar Pump (PS1) active
    * `valveStatus` = Valve status
-   * `tankHeated` = Tank Heated
+   * `tankHeated` = Tank heated
    * `collectorShutdown` = Collector shutdown
 
 ### mixing
-   * `ww_hc` = Warm Water Circuit
    * `wwTemp` = Current warm water temperature
    * `pumpStatus` = Current pump status
    * `tempStatus` = Current temperature status
-   * `hc` = Heating Circuit
    * `flowTemp` = Current flow temperature
    * `flowSetTemp` = Setpoint flow temperature
 

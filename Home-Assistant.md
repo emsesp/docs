@@ -2,11 +2,11 @@
 
 EMS-ESP has almost-native integration with Home Assistant via the MQTT Discovery protocol. This means MQTT must be enabled and the `MQTT Format` setting set to "`Home Assistant`". EMS-ESP will create a device called EMS-ESP with the system information as well as individual HA devices for each of the EMS connected devices, for example `EMS-ESP Thermostat`. You can view these all by going into Home Assistant `Configuration->Integrations` and select the devices under `MQTT`, like:
 
-![device](_media/ha_device.PNG ':size=50%')
+![device](_media/ha_device.PNG ':size=100%')
 
 and then adding these to lovelace (using the "add to lovelace" button) will look like:
 
-![lovelace](_media/ha_lovelace.PNG ':size=50%')
+![lovelace](_media/ha_lovelace.PNG ':size=100%')
 
 ## Heartbeat
 
@@ -45,7 +45,7 @@ entities:
     icon: 'mdi:alert-circle-outline'
 ```
 
-## Example Alerts
+## Example: Alerts
 
 Below is an example using a trigger to notify when a shower has finished. This works when the setting `Shower Timer` is enabled.
 
@@ -81,11 +81,11 @@ and get notified when the thermostat is adjusted:
       message: "Temperature set to {{states.sensor.current_set_temperature.state}} degrees"   
 ```
 
-## Activating one-time hot water charging DHW once
+## Example: Activating one-time hot water charging DHW once
 
 Below is an example of calling a command (OneTimeWater)
 
-switch.yaml
+`switch`:
 ```yaml
       one_time_water:
         friendly_name: OneTimeWater
@@ -98,7 +98,7 @@ switch.yaml
           entity_id: script.one_time_water_off
 ```
 
-scripts.yaml
+`scripts`:
 ```yaml
   one_time_water_on:
     sequence:
@@ -115,7 +115,7 @@ scripts.yaml
           payload: '{"cmd":"wwonetime","data":0}'
 ```
 
-## Calculating values
+## Example: Calculating values
 
 From @Glitter-ball in https://github.com/proddy/EMS-ESP/issues/519:
 

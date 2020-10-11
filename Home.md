@@ -22,16 +22,15 @@ If you like **EMS-ESP**, please give it a star, or fork it and contribute!
 
 <!-- tabs:start -->
 
-#### **Version 2.1 (lATEST)**
+#### **Version 2.1 (LATEST)**
 **October 2020**
 
-Version 2.1 is the first mjor update on 2.0:
+Version 2.1 is the first major update on 2.0 with the following new features:
 
 - all device values shown in the Web UI, MQTT and Console
-- a new RESTful API for receiving and sending commands
-- Many new user interface improvements to the Web interface
-- Extended Home Assistant integration, now for each connected device
-- Bug fixes
+- a new RESTful API for receiving and sending commands via HTTP
+- extended Home Assistant integration covering all devices and their values
+- many bug fixes and usability improvements in the web UI
 
 #### **Version 2.0 **
 **September 2020**

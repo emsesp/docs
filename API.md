@@ -5,7 +5,7 @@ Commands can be sent to EMS-ESP in a few ways
  - via the REST API in the URL like `http://ems-esp/api?device=<device>&cmd=<command>&data=<data>&id=<id>`.
 
 where
-* `<device>`'s are `system`, `sensor`, `boiler`, `thermostat`, `solar`, `mixing` and `heatpump`.
+* `<device>`'s are `system`, `sensor`, `boiler`, `thermostat`, `solar` and `mixing`.
 * `<data>` is the data value to be sent, either a string, bool or numerical value. It is optional.
 * `<id>` is an additional identifier. `<hc>` is an alternative alias. Both are optional.
 
