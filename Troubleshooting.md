@@ -16,6 +16,21 @@ First make sure you have set the correct `MQTT Format` in the MQTT Settings page
 
 Experiment with changing the Tx Mode value in the Settings page. 1 (default) typically works for EMS1.0 and most systems, 2 for EMS+ and new systems and 3 is better for Junkers/Heatronics.
 
+If you have EMS devices that may not yet be supported by EMS-ESP then use `scan devices` from the Console to find out their details and then post an enhancement issue on GitHub.
+
+e.g.
+
+```
+ems-esp:/$ su
+Password:
+000+00:01:38.291 N 0: [shell] Admin session opened on console
+ems-esp:/# scan devices
+000+00:01:41.034 N 1: [emsesp] Unrecognized EMS device (device ID 0x08, product ID 123). Please report on GitHub.
+ems-esp:/# log off
+Log level = off
+ems-esp:/#
+```
+
 ### Some commands via MQTT are not working
 
 Use the Telnet console to manually test the commands, with logging on. For example if changing the thermostat temperature is not working try
