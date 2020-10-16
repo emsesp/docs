@@ -34,11 +34,11 @@ The table below list the topics being published:
 
 Based on which EMS devices are present EMS-ESP will subscribe its respective topics, named after the device. For example `boiler`, `thermostat` etc. Commands can be sent to EMS-ESP on this topic using the payload format:
 ```json
- `{"cmd":"<cmd>", "data":<data>, "id":<n>}
+{"cmd":"<cmd>", "data":<data>, "id":<n>}
 ```
 where
 
-* `cmd` is one of the commands listed in the [Commands](API) and must be enclosed in quotes
+* `cmd` is one of the commands listed in the [Commands](API) and ***must*** be enclosed in quotes.
 * `data` can be a string or numeric value.
 * `id` can be replaced with `hc` for some devices that use heating circuits, and represented either as a string or a number.
 
