@@ -2,7 +2,7 @@ Commands can be sent to EMS-ESP in a few ways
 
  - via the Console with a `call <device> <command> <data> <id>` from the respective device context/menu.
  - via MQTT in the payload with `{"cmd":<command> ,"data":<data>, "id":<id>}`. The MQTT topic is the `<device>`. Refer to the [MQTT](MQTT) section for more information.
- - via the REST API in the URL like `http://ems-esp/api?device=<device>&cmd=<command>&data=<data>&id=<id>`.
+ - via the REST API in the URL like `http://ems-esp/api?device=<device>&cmd=<command>&data=<data>&id=<id>`. If ems-esp does not work, replace with `ems-esp.local`.
 
 where
 * `<device>`'s are `system`, `sensor`, `boiler`, `thermostat`, `solar` and `mixing`.
@@ -19,6 +19,7 @@ where
 | ------- | ---- | -- | -------- |
 | `send` | `"XX XX...XX"` |  |   |
 | `info` |  |  | REST API only |
+| `report` |  |  | REST API only |
 | `pin` | `<gpio>` | `<on \|off \| 1 \| 0 \| true \| false>` | turns pins high/low |
 
 ## device: `boiler`
