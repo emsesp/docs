@@ -27,42 +27,58 @@ where
 | `info` |  |  | REST API only |
 | `comfort` | `<hot \|eco \| intelligent>` |  |  |
 | `flowtemp` | `<degrees>` |  |  |
-| `wwtemp` | `<degrees>` |  |   |
+| `wwtemp` | `<degrees>` |  |  |
 | `boilhyston` | `<degrees>` |  | negative value |
 | `boilhystoff` | `<degrees>` |  | positive value |
 | `burnperiod` | `<minutes>` |  |  |
 | `burnminpower` | `<%>` |  |  |
 | `burnmaxpower` | `<%>` |  |  |
 | `pumpdelay` | `<minutes>` |  |  |
+| `comfort` | `<degrees>` |  |  |
+| `wwactivated` | `<degrees>` |  |  |
+| `wwtapactivated` | `<degrees>` |  |  |
+| `wwonetime` | `<degrees>` |  |  |
+| `wwcircpump` | `<degrees>` |  |  |
+| `wwcirculation` | `<degrees>` |  |  |
+| `wwcircmode` | `<degrees>` |  |  |
+| `heatingactivated` | `<degrees>` |  |  |
+| `heatingtemp` | `<degrees>` |  |   |
 
 ## device: `thermostat`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
-| `wwmode` | `<off \| on \| auto>` |  |  |
-| `calinttemp` | `<degrees>` |  |  |
-| `minexttemp` | `<degrees>` |  |  |
-| `building` | `<light \| medium \| heavy>` |  | (RC30 only) |
-| `language` | `<n>` |  | 0=de, 1=nl, 2=fr, 3=it (RC30 only) |
-| `display` | `<n>` |  | 0=int temp, 1= int set, 2=ext temp, 3=burner, 4=ww, 5=mode, 6=time, 7=date, 8=smoke (RC30 only) |
-| `clockoffset` | `<seconds>` |  | (RC30 only) |
-| `mode` | `<auto \| night \| day \| nofrost \| heat \| eco>` | heating circuit |  |
 | `temp` | `<degrees>` | heating circuit |  |
-| `nighttemp` | `<degrees>` | heating circuit |  | 
-| `daytemp` | `<degrees>` | heating circuit |  |
-| `nofrosttemp` | `<degrees>` | heating circuit |  | 
-| `ecotemp` | `<degrees>` | heating circuit |  |
-| `heattemp` | `<degrees>` | heating circuit |  |
-| `summertemp` | `<degrees>` | heating circuit |  |
-| `designtemp` | `<degrees>` | heating circuit |  |
-| `offsettemp` | `<degrees>` | heating circuit |  |
-| `holidaytemp` | `<degrees>` | heating circuit |  |
-| `remotetemp` | `<degrees>` | heating circuit |  |
-| `control` | `<0 \| 1 \| 2>` | heating circuit |  |
-| `pause` | `<hours>` | heating circuit |  |
-| `party` | `<hours>` | heating circuit |  |
-| `holiday` | `<dd.mm.yyyy-dd.mm.yyyy>` | heating circuit |  |
-| `date` | `<NTP \| hh:mm:ss-dd.mm.yyyy-dw-dst>` | heating circuit |  |
+| `mode` | `<auto \| night \| day \| nofrost \| heat \| eco>` | heating circuit |  |
+| `datetime` | `<NTP \| hh:mm:ss-dd.mm.yyyy-dw-dst>` | | |
+| `manualtemp` | `<degrees>` | heating circuit | RC100, RC300 |
+| `ecotemp` | `<degrees>` | heating circuit | RC100, RC300, Junkers |
+| `heattemp` | `<degrees>` | heating circuit  | Junkers |
+| `comforttemp` | `<degrees>` | heating circuit | RC100, RC300 |
+| `summermode` |  | heating circuit | RC100, RC300 |
+| `summertemp` | `<degrees>` | heating circuit | RC30, RC35, RC100, RC300 |
+| `wwmode` | `<off \| on \| auto>` |  | RC100, RC300, RC30, RC35 |
+| `wwtemp` |  |  | RC100, RC300 |
+| `wwtemplow` |  |  | RC100, RC300 |
+| `nighttemp` | `<degrees>` | heating circuit | RC20, RC30, RC35 |
+| `daytemp` | `<degrees>` | heating circuit | RC20, RC30, RC35 |
+| `clockoffset` | `<seconds>` |  | RC30 |
+| `language` | `<n>` |  | (0=de, 1=nl, 2=fr, 3=it) RC30 |
+| `display` | `<n>` |  | (0=int temp, 1= int set, 2=ext temp, 3=burner, 4=ww, 5=mode, 6=time, 7=date, 8=smoke) RC30 only |
+| `nofrosttemp` | `<degrees>` | heating circuit | RC30, RC35, Junkers |
+| `remotetemp` | `<degrees>` | heating circuit | RC30, RC35 |
+| `minexttemp` | `<degrees>` |  | RC30, RC35 |
+| `calinttemp` | `<degrees>` |  | RC30, RC35 |
+| `building` | `<light \| medium \| heavy>` |  | RC30, RC35 |
+| `control` | | heating circuit  | RC30, RC35 |
+| `pause` | `<hours>` | heating circuit | RC30, RC35 |
+| `party` | `<hours>` | heating circuit | RC30, RC35 |
+| `holiday` | `<dd.mm.yyyy-dd.mm.yyyy>` | heating circuit | RC30, RC35 |
+| `designtemp` | `<degrees>` | heating circuit | RC30, RC35 |
+| `offsettemp` | `<degrees>` | heating circuit | RC30, RC35 |
+| `holidaytemp` | `<degrees>` | heating circuit | RC30, RC35 |
+| `wwcircmode` |  |  | RC30, RC35 |
+| `roominfluence` |  |  | RC30, RC35 |
 
 ## device: `mixing`
 | command | data | id | comments |
