@@ -16,7 +16,7 @@ The table below list the topics being published:
 | ------------------- | ------------------- | --------------- |
 | `status` | this is the MQTT will and testament messages | `online` or `offline` |
 | `info` | for events | `{"event":"start","version":"2.1.0","ip":"10.10.10.140"}` |
-| `heartbeat` | if enabled send out key system stats in JSON | `{"rssid":76, "uptime":"000+00:01:01.001", "uptime_sec":61, "freemem":72, "mqttpublishfails":0, "txfails":0, "rxfails":0, "adc":1}` |
+| `heartbeat` | system stats in JSON, every minute | `{"rssi":76, "uptime":"000+00:01:01.001", "uptime_sec":61, "freemem":72, "mqttpublishfails":0, "txfails":0, "rxfails":0, "adc":1}` |
 | `tapwater_active` | boolean to show if the hot tap water is running (DHW) | `0` or `1` |
 | `heating_active` | boolean to show if the heating is on | `0` or `1` |
 | `boiler_data` | all the key data from the Boiler device | `{"wWComfort":"Eco", "wWSelTemp":60, "wWSetTemp":62, "wWDisinfectionTemp":70, "selFlowTemp":5, "selBurnPow":0, "curBurnPow":0, "pumpMod":0, "wWCircPump":"off", "wWCiPuType":"valve", "wWCiPuMode":0, "wWCirc":"off", "wWCurTmp":46.3, "wWCurFlow":0, "curFlowTemp":51.7, "retTemp":50.7, "sysPress":1.6, "boilTemp":53.3, "wwStorageTemp1":46.3, "wWActivated":"on", "wWOnetime":"off", "wWDisinfecting":"off", "wWReady":"off", "wWRecharge":"off", "wWTempOK":"on", "burnGas":"off", "flameCurr":0, "heatPump":"off", "fanWork":"off", "ignWork":"off", "wWHeat":"on", "heatingTemp":75, "pumpModMax":90, "pumpModMin":55, "pumpDelay":1, "burnMinPeriod":10, "burnMinPower":0, "burnMaxPower":75, "boilHystOn":-6, "boilHystOff":6, "wWStarts":242174, "wWWorkM":85794, "UBAuptime":3957457, "burnStarts":270619, "burnWorkMin":432169, "heatWorkMin":346375, "serviceCode":"0H", "serviceCodeNumber":203}` |

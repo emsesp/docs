@@ -23,8 +23,8 @@ entities:
     icon: 'mdi:timer-outline'
   - entity: sensor.ems_esp_status
     type: attribute
-    attribute: rssid
-    name: RSSID
+    attribute: rssi
+    name: RSSI
     suffix : '%'
     icon: 'mdi:wifi'
   - entity: sensor.ems_esp_status
