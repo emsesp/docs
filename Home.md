@@ -54,7 +54,5 @@ Version 1.9 is no longer being maintained. It's recommended that users upgrade t
  
 <!-- tabs:end -->
 
-## DISCLAIMER
-
-> [!ATTENTION]
-> This code and libraries were developed from information gathered on the internet and many hours of reverse engineering the communications between the EMS bus and thermostats. It is **not** based on any official documentation or supported libraries from Buderus/Junkers/Nefit (and associated companies) and therefore there are no guarantees whatsoever regarding the safety of your devices and/or their settings, or the accuracy of the information provided.
+> [!WARNING|style:flat|label:DISCLAIMER]
+> This code and libraries were developed from information gathered on the internet and many hours of reverse engineering the communications between the EMS bus and real live devices. It is _not_ based on any official documentation or supported libraries from Bosch/Buderus/Junkers/Nefit (and associated companies) and therefore there are no guarantees whatsoever regarding the safety of your devices and/or their settings, or the accuracy of the information provided.

@@ -2,7 +2,7 @@ EMS-ESP has a telnet server that enables clients to connect using a telnet clien
 
 If you're using an ESP32 you can also access the console via a USB Serial port, using baud 115200.
 
-The console will give you more insight into the EMS bus traffic, MQTT queues and the full device information. It behaves similar to a Unix/Linux shell. Some of the most common commands are:
+The console will give you more insight into the EMS bus traffic, MQTT queues and the full device information its capturing. It behaves similar to a Unix/Linux shell. Some of the most common commands are:
 
   * `help` lists the commands and keywords. This works in each context.
   * `exit` will exit the console or exit the current context. `CTRL-D` does the same.

@@ -31,7 +31,7 @@ ems-esp:/#
 
 ### Some commands via MQTT are not working
 
-Use the Telnet console to manually test the commands, with logging on. For example if changing the thermostat temperature is not working try
+Use the Console to manually test the commands, with logging on. For example if changing the thermostat temperature is not working try
 ```
 ems-esp:/$ su
 ems-esp:/# log debug

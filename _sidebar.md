@@ -6,7 +6,7 @@
 * **Modules**
 * [Web Interface](Web)
 * [API](API)
-* [Telnet Console](Console)
+* [Console](Console)
 * [MQTT](MQTT)
 * [Home Assistant](Home-Assistant)
 * [Domoticz](Domoticz)

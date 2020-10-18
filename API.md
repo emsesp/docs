@@ -1,31 +1,32 @@
-Commands can be sent to EMS-ESP in a few ways
+Commands can be sent to EMS-ESP in a few ways, either
 
- * via the **Console** with a `call <device> <command> <data> <id>` from the respective device context/menu.
- * via **MQTT** in the payload with `{"cmd":"<command>" ,"data":<data>, "id":<id>}`. The MQTT topic is the `<device>`. Refer to the [MQTT](MQTT) section for more information on the format and example payloads.
- * via the **REST API** in the URL like `http://ems-esp/api?device=<device>&cmd=<command>&data=<data>&id=<id>`. If ems-esp does not work, replace with `ems-esp.local`.
+ * via the [**Console**](Console) with a `call <device> <command> <data> <id>`.
+ * via [**MQTT**](MQTT) in the payload with `{"cmd":"<command>" ,"data":<data>, "id":<id>}`. The MQTT topic being the `<device>`.
+ * or via the [**REST API**](Web) in the URL like `http://ems-esp/api?device=<device>&cmd=<command>&data=<data>&id=<id>`.
 
 where
-* `<device>`'s are `system`, `sensor`, `boiler`, `thermostat`, `solar` and `mixing`.
+* `<device>` can be `system`, `sensor`, `boiler`, `thermostat`, `solar` or `mixing`.
 * `<command>` are listed in the tables below. This is a mandatory parameter.
-* `<data>` is the data value to be sent, either a string, bool or numerical value. This parameter is optional.
-* `<id>` is an additional identifier. `<hc>` can be used an alternative alias, for example to depict a heating circuit. This parameter is also optional.
+* `<data>` is the data value to be sent, either a string, boolean (true/false) or numerical value (integer or float). This parameter is optional.
+* `<id>` is an additional identifier. `<hc>` can also be used an alternative alias, for example to depict a heating circuit. This parameter is also optional.
 
 > [!WARNING]
 > Unlike the Console and MQTT, the Web restful interface does not yet support any security. Which means anyone with the URL can send commands to control the EMS connected devices. If you're worried, all write operations from the Web API can be disabled via the 'Enable WEB API' option in the Settings configuration.
 
-To see which commands are available for your system, go into the Console and type `call` (be su/admin first). This will list all the commands per device.
+## Commands
 
-### Commands
+The tables below list the available commands for each specific `device`.
+To see which commands are available on your system, go into the Console and type `show commands`. This will list all the commands per device.
 
-#### device: `system`
+### `system`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `send` | `"XX XX...XX"` |  |   |
 | `info` |  |  | REST API only |
 | `report` |  |  | REST API only |
-| `pin` | `<gpio>` | `<on \|off \| 1 \| 0 \| true \| false>` | turns pins high/low |
+| `pin` | `<gpio>` | `<on \|off \| 1 \| 0 \| true \| false>` | sets ESP's GPIO pins high/low |
 
-#### device: `boiler`
+### `boiler`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
@@ -48,7 +49,7 @@ To see which commands are available for your system, go into the Console and typ
 | `heatingactivated` | `<degrees>` |  |  |
 | `heatingtemp` | `<degrees>` |  |   |
 
-#### device: `thermostat`
+### `thermostat`
 
 > [!NOTE] The actual thermostat commands below will vary depending on which Thermostat brand and model you have.
 
@@ -70,8 +71,8 @@ To see which commands are available for your system, go into the Console and typ
 | `nighttemp` | `<degrees>` | heating circuit | RC20, RC30, RC35 |
 | `daytemp` | `<degrees>` | heating circuit | RC20, RC30, RC35 |
 | `clockoffset` | `<seconds>` |  | RC30 |
-| `language` | `<n>` |  | (0=de, 1=nl, 2=fr, 3=it) RC30 |
-| `display` | `<n>` |  | (0=int temp, 1= int set, 2=ext temp, 3=burner, 4=ww, 5=mode, 6=time, 7=date, 8=smoke) RC30 only |
+| `language` | `<n>` |  | RC30 (0=de, 1=nl, 2=fr, 3=it) |
+| `display` | `<n>` |  | RC30 (0=int temp, 1= int set, 2=ext temp, 3=burner, 4=ww, 5=mode, 6=time, 7=date, 8=smoke) |
 | `nofrosttemp` | `<degrees>` | heating circuit | RC30, RC35, Junkers |
 | `remotetemp` | `<degrees>` | heating circuit | RC30, RC35 |
 | `minexttemp` | `<degrees>` |  | RC30, RC35 |
@@ -87,17 +88,17 @@ To see which commands are available for your system, go into the Console and typ
 | `wwcircmode` |  |  | RC30, RC35 |
 | `roominfluence` |  |  | RC30, RC35 |
 
-#### device: `mixing`
+### `mixing`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
 
-#### device: `sensor`
+### `sensor`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
 
-#### device: `solar`
+### `solar`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only | 
