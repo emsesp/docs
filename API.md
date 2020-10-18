@@ -12,6 +12,8 @@ where
 > [!DANGER]
 > Note unlike the Console and MQTT, the Web restful interface does not yet support any security. Which means anyone with the URL can send commands to control the EMS connected devices. If you're worried, all write operations from the Web API can be disabled via the 'Enable WEB API' option in the Settings configuration.
 
+To see which commands are available for your system, go into the Console and type `call` (be su/admin first). This will list all the commands per device.
+
 ### Commands
 
 ## device: `system`
@@ -46,6 +48,10 @@ where
 | `heatingtemp` | `<degrees>` |  |   |
 
 ## device: `thermostat`
+
+> [!NOTE]
+> The actual thermostat commands below will vary depending on which Thermostat brand and model you have.
+
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
