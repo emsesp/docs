@@ -1,6 +1,6 @@
 Most Bosch branded boilers that support the Logamatic EMS bus protocols work with this design. This includes Nefit, Buderus, Worcester, Junkers and Sieger (all copyrighted).
 
-!> Please make sure you read the **Disclaimer** on the home page carefully before sending ambiguous messages to your EMS bus as you could cause serious damage to your equipment.
+> [!ATTENTION] Please make sure you read the Disclaimer on the home page carefully before sending ambiguous messages to your EMS bus as you could cause serious damage to your equipment.
 
 EMS devices are being constantly added to the database on each new release.
 
@@ -11,10 +11,10 @@ EMS devices are being constantly added to the database on each new release.
 * Sieger ES72, ES73
 * Junkers FR50, FR100, FR110, FW100, FW200, FR10, FR120, FW120
 * Bosch CW400, Sense II
-* Bosch CW100, Logamatic TC100, Moduline Easy, Easy Control CT200  (*)
+* Bosch CW100, Logamatic TC100, Moduline Easy, Easy Control CT200  **(see note below)**
 
 > [!NOTE]
-> (* = read-only) Although EMS-ESP will recognize these thermostats and read its values, support for changing it's values is not yet implemented.
+> Although EMS-ESP will recognize these thermostats and read its values, support for changing it's values is not possible as these devices do not responding to EMS commands.
 
 ### Boilers
 

@@ -1,22 +1,23 @@
 Commands can be sent to EMS-ESP in a few ways
 
- - via the Console with a `call <device> <command> <data> <id>` from the respective device context/menu.
- - via MQTT in the payload with `{"cmd":<command> ,"data":<data>, "id":<id>}`. The MQTT topic is the `<device>`. Refer to the [MQTT](MQTT) section for more information.
- - via the REST API in the URL like `http://ems-esp/api?device=<device>&cmd=<command>&data=<data>&id=<id>`. If ems-esp does not work, replace with `ems-esp.local`.
+ * via the **Console** with a `call <device> <command> <data> <id>` from the respective device context/menu.
+ * via **MQTT** in the payload with `{"cmd":"<command>" ,"data":<data>, "id":<id>}`. The MQTT topic is the `<device>`. Refer to the [MQTT](MQTT) section for more information on the format and example payloads.
+ * via the **REST API** in the URL like `http://ems-esp/api?device=<device>&cmd=<command>&data=<data>&id=<id>`. If ems-esp does not work, replace with `ems-esp.local`.
 
 where
 * `<device>`'s are `system`, `sensor`, `boiler`, `thermostat`, `solar` and `mixing`.
-* `<data>` is the data value to be sent, either a string, bool or numerical value. It is optional.
-* `<id>` is an additional identifier. `<hc>` is an alternative alias. Both are optional.
+* `<command>` are listed in the tables below. This is a mandatory parameter.
+* `<data>` is the data value to be sent, either a string, bool or numerical value. This parameter is optional.
+* `<id>` is an additional identifier. `<hc>` can be used an alternative alias, for example to depict a heating circuit. This parameter is also optional.
 
-> [!DANGER]
-> Note unlike the Console and MQTT, the Web restful interface does not yet support any security. Which means anyone with the URL can send commands to control the EMS connected devices. If you're worried, all write operations from the Web API can be disabled via the 'Enable WEB API' option in the Settings configuration.
+> [!WARNING]
+> Unlike the Console and MQTT, the Web restful interface does not yet support any security. Which means anyone with the URL can send commands to control the EMS connected devices. If you're worried, all write operations from the Web API can be disabled via the 'Enable WEB API' option in the Settings configuration.
 
 To see which commands are available for your system, go into the Console and type `call` (be su/admin first). This will list all the commands per device.
 
 ### Commands
 
-## device: `system`
+#### device: `system`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `send` | `"XX XX...XX"` |  |   |
@@ -24,7 +25,7 @@ To see which commands are available for your system, go into the Console and typ
 | `report` |  |  | REST API only |
 | `pin` | `<gpio>` | `<on \|off \| 1 \| 0 \| true \| false>` | turns pins high/low |
 
-## device: `boiler`
+#### device: `boiler`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
@@ -47,10 +48,9 @@ To see which commands are available for your system, go into the Console and typ
 | `heatingactivated` | `<degrees>` |  |  |
 | `heatingtemp` | `<degrees>` |  |   |
 
-## device: `thermostat`
+#### device: `thermostat`
 
-> [!NOTE]
-> The actual thermostat commands below will vary depending on which Thermostat brand and model you have.
+> [!NOTE] The actual thermostat commands below will vary depending on which Thermostat brand and model you have.
 
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
@@ -87,17 +87,17 @@ To see which commands are available for your system, go into the Console and typ
 | `wwcircmode` |  |  | RC30, RC35 |
 | `roominfluence` |  |  | RC30, RC35 |
 
-## device: `mixing`
+#### device: `mixing`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
 
-## device: `sensor`
+#### device: `sensor`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
 
-## device: `solar`
+#### device: `solar`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only | 

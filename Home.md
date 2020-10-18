@@ -19,7 +19,6 @@ If you like **EMS-ESP**, please give it a star, or fork it and contribute!
 [![GitHub forks](https://img.shields.io/github/forks/proddy/EMS-ESP.svg?style=social&label=Fork)](https://github.com/proddy/EMS-ESP/network)
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 
-
 <!-- tabs:start -->
 
 #### **Version 2.1 (LATEST)**
@@ -27,9 +26,9 @@ If you like **EMS-ESP**, please give it a star, or fork it and contribute!
 
 Version 2.1 is the first major update on 2.0 with the following new features:
 
-- all device values shown in the Web UI, MQTT and Console
+- all available device values are shown in across the Web UI, MQTT and Console
 - a new RESTful API for receiving and sending commands via HTTP
-- extended Home Assistant integration covering all devices and their values
+- extended Home Assistant integration now covering all device types and exposing their values as entities
 - many bug fixes and usability improvements in the web UI
 
 #### **Version 2.0 **
@@ -57,4 +56,5 @@ Version 1.9 is no longer being maintained. It's recommended that users upgrade t
 
 ## DISCLAIMER
 
-!> This code and libraries were developed from information gathered on the internet and many hours of reverse engineering the communications between the EMS bus and thermostats. It is **not** based on any official documentation or supported libraries from Buderus/Junkers/Nefit (and associated companies) and therefore there are no guarantees whatsoever regarding the safety of your devices and/or their settings, or the accuracy of the information provided.
+> [!ATTENTION]
+> This code and libraries were developed from information gathered on the internet and many hours of reverse engineering the communications between the EMS bus and thermostats. It is **not** based on any official documentation or supported libraries from Buderus/Junkers/Nefit (and associated companies) and therefore there are no guarantees whatsoever regarding the safety of your devices and/or their settings, or the accuracy of the information provided.
