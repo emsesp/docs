@@ -34,46 +34,52 @@ Note you have `su` first to get access to all the `call` commands.
 
 The full list of console commands are shown below:
 
+### `root` level commands
+```yaml
+su
+help
+exit
+set
+fetch
+publish
+show
+show devices
+show ems
+show values
+show mqtt
+show commands
+system
+log [level]
+watch <on | off | raw> [ID]
 ```
-* = available when Admin mode (su)
+as `su` (super user):
+```yaml
+call [device type] [cmd] [data] [id|hc]
+read <device ID> <type ID> [offset]
+scan devices [deep]
+send telegram <"XX XX ...">
+set bus_id <device ID>
+set tx_mode <n>
+set master thermostat [device ID]
+```
 
-[main]
-  su
-  set
-  fetch
-  publish
-  show
-  show devices
-  show ems
-  show values
-  show mqtt
-  show commands
-  call [device type] [cmd] [data] [n]
-  read <device ID> <type ID> *
-  scan devices [deep] *
-  send telegram <"XX XX ..."> *
-  set bus_id <device ID> *
-  set tx_mode <n> *
-  exit
-  help
-  log [level]
-  watch <on | off | raw> [ID]
-  set master thermostat [device ID] *
-  system
-
-[system]
-  set
-  show
-  format *
-  show users *
-  passwd *
-  restart *
-  set wifi hostname <name> *
-  set wifi password *
-  set wifi ssid <name> *
-  wifi reconnect *
-  exit
-  help
-  log
-  su
- ```
+### `system` context commands
+```yaml
+exit
+help
+log [level]
+set
+show
+su
+```
+as `su` (super user):
+```yaml
+format
+show users
+passwd
+restart
+set wifi hostname <name>
+set wifi password
+set wifi ssid <name>
+wifi reconnect
+```

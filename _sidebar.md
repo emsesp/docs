@@ -4,8 +4,8 @@
 * [Uploading the firmware](Uploading-firmware)
 * [Configuring EMS-ESP](Configure-firmware)
 * **Modules**
-* [Web Interface](Web)
 * [API](API)
+* [Web Interface](Web)
 * [Console](Console)
 * [MQTT](MQTT)
 * [Home Assistant](Home-Assistant)
