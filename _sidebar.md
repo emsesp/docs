@@ -3,13 +3,14 @@
 * [Building the firmware](Building-firmware)
 * [Uploading the firmware](Uploading-firmware)
 * [Configuring EMS-ESP](Configure-firmware)
-* **Modules**
+* **Interfaces**
 * [API](API)
-* [Web Interface](Web)
+* [Web](Web)
 * [Console](Console)
 * [MQTT](MQTT)
 * [Home Assistant](Home-Assistant)
 * [Domoticz](Domoticz)
+* [openHAB](openHAB)
 * **EMS Protocol**
 * [How the EMS Bus works](How-the-EMS-bus-works)
 * [EMS 1.0](EMS-Telegram-Types)
