@@ -41,7 +41,7 @@ help
 exit
 set
 fetch
-publish
+publish [ha]
 show
 show devices
 show ems
