@@ -1,5 +1,5 @@
 # EMS-ESP Documentation
-This is the documentation for EMS-ESP. Thanks to Tasmota for providing examples.
+This is the official documentation for EMS-ESP.
 
 ## Testing locally
 

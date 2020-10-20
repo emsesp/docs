@@ -1,9 +1,9 @@
 *Any contribution helps make EMS-ESP better*
 
 This project needs:
-- guides for integrating into home automation systems like Home Assistant and Domoticz
+- guides for integrating into home automation systems
 - testing with various types of EMS devices (boilers, thermostats, solar, heap pumps etc) to build up our supported database
-- Expand thw documentation with more details, fixing spelling mistakes and other inaccuracies you may find
+- Expand the documentation with more details, fixing spelling mistakes and other inaccuracies you may find
 
 ## Editing articles
 !> You need a GitHub user account to be able to edit!
