@@ -102,3 +102,8 @@ To see which commands are available on your system, go into the Console and type
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only | 
+
+### `heatpump`
+| command | data | id | comments |
+| ------- | ---- | -- | -------- |
+| `info` |  |  | REST API only | 
