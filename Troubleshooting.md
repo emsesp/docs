@@ -8,10 +8,6 @@ A fast pulse of the LED means the system is booting or in installation mode. Con
 
 A slow pulse means either there is no WiFi connection or EMS-ESP cannot read from the EMS bus. In this case go to the Web interface and try a different Tx Mode setting.
 
-### MQTT is not sending data correctly
-
-First make sure you have set the correct `MQTT Format` in the MQTT Settings page in the Web UI. Then follow the instructions "Monitoring the MQTT queues" in the [MQTT](MQTT.md) section of this document.
-
 ### Not all EMS devices are recognized or capturing data
 
 Experiment with changing the Tx Mode value in the Settings page. 1 (default) typically works for EMS1.0 and most systems, 2 for EMS+ and new systems and 3 is better for Junkers/Heatronics.
@@ -29,7 +25,15 @@ ems-esp:/# scan devices
 ems-esp:/#
 ```
 
-### Some commands via MQTT are not working
+### MQTT is not stable
+
+If you're noticing that MQTT messages are failing to arrive at the broker try:
+- First make sure you have set the correct `MQTT Format` in the MQTT Settings page in the Web UI
+- in Console, set logging to debug (`log debug`), `su` and `publish`. Watch the screen for errors (see "Monitoring the MQTT queues" in the [MQTT](MQTT.md))
+- increase the Publish Time. Perhaps there are too many messages and it is flooding the queue
+- run a local copy of the MQTT mosquitto broker, in verbose mode (-v) so you see if there are errors on the server side
+
+### Commands via MQTT are not working
 
 Use the Console to manually test the commands, with logging on. For example if changing the thermostat temperature is not working try
 ```

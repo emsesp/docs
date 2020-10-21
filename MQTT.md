@@ -3,13 +3,12 @@
 
 All topics are prefixed with the ESP's `hostname`, which is defaulted to `ems-esp`.
 
-## Publishing Topics
+## Outbound Data
 
-Publishing timing can be configured from the Web UI to be either sent when data changes (which can be quite often) or set to a specific period in seconds.
+When MQTT is enabled EMS-ESP will publish MQTT topics for each device. The frequency can be configured from the Web UI to be either sent when data changes or set to a specific period in seconds. A few important points
 
-Note when the MQTT format is set to "`Home Assistant`" the topics and payload formats may change to allow auto-discovery by Home Assistant. Standard format is `Nested` which uses a single topic to show multiple entries in the payload. Format `Single` will send each group as single payloads on multiple topics. This is shown in the "Format" column below.
-
-For booleans, the values will depend on the Boolean setting, either on/off, true/false or 1/0. The boolean setting 1/0 will also use numbers for enumerated values, i.e. building `light`, `medium`, `heavy` becomes `0`, `1`, `2`. Command can be written in any format, `false`, `off`, `0` can be used.
+* When a value is a boolean it will be rendered according to the Boolean setting you have defined in the settings.
+* The format is the MQTT Format as defined in the settings. Default format is `Nested` which uses a single topic to show multiple entries in the payload. Format `Single` will send each group as single payloads on multiple topics. `Home Assistant` will send additional config topics so HA can pick up the values automatically. 
 
 The table below list the topics being published:
 
@@ -32,27 +31,7 @@ The table below list the topics being published:
 | `sensor_data` | nested| temperature readings from any external Dallas sensors attached to the ESP | `{"sensor1": {"id":"28FF47AC90160444", "temp":20.94}}` |
 | `sensor_data<id>` | single | temperature readings from each Dallas sensor in single format, id is unique sensor number | `{"temp":20.94}` |
 
-## Receiving Topics
-
-Based on which EMS devices are present EMS-ESP will subscribe its respective topics, named after the device. For example `boiler`, `thermostat` etc. Commands can be sent to EMS-ESP on this topic using the payload format:
-```json
-{"cmd":"<cmd>", "data":<data>, "id":<n>}
-```
-where
-
-* `cmd` is one of the commands listed in the [Commands](API) and ***must*** be enclosed in quotes.
-* `data` can be a string or numeric value.
-* `id` can be replaced with `hc` for some devices that use heating circuits, and represented either as a string or a number.
-
-With Home Assistant, Thermostat commands can also be sent to control individual heating circuits via sending a mode string or temperature number to a topic `thermostat_hc<n>`.
-
-## Monitoring the Queue
-
-If you want more precise monitoring of the MQTT traffic I suggest using [MQTT Explorer](http://mqtt-explorer.com/). The console command `show mqtt` will show the status of the MQTT service and also the topic subscriptions and outbound publishing queue.
-
-## Value descriptions
-
-Below is the english description for each of the JSON keys per device type.
+The key's and their description:
 
 ### boiler
    * `heatingActive` = Heating active
@@ -139,6 +118,10 @@ Below is the english description for each of the JSON keys per device type.
    * `flowTemp` = Current flow temperature
    * `flowSetTemp` = Setpoint flow temperature
 
+### heatpump
+   * `airHumidity` = Relative air humidity
+   * `dewTemperature` = Dew temperature point
+
 ### thermostat
    * `time` = Time
    * `display` = Display
@@ -172,3 +155,23 @@ Below is the english description for each of the JSON keys per device type.
    * `summermode` = Summer mode
    * `mode` = Mode
    * `modetype` = Mode type
+
+
+
+## Sending Commands
+
+EMS-ESP will subscribe to specific topics depending on the EMS devices attached. For example `boiler`, `thermostat` etc. Commands can be sent to EMS-ESP via these topics using the payload format:
+```json
+{"cmd":"<cmd>", "data":<data>, "id":<n>}
+```
+where
+
+* `cmd` is one of the commands listed in the [Commands](API) and ***must*** be enclosed in quotes.
+* `data` can be a string or numeric value.
+* `id` can be replaced with `hc` for some devices that use heating circuits, and represented either as a string or a number.
+
+With Home Assistant, Thermostat commands can also be sent to control individual heating circuits via sending a mode string or temperature number to a topic `thermostat_hc<n>`.
+
+## Monitoring the Queue
+
+If you want more precise monitoring of the MQTT traffic I suggest using [MQTT Explorer](http://mqtt-explorer.com/). The console command `show mqtt` will show the status of the MQTT service and also the topic subscriptions and outbound publishing queue.
