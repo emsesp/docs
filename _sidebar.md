@@ -11,6 +11,7 @@
 * [Home Assistant](Home-Assistant)
 * [Domoticz](Domoticz)
 * [openHAB](openHAB)
+* [Loxone](loxone)
 * **EMS Protocol**
 * [How the EMS Bus works](How-the-EMS-bus-works)
 * [EMS 1.0](EMS-Telegram-Types)
