@@ -26,6 +26,11 @@ To see which commands are available on your system, go into the Console and type
 | `report` |  |  | REST API only |
 | `pin` | `<gpio>` | `<on \|off \| 1 \| 0 \| true \| false>` | sets ESP's GPIO pins high/low |
 
+### `dallassensor`
+| command | data | id | comments |
+| ------- | ---- | -- | -------- |
+| `info` |  |  | REST API only |
+
 ### `boiler`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
@@ -89,11 +94,6 @@ To see which commands are available on your system, go into the Console and type
 | `roominfluence` |  |  | RC30, RC35 |
 
 ### `mixing`
-| command | data | id | comments |
-| ------- | ---- | -- | -------- |
-| `info` |  |  | REST API only |
-
-### `sensor`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
