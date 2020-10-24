@@ -28,6 +28,15 @@ Note you have `su` first to get access to all the `call` commands.
 ![Console](_media/console.PNG ':size=80%')
 
 ### Monitoring the EMS traffic
+
+Using the `watch` command you can monitor the incoming EMS telegrams.
+
+Syntax is `watch on <ID>` where ID is either a Telegram ID and also a Device ID.
+
+If you want to see the raw bytes as transmitted on the EMS line use `watch raw <ID>`.
+
+Note the CRC byte is excluded from the data package.
+
 ![Console](_media/console3.PNG ':size=80%')
 
 ## Console Commands
@@ -63,7 +72,7 @@ set tx_mode <n>
 set master thermostat [device ID]
 ```
 
-### `system` context commands
+### `system` commands
 ```yaml
 exit
 help

@@ -45,5 +45,8 @@ You should see a log statement pop in the console like `[thermostat] Setting the
 
 ### Settings are not saved and lost after restart
 
-Try wiping the ESP (`esptool.py erase_flash`) and [uploading](Uploading-firmware) the firmware again using the command-line with the ESP connected via the USB.
+Try erasing the ESP (`esptool.py erase_flash`) and [uploading](Uploading-firmware) the firmware again using the command-line with the ESP connected via the USB.
 
+### Monitoring the EMS traffic
+
+If you want to see the EMS data pouring in, use the `watch` command. See [Console](Console?id=monitoring-the-ems-traffic).
