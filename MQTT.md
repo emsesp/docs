@@ -24,12 +24,12 @@ The table below list the topics being published:
 | `thermostat_data` | nested | data from the thermostat and for each of its Heating Circuits.| `{ "time":"07:47:05 09/03/2000", "display":"int. temperature", "language":"French", "building":"medium", "MinExtTemperature":-10, "CalIntTemperature":0, "clockOffset":3, "hc1":{"seltemp":15, "currtemp":20.6, "mode":"auto"}, "hc2":{"seltemp":8, "currtemp":18.2, "mode":"off"}}` |
 | `thermostat_data` | single | In single format each heating ciruit is published with own topic | `{"time":"07:47:05 09/03/2000", "display":"int. temperature", "building":"medium", "MinExtTemperature":-10, "CalIntTemperature":0}` |
 |`thermostat_data<id>` | single | hc in single format | `{"seltemp":15, "currtemp":20.6, "mode":"auto"}` |
-| `mixing_data<id>` | nested | data from The Mixing Module for each of its Heating Circuits where `<id` is 1-8 for HC and 9-10 for WWC | `{"hc1": {"flowTemp":55, "pumpMod":"1", "valveStatus":"1"}}` |
-| `mixing_data<id>` | single | data from The Mixing Module in single format for each of its Heating Circuits where `<id` is 1-8 for HC and 9-10 for WWC | `{"type":"hc", "flowTemp":55, "pumpMod":"1", "valveStatus":"1"}` |
+| `mixing_data<id>` | nested | data from The Mixing Module for each of its Heating Circuits where `<id` is 1-8 for HC and 9-10 for WWC | `{"hc1": {"flowTemp":55, "pumpStatus":"on", "valveStatus":25}}` |
+| `mixing_data<id>` | single | data from The Mixing Module in single format for each of its Heating Circuits where `<id` is 1-8 for HC and 9-10 for WWC | `{"type":"hc", "flowTemp":55, "pumpStatus":"on", "valveStatus":55}` |
 | `shower_data` | | the shower timer and alert toggles plus the duration of the last shower taken | `{"timer":"0","alert":"0","duration":"4 minutes 32 seconds"}` |
 | `solar_data` | all | all data from the Solar Module (if connected) | JSON with `collectortemp` `bottomtemp` `pumpmodulation` `pump` `energylasthour` `energytoday` `energytotal` `pumpWorkMin` |
 | `sensor_data` | nested| temperature readings from any external Dallas sensors attached to the ESP | `{"sensor1": {"id":"28FF47AC90160444", "temp":20.94}}` |
-| `sensor_data<id>` | single | temperature readings from each Dallas sensor in single format, id is unique sensor number | `{"temp":20.94}` |
+| `sensor_data` | single | temperature readings from Dallas sensor in single format, id is unique sensor number | `{"sensor1":20.94}` |
 
 The key's and their description:
 
