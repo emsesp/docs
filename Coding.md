@@ -12,8 +12,10 @@ cd interface
 npm start
 ```
 
-To test the core, standalone without an ESP use the makefile:
+To test and simulate EMS-ESP locally on your PC you can build and run a 'standalone' version that doesn't need an ESP or connection to the EMS bus. Note however this needs GNUMake to work and currently doesn't build natively on Windows10 (unless you use a Windows Linux sub-system, WSL).
 
 ```sh
 make run
 ```
+
+Then from the console prompt use `test <test>` to run the simulations, eg. mixing, thermostat, general etc. See `test.cpp` for the scripts.
