@@ -12,10 +12,10 @@ EMS devices are being constantly added to the database on each new release.
 * Junkers FR50, FR100, FR110, FW100, FW200, FR10, FR120, FW120
 * Bosch CW100, CW400, Sense II
 
-* Boasch Logamatic TC100, Bosch EasyControl CT200, Moduline Easy **(see note below)**
-
 > [!NOTE]
-> Although EMS-ESP will recognize these thermostats and read its values, support for changing it's values is not possible as these devices do not responding to EMS commands.
+> These thermostats below unfortunately do not support direct EMS write commands so will appear in EMS-ESP as read-only devices:
+> * Buderus Logamatic TC100, Bosch EasyControl CT200, Junkers CT100, Moduline Easy
+> See also https://community.home-assistant.io/t/buderus-tc100-junkers-ct100-thermostat/67992
 
 ### Boilers
 
@@ -30,16 +30,16 @@ EMS devices are being constantly added to the database on each new release.
 
 * Buderus SM10, SM50, SM100, SM200
 * MS100, MS200
-* Junkers ISM1 Solar Module
+* Junkers ISM1
 
 ### Mixer Modules
 
 * Buderus MM10, MM50, MM100, MM200
-* IPM
+* Junkers IPM
 
 ### Heat Pump Modules
 
-* Buderus HeatPump Module
+* Buderus Heat Pump Module
 
 ### Other devices
 
