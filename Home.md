@@ -44,7 +44,7 @@ Version 2 is out with many new cool things and improvements:
 - Support for Home Assistant's MQTT Discovery
 - Can be run standalone as an independent Access Point or join an existing WiFi network
 - Easier first-time configuration via a web Captive Portal
-- Supporting over 70 EMS devices (boilers, thermostats, solar modules, mixing modules, heat pumps, gateways)
+- Supporting over 70 EMS devices (boilers, thermostats, solar modules, mixer modules, heat pumps, gateways)
 
 Thanks to all the contributors and testers for providing feedback.
 

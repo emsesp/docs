@@ -57,7 +57,7 @@ The key's and their description:
    * `wWCurFlow` = Warm water current tap water flow
    * `curFlowTemp` = Current flow temperature = current flow temperature of water leaving the boiler
    * `retTemp` = Return temperature
-   * `switchTemp` = Mixing switch temperature
+   * `switchTemp` = Mixer switch temperature
    * `sysPress` = System pressure
    * `boilTemp` = Max boiler temperature
    * `wwStorageTemp1` = Warm water storage temperature (intern)

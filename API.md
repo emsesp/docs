@@ -5,7 +5,7 @@ Commands can be sent to EMS-ESP in a few ways, either
  * or via the [**REST API**](Web) in the URL like `http://ems-esp/api?device=<device>&cmd=<command>&data=<data>&id=<id>`.
 
 where
-* `<device>` can be `system`, `dallassensor`, `boiler`, `thermostat`, `solar` or `mixing`.
+* `<device>` can be `system`, `dallassensor`, `boiler`, `thermostat`, `solar` or `mixer`.
 * `<command>` are listed in the tables below. This is a mandatory parameter.
 * `<data>` is the data value to be sent, either a string, boolean (true/false) or numerical value (integer or float). This parameter is optional.
 * `<id>` is an additional identifier. `<hc>` can also be used an alternative alias, for example to depict a heating circuit. This parameter is also optional.
@@ -93,7 +93,7 @@ To see which commands are available on your system, go into the Console and type
 | `wwcircmode` |  |  | RC30, RC35 |
 | `roominfluence` |  |  | RC30, RC35 |
 
-### `mixing`
+### `mixer`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |

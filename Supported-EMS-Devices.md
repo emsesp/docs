@@ -31,7 +31,7 @@ EMS devices are being constantly added to the database on each new release.
 * MS100, MS200
 * Junkers ISM1 Solar Module
 
-### Mixing Modules
+### Mixer Modules
 
 * Buderus MM10, MM50, MM100, MM200
 * IPM
