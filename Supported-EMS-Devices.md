@@ -10,8 +10,9 @@ EMS devices are being constantly added to the database on each new release.
 * Nefit Moduline 100, 200, 300, 400, 1010, 3000
 * Sieger ES72, ES73
 * Junkers FR50, FR100, FR110, FW100, FW200, FR10, FR120, FW120
-* Bosch CW400, Sense II
-* Bosch CW100, Logamatic TC100, Moduline Easy, Easy Control CT200  **(see note below)**
+* Bosch CW100, CW400, Sense II
+
+* Boasch Logamatic TC100, Bosch EasyControl CT200, Moduline Easy **(see note below)**
 
 > [!NOTE]
 > Although EMS-ESP will recognize these thermostats and read its values, support for changing it's values is not possible as these devices do not responding to EMS commands.
