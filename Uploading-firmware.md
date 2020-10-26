@@ -19,18 +19,8 @@ Note, both these pyhton scripts are also available in the repo under the `script
 
 EMS-ESP will attempt to automatically migrate the 1.9 settings, however there are some noticeable differences to be aware of in version 2:
 
-### MQTT:
-   - MQTT base has been removed. All MQTT topics are prefixed with only the hostname, for example `ems-esp/status` as opposed to `home/ems-esp/status`.
-   - Subscribe topic have been renamed and the trailing `_cmd` removed. e.g. `boiler` instead of `boiler_cmd`
-   - the topic `sensors` has been renamed to `sensor_data`
-   - `heatPmp` renamed to `heatPump`
-   - `ServiceCodeNumber` renamed to `serviceCodeNumber`
-   - Firmware version has been moved to the `start` topic
-   - `desinfection` renamed to `disinfection`
-   - `sm_data` renamed to `solar_data`
-
-### General:
-  - There is no "serial mode" anymore like with version 1.9. When the Wifi cannot connect to the SSID it will automatically enter a "safe" mode where the Serial console is activated (note Serial is always available on the ESP32 because it has multiple UARTs). The EMS-ESP's LED will blink fast when in Serial mode. When this happens connect via a USB using baud 115200.
+* MQTT: Many changes to the MQTT topics and payload structure. See the section on [MQTT](MQTT.md).
+* General: There is no "serial mode" anymore like with version 1.9. When the Wifi cannot connect to the SSID it will automatically enter a "safe" mode where the Serial console is activated (note Serial is always available on the ESP32 because it has multiple UARTs). The EMS-ESP's LED will blink fast when in Serial mode. When this happens connect via a USB using baud 115200.
 
 > [!TIP]
 > BBQKees also has a good write-up at https://bbqkees-electronics.nl/wiki/gateway/firmware-update-to-v2.html.
