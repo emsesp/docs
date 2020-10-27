@@ -38,21 +38,20 @@ To see which commands are available on your system, go into the Console and type
 | `comfort` | `<hot \|eco \| intelligent>` |  |  |
 | `flowtemp` | `<degrees>` |  |  |
 | `wwtemp` | `<degrees>` |  |  |
-| `boilhyston` | `<degrees>` |  | negative value |
-| `boilhystoff` | `<degrees>` |  | positive value |
+| `boilhyston` | `<degrees>` |  | start burner below flowtemp (negative value) |
+| `boilhystoff` | `<degrees>` |  | stop burner above flowtemp (positive value) |
 | `burnperiod` | `<minutes>` |  |  |
 | `burnminpower` | `<%>` |  |  |
 | `burnmaxpower` | `<%>` |  |  |
 | `pumpdelay` | `<minutes>` |  |  |
-| `comfort` | `<degrees>` |  |  |
-| `wwactivated` | `<degrees>` |  |  |
-| `wwtapactivated` | `<degrees>` |  |  |
-| `wwonetime` | `<degrees>` |  |  |
-| `wwcircpump` | `<degrees>` |  |  |
-| `wwcirculation` | `<degrees>` |  |  |
-| `wwcircmode` | `<degrees>` |  |  |
-| `heatingactivated` | `<degrees>` |  |  |
-| `heatingtemp` | `<degrees>` |  |   |
+| `wwactivated` | `<off \| on>` |  |  |
+| `wwtapactivated` | `<off \| on>` |  |  |
+| `wwonetime` | `<off \| on>` |  |  |
+| `wwcircpump` | `<off \| on>` |  |  |
+| `wwcirculation` | `<off \| on>` |  |  |
+| `wwcircmode` | `<n>` |  |  (1=1x3min, .. 6=6x3min, 7=on) |
+| `heatingactivated` | `<off \| on>` |  |  |
+| `heatingtemp` | `<degrees>` |  |  |
 
 ### `thermostat`
 
@@ -68,11 +67,11 @@ To see which commands are available on your system, go into the Console and type
 | `ecotemp` | `<degrees>` | heating circuit | RC100, RC300, Junkers |
 | `heattemp` | `<degrees>` | heating circuit  | Junkers |
 | `comforttemp` | `<degrees>` | heating circuit | RC100, RC300 |
-| `summermode` |  | heating circuit | RC100, RC300 |
+| `summermode` | `<winter \| auto \| summer>` | heating circuit | RC100, RC300 |
 | `summertemp` | `<degrees>` | heating circuit | RC30, RC35, RC100, RC300 |
 | `wwmode` | `<off \| on \| auto>` |  | RC100, RC300, RC30, RC35 |
-| `wwtemp` |  |  | RC100, RC300 |
-| `wwtemplow` |  |  | RC100, RC300 |
+| `wwtemp` | `<degrees>` |  | RC100, RC300 |
+| `wwtemplow` | `<degrees>` |  | RC100, RC300 |
 | `nighttemp` | `<degrees>` | heating circuit | RC20, RC30, RC35 |
 | `daytemp` | `<degrees>` | heating circuit | RC20, RC30, RC35 |
 | `clockoffset` | `<seconds>` |  | RC30 |
@@ -83,15 +82,15 @@ To see which commands are available on your system, go into the Console and type
 | `minexttemp` | `<degrees>` |  | RC30, RC35 |
 | `calinttemp` | `<degrees>` |  | RC30, RC35 |
 | `building` | `<light \| medium \| heavy>` |  | RC30, RC35 |
-| `control` | | heating circuit  | RC30, RC35 |
+| `control` | `<0 \| 1 \| 2>` | heating circuit  | RC30, RC35 (roomcontrol for hc 0=off, 1=RC20, 2=RC3x) |
 | `pause` | `<hours>` | heating circuit | RC30, RC35 |
 | `party` | `<hours>` | heating circuit | RC30, RC35 |
 | `holiday` | `<dd.mm.yyyy-dd.mm.yyyy>` | heating circuit | RC30, RC35 |
 | `designtemp` | `<degrees>` | heating circuit | RC30, RC35 |
 | `offsettemp` | `<degrees>` | heating circuit | RC30, RC35 |
 | `holidaytemp` | `<degrees>` | heating circuit | RC30, RC35 |
-| `wwcircmode` |  |  | RC30, RC35 |
-| `roominfluence` |  |  | RC30, RC35 |
+| `wwcircmode` | `<off \| auto \| on>` |  | RC30, RC35 |
+| `roominfluence` | `<degrees>` |  | RC30, RC35 |
 
 ### `mixer`
 | command | data | id | comments |
