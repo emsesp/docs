@@ -1,6 +1,6 @@
 Firmware binaries are available on
  * Latest Stable Release (https://github.com/proddy/EMS-ESP/releases/latest)
- * Latest Development Release (https://github.com/proddy/EMS-ESP/tree/firmware)
+ * Latest Development Release (https://github.com/proddy/EMS-ESP/releases/tag/dev)
 
 Here we'll use the command-line. You'll need [Python]( https://www.python.org/downloads/) (version 3) installed and follow either of these methods depending on how you plan to upload the firmware:
 

@@ -4,7 +4,7 @@ EMS-ESP has automatic integration with Home Assistant via the [MQTT Discovery](h
 ```yaml
 # Example configuration.yaml entry
 mqtt:
-  discovery: true
+  discovery: true # this is default in 0.117.0 and higher
   discovery_prefix: homeassistant
 ```
 
