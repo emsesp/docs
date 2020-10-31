@@ -25,6 +25,8 @@ ems-esp:/# scan devices
 ems-esp:/#
 ```
 
+If you want to see the EMS data streaming in, use the `watch` command. See [Console](Console?id=monitoring-the-ems-traffic).
+
 ### MQTT is not stable
 
 If you're noticing that MQTT messages are failing to arrive at the broker try:
@@ -47,6 +49,6 @@ You should see a log statement pop in the console like `[thermostat] Setting the
 
 Try erasing the ESP (`esptool.py erase_flash`) and [uploading](Uploading-firmware) the firmware again using the command-line with the ESP connected via the USB.
 
-### Monitoring the EMS traffic
+### Web UI is non-responsive on an ESP8266
 
-If you want to see the EMS data pouring in, use the `watch` command. See [Console](Console?id=monitoring-the-ems-traffic).
+Due to the memory limitations on an ESP8266 having the Console open and then opening the Web UI will usually not work. Close the console and try again.
