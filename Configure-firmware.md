@@ -26,8 +26,8 @@ Use the Web UI (http://ems-esp) to further configure the settings. In the `Setti
 
 - **Tx Mode**. `1` is default for EMS1.0 systems but also compatible with most other protocols. `2` is designed to work better for EMS2.0/EMS+ systems and `3` for Heatronics3 used by Junkers and Bosch. Choose the mode that works best for your system and watch for Tx errors in the Web Dashboard and `show ems` in the Console. Changing the value has immediate effect.
 - **Bus ID**. The EMS-ESP can simulate one of 5 devices. Stick to the Service Key (0x0B) unless using multiple EMS gateways or interfaces.
-- **Rx GPIO pin** - On an ESP8266 this will not be the default Rx pin but swapped to D7. On an ESP32 it can be any pin.
-- **Tx GPIO pin** - On an ESP8266 this will not be the default Tx pin but swapped to D8. On an ESP32 it can be any pin.
+- **Rx GPIO pin** - Which pin the Rx is assigned to. On an ESP8266 this has to be 3 or 13. The default is 13 (D7 on a Wemos). On an ESP32 it can be any pin.
+- **Tx GPIO pin** - Which pin the Tx is assigned to. On an ESP8266 this has to be 1 or 15. The default is 15 (D8 on a Wemos). On an ESP32 it can be any pin.
 
 #### Dallas Sensor
 
