@@ -66,7 +66,7 @@ as `su` (super user):
 call [device type] [cmd] [data] [id|hc]
 read <device ID> <type ID> [offset]
 scan devices [deep]
-send telegram <"XX XX ...">
+send telegram "XX XX ..."
 set bus_id <device ID>
 set tx_mode <n>
 set master thermostat [device ID]
