@@ -21,11 +21,11 @@ To see which commands are available on your system, go into the Console and type
 ### `system`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
+| `info` |  |  | REST API only |
+| `report` |  |  | REST API only |
 | `send` | `"XX XX...XX"` |  | send raw ems-command |
 | `fetch` | |  | fetch ems values from all devices |
 | `publish` | `[ha]` |  | mqtt publish all values and optional HA-configuration |
-| `info` |  |  | REST API only |
-| `report` |  |  | REST API only |
 | `pin` | `<gpio>` | `<on \|off \| 1 \| 0 \| true \| false>` | sets ESP's GPIO pins high/low |
 
 ### `dallassensor`
@@ -71,6 +71,9 @@ To see which commands are available on your system, go into the Console and type
 | `clockoffset` | `<seconds>` |  | RC30 |
 | `language` | `<n>` |  | RC30 (0=de, 1=nl, 2=fr, 3=it) |
 | `display` | `<n>` |  | RC30 (0=int temp, 1= int set, 2=ext temp, 3=burner, 4=ww, 5=mode, 6=time, 7=date, 8=smoke) |
+| `minexttemp` | `<degrees>` |  | RC30, RC35, RC100, RC300 |
+| `calinttemp` | `<degrees>` |  | RC30, RC35 |
+| `building` | `<light \| medium \| heavy>` |  | RC30, RC35, RC100, RC300 |
 | `temp` | `<degrees>` | heating circuit | actual setpoint depending on mode |
 | `mode` | `<auto \| night \| day \| nofrost \| heat \| eco>` | heating circuit |  |
 | `manualtemp` | `<degrees>` | heating circuit | RC100, RC300 |
@@ -83,9 +86,6 @@ To see which commands are available on your system, go into the Console and type
 | `daytemp` | `<degrees>` | heating circuit | RC20, RC30, RC35 |
 | `nofrosttemp` | `<degrees>` | heating circuit | RC30, RC35, RC100, RC300, Junkers |
 | `remotetemp` | `<degrees>` | heating circuit | RC30, RC35 |
-| `minexttemp` | `<degrees>` |  | RC30, RC35, RC100, RC300 |
-| `calinttemp` | `<degrees>` |  | RC30, RC35 |
-| `building` | `<light \| medium \| heavy>` |  | RC30, RC35, RC100, RC300 |
 | `control` | `<0 \| 1 \| 2>` | heating circuit  | RC30, RC35 (roomcontrol for hc 0=off, 1=RC20, 2=RC3x) |
 | `pause` | `<hours>` | heating circuit | RC30, RC35 |
 | `party` | `<hours>` | heating circuit | RC30, RC35 |
