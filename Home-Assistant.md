@@ -125,7 +125,7 @@ Below is an example of calling a command (OneTimeWater)
 
 ## Example: Calculating values
 
-From @Glitter-ball in https://github.com/proddy/EMS-ESP/issues/519:
+(from @Glitter-ball in https://github.com/proddy/EMS-ESP/issues/519)
 
 ```yaml
 - platform: template
@@ -136,3 +136,47 @@ From @Glitter-ball in https://github.com/proddy/EMS-ESP/issues/519:
       icon_template: 'mdi:format-align-middle'
       value_template: "{{ (states('sensor.flow_temperature') | float - states('sensor.return_temp') | float) | round(1) }}"
 ```
+
+## Example: Solar Pump Working Hours
+
+(from @PhillyGilly in Gitter)
+
+```yaml
+- platform: mqtt
+  state_topic: 'ems-esp/solar_data'
+  name: 'Solar Pump working hours'
+  unit_of_measurement: 'hr'
+  value_template: >
+    {% set mins = value_json.pumpWorkMin %}
+    {% set hours = ((mins | int / 60) | string).split('.')[0] %}
+    {{hours}}
+  qos: 1
+  payload_available: "online"
+  payload_not_available: "offline"
+```
+
+## Example: Using HA's climate component to control Boiler temperatures
+
+(example taken from 1.9.5)
+
+```yaml
+- platform: mqtt
+  name: Warm Water
+  modes:
+    - "auto"
+    - "off"
+  min_temp: 40
+  max_temp: 60
+  temp_step: 1
+  
+  current_temperature_topic: "ems-esp/boiler_data_ww"
+  temperature_state_topic: "ems-esp/boiler_data_ww"
+  mode_state_topic: "ems-esp/boiler_data_ww"
+
+  current_temperature_template: "{{ value_json.wWCurTemp }}"
+  temperature_state_template: "{{ value_json.wWSelTemp }}"
+  mode_state_template: "{% if value_json.wWActivated == 'off' %} off {% else %} auto {% endif %}"
+
+  temperature_command_topic: "ems-esp/boiler"
+  mode_command_topic: "ems-esp/boiler"
+  ```
