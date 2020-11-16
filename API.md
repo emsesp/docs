@@ -22,7 +22,7 @@ To see which commands are available on your system, go into the Console and type
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
-| `report` |  |  | REST API only |
+| `settings` |  |  | REST API only |
 | `send` | `"XX XX...XX"` |  | send raw ems-command |
 | `fetch` | |  | fetch ems values from all devices |
 | `publish` | `[ha]` |  | mqtt publish all values and optional HA-configuration |
