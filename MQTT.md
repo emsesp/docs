@@ -130,11 +130,16 @@ The key's and their description:
    * `dampedtemp` = Damped outdoor temperature = the thermostat damps changes to the actual outside temperature to mirror the thermal mass of the building. Building Type setting changes the time constant of the damping
    * `inttemp1` = Temperature sensor 1
    * `inttemp2` = Temperature sensor 2
-   * `intoffset` = Offset int. temperature
+   * `intoffset` = Offset int. temperature sensor
    * `minexttemp` = Min ext. temperature
-   * `building` = Building
+   * `building` = Building type
    * `wwmode` = Warm water mode
+   * `wwtemp` = Warm water upper temperature
+   * `wwtemplow` = Warm water lower temperature
+   * `wwextra1` = Onetime for circuit 1 started
    * `wwcircmode` = Warm Water circulation mode
+   * `floordry` = Floordrying started
+   * `floordrytemp`=  Temperature for floordrying
 
 *per thermostat heating circuit*:
    * `seltemp` = Setpoint room temperature
@@ -149,8 +154,12 @@ The key's and their description:
    * `nofrosttemp` = Nofrost temperature
    * `heatingtype` = underfloor, radiator etc.
    * `targetflowtemp` = Target flow temperature = flow temperature calculated by the thermostat as required to get the target room temperature given current conditions (usually a combination of heat curve and external temp and, possibly, current room temp)
-   * `offsettemp` = Offset temperature
-   * `designtemp` = Design temperature
+   * `offsettemp` = Offset temperature, heating curve at roomtemperature
+   * `designtemp` = Design temperature, heating curve at minexttemp
+   * `roominfluence` = Influence of roomtemperature in outdoorcontrolled circuits 
+   * `flowtempoffset` = Offset for boiler in mixed circuits
+   * `minflowtemp` = Flowtemperature lower limit
+   * `maxflowtemp` = Flowtemperature upper limit
    * `summertemp` = Summer temperature
    * `summermode` = Summer mode
    * `mode` = Mode
