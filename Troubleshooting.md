@@ -52,3 +52,13 @@ Try erasing the ESP (`esptool.py erase_flash`) and [uploading](Uploading-firmwar
 ### Web UI is non-responsive on an ESP8266
 
 Due to the memory limitations on an ESP8266 having the Console open and then opening the Web UI will usually not work. Close the console and try again.
+
+### EMS-ESP is showing incorrect values from a specific device
+
+If you notice that certain values are displayed incorrectly, either in the Web UI, Console or MQTT then please help us correct this by logging a GitHub issue, along with the expected value. When asked to provide debug information, go the Telnet console and do
+```
+% su
+% log trace
+```
+and then either a `read` or `watch`, e.g. `read 21 2D8` to show all the data from HC2 on a Mixing MM100.
+
