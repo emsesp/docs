@@ -94,6 +94,25 @@ The key's and their description:
    * `wWWorkM` = Warm water active time
    * `setBurnPow` = Boiler burner set power
    * `burnStarts` = Burner # starts
+   * `upTimeControl` = Operating time control
+   * `upTimeCompHeating` = Operating time compressor heating
+   * `upTimeCompCooling` = Operating time compressor cooling
+   * `upTimeCompWw` = Operating time compressor warm water
+   * `heatingStarts` = Heating starts (control)
+   * `coolingStarts` = Cooling starts (control)
+   * `wWStarts2` = Warm water starts (control)
+   * `nrgConsTotal` = Energy consumption total
+   * `auxElecHeatNrgConsTotal` = Auxiliary electrical heater energy consumption total
+   * `auxElecHeatNrgConsHeating` = Auxiliary electrical heater energy consumption heating
+   * `auxElecHeatNrgConsDHW` = Auxiliary electrical heater energy consumption DHW
+   * `nrgConsCompTotal` = Energy consumption compressor total
+   * `nrgConsCompHeating` = Energy consumption compressor heating
+   * `nrgConsCompWw` = Energy consumption compressor warm water
+   * `nrgConsCompCooling` = Energy consumption compressor total
+   * `nrgSuppTotal` = Energy supplied total
+   * `nrgSuppHeating` = Energy supplied heating
+   * `nrgSuppWw` = Energy supplied warm water
+   * `nrgSuppCooling` = Energy supplied cooling
 
 ### solar
    * `collectorTemp` = Collector temperature (TS1)
