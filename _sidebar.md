@@ -26,6 +26,7 @@
 * [EMS Device compatibility list](Supported-EMS-Devices)
 * [Support](Support)
 * [Troubleshooting](Troubleshooting)
+* [How to achieve common tasks](Howto)
 * [How to Contribute](Contributing)
 * **For Developers**
 * [Building an EMS Interface](Building-your-own-test-circuit)
