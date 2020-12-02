@@ -34,26 +34,31 @@ To see which commands are available on your system, go into the Console and type
 | `info` |  |  | REST API only |
 
 ### `boiler`
+
+> [!NOTE] The boiler commands below will vary depending on boiler type/brand and system configuration Some commands will not work because they are overwritten by controller or thermostat. In this case there are thermostat commands for this setting.
+
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
 | `comfort` | `<hot \|eco \| intelligent>` |  |  |
-| `flowtemp` | `<degrees>` |  |  |
-| `wwtemp` | `<degrees>` |  |  |
-| `boilhyston` | `<degrees>` |  | start burner below flowtemp (negative value) |
-| `boilhystoff` | `<degrees>` |  | stop burner above flowtemp (positive value) |
+| `flowtemp` | `<degrees>` |  | Limited to heatingtemp, set by thermostat if present |
+| `wwtemp` | `<degrees>` |  | Only if thermostat does not manage it |
+| `boilhyston` | `<degrees>` |  | Start burner below flowtemp (negative value), allowed range depends on boiler type |
+| `boilhystoff` | `<degrees>` |  | Stop burner above flowtemp (positive value), allowed range depends on boiler type |
 | `burnperiod` | `<minutes>` |  |  |
-| `burnminpower` | `<%>` |  |  |
-| `burnmaxpower` | `<%>` |  |  |
+| `burnminpower` | `<%>` |  | Changeable only for modulated burners |
+| `burnmaxpower` | `<%>` |  | Changeable only for modulated burners |
 | `pumpdelay` | `<minutes>` |  |  |
 | `wwactivated` | `<off \| on>` |  |  |
-| `wwtapactivated` | `<off \| on>` |  |  |
-| `wwonetime` | `<off \| on>` |  |  |
+| `wwtapactivated` | `<off \| on>` |  | Special function working in boiler test-mode |
+| `wwonetime` | `<off \| on>` |  | Overwritten by some thermostats, see thermostat commands  |
 | `wwcircpump` | `<off \| on>` |  |  |
-| `wwcirculation` | `<off \| on>` |  |  |
+| `wwcirculation` | `<off \| on>` |  | Overwritten by some thermostats, see thermostat commands |
 | `wwcircmode` | `<n>` |  |  (1=1x3min, .. 6=6x3min, 7=on) |
-| `heatingactivated` | `<off \| on>` |  |  |
-| `heatingtemp` | `<degrees>` |  |  |
+| `heatingactivated` | `<off \| on>` |  | Not changeable for some systems. i.g. Set by MC10 rotary control |
+| `heatingtemp` | `<degrees>` |  | Upper limit for flowtemp, not changeable for some systems or overwritten (MC10) |
+| `maintenance` | `<off \| <hours> \| <dd.mm.yyyy>>` |  |  |
+| `reset` | `<on \| true \| 1 >` |  |  Reset maintenance message `Hxx` |
 
 ### `thermostat`
 
