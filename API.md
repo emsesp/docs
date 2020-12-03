@@ -57,8 +57,7 @@ To see which commands are available on your system, go into the Console and type
 | `wwcircmode` | `<n>` |  |  (1=1x3min, .. 6=6x3min, 7=on) |
 | `heatingactivated` | `<off \| on>` |  | Not changeable for some systems. i.g. Set by MC10 rotary control |
 | `heatingtemp` | `<degrees>` |  | Upper limit for flowtemp, not changeable for some systems or overwritten (MC10) |
-| `maintenance` | `<off \| <hours> \| <dd.mm.yyyy>>` |  |  |
-| `reset` | `<on \| true \| 1 >` |  |  Reset maintenance message `Hxx` |
+| `maintenance` | `<off \| <hours> \| <dd.mm.yyyy> \| reset>` |  | set maintenance to date or time or reset message |
 
 ### `thermostat`
 
@@ -102,6 +101,9 @@ To see which commands are available on your system, go into the Console and type
 | `minflowtemp` | `<degrees>` | heating circuit | RC30, RC35, RC100, RC300 |
 | `maxflowtemp` | `<degrees>` | heating circuit | RC30, RC35, RC100, RC300 |
 | `flowtempoffset` | `<degrees>` | heating circuit | RC30, RC35 |
+| `program` | `<0 - 10 \| 1 - 9 \| 1 - 2>` | heating circuit | RC30, RC35, RC20, RC100, RC300 |
+| `controlmode` | `<room \| outtdoor>` | heating circuit | RC30, RC35, RC100, RC300 |
+| `reducemode` | `<nofrost \| reduce \| room \| outdoor>` | heating circuit | RC30, RC35 |
 
 ### `mixer`
 | command | data | id | comments |
