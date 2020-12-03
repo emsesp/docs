@@ -113,6 +113,8 @@ The key's and their description:
    * `nrgSuppHeating` = Energy supplied heating
    * `nrgSuppWw` = Energy supplied warm water
    * `nrgSuppCooling` = Energy supplied cooling
+   * `maintenanceMessage` = Code for maintenance H03-time, H08-date, etc.
+   * `maintenance` = Type of scheduled maintenance Time in hours or date 
 
 ### solar
    * `collectorTemp` = Collector temperature (TS1)
@@ -136,6 +138,7 @@ The key's and their description:
    * `tempStatus` = Current temperature status
    * `flowTemp` = Current flow temperature
    * `flowSetTemp` = Setpoint flow temperature
+   * `valveStatus` = Valve position in %
 
 ### heatpump
    * `airHumidity` = Relative air humidity
@@ -143,15 +146,15 @@ The key's and their description:
 
 ### thermostat
    * `time` = Time
-   * `display` = Display
-   * `language` = Language
-   * `offsetclock` = Offset clock
+   * `display` = Display (RC30 only)
+   * `language` = Language (RC30 only)
+   * `offsetclock` = Offset clock (RC30 only)
    * `dampedtemp` = Damped outdoor temperature = the thermostat damps changes to the actual outside temperature to mirror the thermal mass of the building. Building Type setting changes the time constant of the damping
    * `inttemp1` = Temperature sensor 1
    * `inttemp2` = Temperature sensor 2
    * `intoffset` = Offset int. temperature sensor
    * `minexttemp` = Min ext. temperature
-   * `building` = Building type
+   * `building` = Building type (light,medium, heavy)
    * `wwmode` = Warm water mode
    * `wwtemp` = Warm water upper temperature
    * `wwtemplow` = Warm water lower temperature
@@ -181,10 +184,11 @@ The key's and their description:
    * `maxflowtemp` = Flowtemperature upper limit
    * `summertemp` = Summer temperature
    * `summermode` = Summer mode
+   * `reducemode` = How temperature is set in night/eco mode: 
+   * `program` = timer program selection
+   * `controlmode` = thermostat control by outdoortemperature or roomtemperature
    * `mode` = Mode
    * `modetype` = Mode type
-
-
 
 ## Sending Commands
 
