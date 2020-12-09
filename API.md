@@ -70,7 +70,7 @@ To see which commands are available on your system, go into the Console and type
 | `wwmode` | `<off \| on \| auto>` |  | RC100, RC300, RC30, RC35 |
 | `wwtemp` | `<degrees>` |  | RC100, RC300 |
 | `wwtemplow` | `<degrees>` |  | RC100, RC300 |
-| `wwcircmode` | `<off \| auto \| on>` |  | RC30, RC35 |
+| `wwcircmode` | `<off \| on \| auto \| own>` |  | RC30, RC35, RC100, RC300 |
 | `wwonetime` | `<off \| on>` | | RC100, RC300 |
 | `clockoffset` | `<seconds>` |  | RC30 |
 | `language` | `<n>` |  | RC30 (0=de, 1=nl, 2=fr, 3=it) |
@@ -104,6 +104,8 @@ To see which commands are available on your system, go into the Console and type
 | `program` | `<0 - 10 \| 1 - 9 \| 1 - 2>` | heating circuit | RC30, RC35, RC20, RC100, RC300 |
 | `controlmode` | `<room \| outtdoor>` | heating circuit | RC30, RC35, RC100, RC300 |
 | `reducemode` | `<nofrost \| reduce \| room \| outdoor>` | heating circuit | RC30, RC35 |
+| `roomtemp` | `<degrees>` | heating circuit | setting HA-thermostat roomtemp, use `-1` to clear |
+
 
 ### `mixer`
 | command | data | id | comments |
