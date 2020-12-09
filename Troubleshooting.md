@@ -62,3 +62,8 @@ If you notice that certain values are displayed incorrectly, either in the Web U
 ```
 and then either a `read` or `watch`, e.g. `read 21 2D8` to show all the data from HC2 on a Mixing MM100.
 
+### EMS-ESP is showing CRC-errors
+
+EMS-messages are sended and repeated often, a few crc-errors doesn't harm. The bad signal can be caused by mainly 2 factors:
+- powering: try to power ems-esp by usb or service-jack. 
+- disturbtions on the bus (emc, reflections, etc): try to connect ems-esp to another device on the bus. In general a previously unconnected bus-out on a devices like MM100 is better than a split connection on an already used connector. 
