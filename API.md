@@ -58,6 +58,8 @@ To see which commands are available on your system, go into the Console and type
 | `heatingactivated` | `<off \| on>` |  | Not changeable for some systems. i.g. Set by MC10 rotary control |
 | `heatingtemp` | `<degrees>` |  | Upper limit for flowtemp, not changeable for some systems or overwritten (MC10) |
 | `maintenance` | `<off \| <hours> \| <dd.mm.yyyy> \| reset>` |  | set maintenance to date or time or reset message |
+| `pumpmodmin` | `<%>` |  | Changeable only for modulated pumps |
+| `pumpmodmax` | `<%>` |  | Changeable only for modulated pumps |
 
 ### `thermostat`
 
@@ -90,7 +92,7 @@ To see which commands are available on your system, go into the Console and type
 | `daytemp` | `<degrees>` | heating circuit | RC20, RC30, RC35 |
 | `nofrosttemp` | `<degrees>` | heating circuit | RC30, RC35, RC100, RC300, Junkers |
 | `remotetemp` | `<degrees>` | heating circuit | RC30, RC35 |
-| `control` | `<0 \| 1 \| 2>` | heating circuit  | RC30, RC35 (roomcontrol for hc 0=off, 1=RC20, 2=RC3x) |
+| `control` | `<off \| RC20 \| RC3x>` | heating circuit  | RC30, RC35 (roomcontrol for hc) |
 | `pause` | `<hours>` | heating circuit | RC30, RC35 |
 | `party` | `<hours>` | heating circuit | RC30, RC35 |
 | `holiday` | `<dd.mm.yyyy-dd.mm.yyyy>` | heating circuit | RC30, RC35 |
