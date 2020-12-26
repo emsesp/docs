@@ -68,7 +68,7 @@ To see which commands are available on your system, go into the Console and type
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  |  | REST API only |
-| `datetime` | `<NTP \| hh:mm:ss-dd.mm.yyyy-dw-dst>` | | |
+| `datetime` | `<NTP \| hh:mm:ss-dd.mm.yyyy-dw-dst>` | | `dw`:day of week: 0-mo,.. `dst`:daylight saving 0/1 |
 | `wwmode` | `<off \| on \| auto>` |  | RC100, RC300, RC30, RC35 |
 | `wwtemp` | `<degrees>` |  | RC100, RC300 |
 | `wwtemplow` | `<degrees>` |  | RC100, RC300 |
@@ -95,7 +95,7 @@ To see which commands are available on your system, go into the Console and type
 | `control` | `<off \| RC20 \| RC3x>` | heating circuit  | RC30, RC35 (roomcontrol for hc) |
 | `pause` | `<hours>` | heating circuit | RC30, RC35 |
 | `party` | `<hours>` | heating circuit | RC30, RC35 |
-| `holiday` | `<dd.mm.yyyy-dd.mm.yyyy>` | heating circuit | RC30, RC35 |
+| `holiday` | `<dd.mm.yyyy-dd.mm.yyyy \| dd.mm.yyyy+dd.mm.yyyy>` | heating circuit | RC30, RC35, use `-` for 'away from home', `+` for 'at home' |
 | `designtemp` | `<degrees>` | heating circuit | RC30, RC35, RC100, RC300 |
 | `offsettemp` | `<degrees>` | heating circuit | RC30, RC35, RC100, RC300 |
 | `holidaytemp` | `<degrees>` | heating circuit | RC30, RC35 |
