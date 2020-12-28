@@ -9,7 +9,12 @@
 
 <!-- tabs:start -->
 
-#### **Version 2.1 (LATEST)**
+#### **Version 2.2 (LATEST)**
+**December 2020**
+
+More features, more fixes, more support for devices. Check out the full release notes at https://github.com/proddy/EMS-ESP/releases/tag/v2.2.0
+
+#### **Version 2.1 **
 **October 2020**
 
 Version 2.1 is the first major update on 2.0 with the following new features:
