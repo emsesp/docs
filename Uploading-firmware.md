@@ -19,7 +19,7 @@ Here we'll use the command-line. You'll need [Python v3]( https://www.python.org
 
 Note, the `.bin` files can be found in https://github.com/proddy/EMS-ESP/tree/dev/scripts.
 
-### Wirelessly Over The Air (OTA):
+### Wirelessly Over The Air (OTA)
 **both ESP8266 and ESP32**
 - Download `espota.py` from https://github.com/esp8266/Arduino/blob/master/tools/espota.py or use the one from https://github.com/proddy/EMS-ESP/tree/dev/scripts.
 - `espota.py --debug --progress --port 8266 --auth ems-esp-neo -i <IP address> -f <firmware.bin>`
