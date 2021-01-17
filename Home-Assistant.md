@@ -10,6 +10,8 @@ mqtt:
 
 EMS-ESP will create retained MQTT messages prefixed with `homeassistant/` for each device and their values (called entities). For example "`EMS-ESP Thermostat`". You can view which ones have been created by going into Home Assistant's `Configuration->Integrations` and select the devices under `MQTT`.
 
+To add this device and its values to a Home Assistant UI click on the "ADD TO LOVELACE" button. 
+
 ![device](_media/ha_device.PNG ':size=100%')
 
 You can then add each of these devices to a new lovelace view using the "add to lovelace" button, and get something looking like:
