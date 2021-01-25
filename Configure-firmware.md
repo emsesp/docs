@@ -55,6 +55,7 @@ Use the Web UI (http://ems-esp) to further configure the settings. In the `Setti
 These settings can be found in the `MQTT` tab on the Web UI.
 
 - **Client ID**. This is used internally to identify EMS-ESP with the broker. Note MQTT topics will be postfixed with the hostname (default `ems-esp`), not this client ID.
+- **Base**. All topics are prefixed with `Base`, which is defaulted to `ems-esp` and can be changed to an individual path.
 - **Clean Session**. Creates a non-persistent session when enabled.
 - **MQTT Format**. The `Single` option will send all data as separate topics, `Nested` will group the data into one JSON payload string and `Home Assistant` will use MQTT Discovery (if available). `Custom` is a reserved format for Michael ;-)
 - **QoS**. Quality of Service, 0, 1 or 2. 0 is the default and suitable for more scenarios. 1 will give a guarantee that the message has been sent, but will create slightly more traffic and overhead.
@@ -68,5 +69,5 @@ These settings can be found in the `MQTT` tab on the Web UI.
 
 ### Analog Input
 
-- **Enable ADC**. This enables analog GPIO (A0) on the ESP for attaching analog sensors.
+- **Enable ADC**. This enables analog GPIO (A0) on the ESP for attaching analog sensors, value is in mV and published in heartbeat every minute. 
   
