@@ -21,8 +21,9 @@ The table below list the topics being published:
 | `heating_active` | all | boolean to show if the heating is on | |
 | `boiler_data` | all | non warm water data from the Boiler device | `{"heatingActive":"off","tapwaterActive":"off","selFlowTemp":0,"selBurnPow":23,"curBurnPow":0,"pumpMod":0,"curFlowTemp":35.1,"retTemp":35.5,"sysPress":1.6,"boilTemp":36.3,"burnGas":"off","flameCurr":0,"heatPump":"off","fanWork":"off","ignWork":"off","heatingActivated":"on","heatingTemp":75,"pumpModMax":90,"pumpModMin":55,"pumpDelay":1,"burnMinPeriod":10,"burnMinPower":0,"burnMaxPower":75,"boilHystOn":-6,"boilHystOff":6,"UBAuptime":4007616,"burnStarts":275144,"burnWorkMin":436129,"heatWorkMin":349044,"serviceCode":"0A","serviceCodeNumber":305}` |
 | `boiler_data_ww` | all | warm water data from the Boiler device | `{"wWComfort":"Hot","wWSelTemp":60,"wWSetTemp":62,"wWDisinfectionTemp":70,"wWType":"flow","wWChargeType":"3-way valve","wWCircPump":"off","wWCircPumpMode":"0x3min","wWCirc":"off","wWCurTemp":32.4,"wWCurFlow":0,"wwStorageTemp1":32.4,"wWActivated":"on","wWOneTime":"off","wWDisinfecting":"off","wWCharging":"off","wWRecharging":"on","wWTempOK":"on","wWActive":"off","wWHeat":"on","wWStarts":246432,"wWWorkM":87085}` |
-| `thermostat_data` | nested | data from the thermostat and for each of its Heating Circuits.| `{ "time":"07:47:05 09/03/2000", "display":"int. temperature", "language":"French", "building":"medium", "MinExtTemperature":-10, "CalIntTemperature":0, "clockOffset":3, "hc1":{"seltemp":15, "currtemp":20.6, "mode":"auto"}, "hc2":{"seltemp":8, "currtemp":18.2, "mode":"off"}}` |
-| `thermostat_data` | single | In single format each heating ciruit is published with own topic | `{"time":"07:47:05 09/03/2000", "display":"int. temperature", "building":"medium", "MinExtTemperature":-10, "CalIntTemperature":0}` |
+| `boiler_data_info` | all | information data from the Boiler device | `{"nrgConsTotal":10,"auxElecHeatNrgConsTotal":10,"auxElecHeatNrgConsHeating":10,"auxElecHeatNrgConsDHW":10}` |
+| `thermostat_data` | nested | data from the thermostat and for each of its Heating Circuits.| `{ "datetime":"07:47:05 09/03/2000", "display":"int. temperature", "language":"French", "building":"medium", "MinExtTemperature":-10, "CalIntTemperature":0, "clockOffset":3, "hc1":{"seltemp":15, "currtemp":20.6, "mode":"auto"}, "hc2":{"seltemp":8, "currtemp":18.2, "mode":"off"}}` |
+| `thermostat_data` | single | In single format each heating ciruit is published with own topic | `{"datetime":"07:47:05 09/03/2000", "display":"int. temperature", "building":"medium", "MinExtTemperature":-10, "CalIntTemperature":0}` |
 |`thermostat_data_hc<id>` | single | hc in single format | `{"seltemp":15, "currtemp":20.6, "mode":"auto"}` |
 | `mixer_data` | nested | data from The Mixer with nests `hc1` to `hc4`and `wwc1`, `wwc2` | `{"hc1": {"flowTemp":55, "pumpStatus":"on", "valveStatus":25}}` |
 | `mixer_data_hc<id>` `mixer_data_wwc<id>` | single | data from The Mixer in single format for each of its Heating Circuits where `<id>` is circuit number | `{"type":"hc", "flowTemp":55, "pumpStatus":"on", "valveStatus":55}` |
@@ -145,7 +146,7 @@ The key's and their description:
    * `dewTemperature` = Dew temperature point
 
 ### thermostat
-   * `time` = Time
+   * `datetime` = Date & Time
    * `display` = Display (RC30 only)
    * `language` = Language (RC30 only)
    * `offsetclock` = Offset clock (RC30 only)
