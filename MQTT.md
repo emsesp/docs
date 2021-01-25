@@ -1,7 +1,7 @@
 > [!NOTE]
 > The MQTT information below is based on the latest dev release (currently 2.1) so topics and format may differ from previous versions.
 
-All topics are prefixed with the ESP's `hostname`, which is defaulted to `ems-esp`.
+All topics are prefixed with the `Base`, which is defaulted to `ems-esp` and can be written as path, e.g. `home/heating/ems-esp2`.
 
 ## Outbound Data
 
