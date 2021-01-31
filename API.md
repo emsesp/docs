@@ -26,7 +26,7 @@ To see which commands are available on your system, go into the Console and type
 | `send` | `"XX XX...XX"` |  | send raw ems-command |
 | `fetch` | |  | fetch ems values from all devices |
 | `publish` | `[ha]` |  | mqtt publish all values and optional HA-configuration |
-| `pin` | `<gpio>` | `<on \|off \| 1 \| 0 \| true \| false>` | sets ESP's GPIO pins high/low |
+| `pin` | `<on \|off \| 1 \| 0 \| true \| false>` | `<gpio>` | sets ESP's GPIO pins high/low |
 
 ### `dallassensor`
 | command | data | id | comments |
