@@ -67,7 +67,7 @@ To see which commands are available on your system, go into the Console and type
 
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
-| `info` |  |  | REST API only |
+| `info` |  | `[heating circuit]` | REST API only |
 | `datetime` | `<NTP \| hh:mm:ss-dd.mm.yyyy-dw-dst>` | | `dw`:day of week: 0-mo,.. `dst`:daylight saving 0/1 |
 | `wwmode` | `<off \| on \| auto>` |  | RC100, RC300, RC30, RC35 |
 | `wwtemp` | `<degrees>` |  | RC100, RC300 |
@@ -112,7 +112,7 @@ To see which commands are available on your system, go into the Console and type
 ### `mixer`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
-| `info` |  |  | REST API only |
+| `info` |  | `[heating circuit]` | REST API only |
 
 ### `solar`
 | command | data | id | comments |
