@@ -1,6 +1,7 @@
 Firmware binaries can be downloaded from the GitHub page:
- * [Latest Stable Release](https://github.com/proddy/EMS-ESP/releases/latest)
- * [Latest Development Release](https://github.com/proddy/EMS-ESP/releases/tag/dev)
+ * [Latest ESP8266 Stable Release](https://github.com/proddy/EMS-ESP/releases/latest)
+ * [Latest ESP8266 Development Release](https://github.com/proddy/EMS-ESP/releases/tag/esp8266_dev)
+ * [Latest ESP32 Development Release](https://github.com/proddy/EMS-ESP/releases/tag/esp32_dev)
 
 Here we'll use the command-line. You'll need [Python v3]( https://www.python.org/downloads/) installed and follow either of these methods below depending on how you plan to upload the firmware.
 

@@ -3,6 +3,8 @@ This is the official documentation for EMS-ESP.
 
 ## Testing locally
 
+Install docsify (`npm i docsify-cli -g`)
+
 ```sh
 docsify serve .
 ```

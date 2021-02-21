@@ -7,9 +7,20 @@
 [![gitter](https://img.shields.io/gitter/room/EMS-ESP/EMS-ESP.svg)](https://gitter.im/EMS-ESP/community)
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 
+# Versions
+
 <!-- tabs:start -->
 
-#### **Version 2.2 (LATEST)**
+#### **Version 3.0 for the ESP32**
+**February 2021**
+
+We've come to the limit of the poor ESP8266 chip and without excessive hacking can't really add any more features. Version 2.2 will be the last major version and only smaller fixes and improvements will be made in subsequent 2.2.x versions.
+
+Version 3.0 is optimized for the ESP32 range of microcontrollers.
+
+You can find the latest ESP32 builds [here](https://github.com/proddy/EMS-ESP/releases/tag/esp32_dev).
+
+#### **Version 2.2 for the ESP8266**
 **December 2020**
 
 More features, more fixes, more support for devices. Check out the full release notes at https://github.com/proddy/EMS-ESP/releases/tag/v2.2.0
