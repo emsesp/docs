@@ -20,7 +20,7 @@ EMS devices are being constantly added to the database on each new release.
 ### Boilers
 
 * Buderus GBx72, GB162, GB152, GB125, GB212, Logamax U122, Logamax Plus GB062/GB122/GB192, Logano
-* Bosch Condens 2500, 5000i, Compress 6000AW
+* Bosch Condens GC2300, 2500, 5000i, Compress 6000AW
 * Worcester-Bosch Greenstar 550CDi, Greenstar 24i
 * Junkers Cerapur
 * Nefit Proline, Trendline, Topline, Enviline, Smartline, EcomLine
