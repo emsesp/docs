@@ -49,9 +49,11 @@ You should see a log statement pop in the console like `[thermostat] Setting the
 
 Try erasing the ESP (`esptool.py erase_flash`) and [uploading](Uploading-firmware) the firmware again using the command-line with the ESP connected via the USB.
 
-### Web UI is non-responsive on an ESP8266
+### Web UI is non-responsive on an ESP8266 or frequent crashes occur
 
 Due to the memory limitations on an ESP8266 having the Console open and then opening the Web UI will usually not work. Close the console and try again.
+
+Also watch out for available free memory. If this drops to < 8kb (30%) EMS-ESP will struggle with MQTT and Web. This could very well happen when you have many EMS connected devices (say > 4). The only option here is to replace the ESP8266 chip with an ESP32.
 
 ### EMS-ESP is showing incorrect values from a specific device
 
