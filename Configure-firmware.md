@@ -24,10 +24,20 @@ Use the Web UI (http://ems-esp) to further configure the settings. In the `Setti
 
 #### EMS Bus
 
-- **Tx Mode**. `1` is default for EMS1.0 systems but also compatible with most other protocols. `2` is designed to work better for EMS2.0/EMS+ systems and `3` for Heatronics3 used by Junkers and Bosch. Choose the mode that works best for your system and watch for Tx errors in the Web Dashboard and `show ems` in the Console. Changing the value has immediate effect.
-- **Bus ID**. The EMS-ESP can simulate one of 5 devices. Stick to the Service Key (0x0B) unless using multiple EMS gateways or interfaces.
+- **Tx Mode**. Choose the mode that works best for your system and watch for Tx errors in the Web Dashboard and `show ems` in the Console. Changing the value has immediate effect.
+  - `0 - Off` disables sending on ems-bus.
+  - `1 - Default` is default for EMS1.0 systems but also compatible with most other protocols. 
+  - `2 - EMS+` is designed to work better for EMS2.0/EMS+ systems.
+  - `3 - HT3` for Heatronics3 used by Junkers and Bosch.
+  - `4 - Hardware` uses ESP hardware to send out the ems-telegram, the software do not have to wait for the telegram to be send out. It is the fastest and most efficient methode, but works only on some systems. 
+- **Bus ID**. The EMS-ESP can simulate one of 5 devices. Stick to the `Service Key (0x0B)` unless using multiple EMS gateways or interfaces.
 - **Rx GPIO pin** - Which pin the Rx is assigned to. On an ESP8266 this has to be 3 or 13. The default is 13 (D7 on a Wemos). On an ESP32 it can be any pin.
-- **Tx GPIO pin** - Which pin the Tx is assigned to. On an ESP8266 this has to be 1 or 15. The default is 15 (D8 on a Wemos). On an ESP32 it can be any pin.
+- **Tx GPIO pin** - Which pin the Tx is assigned to. On an ESP8266 this has to be 1 (for rx:3) or 15 (for rx:13). The default is 15 (D8 on a Wemos). On an ESP32 it can be any pin.
+- **Tx delayed start** - Setting 30-60 seconds avoids conflicts with KM200 webinterface after boiler-power-on.   
+
+#### External Button
+
+- **Button gpio pin**. (v3 only) Set a pin with pullup for emergency reset to factory settings. Default is pin 0 (boot-button on some esp32 boards). In v2 the pin is not configurable and fixed to gpio 0.  
 
 #### Dallas Sensor
 
@@ -65,7 +75,7 @@ These settings can be found in the `MQTT` tab on the Web UI.
 ### API
 
 - **Enable Web API**. When set EMS-ESP will allow write commands via the RESTful api. When disabled only read operations are allowed (e.g. `ems-esp/api?device=boiler&cmd=info`).
-- **Boolean Format**. Set's how booleans are rendered in MQTT and in the Console.
+- **Boolean Format**. Set's how booleans are rendered in MQTT and in the Console. Setting `1/0` also effects enumerated parameters, e.g. `off/on/auto` -`0/1/2`
 
 ### Analog Input
 
