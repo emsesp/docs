@@ -18,7 +18,11 @@ Here we'll use the command-line. You'll need [Python v3]( https://www.python.org
 **ESP32:**
 - `esptool.py --chip esp32 --port "COM3" --baud 921600 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 <firmware.bin>`
 
-Note, the `.bin` files can be found in https://github.com/proddy/EMS-ESP/tree/dev/scripts.
+> [!NOTE]
+> The `.bin` files can be found in https://github.com/proddy/EMS-ESP/tree/dev/scripts.
+
+> [!WARNING]
+> Some USB drivers (like the CH340 on OSX) works better at lower baud rates. Try 115200 instead of 921600 if you're getting errors during flashing.
 
 ### Wirelessly Over The Air (OTA)
 **both ESP8266 and ESP32**
