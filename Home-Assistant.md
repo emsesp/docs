@@ -70,7 +70,7 @@ Below is an example using a trigger to notify when a shower has finished. This w
     entity_id: sensor.last_shower_duration
   action:
   - service: notify.admin_notify
-    data_template:
+    data:
       title: Shower finished at {{states.sensor.time.state}}
       message: "{{ states.sensor.last_shower_duration.state }}"
 ```
@@ -86,7 +86,7 @@ and get notified when the thermostat is adjusted:
     entity_id: sensor.current_set_temperature
   action:
   - service: notify.admin_notify
-    data_template:
+    data:
       title: Thermostat alert
       message: "Temperature set to {{states.sensor.current_set_temperature.state}} degrees"   
 ```
@@ -113,14 +113,14 @@ Below is an example of calling a command (OneTimeWater)
   one_time_water_on:
     sequence:
       - service: mqtt.publish
-        data_template:
+        data:
           topic: 'ems-esp/boiler'
           payload: '{"cmd":"wwonetime","data":1}'
           
   one_time_water_off:
     sequence:
       - service: mqtt.publish
-        data_template:
+        data:
           topic: 'ems-esp/boiler'
           payload: '{"cmd":"wwonetime","data":0}'
 ```
