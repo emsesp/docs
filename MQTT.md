@@ -45,8 +45,8 @@ The key's and their description:
    * `selFlowTemp` = Selected flow temperature
    * `selBurnPow` = Burner selected max power
    * `curBurnPow` = Burner current power
-   * `pumpMod` = Pump modulation
-   * `pumpMod2` = Heat pump modulation
+   * `heatingPumpMod` = Heating pump modulation
+   * `pumpMod2` = Heating pump modulation
    * `wWType` = Warm water type
    * `wWChargeType` = Warm water charging type
    * `wWCircPump` = Warm water circulation pump available
@@ -73,7 +73,7 @@ The key's and their description:
    * `wWActive` = Warm water active
    * `burnGas` = Gas
    * `flameCurr` = Flame current
-   * `heatPump` = Boiler pump
+   * `heatingPump` = Heating pump
    * `fanWork` = Fan
    * `ignWork` = Ignition
    * `wWHeat` = Warm water heating
@@ -89,7 +89,8 @@ The key's and their description:
    * `boilHystOff` = Boiler temperature hysteresis off
    * `setFlowTemp` = Set Flow temperature
    * `wWSetPumpPower` = Warm water pump set power
-   * `wwMixTemperature` = Warm water mix temperature
+   * `mixerTemp` = Mixer temperature
+   * `tankMiddleTemp` = Tank Middle Temperature (TS3)
    * `wwBufferBoilerTemperature` = Warm water buffer boiler temperature
    * `wWStarts` = Warm water # starts
    * `wWWorkM` = Warm water active time
@@ -119,22 +120,26 @@ The key's and their description:
 
 ### solar
    * `collectorTemp` = Collector temperature (TS1)
-   * `tankBottomTemp` = Bottom temperature (TS2)
-   * `tankBottomTemp2` = Bottom temperature (TS5)
+   * `tankBottomTemp` = Tank bottom temperature (TS2)
+   * `tank2BottomTemp` = Second Tank bottom temperature (TS5)
    * `heatExchangerTemp` = Heat exchanger temperature (TS6)
    * `solarPumpModulation` = Solar pump modulation (PS1)
    * `cylinderPumpModulation` = Cylinder pump modulation (PS5)
-   * `pumpWorkMin` = Pump working time
+   * `pumpWorkTime` = Pump working time (min)
+   * `pumpWorkMinText` = Pump working time as Text
    * `energyLastHour` = Energy last hour
    * `energyToday` = Energy today
    * `energyTotal` = Energy total
    * `solarPump` = Solar Pump (PS1) active
    * `valveStatus` = Valve status
    * `tankHeated` = Tank heated
-   * `collectorShutdown` = Collector shutdown
+   * `collectorShutdown` = solarPump shutdown when tank bottom temperature reached tank1MaxTempCurrent
+   * `tankBottomMaxTemp` = Maximum tankBottomTemp temperature setting
+   * `collectorMaxTemp` = Maximum collector temperature setting
+   * `collectorMinTemp` = Minimum collector temperature setting
 
 ### mixer
-   * `wwTemp` = Current warm water temperature
+   * `wWTemp` = Current warm water temperature
    * `pumpStatus` = Current pump status
    * `tempStatus` = Current temperature status
    * `flowTemp` = Current flow temperature
