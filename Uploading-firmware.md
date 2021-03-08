@@ -10,7 +10,7 @@ Here we'll use the command-line. You'll need [Python v3]( https://www.python.org
 
 ### Via a USB cable
 - attach a USB cable to the ESP. Make sure you have the correct Serial drivers installed (see https://docs.wemos.cc/en/latest/ch340_driver.html for the ESP8266 that comes with an EMS Gateway device).
-- Install `esptool` via `pip install esptool` or use the script provided in https://github.com/proddy/EMS-ESP/tree/dev/scripts.
+- Install `esptool` via `pip install esptool` or use the **ESP_Flasher** tool from Tasmota [here](https://github.com/Jason2866/ESP_Flasher/releases/latest) which works for both ESP8266 and ESP32 on Windows, Linux and OSX.
 
 **ESP8266:**
 ```sh
