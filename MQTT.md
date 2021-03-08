@@ -133,7 +133,7 @@ The key's and their description:
    * `solarPump` = Solar Pump (PS1) active
    * `valveStatus` = Valve status
    * `tankHeated` = Tank heated
-   * `collectorShutdown` = solarPump shutdown when tank bottom temperature reached tank1MaxTempCurrent
+   * `collectorShutdown` = solarPump shutdown when tankBottomTemp reached tankBottomMaxTemp
    * `tankBottomMaxTemp` = Maximum tankBottomTemp temperature setting
    * `collectorMaxTemp` = Maximum collector temperature setting
    * `collectorMinTemp` = Minimum collector temperature setting
