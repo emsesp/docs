@@ -126,7 +126,7 @@ The key's and their description:
    * `solarPumpModulation` = Solar pump modulation (PS1)
    * `cylinderPumpModulation` = Cylinder pump modulation (PS5)
    * `pumpWorkTime` = Pump working time (min)
-   * `pumpWorkMinText` = Pump working time as Text
+   * `pumpWorkTimeText` = Pump working time as Text
    * `energyLastHour` = Energy last hour
    * `energyToday` = Energy today
    * `energyTotal` = Energy total
@@ -155,7 +155,7 @@ The key's and their description:
    * `display` = Display (RC30 only)
    * `language` = Language (RC30 only)
    * `offsetclock` = Offset clock (RC30 only)
-   * `dampedtemp` = Damped outdoor temperature = the thermostat damps changes to the actual outside temperature to mirror the thermal mass of the building. Building Type setting changes the time constant of the damping
+   * `dampedoutdoortemp` = Damped outdoor temperature = the thermostat damps changes to the actual outside temperature to mirror the thermal mass of the building. Building Type setting changes the time constant of the damping
    * `inttemp1` = Temperature sensor 1
    * `inttemp2` = Temperature sensor 2
    * `intoffset` = Offset int. temperature sensor
