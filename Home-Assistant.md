@@ -182,3 +182,44 @@ Below is an example of calling a command (OneTimeWater)
   temperature_command_topic: "ems-esp/boiler"
   mode_command_topic: "ems-esp/boiler"
   ```
+
+## Example: Using HA's climate component to control Boiler temperatures, switch Boiler on/off and set the comfort mode
+
+```yaml
+- platform: mqtt
+  name: boiler
+  min_temp: 40
+  max_temp: 70
+  temp_step: 1
+  current_temperature_topic: "ems-esp/boiler_data_ww"
+  temperature_state_topic: "ems-esp/boiler_data_ww"
+  temperature_command_topic: "ems-esp/boiler"
+  temperature_command_template: >
+            {{ '{"cmd":"wwtemp","data":'}}
+            {{ value }}
+            {{ '}'}}
+  current_temperature_template: "{{ value_json.wWCurTemp }}"
+  temperature_state_template: "{{ value_json.wWSelTemp }}"
+  mode_state_template: "{% if value_json.wWActivated == 'off' %} off {% else %} heat {% endif %}"
+  mode_state_topic: "ems-esp/boiler_data_ww"
+  mode_command_topic: "ems-esp/boiler"
+  mode_command_template: >
+            {{ '{"cmd":"wwactivated","data":"'}}
+            {%- if value == 'off' -%}off{% else %}on{%- endif -%}
+            {{'"}'}}  
+  modes:
+    - "heat"
+    - "off"
+  # use fan mode as proxy to set comfort mode
+  fan_mode_command_topic: "ems-esp/boiler"
+  fan_mode_command_template: >
+            {{ '{"cmd":"comfort","data":"'}}
+            {%- if value == 'Eco' -%}eco{%-elif value == 'Hot' -%}hot{%- else -%}intelligent{%- endif -%}
+            {{'"}'}}  
+  fan_mode_state_topic: "ems-esp/boiler_data_ww"
+  fan_mode_state_template: '{{ value_json.wWComfort }}'
+  fan_modes:
+    - "Eco"
+    - "Hot"
+    - "Intelligent"
+```
