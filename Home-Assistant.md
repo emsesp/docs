@@ -127,7 +127,7 @@ Below is an example of calling a command (OneTimeWater)
 
 ## Example: Calculating values
 
-(from @Glitter-ball in https://github.com/proddy/EMS-ESP/issues/519)
+(from @Glitter-ball)
 
 ```yaml
 - platform: template

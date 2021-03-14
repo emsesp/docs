@@ -2,10 +2,9 @@
 
 **EMS-ESP** is an open-source firmware for the Espressif ESP8266 and ESP32 microcontroller that communicates with **EMS** (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.
 
-[![license](https://img.shields.io/github/license/proddy/EMS-ESP.svg)](LICENSE)
-[![downloads](https://img.shields.io/github/downloads/proddy/EMS-ESP/total.svg)](https://github.com/proddy/EMS-ESP/releases)
-[![gitter](https://img.shields.io/gitter/room/EMS-ESP/EMS-ESP.svg)](https://gitter.im/EMS-ESP/community)
+[![license](https://img.shields.io/github/license/emsesp/EMS-ESP.svg)](LICENSE)
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
+[![chat](https://img.shields.io/discord/816637840644505620.svg?style=flat-square&color=blueviolet)](https://discord.gg/3J3GgnzpyT)
 
 # Versions
 
@@ -18,12 +17,12 @@ We've come to the limit of the poor ESP8266 chip and without excessive hacking c
 
 Version 3.0 is optimized for the ESP32 range of microcontrollers.
 
-You can find the latest ESP32 builds [here](https://github.com/proddy/EMS-ESP/releases/tag/esp32_dev).
+You can find the latest ESP32 builds [here](https://github.com/emsesp/EMS-ESP32/releases/tag/latest).
 
 #### **Version 2.2 for the ESP8266**
 **December 2020**
 
-More features, more fixes, more support for devices. Check out the full release notes at https://github.com/proddy/EMS-ESP/releases/tag/v2.2.0
+More features, more fixes, more support for devices. Check out the full release notes at https://github.com/emsesp/EMS-ESP/releases/download/v2.2.0/CHANGELOG.md
 
 #### **Version 2.1 **
 **October 2020**

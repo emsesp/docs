@@ -1,7 +1,8 @@
 Firmware binaries can be downloaded from the GitHub page:
- * [Latest ESP8266 Stable Release](https://github.com/proddy/EMS-ESP/releases/latest)
- * [Latest ESP8266 Development Release](https://github.com/proddy/EMS-ESP/releases/tag/esp8266_dev)
- * [Latest ESP32 Development Release](https://github.com/proddy/EMS-ESP/releases/tag/esp32_dev)
+* [Download ESP8266 Firmware](https://github.com/emsesp/EMS-ESP/releases/latest)
+* [Download ESP8266 Dev Build](https://github.com/emsesp/EMS-ESP/releases/tag/latest)
+* [Download ESP32 Firmware](https://github.com/emsesp/EMS-ESP32/releases/latest)
+* [Download ESP32 Dev Build](https://github.com/emsesp/EMS-ESP32/releases/tag/latest)
 
 Here we'll use the command-line. You'll need [Python v3]( https://www.python.org/downloads/) installed and follow either of these methods below depending on how you plan to upload the firmware.
 
@@ -23,14 +24,14 @@ esptool.py --chip esp32 --port "COM3" --baud 921600 --before default_reset --aft
 ```
 
 > [!NOTE]
-> The `.bin` files can be found in https://github.com/proddy/EMS-ESP/tree/dev/scripts.
+> The `.bin` files can be found in https://github.com/emsesp/EMS-ESP/tree/dev/scripts.
 
 > [!WARNING]
 > Some USB drivers (like the CH340 on OSX) works better at lower baud rates. Try 115200 instead of 921600 if you're getting errors during flashing.
 
 ### Wirelessly Over The Air (OTA)
 **both ESP8266 and ESP32**
-- Download `espota.py` from https://github.com/esp8266/Arduino/blob/master/tools/espota.py or use the one from https://github.com/proddy/EMS-ESP/tree/dev/scripts.
+- Download `espota.py` from https://github.com/esp8266/Arduino/blob/master/tools/espota.py or use the one from https://github.com/emsesp/EMS-ESP/tree/dev/scripts.
 ```sh
 espota.py --debug --progress --port 8266 --auth ems-esp-neo -i <IP address> -f <firmware.bin>
 ```

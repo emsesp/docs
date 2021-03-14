@@ -1,8 +1,8 @@
 * Download
-    * [Download ESP8266 Firmware](https://github.com/proddy/EMS-ESP/releases/latest)
-    * [Download ESP8266 Dev Build](https://github.com/proddy/EMS-ESP/releases/tag/esp8266_dev)
-    * [Download ESP32 Dev Build](https://github.com/proddy/EMS-ESP/releases/tag/esp32_dev)
-    * [Download Source](https://github.com/proddy/EMS-ESP)
+    * [Download ESP8266 Firmware](https://github.com/emsesp/EMS-ESP/releases/latest)
+    * [Download ESP8266 Dev Build](https://github.com/emsesp/EMS-ESP/releases/tag/latest)
+    * [Download ESP32 Firmware](https://github.com/emsesp/EMS-ESP32/releases/latest)
+    * [Download ESP32 Dev Build](https://github.com/emsesp/EMS-ESP32/releases/tag/latest)
 * Help
     * [Support](Support)
     * [Troubleshooting](Troubleshooting)

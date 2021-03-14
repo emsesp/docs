@@ -1,1 +1,1 @@
-[remoteMarkdownUrl](https://raw.githubusercontent.com/proddy/EMS-ESP/main/CHANGELOG.md)
+[remoteMarkdownUrl](https://raw.githubusercontent.com/emsesp/EMS-ESP/main/CHANGELOG.md)
