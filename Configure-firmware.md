@@ -56,7 +56,8 @@ Use the Web UI (http://ems-esp) to further configure the settings. In the `Setti
 
 #### Syslog
 
-- **Syslog IP/Host** is the optional DNS or IP address of a syslog server for capturing remote logs. Leave blank is not using SysLog.
+- **Syslog IP** is the IP address of a syslog server for capturing remote logs. Leave blank is not using SysLog.
+- **Syslog Port** if using a alternate port (default 514)
 - **Syslog Log Level** sets the maximum log level for reported messages. The highest level is DEBUG which will send a lot of log data so use with caution.
 - **Syslog Mark Interval** will send out a special `mark` message to the SysLog, useful for timing events.
 
@@ -67,7 +68,7 @@ These settings can be found in the `MQTT` tab on the Web UI.
 - **Client ID**. This is used internally to identify EMS-ESP with the broker. Note MQTT topics will be postfixed with the hostname (default `ems-esp`), not this client ID.
 - **Base**. All topics are prefixed with `Base`, which is defaulted to `ems-esp` and can be changed to an individual path.
 - **Clean Session**. Creates a non-persistent session when enabled.
-- **MQTT Format**. The `Single` option will send all data as separate topics, `Nested` will group the data into one JSON payload string and `Home Assistant` will use MQTT Discovery (if available). `Custom` is a reserved format for Michael ;-)
+- **MQTT Format**. v2: The `Single` option will send all data as separate topics, `Nested` will group the data into one JSON payload string and `Home Assistant` will use MQTT Discovery (if available). v3: options are resorted with checkboxes for `Nested` and `Home Assistant`.
 - **QoS**. Quality of Service, 0, 1 or 2. 0 is the default and suitable for more scenarios. 1 will give a guarantee that the message has been sent, but will create slightly more traffic and overhead.
 - **Retain Flag**. Default is off. Enable if you want to persist all the messages on the broker.
 - **Publish Intervals**. This section is per device and sets how frequent an MQTT message with the update data is to be sent. When set to 0 EMS-ESP will send data when there is a noticeable change.
