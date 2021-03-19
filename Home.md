@@ -22,7 +22,7 @@ You can find the latest ESP32 builds [here](https://github.com/emsesp/EMS-ESP32/
 #### **Version 2.2 for the ESP8266**
 **December 2020**
 
-More features, more fixes, more support for devices. Check out the full release notes at https://github.com/emsesp/EMS-ESP/releases/download/v2.2.0/CHANGELOG.md
+More features, more fixes, more support for devices. Check out the full release notes at https://github.com/emsesp/EMS-ESP/releases
 
 #### **Version 2.1 **
 **October 2020**
