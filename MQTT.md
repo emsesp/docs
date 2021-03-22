@@ -50,7 +50,7 @@ The key's and their description:
    * `wWType` = Warm water type
    * `wWChargeType` = Warm water charging type
    * `wWCircPump` = Warm water circulation pump available
-   * `wWCircPumpMode` = Warm water circulation pump freq
+   * `wWCircMode` = Warm water circulation pump freq
    * `wWCirc` = Warm water circulation active
    * `outdoorTemp` = Outside temperature
    * `wWCurTemp` = Warm water current temperature (intern)
@@ -209,6 +209,8 @@ where
 * `id` can be replaced with `hc` for some devices that use heating circuits, and represented either as a string or a number.
 
 With Home Assistant, Thermostat commands can also be sent to control individual heating circuits via sending a mode string or temperature number to a topic `thermostat_hc<n>`.
+
+Depending on mqtt-settings there are also direct subscriptions for each value like `boiler/wwtemp`, `thermostat/hc1/daytemp`, etc. Thermostats which supports only a single heating circuits will subscribe to `/thermostat/daytemp`
 
 ## Monitoring the Queue
 
