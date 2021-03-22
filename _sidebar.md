@@ -3,6 +3,7 @@
 * [Building the firmware](Building-firmware)
 * [Uploading the firmware](Uploading-firmware)
 * [Configuring EMS-ESP](Configure-firmware)
+* [Configuring EMS-ESP32](Configure-firmware32)
 * **Interfaces**
 * [API](API)
 * [Web](Web)
