@@ -60,6 +60,7 @@ To see which commands are available on your system, go into the Console and type
 | `maintenance` | `<off \| <hours> \| <dd.mm.yyyy> \| reset>` |  | set maintenance to date or time or reset message |
 | `pumpmodmin` | `<%>` |  | Changeable only for modulated pumps |
 | `pumpmodmax` | `<%>` |  | Changeable only for modulated pumps |
+| `reset` | `<error \| maintenance>` |  | Use `reset error` only if there is an active error! | 
 
 ### `thermostat`
 
@@ -107,6 +108,7 @@ To see which commands are available on your system, go into the Console and type
 | `controlmode` | `<room \| outtdoor>` | heating circuit | RC30, RC35, RC100, RC300 |
 | `reducemode` | `<nofrost \| reduce \| room \| outdoor>` | heating circuit | RC30, RC35 |
 | `roomtemp` | `<degrees>` | heating circuit | setting HA-thermostat roomtemp, use `-1` to clear |
+| `switchtime` | `<nn.d.o.hh:mm>` | heting circuit | set one of the programs switchtimes, nn=number(00-42), d=day(0-6), o=on(0,1), hh:mm=time, d=7 or o=7 clears |
 
 
 ### `mixer`
