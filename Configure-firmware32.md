@@ -19,7 +19,7 @@ Use the Web UI (http://ems-esp) to further configure the settings. In the `Setti
   - `HT3` for Heatronics3 used by Junkers and Bosch.
   - `Hardware` uses ESP hardware to send out the ems-telegram. Telegrams are sent immediately. It is the fastest and most efficient method but works only on some systems.
 - **Bus ID**. The EMS-ESP can simulate one of 5 devices. Stick to the `Service Key (0x0B)` unless using multiple EMS gateways or interfaces.
-- **Tx delayed start** - Setting 30-60 seconds avoids conflicts with KM200 webinterface after boiler-power-on.
+- **Tx delayed start** - Setting 30-60 seconds avoids conflicts with KM200 web interface after boiler-power-on.
 
 #### GPIO pins
 

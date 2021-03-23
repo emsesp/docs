@@ -43,7 +43,7 @@ ems-esp:/$ su
 ems-esp:/# log debug
 ems-esp:/# call thermostat temp 15
 ```
-You should see a log statement pop in the console like `[thermostat] Setting thermostat temperature to 15.0 for heating circuit 1, mode auto` followed by which telegrams are being sent. If you see errors then reach out via Gitter or create a GitHub issue to get [Support](Support.md).
+You should see a log statement pop in the console like `[thermostat] Setting thermostat temperature to 15.0 for heating circuit 1, mode auto` followed by which telegrams are being sent. If you see errors then reach out on Discord or create a GitHub issue to get [Support](Support.md).
 
 ### Settings are not saved and lost after restart
 
@@ -68,4 +68,4 @@ and then either a `read` or `watch`, e.g. `read 21 2D8` to show all the data fro
 
 EMS-messages are sended and repeated often, a few crc-errors doesn't harm. The bad signal can be caused by mainly 2 factors:
 - powering: try to power ems-esp by usb or service-jack. 
-- disturbtions on the bus (emc, reflections, etc): try to connect ems-esp to another device on the bus. In general a previously unconnected bus-out on a devices like MM100 is better than a split connection on an already used connector. 
+- disruptions on the bus (emc, reflections, etc): try to connect ems-esp to another device on the bus. In general a previously unconnected bus-out on a devices like MM100 is better than a split connection on an already used connector.

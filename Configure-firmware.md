@@ -33,7 +33,7 @@ Use the Web UI (http://ems-esp) to further configure the settings. In the `Setti
 - **Bus ID**. The EMS-ESP can simulate one of 5 devices. Stick to the `Service Key (0x0B)` unless using multiple EMS gateways or interfaces.
 - **Rx GPIO pin** - Which pin the Rx is assigned to. On an ESP8266 this has to be 3 or 13. The default is 13 (D7 on a Wemos). On an ESP32 it can be any pin.
 - **Tx GPIO pin** - Which pin the Tx is assigned to. On an ESP8266 this has to be 1 (for rx:3) or 15 (for rx:13). The default is 15 (D8 on a Wemos). On an ESP32 it can be any pin.
-- **Tx delayed start** - Setting 30-60 seconds avoids conflicts with KM200 webinterface after boiler-power-on.   
+- **Tx delayed start** - Setting 30-60 seconds avoids conflicts with KM200 web interface after boiler-power-on.   
 
 #### External Button
 

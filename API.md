@@ -69,7 +69,7 @@ To see which commands are available on your system, go into the Console and type
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  | `[heating circuit]` | REST API only |
-| `datetime` | `<NTP \| hh:mm:ss-dd.mm.yyyy-dw-dst>` | | `dw`:day of week: 0-mo,.. `dst`:daylight saving 0/1 |
+| `datetime` | `<ntp \| hh:mm:ss-dd.mm.yyyy-dw-dst>` | | `dw`:day of week: 0-mo,.. `dst`:daylight saving 0/1 |
 | `wwmode` | `<off \| on \| auto>` |  | RC100, RC300, RC30, RC35 |
 | `wwtemp` | `<degrees>` |  | RC100, RC300 |
 | `wwtemplow` | `<degrees>` |  | RC100, RC300 |
@@ -108,7 +108,7 @@ To see which commands are available on your system, go into the Console and type
 | `controlmode` | `<room \| outtdoor>` | heating circuit | RC30, RC35, RC100, RC300 |
 | `reducemode` | `<nofrost \| reduce \| room \| outdoor>` | heating circuit | RC30, RC35 |
 | `roomtemp` | `<degrees>` | heating circuit | setting HA-thermostat roomtemp, use `-1` to clear |
-| `switchtime` | `<nn.d.o.hh:mm>` | heting circuit | set one of the programs switchtimes, nn=number(00-42), d=day(0-6), o=on(0,1), hh:mm=time, d=7 or o=7 clears |
+| `switchtime` | `<nn.d.o.hh:mm>` | heating circuit | set one of the programs switch times, nn=number(00-42), d=day(0-6), o=on(0,1), hh:mm=time, d=7 or o=7 clears |
 
 
 ### `mixer`

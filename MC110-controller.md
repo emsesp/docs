@@ -128,7 +128,7 @@ Sent every 10 seconds
  bit 4 : WW-preparation (when switching to daytime operation sometimes short 0, then again 1)
  bit 5 : WW temperature ok
 14 - 16 = # hours water heating
-17 - 19 = # of Warmwater preparations
+17 - 19 = # of Warm water preparations
 20 = Warming water (0x64 = 100%)
 23 = Set value of time program (if set = "off": 0x00)
 25 = same as byte 1, in C
@@ -139,7 +139,7 @@ Sent every 10 seconds
 ```
 5 = DHW activated
 10 = circulation pump installed
-11 = circulation pump mode: off, 1x3min, .. 6x3min, continious
+11 = circulation pump mode: off, 1x3min, .. 6x3min, continuous
 ```
 
 ## Type 0x07E4: UBA Status

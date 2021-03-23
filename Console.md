@@ -14,7 +14,7 @@ The console will give you more insight into the EMS bus traffic, MQTT queues and
   * The default timeout for telnet is 10 minutes, if you want to change it use `set timeout <min>`, `0` disables timeout. 
   * `show` or `F2` shows the data specific to the which context you're in. From the root it will show you all the EMS device information and any external Dallas temperature sensors.
   * `show commands` or `call` will list all the commands which can called with the `call` command. See [Commands](API).
-  * `log` sets the logging level. `log off` disables logging. Use `log debug` for debugging commands and actions, `log all` includes the telgrams like `watch on`. This will be reset next time the console is opened.
+  * `log` sets the logging level. `log off` disables logging. Use `log debug` for debugging commands and actions, `log all` includes the telegrams like `watch on`. This will be reset next time the console is opened.
   * `watch` will output the incoming Rx telegrams directly to the console. You can also put on a watch on a specific EMS device ID or telegram ID or unknown (new) telegrams. Also choose to output as verbose text as raw data bytes.
 
 ## Examples

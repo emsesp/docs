@@ -141,7 +141,7 @@ Below is an example of calling a command (OneTimeWater)
 
 ## Example: Solar Pump Working Hours
 
-(from @PhillyGilly in Gitter)
+(from @PhillyGilly)
 
 ```yaml
 - platform: mqtt
