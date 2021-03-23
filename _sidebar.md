@@ -29,5 +29,5 @@
 * [Troubleshooting](Troubleshooting)
 * [How to...](Howto)
 * **For Developers**
-* [Building an EMS Interface](Building-your-own-test-circuit)
-* [Coding Principles](Coding)
+* [Coding](Coding)
+* [GitHub PRs](Contributing)
