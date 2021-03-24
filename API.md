@@ -2,13 +2,14 @@ Commands can be sent to EMS-ESP in a few ways, either
 
  * via the [**Console**](Console) with a `call <device> <command> <data> <id>`.
  * via [**MQTT**](MQTT) in the payload with `{"cmd":"<command>" ,"data":<data>, "id":<id>}`. The MQTT topic being the `<device>`.
+ * via [**MQTT**](MQTT) in direct topics (v3 only, if activated in settings) `<device>/<command>` or `<device>/hc<id>/<command>`, payload: `<data>`
  * or via the [**REST API**](Web) in the URL like `http://ems-esp/api?device=<device>&cmd=<command>&data=<data>&id=<id>`.
 
 where
 * `<device>` can be `system`, `dallassensor`, `boiler`, `thermostat`, `solar` or `mixer`.
-* `<command>` are listed in the tables below. This is a mandatory parameter.
+* `<command>` are listed in the tables below. This is a mandatory parameter and always a string.
 * `<data>` is the data value to be sent, either a string, boolean (true/false) or numerical value (integer or float). This parameter is optional.
-* `<id>` is an additional identifier. `<hc>` can also be used an alternative alias, for example to depict a heating circuit. This parameter is also optional.
+* `<id>` is an additional integer identifier. `"hc":<id>` can also be used an alternative alias, for example to depict a heating circuit. This parameter is also optional.
 
 > [!WARNING]
 > Unlike the Console and MQTT, the Web restful interface does not yet support any security. Which means anyone with the URL can send commands to control the EMS connected devices. If you're worried, all write operations from the Web API can be disabled via the 'Enable WEB API' option in the Settings configuration.
@@ -42,7 +43,7 @@ To see which commands are available on your system, go into the Console and type
 | `info` |  |  | REST API only |
 | `comfort` | `<hot \|eco \| intelligent>` |  |  |
 | `flowtemp` | `<degrees>` |  | Limited to heatingtemp, set by thermostat if present |
-| `wwtemp` | `<degrees>` |  | Only if thermostat does not manage it |
+| `wwsettemp` | `<degrees>` |  | Only if thermostat does not manage it |
 | `boilhyston` | `<degrees>` |  | Start burner below flowtemp (negative value), allowed range depends on boiler type |
 | `boilhystoff` | `<degrees>` |  | Stop burner above flowtemp (positive value), allowed range depends on boiler type |
 | `burnperiod` | `<minutes>` |  |  |
@@ -55,6 +56,8 @@ To see which commands are available on your system, go into the Console and type
 | `wwcircpump` | `<off \| on>` |  |  |
 | `wwcirculation` | `<off \| on>` |  | Overwritten by some thermostats, see thermostat commands |
 | `wwcircmode` | `<n>` |  |  (1=1x3min, .. 6=6x3min, 7=on) |
+| `wwflowtempoffset`| `<degrees>` |  | Offset to boiler temperature while preparing warm water |  
+| `wwmaxpower` | `<%>` |  | Maximum power for warm water heating |
 | `heatingactivated` | `<off \| on>` |  | Not changeable for some systems. i.g. Set by MC10 rotary control |
 | `heatingtemp` | `<degrees>` |  | Upper limit for flowtemp, not changeable for some systems or overwritten (MC10) |
 | `maintenance` | `<off \| <hours> \| <dd.mm.yyyy> \| reset>` |  | set maintenance to date or time or reset message |
@@ -69,10 +72,10 @@ To see which commands are available on your system, go into the Console and type
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
 | `info` |  | `[heating circuit]` | REST API only |
-| `datetime` | `<ntp \| hh:mm:ss-dd.mm.yyyy-dw-dst>` | | `dw`:day of week: 0-mo,.. `dst`:daylight saving 0/1 |
+| `datetime` | `<ntp \| hh:mm:ss-dd.mm.yyyy-dw-dst>` | | RC35, RC100, RC300, `dw`:day of week: 0-mo,.. `dst`:daylight saving 0/1 |
 | `wwmode` | `<off \| on \| auto>` |  | RC100, RC300, RC30, RC35 |
-| `wwtemp` | `<degrees>` |  | RC100, RC300 |
-| `wwtemplow` | `<degrees>` |  | RC100, RC300 |
+| `wwsettemp` | `<degrees>` |  | RC100, RC300 |
+| `wwsettemplow` | `<degrees>` |  | RC100, RC300 |
 | `wwcircmode` | `<off \| on \| auto \| own>` |  | RC30, RC35, RC100, RC300 |
 | `wwonetime` | `<off \| on>` | | RC100, RC300 |
 | `clockoffset` | `<seconds>` |  | RC30 |
@@ -107,8 +110,8 @@ To see which commands are available on your system, go into the Console and type
 | `program` | `<0 - 10 \| 1 - 9 \| 1 - 2>` | heating circuit | RC30, RC35, RC20, RC100, RC300 |
 | `controlmode` | `<room \| outtdoor>` | heating circuit | RC30, RC35, RC100, RC300 |
 | `reducemode` | `<nofrost \| reduce \| room \| outdoor>` | heating circuit | RC30, RC35 |
-| `roomtemp` | `<degrees>` | heating circuit | setting HA-thermostat roomtemp, use `-1` to clear |
-| `switchtime` | `<nn.d.o.hh:mm>` | heating circuit | set one of the programs switch times, nn=number(00-42), d=day(0-6), o=on(0,1), hh:mm=time, d=7 or o=7 clears |
+| `roomtemp` | `<degrees>` | heating circuit | only v2.2: fake HA-thermostat roomtemp, use `-1` to clear |
+| `switchtime` | `<nn.d.o.hh:mm>` | heating circuit | only v3: set one of the programs switch times, nn=number(00-42), d=day(0-6), o=on(0,1), hh:mm=time, d=7 or o=7 clears |
 
 
 ### `mixer`
