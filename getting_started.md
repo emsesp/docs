@@ -3,7 +3,7 @@
 Welcome to EMS-ESP! Follow these steps to get EMS-ESP up and running:
 <br>
 
-- [Build](Building-your-own-test-circuit) or buy an EMS interface board. I highly recommend purchasing a EMS Gateway from BBQKees ([bbqkees-electronics.nl](https://bbqkees-electronics.nl))
+- Purchase an EMS Gateway from BBQKees ([bbqkees-electronics.nl](https://bbqkees-electronics.nl))
 
 - Get an ESP8266 dev board (Wemos D1, Lolin, Nodemcu or equivalent)
   
