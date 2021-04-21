@@ -26,7 +26,7 @@ To see which commands are available on your system, go into the Console and type
 | `settings` |  |  | REST API only |
 | `send` | `"XX XX...XX"` |  | send raw ems-command |
 | `fetch` | |  | fetch ems values from all devices |
-| `publish` | `[ha]` |  | mqtt publish all values and optional HA-configuration |
+| `publish` | `[ha]` |  | mqtt publish all values and optional HA-configuration, v3: also `publish [device]` to publish a single device on demand|
 | `pin` | `<on \|off \| 1 \| 0 \| true \| false>` | `<gpio>` | sets ESP's GPIO pins high/low |
 
 ### `dallassensor`
@@ -40,7 +40,7 @@ To see which commands are available on your system, go into the Console and type
 
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
-| `info` |  |  | REST API only |
+| `info` |  | `[0]` | REST API only, v3: id=0 for short names |
 | `comfort` | `<hot \|eco \| intelligent>` |  |  |
 | `flowtemp` | `<degrees>` |  | Limited to heatingtemp, set by thermostat if present |
 | `wwsettemp` | `<degrees>` |  | Only if thermostat does not manage it |
@@ -71,7 +71,7 @@ To see which commands are available on your system, go into the Console and type
 
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
-| `info` |  | `[heating circuit]` | REST API only |
+| `info` |  | `[0 \| heating circuit]` | REST API only, v3: id=0 for short names |
 | `datetime` | `<ntp \| hh:mm:ss-dd.mm.yyyy-dw-dst>` | | RC35, RC100, RC300, `dw`:day of week: 0-mo,.. `dst`:daylight saving 0/1 |
 | `wwmode` | `<off \| on \| auto>` |  | RC100, RC300, RC30, RC35 |
 | `wwsettemp` | `<degrees>` |  | RC100, RC300 |
@@ -117,14 +117,14 @@ To see which commands are available on your system, go into the Console and type
 ### `mixer`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
-| `info` |  | `[heating circuit]` | REST API only |
+| `info` |  | `[0 \| heating circuit]` | REST API only, v3: id=0 for short names |
 
 ### `solar`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
-| `info` |  |  | REST API only | 
+| `info` |  | `[0]` | REST API only, v3: id=0 for short names  | 
 
 ### `heatpump`
 | command | data | id | comments |
 | ------- | ---- | -- | -------- |
-| `info` |  |  | REST API only | 
+| `info` |  | `[0]` | REST API only, v3: id=0 for short names  | 
