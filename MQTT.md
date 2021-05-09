@@ -8,7 +8,7 @@ All topics are prefixed with the `Base`, which is defaulted to `ems-esp` and can
 When MQTT is enabled EMS-ESP will publish MQTT topics for each device. The frequency can be configured from the Web UI to be either sent when data changes or set to a specific period in seconds. A few important points
 
 * When a value is a boolean it will be rendered according to the Boolean setting you have defined in the settings.
-* The format is the MQTT Format as defined in the settings. Default format is `Nested` which uses a single topic to show multiple entries in the payload. Format `Single` will send each group as single payloads on multiple topics. `Home Assistant` will send additional config topics so HA can pick up the values automatically. 
+* The format is the MQTT Format as defined in the settings. Default format is `Nested` which uses a single topic to show multiple entries in the payload. Format `Single` will send each group as single payloads on multiple topics. `Home Assistant` will send additional config topics so HA can pick up the values automatically.
 
 The table below list the topics being published:
 
@@ -35,173 +35,181 @@ The table below list the topics being published:
 The key's and their description:
 
 ### boiler
-   * `heatingActive` = Heating active
-   * `tapwaterActive` = Warm water/DHW active
-   * `serviceCode` = Service Code
-   * `serviceCodeNumber` = Service code number
-   * `wWSelTemp` = Warm water selected temperature
-   * `wWSetTemp` = Warm water set temperature
-   * `wWDisinfectionTemp` = Warm water disinfection temperature
-   * `selFlowTemp` = Selected flow temperature
-   * `selBurnPow` = Burner selected max power
-   * `curBurnPow` = Burner current power
-   * `heatingPumpMod` = Heating pump modulation
-   * `pumpMod2` = Heating pump modulation
-   * `wWType` = Warm water type
-   * `wWChargeType` = Warm water charging type
-   * `wWCircPump` = Warm water circulation pump available
-   * `wWCircMode` = Warm water circulation pump freq
-   * `wWCirc` = Warm water circulation active
-   * `outdoorTemp` = Outside temperature
-   * `wWCurTemp` = Warm water current temperature (intern)
-   * `wWCurTemp2` = Warm water current temperature (extern)
-   * `wWCurFlow` = Warm water current tap water flow
-   * `curFlowTemp` = Current flow temperature = current flow temperature of water leaving the boiler
-   * `retTemp` = Return temperature
-   * `switchTemp` = Mixer switch temperature
-   * `sysPress` = System pressure
-   * `boilTemp` = Max boiler temperature
-   * `wwStorageTemp1` = Warm water storage temperature (intern)
-   * `wwStorageTemp2` = Warm water storage temperature (extern)
-   * `exhaustTemp` = Exhaust temperature
-   * `wWActivated` = Warm water activated
-   * `wWOneTime` = Warm water one time charging
-   * `wWDisinfecting` = Warm water disinfecting
-   * `wWCharging` = Warm water charging
-   * `wWRecharging` = Warm water recharging
-   * `wWTempOK` = Warm water temperature ok
-   * `wWActive` = Warm water active
-   * `burnGas` = Gas
-   * `flameCurr` = Flame current
-   * `heatingPump` = Heating pump
-   * `fanWork` = Fan
-   * `ignWork` = Ignition
-   * `wWHeat` = Warm water heating
-   * `heatingActivated` = Heating activated
-   * `heatingTemp` = Heating temperature setting on the boiler
-   * `pumpModMax` = Boiler circuit pump modulation max power
-   * `pumpModMin` = Boiler circuit pump modulation min power
-   * `pumpDelay` = Boiler circuit pump delay time
-   * `burnMinPeriod` = Boiler burner min period
-   * `burnMinPower` = Boiler burner min power
-   * `burnMaxPower` = Boiler burner max power
-   * `boilHystOn` = Boiler temperature hysteresis on
-   * `boilHystOff` = Boiler temperature hysteresis off
-   * `setFlowTemp` = Set Flow temperature
-   * `wWSetPumpPower` = Warm water pump set power
-   * `mixerTemp` = Mixer temperature
-   * `tankMiddleTemp` = Tank Middle Temperature (TS3)
-   * `wwBufferBoilerTemperature` = Warm water buffer boiler temperature
-   * `wWStarts` = Warm water # starts
-   * `wWWorkM` = Warm water active time
-   * `setBurnPow` = Boiler burner set power
-   * `burnStarts` = Burner # starts
-   * `upTimeControl` = Operating time control
-   * `upTimeCompHeating` = Operating time compressor heating
-   * `upTimeCompCooling` = Operating time compressor cooling
-   * `upTimeCompWw` = Operating time compressor warm water
-   * `heatingStarts` = Heating starts (control)
-   * `coolingStarts` = Cooling starts (control)
-   * `wWStarts2` = Warm water starts (control)
-   * `nrgConsTotal` = Energy consumption total
-   * `auxElecHeatNrgConsTotal` = Auxiliary electrical heater energy consumption total
-   * `auxElecHeatNrgConsHeating` = Auxiliary electrical heater energy consumption heating
-   * `auxElecHeatNrgConsDHW` = Auxiliary electrical heater energy consumption DHW
-   * `nrgConsCompTotal` = Energy consumption compressor total
-   * `nrgConsCompHeating` = Energy consumption compressor heating
-   * `nrgConsCompWw` = Energy consumption compressor warm water
-   * `nrgConsCompCooling` = Energy consumption compressor total
-   * `nrgSuppTotal` = Energy supplied total
-   * `nrgSuppHeating` = Energy supplied heating
-   * `nrgSuppWw` = Energy supplied warm water
-   * `nrgSuppCooling` = Energy supplied cooling
-   * `maintenanceMessage` = Code for maintenance H03-time, H08-date, etc.
-   * `maintenance` = Type of scheduled maintenance Time in hours or date 
+
+* `heatingActive` = Heating active
+* `tapwaterActive` = Warm water/DHW active
+* `serviceCode` = Service Code
+* `serviceCodeNumber` = Service code number
+* `wWSelTemp` = Warm water selected temperature
+* `wWSetTemp` = Warm water set temperature
+* `wWDisinfectionTemp` = Warm water disinfection temperature
+* `selFlowTemp` = Selected flow temperature
+* `selBurnPow` = Burner selected max power
+* `curBurnPow` = Burner current power
+* `heatingPumpMod` = Heating pump modulation
+* `pumpMod2` = Heating pump modulation
+* `wWType` = Warm water type
+* `wWChargeType` = Warm water charging type
+* `wWCircPump` = Warm water circulation pump available
+* `wWCircMode` = Warm water circulation pump freq
+* `wWCirc` = Warm water circulation active
+* `outdoorTemp` = Outside temperature
+* `wWCurTemp` = Warm water current temperature (intern)
+* `wWCurTemp2` = Warm water current temperature (extern)
+* `wWCurFlow` = Warm water current tap water flow
+* `curFlowTemp` = Current flow temperature = current flow temperature of water leaving the boiler
+* `retTemp` = Return temperature
+* `switchTemp` = Mixer switch temperature
+* `sysPress` = System pressure
+* `boilTemp` = Max boiler temperature
+* `wwStorageTemp1` = Warm water storage temperature (intern)
+* `wwStorageTemp2` = Warm water storage temperature (extern)
+* `exhaustTemp` = Exhaust temperature
+* `wWActivated` = Warm water activated
+* `wWOneTime` = Warm water one time charging
+* `wWDisinfecting` = Warm water disinfecting
+* `wWCharging` = Warm water charging
+* `wWRecharging` = Warm water recharging
+* `wWTempOK` = Warm water temperature ok
+* `wWActive` = Warm water active
+* `burnGas` = Gas
+* `flameCurr` = Flame current
+* `heatingPump` = Heating pump
+* `fanWork` = Fan
+* `ignWork` = Ignition
+* `wWHeat` = Warm water heating
+* `heatingActivated` = Heating activated
+* `heatingTemp` = Heating temperature setting on the boiler
+* `pumpModMax` = Boiler circuit pump modulation max power
+* `pumpModMin` = Boiler circuit pump modulation min power
+* `pumpDelay` = Boiler circuit pump delay time
+* `burnMinPeriod` = Boiler burner min period
+* `burnMinPower` = Boiler burner min power
+* `burnMaxPower` = Boiler burner max power
+* `boilHystOn` = Boiler temperature hysteresis on
+* `boilHystOff` = Boiler temperature hysteresis off
+* `setFlowTemp` = Set Flow temperature
+* `wWSetPumpPower` = Warm water pump set power
+* `mixerTemp` = Mixer temperature
+* `tankMiddleTemp` = Tank Middle Temperature (TS3)
+* `wwBufferBoilerTemperature` = Warm water buffer boiler temperature
+* `wWStarts` = Warm water # starts
+* `wWWorkM` = Warm water active time
+* `setBurnPow` = Boiler burner set power
+* `burnStarts` = Burner # starts
+* `upTimeControl` = Operating time control
+* `upTimeCompHeating` = Operating time compressor heating
+* `upTimeCompCooling` = Operating time compressor cooling
+* `upTimeCompWw` = Operating time compressor warm water
+* `heatingStarts` = Heating starts (control)
+* `coolingStarts` = Cooling starts (control)
+* `wWStarts2` = Warm water starts (control)
+* `nrgConsTotal` = Energy consumption total
+* `auxElecHeatNrgConsTotal` = Auxiliary electrical heater energy consumption total
+* `auxElecHeatNrgConsHeating` = Auxiliary electrical heater energy consumption heating
+* `auxElecHeatNrgConsDHW` = Auxiliary electrical heater energy consumption DHW
+* `nrgConsCompTotal` = Energy consumption compressor total
+* `nrgConsCompHeating` = Energy consumption compressor heating
+* `nrgConsCompWw` = Energy consumption compressor warm water
+* `nrgConsCompCooling` = Energy consumption compressor total
+* `nrgSuppTotal` = Energy supplied total
+* `nrgSuppHeating` = Energy supplied heating
+* `nrgSuppWw` = Energy supplied warm water
+* `nrgSuppCooling` = Energy supplied cooling
+* `maintenanceMessage` = Code for maintenance H03-time, H08-date, etc.
+* `maintenance` = Type of scheduled maintenance Time in hours or date
 
 ### solar
-   * `collectorTemp` = Collector temperature (TS1)
-   * `tankBottomTemp` = Tank bottom temperature (TS2)
-   * `tank2BottomTemp` = Second Tank bottom temperature (TS5)
-   * `heatExchangerTemp` = Heat exchanger temperature (TS6)
-   * `solarPumpModulation` = Solar pump modulation (PS1)
-   * `cylinderPumpModulation` = Cylinder pump modulation (PS5)
-   * `pumpWorkTime` = Pump working time (min)
-   * `pumpWorkTimeText` = Pump working time as Text
-   * `energyLastHour` = Energy last hour
-   * `energyToday` = Energy today
-   * `energyTotal` = Energy total
-   * `solarPump` = Solar Pump (PS1) active
-   * `valveStatus` = Valve status
-   * `tankHeated` = Tank heated
-   * `collectorShutdown` = solarPump shutdown when tankBottomTemp reached tankBottomMaxTemp
-   * `tankBottomMaxTemp` = Maximum tankBottomTemp temperature setting
-   * `collectorMaxTemp` = Maximum collector temperature setting
-   * `collectorMinTemp` = Minimum collector temperature setting
+
+* `collectorTemp` = Collector temperature (TS1)
+* `tankBottomTemp` = Tank bottom temperature (TS2)
+* `tank2BottomTemp` = Second Tank bottom temperature (TS5)
+* `heatExchangerTemp` = Heat exchanger temperature (TS6)
+* `solarPumpModulation` = Solar pump modulation (PS1)
+* `cylinderPumpModulation` = Cylinder pump modulation (PS5)
+* `pumpWorkTime` = Pump working time (min)
+* `pumpWorkTimeText` = Pump working time as Text
+* `energyLastHour` = Energy last hour
+* `energyToday` = Energy today
+* `energyTotal` = Energy total
+* `solarPump` = Solar Pump (PS1) active
+* `valveStatus` = Valve status
+* `tankHeated` = Tank heated
+* `collectorShutdown` = solarPump shutdown when tankBottomTemp reached tankBottomMaxTemp
+* `tankBottomMaxTemp` = Maximum tankBottomTemp temperature setting
+* `collectorMaxTemp` = Maximum collector temperature setting
+* `collectorMinTemp` = Minimum collector temperature setting
 
 ### mixer
-   * `wWTemp` = Current warm water temperature
-   * `pumpStatus` = Current pump status
-   * `tempStatus` = Current temperature status
-   * `flowTemp` = Current flow temperature
-   * `flowSetTemp` = Setpoint flow temperature
-   * `valveStatus` = Valve position in %
+
+* `wWTemp` = Current warm water temperature
+* `pumpStatus` = Current pump status
+* `tempStatus` = Current temperature status
+* `flowTemp` = Current flow temperature
+* `flowSetTemp` = Setpoint flow temperature
+* `valveStatus` = Valve position in %
 
 ### heatpump
-   * `airHumidity` = Relative air humidity
-   * `dewTemperature` = Dew temperature point
+
+* `airHumidity` = Relative air humidity
+* `dewTemperature` = Dew temperature point
 
 ### thermostat
-   * `datetime` = Date & Time
-   * `display` = Display (RC30 only)
-   * `language` = Language (RC30 only)
-   * `offsetclock` = Offset clock (RC30 only)
-   * `dampedoutdoortemp` = Damped outdoor temperature = the thermostat damps changes to the actual outside temperature to mirror the thermal mass of the building. Building Type setting changes the time constant of the damping
-   * `inttemp1` = Temperature sensor 1
-   * `inttemp2` = Temperature sensor 2
-   * `intoffset` = Offset int. temperature sensor
-   * `minexttemp` = Min ext. temperature
-   * `building` = Building type (light,medium, heavy)
-   * `wwmode` = Warm water mode
-   * `wwtemp` = Warm water upper temperature
-   * `wwtemplow` = Warm water lower temperature
-   * `wwextra1` = Onetime for circuit 1 started
-   * `wwcircmode` = Warm Water circulation mode
-   * `floordry` = Floordrying started
-   * `floordrytemp`=  Temperature for floordrying
+
+* `datetime` = Date & Time
+* `display` = Display (RC30 only)
+* `language` = Language (RC30 only)
+* `offsetclock` = Offset clock (RC30 only)
+* `dampedoutdoortemp` = Damped outdoor temperature = the thermostat damps changes to the actual outside temperature to mirror the thermal mass of the building. Building Type setting changes the time constant of the damping
+* `inttemp1` = Temperature sensor 1
+* `inttemp2` = Temperature sensor 2
+* `intoffset` = Offset int. temperature sensor
+* `minexttemp` = Min ext. temperature
+* `building` = Building type (light,medium, heavy)
+* `wwmode` = Warm water mode
+* `wwtemp` = Warm water upper temperature
+* `wwtemplow` = Warm water lower temperature
+* `wwextra1` = Onetime for circuit 1 started
+* `wwcircmode` = Warm Water circulation mode
+* `floordry` = Floordrying started
+* `floordrytemp`=  Temperature for floordrying
 
 *per thermostat heating circuit*:
-   * `seltemp` = Setpoint room temperature
-   * `currtemp` = Current room temperature
-   * `heattemp` = Heat temperature
-   * `comforttemp` = Comfort temperature
-   * `daytemp` = Day temperature
-   * `ecotemp` = Eco temperature
-   * `nighttemp` = Night temperature
-   * `manualtemp` = Manual temperature
-   * `holidaytemp` = Holiday temperature
-   * `nofrosttemp` = Nofrost temperature
-   * `heatingtype` = underfloor, radiator etc.
-   * `targetflowtemp` = Target flow temperature = flow temperature calculated by the thermostat as required to get the target room temperature given current conditions (usually a combination of heat curve and external temp and, possibly, current room temp)
-   * `offsettemp` = Offset temperature, heating curve at roomtemperature
-   * `designtemp` = Design temperature, heating curve at minexttemp
-   * `roominfluence` = Influence of roomtemperature in outdoorcontrolled circuits 
-   * `flowtempoffset` = Offset for boiler in mixed circuits
-   * `minflowtemp` = Flowtemperature lower limit
-   * `maxflowtemp` = Flowtemperature upper limit
-   * `summertemp` = Summer temperature
-   * `summermode` = Summer mode
-   * `reducemode` = How temperature is set in night/eco mode: 
-   * `program` = timer program selection
-   * `controlmode` = thermostat control by outdoortemperature or roomtemperature
-   * `mode` = Mode
-   * `modetype` = Mode type
+
+* `seltemp` = Setpoint room temperature
+* `currtemp` = Current room temperature
+* `heattemp` = Heat temperature
+* `comforttemp` = Comfort temperature
+* `daytemp` = Day temperature
+* `ecotemp` = Eco temperature
+* `nighttemp` = Night temperature
+* `manualtemp` = Manual temperature
+* `holidaytemp` = Holiday temperature
+* `nofrosttemp` = Nofrost temperature
+* `heatingtype` = underfloor, radiator etc.
+* `targetflowtemp` = Target flow temperature = flow temperature calculated by the thermostat as required to get the target room temperature given current conditions (usually a combination of heat curve and external temp and, possibly, current room temp)
+* `offsettemp` = Offset temperature, heating curve at roomtemperature
+* `designtemp` = Design temperature, heating curve at minexttemp
+* `roominfluence` = Influence of roomtemperature in outdoorcontrolled circuits
+* `flowtempoffset` = Offset for boiler in mixed circuits
+* `minflowtemp` = Flowtemperature lower limit
+* `maxflowtemp` = Flowtemperature upper limit
+* `summertemp` = Summer temperature
+* `summermode` = Summer mode
+* `reducemode` = How temperature is set in night/eco mode:
+* `program` = timer program selection
+* `controlmode` = thermostat control by outdoortemperature or roomtemperature
+* `mode` = Mode
+* `modetype` = Mode type
 
 ## Sending Commands
 
 EMS-ESP will subscribe to specific topics depending on the EMS devices attached. For example `boiler`, `thermostat` etc. Commands can be sent to EMS-ESP via these topics using the payload format:
+
 ```json
 {"cmd":"<cmd>", "data":<data>, "id":<n>}
 ```
+
 where
 
 * `cmd` is one of the commands listed in the [Commands](API) and ***must*** be enclosed in quotes.

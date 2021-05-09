@@ -2,9 +2,9 @@ Packages are streamed to the EMS "bus" from any other compatible connected devic
 
 A package can be a single byte (see Polling below) or a string of 6 or more bytes making up an actual data telegram. A telegram for the EMS 1.0 is always in the format:
 
-``[src] [dest] [type] [offset] [data] [crc] <BRK>``
+`[src] [dest] [type] [offset] [data] [crc] <BRK>`
 
-The first 4 bytes is referenced as the *header* in this document.
+The first 4 bytes is referenced as the _header_ in this document.
 
 ### EMS IDs
 

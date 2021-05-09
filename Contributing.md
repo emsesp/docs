@@ -1,4 +1,3 @@
-
 ## Semantic Commit Messages
 
 Format: `<type>(<scope>): <subject>`
@@ -28,7 +27,7 @@ More Examples:
 
 References:
 
-- https://www.conventionalcommits.org/
+- <https://www.conventionalcommits.org/>
 
 ## Creating Releases
 
@@ -40,5 +39,5 @@ To create an final build version, follow these steps to create a tagged release
 - git merge with origin/dev
 - update the `version.h`
 - update the `CHANGELOG.md`
-- `git tag -f v2.2.1`  (for example)
+- `git tag -f v2.2.1` (for example)
 - `git push --tags -f`

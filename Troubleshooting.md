@@ -16,7 +16,7 @@ If you have EMS devices that may not yet be supported by EMS-ESP then use `scan 
 
 e.g.
 
-```
+```sh
 ems-esp:/$ su
 Password:
 000+00:01:38.291 N 0: [shell] Admin session opened on console
@@ -30,6 +30,7 @@ If you want to see the EMS data streaming in, use the `watch` command. See [Cons
 ### MQTT is not stable
 
 If you're noticing that MQTT messages are failing to arrive at the broker try:
+
 - First make sure you have set the correct `MQTT Format` in the MQTT Settings page in the Web UI
 - in Console, set logging to debug (`log debug`), `su` and `publish`. Watch the screen for errors (see "Monitoring the MQTT queues" in the [MQTT](MQTT.md))
 - increase the Publish Time. Perhaps there are too many messages and it is flooding the queue
@@ -38,11 +39,13 @@ If you're noticing that MQTT messages are failing to arrive at the broker try:
 ### Commands via MQTT are not working
 
 Use the Console to manually test the commands, with logging on. For example if changing the thermostat temperature is not working try
-```
+
+```sh
 ems-esp:/$ su
 ems-esp:/# log debug
 ems-esp:/# call thermostat temp 15
 ```
+
 You should see a log statement pop in the console like `[thermostat] Setting thermostat temperature to 15.0 for heating circuit 1, mode auto` followed by which telegrams are being sent. If you see errors then reach out on Discord or create a GitHub issue to get [Support](Support.md).
 
 ### Settings are not saved and lost after restart
@@ -58,14 +61,17 @@ Also watch out for available free memory. If this drops to < 8kb (30%) EMS-ESP w
 ### EMS-ESP is showing incorrect values from a specific device
 
 If you notice that certain values are displayed incorrectly, either in the Web UI, Console or MQTT then please help us correct this by logging a GitHub issue, along with the expected value. When asked to provide debug information, go the Telnet console and do
-```
+
+```sh
 % su
 % log trace
 ```
+
 and then either a `read` or `watch`, e.g. `read 21 2D8` to show all the data from HC2 on a Mixing MM100.
 
 ### EMS-ESP is showing CRC-errors
 
 EMS-messages are sended and repeated often, a few crc-errors doesn't harm. The bad signal can be caused by mainly 2 factors:
-- powering: try to power ems-esp by usb or service-jack. 
+
+- powering: try to power ems-esp by usb or service-jack.
 - disruptions on the bus (emc, reflections, etc): try to connect ems-esp to another device on the bus. In general a previously unconnected bus-out on a devices like MM100 is better than a split connection on an already used connector.

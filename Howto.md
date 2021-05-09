@@ -1,11 +1,13 @@
 ### Contributing to EMS-ESP
 
-*Any contribution helps make EMS-ESP better*. This project needs help with:
+_Any contribution helps make EMS-ESP better_. This project needs help with:
+
 - guides for integrating into home automation systems
 - testing with various types of EMS devices (boilers, thermostats, solar, heap pumps etc) to build up our supported database
-- Expand the documentation with more details, fixing spelling mistakes and other inaccuracies you may find. If you spot an error in an article use the *Improve this article* link at the top of the page to correct it. Note you will need a GitHub account. Make the change, click on "Propose file change" and "Create pull request".
+- Expand the documentation with more details, fixing spelling mistakes and other inaccuracies you may find. If you spot an error in an article use the _Improve this article_ link at the top of the page to correct it. Note you will need a GitHub account. Make the change, click on "Propose file change" and "Create pull request".
 
--------
+---
+
 Below is a collection of useful tips, tricks and code submitted by the community:
 
 ### 1) Controlling boiler heating (by @Oderik)

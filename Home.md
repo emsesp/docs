@@ -11,6 +11,7 @@
 <!-- tabs:start -->
 
 #### **Version 3.0 for the ESP32**
+
 **February 2021**
 
 We've come to the limit of the poor ESP8266 chip and without excessive hacking can't really add any more features. Version 2.2 will be the last major version and only smaller fixes and improvements will be made in subsequent 2.2.x versions.
@@ -20,11 +21,13 @@ Version 3.0 is optimized for the ESP32 range of microcontrollers.
 You can find the latest ESP32 builds [here](https://github.com/emsesp/EMS-ESP32/releases/tag/latest).
 
 #### **Version 2.2 for the ESP8266**
+
 **December 2020**
 
 More features, more fixes, more support for devices. Check out the full release notes at https://github.com/emsesp/EMS-ESP/releases
 
 #### **Version 2.1 **
+
 **October 2020**
 
 Version 2.1 is the first major update on 2.0 with the following new features:
@@ -35,6 +38,7 @@ Version 2.1 is the first major update on 2.0 with the following new features:
 - many bug fixes and usability improvements in the web UI
 
 #### **Version 2.0 **
+
 **September 2020**
 
 Version 2 is out with many new cool things and improvements:
@@ -54,7 +58,7 @@ Thanks to all the contributors and testers for providing feedback.
 #### **Version 1.9.5**
 
 Version 1.9 is no longer being maintained. It's recommended that users upgrade to version 2 to get the latest support.
- 
+
 <!-- tabs:end -->
 
 > [!WARNING|style:flat|label:DISCLAIMER]

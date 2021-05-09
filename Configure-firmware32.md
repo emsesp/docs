@@ -1,14 +1,13 @@
-
 ## First-time configuration
 
 - After powering up the ESP, watch the onboard blue LED. A solid light means good connection and EMS data is coming in. A slow pulse means either the WiFi or the EMS bus is not connected yet. A very fast pulse is when the system is booting up and configuring itself which typically takes 5 seconds.
-- Connect to the Access Point called `ems-esp` using the WPA password `ems-esp-neo`. When you see the captive portal sign-in with username `admin` and password `admin`. Set the WiFi credentials and go back to http://ems-esp. Remember to change the passwords!
+- Connect to the Access Point called `ems-esp` using the WPA password `ems-esp-neo`. When you see the captive portal sign-in with username `admin` and password `admin`. Set the WiFi credentials and go back to <http://ems-esp>. Remember to change the passwords!
 - First thing to check is if Tx is working and that you have a connection to the EMS bus. If Tx fails are shown in the Web interface try changing the Tx Mode from the settings page. There is no need to re-start the EMS-ESP.
 - If Rx incomplete telegrams are reported in the Web interface, don't panic. Some telegrams can be missed and this is usually caused by noise interference on the line.
 
 ## EMS-ESP Settings
 
-Use the Web UI (http://ems-esp) to further configure the settings. In the `Settings` section you'll find:
+Use the Web UI (<http://ems-esp>) to further configure the settings. In the `Settings` section you'll find:
 
 #### EMS Bus
 
@@ -35,7 +34,7 @@ Use the Web UI (http://ems-esp) to further configure the settings. In the `Setti
 - **Invert LED**. Select this if you want to disable the LED during normal operation or if your ESP board has it's HIGH and LOW inverted.
 - **Shower Timer**. Enable to time how long the hot water runs for and it will send out an MQTT message with the duration. The timer starts after a minimal of 2 minutes running time.
 - **Enable API write commands**. When set EMS-ESP will allow write commands via the RESTful api. When disabled only read operations are allowed (e.g. `http://ems-esp/api?device=boiler&cmd=info`).
-- **Enable ADC**. This enables analog GPIO (A0) on the ESP for attaching analog sensors, value is in mV and published in heartbeat every minute. 
+- **Enable ADC**. This enables analog GPIO (A0) on the ESP for attaching analog sensors, value is in mV and published in heartbeat every minute.
 
 #### Syslog
 

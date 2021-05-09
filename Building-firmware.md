@@ -4,19 +4,22 @@ These steps show how to build the firmware using PlatformIO.
 2. Make sure PlatformIO is updated (`pio upgrade`, `pio update`)
 3. Decide how you want to upload the firmware, via USB or OTA (Over The Air). OTA requires that a version of EMS-ESP is already running.
 4. Create a new file called `pio_local.ini` and add these lines for USB:
-```
+
+```yaml
 [env]
 upload_protocol = esptool
 upload_port = <COM PORT> <--- replace with the serial com port
 ```
+
 or these for OTA:
-```
+
+```yaml
 [env]
 upload_protocol = espota
-upload_flags = 
+upload_flags =
    --port=8266
    --auth=ems-esp-neo
 upload_port = ems-esp.local
 ```
-3. Type `pio run -t upload` to build and upload the firmware
-   
+
+5. Type `pio run -t upload` to build and upload the firmware

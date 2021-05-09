@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "format": "prettier --write '**/*.{ts,js,css,json,md}'"
+  },
   "dependencies": {
-    "docsify-cli": "^4.4.3"
+    "docsify-cli": "^4.4.3",
+    "prettier": "^2.0.5"
   }
 }

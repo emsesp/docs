@@ -1,4 +1,5 @@
 # EMS-ESP Documentation
+
 This is the official documentation for EMS-ESP.
 
 ## Testing locally
@@ -14,11 +15,15 @@ docsify serve .
 Use normal markdown syntax with some enhancements, see below.
 
 ### Disable click on zoom for an image
+
 Images support click on zoom function. If you don't want to use it:
+
 ```
 ![](image.png ":no-zoom")
 ```
+
 ### Image resizing
+
 Due to click on zoom you can directly link to a big image but make it render smaller on the page:
 
 ```
@@ -38,20 +43,15 @@ Blockquotes `>` can now look even fancier:
 
 !> = `!>`
 
-> [!TIP]
-> `> [!TIP]`
+> [!TIP] > `> [!TIP]`
 
-> [!DANGER]
-> `> [!DANGER]`
+> [!DANGER] > `> [!DANGER]`
 
-> [!NOTE]
-> `> [!NOTE]`
+> [!NOTE] > `> [!NOTE]`
 
-> [!EXAMPLE]
-> `> [!EXAMPLE]`
+> [!EXAMPLE] > `> [!EXAMPLE]`
 
-> [!DANGER|style:flat]
-> `> [!DANGER|style:flat]`
+> [!DANGER|style:flat] > `> [!DANGER|style:flat]`
 
 ### Creating Tabs
 

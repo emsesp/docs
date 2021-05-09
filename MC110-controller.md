@@ -1,13 +1,13 @@
 The various types from newer EMS+ controllers like the MC110 found in GB122/125's.
 
-In the schema below the first number represent the byte position, so 1 being the first byte of the message block (which is the 5th byte of an EMS 1.0 telegram). 
+In the schema below the first number represent the byte position, so 1 being the first byte of the message block (which is the 5th byte of an EMS 1.0 telegram).
 
 This information was compiled with most if it coming from https://github.com/Th3M3/buderus_ems-wiki.
-Some positions has changed due to user feedback. Positions as offset, counting from 0.  
+Some positions has changed due to user feedback. Positions as offset, counting from 0.
 
 ## Type 0xD1: UBAOutdoorTemp
 
-Sent every minute. The first 2 bytes is a short value * 10
+Sent every minute. The first 2 bytes is a short value \* 10
 
 ```
 0 - 1 = outdoor temp, short value * 10
@@ -95,7 +95,7 @@ Sent every 60 seconds
 25 = Heating circuit pump modulation %
 ```
 
-## Type 0xE6: UBA Paramter 
+## Type 0xE6: UBA Paramter
 
 ```
 0 = heating activated
@@ -108,7 +108,7 @@ Sent every 60 seconds
 ```
 
 ## Type 0xE9: DHW status
-  
+
 Sent every 10 seconds
 
 ```
@@ -117,7 +117,7 @@ Sent every 10 seconds
 3 - 4 = hot water 2 actual value * 10
 9 = setpoint thermal disinfection
 10 = setpoint daily heating temperature
-12 = 
+12 =
  bit 0 : DHW preparation activated by automatic program
  bit 2 : DHW preparation activated by one-time charge
  bit 3 : DHW preparation activated by thermal disinfection
@@ -135,7 +135,7 @@ Sent every 10 seconds
 ```
 
 ## Type 0xEA: DHW settings
-  
+
 ```
 5 = DHW activated
 10 = circulation pump installed

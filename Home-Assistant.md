@@ -1,6 +1,7 @@
 ![logo](_media/logo/home-assistant.png ':size=100')
 
 EMS-ESP has automatic integration with Home Assistant via the [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/) protocol. To use this feature make sure in EMS-ESP that MQTT is enabled and the `MQTT Format` setting is set to "`Home Assistant`". Also ensure your Home Assistant configuration is setup correctly to use the prefix "homeassistant".
+
 ```yaml
 # Example configuration.yaml entry
 mqtt:
@@ -10,7 +11,7 @@ mqtt:
 
 EMS-ESP will create retained MQTT messages prefixed with `homeassistant/` for each device and their values (called entities). For example "`EMS-ESP Thermostat`". You can view which ones have been created by going into Home Assistant's `Configuration->Integrations` and select the devices under `MQTT`.
 
-To add this device and its values to a Home Assistant UI click on the "ADD TO LOVELACE" button. 
+To add this device and its values to a Home Assistant UI click on the "ADD TO LOVELACE" button.
 
 ![device](_media/ha_device.PNG ':size=100%')
 
@@ -35,7 +36,7 @@ entities:
     type: attribute
     attribute: rssi
     name: RSSI
-    suffix : '%'
+    suffix: '%'
     icon: 'mdi:wifi'
   - entity: sensor.ems_esp_status
     type: attribute
@@ -69,10 +70,10 @@ Below is an example using a trigger to notify when a shower has finished. This w
     platform: state
     entity_id: sensor.last_shower_duration
   action:
-  - service: notify.admin_notify
-    data:
-      title: Shower finished at {{states.sensor.time.state}}
-      message: "{{ states.sensor.last_shower_duration.state }}"
+    - service: notify.admin_notify
+      data:
+        title: Shower finished at {{states.sensor.time.state}}
+        message: '{{ states.sensor.last_shower_duration.state }}'
 ```
 
 and get notified when the thermostat is adjusted:
@@ -85,10 +86,10 @@ and get notified when the thermostat is adjusted:
     platform: state
     entity_id: sensor.current_set_temperature
   action:
-  - service: notify.admin_notify
-    data:
-      title: Thermostat alert
-      message: "Temperature set to {{states.sensor.current_set_temperature.state}} degrees"   
+    - service: notify.admin_notify
+      data:
+        title: Thermostat alert
+        message: 'Temperature set to {{states.sensor.current_set_temperature.state}} degrees'
 ```
 
 ## Example: Activating one-time hot water charging DHW once
@@ -96,33 +97,35 @@ and get notified when the thermostat is adjusted:
 Below is an example of calling a command (OneTimeWater)
 
 `switch`:
+
 ```yaml
-      one_time_water:
-        friendly_name: OneTimeWater
-        value_template: "{{ is_state('sensor.one_time_water', 'on') }}"
-        turn_on:
-          service: script.turn_on
-          entity_id: script.one_time_water_on
-        turn_off:
-          service: script.turn_on
-          entity_id: script.one_time_water_off
+one_time_water:
+  friendly_name: OneTimeWater
+  value_template: "{{ is_state('sensor.one_time_water', 'on') }}"
+  turn_on:
+    service: script.turn_on
+    entity_id: script.one_time_water_on
+  turn_off:
+    service: script.turn_on
+    entity_id: script.one_time_water_off
 ```
 
 `scripts`:
+
 ```yaml
-  one_time_water_on:
-    sequence:
-      - service: mqtt.publish
-        data:
-          topic: 'ems-esp/boiler'
-          payload: '{"cmd":"wwonetime","data":1}'
-          
-  one_time_water_off:
-    sequence:
-      - service: mqtt.publish
-        data:
-          topic: 'ems-esp/boiler'
-          payload: '{"cmd":"wwonetime","data":0}'
+one_time_water_on:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: 'ems-esp/boiler'
+        payload: '{"cmd":"wwonetime","data":1}'
+
+one_time_water_off:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: 'ems-esp/boiler'
+        payload: '{"cmd":"wwonetime","data":0}'
 ```
 
 ## Example: Calculating values
@@ -133,7 +136,7 @@ Below is an example of calling a command (OneTimeWater)
 - platform: template
   sensors:
     differential:
-      friendly_name: "Flow-Ret diff"
+      friendly_name: 'Flow-Ret diff'
       unit_of_measurement: '°C'
       icon_template: 'mdi:format-align-middle'
       value_template: "{{ (states('sensor.flow_temperature') | float - states('sensor.return_temp') | float) | round(1) }}"
@@ -153,8 +156,8 @@ Below is an example of calling a command (OneTimeWater)
     {% set hours = ((mins | int / 60) | string).split('.')[0] %}
     {{hours}}
   qos: 1
-  payload_available: "online"
-  payload_not_available: "offline"
+  payload_available: 'online'
+  payload_not_available: 'offline'
 ```
 
 ## Example: Using HA's climate component to control Boiler temperatures
@@ -165,23 +168,23 @@ Below is an example of calling a command (OneTimeWater)
 - platform: mqtt
   name: Warm Water
   modes:
-    - "auto"
-    - "off"
+    - 'auto'
+    - 'off'
   min_temp: 40
   max_temp: 60
   temp_step: 1
-  
-  current_temperature_topic: "ems-esp/boiler_data_ww"
-  temperature_state_topic: "ems-esp/boiler_data_ww"
-  mode_state_topic: "ems-esp/boiler_data_ww"
 
-  current_temperature_template: "{{ value_json.wWCurTemp }}"
-  temperature_state_template: "{{ value_json.wWSelTemp }}"
+  current_temperature_topic: 'ems-esp/boiler_data_ww'
+  temperature_state_topic: 'ems-esp/boiler_data_ww'
+  mode_state_topic: 'ems-esp/boiler_data_ww'
+
+  current_temperature_template: '{{ value_json.wWCurTemp }}'
+  temperature_state_template: '{{ value_json.wWSelTemp }}'
   mode_state_template: "{% if value_json.wWActivated == 'off' %} off {% else %} auto {% endif %}"
 
-  temperature_command_topic: "ems-esp/boiler"
-  mode_command_topic: "ems-esp/boiler"
-  ```
+  temperature_command_topic: 'ems-esp/boiler'
+  mode_command_topic: 'ems-esp/boiler'
+```
 
 ## Example: Using HA's climate component to control Boiler temperatures, switch Boiler on/off and set the comfort mode
 
@@ -191,35 +194,35 @@ Below is an example of calling a command (OneTimeWater)
   min_temp: 40
   max_temp: 70
   temp_step: 1
-  current_temperature_topic: "ems-esp/boiler_data_ww"
-  temperature_state_topic: "ems-esp/boiler_data_ww"
-  temperature_command_topic: "ems-esp/boiler"
+  current_temperature_topic: 'ems-esp/boiler_data_ww'
+  temperature_state_topic: 'ems-esp/boiler_data_ww'
+  temperature_command_topic: 'ems-esp/boiler'
   temperature_command_template: >
-            {{ '{"cmd":"wwtemp","data":'}}
-            {{ value }}
-            {{ '}'}}
-  current_temperature_template: "{{ value_json.wWCurTemp }}"
-  temperature_state_template: "{{ value_json.wWSelTemp }}"
+    {{ '{"cmd":"wwtemp","data":'}}
+    {{ value }}
+    {{ '}'}}
+  current_temperature_template: '{{ value_json.wWCurTemp }}'
+  temperature_state_template: '{{ value_json.wWSelTemp }}'
   mode_state_template: "{% if value_json.wWActivated == 'off' %} off {% else %} heat {% endif %}"
-  mode_state_topic: "ems-esp/boiler_data_ww"
-  mode_command_topic: "ems-esp/boiler"
+  mode_state_topic: 'ems-esp/boiler_data_ww'
+  mode_command_topic: 'ems-esp/boiler'
   mode_command_template: >
-            {{ '{"cmd":"wwactivated","data":"'}}
-            {%- if value == 'off' -%}off{% else %}on{%- endif -%}
-            {{'"}'}}  
+    {{ '{"cmd":"wwactivated","data":"'}}
+    {%- if value == 'off' -%}off{% else %}on{%- endif -%}
+    {{'"}'}}
   modes:
-    - "heat"
-    - "off"
+    - 'heat'
+    - 'off'
   # use fan mode as proxy to set comfort mode
-  fan_mode_command_topic: "ems-esp/boiler"
+  fan_mode_command_topic: 'ems-esp/boiler'
   fan_mode_command_template: >
-            {{ '{"cmd":"comfort","data":"'}}
-            {%- if value == 'Eco' -%}eco{%-elif value == 'Hot' -%}hot{%- else -%}intelligent{%- endif -%}
-            {{'"}'}}  
-  fan_mode_state_topic: "ems-esp/boiler_data_ww"
+    {{ '{"cmd":"comfort","data":"'}}
+    {%- if value == 'Eco' -%}eco{%-elif value == 'Hot' -%}hot{%- else -%}intelligent{%- endif -%}
+    {{'"}'}}
+  fan_mode_state_topic: 'ems-esp/boiler_data_ww'
   fan_mode_state_template: '{{ value_json.wWComfort }}'
   fan_modes:
-    - "Eco"
-    - "Hot"
-    - "Intelligent"
+    - 'Eco'
+    - 'Hot'
+    - 'Intelligent'
 ```
