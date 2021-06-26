@@ -71,8 +71,8 @@ OpenAPI is an open standard specification for describing REST APIs. From the [Op
 ## System Endpoints
 
 | Method   | Endpoint           | Description                         | Access Token required | JSON body data                       |
-| -------- | ------------------ | ----------------------------------- | --------------------- | ------------------------------------ | --- |
-| GET      | `/system/info`     | list system information             |                       |                                      |     |
+| -------- | ------------------ | ----------------------------------- | --------------------- | ------------------------------------ |
+| GET      | `/system/info`     | list system information             |                       |                                      |
 | GET      | `/system/settings` | list all settings, except passwords |                       |
 | GET      | `/system/commands` | list all commands                   |                       |
 | POST/PUT | `/system/pin`      | switch a GPIO state to HIGH or LOW  | x                     | `{ "id":<gpio>, "value":<boolean> }` |
@@ -85,10 +85,10 @@ OpenAPI is an open standard specification for describing REST APIs. From the [Op
 ### From command line
 
 ```bash
-# GETS do not need authentication
+# GETs do not need authentication
 % curl http://ems-esp.local/api/thermostat/temp
 
-# POSTS (with -d) need authentication tokens
+# POSTs (with -d) need authentication tokens
 % curl http://ems-esp.local/api/thermostat/temp \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0' \
