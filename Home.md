@@ -10,15 +10,13 @@
 
 <!-- tabs:start -->
 
-#### **Version 3.0 for the ESP32**
+#### **Version 3 for the ESP32**
 
 **February 2021**
 
-We've come to the limit of the poor ESP8266 chip and without excessive hacking can't really add any more features. Version 2.2 will be the last major version and only smaller fixes and improvements will be made in subsequent 2.2.x versions.
+It looks like EMS-ESP has hit the physical limits of the ESP8266 in terms of CPU power and memory. To that end version 3 was created specifically using the ESP32 microcontroller architecture and will continue on as the main stream for all future developments. The ESP8266 can be easily swapped out for an ESP32 and compatible dev boards can be found for less than 5 euros.
 
-Version 3.0 is optimized for the ESP32 range of microcontrollers.
-
-You can find the latest ESP32 builds [here](https://github.com/emsesp/EMS-ESP32/releases/tag/latest).
+The good news is that with the dual CPU support and extended memory I was able to pack in many new features. Check out the [GitHub project page](https://github.com/emsesp/EMS-ESP32/blob/main/README.md) for a full list and grab the build from [here](https://github.com/emsesp/EMS-ESP32/releases/tag/latest).
 
 #### **Version 2.2 for the ESP8266**
 
