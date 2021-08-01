@@ -95,7 +95,7 @@ Sent every 60 seconds
 25 = Heating circuit pump modulation %
 ```
 
-## Type 0xE6: UBA Paramter
+## Type 0xE6: UBA Parameter
 
 ```
 0 = heating activated

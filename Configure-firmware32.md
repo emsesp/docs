@@ -12,13 +12,13 @@ Use the Web UI (<http://ems-esp>) to further configure the settings. In the `Set
 ### EMS Bus
 
 - **Tx Mode**. Choose the mode that works best for your system and watch for Tx errors in the Web Dashboard and `show ems` in the Console. Changing the value has immediate effect.
-  - `Off` prevents sending telegrans to the EMS bus, disabling Tx.
+  - `Off` prevents sending telegrams to the EMS bus, disabling Tx.
   - `Default` is the default for EMS1.0 systems but also compatible with most other bus protocols.
   - `EMS+` is designed to work better for EMS2.0/EMS+ systems.
   - `HT3` for Heatronics3 used primarily by Junkers.
   - `Hardware` uses the internal ESP's hardware to send out the telegram. Telegrams are sent immediately. It is the fastest and most efficient method but works only on some systems.
 - **Bus ID**. The EMS-ESP can simulate one of 5 devices. Stick to the `Service Key (0x0B)` unless using multiple EMS gateways or interfaces.
-- **Tx delayed start** - Puts in a delay before EMS-ESP starts transmitting data. Default is 0. Use a value between 30 and 60 if a KM200 is present to avoid conflicts after the boiler is powered on.
+- **Tx start delay** - Puts in a delay before EMS-ESP starts transmitting data. Use a value between 30 and 60 seconds if a gateway like the KM200 is present to avoid conflicts after the boiler is powered on. Note no data will be received by EMS-ESP during this period so unless you have conflicts with other EMS devices (like a Bosch KM200) leave this at the default value of 0.
 
 ### Board Profile
 
@@ -26,7 +26,7 @@ Use the Web UI (<http://ems-esp>) to further configure the settings. In the `Set
 - Select `Custom` to see the assigned GPIO pins.
   - **Rx** - Which pin the Rx is assigned to. It can be any pin.
   - **Tx** - Which pin the Tx is assigned to. It can be any pin.
-  - **Button**. Set a pin with pullup. The button is used for different functions, such as holding for 10 seconds to reset to factory settings.
+  - **Button**. Set a pin with pull-up. The button is used for different functions, such as holding for 10 seconds to reset to factory settings.
   - **Dallas**. This is the pin where any external temperature sensors are attached. The Dallas chips DS1822, DS18S20, DS18B20, DS1825 are supported including their parasite varieties and can also be daisy-chained onto a single line, up to 100 sensors.
   - **LED**. This is the pin for the LED, defaulted to the onboard LED on the ESP dev board.
 
@@ -35,8 +35,8 @@ Use the Web UI (<http://ems-esp>) to further configure the settings. In the `Set
 - **Hide LED**. Turns off the LED when in normal operating mode. The LED is still shown when booting or when there are connection issues.
 - **Use Dallas Sensor parasite power**. Select this option when using dallas sensors with parasitic power.
 - **Enable ADC**. This enables the analog GPIO A0 on the ESP for attaching analog sensors. The value is in mV and published in heartbeat MQTT topic every minute.
-- **Use lower CPU clock speed**. Underclocks the ESP to 160Mhz, saving on power, heat and prolonging the life of the chip. A reboot of EMS-ESP is required.
-- **Bypass Access Token authorization**. For RESTful write commands via HTTP POST the access token is required. This is for security reasons to prevent anyone changing device settings. Setting this flag makes the API open. Not recommended!
+- **Run at a lower CPU clock speed**. Underclocks the ESP to 160Mhz, saving on power, heat and prolonging the life of the chip. A reboot of EMS-ESP is required.
+- **Bypass Access Token authorization on API calls**. For RESTful write commands via HTTP POST the access token is required. This is for security reasons to prevent anyone changing device settings. Setting this flag makes the API open. Not recommended!
 - **Enable Shower Timer**. Enable to time how long the hot water runs for and it will send out an MQTT message with the duration. The timer starts after a minimal of 2 minutes running time.
 - **Enable Shower Alert**. This is experimental and may not work on all systems. After 7 minutes running hot water, send out a warning by 3 short bursts of cold water.
 
@@ -52,20 +52,21 @@ Use the Web UI (<http://ems-esp>) to further configure the settings. In the `Set
 - **Port** if using an alternate port number. The default is 514.
 - **Log Level** sets the maximum log level for reported messages. The highest level is DEBUG which will send a lot of log data so use with caution.
 - **Mark Interval** will send out a special `mark` message to the SysLog. This is useful for timing events.
-- **Output EMS telegrams in raw format** will write the telegrams in raw format as hexadecimal values.
+- **Output EMS telegrams as hexadecimal bytes** will write the telegrams in raw format as hexadecimal values.
 
 ## MQTT Settings
 
 These settings can be found in the `MQTT` tab on the Web UI.
 
-- **Client ID**. This is used internally to identify EMS-ESP with the broker. Note MQTT topics will be postfixed with the hostname (default `ems-esp`), not this client ID.
+- **Client ID**. This is used internally to identify EMS-ESP with the broker and is optional. Note MQTT topics will be postfixed with the hostname (default `ems-esp`) and not the client ID.
 - **Base**. All topics are prefixed with `Base`, which is defaulted to `ems-esp` and can be changed to an individual path.
 - **Clean Session**. Creates a non-persistent session when enabled.
 - **MQTT Format**. v2: The `Single` option will send all data as separate topics, `Nested` will group the data into one JSON payload string and `Home Assistant` will use MQTT Discovery (if available). v3: options are resorted with checkboxes for `Nested` and `Home Assistant`.
 - **QoS**. Quality of Service, 0, 1 or 2. 0 is the default and suitable for more scenarios. 1 will give a guarantee that the message has been sent, but will create slightly more traffic and overhead.
-- **Retain Flag**. Default is off. Enable if you want to persist all the messages on the broker.
+- **Retain Flag**. Enable if you want to persist all the messages on the broker. Default is off.
 - **Formatting**
   - **Topic/Payload Format** is used to indicate whether all the device data is sent in a single payload or as separate topics.
   - **Use Home Assistant MQTT Discovery**. Enable this if using Home Assistance. EMS-ESP will be automatically discovered as devices in HA and you can add the information from the Integrations->MQTT page to your Lovelace UI.
   - **Thermostat Room Temperature** is used for thermostats that don't have a sensor for current room temperature, which is required in Home Assistant. Here you can either fake a value or select the set point value.
-- **Publish Intervals**. This section is per device and sets how frequent an MQTT message is sent. When set to 0 EMS-ESP will send data automatically when there is a noticeable change, which could be within a few seconds.
+- **Publish Intervals**
+  - This section is per device and sets how frequent an MQTT message is sent. When set to 0 EMS-ESP will send data automatically when there is a noticeable change, which could be within a few seconds.

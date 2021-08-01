@@ -36,7 +36,7 @@ Use the Web UI (<http://ems-esp>) to further configure the settings. In the `Set
 
 #### External Button
 
-- **Button gpio pin**. (v3 only) Set a pin with pullup for emergency reset to factory settings. Default is pin 0 (boot-button on some esp32 boards). In v2 the pin is not configurable and fixed to gpio 0.
+- **Button gpio pin**. (v3 only) Set a pin with pull-up for emergency reset to factory settings. Default is pin 0 (boot-button on some esp32 boards). In v2 the pin is not configurable and fixed to gpio 0.
 
 #### Dallas Sensor
 
