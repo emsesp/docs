@@ -1,13 +1,6 @@
 ![logo](_media/logo/home-assistant.png ':size=100')
 
-EMS-ESP has automatic integration with Home Assistant via the [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/) protocol. To use this feature make sure in EMS-ESP that MQTT is enabled and the `MQTT Format` setting is set to "`Home Assistant`". Also ensure your Home Assistant configuration is setup correctly to use the prefix "homeassistant".
-
-```yaml
-# Example configuration.yaml entry
-mqtt:
-  discovery: true # this is default in 0.117.0 and higher
-  discovery_prefix: homeassistant
-```
+EMS-ESP has automatic integration with Home Assistant via the [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/) protocol. To use this feature make sure in EMS-ESP that MQTT is enabled and the `MQTT Format` setting is set to "`Home Assistant`". Also ensure your Home Assistant configuration is setup correctly to use the prefix "homeassistant" which is the default.
 
 EMS-ESP will create retained MQTT messages prefixed with `homeassistant/` for each device and their values (called entities). For example "`EMS-ESP Thermostat`". You can view which ones have been created by going into Home Assistant's `Configuration->Integrations` and select the devices under `MQTT`.
 
@@ -18,43 +11,6 @@ To add this device and its values to a Home Assistant UI click on the "ADD TO LO
 You can then add each of these devices to a new lovelace view using the "add to lovelace" button, and get something looking like:
 
 ![lovelace](_media/ha_lovelace.PNG ':size=100%')
-
-## Heartbeat
-
-The Heartbeat has more details stored in the entity's state as individual attributes. You can expose these by adding a new card to the lovelace UI like:
-
-```yaml
-type: entities
-title: EMS-ESP Status
-entities:
-  - entity: sensor.ems_esp_status
-    type: attribute
-    attribute: uptime
-    name: Uptime
-    icon: 'mdi:timer-outline'
-  - entity: sensor.ems_esp_status
-    type: attribute
-    attribute: rssi
-    name: RSSI
-    suffix: '%'
-    icon: 'mdi:wifi'
-  - entity: sensor.ems_esp_status
-    type: attribute
-    attribute: freemem
-    name: Free Memory
-    suffix: '%'
-    icon: 'mdi:gauge'
-  - entity: sensor.ems_esp_status
-    type: attribute
-    attribute: txfails
-    name: Tx Errors
-    icon: 'mdi:alert-circle-outline'
-  - entity: sensor.ems_esp_status
-    type: attribute
-    attribute: rxfails
-    name: Rx Errors
-    icon: 'mdi:alert-circle-outline'
-```
 
 ## Example: Alerts
 
@@ -92,7 +48,7 @@ and get notified when the thermostat is adjusted:
         message: 'Temperature set to {{states.sensor.current_set_temperature.state}} degrees'
 ```
 
-## Example: Activating one-time hot water charging DHW once
+## Example: Activating one-time hot water charging DHW once using MQTT
 
 Below is an example of calling a command (OneTimeWater)
 
@@ -139,7 +95,7 @@ one_time_water_off:
       friendly_name: 'Flow-Ret diff'
       unit_of_measurement: '°C'
       icon_template: 'mdi:format-align-middle'
-      value_template: "{{ (states('sensor.flow_temperature') | float - states('sensor.return_temp') | float) | round(1) }}"
+      value_template: "{{ (states('sensor.flow_temperature') | float - state('sensor.return_temp') | float) | round(1) }}"
 ```
 
 ## Example: Solar Pump Working Hours
@@ -226,3 +182,65 @@ one_time_water_off:
     - 'Hot'
     - 'Intelligent'
 ```
+
+## Example: Changing any EMS device value using the API
+
+Files to change in Home Assistant
+
+`configuration.yaml`:
+
+```yaml
+rest_command:
+  emsesp:
+    url: http://<IP address of EMS-ESP>/api/{{device}}
+    method: POST
+    headers:
+      authorization: 'Bearer <Your Secure key from the UI>'
+    content_type: 'application/json'
+    payload: '{"name":"{{name}}","value":"{{value}}"}'
+
+input_number:
+  wwselected_temp:
+    name: WW Selected Temperature
+    min: 30
+    max: 60
+    step: 1
+    icon: mdi:coolant-temperature
+```
+
+in `automations.yaml`:
+
+```yaml
+- id: 'change_ww_seltemp'
+  alias: "change ww selected temp"
+  trigger:
+    platform: state
+    entity_id: input_number.wwselected_temp
+  action:
+    service: rest_command.emsesp
+    data:
+      device: "boiler"
+      name: "wwseltemp"
+      value: "{{ states('input_number.wwselected_temp') | int }}"
+
+- id: 'set_ww_seltemp'        
+  alias: "set ww selected temp"
+  trigger:
+    platform: state
+    entity_id: sensor.thermostat_hc1_selected_room_temperature
+  action:
+    service: input_number.set_value
+    target:
+      entity_id: input_number.wwselected_temp
+    data:
+      value: "{{ states('sensor.boiler_ww_selected_temperature') | int }}"
+```
+
+Then in your HA's lovelace UI add then entity called `input_number.wwselected_temp`.
+
+Now in HA you can dynamically adjust the values. Like:
+
+![Screenshot 2021-08-08 143712](https://user-images.githubusercontent.com/1230712/128632199-7815d649-40a8-4f11-99e3-eacc16bf53a4.png)
+
+Check if it's working by going to `http://ems-esp/api/boiler/wwseltemp`
+
