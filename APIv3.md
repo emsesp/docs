@@ -70,15 +70,18 @@ OpenAPI is an open standard specification for describing REST APIs. From the [Op
 
 ## System Endpoints
 
-| Method   | Endpoint           | Description                         | Access Token required | JSON body data                       |
-| -------- | ------------------ | ----------------------------------- | --------------------- | ------------------------------------ |
-| GET      | `/system/info`     | list system information             |                       |                                      |
-| GET      | `/system/settings` | list all settings, except passwords |                       |
-| GET      | `/system/commands` | list all commands                   |                       |
-| POST/PUT | `/system/pin`      | switch a GPIO state to HIGH or LOW  | x                     | `{ "id":<gpio>, "value":<boolean> }` |
-| POST/PUT | `/system/send`     | send a telegram to the EMS bus      | x                     | `{ "value" : <string> }`             |
-| POST/PUT | `/system/publish`  | force an MQTT publish               | x                     | `{ "value" : <device> \| "ha" }`     |
-| POST/PUT | `/system/fetch`    | fetch all EMS data from all devices | x                     | `{ "value" : <device> \| "all" }`    |
+| Method   | Endpoint              | Description                         | Access Token required | JSON body data                       |
+| -------- | --------------------- | ----------------------------------- | --------------------- | ------------------------------------ |
+| GET      | `/system/info`        | list system information             |                       |                                      |
+| GET      | `/system/settings`    | list all settings, except passwords |                       |
+| GET      | `/system/commands`    | list all commands                   |                       |
+| POST/PUT | `/system/pin`         | switch a GPIO state to HIGH or LOW  | x                     | `{ "id":<gpio>, "value":<boolean> }` |
+| POST/PUT | `/system/send`        | send a telegram to the EMS bus      | x                     | `{ "value" : <string> }`             |
+| POST/PUT | `/system/publish`     | force an MQTT publish               | x                     | `{ "value" : <device> \| "ha" }`     |
+| POST/PUT | `/system/fetch`       | fetch all EMS data from all devices | x                     | `{ "value" : <device> \| "all" }`    |
+| POST/PUT | `/system/watch`       | watch incoming telegrams            | x                     | `{ "value" : "off" \| "on" \| "raw" \| <type-id(hex)> }` |
+| POST/PUT | `/system/syslog_level`| set syslog level                    | x                     | `{ "value" : <level> }`              |
+
 
 ## Examples
 
