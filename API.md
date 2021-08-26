@@ -4,6 +4,7 @@ Commands can be sent to EMS-ESP in a few ways, either
 - via [**MQTT**](MQTT) in the payload with `{"cmd":"<command>" ,"data":<data>, "id":<id>}`. The MQTT topic being the `<device>`.
 - via [**MQTT**](MQTT) in direct topics (v3 only, if activated in settings) `<device>/<command>` or `<device>/hc<id>/<command>`, payload: `<data>`
 - or via the [**REST API**](Web) in the URL like `http://ems-esp/api?device=<device>&cmd=<command>&data=<data>&id=<id>`.
+- or via V3-API (see chapter)
 
 where
 
@@ -24,18 +25,23 @@ To see which commands are available on your system, go into the Console and type
 
 | command    | data                                    | id       | comments                                                                                                                |
 | ---------- | --------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `info`     |                                         |          | REST API only                                                                                                           |
-| `settings` |                                         |          | REST API only                                                                                                           |
-| `send`     | `"XX XX...XX"`                          |          | send raw ems-command                                                                                                    |
-| `fetch`    |                                         |          | fetch ems values from all devices                                                                                       |
+| `info`     |                                         |          | list system information                             |
+| `settings` |                                         |          |                                                     |
+| `commands` |                                         |          | list all commands                                   |
+| `send`     | `"XX XX...XX"`                          |          | send raw ems-command                                |
+| `fetch`    |                                         |          | fetch ems values from all devices                   |
 | `publish`  | `[ha]`                                  |          | mqtt publish all values and optional HA-configuration, v3: also `publish [device]` to publish a single device on demand |
-| `pin`      | `<on \|off \| 1 \| 0 \| true \| false>` | `<gpio>` | sets ESP's GPIO pins high/low                                                                                           |
+| `pin`      | `<on \|off \| 1 \| 0 \| true \| false>` | `<gpio>` | sets ESP's GPIO pins high/low                       |
+| `watch`    | `<on \|off \| raw \| <type-id(hex)>`    |          | watch incoming telegrams                            |
+| `syslog_level`| `<level>`                            |          | set syslog level                                    |
+
 
 ### `dallassensor`
 
-| command | data | id  | comments      |
-| ------- | ---- | --- | ------------- |
-| `info`  |      |     | REST API only |
+| command    | data | id  | comments      |
+| ---------- | ---- | --- | ------------- |
+| `info`     |      |     | list values   |
+| `commands` |      |     | list commands |
 
 ### `boiler`
 
@@ -43,7 +49,8 @@ To see which commands are available on your system, go into the Console and type
 
 | command            | data                                        | id    | comments                                                                           |
 | ------------------ | ------------------------------------------- | ----- | ---------------------------------------------------------------------------------- |
-| `info`             |                                             | `[0]` | REST API only, v3: id=0 for short names                                            |
+| `info`             |                                             |       | list all values                                                                    |
+| `commands`         |                                             |       | list all commands                                                                  |
 | `comfort`          | `<hot \|eco \| intelligent>`                |       |                                                                                    |
 | `flowtemp`         | `<degrees>`                                 |       | Limited to heatingtemp, set by thermostat if present                               |
 | `wwsettemp`        | `<degrees>`                                 |       | Only if thermostat does not manage it                                              |
@@ -75,6 +82,7 @@ To see which commands are available on your system, go into the Console and type
 | command          | data                                               | id                       | comments                                                                                                              |
 | ---------------- | -------------------------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------- |
 | `info`           |                                                    | `[0 \| heating circuit]` | REST API only, v3: id=0 for short names                                                                               |
+| `commands`       |                                                    |                          | list all commands                                                                                                     |
 | `datetime`       | `<ntp \| hh:mm:ss-dd.mm.yyyy-dw-dst>`              |                          | RC35, RC100, RC300, `dw`:day of week: 0-mo,.. `dst`:daylight saving 0/1                                               |
 | `wwmode`         | `<off \| on \| auto>`                              |                          | RC100, RC300, RC30, RC35                                                                                              |
 | `wwsettemp`      | `<degrees>`                                        |                          | RC100, RC300                                                                                                          |
@@ -118,18 +126,21 @@ To see which commands are available on your system, go into the Console and type
 
 ### `mixer`
 
-| command | data | id                       | comments                                |
-| ------- | ---- | ------------------------ | --------------------------------------- |
-| `info`  |      | `[0 \| heating circuit]` | REST API only, v3: id=0 for short names |
+| command    | data | id                       | comments                                |
+| ---------- | ---- | ------------------------ | --------------------------------------- |
+| `info`     |      | `[heating circuit]`      | list values                             |
+| `commands` |      |                          | list commands                           |
 
 ### `solar`
 
-| command | data | id    | comments                                |
-| ------- | ---- | ----- | --------------------------------------- |
-| `info`  |      | `[0]` | REST API only, v3: id=0 for short names |
+| command    | data | id    | comments                                |
+| ---------- | ---- | ----- | --------------------------------------- |
+| `info`     |      |       | list values                             |
+| `commands` |      |       | list commands                           |
 
 ### `heatpump`
 
-| command | data | id    | comments                                |
-| ------- | ---- | ----- | --------------------------------------- |
-| `info`  |      | `[0]` | REST API only, v3: id=0 for short names |
+| command    | data | id    | comments                                |
+| ---------- | ---- | ----- | --------------------------------------- |
+| `info`     |      |       | list values                             |
+| `commands` |      |       | list commands                           |
