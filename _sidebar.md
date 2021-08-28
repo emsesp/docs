@@ -20,6 +20,7 @@
 - [EMS 2.0 / EMS+](Deciphering-EMS-Plus)
 - [Thermostat modes](Thermostat-Modes-RC35-vs-RC300)
 - [EMS+ Thermostats](RC3xx-Thermostats)
+- [Boiler](Boiler)
 - [Solar Modules](SM100)
 - [Controllers](MC110-controller)
 - [Heat Pumps](HeatPump)
