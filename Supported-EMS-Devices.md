@@ -15,8 +15,9 @@ EMS devices are being constantly added to the database on each new release.
 > [!NOTE]
 > These thermostats below unfortunately do not support direct EMS write commands so will appear in EMS-ESP as read-only devices:
 >
-> - Buderus Logamatic TC100, Bosch EasyControl CT200, Junkers CT100, Moduline Easy
+> - Buderus Logamatic TC100, Bosch EasyControl CT200, Junkers CT100, Moduline Easy. 
 >   See also <https://community.home-assistant.io/t/buderus-tc100-junkers-ct100-thermostat/67992>
+> - Junkers FW/FR build before 9/2008 (FD889). See <https://github.com/emsesp/EMS-ESP32/issues/105#issuecomment-915874482>
 
 ### Boilers
 
