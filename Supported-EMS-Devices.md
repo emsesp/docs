@@ -6,7 +6,7 @@ EMS devices are being constantly added to the database on each new release.
 
 ### Thermostats
 
-- Buderus RC10, RC20, RC20F, RC30, R35, RC300, RC200, RC310, RC3000
+- Buderus RC10, RC20, RC20F, RC25, RC30, RC35, RC300, RC200, RC310, RC3000
 - Nefit Moduline 100, 200, 300, 400, 1010, 3000
 - Sieger ES72, ES73
 - Junkers FR50, FR100, FR110, FW100, FW200, FR10, FR120, FW120
