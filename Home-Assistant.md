@@ -212,19 +212,19 @@ in `automations.yaml`:
 
 ```yaml
 - id: 'change_ww_seltemp'
-  alias: "change ww selected temp"
+  alias: 'change ww selected temp'
   trigger:
     platform: state
     entity_id: input_number.wwselected_temp
   action:
     service: rest_command.emsesp
     data:
-      device: "boiler"
-      name: "wwseltemp"
+      device: 'boiler'
+      name: 'wwseltemp'
       value: "{{ states('input_number.wwselected_temp') | int }}"
 
-- id: 'set_ww_seltemp'        
-  alias: "set ww selected temp"
+- id: 'set_ww_seltemp'
+  alias: 'set ww selected temp'
   trigger:
     platform: state
     entity_id: sensor.thermostat_hc1_selected_room_temperature
@@ -243,4 +243,3 @@ Now in HA you can dynamically adjust the values. Like:
 ![Screenshot 2021-08-08 143712](https://user-images.githubusercontent.com/1230712/128632199-7815d649-40a8-4f11-99e3-eacc16bf53a4.png)
 
 Check if it's working by going to `http://ems-esp/api/boiler/wwseltemp`
-

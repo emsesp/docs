@@ -28,7 +28,7 @@ Use the Web UI (<http://ems-esp>) to further configure the settings. In the `Set
   - `1 - Default` is default for EMS1.0 systems but also compatible with most other protocols.
   - `2 - EMS+` is designed to work better for EMS2.0/EMS+ systems.
   - `3 - HT3` for Heatronics3 used by Junkers and Bosch.
-  - `4 - Hardware` uses ESP hardware to send out the ems-telegram, the software do not have to wait for the telegram to be send out. It is the fastest and most efficient methode, but works only on some systems.
+  - `4 - Hardware` uses ESP hardware to send out the ems-telegram, the software do not have to wait for the telegram to be send out. It is the fastest and most efficient method, but works only on some systems.
 - **Bus ID**. The EMS-ESP can simulate one of 5 devices. Stick to the `Service Key (0x0B)` unless using multiple EMS gateways or interfaces.
 - **Rx GPIO pin** - Which pin the Rx is assigned to. On an ESP8266 this has to be 3 or 13. The default is 13 (D7 on a Wemos). On an ESP32 it can be any pin.
 - **Tx GPIO pin** - Which pin the Tx is assigned to. On an ESP8266 this has to be 1 (for rx:3) or 15 (for rx:13). The default is 15 (D8 on a Wemos). On an ESP32 it can be any pin.
