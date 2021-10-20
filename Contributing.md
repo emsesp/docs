@@ -1,3 +1,9 @@
+_Any contribution helps make EMS-ESP better_. This project needs help with:
+
+- guides for integrating into home automation systems
+- testing with various types of EMS devices (boilers, thermostats, solar, heap pumps etc) to build up our supported database
+- Expand the documentation with more details, fixing spelling mistakes and other inaccuracies you may find. If you spot an error in an article use the _Improve this article_ link at the top of the page to correct it. Note you will need a GitHub account. Make the change, click on "Propose file change" and "Create pull request".
+
 ## Semantic Commit Messages
 
 Format: `<type>(<scope>): <subject>`

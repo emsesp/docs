@@ -1,7 +1,4 @@
-> [!NOTE]
-> The MQTT information below is based on the latest dev release (currently 2.2.1) so topics and format may differ from previous versions.
-
-All topics are prefixed with the `Base`, which is defaulted to `ems-esp` and can be written as path, e.g. `home/heating/ems-esp2`.
+All topics are prefixed with the `Base`, which is defaulted to `ems-esp` and forms path of the path.
 
 ## Outbound Data
 
@@ -218,7 +215,9 @@ where
 
 With Home Assistant, Thermostat commands can also be sent to control individual heating circuits via sending a mode string or temperature number to a topic `thermostat_hc<n>`.
 
-Depending on mqtt-settings there are also direct subscriptions for each value like `boiler/wwtemp`, `thermostat/hc1/daytemp`, etc. Thermostats which supports only a single heating circuits will subscribe to `/thermostat/daytemp`
+Depending on mqtt-settings there are also direct subscriptions for each value like `boiler/wwtemp`, `thermostat/hc1/daytemp`, etc. Thermostats which supports only a single heating circuits will subscribe to `/thermostat/daytemp`.
+
+You can also use MQTT to send a specific read request and the telegram response will be returned in a topic called `response`. For example sending the payload `{"cmd":"send", "data":"0B 88 19 19 02"}` to `ems-esp/system` will result in a topic `response` being published with the data `{"src":"08","dest":"0B","type":"19","offset":"19","data":"7D 00","value":32000}`.
 
 ## Monitoring the Queue
 

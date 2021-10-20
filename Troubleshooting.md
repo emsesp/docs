@@ -1,6 +1,6 @@
-### EMS-ESP can't connect to the Wifi
+### Can't connect to the Wifi router
 
-The EMS-ESP is probably in Access Point mode. Look for a wifi SSID `ems-esp`, connect to this and open a browser to 'https://192.168.4.1'. If you have configured a WiFi client your router would have appointed an IP address via DHCP. You should be able to then connect via https://ems-esp or https://ems-esp.local.
+The EMS-ESP is probably in Access Point mode. Look for a wifi SSID `ems-esp`, connect to this and open a browser to 'http://192.168.4.1'. If you have configured a WiFi client your router would have appointed an IP address via DHCP. You should be able to then connect via https://ems-esp or https://ems-esp.local.
 
 ### The LED is constantly flashing
 
@@ -10,7 +10,7 @@ A slow pulse means either there is no WiFi connection or EMS-ESP cannot read fro
 
 ### Not all EMS devices are recognized or capturing data
 
-Experiment with changing the Tx Mode value in the Settings page. 1 (default) typically works for EMS1.0 and most systems, 2 for EMS+ and new systems and 3 is better for Junkers/Heatronics.
+Experiment with changing the Tx Mode value in the Settings page. The default EMS works for older EMS1.0 systems, EMS2 or EMSPlus systems and HT3 for Junkers/Worcester using the Heatronics protocol.
 
 If you have EMS devices that may not yet be supported by EMS-ESP then use `scan devices` from the Console to find out their details and then post an enhancement issue on GitHub. Remember the `su` password is default `ems-esp-neo` unless this has been changed via the console (`passwd`) or in the Web UI (`Security->Security Settings`).
 
@@ -52,13 +52,7 @@ You should see a log statement pop in the console like `[thermostat] Setting the
 
 Try erasing the ESP (`esptool.py erase_flash`) and [uploading](Uploading-firmware) the firmware again using the command-line with the ESP connected via the USB.
 
-### Web UI is non-responsive on an ESP8266 or frequent crashes occur
-
-Due to the memory limitations on an ESP8266 having the Console open and then opening the Web UI will usually not work. Close the console and try again.
-
-Also watch out for available free memory. If this drops to < 8kb (30%) EMS-ESP will struggle with MQTT and Web. This could very well happen when you have many EMS connected devices (say > 4). The only option here is to replace the ESP8266 chip with an ESP32.
-
-### EMS-ESP is showing incorrect values from a specific device
+### Showing incorrect values from a specific device
 
 If you notice that certain values are displayed incorrectly, either in the Web UI, Console or MQTT then please help us correct this by logging a GitHub issue, along with the expected value. When asked to provide debug information, go the Telnet console and do
 
@@ -69,9 +63,9 @@ If you notice that certain values are displayed incorrectly, either in the Web U
 
 and then either a `read` or `watch`, e.g. `read 21 2D8` to show all the data from HC2 on a Mixing MM100.
 
-### EMS-ESP is showing CRC-errors
+### Many Rx errors or incomplete telegrams
 
-EMS-messages are sended and repeated often, a few crc-errors doesn't harm. The bad signal can be caused by mainly 2 factors:
+It is quite usual to see a few warnings in the log about incomplete telegrams. This could be due to interference on the line. The warnings are usually harmless as EMS-ESP will either wait for the next broadcast or keep trying to fetch the telegram. If you're seeing an Rx or Tx quality less than 80% then try:
 
 - powering: try to power ems-esp by usb or service-jack.
 - disruptions on the bus (emc, reflections, etc): try to connect ems-esp to another device on the bus. In general a previously unconnected bus-out on a devices like MM100 is better than a split connection on an already used connector.

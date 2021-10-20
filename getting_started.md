@@ -2,10 +2,8 @@
 
 Welcome to EMS-ESP! Follow these steps to get EMS-ESP up and running:
 
-- Purchase an EMS Gateway from BBQKees ([bbqkees-electronics.nl](https://bbqkees-electronics.nl))
-
-- Get an ESP8266 dev board (Wemos D1, Lolin, Nodemcu or equivalent)
+- Purchase an EMS Gateway interface board from BBQKees ([bbqkees-electronics.nl](https://bbqkees-electronics.nl))
 - [Build or download the firmware](Building-firmware)
 - [Upload the firmware](Uploading-firmware)
-- Power it up, connect to the Boiler or the EMS bus line
+- Power it up, connect to the Boiler or any available EMS bus line
 - [Configure the settings](Configure-firmware)

@@ -1,4 +1,24 @@
-### How to interpret the tables below
+
+## Modes
+
+### RC300
+
+RC300 has 2 modes : Auto and Manual.
+
+Auto can switch temperature between 2 levels : eco and comfort
+
+### RC35
+
+RC35 has 3 modes : Auto, Day and Night.
+
+Auto can switch temperature between 2 levels : day and night
+
+Changing the temperature for Day or Night (in these modes) will also change the temperature levels used in Auto mode
+
+
+## EMS+ Thermostats
+
+How to interpret the tables below
 
 Take an example telegram:
 
@@ -46,7 +66,7 @@ send 0B 90 FF 00 19 01 A5
 Thermostat -> me, type 0x01A5, telegram: 10 0B FF 00 01 A5 00 D3 21 22 00 00 22 27 00 EF 01 01 03 00 EF 01 4B 00 00 11 01 04 08 42 00 (CRC=ED) #data=25
 ```
 
-# Type 0x01A5
+### Type 0x01A5
 
 0x1A5 is a monitoring telegram from the 1st Heat Controller (HC1). The other HCs use `01A6`, `01A7` and `01A8` respectively and share the same format as below.
 
@@ -65,7 +85,7 @@ Thermostat -> me, type 0x01A5, telegram: 10 0B FF 00 01 A5 00 D3 21 22 00 00 22 
 | 13 + 14                         | remaining time to next setpoint       | 2 bytes       | time in minutes.                                                                                       |
 | 15 + 16                         | elapsed time in this setpoint         | 2 bytes       | time in minutes.                                                                                       |
 
-# Type 0x01B9
+### Type 0x01B9
 
 This telegram type is for managing the Heating mode
 
@@ -98,7 +118,7 @@ SET to Manual mode ( manual temp is 20.5 (0x29) )
 | 9                               |                                |             |                                                                   |
 | 10                              | manual setpoint temperature    | 1 byte, \*2 |                                                                   |
 
-# Type 0x01AF - 0x01B2 (HC1 - HC4)
+### Type 0x01AF - 0x01B2 (HC1 - HC4)
 
 Mode control to Summer, Winter and Auto.
 

@@ -1,32 +1,33 @@
 <img style="margin: 10px 10px; float:right; width:20%" src="_media/logo/boiler.svg" alt="EMS-ESP Logo"></img>
 
-**EMS-ESP** is an open-source firmware for the Espressif ESP8266 and ESP32 microcontroller that communicates with **EMS** (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.
+**EMS-ESP** is an open-source firmware for the Espressif ESP32 microcontroller that communicates with **EMS** (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.
 
 [![license](https://img.shields.io/github/license/emsesp/EMS-ESP.svg)](LICENSE)
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 [![chat](https://img.shields.io/discord/816637840644505620.svg?style=flat-square&color=blueviolet)](https://discord.gg/3J3GgnzpyT)
 
-# Versions
+# News
 
 <!-- tabs:start -->
 
-#### **Version 3 for the ESP32**
+#### **September 2021**
 
-**February 2021**
+We're still busy with version 3 and plan to keep extending with more support for devices. Some of the things on the todo list are
 
-It looks like EMS-ESP has hit the physical limits of the ESP8266 in terms of CPU power and memory. To that end version 3 was created specifically using the ESP32 microcontroller architecture and will continue on as the main stream for all future developments. The ESP8266 can be easily swapped out for an ESP32 and compatible dev boards can be found for less than 5 euros.
+- extended support for Heat Pumps
+- Localized WebUI (NL, DE, US)
+- Plugin architecture so custom code can easily be added
+- Native integration into Home Assistant without using MQTT Discovery
 
-The good news is that with the dual CPU support and extended memory I was able to pack in many new features. Check out the [GitHub project page](https://github.com/emsesp/EMS-ESP32/blob/main/README.md) for a full list and grab the build from [here](https://github.com/emsesp/EMS-ESP32/releases/tag/latest).
+#### **February 2021**
 
-#### **Version 2.2 for the ESP8266**
+It looks like EMS-ESP has hit the physical limits of the ESP8266 in terms of CPU power and memory. To that end version 3 was created specifically using the ESP32 microcontroller architecture and will continue on as the main stream for all future developments. The ESP8266 can be easily swapped out for an ESP32 for a few euro's for those still on version 2.
 
-**December 2020**
+#### **December 2020**
 
-More features, more fixes, more support for devices. Check out the full release notes at https://github.com/emsesp/EMS-ESP/releases
+Version 2.2 will be the last release for the ESP8266.
 
-#### **Version 2.1 **
-
-**October 2020**
+#### **October 2020**
 
 Version 2.1 is the first major update on 2.0 with the following new features:
 
@@ -35,11 +36,11 @@ Version 2.1 is the first major update on 2.0 with the following new features:
 - extended Home Assistant integration now covering all device types and exposing their values as entities
 - many bug fixes and usability improvements in the web UI
 
-#### **Version 2.0 **
+#### **September 2020**
 
 **September 2020**
 
-Version 2 is out with many new cool things and improvements:
+Version 2.0 is out with many new cool things and improvements and a major step up from version 1.9.
 
 - Support for both ESP8266 and ESP32 modules
 - A new multi-user Web interface (based on React/TypeScript)
@@ -52,10 +53,6 @@ Version 2 is out with many new cool things and improvements:
 - Supporting over 70 EMS devices (boilers, thermostats, solar modules, mixer modules, heat pumps, gateways)
 
 Thanks to all the contributors and testers for providing feedback.
-
-#### **Version 1.9.5**
-
-Version 1.9 is no longer being maintained. It's recommended that users upgrade to version 2 to get the latest support.
 
 <!-- tabs:end -->
 

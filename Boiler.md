@@ -1,6 +1,4 @@
-# For reading EMS telegrams on device type Boiler
-
-### Last revised for 3.2.1
+# EMS telegrams offsets for the device type Boiler
 
 ```
 0x6DC CascadeMessage
@@ -203,7 +201,7 @@
 
 ```
 
-## Names:
+### Name description
 
 ```
       wwSetTemp          = Warm Water set temperature
