@@ -69,3 +69,7 @@ It is quite usual to see a few warnings in the log about incomplete telegrams. T
 
 - powering: try to power ems-esp by usb or service-jack.
 - disruptions on the bus (emc, reflections, etc): try to connect ems-esp to another device on the bus. In general a previously unconnected bus-out on a devices like MM100 is better than a split connection on an already used connector.
+
+### Home Assistant is showing errors like "Received message on illegal discovery topic"
+
+This could happen when upgrading from an earlier EMS-ESP version and some of the device entity names may have changed. Use a tool like MQTTExplorer to remove all the `homeassistant` topics in your MQTT broker and restart EMS-ESP.
