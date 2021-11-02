@@ -73,3 +73,7 @@ It is quite usual to see a few warnings in the log about incomplete telegrams. T
 ### Home Assistant is showing errors like "Received message on illegal discovery topic"
 
 This could happen when upgrading from an earlier EMS-ESP version and some of the device entity names may have changed. Use a tool like MQTTExplorer to remove all the `homeassistant` topics in your MQTT broker and restart EMS-ESP.
+
+### Home Assistant is showing errors like "Template variable warning: 'dict object' has no attribute..."
+
+This happens after EMS-ESP is started and the entities are created in Home Assistant but the data has yet to arrive from EMS-ESP to the MQTT topics, which may take up to 10 seconds. It's safe to ignore these warnings.
