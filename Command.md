@@ -17,7 +17,7 @@ For quick peak at all the commands you can go to the Telnet console and type `sh
 
 Definitions
 
-- **"cmd"** is the name of the device value, also known as the device entity, for example `wwcirc` in the Boiler or `mode` in the Thermostat. The name **"cmd"** can also be substituted for **"entity"** or **"name"**. See the [table below](Command?id=ems-device-entity-names) for the complete list
+- **"cmd"** is the name of the device value, also known as the device entity, for example `wwcirc` in the Boiler or `mode` in the Thermostat. The name **"cmd"** can also be substituted for **"entity"**. See the [table below](Command?id=ems-device-entity-names) for the complete list
 - **"data"** is the value and can be either a string in quotes, integer, float of boolean. **"value"** is an alias that can also be used instead.
 - **"hc"** and **"wwc"** are used to represent a heating circuit or warm water controller. **"id"** can also be used as an alias.
 - A boolean value can be represented either as a True value ("TRUE", "yes", true, "true", "on", 1) or False value ("FALSE", "no", false, "false", "off", 0)
