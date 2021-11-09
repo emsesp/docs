@@ -44,7 +44,7 @@ Definitions
 
 ### System Commands
 
-The URL is `http://<hostname>/system/api`
+The URL is `http://<hostname>/api/system`
 
 #### Fetching EMS-ESP system information
 
