@@ -46,26 +46,23 @@ Definitions
 
 The URL is `http://<hostname>/api/system`
 
-#### Fetching EMS-ESP system information
+Some commands that required the **admin** role set require then authentication token to be present in the HTTP request header. An Access Token which can be generated from the Web UI's Security tab which is a string 152 characters long. Token's do not expire. The token can be added to the HTTP Header like `"Authorization: Bearer {ACCESS_TOKEN}"`.
 
-| endpoint    | action                               |
-| ----------- | ------------------------------------ |
-| `/system`   | shows the current system information |
-| `/commands` | lists the available commands         |
-| `/settings` | shows the current system settings    |
+| GET endpoint | action                                 | authentication required? |
+| ------------ | -------------------------------------- | ------------------------ |
+| `/fetch`     | Forces at refresh of all device values | no                       |
+| `/restart`   | restarts EMS-ESP                       | yes                      |
+| `/system`    | shows the current system information   | no                       |
+| `/commands`  | lists the available commands           | no                       |
+| `/settings`  | shows the current system settings      | no                       |
 
-#### Calling system commands
+The following system commands _must_ require
 
-HTTP POST and Authentication in the http header are required for these actions. An Access Token which can be generated from the Web UI's Security tab which is a string 152 characters long. Token's do not expire. The token needs to be embedded into the HTTP Header as `"Authorization: Bearer {ACCESS_TOKEN}"`.
+1. an HTTP POST operation
+2. authentication token
+3. a body, either as a single value or represented as a JSON object like `{"value":<value>}`
 
-| endpoint   | action                                 |
-| ---------- | -------------------------------------- |
-| `/fetch`   | Forces at refresh of all device values |
-| `/restart` | restarts EMS-ESP                       |
-
-The following require a Body or the value in a JSON object with format `{"value":<value>}`:
-
-| endpoint        | JSON body                                                     | action                                                                          |
+| POST endpoint   | JSON body                                                     | action                                                                          |
 | --------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `/send`         | `"XX XX...XX"`                                                | send telegram to the EMS bus                                                    |
 | `/publish`      | `[ha] \| [device]`                                            | MQTT publish all values, and optional HA-configuration or specific for a device |
@@ -75,7 +72,7 @@ The following require a Body or the value in a JSON object with format `{"value"
 
 ### Fetching Dallas temperature sensor information
 
-Use `http://<hostname>/api/dallassensor`.
+The URL is `http://<hostname>/api/dallassensor`
 
 ## EMS Device Entity Names
 
