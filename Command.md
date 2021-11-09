@@ -1,7 +1,9 @@
-EMS-ESP has an Command API which can be used to fetch information and issue commands to the EMS devices. There are 3 methods commands can be invoked:
+EMS-ESP has a Command API which can be used to fetch information and issue commands to any of the connected EMS devices.
 
-- via the [**Console**](Console) with a `call <device> <command> <data> <id>`
-- via the [**HTTP**](Command?id=http-api)
+There are 3 methods commands can be invoked:
+
+- via the [**Console**](Console) with a `$ call <device> <command> <data> <id>` (note you need to be admin, so first `su`)
+- via [**HTTP**](Command?id=http-api) API
 - via [**MQTT**](Command?id=MQTT)
 
 For quick peak at all the commands you can go to the Telnet console and type `show commands`.
@@ -157,7 +159,7 @@ The tables below list the available commands for each specific EMS device.
 
 ## Examples
 
-### via the command line
+### ...via the command line
 
 ```bash
 # GETs do not need authentication
@@ -171,9 +173,12 @@ The tables below list the available commands for each specific EMS device.
 
 # GET with authentication using query parameter with token
 % curl http://ems-esp.local/api/system/settings\?access_token\="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0"
+
+# GET to restart EMS-ESP
+curl http://ems-esp.local/api/system/restart -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0'
 ```
 
-### Using a Python script
+### ...using a Python script
 
 ```python
 import requests

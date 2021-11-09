@@ -9,7 +9,7 @@ The console will give you more insight into the EMS bus traffic, MQTT queues and
 - `CTRL-U` for Undo
 - `<TAB>` for auto-complete
 - `system` to enter the system menu. Use `exit` or CTRL-D to return.
-- `su` will switch to the super-user mode. The default password is `ems-esp-neo` and can be changed with `passwd` from the system menu or via the Web interface (called secret password). When in su mode the command prompt switches from `$` to `#`.
+- `su` will switch to the "super user" or admin mode. The default password is `ems-esp-neo` and can be changed with `passwd` from the system menu or via the Web interface (called secret password). When in su mode the command prompt switches from `$` to `#`.
 - Some settings can be changed in the console. The `set` command will list them.
 - The default timeout for telnet is 10 minutes, if you want to change it use `set timeout <min>`, `0` disables timeout.
 - `show` or `F2` shows the data specific to the which context you're in. From the root it will show you all the EMS device information and any external Dallas temperature sensors.
@@ -21,7 +21,7 @@ The console will give you more insight into the EMS bus traffic, MQTT queues and
 
 The full list of console commands are shown below:
 
-### `root` level commands
+### general commands
 
 ```yaml
 su
@@ -39,7 +39,7 @@ log [level]
 watch <on | off | raw | unknown> [ID]
 ```
 
-as `su` (super user):
+and these extra commands as admin (after a `su`):
 
 ```yaml
 call [device type] [cmd] [data] [id|hc]
@@ -48,22 +48,6 @@ scan devices [deep]
 set bus_id <device ID>
 set tx_mode <n>
 set master thermostat [device ID]
-```
-
-### `system` commands
-
-```yaml
-exit
-help
-log [level]
-set
-show
-su
-```
-
-as `su` (super user):
-
-```yaml
 format
 show users
 passwd
@@ -99,4 +83,3 @@ If you want to see only telegrams that are not registered yet, use `watch unknow
 If you want to see the raw bytes including CRC as transmitted on the EMS line use `watch raw <ID>`.
 
 ![Console](_media/console3.PNG ':size=80%')
-
