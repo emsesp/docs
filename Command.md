@@ -1,84 +1,97 @@
-EMS-ESP has a Command API which can be used to fetch information and issue commands to any of the connected EMS devices.
+EMS-ESP has a command API which can be used to read and write values to EMS device and call specific commands.
 
 There are 3 methods commands can be invoked:
 
-- via the [**Console**](Console) with a `$ call <device> <command> <data> <id>` (note you need to be admin, so first `su`)
-- via [**HTTP**](Command?id=http-api) API
+- via the [**Console**](Command?id=console)
+- via [**HTTP**](Command?id=http-api)
 - via [**MQTT**](Command?id=MQTT)
 
-For quick peak at all the commands you can go to the Telnet console and type `show commands`.
+## Definitions
 
-## HTTP REST API
+- `<device>` is the short-name of an EMS Device such as `boiler`, `thermostat`, `mixer`, `heatpump`, `solar` etc.
+- `<command>` is the name of a command (e.g. publish) or either a device entity (e.g. seltemp). It's also referred to as `<entity>` in the context of an EMS device. For EMS devices see the [table below](Command?id=ems-device-entity-names) for the complete list.
+- `<id>` is an optional identifier. For example the value 1 or as a string depending on the context.
+- `<data>` is used to represent either:
+  1. a single value. This can be of any type (integer, float, string, boolean) or,
+  2. as a JSON object containing the following optional key/vlaues:
+     - **"cmd"** for the `<command>`. The key **"cmd"** can also be substituted for **"entity"**.
+     - **"value"** is the value and can be either a string in quotes, integer, float of boolean. **"data"** is an alias that can also be used instead for the key.
+     - **"hc"**, **"wwc"** and **"id"** are all are used to represent a value or in the context of an EMS Device a heating or warm water circuit.
 
-- The API follows the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
+Note: A boolean value can be represented either as a True value ("TRUE", "yes", true, "true", "on", 1) or False value ("FALSE", "no", false, "false", "off", 0).
+
+## Console
+
+- Commands can be executed using the `call` command.
+- You need to be admin to use the `call` command. First `su` and enter the password.
+- For a list of all available commands you can use `show commands`.
+- The syntax is `call <device> <command> <data> <id>`.
+
+For more information on how to use the Telnet Console see the [**Console**](Console) section.
+
+## HTTP API
+
+Things to note:
+
+- The REST API follows the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
 - The URL path always starts with `http://<hostname>/api/`
-- HTTPS is not supported yet
-- You can use `http://<hostname>/api/<device>/commands` to show list of valid commands. For example `http://ems-esp.local/api/thermostat/commands` or `http://ems-esp.local/api/system/commands`
+- `<hostname>` is either an IP address or the mDNS name, which default is `ems-esp.local`
+- Some commands require can be dangerous and require security authentication, unless disabled via an EMS-ESP setting. The authentication is in the form of an Access Token which is generated from the Web UI's Security tab. The 152 character long string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date
+- With HTTP PUSH/PUT/PATCH commands an HTTP body may be required. This can be in the form of either plain text or as a JSON object `<data>`
+- HTTPS with self-signed certificates are not yet supported
 
 ### Reading and Writing EMS Device information
 
-Definitions
+The URL path is `http://<hostname>/api/<device>/`
 
-- **"cmd"** is the name of the device value, also known as the device entity, for example `wwcirc` in the Boiler or `mode` in the Thermostat. The name **"cmd"** can also be substituted for **"entity"**. See the [table below](Command?id=ems-device-entity-names) for the complete list
-- **"data"** is the value and can be either a string in quotes, integer, float of boolean. **"value"** is an alias that can also be used instead.
-- **"hc"** and **"wwc"** are used to represent a heating circuit or warm water controller. **"id"** can also be used as an alias.
-- A boolean value can be represented either as a True value ("TRUE", "yes", true, "true", "on", 1) or False value ("FALSE", "no", false, "false", "off", 0)
+| endpoint        | HTTP method | action                                                             | authentication required? | body     |
+| --------------- | ----------- | ------------------------------------------------------------------ | ------------------------ | -------- |
+| `info`          | GET         | outputs current EMS device information in verbose                  | no                       |          |
+| `values`        | GET         | outputs current EMS device information in short format             | no                       |          |
+| _(empty)_       | GET         | same as `values` above                                             | no                       |          |
+| `commands`      | GET         | lists the available commands or entities to call                   | no                       |          |
+| `{entity}`      | GET         | outputs details of a specific entity, for reading                  | no                       |          |
+| `{entity}/{hc}` | GET         | same as the read command above but for a specific heating circuit  | no                       |          |
+| `{entity}`      | POST        | updates a entity value, for writing                                | yes                      | `<data>` |
+| `{entity}/{hc}` | POST        | same as the write command above but for a specific heating circuit | yes                      | `<data>` |
 
-#### Reading values
+Examples:
 
-- Uses HTTP GET, no authentication is needed
-- For querying all the values from an EMS device use the device name as the endpoint, e.g. `http://ems-esp.local/api/thermostat` to return the data in short-name format or prefix with `/info` for the verbose format, e.g. `http://ems-esp.local/api/thermostat/info`.
-- For retrieving a single value from an EMS device add the device name/entity to the URL path, e.g. `http://ems-esp.local/api/thermostat/seltemp`.
-
-#### Writing values
-
-- Use HTTP POST or PUT. Authentication is required unless disabled in the Settings, and added to the HTTP header. An Access Token which can be generated from the Web UI's Security tab. An Access Token is a string 152 characters long. Token's do not expire. The token needs to be either embedded into the HTTP Header as `"Authorization: Bearer {ACCESS_TOKEN}"` or as query parameter `?access_token={ACCESS_TOKEN}`.
-- For writing a single value to a specific device entity you can use the URL PATH with the value in the http body. For example:
-  | URL | body | action |
-  | ---------------------------- | ------------------------------------- | ------------- |
-  | `http://ems-esp.local/api/thermostat/temp` | `22` | Sets the selected room temperature of the master thermostat on heating circuit 1 |
-- For more extensive operations send a JSON object to the endpoint. For example:
-  | URL | body | action |
-  | ---------------------------- | ------------------------------------- | ------------- |
-  | `http://ems-esp.local/api/thermostat` | `{"cmd":"mode", "data":"auto"}` | Sets the thermostat mode to auto for heating circuit 1 |
-  | `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | Sets the room temperature to 23 degrees for for heating circuit 3 |
-  | `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | Sets the room temperature to 20.5 degrees for for heating circuit 2 |
+| URL                                        | body                                   | action                                                                           |
+| ------------------------------------------ | -------------------------------------- | -------------------------------------------------------------------------------- |
+| `http://ems-esp.local/api/thermostat/temp` | `22`                                   | sets the selected room temperature of the master thermostat on heating circuit 1 |
+| `http://ems-esp.local/api/thermostat`      | `{"cmd":"mode", "data":"auto"}`        | sets the thermostat mode to auto for heating circuit 1                           |
+| `http://ems-esp.local/api/thermostat`      | `{"cmd":"seltemp", "data":23, "hc":3}` | sets the room temperature to 23 degrees for for heating circuit 3                |
+| `http://ems-esp.local/api/thermostat/hc2`  | `{"cmd":"seltemp", "data":20.5}`       | sets the room temperature to 20.5 degrees for for heating circuit 2              |
 
 ### System Commands
 
-The URL is `http://<hostname>/api/system`
+The URL path is `http://<hostname>/api/system/<endpoint>`
 
-Some commands that required the **admin** role set require then authentication token to be present in the HTTP request header. An Access Token which can be generated from the Web UI's Security tab which is a string 152 characters long. Token's do not expire. The token can be added to the HTTP Header like `"Authorization: Bearer {ACCESS_TOKEN}"`.
-
-| GET endpoint | action                                 | authentication required? |
-| ------------ | -------------------------------------- | ------------------------ |
-| `/fetch`     | Forces at refresh of all device values | no                       |
-| `/restart`   | restarts EMS-ESP                       | yes                      |
-| `/system`    | shows the current system information   | no                       |
-| `/commands`  | lists the available commands           | no                       |
-| `/settings`  | shows the current system settings      | no                       |
-
-The following system commands _must_ require
-
-1. an HTTP POST operation
-2. authentication token
-3. a body, either as a single value or represented as a JSON object like `{"value":<value>}`
-
-| POST endpoint   | JSON body                                                     | action                                                                          |
-| --------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `/send`         | `"XX XX...XX"`                                                | send telegram to the EMS bus                                                    |
-| `/publish`      | `[ha] \| [device]`                                            | MQTT publish all values, and optional HA-configuration or specific for a device |
-| `/pin`          | `{"id":<gpio>, "value":<on \|off \| 1 \| 0 \| true \| false>` | sets ESP's GPIO pins high/low                                                   |
-| `/watch`        | `<on \|off \| raw \| <type-id(hex)>`                          | watch incoming telegrams                                                        |
-| `/syslog_level` | `<level>`                                                     | set syslog level                                                                |
+| endpoint       | HTTP method | action                                                                          | authentication required? | body                                                           |
+| -------------- | ----------- | ------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------------------- |
+| `info`         | GET         | outputs current system information                                              | no                       |
+| `fetch`        | GET         | forces at refresh of all device values                                          | no                       |                                                                |
+| `restart`      | GET         | restarts EMS-ESP                                                                | yes                      |                                                                |
+| `commands`     | GET         | lists the available system commands                                             | no                       |                                                                |
+| `settings`     | GET         | shows the current system settings                                               | no                       |                                                                |
+| `send`         | POST        | send telegram to the EMS bus                                                    | yes                      | `"XX XX...XX"`                                                 |
+| `publish`      | POST        | MQTT publish all values, and optional HA-configuration or specific for a device | yes                      | `[ha] \| [device]`                                             |
+| `pin`          | POST        | sets ESP's GPIO pins high/low                                                   | yes                      | `{"id":<gpio>, "value":<on \|off \| 1 \| 0 \| true \| false>}` |
+| `watch`        | POST        | watch incoming telegrams                                                        | yes                      | `<on \|off \| raw \| <type-id(hex)>`                           |
+| `syslog_level` | POST        | set syslog level                                                                | yes                      | `<level>`                                                      |
 
 ### Fetching Dallas temperature sensor information
 
-The URL is `http://<hostname>/api/dallassensor`
+The URL path is `http://<hostname>/api/dallassensor/`
+
+| endpoint | HTTP method | action                                        | authentication required? | body |
+| -------- | ----------- | --------------------------------------------- | ------------------------ | ---- |
+| `info`   | GET         | outputs connected Dallas sensors and readings | no                       |
 
 ## EMS Device Entity Names
 
-The tables below list the available commands for each specific EMS device.
+The tables below list the available commands (or entities) for each specific EMS device. These replace the `<entity>` in the URL.
 
 ### Boiler: `boiler`
 
@@ -196,12 +209,16 @@ print(response.json())
 
 ## MQTT
 
-MQTT uses the same format as the API. The **topic** matches the URL path except the `<hostname>` is replaced with the MQTT base name defined in the Settings. The **payload** the HTTP body data. You can use the extended JSON format with key/value's but its recommended to keep the payload as a single value.
+MQTT uses the same format as the API.
 
-Some examples:
+The **topic** matches the URL path except the `<hostname>` is replaced with the MQTT base name as defined in the Settings.
 
-| topic                        | payload        | action                                                                     |
-| ---------------------------- | -------------- | -------------------------------------------------------------------------- |
-| `ems-esp/system/send`        | `"XX XX...XX"` | send raw ems-command                                                       |
-| `ems-esp/thermostat/seltemp` |                | sends seltemp device value information back on an `ems-esp/response` topic |
-| `ems-esp/thermostat/mode`    | `"auto"`       | sets the thermostat mode to auto for hc1                                   |
+The **payload** is the HTTP `<data>` in the same format, so either as string or as a JSON object.
+
+Examples:
+
+| topic                        | payload        | action                                                                             |
+| ---------------------------- | -------------- | ---------------------------------------------------------------------------------- |
+| `ems-esp/system/send`        | `"XX XX...XX"` | send raw ems-command                                                               |
+| `ems-esp/thermostat/seltemp` |                | fetches the seltemp entity values and publishes it in the topic `ems-esp/response` |
+| `ems-esp/thermostat/mode`    | `"auto"`       | sets the thermostat mode to auto for hc1                                           |
