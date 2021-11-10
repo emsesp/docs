@@ -8,24 +8,32 @@ There are 3 methods commands can be invoked:
 
 ## Definitions
 
-- `<device>` is the short-name of an EMS Device such as `boiler`, `thermostat`, `mixer`, `heatpump`, `solar` etc.
-- `<command>` is the name of a command (e.g. publish) or either a device entity (e.g. seltemp). It's also referred to as `<entity>` in the context of an EMS device. For EMS devices see the [table below](Command?id=ems-device-entity-names) for the complete list.
-- `<id>` is an optional identifier. For example the value 1 or as a string depending on the context.
-- `<data>` is used to represent either:
-  1. a single value. This can be of any type (integer, float, string, boolean) or,
-  2. as a JSON object containing the following optional key/vlaues:
-     - **"cmd"** for the `<command>`. The key **"cmd"** can also be substituted for **"entity"**.
-     - **"value"** is the value and can be either a string in quotes, integer, float of boolean. **"data"** is an alias that can also be used instead for the key.
-     - **"hc"**, **"wwc"** and **"id"** are all are used to represent a value or in the context of an EMS Device a heating or warm water circuit.
+- `<device>` is the short-name of either
+  - an EMS Device such as `boiler`, `thermostat`, `mixer`, `heatpump`, `solar` or `gateway`
+  - the EMS-ESP system itself as `system`
+  - the Dallas temperature sensors as `dallassensor`
+- `<command>` is the name of either
+  - a generic command, or
+  - an EMS device entity also referred to as an `<entity>`. See the [table below](Command?id=ems-device-entity-names) for the complete list
+- `<id>` is an optional identifier and has different meanings depending on the context
+- `<data>` is used to represent the value to read or write. It can be either:
+  - a single value. This can be of any type; integer, float, string or boolean
+  - as a JSON object containing the following optional key/values:
+    - **"cmd"** is the `<command>`. The key **"cmd"** may also be substituted for **"entity"**.
+    - **"value"** is the value and can be either a text string in quotes, an integer, float of boolean. **"data"** is an alias that can also be used instead for the key.
+    - **"hc"**, **"wwc"** and **"id"** are all are used to represent a value or in the context of an EMS Device a heating or warm water circuit.
 
-Note: A boolean value can be represented either as a True value ("TRUE", "yes", true, "true", "on", 1) or False value ("FALSE", "no", false, "false", "off", 0).
+Note: A boolean value can be represented in many forms:
+
+- as a True value, "TRUE", "yes", true, "true", "on", 1
+- as a False value, "FALSE", "no", false, "false", "off", 0
 
 ## Console
 
-- Commands can be executed using the `call` command.
-- You need to be admin to use the `call` command. First `su` and enter the password.
-- For a list of all available commands you can use `show commands`.
-- The syntax is `call <device> <command> <data> <id>`.
+- Commands can be executed using the `call` command
+- You need to be admin to use the `call` command. First `su` and enter the password
+- For a list of all available commands you can use `show commands`
+- The syntax is `call <device> <command> <data> <id>`
 
 For more information on how to use the Telnet Console see the [**Console**](Console) section.
 
