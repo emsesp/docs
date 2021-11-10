@@ -55,3 +55,4 @@ EMS devices are being constantly added to the database on each new release.
 - Bosch Easy Connect
 - EMS-OT OpenTherm converter
 - Junkers Controller
+- Tado Thermostats (read-only)
