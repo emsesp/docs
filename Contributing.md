@@ -12,11 +12,15 @@ A Pull Request (PR) is the process where code modifications are managed in GitHu
 
 The process is straight-forward.
 
-- Fork the EMS-ESP Repository [git repository](https://github.com/emsesp/EMS-ESP32).
+- Fork the EMS-ESP Repository [git repository](https://github.com/emsesp/EMS-ESP32)
 - Switch to the `dev` branch
-- Write/Change the code in your Fork for a new feature, bug fix, optimization, etc.
-- Ensure tests work if you can by running `make run` (linux/osx only).
-- Create a Pull Request against the [**dev**](https://github.com/emsesp/EMS-ESP32/tree/dev) branch of EMS-ESP.
+- Write/Change the code in your Fork for a new feature, bug fix, optimization...
+- Make sure the code is formatting to the EMS-ESP style (as defined in clang)
+- Create any additional tests in `tests.cpp` and use the test suite `make run` (linux/osx only) to make sure there are no breaking changes
+- Update the `CHANGELOG_LATEST.md` with the change and link to the PR
+- Create a Pull Request against the [**dev**](https://github.com/emsesp/EMS-ESP32/tree/dev) branch of EMS-ESP
+
+Make sure you adhere to these rules:
 
 1. All pull requests must be done against the dev branch.
 2. Make sure code is formatting per the `.clang-format`. In Visual Studio Code use Alt-Shift-F to auto-format.

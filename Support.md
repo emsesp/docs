@@ -7,7 +7,7 @@ If you're looking for support on **EMS-ESP** there are some options available:
 
 ### Support Community
 
-- [EMS-ESP Support Chat](https://discord.gg/3J3GgnzpyT): For support, troubleshooting and general questions. You have better chances to get fast answers from members of the community
+- [Discord Chat](https://discord.gg/3J3GgnzpyT): For support, troubleshooting and general questions. You have better chances to get fast answers from members of the community
 - [Search in GitHub Issues](https://github.com/emsesp/EMS-ESP/issues): You might find an answer to your question by searching current or closed issues
 
 ### Creating an new request

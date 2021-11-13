@@ -1,10 +1,8 @@
-
+#### **Below is a collection of useful tips, tricks and code submitted by the community:**
 
 ---
 
-Below is a collection of useful tips, tricks and code submitted by the community:
-
-### 1) Controlling boiler heating (by @Oderik)
+### Control the boiler heating (by @Oderik)
 
 In a very simple setup a boiler provides heat to one heating circuit. If `heating activated` is `on`, the boiler maintains the `selected flow temperature` by regulating the burner and the heat pump.
 
@@ -12,7 +10,7 @@ Once the `current flow temperature` exceeds the `selected flow temperature` + `t
 
 Thus to activate the heating you will need to set `heatingactivated` to `on` and set an appropriate `flowtemp`. The latter should be derived from the `heating temperature setting` which can be set using the physical dial/control on the boiler. It should be considered as the maximum flow temperature. You can also use a lower flow temperature to maintain a constant room temperature once the initial heating is done.
 
-### 2) Retrieving data via REST using PHP (by @flohse123)
+### Retrieve data via REST using PHP (by @flohse123)
 
 ```php
 <?php

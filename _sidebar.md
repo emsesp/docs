@@ -26,6 +26,10 @@
 - [Support](Support)
 - [Troubleshooting](Troubleshooting)
 - [How to...](Howto)
+- **Hardware**
+- [Building an EMS circuit](Hardware)
 - **For Developers**
 - [Coding Style](Coding)
 - [Contributing](Contributing)
+- **About**
+- [A short history](History)
