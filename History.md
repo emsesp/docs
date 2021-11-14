@@ -1,4 +1,4 @@
-A short version history listing of notable changes over the years:
+A short version history listing key milestones over the years:
 
 - May 2018 - Version 0.1.0 - The first public prototype. Built only for the ESP8266. This version only had a very simple telnet interface. The repo had 4 .cpp files and was called Boiler
 - September 2018 - Version 1.0.0 - First official stable release on GitHub
