@@ -16,7 +16,7 @@ Try erasing the ESP (`esptool.py erase_flash`) and [uploading](Uploading-firmwar
 
 ## EMS Connectivity
 
-### Not all EMS devices are recognized or capturing data
+### Not all EMS devices are recognized or data is missing
 
 Experiment with changing the Tx Mode value in the Settings page. The default EMS works for older EMS1.0 systems, EMS2 or EMSPlus systems and HT3 for Junkers/Worcester using the Heatronics protocol.
 
@@ -49,6 +49,12 @@ A healthy gateway board running EMS-ESP should run happily for long periods with
 - Power down the gateway and check wiring connections are secure. Check that the ESP32, DC-DC converter and any jumpers on the gateway securely seated onto their connectors.
 - Try powering the gateway from the ESP32's USB socket (check the [wiki](https://bbqkees-electronics.nl/wiki/) for how to do this on your particular gateway model). If the restarts stop, then you've got a problem with the external power source (BUS or service jack) or the DC-DC converter inside the gateway.
 - Firmware and settings are loaded OK. Re-flashing the firmware and resetting the config might help. Make a note of the settings first if you can
+
+### Changing a value on an EMS Device doesn't work
+
+If you notice that setting/writing an EMS device value has no effect then from the WebUI set the System Log level to DEBUG and repeat the action, noticing any errors or warnings in the System Log. For a more thorough analysis use the Telnet Console, `su`, then `log debug` and then repeat the action using the `call` command. Post the output to a new GitHub issue, making sure you state which version of EMS-ESP you are using.
+
+Note on some systems with for example a gateway or controller attached, any change will be reset or overwritten. This is just the behaviour of the other master controllers and not much we can do about it.
 
 ### Incorrect values are shown from a specific device
 
