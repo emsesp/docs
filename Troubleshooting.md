@@ -104,8 +104,8 @@ You should see a log statement pop in the console like `[thermostat] Setting the
 
 ### HA is showing errors like _"Received message on illegal discovery topic"_
 
-This could happen when upgrading from an earlier EMS-ESP version and some of the device entity names may have changed. Use a tool like MQTTExplorer to remove all the `homeassistant` topics in your MQTT broker and restart EMS-ESP.
+This could happen when upgrading from an earlier EMS-ESP version and some of the device entity names may have changed. Use a tool like MQTTExplorer to remove all the `homeassistant/sensor/ems-esp/*` and `homeassistant/binary_sensor/ems-esp/*` topics from your MQTT broker and restart EMS-ESP.
 
 ### HA is showing errors like _"Template variable warning: 'dict object' has no attribute..."_
 
-This happens after EMS-ESP is started and the entities are created in Home Assistant but the data has yet to arrive from EMS-ESP to the MQTT topics, which may take up to 10 seconds. It's safe to ignore these warnings.
+This happens after EMS-ESP is started and the entities are created in Home Assistant but the data has yet to arrive from EMS-ESP to the MQTT topics, which may take up to 10 seconds. It's safe to ignore these warnings. IF they keep coming up use a tool like MQTTExplorer to remove all the `homeassistant/sensor/ems-esp/*` and `homeassistant/binary_sensor/ems-esp/*` topics from your MQTT broker and restart EMS-ESP.
