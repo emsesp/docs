@@ -183,9 +183,19 @@ one_time_water_off:
     - 'Intelligent'
 ```
 
-## Example: Changing any EMS device value using the API
+## Example: Reading a value via the API
 
-Files to change in Home Assistant
+Since all the EMS-ESP data is exposed via the API, you can create Home Assistant entities by manually adding sesnors and use the REST platform.
+
+```yaml
+sensor:
+  - platform: rest
+    resource: http://ems-esp.local/api/system/info
+    name: emsesp_MAC
+    value_template: '{{ value_json.Network.MAC }}'
+```
+
+## Example: Changing a value via the API
 
 `configuration.yaml`:
 
@@ -208,7 +218,7 @@ input_number:
     icon: mdi:coolant-temperature
 ```
 
-in `automations.yaml`:
+in the Automations:
 
 ```yaml
 - id: 'change_ww_seltemp'
