@@ -57,7 +57,8 @@ The URL path is `http://<hostname>/api/<device>/`
 | `info`          | GET         | outputs current EMS device information in verbose                  | no                       |          |
 | `values`        | GET         | outputs current EMS device information in short format             | no                       |          |
 | _(empty)_       | GET         | same as `values` above                                             | no                       |          |
-| `commands`      | GET         | lists the available commands or entities to call                   | no                       |          |
+| `commands`      | GET         | lists the available commands or entities to call                   | no                       |
+| `entities`      | GET         | lists the matching Home Assistant entities (HA only)               | no                       |          |
 | `{entity}`      | GET         | outputs details of a specific entity, for reading                  | no                       |          |
 | `{entity}/{hc}` | GET         | same as the read command above but for a specific heating circuit  | no                       |          |
 | `{entity}`      | POST        | updates a entity value, for writing                                | yes                      | `<data>` |
@@ -219,14 +220,16 @@ print(response.json())
 
 MQTT uses the same format as the API.
 
-The **topic** matches the URL path except the `<hostname>` is replaced with the MQTT base name as defined in the Settings.
+The **topic** matches the URL path except the `<hostname>` is replaced with the MQTT Base name as defined in the Settings (default is ems-esp).
 
-The **payload** is the HTTP `<data>` in the same format, so either as string or as a JSON object.
+The **payload** is the same as the `<data>` as described above and used in the API.
 
 Examples:
 
-| topic                        | payload        | action                                                                             |
-| ---------------------------- | -------------- | ---------------------------------------------------------------------------------- |
-| `ems-esp/system/send`        | `"XX XX...XX"` | send raw ems-command                                                               |
-| `ems-esp/thermostat/seltemp` |                | fetches the seltemp entity values and publishes it in the topic `ems-esp/response` |
-| `ems-esp/thermostat/mode`    | `"auto"`       | sets the thermostat mode to auto for hc1                                           |
+| topic                        | payload                                          | action                                                                                  |
+| ---------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| `ems-esp/system/send`        | `"XX XX...XX"`                                   | send raw ems-command                                                                    |
+| `ems-esp/thermostat/seltemp` |                                                  | fetches the seltemp entity values and publishes it in the topic `ems-esp/response`      |
+| `ems-esp/thermostat/seltemp` | `23`                                             | change the selected setpoint temperature to 23 degreees on the master thermostat on hc1 |
+| `ems-esp/thermostat/mode`    | `"auto"`                                         | sets the thermostat mode to auto for hc1                                                |
+| `ems-esp/thermostat`         | `{\"cmd\":\"mode\",\"value\":\"heat\",\"id\":1}` | sets the thermostat mode to heat for hc1                                                |
