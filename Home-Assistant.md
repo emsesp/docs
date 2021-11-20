@@ -185,7 +185,7 @@ one_time_water_off:
 
 ## Example: Reading a value via the API
 
-Since all the EMS-ESP data is exposed via the API, you can create Home Assistant entities by manually adding sesnors and use the REST platform.
+Since all the EMS-ESP data is exposed via the API, you can create Home Assistant entities by manually adding sensors and use the REST platform like the example below. Note HA will call this every 30 seconds. If you want a more on-demand approach then use `rest_command` below to trigger the fetch for example when HA starts up.
 
 ```yaml
 sensor:
