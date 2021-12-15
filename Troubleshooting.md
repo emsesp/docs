@@ -12,11 +12,12 @@ A slow pulse means either there is no WiFi connection or EMS-ESP cannot read fro
 
 ### EMS-ESP keeps restarting
 
-A healthy gateway board running EMS-ESP should run happily for long periods without spontaneous restarts so, if yours is restarting by itself at random intervals, then something's not right. Things to check...
+A healthy gateway board running EMS-ESP should run happily for long periods without spontaneous restarts so, if yours is restarting by itself at random intervals, then something's not right. Things to check:
 
 - Power down the gateway and check wiring connections are secure. Check that the ESP32, DC-DC converter and any jumpers on the gateway securely seated onto their connectors.
 - Try powering the gateway from the ESP32's USB socket (check the [wiki](https://bbqkees-electronics.nl/wiki/) for how to do this on your particular gateway model). If the restarts stop, then you've got a problem with the external power source (BUS or service jack) or the DC-DC converter inside the gateway.
-- Firmware and settings are loaded OK. Re-flashing the firmware and resetting the config might help. Make a note of the settings first if you can
+- Firmware and settings are loaded OK. Re-flashing the firmware and resetting the config might help. Make a note of the settings first if you can.
+- Finally start turning off all the services (SysLog, NTP, MQTT etc) and see if it still restarts. If it does then the problem is the telegram logic. Try and capture some logs just before it crashes (using SysLog is good for this) and post the information in a new GitHub issue.
 
 ## EMS Connectivity
 
@@ -45,6 +46,10 @@ It is quite usual to see a few warnings in the log about incomplete telegrams. T
 
 - powering: try to power ems-esp by USB or service-jack. We've seen examples where a noisy or failing DC supply can cause RX Fail or incomplete telegrams and trying USB power (check how to switch to USB powering in the [wiki](https://bbqkees-electronics.nl/wiki/)) can help track this down.
 - disruptions on the bus (emc, reflections, etc): try to connect ems-esp to another device on the bus. In general a previously unconnected bus-out on a devices like MM100 is better than a split connection on an already used connector.
+
+### Bus is not connecting
+
+If you're using the EMS wires, on some systems the order is important. Try switching them!
 
 ### Changing a value on an EMS Device doesn't work
 
