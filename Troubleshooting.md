@@ -10,14 +10,14 @@ A fast pulse of the LED means the system is booting or in installation mode. Con
 
 A slow pulse means either there is no WiFi connection or EMS-ESP cannot read from the EMS bus. In this case go to the Web interface and try a different Tx Mode setting.
 
-### EMS-ESP keeps restarting
+### EMS-ESP sometimes crashes and restarts
 
 A healthy gateway board running EMS-ESP should run happily for long periods without spontaneous restarts so, if yours is restarting by itself at random intervals, then something's not right. Things to check:
 
-- Power down the gateway and check wiring connections are secure. Check that the ESP32, DC-DC converter and any jumpers on the gateway securely seated onto their connectors.
+- Power down the gateway and check wiring connections are secure. Check that the ESP32, DC-DC converter and any jumpers on the gateway are securely seated onto their connectors.
 - Try powering the gateway from the ESP32's USB socket (check the [wiki](https://bbqkees-electronics.nl/wiki/) for how to do this on your particular gateway model). If the restarts stop, then you've got a problem with the external power source (BUS or service jack) or the DC-DC converter inside the gateway.
-- Firmware and settings are loaded OK. Re-flashing the firmware and resetting the config might help. Make a note of the settings first if you can.
-- Finally start turning off all the services (SysLog, NTP, MQTT etc) and see if it still restarts. If it does then the problem is the telegram logic. Try and capture some logs just before it crashes (using SysLog is good for this) and post the information in a new GitHub issue.
+- Finally start turning off all the services (SysLog, NTP, MQTT etc) and see if it still restarts. If it does then the problem is the processing the incoming telegrams. Try and capture some logs just before it crashes (using SysLog is good for this) and post the information in a new GitHub issue.
+- After a restart the first line in the log file would be the reason for the crash. It won't say where it failed but will give you indication whether its power related.
 
 ## EMS Connectivity
 

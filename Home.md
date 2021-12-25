@@ -10,9 +10,9 @@
 
 <!-- tabs:start -->
 
-#### **September 2021**
+#### **December 2021**
 
-We're still busy with version 3 and plan to keep extending with more support for devices. Some of the things on the todo list are
+We're still busy with adding new features to version 3. The next 3.4 will have a faster Web experience. A few things on the enhancement list are:
 
 - extended support for Heat Pumps
 - Localized WebUI (NL, DE, US)
@@ -57,4 +57,4 @@ Thanks to all the contributors and testers for providing feedback.
 <!-- tabs:end -->
 
 > [!WARNING|style:flat|label:DISCLAIMER]
-> This code and libraries were developed from information gathered on the internet and many hours of reverse engineering the communications between the EMS bus and real live devices. It is _not_ based on any official documentation or supported libraries from Bosch/Buderus/Junkers/Nefit (and associated companies) and therefore there are no guarantees whatsoever regarding the safety of your devices and/or their settings, or the accuracy of the information provided.
+> This code was developed based off information gathered on the internet and many hours of reverse engineering the communications between the EMS bus and real live devices. It is _not_ based on any official documentation or supported libraries from Bosch/Buderus/Junkers/Nefit (and associated companies) and therefore there are no guarantees whatsoever regarding the safety of your devices and/or their settings, or the accuracy of the information provided.
