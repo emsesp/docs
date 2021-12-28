@@ -84,14 +84,16 @@ If you're seeing unusual Dallas sensor readings (crazy negative temperatures, su
 
 ## MQTT
 
-### MQTT is not stable
+### MQTT is not always working
 
 If you're noticing that MQTT messages are failing to arrive at the broker try:
 
-- First make sure you have set the correct `MQTT Format` in the MQTT Settings page in the Web UI
-- in Console, set logging to debug (`log debug`), `su` and `publish`. Watch the screen for errors (see "Monitoring the MQTT queues" in the [MQTT](MQTT.md))
-- increase the Publish Time. Perhaps there are too many messages and it is flooding the queue
-- run a local copy of the MQTT mosquitto broker, in verbose mode (-v) so you see if there are errors on the server side
+- Check the EMS-ESP logs for errors
+- Check the broker for errors. You have incorrect credentials or duplicate Client IDs
+- Set the log level to Debug (via Web or Console) and monitor the traffic
+- Use Console to force a publish to see what happens. (`log debug`, `su` and `publish`).
+- Increase the Publish Time. Perhaps there are too many messages and it is flooding the queue
+- If all fails, run a local copy of the MQTT mosquitto broker, in verbose mode (-v) so you see if there are errors
 
 ### Commands via MQTT are not working
 
