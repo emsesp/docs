@@ -84,7 +84,7 @@ If you're seeing unusual Dallas sensor readings (crazy negative temperatures, su
 
 ## MQTT
 
-### MQTT is not always working
+### Messages are not always coming in via MQTT
 
 If you're noticing that MQTT messages are failing to arrive at the broker try:
 
@@ -106,7 +106,7 @@ If you're noticing that MQTT messages are failing to arrive at the broker try:
   "C:\Program Files\mosquitto\mosquitto.exe" -v -c "C:\Program Files\mosquitto\mosquitto.conf"
   ```
 
-### Commands via MQTT are not working
+### Commands sent via MQTT are not working
 
 Use the Console to manually test the commands, with logging on. For example if changing the thermostat temperature is not working try
 
@@ -117,6 +117,22 @@ ems-esp:# call thermostat seltemp 15
 ```
 
 You should see a log statement pop in the console like `[thermostat] Setting thermostat temperature to 15.0 for heating circuit 1, mode auto` followed by which telegrams are being sent. If you see errors then reach out on Discord or create a GitHub issue to get [Support](Support.md).
+
+### Integration with Home Assistant breaks when MQTT broker restarts
+
+The integration with Home Assistant uses MQTT Discovery which are 'retained' topics in the MQTT broker. If the MQTT service stops and restarts and the MQTT server is not saving the topics in a database then these messages will obviously be lost and the integration with Home Assistant removed. To solve this add persistance to your MQTT service. For example using Mosquitto a .conf file would look like:
+
+```
+listener 1883
+allow_anonymous true
+persistence true
+persistence_location /mosquitto/data/
+log_dest file /mosquitto/log/mosquitto.log
+```
+
+To read up more on this visit https://pagefault.blog/2020/02/05/how-to-set-up-persistent-storage-for-mosquitto-mqtt-broker.
+
+An alternative option without using persistance on the MQTT server is to tell EMS-ESP to republish all the Home Assistant MQTT topics. You can do this via the EMS-ESP WebUI from version 3.4 and higher.
 
 ## Home Assistant
 
