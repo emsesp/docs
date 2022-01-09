@@ -94,6 +94,17 @@ If you're noticing that MQTT messages are failing to arrive at the broker try:
 - Use Console to force a publish to see what happens. (`log debug`, `su` and `publish`).
 - Increase the Publish Time. Perhaps there are too many messages and it is flooding the queue
 - If all fails, run a local copy of the MQTT mosquitto broker, in verbose mode (-v) so you see if there are errors
+  - download the latest version 2 of Mosquitto from https://mosquitto.org/download/
+  - create a new `mosquitto.conf` file with:
+  ```yaml
+  listener 1883
+  allow_anonymous true
+  ```
+  (or just edit the default `mosquitto.conf` and modify the `allow_anonymous` entry)
+  - run with the -v flag so you see all the verbose messages, e.g. on Windows its:
+  ```
+  "C:\Program Files\mosquitto\mosquitto.exe" -v -c "C:\Program Files\mosquitto\mosquitto.conf"
+  ```
 
 ### Commands via MQTT are not working
 
