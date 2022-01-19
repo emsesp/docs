@@ -16,8 +16,11 @@ A healthy gateway board running EMS-ESP should run happily for long periods with
 
 - Power down the gateway and check wiring connections are secure. Check that the ESP32, DC-DC converter and any jumpers on the gateway are securely seated onto their connectors.
 - Try powering the gateway from the ESP32's USB socket (check the [wiki](https://bbqkees-electronics.nl/wiki/) for how to do this on your particular gateway model). If the restarts stop, then you've got a problem with the external power source (BUS or service jack) or the DC-DC converter inside the gateway.
-- Finally start turning off all the services (SysLog, NTP, MQTT etc) and see if it still restarts. If it does then the problem is the processing the incoming telegrams. Try and capture some logs just before it crashes (using SysLog is good for this) and post the information in a new GitHub issue.
-- After a restart the first line in the log file would be the reason for the crash. It won't say where it failed but will give you indication whether its power related.
+- Try reducing the WiFi Tx Power to 10 dBm from the Network Settings page and see if that helps.
+- If you're still experiencing periodic restarts turn off all the services (SysLog, NTP, MQTT) and see if it still restarts, and then add them back one by one to pinpoint the culprit.
+- And finally, if none of the above works then the problem is the core processing the incoming telegrams. Try and capture some logs just before it crashes (using SysLog is good for this) and post the information in a new GitHub issue.
+
+Note: After a restart the first line in the log file would be the reason for the crash. It won't say where it failed but will give you indication whether its power related.
 
 ## EMS Connectivity
 
@@ -136,10 +139,6 @@ An alternative option without using persistance on the MQTT server is to tell EM
 
 ## Home Assistant
 
-### HA is showing errors like _"Received message on illegal discovery topic"_
+### HA is showing errors like _"Received message on illegal discovery topic"_ or _"Template variable warning: 'dict object' has no attribute..."_
 
-This could happen when upgrading from an earlier EMS-ESP version and some of the device entity names may have changed. Use a tool like MQTTExplorer to remove all the `homeassistant/sensor/ems-esp/*` and `homeassistant/binary_sensor/ems-esp/*` topics from your MQTT broker and restart EMS-ESP.
-
-### HA is showing errors like _"Template variable warning: 'dict object' has no attribute..."_
-
-This happens after EMS-ESP is started and the entities are created in Home Assistant but the data has yet to arrive from EMS-ESP to the MQTT topics, which may take up to 10 seconds. It's safe to ignore these warnings. IF they keep coming up use a tool like MQTTExplorer to remove all the `homeassistant/sensor/ems-esp/*` and `homeassistant/binary_sensor/ems-esp/*` topics from your MQTT broker and restart EMS-ESP.
+This could happen when either upgrading from an earlier EMS-ESP version and some of the device entity names may have changed. Use a tool like MQTTExplorer to remove all the `homeassistant/sensor/ems-esp/*` and `homeassistant/*/ems-esp/*` topics from your MQTT broker and restart EMS-ESP.

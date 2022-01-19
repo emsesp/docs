@@ -21,40 +21,41 @@ The console will give you more insight into the EMS bus traffic, MQTT queues and
 
 The full list of console commands are shown below:
 
-### general commands
-
 ```yaml
 su
 help
 exit
 set
+set timeout <n>
 show
 show devices
 show ems
 show values
 show mqtt
 show commands
-system
+show system
 log [level]
 watch <on | off | raw | unknown> [ID]
+read <device ID> <type ID> [offset]
 ```
 
 and these extra commands as admin (after a `su`):
 
 ```yaml
-call [device type] [cmd] [data] [id|hc]
-read <device ID> <type ID> [offset]
-scan devices [deep]
-set bus_id <device ID>
-set tx_mode <n>
-set master thermostat [device ID]
+call [device] [cmd] [data] [id|hc]
 format
-show users
+mqtt subscribe <topic>
 passwd
 restart
-set wifi hostname <name>
+scan devices [deep]
+set board_profile <name>
+set bus_id <device ID>
+set hostname <name>
+set master thermostat <device ID>
+set tx_mode <n>
 set wifi password
 set wifi ssid <name>
+show users
 wifi reconnect
 ```
 
@@ -64,11 +65,11 @@ wifi reconnect
 
 Note you have `su` first to get access to all the `call` commands.
 
-![Console](_media/console1.PNG ':size=80%')
+![Console](_media/screenshot/console1.png ':size=80%')
 
 ### Showing device values
 
-![Console](_media/console.PNG ':size=80%')
+![Console](_media/screenshot/console0.png ':size=80%')
 
 ### Monitoring the EMS traffic
 
@@ -82,4 +83,4 @@ If you want to see only telegrams that are not registered yet, use `watch unknow
 
 If you want to see the raw bytes including CRC as transmitted on the EMS line use `watch raw <ID>`.
 
-![Console](_media/console3.PNG ':size=80%')
+![Console](_media/screenshot/console3.png ':size=80%')

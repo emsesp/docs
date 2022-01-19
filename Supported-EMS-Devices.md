@@ -6,7 +6,7 @@ EMS devices are being constantly added to the database on each new release.
 
 ### Thermostats
 
-- Buderus RC10, RC20, RC20F, RC25, RC30, RC35, RC300, RC200, RC310, RC3000
+- Buderus RC10, RC20, RC25, RC20F, RC25, RC30, RC35, RC300, RC200, RC310, RC3000
 - Nefit Moduline 100, 200, 300, 400, 1010, 3000
 - Sieger ES72, ES73
 - Junkers FR50, FR100, FR110, FW100, FW200, FR10, FR120, FW120
@@ -15,13 +15,13 @@ EMS devices are being constantly added to the database on each new release.
 > [!NOTE]
 > These thermostats below unfortunately do not support direct EMS write commands so will appear in EMS-ESP as read-only devices:
 >
-> - Buderus Logamatic TC100, Bosch EasyControl CT200, Junkers CT100, Moduline Easy. 
+> - Buderus Logamatic TC100, Bosch EasyControl CT200, Junkers CT100, Moduline Easy.
 >   See also <https://community.home-assistant.io/t/buderus-tc100-junkers-ct100-thermostat/67992>
 > - Junkers FW/FR build before 9/2008 (FD889). See <https://github.com/emsesp/EMS-ESP32/issues/105#issuecomment-915874482>
 
 ### Boilers
 
-- Buderus Logamax, Logamax Plus, Logano, Logano Plus (GBx72, GB162, GB152, GB125, GB212, U122, GB062, GB122, GB192, KB195)
+- Buderus Logamax, Logamax Plus, Logano, Logano Plus (GBx72, GB162, GB152, GB125, GB212, U122, GB062, GB122, GB192, KB195), GC7000F, 8700i
 - Bosch Condens GC2300, 2500, 5000i, Compress 6000AW
 - Worcester-Bosch Greenstar 550CDi, Greenstar 24i
 - Junkers Cerapur
@@ -56,3 +56,4 @@ EMS devices are being constantly added to the database on each new release.
 - EMS-OT OpenTherm converter
 - Junkers Controller
 - Tado Thermostats (read-only)
+- Bosch CM10

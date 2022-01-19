@@ -10,24 +10,28 @@
 
 <!-- tabs:start -->
 
-#### **December 2021**
+#### **Jan 2022**
 
-We're still busy with adding new features to version 3. The next 3.4 will have a faster Web experience. A few things on the enhancement list are:
+The next major version, v3.4 is ready for in the dev branch for adventurous testers. A re-write of the UI which is more responsive plus a list of exciting new features and improved integrations.
+
+#### **Dec 2021**
+
+Version 3 is out and we're full-on adding new features. A few things on the enhancement list are:
 
 - extended support for Heat Pumps
 - Localized WebUI (NL, DE, US)
 - Plugin architecture so custom code can easily be added
 - Native integration into Home Assistant without using MQTT Discovery
 
-#### **February 2021**
+#### **Feb 2021**
 
 It looks like EMS-ESP has hit the physical limits of the ESP8266 in terms of CPU power and memory. To that end version 3 was created specifically using the ESP32 microcontroller architecture and will continue on as the main stream for all future developments. The ESP8266 can be easily swapped out for an ESP32 for a few euro's for those still on version 2.
 
-#### **December 2020**
+#### **Dec 2020**
 
 Version 2.2 will be the last release for the ESP8266.
 
-#### **October 2020**
+#### **Oct 2020**
 
 Version 2.1 is the first major update on 2.0 with the following new features:
 
@@ -36,9 +40,7 @@ Version 2.1 is the first major update on 2.0 with the following new features:
 - extended Home Assistant integration now covering all device types and exposing their values as entities
 - many bug fixes and usability improvements in the web UI
 
-#### **September 2020**
-
-**September 2020**
+#### **Sep 2020**
 
 Version 2.0 is out with many new cool things and improvements and a major step up from version 1.9.
 

@@ -1,22 +1,22 @@
 ![logo](_media/logo/home-assistant.png ':size=100')
 
-EMS-ESP has automatic integration with Home Assistant via the [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/) protocol. To use this feature make sure in EMS-ESP that MQTT is enabled and the `MQTT Format` setting is set to "`Home Assistant`". Also ensure your Home Assistant configuration is setup correctly to use the prefix "homeassistant" which is the default.
+EMS-ESP has automatic integration with Home Assistant via the [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/) protocol. To use this feature make sure in EMS-ESP that MQTT is enabled and the `MQTT Format` setting is set to "`Home Assistant`". Also ensure your Home Assistant configuration is setup correctly and the prefix matches the setting in EMS-ESP under the MQTT Settings page.
 
 EMS-ESP will create retained MQTT messages prefixed with `homeassistant/` for each device and their values (called entities). For example "`EMS-ESP Thermostat`". You can view which ones have been created by going into Home Assistant's `Configuration->Integrations` and select the devices under `MQTT`.
 
 To add this device and its values to a Home Assistant UI click on the "ADD TO LOVELACE" button.
 
-![device](_media/ha_device.PNG ':size=100%')
+![device](_media/screenshot/ha_device.png ':size=100%')
 
 You can then add each of these devices to a new lovelace view using the "add to lovelace" button, and get something looking like:
 
-![lovelace](_media/ha_lovelace.PNG ':size=100%')
+![lovelace](_media/screenshot/ha_lovelace.png ':size=100%')
 
 ## Example: Alerts
 
 Below is an example using a trigger to notify when a shower has finished. This works when the setting `Shower Timer` is enabled.
 
-![Home Assistant iPhone notify](_media/home%20assistant/ha_notify.jpg ':size=400')
+![Home Assistant iPhone notify](_media/screenshot/ha_notify.jpg ':size=400')
 
 ```yaml
 - id: boiler_shower
@@ -185,7 +185,7 @@ one_time_water_off:
 
 ## Example: Reading a value via the API
 
-Since all the EMS-ESP data is exposed via the API, you can create Home Assistant entities by manually adding sensors and use the REST platform like the example below. Note HA will call this every 30 seconds. If you want a more on-demand approach then use `rest_command` below to trigger the fetch for example when HA starts up.
+Although all the EMS-ESP data is available in Home Assistant as various sensor types you can optionally also call commands and read data using the REST API interface. For example in the script below which will trigger HA to fetch the MAC address when HA is restarted:
 
 ```yaml
 sensor:
