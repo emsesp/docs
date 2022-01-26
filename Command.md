@@ -98,6 +98,15 @@ The URL path is `http://<hostname>/api/dallassensor/`
 | -------- | ----------- | --------------------------------------------- | ------------------------ | ---- |
 | `info`   | GET         | outputs connected Dallas sensors and readings | no                       |
 
+### Fetching analog sensor information
+
+The URL path is `http://<hostname>/api/analogsensor/`
+
+| endpoint  | HTTP method | action                                         | authentication required? | body                              |
+| --------- | ----------- | ---------------------------------------------- | ------------------------ | --------------------------------- |
+| `info`    | GET         | outputs configured analog sensors and readings | no                       |                                   |
+| `counter` | POST        | set (positive value) or correct (negative value) counter value | yes      | `{"value":<counts>, "id":<gpio>}` |
+
 ## EMS Device Entity Names
 
 The tables below list the available commands (or entities) for each specific EMS device. These replace the `<entity>` in the URL.
