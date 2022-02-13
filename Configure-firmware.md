@@ -82,3 +82,19 @@ These settings can be found in the `MQTT` tab on the Web UI. Most are self-expla
 - **Enable MQTT Discovery**. Enables the integration with Home Assistant and Domoticz.
 - **Publish Intervals**
   - This section is per device and sets how frequent an MQTT message is sent. When set to 0 EMS-ESP will send data automatically when there is a noticeable change, which could be within a few seconds.
+
+## Adding external sensors
+
+External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees gateway board it already has an external plug for Dallas temperature sensors which will be visible in the Web UI without any configuration.
+
+To add custom sensors click on the + and choose between a normal Digital in/out, a Counter (counting on/off pulses) or ADC for measuring voltages.
+
+![Web](_media/screenshot/web_sensors.png)
+
+Be careful when picking a GPIO so it doesn't clash with the other used GPIOs (you can select CUSTOM board profile to view your current configuration). The following GPIOs are recommended:
+
+- digital output: 13, 19, 21, 22, 26, 27, 33, 37, 38
+- digital input/counter: 13, 19, 21, 22, 25, 26, 27, 33, 35, 37, 38, 39 (note no pullup on 35 & 39)
+- ADC input: 13, 19, 21, 22, 25, 26, 27, 33, 35, 37, 38, 39
+- DAC output: 25
+- PWM output: 13, 19, 21, 22, 26, 27, 33, 37, 38
