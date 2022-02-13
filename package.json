@@ -4,6 +4,6 @@
   },
   "dependencies": {
     "docsify-cli": "^4.4.3",
-    "prettier": "^2.0.5"
+    "prettier": "^2.5.1"
   }
 }

@@ -102,10 +102,10 @@ The URL path is `http://<hostname>/api/dallassensor/`
 
 The URL path is `http://<hostname>/api/analogsensor/`
 
-| endpoint  | HTTP method | action                                         | authentication required? | body                              |
-| --------- | ----------- | ---------------------------------------------- | ------------------------ | --------------------------------- |
-| `info`    | GET         | outputs configured analog sensors and readings | no                       |                                   |
-| `counter` | POST        | set (positive value) or correct (negative value) counter value | yes      | `{"value":<counts>, "id":<gpio>}` |
+| endpoint  | HTTP method | action                                                         | authentication required? | body                              |
+| --------- | ----------- | -------------------------------------------------------------- | ------------------------ | --------------------------------- |
+| `info`    | GET         | outputs configured analog sensors and readings                 | no                       |                                   |
+| `counter` | POST        | set (positive value) or correct (negative value) counter value | yes                      | `{"value":<counts>, "id":<gpio>}` |
 
 ## EMS Device Entity Names
 

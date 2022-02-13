@@ -1,4 +1,3 @@
-
 ## Modes
 
 ### RC300
@@ -14,7 +13,6 @@ RC35 has 3 modes : Auto, Day and Night.
 Auto can switch temperature between 2 levels : day and night
 
 Changing the temperature for Day or Night (in these modes) will also change the temperature levels used in Auto mode
-
 
 ## EMS+ Thermostats
 

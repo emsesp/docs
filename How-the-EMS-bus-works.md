@@ -47,15 +47,16 @@ The tables below shows which types are broadcasted regularly by the boiler (in t
 
 Telegrams can only be sent after the Master (boiler) sends a poll to the receiving device. The response can be a read command to request data or a write command to send data. At the end of the transmission a poll response is sent from the client (`<ID> <BRK>`) to say we're all done and free up the bus for other clients.
 
-When executing a request to read data the `[src]` is our device `(0x0B)` and the `[dest]` must have has it's MSB (8th bit) set. Say we were requesting data from the thermostat we would use `[dest] = 0x97` since RC20 has an ID of 0x17. In emsesp-logs this request is shown with backward arrow towards `[src]`: *"Me(0x0B) <- Thermostat(0x17)..."*.
+When executing a request to read data the `[src]` is our device `(0x0B)` and the `[dest]` must have has it's MSB (8th bit) set. Say we were requesting data from the thermostat we would use `[dest] = 0x97` since RC20 has an ID of 0x17. In emsesp-logs this request is shown with backward arrow towards `[src]`: _"Me(0x0B) <- Thermostat(0x17)..."_.
 
-Following a write request, the `[dest]` doesn't have the 8th bit set and after this write request the destination device will send either a single byte 0x01 for success or 0x04 for failure. In emsesp-logs this write is shown with arrow towards `[dest]`: *"Me(0x0B) -> Thermostat(0x17)..."*.
+Following a write request, the `[dest]` doesn't have the 8th bit set and after this write request the destination device will send either a single byte 0x01 for success or 0x04 for failure. In emsesp-logs this write is shown with arrow towards `[dest]`: _"Me(0x0B) -> Thermostat(0x17)..."_.
 
 ### Fetching EMS telegrams
 
 Not all telegrams are broadcasted frequently, a lot of setting telegrams are only broadcasted partial if there is a change. To get all values from a telegram ems-esp has send a read request to the device and the device replys the telegram only to emsesp, this we call "fetching a telegram".
 
 In `system/info` the devices listed with the handlers (type-ids that are processed):
-- `handlers received`: Telegrams that are frequently broadcasted by device to all: *"Boiler(0x08) -> All(0x00)..."*
-- `handlers fetched`: Telegrams that are not broadcasted and requested by emsesp once a minute: *"Me(0x0B) <- Boiler(0x08) .. Boiler(0x08) -> Me(0x0B)..."*
+
+- `handlers received`: Telegrams that are frequently broadcasted by device to all: _"Boiler(0x08) -> All(0x00)..."_
+- `handlers fetched`: Telegrams that are not broadcasted and requested by emsesp once a minute: _"Me(0x0B) <- Boiler(0x08) .. Boiler(0x08) -> Me(0x0B)..."_
 - `handlers pending`: Telegrams not received yet or empty on fetch. Example: ems-boilers uses telegram 0x18 to monitor actual values, ems+ boilers uses telegram 0xE4 for the same information. If you find 0x18 on the received list, you have a ems boiler and 0xE4 is pending.
