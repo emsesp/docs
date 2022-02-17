@@ -91,10 +91,19 @@ To add custom sensors click on the + and choose between a normal Digital in/out,
 
 ![Web](_media/screenshot/web_sensors.png)
 
-Be careful when picking a GPIO so it doesn't clash with the other used GPIOs (you can select CUSTOM board profile to view your current configuration). The following GPIOs are recommended:
+> [!WARNING] Be careful when picking a GPIO so it doesn't clash with the other used GPIOs (you can select CUSTOM board profile to view your current configuration). 
+> Ems-esp is connected to the low voltage bus of your heating and overvoltage can damage ems-esp and your heating. Do not power external equipment from ems-esp.
 
-- digital output: 13, 19, 21, 22, 26, 27, 33, 37, 38
-- digital input/counter: 13, 19, 21, 22, 25, 26, 27, 33, 35, 37, 38, 39 (note no pullup on 35 & 39)
+The following GPIOs are recommended:
+
+- digital output: 13, 19, 21, 22, 27, 33, 37, 38
+- digital input/counter/timer/rate: 13, 19, 21, 22, 25, 26, 27, 33, 35, 37, 38, 39 (note no pullup on 35 & 39)
 - ADC input: 13, 19, 21, 22, 25, 26, 27, 33, 35, 37, 38, 39
-- DAC output: 25
-- PWM output: 13, 19, 21, 22, 26, 27, 33, 37, 38
+- DAC output: 25, 26
+- PWM output: 13, 19, 21, 22, 25, 26, 27, 33, 37, 38
+
+Limits:
+- ADC: 1.5V
+- DAC 8bit
+- PWM: max. frequency 5000Hz, resolution 13bits
+- Counter/timer/rate trigger on high->low edge with 15 ms debounce. Only for low pulserates.
