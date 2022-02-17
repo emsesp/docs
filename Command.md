@@ -86,7 +86,6 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 | `settings`     | GET         | shows the current system settings                                               | no                       |                                                                |
 | `send`         | POST        | send telegram to the EMS bus                                                    | yes                      | `"XX XX...XX"`                                                 |
 | `publish`      | POST        | MQTT publish all values, and optional HA-configuration or specific for a device | yes                      | `[ha] \| [device]`                                             |
-| `pin`          | POST        | sets ESP's GPIO pins high/low                                                   | yes                      | `{"id":<gpio>, "value":<on \|off \| 1 \| 0 \| true \| false>}` |
 | `watch`        | POST        | watch incoming telegrams                                                        | yes                      | `<on \|off \| raw \| <type-id(hex)>`                           |
 | `syslog_level` | POST        | set syslog level                                                                | yes                      | `<level>`                                                      |
 
@@ -102,10 +101,11 @@ The URL path is `http://<hostname>/api/dallassensor/`
 
 The URL path is `http://<hostname>/api/analogsensor/`
 
-| endpoint  | HTTP method | action                                                         | authentication required? | body                              |
-| --------- | ----------- | -------------------------------------------------------------- | ------------------------ | --------------------------------- |
-| `info`    | GET         | outputs configured analog sensors and readings                 | no                       |                                   |
-| `counter` | POST        | set (positive value) or correct (negative value) counter value | yes                      | `{"value":<counts>, "id":<gpio>}` |
+| endpoint   | HTTP method | action                                                             | authentication required? | body                           |
+| ---------- | ----------- | ------------------------------------------------------------------ | ------------------------ | ------------------------------ |
+| `info`     | GET         | outputs configured analog sensors and readings                     | no                       |                                |
+| `commands` | GET         | lists the available system commands                                | no                       |                                |
+| `setvalue` | POST        | set value/offset of counter or output pin, +/- sign corrects value | yes                      | `{"value":<val>, "id":<gpio>}` |
 
 ## EMS Device Entity Names
 
@@ -169,6 +169,9 @@ The tables below list the available commands (or entities) for each specific EMS
 | `summertemp`     | `<degrees>`                                        | heating circuit | RC30, RC35, RC100, RC300                                                                                              |
 | `nighttemp`      | `<degrees>`                                        | heating circuit | RC20, RC30, RC35                                                                                                      |
 | `daytemp`        | `<degrees>`                                        | heating circuit | RC20, RC30, RC35                                                                                                      |
+| `daytemp2`       | `<degrees>`                                        | heating circuit | RC20                                                                                                      |
+| `daytemp3`       | `<degrees>`                                        | heating circuit | RC20                                                                                                      |
+| `daytemp4`       | `<degrees>`                                        | heating circuit | RC20                                                                                                      |
 | `nofrosttemp`    | `<degrees>`                                        | heating circuit | RC30, RC35, RC100, RC300, Junkers                                                                                     |
 | `remotetemp`     | `<degrees>`                                        | heating circuit | RC30, RC35                                                                                                            |
 | `control`        | `<off \| RC20 \| RC3x>`                            | heating circuit | RC30, RC35 (roomcontrol for hc)                                                                                       |
