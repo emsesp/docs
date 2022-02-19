@@ -77,17 +77,17 @@ Examples:
 
 The URL path is `http://<hostname>/api/system/<endpoint>`
 
-| endpoint       | HTTP method | action                                                                          | authentication required? | body                                                           |
-| -------------- | ----------- | ------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------------------- |
+| endpoint       | HTTP method | action                                                                          | authentication required? | body                                 |
+| -------------- | ----------- | ------------------------------------------------------------------------------- | ------------------------ | ------------------------------------ |
 | `info`         | GET         | outputs current system information                                              | no                       |
-| `fetch`        | GET         | forces at refresh of all device values                                          | no                       |                                                                |
-| `restart`      | GET         | restarts EMS-ESP                                                                | yes                      |                                                                |
-| `commands`     | GET         | lists the available system commands                                             | no                       |                                                                |
-| `settings`     | GET         | shows the current system settings                                               | no                       |                                                                |
-| `send`         | POST        | send telegram to the EMS bus                                                    | yes                      | `"XX XX...XX"`                                                 |
-| `publish`      | POST        | MQTT publish all values, and optional HA-configuration or specific for a device | yes                      | `[ha] \| [device]`                                             |
-| `watch`        | POST        | watch incoming telegrams                                                        | yes                      | `<on \|off \| raw \| <type-id(hex)>`                           |
-| `syslog_level` | POST        | set syslog level                                                                | yes                      | `<level>`                                                      |
+| `fetch`        | GET         | forces at refresh of all device values                                          | no                       |                                      |
+| `restart`      | GET         | restarts EMS-ESP                                                                | yes                      |                                      |
+| `commands`     | GET         | lists the available system commands                                             | no                       |                                      |
+| `settings`     | GET         | shows the current system settings                                               | no                       |                                      |
+| `send`         | POST        | send telegram to the EMS bus                                                    | yes                      | `"XX XX...XX"`                       |
+| `publish`      | POST        | MQTT publish all values, and optional HA-configuration or specific for a device | yes                      | `[ha] \| [device]`                   |
+| `watch`        | POST        | watch incoming telegrams                                                        | yes                      | `<on \|off \| raw \| <type-id(hex)>` |
+| `syslog_level` | POST        | set syslog level                                                                | yes                      | `<level>`                            |
 
 ### Fetching Dallas temperature sensor information
 
@@ -130,7 +130,7 @@ The tables below list the available commands (or entities) for each specific EMS
 | `wwtapactivated`   | `<off \| on>`                               |     | Special function working in boiler test-mode                                       |
 | `wwonetime`        | `<off \| on>`                               |     | Overwritten by some thermostats, see thermostat commands                           |
 | `wwcircpump`       | `<off \| on>`                               |     |                                                                                    |
-| `wwcirculation`    | `<off \| on>`                               |     | Overwritten by some thermostats, see thermostat commands                           |
+| `wwcirc`           | `<off \| on>`                               |     | Overwritten by some thermostats, see thermostat commands                           |
 | `wwcircmode`       | `<n>`                                       |     | (1=1x3min, .. 6=6x3min, 7=on)                                                      |
 | `wwflowtempoffset` | `<degrees>`                                 |     | Offset to boiler temperature while preparing warm water                            |
 | `wwmaxpower`       | `<%>`                                       |     | Maximum power for warm water heating                                               |
@@ -169,9 +169,9 @@ The tables below list the available commands (or entities) for each specific EMS
 | `summertemp`     | `<degrees>`                                        | heating circuit | RC30, RC35, RC100, RC300                                                                                              |
 | `nighttemp`      | `<degrees>`                                        | heating circuit | RC20, RC30, RC35                                                                                                      |
 | `daytemp`        | `<degrees>`                                        | heating circuit | RC20, RC30, RC35                                                                                                      |
-| `daytemp2`       | `<degrees>`                                        | heating circuit | RC20                                                                                                      |
-| `daytemp3`       | `<degrees>`                                        | heating circuit | RC20                                                                                                      |
-| `daytemp4`       | `<degrees>`                                        | heating circuit | RC20                                                                                                      |
+| `daytemp2`       | `<degrees>`                                        | heating circuit | RC20                                                                                                                  |
+| `daytemp3`       | `<degrees>`                                        | heating circuit | RC20                                                                                                                  |
+| `daytemp4`       | `<degrees>`                                        | heating circuit | RC20                                                                                                                  |
 | `nofrosttemp`    | `<degrees>`                                        | heating circuit | RC30, RC35, RC100, RC300, Junkers                                                                                     |
 | `remotetemp`     | `<degrees>`                                        | heating circuit | RC30, RC35                                                                                                            |
 | `control`        | `<off \| RC20 \| RC3x>`                            | heating circuit | RC30, RC35 (roomcontrol for hc)                                                                                       |
