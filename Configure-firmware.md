@@ -91,7 +91,7 @@ To add custom sensors click on the + and choose between a normal Digital in/out,
 
 ![Web](_media/screenshot/web_sensors.png)
 
-> [!WARNING] Be careful when picking a GPIO so it doesn't clash with the other used GPIOs (you can select CUSTOM board profile to view your current configuration). 
+> [!WARNING] Be careful when picking a GPIO so it doesn't clash with the other used GPIOs (you can select CUSTOM board profile to view your current configuration).
 > Ems-esp is connected to the low voltage bus of your heating and overvoltage can damage ems-esp and your heating. Do not power external equipment from ems-esp.
 
 The following GPIOs are recommended:
@@ -103,6 +103,7 @@ The following GPIOs are recommended:
 - PWM output: 13, 19, 21, 22, 25, 26, 27, 33, 37, 38
 
 Limits:
+
 - ADC: 1.5V
 - DAC 8bit
 - PWM: max. frequency 5000Hz, resolution 13bits
