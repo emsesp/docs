@@ -209,7 +209,7 @@ EMS-ESP will subscribe to specific topics depending on the EMS devices attached.
 
 where
 
-- `cmd` is one of the commands listed in the [Commands](API) and **_must_** be enclosed in quotes.
+- `cmd` is one of the commands listed in the [Commands](Command) and **_must_** be enclosed in quotes.
 - `data` can be a string or numeric value.
 - `id` can be replaced with `hc` for some devices that use heating circuits, and represented either as a string or a number.
 
