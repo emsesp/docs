@@ -6,7 +6,7 @@ Firmware binaries can be downloaded from the GitHub page:
 Here we'll use the command-line. You'll need [Python v3](https://www.python.org/downloads/) installed and follow either of these methods below depending on how you plan to upload the firmware.
 
 > [!TIP]
-> BBQKees also has a good write-up at https://bbqkees-electronics.nl/wiki/gateway/firmware-update-to-v2.html.
+> BBQKees also has a good write-up at https://bbqkees-electronics.nl/wiki/gateway/firmware-update-and-downgrade.html.
 
 ### Via a USB cable
 
