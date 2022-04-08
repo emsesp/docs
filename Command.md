@@ -147,7 +147,7 @@ The tables below list the available commands (or entities) for each specific EMS
 
 | command          | data                                               | id              | comments                                                                                                              |
 | ---------------- | -------------------------------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `datetime`       | `<ntp \| hh:mm:ss-dd.mm.yyyy-dw-dst>`              |                 | RC35, RC100, RC300, `dw`:day of week: 0-mo,.. `dst`:daylight saving 0/1                                               |
+| `datetime`       | `<ntp \| dd.mm.yyyy-hh:mm:ss-dw-dst>`              |                 | RC35, RC100, RC300, `dw`:day of week: 0-mo,.. `dst`:daylight saving 0/1                                               |
 | `wwmode`         | `<off \| on \| auto>`                              |                 | RC100, RC300, RC30, RC35                                                                                              |
 | `wwsettemp`      | `<degrees>`                                        |                 | RC100, RC300                                                                                                          |
 | `wwsettemplow`   | `<degrees>`                                        |                 | RC100, RC300                                                                                                          |
