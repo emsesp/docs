@@ -83,7 +83,6 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 | `fetch`        | GET         | forces at refresh of all device values                                          | no                       |                                      |
 | `restart`      | GET         | restarts EMS-ESP                                                                | yes                      |                                      |
 | `commands`     | GET         | lists the available system commands                                             | no                       |                                      |
-| `settings`     | GET         | shows the current system settings                                               | no                       |                                      |
 | `send`         | POST        | send telegram to the EMS bus                                                    | yes                      | `"XX XX...XX"`                       |
 | `publish`      | POST        | MQTT publish all values, and optional HA-configuration or specific for a device | yes                      | `[ha] \| [device]`                   |
 | `watch`        | POST        | watch incoming telegrams                                                        | yes                      | `<on \|off \| raw \| <type-id(hex)>` |
@@ -206,7 +205,7 @@ The tables below list the available commands (or entities) for each specific EMS
   -d '{ "value" : 22.5 }'
 
 # GET with authentication using query parameter with token
-% curl http://ems-esp.local/api/system/settings\?access_token\="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0"
+% curl http://ems-esp.local/api/system/publish\?access_token\="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0"
 
 # GET to restart EMS-ESP
 curl http://ems-esp.local/api/system/restart -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0'

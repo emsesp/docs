@@ -16,4 +16,4 @@ If you're looking for support on **EMS-ESP** there are some options available:
 - [Feature Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=feature_request.md): For requesting features/functions
 - [Troubleshooting](https://github.com/emsesp/EMS-ESP32/issues/new?template=questions---troubleshooting.md): As a last resort, you can open new _Troubleshooting & Question_ issue on GitHub if the solution could not be found using the other channels. Just remember: the more info you provide the more chances you'll have to get an accurate answer
 
-When submitting issues it's helpful to provide details of your system setup and status. This can be done by generating a report either directly from the WebUI (underhelp) or using http://ems-esp.local/api/system/info and http://ems-esp.local/api/system/settings. Attaching these to the GitHub issue will help tremendously.
+When submitting issues it's helpful to provide details of your system status. This can be done by downloading the details from the Help page or going directly to http://ems-esp.local/api/system and attaching this to the GitHub issue.

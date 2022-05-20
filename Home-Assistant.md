@@ -190,7 +190,7 @@ Although all the EMS-ESP data is available in Home Assistant as various sensor t
 ```yaml
 sensor:
   - platform: rest
-    resource: http://ems-esp.local/api/system/info
+    resource: http://ems-esp.local/api/system
     name: emsesp_MAC
     value_template: '{{ value_json.Network.MAC }}'
 ```
