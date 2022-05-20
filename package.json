@@ -3,7 +3,7 @@
     "format": "prettier --write '**/*.{ts,js,css,json,md}'"
   },
   "dependencies": {
-    "docsify-cli": "^4.4.3",
-    "prettier": "^2.5.1"
+    "docsify-cli": "^4.4.4",
+    "prettier": "^2.6.2"
   }
 }
