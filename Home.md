@@ -10,9 +10,11 @@
 
 <!-- tabs:start -->
 
-#### **Jan 2022**
+#### **May 23 2022**
 
-The next major version, v3.4 is ready for in the dev branch for adventurous testers. A re-write of the UI which is more responsive plus a list of exciting new features and improved integrations.
+Finally our next major release v3.4 is out. Funny thing is we could never stop adding improvements to this version which made it increasingly hard to draw the line and cut a build. The 3.4 is truly a major update from 3.3 which a more responsive Web UI and plenty of new features. And a big shout out to everyone who helped test the beta's (and there were many). We hope you enjoy it!
+
+@proddy @MichaelDvP
 
 #### **Dec 2021**
 
