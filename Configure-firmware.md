@@ -111,4 +111,6 @@ Limits:
 
 ## Customization
 
-This page shows all registered entities and allows to exclude commands and values from publishing via mqtt/api or remove them from dashboard. The dashboard only shows entities with values, the customization page shows all. If a entity has no value, it is supported by ems-esp, but not by your boiler/thermostat/etc.
+This page shows all registered entities and allows to exclude commands and values from publishing via mqtt/api or remove them from dashboard. The dashboard only shows entities with values, the customization page shows all. If an entity has no value then it is supported by ems-esp, but not by your boiler/thermostat/etc.
+
+![Web](_media/screenshot/web_customizations.png)
