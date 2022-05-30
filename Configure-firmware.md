@@ -108,3 +108,7 @@ Limits:
 - DAC 8bit
 - PWM: max. frequency 5000Hz, resolution 13bits
 - Counter/timer/rate trigger on high->low edge with 15 ms debounce. Only for low pulserates.
+
+## Customization
+
+This page shows all registered entities and allows to exclude commands and values from publishing via mqtt/api or remove them from dashboard. The dashboard only shows entities with values, the customization page shows all. If a entity has no value, it is supported by ems-esp, but not by your boiler/thermostat/etc.
