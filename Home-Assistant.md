@@ -253,3 +253,39 @@ Now in HA you can dynamically adjust the values. Like:
 ![Screenshot 2021-08-08 143712](https://user-images.githubusercontent.com/1230712/128632199-7815d649-40a8-4f11-99e3-eacc16bf53a4.png)
 
 Check if it's working by going to `http://ems-esp/api/boiler/wwseltemp`
+
+## Example: Showing the Boiler status based on the service code
+(by @glitterball)
+
+Use a template to translate the boiler service code into a string.
+
+in `configuration.yaml`:
+
+```yaml
+template: !include template.yaml
+```
+
+and `template.yaml` contains:
+
+```yaml
+  sensor:
+   - name: "Status"
+     state: >
+      {% set sc = states('sensor.boiler_service_code_number') %}
+      {% if sc == '200' %} CH active
+      {% elif sc == '201' %} HW active
+      {% elif sc == '202' %} CH anti cycle
+      {% elif sc == '203' %} Standby
+      {% elif sc == '204' %} CH cooling
+      {% elif sc == '208' %} Service test
+      {% elif sc == '265' %} Low CH load
+      {% elif sc == '268' %} Component test
+      {% elif sc == '270' %} Power up
+      {% elif sc == '283' %} Burner start
+      {% elif sc == '284' %} Ignition
+      {% elif sc == '305' %} HW anti cycle
+      {% elif sc == '357' %} Air purge
+      {% elif sc == '358' %} Valve kick
+      {% else %} {{ sc }}
+      {% endif %}
+```
