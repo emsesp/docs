@@ -14,38 +14,59 @@ You can then add each of these devices to a new lovelace view using the "add to 
 
 ## Example: Alerts
 
-Below is an example using a trigger to notify when a shower has finished. This works when the setting `Shower Timer` is enabled.
+Below is an example using a trigger to notify when a shower has finished. This works when the setting `Shower Timer` is enabled in EMS-ESP.
 
 ![Home Assistant iPhone notify](_media/screenshot/ha_notify.jpg ':size=400')
 
+Add to `configuration.yaml`:
+
 ```yaml
-- id: boiler_shower
-  alias: Alert shower time
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: sensor.last_shower_duration
-  action:
-    - service: notify.admin_notify
-      data:
-        title: Shower finished at {{states.sensor.time.state}}
-        message: '{{ states.sensor.last_shower_duration.state }}'
+mqtt:
+  sensor:
+    - name: "Last shower duration"
+      state_topic: "ems-esp/shower_data"
+      value_template: "{{ value_json.duration }}"
+
+template:
+  - sensor:
+      - name: "Last shower time"
+        state: '{{ as_timestamp(states.sensor.last_shower_duration.last_updated) | int | timestamp_custom("%H:%M on %a %-d %b") }}'
 ```
 
-and get notified when the thermostat is adjusted:
+And `automations.yaml`:
 
 ```yaml
-- id: thermostat_temp_set
-  alias: Thermostat Temp Set
-  initial_state: true
+- id: "shower_alert"
+  alias: Shower Alert
+  description: ""
   trigger:
-    platform: state
-    entity_id: sensor.current_set_temperature
+    - platform: state
+      entity_id: sensor.last_shower_duration
+  condition: []
   action:
-    - service: notify.admin_notify
+    - service: notify.notify
+      data:
+        title: Shower finished at {{ now().strftime("%H:%M") }}
+        message: "{{ states.sensor.last_shower_duration.state }}"
+  mode: single
+```
+
+Similarly, getting a notification when the thermostat set temperature is adjusted, also in `automations.yaml`:
+
+```yaml
+- id: "thermostat set temp change"
+  alias: Thermostat Alert
+  description: ""
+  trigger:
+    - platform: state
+      entity_id: number.thermostat_hc1_selected_room_temperature
+  condition: []
+  action:
+    - service: notify.notify
       data:
         title: Thermostat alert
-        message: 'Temperature set to {{states.sensor.current_set_temperature.state}} degrees'
+        message: Temperature set to {{ states('number.thermostat_hc1_selected_room_temperature') }} degrees
+  mode: single
 ```
 
 ## Example: Activating one-time hot water charging DHW once using MQTT
