@@ -23,22 +23,22 @@ Add to `configuration.yaml`:
 ```yaml
 mqtt:
   sensor:
-    - name: "Last shower duration"
-      state_topic: "ems-esp/shower_data"
-      value_template: "{{ value_json.duration }}"
+    - name: 'Last shower duration'
+      state_topic: 'ems-esp/shower_data'
+      value_template: '{{ value_json.duration }}'
 
 template:
   - sensor:
-      - name: "Last shower time"
+      - name: 'Last shower time'
         state: '{{ as_timestamp(states.sensor.last_shower_duration.last_updated) | int | timestamp_custom("%H:%M on %a %-d %b") }}'
 ```
 
 And `automations.yaml`:
 
 ```yaml
-- id: "shower_alert"
+- id: 'shower_alert'
   alias: Shower Alert
-  description: ""
+  description: ''
   trigger:
     - platform: state
       entity_id: sensor.last_shower_duration
@@ -47,16 +47,16 @@ And `automations.yaml`:
     - service: notify.notify
       data:
         title: Shower finished at {{ now().strftime("%H:%M") }}
-        message: "{{ states.sensor.last_shower_duration.state }}"
+        message: '{{ states.sensor.last_shower_duration.state }}'
   mode: single
 ```
 
 Similarly, getting a notification when the thermostat set temperature is adjusted, also in `automations.yaml`:
 
 ```yaml
-- id: "thermostat set temp change"
+- id: 'thermostat set temp change'
   alias: Thermostat Alert
-  description: ""
+  description: ''
   trigger:
     - platform: state
       entity_id: number.thermostat_hc1_selected_room_temperature
@@ -223,12 +223,12 @@ sensor:
 ```yaml
 rest_command:
   emsesp:
-    url: http://<IP address of EMS-ESP>/api/{{device}}
+    url: http://ems-esp.local/api/{{device}}
     method: POST
     headers:
       authorization: 'Bearer <Your Secure key from the UI>'
     content_type: 'application/json'
-    payload: '{"name":"{{name}}","value":"{{value}}"}'
+    payload: '{"entity":"{{entity}}","value":"{{value}}"}'
 
 input_number:
   wwselected_temp:
@@ -276,6 +276,7 @@ Now in HA you can dynamically adjust the values. Like:
 Check if it's working by going to `http://ems-esp/api/boiler/wwseltemp`
 
 ## Example: Showing the Boiler status based on the service code
+
 (by @glitterball)
 
 Use a template to translate the boiler service code into a string.
@@ -289,9 +290,9 @@ template: !include template.yaml
 and `template.yaml` contains:
 
 ```yaml
-  sensor:
-   - name: "Status"
-     state: >
+sensor:
+  - name: 'Status'
+    state: >
       {% set sc = states('sensor.boiler_service_code_number') %}
       {% if sc == '200' %} CH active
       {% elif sc == '201' %} HW active
@@ -310,3 +311,40 @@ and `template.yaml` contains:
       {% else %} {{ sc }}
       {% endif %}
 ```
+
+## Example: Switching off hot water (simulating cold shot)
+
+Create a REST API call for EMS-ESP in `configuration.yaml`:
+
+```yaml
+emsesp:
+  url: http://ems-esp.local/api/{{device}}
+  method: POST
+  headers:
+    authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWV9.2bHpWya2C7Q12WjNUBD6_7N3RCD7CMl-EGhyQVzFdDg'
+  content_type: 'application/json'
+  payload: '{"entity":"{{entity}}","value":"{{value}}"}'
+```
+
+make a `script` like:
+
+```yaml
+'coldshot':
+  alias: Cold shot of water
+  mode: single
+  sequence:
+    - service: rest_command.emsesp
+      data:
+        device: 'boiler'
+        entity: 'wwtapactivated'
+        value: 'off'
+    - delay:
+        seconds: 7
+    - service: rest_command.emsesp
+      data:
+        device: 'boiler'
+        entity: 'wwtapactivated'
+        value: 'on'
+```
+
+and call it from a button or an automation.
