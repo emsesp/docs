@@ -28,7 +28,6 @@ In the `Settings` section you'll find:
 ### EMS Bus
 
 - **Tx Mode**. Choose the mode that works best for your system and watch for Tx errors in the Web Dashboard and `show ems` in the Console. Changing the value has immediate effect.
-  - `Off` prevents sending telegrams to the EMS bus, disabling Tx.
   - `EMS` is the default for EMS1.0 systems but also compatible with most other bus protocols.
   - `EMS+` is designed to work better for EMS2.0/EMS+ systems.
   - `HT3` for Heatronics3 used primarily by Junkers.
