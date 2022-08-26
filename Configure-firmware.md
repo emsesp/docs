@@ -91,7 +91,7 @@ To add custom sensors click on the + and choose between a normal Digital in/out,
 ![Web](_media/screenshot/web_sensors.png)
 
 > [!WARNING] Be careful when picking a GPIO so it doesn't clash with the other used GPIOs (you can select CUSTOM board profile to view your current configuration).
-> Ems-esp is connected to the low voltage bus of your heating and overvoltage can damage ems-esp and your heating. Do not power external equipment from ems-esp.
+> EMS-ESP is connected to the low voltage bus of your heating and overvoltage can damage ems-esp and your heating. Do not power external equipment from ems-esp.
 
 The following GPIOs are recommended:
 
@@ -107,6 +107,11 @@ Limits:
 - DAC 8bit
 - PWM: max. frequency 5000Hz, resolution 13bits
 - Counter/timer/rate trigger on high->low edge with 15 ms debounce. Only for low pulserates.
+
+## A quick note about GPIOs
+
+ESP32 boards vary in their available pin configuration. Typically you can't use 1, 6-11, 12, 14, 15, 20, 24, 28-31 and 40+
+See https://diyprojects.io/esp32-how-to-use-gpio-digital-io-arduino-code/#.YFpVEq9KhjG and https://nodemcu.readthedocs.io/en/dev-esp32/modules/gpio/
 
 ## Customization
 
