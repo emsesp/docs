@@ -1,5 +1,3 @@
-<img style="margin: 10px 10px; float:right; width:10%" src="_media/logo/logo-proddy-fw.jpg" alt="EMS-ESP Logo"></img>
-
 Welcome to EMS-ESP!
 
 Follow these steps to get EMS-ESP up and running:

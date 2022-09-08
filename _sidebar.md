@@ -13,6 +13,7 @@
 - [openHAB](openHAB)
 - [Loxone](loxone)
 - [ioBroker](iobroker)
+- [Grafana](grafana)
 - **EMS Protocol**
 - [How the EMS Bus works](How-the-EMS-bus-works)
 - [Thermostats](Thermostat)

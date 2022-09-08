@@ -10,7 +10,13 @@
 
 <!-- tabs:start -->
 
-#### **May 23 2022**
+#### **September 2022**
+
+Now the summer break is over and the worst of the heat has passed, we're continuing with version 3.5 which is multi-language. Watch this space or take a peak at the v3.5.0 branch.
+
+We are looking for volunteers to help translate to Polish, Swedish, Finnish and French. Get in contact with us on Discord please!
+
+#### **May 2022**
 
 Finally our next major release v3.4 is out. Funny thing is we could never stop adding improvements to this version which made it increasingly hard to draw the line and cut a build. The 3.4 is truly a major update from 3.3 which a more responsive Web UI and plenty of new features. And a big shout out to everyone who helped test the beta's (and there were many). We hope you enjoy it!
 
