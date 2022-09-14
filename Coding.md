@@ -3,6 +3,36 @@
 - The core services like telnet, logging and shell are based off the libraries from @nomis. I also adopted his general design pattens such as making everything as asynchronous as possible so that no one operation should starve another operation of it's time to execute (<https://isocpp.org/wiki/faq/ctors#static-init-order>).
 - All EMS devices (e.g. boiler, thermostat, solar modules, mixer units etc) are derived from a factory base class and each class handles its own registering of telegram and mqtt handlers. This makes the EMS device code easier to manage and we can extend with new telegrams types and features.
 
+## Adding a new language
+
+### Add language XY to web:
+
+- Download flag from https://gitlab.com/catamphetamine/country-flag-icons/-/tree/master/3x2 and put in `interface/src/i18n`
+- Create folder XY in `interface/src/i18n`
+- Copy `interface/src/i18n/en/index.ts` to `interface/src/i18n/XY/index.ts`
+- Edit `interface/src/i18n/XY/index.ts` and replace the english texts by your language.
+- Edit `interface/src/components/layout/LayoutAuthMenu.tsx` and add:
+```
+import { ReactComponent as XYflag } from '../../i18n/XY.svg';
+...
+        <MenuItem key="xy" value="xy">
+          <XYflag style={{ width: 16, verticalAlign: 'middle' }} />
+          &nbsp;XY
+        </MenuItem>
+```
+- open commandline in `interface` folder and type `npm run standalone` or `npm run typesafe-i18n`
+
+### Add language XY to entities:
+- Edit `interface/src/project/SettingsApplication.tsx` and insert in selection box (~ line 345):
+`            <MenuItem value="xy">NewLangusage (XY)</MenuItem>`
+- Edit `src/system.cpp` line 45 and append `EMSESP_LOCALE_XY` to languages[] 
+- Edit `src/local_translations.h` and append the defines by  
+`#define EMSESP_LOCALE_XY "xy"`
+- add your translation as `, F("your text")` at the end of each `MAKE_PSTR_LIST()` inside the bracket it should look like this:
+`MAKE_PSTR_LIST(tag, F("en"), F("de"), F("nl"), F("se"), F("pl"), F("xy"))`
+- Compile, flash
+
+
 ## Testing
 
 ### WebUI
