@@ -10,8 +10,9 @@
 - Download flag from https://gitlab.com/catamphetamine/country-flag-icons/-/tree/master/3x2 and put in `interface/src/i18n`
 - Create folder XY in `interface/src/i18n`
 - Copy `interface/src/i18n/en/index.ts` to `interface/src/i18n/XY/index.ts`
-- Edit `interface/src/i18n/XY/index.ts` and replace the english texts by your language.
+- Edit `interface/src/i18n/XY/index.ts` and replace the english texts by your language
 - Edit `interface/src/components/layout/LayoutAuthMenu.tsx` and add:
+
 ```
 import { ReactComponent as XYflag } from '../../i18n/XY.svg';
 ...
@@ -20,18 +21,19 @@ import { ReactComponent as XYflag } from '../../i18n/XY.svg';
           &nbsp;XY
         </MenuItem>
 ```
+
 - open commandline in `interface` folder and type `npm run standalone` or `npm run typesafe-i18n`
 
 ### Add language XY to entities:
-- Edit `interface/src/project/SettingsApplication.tsx` and insert in selection box (~ line 345):
-`            <MenuItem value="xy">NewLangusage (XY)</MenuItem>`
-- Edit `src/system.cpp` line 45 and append `EMSESP_LOCALE_XY` to languages[] 
-- Edit `src/local_translations.h` and append the defines by  
-`#define EMSESP_LOCALE_XY "xy"`
-- add your translation as `, F("your text")` at the end of each `MAKE_PSTR_LIST()` inside the bracket it should look like this:
-`MAKE_PSTR_LIST(tag, F("en"), F("de"), F("nl"), F("se"), F("pl"), F("xy"))`
-- Compile, flash
 
+- Edit `interface/src/project/SettingsApplication.tsx` and insert in selection box (~ line 345):
+  ` <MenuItem value="xy">NewLangusage (XY)</MenuItem>`
+- Edit `src/system.cpp` line 45 and append `EMSESP_LOCALE_XY` to languages[]
+- Edit `src/local_translations.h` and append the defines by  
+  `#define EMSESP_LOCALE_XY "xy"`
+- add your translation as `, "your text"` at the end of each `MAKE_PSTR_LIST()` inside the bracket it should look like this:
+  `MAKE_PSTR_LIST(tag, "en", "de", "nl", "se", "pl", "xy")`
+- Compile, flash
 
 ## Testing
 
@@ -56,7 +58,7 @@ The URL is `localhost:3000`
 
 The test data is hardcoded in `/mock-api/server.js`
 
-### Standalone testing
+### Standalone Testing
 
 You can also mimic the ESP32 running EMS-ESP in what we call the 'standalone' mode. This will give you the Telnet console and simulate the EMS bus, MQTT and API.
 
@@ -69,3 +71,17 @@ make run
 ```
 
 Then from the EMS-ESP Console prompt use `test <test>` to run the simulations, eg. mixer, thermostat, general etc. See `test.cpp` for examples of the tests and what data is injected.
+
+## Keeping the Web libraries up to date
+
+Use an update like `ncu` to keep the package.\* web libraries up to date. You can install using `npm install -g npm-check-updates`. See https://www.npmjs.com/package/npm-check-updates.
+
+```bash
+ncu -u
+```
+
+## Keeping the code tidy
+
+The web code uses `prettier`. To auto format run `npm run format` from the `interface` folder.
+
+The C++ code use clang. The easiest way to auto format the code is using the `Format Files` extension in VScode (https://marketplace.visualstudio.com/items?itemName=jbockle.jbockle-format-files). Then run the command `Start Format Files: From Glob` and select `src/**` as the glob pattern.

@@ -12,9 +12,9 @@
 
 #### **September 2022**
 
-Now the summer break is over and the worst of the heat has passed, we're continuing with version 3.5 which is multi-language. Watch this space or take a peak at the v3.5.0 branch.
+The next major release v3.5 is in development. One new enhancement is the multi language support and currently supporting German, Dutch and Swedish with Polish on it's way.
 
-We are looking for volunteers to help translate to Polish, Swedish, Finnish and French. Get in contact with us on Discord please!
+We are looking for volunteers to help translate to other languages so if you want to help please get in contact with us on Discord.
 
 #### **May 2022**
 
