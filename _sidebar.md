@@ -30,7 +30,7 @@
 - **Hardware**
 - [Building an EMS circuit](Hardware)
 - **For Developers**
-- [Coding Style](Coding)
+- [Coding](Coding)
 - [Contributing](Contributing)
 - **About**
 - [A short history](History)
