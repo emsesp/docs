@@ -3,15 +3,18 @@ Firmware binaries can be downloaded from the GitHub page:
 - [Download ESP32 Firmware](https://github.com/emsesp/EMS-ESP32/releases/latest)
 - [Download ESP32 Latest Development Build](https://github.com/emsesp/EMS-ESP32/releases/tag/latest)
 
-Here we'll use the command-line. You'll need [Python v3](https://www.python.org/downloads/) installed and follow either of these methods below depending on how you plan to upload the firmware.
+You can or use our own **EMS-ESP-Flasher** tool [here](https://github.com/MichaelDvP/EMS-ESP_Flasher/releases) which works on all platforms and has a GUI.
+You need to connect the ESP/Gateway via USB in order to use this tool.
 
 > [!TIP]
 > BBQKees also has a good write-up at https://bbqkees-electronics.nl/wiki/gateway/firmware-update-and-downgrade.html.
 
+Alternatively you can use the command-line. You'll need [Python v3](https://www.python.org/downloads/) installed and follow either of these methods below depending on how you plan to upload the firmware.
+
 ### Via a USB cable
 
-- attach a USB cable to the ESP. Make sure you have the correct Serial drivers installed.
-- Install `esptool` via `pip install esptool` or use the **ESP_Flasher** tool from Tasmota [here](https://github.com/Jason2866/ESP_Flasher/releases/latest) which works on all platforms.
+- Attach a USB cable to the ESP. Make sure you have the correct Serial drivers installed.
+- install `esptool` via `pip install esptool`.
 - type:
 
 ```sh
