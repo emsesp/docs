@@ -96,7 +96,7 @@ The URL path is `http://<hostname>/api/dallassensor/`
 | -------- | ----------- | --------------------------------------------- | ------------------------ | ---- |
 | `info`   | GET         | outputs connected Dallas sensors and readings | no                       |
 
-### Fetching analog sensor information
+### Controlling the analog sensors
 
 The URL path is `http://<hostname>/api/analogsensor/`
 
