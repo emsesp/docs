@@ -5,15 +5,15 @@
 
 ## Adding a new language
 
-### Add language XY to web:
+### Add language XY to WebUI:
 
-- Download flag from https://gitlab.com/catamphetamine/country-flag-icons/-/tree/master/3x2 and put in `interface/src/i18n`
-- Create folder XY in `interface/src/i18n`
+- Download the SVG flag from [here](https://gitlab.com/catamphetamine/country-flag-icons/-/tree/master/3x2) and place in `interface/src/i18n`
+- Create the folder XY in `interface/src/i18n`
 - Copy `interface/src/i18n/en/index.ts` to `interface/src/i18n/XY/index.ts`
-- Edit `interface/src/i18n/XY/index.ts` and replace the english texts by your language
-- Edit `interface/src/components/layout/LayoutAuthMenu.tsx` and add:
+- Edit `interface/src/i18n/XY/index.ts` and replace the English texts by your language
+- Edit `interface/src/components/layout/LayoutAuthMenu.tsx` and add the following:
 
-```
+```ts
 import { ReactComponent as XYflag } from '../../i18n/XY.svg';
 ...
         <MenuItem key="xy" value="xy">
@@ -22,18 +22,20 @@ import { ReactComponent as XYflag } from '../../i18n/XY.svg';
         </MenuItem>
 ```
 
-- open commandline in `interface` folder and type `npm run standalone` or `npm run typesafe-i18n`
+- Navigate to the `interface` folder and type `npm run standalone` or `npm run typesafe-i18n` and test the WebUI
 
-### Add language XY to entities:
+### Add language XY to device entities:
 
 - Edit `interface/src/project/SettingsApplication.tsx` and insert in selection box (~ line 345):
-  ` <MenuItem value="xy">NewLangusage (XY)</MenuItem>`
-- Edit `src/system.cpp` line 45 and append `EMSESP_LOCALE_XY` to languages[]
-- Edit `src/local_translations.h` and append the defines by  
+  ```ts
+  <MenuItem value="xy">NewLangusage (XY)</MenuItem>
+  ```
+- Edit `src/system.cpp` line 45 and append `EMSESP_LOCALE_XY` to the `languages[]` array
+- Edit `src/local_translations.h` and append the defines by adding  
   `#define EMSESP_LOCALE_XY "xy"`
 - add your translation as `, "your text"` at the end of each `MAKE_PSTR_LIST()` inside the bracket it should look like this:
   `MAKE_PSTR_LIST(tag, "en", "de", "nl", "se", "pl", "xy")`
-- Compile, flash
+- Compile, flash, test
 
 ## Testing
 
@@ -64,11 +66,9 @@ You can also mimic the ESP32 running EMS-ESP in what we call the 'standalone' mo
 
 It works by compiling the code natively (without using PlatformIO) to create a binary executable. However it uses GNUMake's `make` so currently not compatible with Windows10 which uses CCMake. You'll need to use a Linux distribution, or run Windows WSL (Linux sub-system) or Apple's OSX.
 
-From the root directory run:
+To install make use `sudo apt install build-essential make`
 
-```sh
-make run
-```
+From the root directory command line type `make run` to build and run the EMS-ESP exectutable. `make clean` will remove old object files.
 
 Then from the EMS-ESP Console prompt use `test <test>` to run the simulations, eg. mixer, thermostat, general etc. See `test.cpp` for examples of the tests and what data is injected.
 
