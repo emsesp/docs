@@ -10,10 +10,11 @@
 - Download the SVG flag from [here](https://gitlab.com/catamphetamine/country-flag-icons/-/tree/master/3x2) and place in `interface/src/i18n`
 - Create the folder XY in `interface/src/i18n`
 - Copy `interface/src/i18n/en/index.ts` to `interface/src/i18n/XY/index.ts`
+- Change in the first and last line `en` to your language and in the first lines `BaseTranslation` to `Translation`
 - Edit `interface/src/i18n/XY/index.ts` and replace the English texts by your language
 - Edit `interface/src/components/layout/LayoutAuthMenu.tsx` and add the following:
 
-```ts
+```
 import { ReactComponent as XYflag } from '../../i18n/XY.svg';
 ...
         <MenuItem key="xy" value="xy">
@@ -21,7 +22,16 @@ import { ReactComponent as XYflag } from '../../i18n/XY.svg';
           &nbsp;XY
         </MenuItem>
 ```
+- Edit `interface/src/SignIn.tsx` and add a button:
 
+```
+import { ReactComponent as XYflag } from './i18n/XY.svg';
+...
+      <Button size="small" variant={locale === 'XY' ? 'contained' : 'outlined'} onClick={() => selectLocale('XY')}>
+        <XYflag style={{ width: 24 }} />
+        &nbsp;XY
+      </Button>
+```
 - Navigate to the `interface` folder and type `npm run standalone` or `npm run typesafe-i18n` and test the WebUI
 
 ### Add language XY to device entities:
