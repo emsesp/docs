@@ -22,6 +22,7 @@ import { ReactComponent as XYflag } from '../../i18n/XY.svg';
           &nbsp;XY
         </MenuItem>
 ```
+
 - Edit `interface/src/SignIn.tsx` and add a button:
 
 ```
@@ -32,6 +33,7 @@ import { ReactComponent as XYflag } from './i18n/XY.svg';
         &nbsp;XY
       </Button>
 ```
+
 - Navigate to the `interface` folder and type `npm run standalone` or `npm run typesafe-i18n` and test the WebUI
 
 ### Add language XY to device entities:

@@ -1,19 +1,6 @@
-If you're looking for support on **EMS-ESP** there are some options available:
+If you are looking for support, have a question or suggestion here are some suggested methods:
 
-### Documentation
-
-- [This official documentation](https://emsesp.github.io/docs/#/)
-- [EMS Gateway Documentation](https://bbqkees-electronics.nl/wiki/), for more information on how to build and upload the firmware maintained by @BBQKees
-
-### Support Community
-
-- [Discord Chat](https://discord.gg/3J3GgnzpyT): For support, troubleshooting and general questions. You have better chances to get fast answers from members of the community
-- [Search in GitHub Issues](https://github.com/emsesp/EMS-ESP32/issues): You might find an answer to your question by searching current or closed issues
-
-### Creating an new request
-
-- [Bug Report](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md): For reporting possible defects
-- [Feature Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=feature_request.md): For requesting features/functions
-- [Troubleshooting](https://github.com/emsesp/EMS-ESP32/issues/new?template=questions---troubleshooting.md): As a last resort, you can open new _Troubleshooting & Question_ issue on GitHub if the solution could not be found using the other channels. Just remember: the more info you provide the more chances you'll have to get an accurate answer
-
-When submitting issues it's helpful to provide details of your system status. This can be done by downloading the details from the Help page or going directly to http://ems-esp.local/api/system and attaching this to the GitHub issue.
+1. If the request is **hardware** related go to [BBQKees' EMS Gateway Documentation](https://bbqkees-electronics.nl/wiki/).
+2. Contact the **Support Community** using [Discord](https://discord.gg/3J3GgnzpyT) for asking general questions and chatting with other users. You have better chances to getting fast responses here.
+3. **Search** in existing [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) as you might find an answer to your question in current or closed issues.
+4. **Create a new issue** in GitHub, either a [Bug Report](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) for reporting possible defects, a [Feature Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=feature_request.md) for a new idea or a [Question](https://github.com/emsesp/EMS-ESP32/issues/new?template=questions---troubleshooting.md) for general support. When creating the issue make sure you attach the EMS-ESP support information either using http://ems-esp.local/api/system/info or by clicking on `Support Info` button from the Help page in the Web UI.
