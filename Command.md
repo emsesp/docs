@@ -44,7 +44,7 @@ Things to note:
 - The REST API follows the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
 - The URL path always starts with `http://<hostname>/api/`
 - `<hostname>` is either an IP address or the mDNS name, which default is `ems-esp.local`
-- Some commands require can be dangerous and require security authentication, unless disabled via an EMS-ESP setting. The authentication is in the form of an Access Token which is generated from the Web UI's Security tab. The 152 character long string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date
+- Some commands require can be dangerous and require security authentication, unless disabled via an EMS-ESP setting. The authentication is in the form of an Access Token which is generated from the Web UI's Security->Manage Users and then clicking on the key button for the admin user. The 152 character long string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date
 - With HTTP PUSH/PUT/PATCH commands an HTTP body may be required. This can be in the form of either plain text or as a JSON object `<data>`
 - HTTPS with self-signed certificates are not yet supported
 
