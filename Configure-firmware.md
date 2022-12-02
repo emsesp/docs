@@ -17,17 +17,21 @@ In the `Settings` section you'll find:
 
 ### Board Profile
 
-- Choose from a pre-configured board or select `Custom` to see and change the hardware settings:
-  - **Rx GPIO** - Which pin the Rx is assigned to. It can be any pin.
-  - **Tx GPIO** - Which pin the Tx is assigned to. It can be any pin.
+- If you have your own ESP32 development board you can choose from a pre-configured board (If you purchased a BBQKees Gateway this is already preselected.) or select `Custom` to see and change the hardware settings:
+  - **Rx GPIO** - Which GPIO pin the Rx is assigned to. By default this is GPIO 23 but it can be almost any free pin. Connect this GPIO pin to the RX port on the EMS interface board.
+  - **Tx GPIO** - Which GPIO pin the Tx is assigned to. By default this is GPIO 5 but it can be almost any free pin. Connect this GPIO pin to the TX port on the EMS interface board.
   - **Button GPIO**. Set a pin with pull-up. The button is used for different functions, such as holding for 10 seconds to reset to factory settings.
   - **Dallas GPIO**. This is the pin where any external temperature sensors are attached. The Dallas chips DS1822, DS18S20, DS18B20, DS1825 are supported including their parasite varieties and can also be daisy-chained onto a single line, up to 100 sensors.
   - **LED GPIO**. This is the pin for the LED, defaulted to the onboard LED on the ESP dev board.
   - And a set of Ethernet settings for advanced tweakers
 
+> [!TIP] On ESP32 development boards there are often also pins marked RX and TX.
+> However, these are usually connected to the USB chip and cannot be used for the EMS interface circuit. 
+
+
 ### EMS Bus
 
-- **Tx Mode**. Choose the mode that works best for your system and watch for Tx errors in the Web Dashboard and `show ems` in the Console. Changing the value has immediate effect.
+- **Tx Mode**. Tx Mode is the mode in which EMS-ESP sends telegrams on the EMS bus. Choose the mode that works best for your system and watch for Tx errors in the Web Dashboard and `show ems` in the Console. Changing the value has immediate effect.
   - `EMS` is the default for EMS1.0 systems but also compatible with most other bus protocols.
   - `EMS+` is designed to work better for EMS2.0/EMS+ systems.
   - `HT3` for Heatronics3 used primarily by Junkers.
@@ -84,7 +88,7 @@ These settings can be found in the `MQTT` tab on the Web UI. Most are self-expla
 
 ## Adding external sensors
 
-External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees gateway board it already has an external plug for Dallas temperature sensors which will be visible in the Web UI without any configuration.
+External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees Gateway board it already has an external plug for Dallas temperature sensors which will be visible in the Web UI without any configuration.
 
 To add custom sensors click on the + and choose between a normal Digital in/out, a Counter (counting on/off pulses) or ADC for measuring voltages.
 
