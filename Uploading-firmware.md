@@ -3,7 +3,7 @@ Firmware binaries can be downloaded from the GitHub page:
 - [Download ESP32 Firmware](https://github.com/emsesp/EMS-ESP32/releases/latest)
 - [Download ESP32 Latest Development Build](https://github.com/emsesp/EMS-ESP32/releases/tag/latest)
 
-You can or use our own **EMS-ESP-Flasher** tool [here](https://github.com/MichaelDvP/EMS-ESP_Flasher/releases) which works on all platforms and has a GUI.
+You can or use our own **EMS-ESP-Flasher** tool [here](https://github.com/emsesp/EMS-ESP-Flasher/releases) which works on all platforms and has a GUI.
 You need to connect the ESP/Gateway via USB in order to use this tool.
 
 > [!TIP]
