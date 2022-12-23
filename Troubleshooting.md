@@ -54,6 +54,11 @@ It is quite usual to see a few warnings in the log about incomplete telegrams. T
 
 If you're using the EMS wires, on some systems the order is important. Try switching them!
 
+A BBQKees Gateway is DCE, and the ESP32s are DTE so you have to connect TX(esp)-TX(gateway) and RX-RX. TX on the ESP32 is sending data, TX on gateway is the input for sending data to the ems-bus. Note a crossed (nullmodem) connection is only used for DTE-DTE connections.
+
+The most common wiring mistake though is that when people connect the interface board to an ESP32 module, they connect it to the pins marked TX and RX on the ESP32 module.
+But these are for the USB chip, not for the interface board.
+
 ### Changing a value on an EMS Device doesn't work
 
 If you notice that setting/writing an EMS device value has no effect then from the WebUI set the System Log level to DEBUG and repeat the action, noticing any errors or warnings in the System Log. For a more thorough analysis use the Telnet Console, `su`, then `log debug` and then repeat the action using the `call` command. Post the output to a new GitHub issue as described in [Support](Support.md).

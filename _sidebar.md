@@ -3,6 +3,7 @@
 - [Building the firmware](Building-firmware)
 - [Uploading the firmware](Uploading-firmware)
 - [Configuring EMS-ESP](Configure-firmware)
+- [Release Notes](Release-notes)
 - **Interfaces**
 - [Command](Command)
 - [Web](Web)

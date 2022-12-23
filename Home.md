@@ -12,7 +12,7 @@
 
 #### **September 2022**
 
-The next major release v3.5 is in development. One major new enhancement is the multi language support and we currently have translations for the WebUI and device entities in German, Dutch, Swedish, Polish and Norwegian. Check out the [demo](https://ems-esp.derbyshire.nl) here.
+The next major release v3.5 is in development. One major new enhancement is the multi language support and we currently have translations for the WebUI and device entities in German, Dutch, French, Swedish, Polish and Norwegian. Check out the [demo](https://ems-esp.derbyshire.nl) here.
 
 You can also rename each entity directly from the Web customization page to your own liking, which removes the need to use 'friendly names' in Home Assistant for example.
 
