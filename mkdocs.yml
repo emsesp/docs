@@ -1,0 +1,131 @@
+site_name: EMS-ESP
+site_description: Documentation (Wiki) for EMS-ESP
+site_url: https://emsesp.github.io/docs/
+repo_name: 'emsesp/EMS-ESP32'
+repo_url: 'https://github.com/emsesp/EMS-ESP32'
+edit_uri: 'https://github.com/emsesp/docs/blob/master/docs/'
+docs_dir: docs
+# copyright: 'Copyright &copy; 2022 Proddy and MichaelDvP'
+
+plugins:
+  - search:
+      lang:
+        - de
+        - en
+  - alternate-link
+  - minify:
+      minify_html: true
+  - redirects:
+      redirect_maps:
+  - table-reader
+# - htmlproofer
+
+# strict: true
+
+theme:
+  name: material
+  language: 'en'
+  # custom_dir: 'overrides'
+  logo: '_media/logo/boiler.svg'
+  favicon: _media/favicon.ico
+  # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/?h=palett#primary-color
+  palette:
+    scheme: slate
+    primary: blue grey
+    accent: light blue
+  # palette:
+  #   - media: '(prefers-color-scheme: dark)'
+  #     scheme: slate
+  #     primary: blue
+  #     accent: deep purple
+
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+
+  font:
+    text: Barlow
+    code: Roboto Mono
+
+extra:
+  social:
+    - icon: fontawesome/brands/discord
+      link: 'https://discord.gg/3J3GgnzpyT'
+    - icon: fontawesome/brands/github-alt
+      link: 'https://github.com/emsesp/EMS-ESP32'
+  analytics:
+    provider: google
+    property: G-8J08F8X90S
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: '~'
+      toc_depth: 3
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.tilde
+  - meta
+  - def_list
+  - attr_list
+  - md_in_html
+
+extra_css:
+  - 'assets/css/anchor-fix.css'
+
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - extra_javascript/tablesort.js
+
+nav:
+  - Home:
+      - News: index.md
+      - About: About.md
+      - Getting Started: Getting-Started.md
+      - Configuring EMS-ESP: Configuring.md
+      - Change Log: Change-Log.md
+      - WebUI: WebUI.md
+      - MQTT: MQTT.md
+      - Commands: Commands.md
+      - Console: Console.md
+      - For Developers:
+          - Coding: Coding.md
+          - Contributing: Contributing.md
+          - The EMS protocol: EMS-bus.md
+          - Example EMS Circuit: EMS-Circuit.md
+  - Supported Devices:
+      - All Devices and Entities: All-Devices.md
+      - Boilers: Boilers.md
+      - Thermostats: Thermostats.md
+      - Solar Modules: Solar-Modules.md
+      - Mixer Modules: Mixer-Modules.md
+      - Heat Pumps: Heat-Pumps.md
+      - Controllers: Controllers.md
+      - Switches: Switches.md
+      - Other Devices: Other-Devices.md
+  - Integrations:
+      - Introduction: Integrations.md
+      - Home Assistant: Home-Assistant.md
+      - IOBroker: IOBroker.md
+      - Domoticz: Domoticz.md
+      - openHAB: openHAB.md
+      - Loxone: Loxone.md
+      - Grafana: Grafana.md
+  - Help:
+      - FAQ.md
+      - Troubleshooting.md
+      - Discord Support: https://discord.gg/3J3GgnzpyT "target=_blank"

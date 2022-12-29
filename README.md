@@ -1,74 +1,63 @@
 # EMS-ESP Documentation
 
-This is the official documentation for EMS-ESP.
+This is the official documentation for EMS-ESP and hosted on https://emsesp.github.io/docs/.
 
-## Testing locally
+Built on [MkDocs](https://www.mkdocs.org/) using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme and borrowed from [Tasmota](https://github.com/tasmota/docs/tree/master).
 
-Install docsify (`npm i docsify-cli -g`)
+## Editing Articles
 
-```sh
-docsify serve .
-```
+Edit only articles in `/docs` folder.
 
-## Editing Files using Docsify
+All paths are relative.
 
-Use normal markdown syntax with some enhancements, see below.
+Use strict markdown syntax. See [Markdown Cheatsheet](https://www.markdownguide.org/cheat-sheet/) for a quick reference.
 
-### Disable click on zoom for an image
+### Markdown Enhancements
 
-Images support click on zoom function. If you don't want to use it:
+#### Admonitions
 
-```
-![](image.png ":no-zoom")
-```
+[Reference](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) of all possibilities
 
-### Image resizing
+#### Definition Lists
 
-Due to click on zoom you can directly link to a big image but make it render smaller on the page:
+[Usage](https://squidfunk.github.io/mkdocs-material/reference/lists/#using-definition-lists)
 
-```
-![logo](https://docsify.js.org/_media/icon.svg ':size=50x100')
-![logo](https://docsify.js.org/_media/icon.svg ':size=100')
+#### Tabs
 
-<!-- Supports percentage -->
+Start each tab section with `=== "Tab title"` and indent the tab content by 4 spaces. [More information...](https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/)
 
-![logo](https://docsify.js.org/_media/icon.svg ':size=10%')
-```
-
-### Rendering Alert Tags
-
-Blockquotes `>` can now look even fancier:
-
-?> =`?>`
-
-!> = `!>`
-
-> [!TIP] > `> [!TIP]`
-
-> [!DANGER] > `> [!DANGER]`
-
-> [!NOTE] > `> [!NOTE]`
-
-> [!EXAMPLE] > `> [!EXAMPLE]`
-
-> [!DANGER|style:flat] > `> [!DANGER|style:flat]`
-
-### Creating Tabs
+#### Warnings/Tips
 
 ```
-<!-- tabs:start -->
+!!! tip
+    A tip
 
-#### ** First Tab Title **
+!!! warning
+    A warning
 
-Hello!
+!!! info "some info"
 
-#### ** Second Tab Title **
-
-Bonjour!
-
-#### ** Third Tab Title **
-
-Ciao!
-
-<!-- tabs:end -->
+!!! note
+    just a note
 ```
+
+#### Superscript text
+
+Enclose text in `^ ^` to superscript it. Example `H^2^0` renders H<sup>2</sup>O
+
+## Installing
+
+Easiest way is to run pip as a module (https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment). On Linux to install pip use:
+
+- `python3 -m venv venv` to install the virtual environment
+- `source ./venv/bin/activate` to enter it
+- `pip install wheel`
+- `pip install -r requirements.txt`
+
+### Testing locally
+
+`mkdocs serve` then go to http://127.0.0.1:8000/docs
+
+## Deploying
+
+`mkdocs gh-deploy --force --strict`
