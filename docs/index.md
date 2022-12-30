@@ -5,7 +5,7 @@ hide:
   - toc
 ---
 
-# Firmware for ESP32 devices to communicate with EMS heating controllers
+# ESP32 Firmware to communicate with EMS heating appliances
 
 <img style="margin: 10px 10px; float:right; width:25%" src="_media/logo/boiler.svg" alt="EMS-ESP Logo"></img>
 **EMS-ESP** is an open-source firmware for the Espressif ESP32 microcontroller that communicates with **EMS** (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger
@@ -19,15 +19,13 @@ hide:
 
 ## New Features coming soon in v3.5
 
-The next major release v3.5 is in development. One major new enhancement is the multi language support and we currently have translations for the WebUI and device entities in German, Dutch, French, Swedish, Polish and Norwegian. Check out the demo here.
+The next major release v3.5 is in development. One major new enhancement is the multi language support and we currently have translations for the WebUI and device entities in German, Dutch, French, Swedish, Polish and Norwegian plus a new customization feature to change the entities that get displayed and sent to home automation systems.
 
-You can also rename each entity directly from the Web customization page to your own liking, which removes the need to use 'friendly names' in Home Assistant for example.
+See a [live demo](https://ems-esp.derbyshire.nl/) and the full list of features in the [change log](Version-Release-History#350-current-development-version).
 
 We are looking for volunteers to help translate to other languages so if you want to help please get in contact with us on Discord.
 
-See [change log](https://github.com/emsesp/EMS-ESP32/blob/dev/CHANGELOG_LATEST.md) for a complete list of new features, changes and bug fixes.
-
-## Breaking Changes :warning:
+### :warning: Breaking Changes in v3.5 :warning:
 
 !!! warning
 

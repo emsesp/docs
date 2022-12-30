@@ -95,9 +95,9 @@ nav:
   - Home:
       - News: index.md
       - About: About.md
+      - Version Release History: Version-Release-History.md
       - Getting Started: Getting-Started.md
-      - Configuring EMS-ESP: Configuring.md
-      - Change Log: Change-Log.md
+      - Configuring: Configuring.md
       - WebUI: WebUI.md
       - MQTT: MQTT.md
       - Commands: Commands.md
