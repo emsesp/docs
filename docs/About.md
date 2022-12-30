@@ -4,9 +4,11 @@
 
 EMS-ESP is an open source firmware for [Espressif](https://www.espressif.com/en/products/socs) ESP32 based chipsets based devices originally developed by @Proddy back in 2018 and now owned and maintained exclusively by both [@Proddy](https://github.com/proddy) and [@MichaelDvP](https://github.com/MichaelDvP).
 
-## A short history
+## A Brief history
 
-- May 2018 - Version 0.1.0 - The first public prototype. Built only for the ESP8266. This version only had a very simple telnet interface. The repo had 4 .cpp files and was called Boiler
+How it all started.
+
+- May 2018 - Version 0.1.0 - The first public prototype. Built only for the ESP8266. This version only had a very simple telnet interface. The GitHub repo had 4 .cpp files and was called Boiler
 - September 2018 - Version 1.0.0 - First official stable release on GitHub
 - December 2018 - Version 1.1.0 - Added the RC30 and RC35 thermostats
 - January 2019 - Version 1.3.0 - Added more boilers and thermostats, and EMS+ support

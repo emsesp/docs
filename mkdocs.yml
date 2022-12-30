@@ -94,7 +94,7 @@ extra_javascript:
 nav:
   - Home:
       - News: index.md
-      - About: About.md
+      - About EMS-ESP: About.md
       - Version Release History: Version-Release-History.md
       - Getting Started: Getting-Started.md
       - Configuring: Configuring.md

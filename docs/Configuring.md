@@ -109,7 +109,7 @@ External sensors, like temperature and analog sensors can be attached to a range
 
 To add custom sensors click on the `+` next to `Sensors` from the Dashboard and choose between a normal Digital in/out, a Counter (counting on/off pulses), ADC for measuring voltages, Timer, Rate and PWM 0-2.
 
-![Web](_media/screenshot/web_sensors.png)
+![Web](_media/screenshot/web_sensor.png)
 
 !!! warning
 
