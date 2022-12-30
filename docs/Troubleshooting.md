@@ -6,21 +6,36 @@ The EMS-ESP is probably in Access Point mode. Look for a wifi SSID `ems-esp`, co
 
 ### The LED is constantly flashing
 
-A fast pulse of the LED means the system is booting or in installation mode. Connect via the WiFi to its Access Point (ems-esp) to complete the configuration.
+A fast pulse of the LED means the system is booting or in installation mode. Connect via the WiFi to its Access Point (`ems-esp`) to complete the configuration.
 
 A slow pulse means either there is no WiFi connection or EMS-ESP cannot read from the EMS bus. In this case go to the Web interface and try a different Tx Mode setting.
 
+See the explanation on [what the LED shows](Configuring#what-the-onboard-led-is-showing-you).
+
 ### EMS-ESP sometimes crashes and restarts
 
-A healthy gateway board running EMS-ESP should run happily for long periods without spontaneous restarts so, if yours is restarting by itself at random intervals, then something's not right. Things to check:
+A healthy gateway/interface board running EMS-ESP should run happily for long periods without spontaneous restarts so, if yours is restarting by itself at random intervals, then something's not right.
+
+Record how often it crashes and whether there is any relation to activity on the network (e.g. wifi or mqtt reconnecting) or something incoming/outgoing to one of the EMS devices. A good way to spot this is to use Home Assistant or simple MQTT Explorer to watch the system up time.
+
+Things to check:
+
+#### It may be power related
 
 - Power down the gateway and check wiring connections are secure. Check that the ESP32, DC-DC converter and any jumpers on the gateway are securely seated onto their connectors.
 - Try powering the gateway from the ESP32's USB socket (check the [wiki](https://bbqkees-electronics.nl/wiki/) for how to do this on your particular gateway model). If the restarts stop, then you've got a problem with the external power source (BUS or service jack) or the DC-DC converter inside the gateway.
-- Try reducing the WiFi Tx Power to 10 dBm from the Network Settings page and see if that helps.
-- If you're still experiencing periodic restarts turn off all the services (SysLog, NTP, MQTT) and see if it still restarts, and then add them back one by one to pinpoint the culprit.
-- And finally, if none of the above works then the problem is the core processing the incoming telegrams. Try and capture some logs just before it crashes (using SysLog is good for this) and post the information in a new GitHub issue.
+- If on WiFi, try reducing the WiFi Tx Power to 10 dBm from the `Network Settings` page and see if that helps.
 
-Note: After a restart the first line in the log file would be the reason for the crash. It won't say where it failed but will give you indication whether its power related.
+#### It may be memory related
+
+- If the WebUI is accessible, go to `System->System Status` and look at the Heap. If the Free memory is below 90KB or the Max allocation below 45KB then that is an issue and you'll need to turn of services, try again and report this.
+- Make sure the System Log's Max Buffer Size at `System->System Log` is at its lowest.
+- If you're still experiencing periodic restarts turn off all the services (SysLog, NTP, MQTT, Telnet) and see if it still restarts, and then add them back one by one to pinpoint the culprit.
+
+#### It could be code related
+
+- Go to `System->System Log` and set the `Log Level` to `INFO`. This will make sure you'll see the restart log at the top next time it restarts. It'll show something similar to `2022-12-30 11:58:02.000    INFO 0:      [emsesp]     Last system reset reason Core0: Software reset CPU, Core1: Software reset CPU`.
+- And finally, if none of the above works then the problem is the core processing the incoming telegrams. Try and capture some logs just before it crashes (using SysLog is good for this) and post the information in a new GitHub issue.
 
 ## EMS Connectivity
 
