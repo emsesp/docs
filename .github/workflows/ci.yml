@@ -2,7 +2,6 @@ name: ci
 on:
   pull_request:
     branches:
-      - master 
       - main
     paths-ignore:
     - '.github/**' # Ignore changes towards the .github directory
