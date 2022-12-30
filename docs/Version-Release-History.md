@@ -1,4 +1,4 @@
-This lists the Change Log for only the rolled-up major versions since v3's primary release for the ESP32 in March 2021. For a list of all releases and their fixes, changes and new features see the [latest dev Change Log](https://github.com/emsesp/EMS-ESP32/blob/dev/CHANGELOG_LATEST.md).
+This lists the Change Log for only the rolled-up major versions since v3's primary release in March 2021. For a list of all releases and their fixes, changes and new features see the [latest dev Change Log](https://github.com/emsesp/EMS-ESP32/blob/dev/CHANGELOG_LATEST.md).
 
 ### **3.5.0 - current development version**
 

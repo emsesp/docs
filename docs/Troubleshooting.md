@@ -63,7 +63,7 @@ But these are for the USB chip, not for the interface board.
 
 If you notice that setting/writing an EMS device value has no effect then from the WebUI set the System Log level to DEBUG and repeat the action, noticing any errors or warnings in the System Log. For a more thorough analysis use the Telnet Console, `su`, then `log debug` and then repeat the action using the `call` command. Post the output to a new GitHub issue as described in [FAQ](FAQ.md).
 
-Note on some systems with for example a gateway or controller attached, any change will be reset or overwritten. This is just the behaviour of the other master controllers and not much we can do about it.
+Note on some systems with for example a gateway or controller attached, any change will be reset or overwritten. This is just the behavior of the other master controllers and not much we can do about it.
 
 ### Changing a value works at first, but is then reset to it's original value
 

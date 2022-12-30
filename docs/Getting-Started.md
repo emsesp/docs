@@ -17,9 +17,9 @@ EMS-ESP also requires a separate circuit to read and write to the EMS bus. You c
 
 ## Uploading the firmware
 
-The firmware is a single binary file. First decide whether you want to take the [current stable version](https://github.com/emsesp/EMS-ESP32/releases/latest) or risk it and take the [latest development version](https://github.com/emsesp/EMS-ESP32/releases/tag/latest) to have the latest features and possible bugs.
+The firmware is a single binary file. First decide whether you want to take the [current stable version](https://github.com/emsesp/EMS-ESP32/releases/latest) or risk it and take the [latest development version](https://github.com/emsesp/EMS-ESP32/releases/tag/latest) to have the latest features and of course any possible bugs.
 
-!!! warning "Pay attention to the [Change Log](Change-Log) before upgrading for any breaking changes"
+!!! warning "Pay attention to the [Change Log](Version-Release-History) before upgrading for any breaking changes"
 
 ### First time install
 
@@ -37,7 +37,7 @@ If this is a fresh install you will need to upload it manually and there are two
 
 ### Upgrading from a previous release
 
-If you are upgrading from a previous release it's recommended you perform tthe upgrade via the WebUI (`System->Upload`).
+If you are upgrading from a previous release it's recommended you perform the upgrade via the WebUI (`System->Upload`).
 
 !!! note "There was an issue with older BBQKees Gateway boards with a too small partition size. If you're upgrade from v3.4 or earlier and have one of these boards then make a backup of your settings and use the [EMS-ESP Flasher tool](https://github.com/emsesp/EMS-ESP-Flasher/releases)."
 

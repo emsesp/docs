@@ -159,7 +159,7 @@ Examples:
 | ---------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------- |
 | `ems-esp/system/send`        | `"XX XX...XX"`                                   | send raw ems-command                                                                    |
 | `ems-esp/thermostat/seltemp` |                                                  | fetches the seltemp entity values and publishes it in the topic `ems-esp/response`      |
-| `ems-esp/thermostat/seltemp` | `23`                                             | change the selected setpoint temperature to 23 degreees on the master thermostat on hc1 |
+| `ems-esp/thermostat/seltemp` | `23`                                             | change the selected setpoint temperature to 23 degrees on the master thermostat on hc1 |
 | `ems-esp/thermostat/mode`    | `"auto"`                                         | sets the thermostat mode to auto for hc1                                                |
 | `ems-esp/thermostat`         | `{\"cmd\":\"mode\",\"value\":\"heat\",\"id\":1}` | sets the thermostat mode to heat for hc1                                                |
 

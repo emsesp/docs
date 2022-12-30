@@ -40,7 +40,7 @@ import { ReactComponent as XYflag } from './i18n/XY.svg';
 
 - Edit `interface/src/project/SettingsApplication.tsx` and insert in selection box (~ line 345):
   ```ts
-  <MenuItem value="xy">NewLangusage (XY)</MenuItem>
+  <MenuItem value="xy">NewLanguage (XY)</MenuItem>
   ```
 - Edit `src/system.cpp` line 45 and append `EMSESP_LOCALE_XY` to the `languages[]` array
 - Edit `src/local_translations.h` and append the defines by adding  
@@ -80,7 +80,7 @@ It works by compiling the code natively (without using PlatformIO) to create a b
 
 To install make use `sudo apt install build-essential make`
 
-From the root directory command line type `make run` to build and run the EMS-ESP exectutable. `make clean` will remove old object files.
+From the root directory command line type `make run` to build and run the EMS-ESP executable. `make clean` will remove old object files.
 
 Then from the EMS-ESP Console prompt use `test <test>` to run the simulations, eg. mixer, thermostat, general etc. See `test.cpp` for examples of the tests and what data is injected.
 
