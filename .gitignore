@@ -1,6 +1,5 @@
 ## OS specific ########
 .DS_Store
-.fuse_hidden*
 
 ### VisualStudioCode ###
 .vscode/*

@@ -58,7 +58,7 @@ extra:
       link: 'https://github.com/emsesp/EMS-ESP32'
   analytics:
     provider: google
-    property: G-8J08F8X90S
+    property: G-SVDSJ3QTVC
 
 markdown_extensions:
   - admonition
