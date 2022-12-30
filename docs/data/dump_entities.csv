@@ -2437,12 +2437,55 @@ UI800,Thermostat,4,delayboiler,delay boiler support,uint (>=5<=120),minutes,true
 UI800,Thermostat,4,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,true,number.thermostat_temp_diff_boiler_support,number.thermostat_tempdiffboiler
 UI800,Thermostat,4,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 UI800,Thermostat,4,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+UI800,Thermostat,4,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+UI800,Thermostat,4,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+UI800,Thermostat,4,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+UI800,Thermostat,4,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
+UI800,Thermostat,4,comforttemp,comfort temperature,uint (>=0<=127),C,true,number.thermostat_hc1_comfort_temperature,number.thermostat_hc1_comforttemp
+UI800,Thermostat,4,summertemp,summer temperature,uint (>=10<=30),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+UI800,Thermostat,4,designtemp,design temperature,uint (>=0<=254),C,true,number.thermostat_hc1_design_temperature,number.thermostat_hc1_designtemp
+UI800,Thermostat,4,offsettemp,offset temperature,int (>=-126<=126),C,true,number.thermostat_hc1_offset_temperature,number.thermostat_hc1_offsettemp
+UI800,Thermostat,4,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+UI800,Thermostat,4,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+UI800,Thermostat,4,roominfluence,room influence,uint (>=0<=254),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
+UI800,Thermostat,4,roominflfactor,room influence factor,uint (>=0<=25), ,true,number.thermostat_hc1_room_influence_factor,number.thermostat_hc1_roominflfactor
+UI800,Thermostat,4,curroominfl,current room influence,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_influence,sensor.thermostat_hc1_curroominfl
+UI800,Thermostat,4,nofrostmode,nofrost mode,enum [room\|outdoor\|room outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+UI800,Thermostat,4,nofrosttemp,nofrost temperature,int (>=-126<=126),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+UI800,Thermostat,4,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+UI800,Thermostat,4,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+UI800,Thermostat,4,summersetmode,set summer mode,enum [summer\|auto\|winter], ,true,select.thermostat_hc1_set_summer_mode,select.thermostat_hc1_summersetmode
+UI800,Thermostat,4,hpoperatingmode,heatpump operating mode,enum [off\|auto\|heating\|cooling], ,true,select.thermostat_hc1_heatpump_operating_mode,select.thermostat_hc1_hpoperatingmode
+UI800,Thermostat,4,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+UI800,Thermostat,4,hpoperatingstate,heatpump operating state,enum [heating\|off\|cooling], ,false,sensor.thermostat_hc1_heatpump_operating_state,sensor.thermostat_hc1_hpoperatingstate
+UI800,Thermostat,4,controlmode,control mode,enum [weather compensated\|outside basepoint\|n/a\|room\|power\|constant], ,true,select.thermostat_hc1_control_mode,select.thermostat_hc1_controlmode
+UI800,Thermostat,4,program,program,enum [prog 1\|prog 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+UI800,Thermostat,4,tempautotemp,temporary set temperature automode,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+UI800,Thermostat,4,remoteseltemp,temporary set temperature from remote,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_from_remote,number.thermostat_hc1_remoteseltemp
+UI800,Thermostat,4,fastheatup,fast heatup,uint (>=0<=100),%,true,number.thermostat_hc1_fast_heatup,number.thermostat_hc1_fastheatup
+UI800,Thermostat,4,switchonoptimization,switch-on optimization,boolean, ,true,switch.thermostat_hc1_switch-on_optimization,switch.thermostat_hc1_switchonoptimization
+UI800,Thermostat,4,reducemode,reduce mode,enum [outdoor\|room\|reduce], ,true,select.thermostat_hc1_reduce_mode,select.thermostat_hc1_reducemode
+UI800,Thermostat,4,noreducetemp,no reduce below temperature,int (>=-126<=126),C,true,number.thermostat_hc1_no_reduce_below_temperature,number.thermostat_hc1_noreducetemp
+UI800,Thermostat,4,reducetemp,off/reduce switch temperature,int (>=-126<=126),C,true,number.thermostat_hc1_off/reduce_switch_temperature,number.thermostat_hc1_reducetemp
+UI800,Thermostat,4,wwprio,dhw priority,boolean, ,true,switch.thermostat_hc1_dhw_priority,switch.thermostat_hc1_wwprio
 RC10,Thermostat,65,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC10,Thermostat,65,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC10,Thermostat,65,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 RC10,Thermostat,65,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
 RC10,Thermostat,65,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC10,Thermostat,65,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC10,Thermostat,65,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC10,Thermostat,65,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+RC10,Thermostat,65,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
+RC10,Thermostat,65,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
+RC10,Thermostat,65,program,program,enum [family\|morning\|evening\|am\|pm\|midday\|singles\|seniors], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+RC10,Thermostat,65,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+RC10,Thermostat,65,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+RC10,Thermostat,65,tempautotemp,temporary set temperature automode,uint (>=0<=127),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+RC10,Thermostat,65,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+RC10,Thermostat,65,summertemp,summer temperature,uint (>=10<=30),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+RC10,Thermostat,65,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+RC10,Thermostat,65,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
 RC30,Thermostat,67,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC30,Thermostat,67,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC30,Thermostat,67,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2471,11 +2514,53 @@ RC30,Thermostat,67,wwholidays,holiday dates,string, ,true,sensor.thermostat_holi
 RC30,Thermostat,67,wwvacations,vacation dates,string, ,true,sensor.thermostat_vacation_dates,sensor.thermostat_wwvacations
 RC30,Thermostat,67,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC30,Thermostat,67,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC30,Thermostat,67,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC30,Thermostat,67,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+RC30,Thermostat,67,daytemp,day temperature,uint (>=5<=30),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
+RC30,Thermostat,67,nighttemp,night temperature,uint (>=5<=30),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
+RC30,Thermostat,67,designtemp,design temperature,uint (>=30<=90),C,true,number.thermostat_hc1_design_temperature,number.thermostat_hc1_designtemp
+RC30,Thermostat,67,offsettemp,offset temperature,int (>=-5<=5),C,true,number.thermostat_hc1_offset_temperature,number.thermostat_hc1_offsettemp
+RC30,Thermostat,67,holidaytemp,holiday temperature,uint (>=5<=30),C,true,number.thermostat_hc1_holiday_temperature,number.thermostat_hc1_holidaytemp
+RC30,Thermostat,67,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+RC30,Thermostat,67,summertemp,summer temperature,uint (>=9<=25),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+RC30,Thermostat,67,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+RC30,Thermostat,67,holidaymode,holiday mode,boolean, ,false,binary_sensor.thermostat_hc1_holiday_mode,binary_sensor.thermostat_hc1_holidaymode
+RC30,Thermostat,67,nofrosttemp,nofrost temperature,int (>=-20<=10),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+RC30,Thermostat,67,nofrostmode,nofrost mode,enum [off\|room\|outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+RC30,Thermostat,67,roominfluence,room influence,uint (>=0<=10),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
+RC30,Thermostat,67,minflowtemp,min flow temperature,uint (>=5<=70),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+RC30,Thermostat,67,maxflowtemp,max flow temperature,uint (>=30<=90),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+RC30,Thermostat,67,flowtempoffset,flow temperature offset for mixer,uint (>=0<=20),C,true,number.thermostat_hc1_flow_temperature_offset_for_mixer,number.thermostat_hc1_flowtempoffset
+RC30,Thermostat,67,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+RC30,Thermostat,67,reducemode,reduce mode,enum [nofrost\|reduce\|room\|outdoor], ,true,select.thermostat_hc1_reduce_mode,select.thermostat_hc1_reducemode
+RC30,Thermostat,67,controlmode,control mode,enum [outdoor\|room], ,true,select.thermostat_hc1_control_mode,select.thermostat_hc1_controlmode
+RC30,Thermostat,67,control,control device,enum [off\|RC20\|RC3x], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+RC30,Thermostat,67,holidays,holiday dates,string, ,true,sensor.thermostat_hc1_holiday_dates,sensor.thermostat_hc1_holidays
+RC30,Thermostat,67,vacations,vacation dates,string, ,true,sensor.thermostat_hc1_vacation_dates,sensor.thermostat_hc1_vacations
+RC30,Thermostat,67,program,program,enum [own 1\|family\|morning\|evening\|am\|pm\|midday\|singles\|seniors\|new\|own 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+RC30,Thermostat,67,pause,pause time,uint (>=0<=99),hours,true,number.thermostat_hc1_pause_time,number.thermostat_hc1_pause
+RC30,Thermostat,67,party,party time,uint (>=0<=99),hours,true,number.thermostat_hc1_party_time,number.thermostat_hc1_party
+RC30,Thermostat,67,tempautotemp,temporary set temperature automode,uint (>=0<=30),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+RC30,Thermostat,67,noreducetemp,no reduce below temperature,int (>=-30<=10),C,true,number.thermostat_hc1_no_reduce_below_temperature,number.thermostat_hc1_noreducetemp
+RC30,Thermostat,67,reducetemp,off/reduce switch temperature,int (>=-20<=10),C,true,number.thermostat_hc1_off/reduce_switch_temperature,number.thermostat_hc1_reducetemp
+RC30,Thermostat,67,vacreducetemp,vacations off/reduce switch temperature,int (>=-20<=10),C,true,number.thermostat_hc1_vacations_off/reduce_switch_temperature,number.thermostat_hc1_vacreducetemp
+RC30,Thermostat,67,vacreducemode,vacations reduce mode,enum [nofrost\|reduce\|room\|outdoor], ,true,select.thermostat_hc1_vacations_reduce_mode,select.thermostat_hc1_vacreducemode
+RC30,Thermostat,67,remotetemp,room temperature from remote,short (>=-3199<=3199),C,true,number.thermostat_hc1_room_temperature_from_remote,number.thermostat_hc1_remotetemp
+RC30,Thermostat,67,wwprio,dhw priority,boolean, ,true,switch.thermostat_hc1_dhw_priority,switch.thermostat_hc1_wwprio
+RC30,Thermostat,67,switchtime1,own1 program switchtime,string, ,true,sensor.thermostat_hc1_own1_program_switchtime,sensor.thermostat_hc1_switchtime1
+RC30,Thermostat,67,switchtime2,own2 program switchtime,string, ,true,sensor.thermostat_hc1_own2_program_switchtime,sensor.thermostat_hc1_switchtime2
 RC20/Moduline 300,Thermostat,77,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC20/Moduline 300,Thermostat,77,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC20/Moduline 300,Thermostat,77,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 RC20/Moduline 300,Thermostat,77,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC20/Moduline 300,Thermostat,77,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC20/Moduline 300,Thermostat,77,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC20/Moduline 300,Thermostat,77,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
+RC20/Moduline 300,Thermostat,77,daytemp2,day temperature T2,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T2,number.thermostat_hc1_daytemp2
+RC20/Moduline 300,Thermostat,77,daytemp3,day temperature T3,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T3,number.thermostat_hc1_daytemp3
+RC20/Moduline 300,Thermostat,77,daytemp4,day temperature T4,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T4,number.thermostat_hc1_daytemp4
+RC20/Moduline 300,Thermostat,77,nighttemp,night temperature T1,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature_T1,number.thermostat_hc1_nighttemp
+RC20/Moduline 300,Thermostat,77,switchtime,program switchtime,string, ,true,sensor.thermostat_hc1_program_switchtime,sensor.thermostat_hc1_switchtime
 Moduline 400,Thermostat,78,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 Moduline 400,Thermostat,78,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 Moduline 400,Thermostat,78,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2499,6 +2584,20 @@ Moduline 400,Thermostat,78,wwholidays,holiday dates,string, ,true,sensor.thermos
 Moduline 400,Thermostat,78,wwvacations,vacation dates,string, ,true,sensor.thermostat_vacation_dates,sensor.thermostat_wwvacations
 Moduline 400,Thermostat,78,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 Moduline 400,Thermostat,78,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+Moduline 400,Thermostat,78,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+Moduline 400,Thermostat,78,holidays,holiday dates,string, ,true,sensor.thermostat_hc1_holiday_dates,sensor.thermostat_hc1_holidays
+Moduline 400,Thermostat,78,vacations,vacation dates,string, ,true,sensor.thermostat_hc1_vacation_dates,sensor.thermostat_hc1_vacations
+Moduline 400,Thermostat,78,program,program,enum [own 1\|family\|morning\|evening\|am\|pm\|midday\|singles\|seniors\|new\|own 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+Moduline 400,Thermostat,78,pause,pause time,uint (>=0<=254),hours,true,number.thermostat_hc1_pause_time,number.thermostat_hc1_pause
+Moduline 400,Thermostat,78,party,party time,uint (>=0<=254),hours,true,number.thermostat_hc1_party_time,number.thermostat_hc1_party
+Moduline 400,Thermostat,78,switchtime1,own1 program switchtime,string, ,true,sensor.thermostat_hc1_own1_program_switchtime,sensor.thermostat_hc1_switchtime1
+Moduline 400,Thermostat,78,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+Moduline 400,Thermostat,78,controlmode,control mode,enum [outdoor\|room], ,true,select.thermostat_hc1_control_mode,select.thermostat_hc1_controlmode
+Moduline 400,Thermostat,78,holidaytemp,holiday temperature,uint (>=0<=127),C,true,number.thermostat_hc1_holiday_temperature,number.thermostat_hc1_holidaytemp
+Moduline 400,Thermostat,78,nighttemp,night temperature T1,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature_T1,number.thermostat_hc1_nighttemp
+Moduline 400,Thermostat,78,daytemp2,day temperature T2,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T2,number.thermostat_hc1_daytemp2
+Moduline 400,Thermostat,78,daytemp3,day temperature T3,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T3,number.thermostat_hc1_daytemp3
+Moduline 400,Thermostat,78,daytemp4,day temperature T4,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T4,number.thermostat_hc1_daytemp4
 RC10/Moduline 100,Thermostat,79,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC10/Moduline 100,Thermostat,79,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC10/Moduline 100,Thermostat,79,intoffset,internal temperature offset,int (>=-12<=12),C,true,number.thermostat_internal_temperature_offset,number.thermostat_intoffset
@@ -2507,6 +2606,11 @@ RC10/Moduline 100,Thermostat,79,backlight,key backlight,boolean, ,true,switch.th
 RC10/Moduline 100,Thermostat,79,wwmode,mode,enum [on\|off\|auto], ,true,select.thermostat_mode,select.thermostat_wwmode
 RC10/Moduline 100,Thermostat,79,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC10/Moduline 100,Thermostat,79,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC10/Moduline 100,Thermostat,79,mode,mode,enum [nofrost\|night\|day], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC10/Moduline 100,Thermostat,79,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
+RC10/Moduline 100,Thermostat,79,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
+RC10/Moduline 100,Thermostat,79,reducehours,duration for nighttemp,uint (>=0<=254),hours,true,number.thermostat_hc1_duration_for_nighttemp,number.thermostat_hc1_reducehours
+RC10/Moduline 100,Thermostat,79,reduceminutes,remaining time for nightmode,ushort (>=0<=31999),minutes,false,sensor.thermostat_hc1_remaining_time_for_nightmode,sensor.thermostat_hc1_reduceminutes
 Moduline 200,Thermostat,80,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 Moduline 200,Thermostat,80,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 Moduline 200,Thermostat,80,intoffset,internal temperature offset,int (>=-12<=12),C,true,number.thermostat_internal_temperature_offset,number.thermostat_intoffset
@@ -2515,6 +2619,11 @@ Moduline 200,Thermostat,80,backlight,key backlight,boolean, ,true,switch.thermos
 Moduline 200,Thermostat,80,wwmode,mode,enum [on\|off\|auto], ,true,select.thermostat_mode,select.thermostat_wwmode
 Moduline 200,Thermostat,80,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 Moduline 200,Thermostat,80,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+Moduline 200,Thermostat,80,mode,mode,enum [nofrost\|night\|day], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+Moduline 200,Thermostat,80,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
+Moduline 200,Thermostat,80,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
+Moduline 200,Thermostat,80,reducehours,duration for nighttemp,uint (>=0<=254),hours,true,number.thermostat_hc1_duration_for_nighttemp,number.thermostat_hc1_reducehours
+Moduline 200,Thermostat,80,reduceminutes,remaining time for nightmode,ushort (>=0<=31999),minutes,false,sensor.thermostat_hc1_remaining_time_for_nightmode,sensor.thermostat_hc1_reduceminutes
 RC35,Thermostat,86,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC35,Thermostat,86,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC35,Thermostat,86,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2540,17 +2649,71 @@ RC35,Thermostat,86,wwholidays,holiday dates,string, ,true,sensor.thermostat_holi
 RC35,Thermostat,86,wwvacations,vacation dates,string, ,true,sensor.thermostat_vacation_dates,sensor.thermostat_wwvacations
 RC35,Thermostat,86,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC35,Thermostat,86,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC35,Thermostat,86,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC35,Thermostat,86,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+RC35,Thermostat,86,daytemp,day temperature,uint (>=5<=30),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
+RC35,Thermostat,86,nighttemp,night temperature,uint (>=5<=30),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
+RC35,Thermostat,86,designtemp,design temperature,uint (>=30<=90),C,true,number.thermostat_hc1_design_temperature,number.thermostat_hc1_designtemp
+RC35,Thermostat,86,offsettemp,offset temperature,int (>=-5<=5),C,true,number.thermostat_hc1_offset_temperature,number.thermostat_hc1_offsettemp
+RC35,Thermostat,86,holidaytemp,holiday temperature,uint (>=5<=30),C,true,number.thermostat_hc1_holiday_temperature,number.thermostat_hc1_holidaytemp
+RC35,Thermostat,86,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+RC35,Thermostat,86,summertemp,summer temperature,uint (>=9<=25),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+RC35,Thermostat,86,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+RC35,Thermostat,86,holidaymode,holiday mode,boolean, ,false,binary_sensor.thermostat_hc1_holiday_mode,binary_sensor.thermostat_hc1_holidaymode
+RC35,Thermostat,86,nofrosttemp,nofrost temperature,int (>=-20<=10),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+RC35,Thermostat,86,nofrostmode,nofrost mode,enum [off\|room\|outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+RC35,Thermostat,86,roominfluence,room influence,uint (>=0<=10),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
+RC35,Thermostat,86,minflowtemp,min flow temperature,uint (>=5<=70),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+RC35,Thermostat,86,maxflowtemp,max flow temperature,uint (>=30<=90),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+RC35,Thermostat,86,flowtempoffset,flow temperature offset for mixer,uint (>=0<=20),C,true,number.thermostat_hc1_flow_temperature_offset_for_mixer,number.thermostat_hc1_flowtempoffset
+RC35,Thermostat,86,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+RC35,Thermostat,86,reducemode,reduce mode,enum [nofrost\|reduce\|room\|outdoor], ,true,select.thermostat_hc1_reduce_mode,select.thermostat_hc1_reducemode
+RC35,Thermostat,86,controlmode,control mode,enum [outdoor\|room], ,true,select.thermostat_hc1_control_mode,select.thermostat_hc1_controlmode
+RC35,Thermostat,86,control,control device,enum [off\|RC20\|RC3x], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+RC35,Thermostat,86,holidays,holiday dates,string, ,true,sensor.thermostat_hc1_holiday_dates,sensor.thermostat_hc1_holidays
+RC35,Thermostat,86,vacations,vacation dates,string, ,true,sensor.thermostat_hc1_vacation_dates,sensor.thermostat_hc1_vacations
+RC35,Thermostat,86,program,program,enum [own 1\|family\|morning\|evening\|am\|pm\|midday\|singles\|seniors\|new\|own 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+RC35,Thermostat,86,pause,pause time,uint (>=0<=99),hours,true,number.thermostat_hc1_pause_time,number.thermostat_hc1_pause
+RC35,Thermostat,86,party,party time,uint (>=0<=99),hours,true,number.thermostat_hc1_party_time,number.thermostat_hc1_party
+RC35,Thermostat,86,tempautotemp,temporary set temperature automode,uint (>=0<=30),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+RC35,Thermostat,86,noreducetemp,no reduce below temperature,int (>=-30<=10),C,true,number.thermostat_hc1_no_reduce_below_temperature,number.thermostat_hc1_noreducetemp
+RC35,Thermostat,86,reducetemp,off/reduce switch temperature,int (>=-20<=10),C,true,number.thermostat_hc1_off/reduce_switch_temperature,number.thermostat_hc1_reducetemp
+RC35,Thermostat,86,vacreducetemp,vacations off/reduce switch temperature,int (>=-20<=10),C,true,number.thermostat_hc1_vacations_off/reduce_switch_temperature,number.thermostat_hc1_vacreducetemp
+RC35,Thermostat,86,vacreducemode,vacations reduce mode,enum [nofrost\|reduce\|room\|outdoor], ,true,select.thermostat_hc1_vacations_reduce_mode,select.thermostat_hc1_vacreducemode
+RC35,Thermostat,86,remotetemp,room temperature from remote,short (>=-3199<=3199),C,true,number.thermostat_hc1_room_temperature_from_remote,number.thermostat_hc1_remotetemp
+RC35,Thermostat,86,wwprio,dhw priority,boolean, ,true,switch.thermostat_hc1_dhw_priority,switch.thermostat_hc1_wwprio
+RC35,Thermostat,86,switchtime1,own1 program switchtime,string, ,true,sensor.thermostat_hc1_own1_program_switchtime,sensor.thermostat_hc1_switchtime1
+RC35,Thermostat,86,switchtime2,own2 program switchtime,string, ,true,sensor.thermostat_hc1_own2_program_switchtime,sensor.thermostat_hc1_switchtime2
 RC10/Moduline 100,Thermostat,90,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC10/Moduline 100,Thermostat,90,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC10/Moduline 100,Thermostat,90,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 RC10/Moduline 100,Thermostat,90,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
 RC10/Moduline 100,Thermostat,90,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC10/Moduline 100,Thermostat,90,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC10/Moduline 100,Thermostat,90,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC10/Moduline 100,Thermostat,90,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+RC10/Moduline 100,Thermostat,90,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
+RC10/Moduline 100,Thermostat,90,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
+RC10/Moduline 100,Thermostat,90,program,program,enum [family\|morning\|evening\|am\|pm\|midday\|singles\|seniors], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+RC10/Moduline 100,Thermostat,90,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+RC10/Moduline 100,Thermostat,90,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+RC10/Moduline 100,Thermostat,90,tempautotemp,temporary set temperature automode,uint (>=0<=127),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+RC10/Moduline 100,Thermostat,90,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+RC10/Moduline 100,Thermostat,90,summertemp,summer temperature,uint (>=10<=30),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+RC10/Moduline 100,Thermostat,90,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+RC10/Moduline 100,Thermostat,90,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
 RC20RF,Thermostat,93,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC20RF,Thermostat,93,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC20RF,Thermostat,93,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 RC20RF,Thermostat,93,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC20RF,Thermostat,93,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC20RF,Thermostat,93,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC20RF,Thermostat,93,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
+RC20RF,Thermostat,93,daytemp2,day temperature T2,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T2,number.thermostat_hc1_daytemp2
+RC20RF,Thermostat,93,daytemp3,day temperature T3,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T3,number.thermostat_hc1_daytemp3
+RC20RF,Thermostat,93,daytemp4,day temperature T4,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T4,number.thermostat_hc1_daytemp4
+RC20RF,Thermostat,93,nighttemp,night temperature T1,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature_T1,number.thermostat_hc1_nighttemp
+RC20RF,Thermostat,93,switchtime,program switchtime,string, ,true,sensor.thermostat_hc1_program_switchtime,sensor.thermostat_hc1_switchtime
 RFM20 Remote,Thermostat,94,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RFM20 Remote,Thermostat,94,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RFM20 Remote,Thermostat,94,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2562,6 +2725,17 @@ RC25,Thermostat,151,datetime,date/time,string, ,false,sensor.thermostat_date/tim
 RC25,Thermostat,151,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
 RC25,Thermostat,151,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC25,Thermostat,151,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC25,Thermostat,151,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC25,Thermostat,151,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+RC25,Thermostat,151,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
+RC25,Thermostat,151,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
+RC25,Thermostat,151,program,program,enum [family\|morning\|evening\|am\|pm\|midday\|singles\|seniors], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+RC25,Thermostat,151,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+RC25,Thermostat,151,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+RC25,Thermostat,151,tempautotemp,temporary set temperature automode,uint (>=0<=127),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+RC25,Thermostat,151,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+RC25,Thermostat,151,summertemp,summer temperature,uint (>=9<=25),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+RC25,Thermostat,151,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
 RC200/CW100,Thermostat,157,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC200/CW100,Thermostat,157,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC200/CW100,Thermostat,157,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2592,6 +2766,37 @@ RC200/CW100,Thermostat,157,delayboiler,delay boiler support,uint (>=5<=120),minu
 RC200/CW100,Thermostat,157,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,true,number.thermostat_temp_diff_boiler_support,number.thermostat_tempdiffboiler
 RC200/CW100,Thermostat,157,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC200/CW100,Thermostat,157,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC200/CW100,Thermostat,157,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC200/CW100,Thermostat,157,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+RC200/CW100,Thermostat,157,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+RC200/CW100,Thermostat,157,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
+RC200/CW100,Thermostat,157,comforttemp,comfort temperature,uint (>=0<=127),C,true,number.thermostat_hc1_comfort_temperature,number.thermostat_hc1_comforttemp
+RC200/CW100,Thermostat,157,summertemp,summer temperature,uint (>=10<=30),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+RC200/CW100,Thermostat,157,designtemp,design temperature,uint (>=0<=254),C,true,number.thermostat_hc1_design_temperature,number.thermostat_hc1_designtemp
+RC200/CW100,Thermostat,157,offsettemp,offset temperature,int (>=-126<=126),C,true,number.thermostat_hc1_offset_temperature,number.thermostat_hc1_offsettemp
+RC200/CW100,Thermostat,157,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+RC200/CW100,Thermostat,157,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+RC200/CW100,Thermostat,157,roominfluence,room influence,uint (>=0<=254),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
+RC200/CW100,Thermostat,157,roominflfactor,room influence factor,uint (>=0<=25), ,true,number.thermostat_hc1_room_influence_factor,number.thermostat_hc1_roominflfactor
+RC200/CW100,Thermostat,157,curroominfl,current room influence,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_influence,sensor.thermostat_hc1_curroominfl
+RC200/CW100,Thermostat,157,nofrostmode,nofrost mode,enum [room\|outdoor\|room outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+RC200/CW100,Thermostat,157,nofrosttemp,nofrost temperature,int (>=-126<=126),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+RC200/CW100,Thermostat,157,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+RC200/CW100,Thermostat,157,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+RC200/CW100,Thermostat,157,summersetmode,set summer mode,enum [summer\|auto\|winter], ,true,select.thermostat_hc1_set_summer_mode,select.thermostat_hc1_summersetmode
+RC200/CW100,Thermostat,157,hpoperatingmode,heatpump operating mode,enum [off\|auto\|heating\|cooling], ,true,select.thermostat_hc1_heatpump_operating_mode,select.thermostat_hc1_hpoperatingmode
+RC200/CW100,Thermostat,157,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+RC200/CW100,Thermostat,157,hpoperatingstate,heatpump operating state,enum [heating\|off\|cooling], ,false,sensor.thermostat_hc1_heatpump_operating_state,sensor.thermostat_hc1_hpoperatingstate
+RC200/CW100,Thermostat,157,controlmode,control mode,enum [weather compensated\|outside basepoint\|n/a\|room\|power\|constant], ,true,select.thermostat_hc1_control_mode,select.thermostat_hc1_controlmode
+RC200/CW100,Thermostat,157,program,program,enum [prog 1\|prog 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+RC200/CW100,Thermostat,157,tempautotemp,temporary set temperature automode,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+RC200/CW100,Thermostat,157,remoteseltemp,temporary set temperature from remote,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_from_remote,number.thermostat_hc1_remoteseltemp
+RC200/CW100,Thermostat,157,fastheatup,fast heatup,uint (>=0<=100),%,true,number.thermostat_hc1_fast_heatup,number.thermostat_hc1_fastheatup
+RC200/CW100,Thermostat,157,switchonoptimization,switch-on optimization,boolean, ,true,switch.thermostat_hc1_switch-on_optimization,switch.thermostat_hc1_switchonoptimization
+RC200/CW100,Thermostat,157,reducemode,reduce mode,enum [outdoor\|room\|reduce], ,true,select.thermostat_hc1_reduce_mode,select.thermostat_hc1_reducemode
+RC200/CW100,Thermostat,157,noreducetemp,no reduce below temperature,int (>=-126<=126),C,true,number.thermostat_hc1_no_reduce_below_temperature,number.thermostat_hc1_noreducetemp
+RC200/CW100,Thermostat,157,reducetemp,off/reduce switch temperature,int (>=-126<=126),C,true,number.thermostat_hc1_off/reduce_switch_temperature,number.thermostat_hc1_reducetemp
+RC200/CW100,Thermostat,157,wwprio,dhw priority,boolean, ,true,switch.thermostat_hc1_dhw_priority,switch.thermostat_hc1_wwprio
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2622,6 +2827,37 @@ RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,delayboiler
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,true,number.thermostat_temp_diff_boiler_support,number.thermostat_tempdiffboiler
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,comforttemp,comfort temperature,uint (>=0<=127),C,true,number.thermostat_hc1_comfort_temperature,number.thermostat_hc1_comforttemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,summertemp,summer temperature,uint (>=10<=30),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,designtemp,design temperature,uint (>=0<=254),C,true,number.thermostat_hc1_design_temperature,number.thermostat_hc1_designtemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,offsettemp,offset temperature,int (>=-126<=126),C,true,number.thermostat_hc1_offset_temperature,number.thermostat_hc1_offsettemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,roominfluence,room influence,uint (>=0<=254),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,roominflfactor,room influence factor,uint (>=0<=25), ,true,number.thermostat_hc1_room_influence_factor,number.thermostat_hc1_roominflfactor
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,curroominfl,current room influence,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_influence,sensor.thermostat_hc1_curroominfl
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,nofrostmode,nofrost mode,enum [room\|outdoor\|room outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,nofrosttemp,nofrost temperature,int (>=-126<=126),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,summersetmode,set summer mode,enum [summer\|auto\|winter], ,true,select.thermostat_hc1_set_summer_mode,select.thermostat_hc1_summersetmode
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,hpoperatingmode,heatpump operating mode,enum [off\|auto\|heating\|cooling], ,true,select.thermostat_hc1_heatpump_operating_mode,select.thermostat_hc1_hpoperatingmode
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,hpoperatingstate,heatpump operating state,enum [heating\|off\|cooling], ,false,sensor.thermostat_hc1_heatpump_operating_state,sensor.thermostat_hc1_hpoperatingstate
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,controlmode,control mode,enum [weather compensated\|outside basepoint\|n/a\|room\|power\|constant], ,true,select.thermostat_hc1_control_mode,select.thermostat_hc1_controlmode
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,program,program,enum [prog 1\|prog 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,tempautotemp,temporary set temperature automode,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,remoteseltemp,temporary set temperature from remote,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_from_remote,number.thermostat_hc1_remoteseltemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,fastheatup,fast heatup,uint (>=0<=100),%,true,number.thermostat_hc1_fast_heatup,number.thermostat_hc1_fastheatup
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,switchonoptimization,switch-on optimization,boolean, ,true,switch.thermostat_hc1_switch-on_optimization,switch.thermostat_hc1_switchonoptimization
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,reducemode,reduce mode,enum [outdoor\|room\|reduce], ,true,select.thermostat_hc1_reduce_mode,select.thermostat_hc1_reducemode
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,noreducetemp,no reduce below temperature,int (>=-126<=126),C,true,number.thermostat_hc1_no_reduce_below_temperature,number.thermostat_hc1_noreducetemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,reducetemp,off/reduce switch temperature,int (>=-126<=126),C,true,number.thermostat_hc1_off/reduce_switch_temperature,number.thermostat_hc1_reducetemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,Thermostat,158,wwprio,dhw priority,boolean, ,true,switch.thermostat_hc1_dhw_priority,switch.thermostat_hc1_wwprio
 RC100/Moduline 1000/1010,Thermostat,165,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC100/Moduline 1000/1010,Thermostat,165,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC100/Moduline 1000/1010,Thermostat,165,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2652,6 +2888,37 @@ RC100/Moduline 1000/1010,Thermostat,165,delayboiler,delay boiler support,uint (>
 RC100/Moduline 1000/1010,Thermostat,165,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,true,number.thermostat_temp_diff_boiler_support,number.thermostat_tempdiffboiler
 RC100/Moduline 1000/1010,Thermostat,165,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC100/Moduline 1000/1010,Thermostat,165,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC100/Moduline 1000/1010,Thermostat,165,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC100/Moduline 1000/1010,Thermostat,165,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+RC100/Moduline 1000/1010,Thermostat,165,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+RC100/Moduline 1000/1010,Thermostat,165,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
+RC100/Moduline 1000/1010,Thermostat,165,comforttemp,comfort temperature,uint (>=0<=127),C,true,number.thermostat_hc1_comfort_temperature,number.thermostat_hc1_comforttemp
+RC100/Moduline 1000/1010,Thermostat,165,summertemp,summer temperature,uint (>=10<=30),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+RC100/Moduline 1000/1010,Thermostat,165,designtemp,design temperature,uint (>=0<=254),C,true,number.thermostat_hc1_design_temperature,number.thermostat_hc1_designtemp
+RC100/Moduline 1000/1010,Thermostat,165,offsettemp,offset temperature,int (>=-126<=126),C,true,number.thermostat_hc1_offset_temperature,number.thermostat_hc1_offsettemp
+RC100/Moduline 1000/1010,Thermostat,165,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+RC100/Moduline 1000/1010,Thermostat,165,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+RC100/Moduline 1000/1010,Thermostat,165,roominfluence,room influence,uint (>=0<=254),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
+RC100/Moduline 1000/1010,Thermostat,165,roominflfactor,room influence factor,uint (>=0<=25), ,true,number.thermostat_hc1_room_influence_factor,number.thermostat_hc1_roominflfactor
+RC100/Moduline 1000/1010,Thermostat,165,curroominfl,current room influence,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_influence,sensor.thermostat_hc1_curroominfl
+RC100/Moduline 1000/1010,Thermostat,165,nofrostmode,nofrost mode,enum [room\|outdoor\|room outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+RC100/Moduline 1000/1010,Thermostat,165,nofrosttemp,nofrost temperature,int (>=-126<=126),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+RC100/Moduline 1000/1010,Thermostat,165,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+RC100/Moduline 1000/1010,Thermostat,165,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+RC100/Moduline 1000/1010,Thermostat,165,summersetmode,set summer mode,enum [summer\|auto\|winter], ,true,select.thermostat_hc1_set_summer_mode,select.thermostat_hc1_summersetmode
+RC100/Moduline 1000/1010,Thermostat,165,hpoperatingmode,heatpump operating mode,enum [off\|auto\|heating\|cooling], ,true,select.thermostat_hc1_heatpump_operating_mode,select.thermostat_hc1_hpoperatingmode
+RC100/Moduline 1000/1010,Thermostat,165,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+RC100/Moduline 1000/1010,Thermostat,165,hpoperatingstate,heatpump operating state,enum [heating\|off\|cooling], ,false,sensor.thermostat_hc1_heatpump_operating_state,sensor.thermostat_hc1_hpoperatingstate
+RC100/Moduline 1000/1010,Thermostat,165,controlmode,control mode,enum [weather compensated\|outside basepoint\|n/a\|room\|power\|constant], ,true,select.thermostat_hc1_control_mode,select.thermostat_hc1_controlmode
+RC100/Moduline 1000/1010,Thermostat,165,program,program,enum [prog 1\|prog 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+RC100/Moduline 1000/1010,Thermostat,165,tempautotemp,temporary set temperature automode,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+RC100/Moduline 1000/1010,Thermostat,165,remoteseltemp,temporary set temperature from remote,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_from_remote,number.thermostat_hc1_remoteseltemp
+RC100/Moduline 1000/1010,Thermostat,165,fastheatup,fast heatup,uint (>=0<=100),%,true,number.thermostat_hc1_fast_heatup,number.thermostat_hc1_fastheatup
+RC100/Moduline 1000/1010,Thermostat,165,switchonoptimization,switch-on optimization,boolean, ,true,switch.thermostat_hc1_switch-on_optimization,switch.thermostat_hc1_switchonoptimization
+RC100/Moduline 1000/1010,Thermostat,165,reducemode,reduce mode,enum [outdoor\|room\|reduce], ,true,select.thermostat_hc1_reduce_mode,select.thermostat_hc1_reducemode
+RC100/Moduline 1000/1010,Thermostat,165,noreducetemp,no reduce below temperature,int (>=-126<=126),C,true,number.thermostat_hc1_no_reduce_below_temperature,number.thermostat_hc1_noreducetemp
+RC100/Moduline 1000/1010,Thermostat,165,reducetemp,off/reduce switch temperature,int (>=-126<=126),C,true,number.thermostat_hc1_off/reduce_switch_temperature,number.thermostat_hc1_reducetemp
+RC100/Moduline 1000/1010,Thermostat,165,wwprio,dhw priority,boolean, ,true,switch.thermostat_hc1_dhw_priority,switch.thermostat_hc1_wwprio
 Rego 2000/3000,Thermostat,172,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 Rego 2000/3000,Thermostat,172,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 Rego 2000/3000,Thermostat,172,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2682,22 +2949,71 @@ Rego 2000/3000,Thermostat,172,delayboiler,delay boiler support,uint (>=5<=120),m
 Rego 2000/3000,Thermostat,172,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,true,number.thermostat_temp_diff_boiler_support,number.thermostat_tempdiffboiler
 Rego 2000/3000,Thermostat,172,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 Rego 2000/3000,Thermostat,172,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+Rego 2000/3000,Thermostat,172,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+Rego 2000/3000,Thermostat,172,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+Rego 2000/3000,Thermostat,172,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+Rego 2000/3000,Thermostat,172,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
+Rego 2000/3000,Thermostat,172,comforttemp,comfort temperature,uint (>=0<=127),C,true,number.thermostat_hc1_comfort_temperature,number.thermostat_hc1_comforttemp
+Rego 2000/3000,Thermostat,172,summertemp,summer temperature,uint (>=10<=30),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+Rego 2000/3000,Thermostat,172,designtemp,design temperature,uint (>=0<=254),C,true,number.thermostat_hc1_design_temperature,number.thermostat_hc1_designtemp
+Rego 2000/3000,Thermostat,172,offsettemp,offset temperature,int (>=-126<=126),C,true,number.thermostat_hc1_offset_temperature,number.thermostat_hc1_offsettemp
+Rego 2000/3000,Thermostat,172,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+Rego 2000/3000,Thermostat,172,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+Rego 2000/3000,Thermostat,172,roominfluence,room influence,uint (>=0<=254),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
+Rego 2000/3000,Thermostat,172,roominflfactor,room influence factor,uint (>=0<=25), ,true,number.thermostat_hc1_room_influence_factor,number.thermostat_hc1_roominflfactor
+Rego 2000/3000,Thermostat,172,curroominfl,current room influence,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_influence,sensor.thermostat_hc1_curroominfl
+Rego 2000/3000,Thermostat,172,nofrostmode,nofrost mode,enum [room\|outdoor\|room outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+Rego 2000/3000,Thermostat,172,nofrosttemp,nofrost temperature,int (>=-126<=126),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+Rego 2000/3000,Thermostat,172,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+Rego 2000/3000,Thermostat,172,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+Rego 2000/3000,Thermostat,172,summersetmode,set summer mode,enum [summer\|auto\|winter], ,true,select.thermostat_hc1_set_summer_mode,select.thermostat_hc1_summersetmode
+Rego 2000/3000,Thermostat,172,hpoperatingmode,heatpump operating mode,enum [off\|auto\|heating\|cooling], ,true,select.thermostat_hc1_heatpump_operating_mode,select.thermostat_hc1_hpoperatingmode
+Rego 2000/3000,Thermostat,172,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+Rego 2000/3000,Thermostat,172,hpoperatingstate,heatpump operating state,enum [heating\|off\|cooling], ,false,sensor.thermostat_hc1_heatpump_operating_state,sensor.thermostat_hc1_hpoperatingstate
+Rego 2000/3000,Thermostat,172,controlmode,control mode,enum [weather compensated\|outside basepoint\|n/a\|room\|power\|constant], ,true,select.thermostat_hc1_control_mode,select.thermostat_hc1_controlmode
+Rego 2000/3000,Thermostat,172,program,program,enum [prog 1\|prog 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+Rego 2000/3000,Thermostat,172,tempautotemp,temporary set temperature automode,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+Rego 2000/3000,Thermostat,172,remoteseltemp,temporary set temperature from remote,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_from_remote,number.thermostat_hc1_remoteseltemp
+Rego 2000/3000,Thermostat,172,fastheatup,fast heatup,uint (>=0<=100),%,true,number.thermostat_hc1_fast_heatup,number.thermostat_hc1_fastheatup
+Rego 2000/3000,Thermostat,172,switchonoptimization,switch-on optimization,boolean, ,true,switch.thermostat_hc1_switch-on_optimization,switch.thermostat_hc1_switchonoptimization
+Rego 2000/3000,Thermostat,172,reducemode,reduce mode,enum [outdoor\|room\|reduce], ,true,select.thermostat_hc1_reduce_mode,select.thermostat_hc1_reducemode
+Rego 2000/3000,Thermostat,172,noreducetemp,no reduce below temperature,int (>=-126<=126),C,true,number.thermostat_hc1_no_reduce_below_temperature,number.thermostat_hc1_noreducetemp
+Rego 2000/3000,Thermostat,172,reducetemp,off/reduce switch temperature,int (>=-126<=126),C,true,number.thermostat_hc1_off/reduce_switch_temperature,number.thermostat_hc1_reducetemp
+Rego 2000/3000,Thermostat,172,wwprio,dhw priority,boolean, ,true,switch.thermostat_hc1_dhw_priority,switch.thermostat_hc1_wwprio
 CRF200S,Thermostat,216,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 CRF200S,Thermostat,216,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 CRF200S,Thermostat,216,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 CRF200S,Thermostat,216,seltemp,selected room temperature,short (>=-15999<=15999),C,false,sensor.thermostat_hc1_selected_room_temperature,sensor.thermostat_hc1_seltemp
 CRF200S,Thermostat,216,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+CRF200S,Thermostat,216,mode,mode,enum [auto\|off], ,false,sensor.thermostat_hc1_mode,sensor.thermostat_hc1_mode
+CRF200S,Thermostat,216,modetype,mode type,enum [off\|on], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+CRF200S,Thermostat,216,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
 Comfort+2RF,Thermostat,246,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 Comfort+2RF,Thermostat,246,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 Comfort+2RF,Thermostat,246,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 Comfort+2RF,Thermostat,246,seltemp,selected room temperature,short (>=-15999<=15999),C,false,sensor.thermostat_hc1_selected_room_temperature,sensor.thermostat_hc1_seltemp
 Comfort+2RF,Thermostat,246,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+Comfort+2RF,Thermostat,246,mode,mode,enum [auto\|off], ,false,sensor.thermostat_hc1_mode,sensor.thermostat_hc1_mode
+Comfort+2RF,Thermostat,246,modetype,mode type,enum [off\|on], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+Comfort+2RF,Thermostat,246,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
 ES72/RC20,Thermostat,66,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 ES72/RC20,Thermostat,66,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 ES72/RC20,Thermostat,66,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 ES72/RC20,Thermostat,66,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
 ES72/RC20,Thermostat,66,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 ES72/RC20,Thermostat,66,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+ES72/RC20,Thermostat,66,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+ES72/RC20,Thermostat,66,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+ES72/RC20,Thermostat,66,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
+ES72/RC20,Thermostat,66,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
+ES72/RC20,Thermostat,66,program,program,enum [family\|morning\|evening\|am\|pm\|midday\|singles\|seniors], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+ES72/RC20,Thermostat,66,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+ES72/RC20,Thermostat,66,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+ES72/RC20,Thermostat,66,tempautotemp,temporary set temperature automode,uint (>=0<=127),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+ES72/RC20,Thermostat,66,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+ES72/RC20,Thermostat,66,summertemp,summer temperature,uint (>=10<=30),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+ES72/RC20,Thermostat,66,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+ES72/RC20,Thermostat,66,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
 ES73,Thermostat,76,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 ES73,Thermostat,76,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 ES73,Thermostat,76,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2726,12 +3042,59 @@ ES73,Thermostat,76,wwholidays,holiday dates,string, ,true,sensor.thermostat_holi
 ES73,Thermostat,76,wwvacations,vacation dates,string, ,true,sensor.thermostat_vacation_dates,sensor.thermostat_wwvacations
 ES73,Thermostat,76,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 ES73,Thermostat,76,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+ES73,Thermostat,76,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+ES73,Thermostat,76,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+ES73,Thermostat,76,daytemp,day temperature,uint (>=5<=30),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
+ES73,Thermostat,76,nighttemp,night temperature,uint (>=5<=30),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
+ES73,Thermostat,76,designtemp,design temperature,uint (>=30<=90),C,true,number.thermostat_hc1_design_temperature,number.thermostat_hc1_designtemp
+ES73,Thermostat,76,offsettemp,offset temperature,int (>=-5<=5),C,true,number.thermostat_hc1_offset_temperature,number.thermostat_hc1_offsettemp
+ES73,Thermostat,76,holidaytemp,holiday temperature,uint (>=5<=30),C,true,number.thermostat_hc1_holiday_temperature,number.thermostat_hc1_holidaytemp
+ES73,Thermostat,76,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+ES73,Thermostat,76,summertemp,summer temperature,uint (>=9<=25),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+ES73,Thermostat,76,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+ES73,Thermostat,76,holidaymode,holiday mode,boolean, ,false,binary_sensor.thermostat_hc1_holiday_mode,binary_sensor.thermostat_hc1_holidaymode
+ES73,Thermostat,76,nofrosttemp,nofrost temperature,int (>=-20<=10),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+ES73,Thermostat,76,nofrostmode,nofrost mode,enum [off\|room\|outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+ES73,Thermostat,76,roominfluence,room influence,uint (>=0<=10),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
+ES73,Thermostat,76,minflowtemp,min flow temperature,uint (>=5<=70),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+ES73,Thermostat,76,maxflowtemp,max flow temperature,uint (>=30<=90),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+ES73,Thermostat,76,flowtempoffset,flow temperature offset for mixer,uint (>=0<=20),C,true,number.thermostat_hc1_flow_temperature_offset_for_mixer,number.thermostat_hc1_flowtempoffset
+ES73,Thermostat,76,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+ES73,Thermostat,76,reducemode,reduce mode,enum [nofrost\|reduce\|room\|outdoor], ,true,select.thermostat_hc1_reduce_mode,select.thermostat_hc1_reducemode
+ES73,Thermostat,76,controlmode,control mode,enum [outdoor\|room], ,true,select.thermostat_hc1_control_mode,select.thermostat_hc1_controlmode
+ES73,Thermostat,76,control,control device,enum [off\|RC20\|RC3x], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+ES73,Thermostat,76,holidays,holiday dates,string, ,true,sensor.thermostat_hc1_holiday_dates,sensor.thermostat_hc1_holidays
+ES73,Thermostat,76,vacations,vacation dates,string, ,true,sensor.thermostat_hc1_vacation_dates,sensor.thermostat_hc1_vacations
+ES73,Thermostat,76,program,program,enum [own 1\|family\|morning\|evening\|am\|pm\|midday\|singles\|seniors\|new\|own 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+ES73,Thermostat,76,pause,pause time,uint (>=0<=99),hours,true,number.thermostat_hc1_pause_time,number.thermostat_hc1_pause
+ES73,Thermostat,76,party,party time,uint (>=0<=99),hours,true,number.thermostat_hc1_party_time,number.thermostat_hc1_party
+ES73,Thermostat,76,tempautotemp,temporary set temperature automode,uint (>=0<=30),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+ES73,Thermostat,76,noreducetemp,no reduce below temperature,int (>=-30<=10),C,true,number.thermostat_hc1_no_reduce_below_temperature,number.thermostat_hc1_noreducetemp
+ES73,Thermostat,76,reducetemp,off/reduce switch temperature,int (>=-20<=10),C,true,number.thermostat_hc1_off/reduce_switch_temperature,number.thermostat_hc1_reducetemp
+ES73,Thermostat,76,vacreducetemp,vacations off/reduce switch temperature,int (>=-20<=10),C,true,number.thermostat_hc1_vacations_off/reduce_switch_temperature,number.thermostat_hc1_vacreducetemp
+ES73,Thermostat,76,vacreducemode,vacations reduce mode,enum [nofrost\|reduce\|room\|outdoor], ,true,select.thermostat_hc1_vacations_reduce_mode,select.thermostat_hc1_vacreducemode
+ES73,Thermostat,76,remotetemp,room temperature from remote,short (>=-3199<=3199),C,true,number.thermostat_hc1_room_temperature_from_remote,number.thermostat_hc1_remotetemp
+ES73,Thermostat,76,wwprio,dhw priority,boolean, ,true,switch.thermostat_hc1_dhw_priority,switch.thermostat_hc1_wwprio
+ES73,Thermostat,76,switchtime1,own1 program switchtime,string, ,true,sensor.thermostat_hc1_own1_program_switchtime,sensor.thermostat_hc1_switchtime1
+ES73,Thermostat,76,switchtime2,own2 program switchtime,string, ,true,sensor.thermostat_hc1_own2_program_switchtime,sensor.thermostat_hc1_switchtime2
 ES72/RC20,Thermostat,113,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 ES72/RC20,Thermostat,113,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 ES72/RC20,Thermostat,113,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 ES72/RC20,Thermostat,113,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
 ES72/RC20,Thermostat,113,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 ES72/RC20,Thermostat,113,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+ES72/RC20,Thermostat,113,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+ES72/RC20,Thermostat,113,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+ES72/RC20,Thermostat,113,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
+ES72/RC20,Thermostat,113,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
+ES72/RC20,Thermostat,113,program,program,enum [family\|morning\|evening\|am\|pm\|midday\|singles\|seniors], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+ES72/RC20,Thermostat,113,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+ES72/RC20,Thermostat,113,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+ES72/RC20,Thermostat,113,tempautotemp,temporary set temperature automode,uint (>=0<=127),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+ES72/RC20,Thermostat,113,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+ES72/RC20,Thermostat,113,summertemp,summer temperature,uint (>=10<=30),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+ES72/RC20,Thermostat,113,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+ES72/RC20,Thermostat,113,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
 FW100,Thermostat,105,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 FW100,Thermostat,105,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 FW100,Thermostat,105,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2745,6 +3108,16 @@ FW100,Thermostat,105,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FW100,Thermostat,105,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FW100,Thermostat,105,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FW100,Thermostat,105,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FW100,Thermostat,105,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+FW100,Thermostat,105,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+FW100,Thermostat,105,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
+FW100,Thermostat,105,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+FW100,Thermostat,105,nofrosttemp,nofrost temperature,int (>=-63<=63),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+FW100,Thermostat,105,control,control device,enum [off\|FB10\|FB100], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+FW100,Thermostat,105,program,program,enum [prog a\|prog b\|prog c\|prog d\|prog e\|prog f], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+FW100,Thermostat,105,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
+FW100,Thermostat,105,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+FW100,Thermostat,105,roomsensor,room sensor,enum [extern\|intern\|auto], ,true,select.thermostat_hc1_room_sensor,select.thermostat_hc1_roomsensor
 FW200,Thermostat,106,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 FW200,Thermostat,106,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 FW200,Thermostat,106,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2758,6 +3131,16 @@ FW200,Thermostat,106,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FW200,Thermostat,106,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FW200,Thermostat,106,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FW200,Thermostat,106,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FW200,Thermostat,106,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+FW200,Thermostat,106,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+FW200,Thermostat,106,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
+FW200,Thermostat,106,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+FW200,Thermostat,106,nofrosttemp,nofrost temperature,int (>=-63<=63),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+FW200,Thermostat,106,control,control device,enum [off\|FB10\|FB100], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+FW200,Thermostat,106,program,program,enum [prog a\|prog b\|prog c\|prog d\|prog e\|prog f], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+FW200,Thermostat,106,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
+FW200,Thermostat,106,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+FW200,Thermostat,106,roomsensor,room sensor,enum [extern\|intern\|auto], ,true,select.thermostat_hc1_room_sensor,select.thermostat_hc1_roomsensor
 FR100,Thermostat,107,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 FR100,Thermostat,107,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 FR100,Thermostat,107,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2771,6 +3154,16 @@ FR100,Thermostat,107,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FR100,Thermostat,107,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FR100,Thermostat,107,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FR100,Thermostat,107,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FR100,Thermostat,107,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+FR100,Thermostat,107,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+FR100,Thermostat,107,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
+FR100,Thermostat,107,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+FR100,Thermostat,107,nofrosttemp,nofrost temperature,int (>=-63<=63),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+FR100,Thermostat,107,control,control device,enum [off\|FB10\|FB100], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+FR100,Thermostat,107,program,program,enum [prog a\|prog b\|prog c\|prog d\|prog e\|prog f], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+FR100,Thermostat,107,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
+FR100,Thermostat,107,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+FR100,Thermostat,107,roomsensor,room sensor,enum [extern\|intern\|auto], ,true,select.thermostat_hc1_room_sensor,select.thermostat_hc1_roomsensor
 FR110,Thermostat,108,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 FR110,Thermostat,108,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 FR110,Thermostat,108,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2784,6 +3177,16 @@ FR110,Thermostat,108,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FR110,Thermostat,108,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FR110,Thermostat,108,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FR110,Thermostat,108,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FR110,Thermostat,108,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+FR110,Thermostat,108,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+FR110,Thermostat,108,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
+FR110,Thermostat,108,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+FR110,Thermostat,108,nofrosttemp,nofrost temperature,int (>=-63<=63),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+FR110,Thermostat,108,control,control device,enum [off\|FB10\|FB100], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+FR110,Thermostat,108,program,program,enum [prog a\|prog b\|prog c\|prog d\|prog e\|prog f], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+FR110,Thermostat,108,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
+FR110,Thermostat,108,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+FR110,Thermostat,108,roomsensor,room sensor,enum [extern\|intern\|auto], ,true,select.thermostat_hc1_room_sensor,select.thermostat_hc1_roomsensor
 FB10,Thermostat,109,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 FB10,Thermostat,109,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 FB10,Thermostat,109,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2797,6 +3200,16 @@ FB10,Thermostat,109,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tru
 FB10,Thermostat,109,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FB10,Thermostat,109,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FB10,Thermostat,109,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FB10,Thermostat,109,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+FB10,Thermostat,109,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+FB10,Thermostat,109,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
+FB10,Thermostat,109,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+FB10,Thermostat,109,nofrosttemp,nofrost temperature,int (>=-63<=63),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+FB10,Thermostat,109,control,control device,enum [off\|FB10\|FB100], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+FB10,Thermostat,109,program,program,enum [prog a\|prog b\|prog c\|prog d\|prog e\|prog f], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+FB10,Thermostat,109,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
+FB10,Thermostat,109,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+FB10,Thermostat,109,roomsensor,room sensor,enum [extern\|intern\|auto], ,true,select.thermostat_hc1_room_sensor,select.thermostat_hc1_roomsensor
 FB100,Thermostat,110,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 FB100,Thermostat,110,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 FB100,Thermostat,110,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2810,6 +3223,16 @@ FB100,Thermostat,110,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FB100,Thermostat,110,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FB100,Thermostat,110,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FB100,Thermostat,110,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FB100,Thermostat,110,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+FB100,Thermostat,110,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+FB100,Thermostat,110,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
+FB100,Thermostat,110,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+FB100,Thermostat,110,nofrosttemp,nofrost temperature,int (>=-63<=63),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+FB100,Thermostat,110,control,control device,enum [off\|FB10\|FB100], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+FB100,Thermostat,110,program,program,enum [prog a\|prog b\|prog c\|prog d\|prog e\|prog f], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+FB100,Thermostat,110,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
+FB100,Thermostat,110,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+FB100,Thermostat,110,roomsensor,room sensor,enum [extern\|intern\|auto], ,true,select.thermostat_hc1_room_sensor,select.thermostat_hc1_roomsensor
 FR10,Thermostat,111,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 FR10,Thermostat,111,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 FR10,Thermostat,111,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2823,6 +3246,16 @@ FR10,Thermostat,111,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tru
 FR10,Thermostat,111,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FR10,Thermostat,111,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FR10,Thermostat,111,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FR10,Thermostat,111,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+FR10,Thermostat,111,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+FR10,Thermostat,111,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
+FR10,Thermostat,111,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+FR10,Thermostat,111,nofrosttemp,nofrost temperature,int (>=-63<=63),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+FR10,Thermostat,111,control,control device,enum [off\|FB10\|FB100], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+FR10,Thermostat,111,program,program,enum [prog a\|prog b\|prog c\|prog d\|prog e\|prog f], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+FR10,Thermostat,111,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
+FR10,Thermostat,111,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+FR10,Thermostat,111,roomsensor,room sensor,enum [extern\|intern\|auto], ,true,select.thermostat_hc1_room_sensor,select.thermostat_hc1_roomsensor
 FW500,Thermostat,116,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 FW500,Thermostat,116,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 FW500,Thermostat,116,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2836,6 +3269,16 @@ FW500,Thermostat,116,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FW500,Thermostat,116,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FW500,Thermostat,116,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FW500,Thermostat,116,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FW500,Thermostat,116,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+FW500,Thermostat,116,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+FW500,Thermostat,116,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
+FW500,Thermostat,116,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+FW500,Thermostat,116,nofrosttemp,nofrost temperature,int (>=-63<=63),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+FW500,Thermostat,116,control,control device,enum [off\|FB10\|FB100], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+FW500,Thermostat,116,program,program,enum [prog a\|prog b\|prog c\|prog d\|prog e\|prog f], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+FW500,Thermostat,116,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
+FW500,Thermostat,116,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+FW500,Thermostat,116,roomsensor,room sensor,enum [extern\|intern\|auto], ,true,select.thermostat_hc1_room_sensor,select.thermostat_hc1_roomsensor
 FR50,Thermostat,147,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 FR50,Thermostat,147,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 FR50,Thermostat,147,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2849,6 +3292,16 @@ FR50,Thermostat,147,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tru
 FR50,Thermostat,147,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FR50,Thermostat,147,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FR50,Thermostat,147,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FR50,Thermostat,147,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+FR50,Thermostat,147,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+FR50,Thermostat,147,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
+FR50,Thermostat,147,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+FR50,Thermostat,147,nofrosttemp,nofrost temperature,int (>=-63<=63),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+FR50,Thermostat,147,control,control device,enum [off\|FB10\|FB100], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+FR50,Thermostat,147,program,program,enum [prog a\|prog b\|prog c\|prog d\|prog e\|prog f], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+FR50,Thermostat,147,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
+FR50,Thermostat,147,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+FR50,Thermostat,147,roomsensor,room sensor,enum [extern\|intern\|auto], ,true,select.thermostat_hc1_room_sensor,select.thermostat_hc1_roomsensor
 FR120,Thermostat,191,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 FR120,Thermostat,191,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 FR120,Thermostat,191,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2862,6 +3315,16 @@ FR120,Thermostat,191,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FR120,Thermostat,191,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FR120,Thermostat,191,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FR120,Thermostat,191,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FR120,Thermostat,191,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+FR120,Thermostat,191,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+FR120,Thermostat,191,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
+FR120,Thermostat,191,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+FR120,Thermostat,191,nofrosttemp,nofrost temperature,int (>=-63<=63),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+FR120,Thermostat,191,control,control device,enum [off\|FB10\|FB100], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+FR120,Thermostat,191,program,program,enum [prog a\|prog b\|prog c\|prog d\|prog e\|prog f], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+FR120,Thermostat,191,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
+FR120,Thermostat,191,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+FR120,Thermostat,191,roomsensor,room sensor,enum [extern\|intern\|auto], ,true,select.thermostat_hc1_room_sensor,select.thermostat_hc1_roomsensor
 FW120,Thermostat,192,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 FW120,Thermostat,192,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 FW120,Thermostat,192,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2875,6 +3338,16 @@ FW120,Thermostat,192,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FW120,Thermostat,192,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FW120,Thermostat,192,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FW120,Thermostat,192,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FW120,Thermostat,192,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+FW120,Thermostat,192,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+FW120,Thermostat,192,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
+FW120,Thermostat,192,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+FW120,Thermostat,192,nofrosttemp,nofrost temperature,int (>=-63<=63),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+FW120,Thermostat,192,control,control device,enum [off\|FB10\|FB100], ,true,select.thermostat_hc1_control_device,select.thermostat_hc1_control
+FW120,Thermostat,192,program,program,enum [prog a\|prog b\|prog c\|prog d\|prog e\|prog f], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+FW120,Thermostat,192,remotetemp,room temperature from remote,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_room_temperature_from_remote,sensor.thermostat_hc1_remotetemp
+FW120,Thermostat,192,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+FW120,Thermostat,192,roomsensor,room sensor,enum [extern\|intern\|auto], ,true,select.thermostat_hc1_room_sensor,select.thermostat_hc1_roomsensor
 RT800,Thermostat,3,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RT800,Thermostat,3,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RT800,Thermostat,3,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
