@@ -49,14 +49,15 @@ Enclose text in `^ ^` to superscript it. Example `H^2^0` renders H<sup>2</sup>O
 
 Easiest way is to run pip as a module (https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment). On Linux to install pip use:
 
-- `python3 -m venv venv` to install the virtual environment
+- `python3 -m venv venv` to create the virtual environment
 - `source ./venv/bin/activate` to enter it
-- `pip install wheel`
-- `pip install -r requirements.txt`
+- `pip install wheel` and `pip install -r requirements.txt` to install the libraries
 
 ### Testing locally
 
-`mkdocs serve` then go to http://127.0.0.1:8000/docs
+- `source ./venv/bin/activate` to go into the virtual environment
+- `mkdocs serve` to build the documentation
+- http://127.0.0.1:8000/docs
 
 ## Deploying
 

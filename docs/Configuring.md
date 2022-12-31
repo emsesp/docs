@@ -24,7 +24,7 @@
 - When you see the captive portal sign-in with username `admin` and password `admin`.
 - Set the WiFi credentials and go back to <http://ems-esp>. Remember to change the password!
 - Now check is if Tx is working and that you have a connection to the EMS bus. If Tx failures are shown in the Web interface try changing the Tx Mode from the settings page. There is no need to re-start the EMS-ESP.
-- Use the Web UI (<http://ems-esp> or <http://ems-esp.local>) to further configure the settings.
+- Use the WebUI (<http://ems-esp> or <http://ems-esp.local>) to further configure the settings.
 
 !!! note "If Rx incomplete telegrams are reported in the log, don't panic. Some telegrams can be missed and this is usually caused by noise interference on the line."
 
@@ -67,7 +67,7 @@ In the `Settings` page in the WebUI you'll find:
 
 ### Formatting Options
 
-- **Boolean Format Dashboard**. This is how boolean values are displayed in the Web UI and MQTT payloads.
+- **Boolean Format Dashboard**. This is how boolean values are displayed in the WebUI and MQTT payloads.
 - **Boolean Format API/MQTT**. This is how boolean values are written in the MQTT payloads and API JSON output.
 - **Enum Format API/MQTT**. This is how list values are presented in the MQTT payloads and API JSON, either by it's value or the index position within the list.
 
@@ -87,7 +87,7 @@ In the `Settings` page in the WebUI you'll find:
 
 ## MQTT Settings
 
-These settings can be found in the `MQTT` tab on the Web UI. Most are self-explanatory and the settings that are specific to EMS-ESP are:
+These settings can be found in the `MQTT` tab on the WebUI. Most are self-explanatory and the settings that are specific to EMS-ESP are:
 
 - **Broker Address**. Use the IP address.
 - **Client ID**. This is used internally to identify EMS-ESP with the broker and is optional. Note MQTT topics will be postfixed with the hostname (default `ems-esp`) and not the client ID.
@@ -105,7 +105,7 @@ These settings can be found in the `MQTT` tab on the Web UI. Most are self-expla
 
 ## Adding external sensors
 
-External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees Gateway board it already has an external plug for Dallas temperature sensors which will be visible in the Web UI without any configuration.
+External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees Gateway board it already has an external plug for Dallas temperature sensors which will be visible in the WebUI without any configuration.
 
 To add custom sensors click on the `+` next to `Sensors` from the Dashboard and choose between a normal Digital in/out, a Counter (counting on/off pulses), ADC for measuring voltages, Timer, Rate and PWM 0-2.
 

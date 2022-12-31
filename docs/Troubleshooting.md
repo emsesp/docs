@@ -43,7 +43,7 @@ Things to check:
 
 Experiment with changing the Tx Mode value in the Settings page. The default EMS works for older EMS1.0 systems, EMS2 or EMSPlus systems and HT3 for Junkers/Worcester using the Heatronics protocol.
 
-If you have EMS devices that may not yet be supported by EMS-ESP then use `scan devices` from the Console to find out their details and then post an enhancement issue on GitHub. Remember the `su` password is default `ems-esp-neo` unless this has been changed via the console (`passwd`) or in the Web UI (`Security->Security Settings`).
+If you have EMS devices that may not yet be supported by EMS-ESP then use `scan devices` from the Console to find out their details and then post an enhancement issue on GitHub. Remember the `su` password is default `ems-esp-neo` unless this has been changed via the console (`passwd`) or in the WebUI (`Security->Security Settings`).
 
 e.g.
 
@@ -86,7 +86,7 @@ It may occur in some scenarios that EMS changes will be overwritten or ignored b
 
 ### Incorrect values are shown from a specific device
 
-If you notice that certain values are displayed incorrectly, either in the Web UI, Console or MQTT then please help us correct this by logging a GitHub issue, along with the expected value. When asked to provide debug information, go the Telnet console and do
+If you notice that certain values are displayed incorrectly, either in the WebUI, Console or MQTT then please help us correct this by logging a GitHub issue, along with the expected value. When asked to provide debug information, go the Telnet console and do
 
 ```sh
 % su

@@ -2,7 +2,11 @@
 
 ![EMS-ESP logo](_media/logo/boiler_64.png)
 
-EMS-ESP is an open source firmware for [Espressif](https://www.espressif.com/en/products/socs) ESP32 based chipsets based devices originally developed by @Proddy back in 2018 and now owned and maintained exclusively by both [@Proddy](https://github.com/proddy) and [@MichaelDvP](https://github.com/MichaelDvP).
+EMS-ESP is an open source firmware for [Espressif](https://www.espressif.com/en/products/socs) ESP32 based chipsets based devices originally developed by [@Proddy](https://github.com/proddy) back in 2018 and now owned and maintained exclusively by both Proddy and [@MichaelDvP](https://github.com/MichaelDvP).
+
+## License
+
+This program is licensed under GPL-3.0
 
 ## A Brief history
 
@@ -40,15 +44,6 @@ How it all started.
 
   ![3.4.0](_media/screenshot/version340.png)
 
-## Contribute
+- December 2022 - Version 3.5.0 - Multi-Language, Heat pumps, Customizations and so much more
 
-Everybody is welcome and invited to contribute to the EMS-ESP Project by:
-
-- providing Pull Requests (Features, Proof of Concepts, Language files or Fixes)
-- testing new released features and report issues
-- donating to acquire hardware for testing and implementing or out of gratitude
-- contributing missing [documentation](Contributing.md) for features and devices
-
-## License
-
-This program is licensed under GPL-3.0
+  ![3.4.0](_media/screenshot/version350.png)

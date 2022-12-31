@@ -46,7 +46,7 @@ Things to note:
 - The REST API follows the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
 - The URL path always starts with `http://<hostname>/api/`
 - `<hostname>` is either an IP address or the mDNS name, which default is `ems-esp.local`
-- Some commands require can be dangerous and require security authentication, unless disabled via an EMS-ESP setting. The authentication is in the form of an Access Token which is generated from the Web UI's Security->Manage Users and then clicking on the key button for the admin user. The 152 character long string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date
+- Some commands require can be dangerous and require security authentication, unless disabled via an EMS-ESP setting. The authentication is in the form of an Access Token which is generated from the WebUI's Security->Manage Users and then clicking on the key button for the admin user. The 152 character long string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date
 - With HTTP PUSH/PUT/PATCH commands an HTTP body may be required. This can be in the form of either plain text or as a JSON object `<data>`
 - HTTPS with self-signed certificates are not yet supported
 
@@ -54,59 +54,64 @@ Things to note:
 
 The URL path is `http://<hostname>/api/<device>/`
 
-| endpoint        | HTTP method | action                                                             | authentication required? | body     |
-| --------------- | ----------- | ------------------------------------------------------------------ | ------------------------ | -------- |
-| `info`          | GET         | outputs current EMS device information in verbose                  | no                       |          |
-| `values`        | GET         | outputs current EMS device information in short format             | no                       |          |
-| _(empty)_       | GET         | same as `values` above                                             | no                       |          |
-| `commands`      | GET         | lists the available commands or entities to call                   | no                       |
-| `entities`      | GET         | lists the matching Home Assistant entities (HA only)               | no                       |          |
-| `{entity}`      | GET         | outputs details of a specific entity, for reading                  | no                       |          |
-| `{entity}/{hc}` | GET         | same as the read command above but for a specific heating circuit  | no                       |          |
-| `{entity}`      | POST        | updates a entity value, for writing                                | yes                      | `<data>` |
-| `{entity}/{hc}` | POST        | same as the write command above but for a specific heating circuit | yes                      | `<data>` |
+<!-- prettier-ignore -->
+| endpoint | HTTP method | action | authentication required? | body |
+| - | - | - | - | - |
+| `info` | GET | outputs current EMS device information in verbose | no | |
+| `values` | GET | outputs current EMS device information in short format | no | |
+| _(empty)_ | GET | same as `values` above | no | |
+| `commands` | GET | lists the available commands or entities to call | no |
+| `entities` | GET | lists the matching Home Assistant entities (HA only) | no | |
+| `{entity}` | GET | outputs details of a specific entity, for reading | no | |
+| `{entity}/{hc}` | GET | same as the read command above but for a specific heating circuit | no | |
+| `{entity}` | POST | updates a entity value, for writing | yes | `<data>` |
+| `{entity}/{hc}` | POST | same as the write command above but for a specific heating circuit | yes | `<data>` |
 
 Examples:
 
-| URL                                        | body                                   | action                                                                           |
-| ------------------------------------------ | -------------------------------------- | -------------------------------------------------------------------------------- |
-| `http://ems-esp.local/api/thermostat/temp` | `22`                                   | sets the selected room temperature of the master thermostat on heating circuit 1 |
-| `http://ems-esp.local/api/thermostat`      | `{"cmd":"mode", "data":"auto"}`        | sets the thermostat mode to auto for heating circuit 1                           |
-| `http://ems-esp.local/api/thermostat`      | `{"cmd":"seltemp", "data":23, "hc":3}` | sets the room temperature to 23 degrees for for heating circuit 3                |
-| `http://ems-esp.local/api/thermostat/hc2`  | `{"cmd":"seltemp", "data":20.5}`       | sets the room temperature to 20.5 degrees for for heating circuit 2              |
+<!-- prettier-ignore -->
+| URL | body | action |
+| - | - | - |
+| `http://ems-esp.local/api/thermostat/temp` | `22` | sets the selected room temperature of the master thermostat on heating circuit 1 |
+| `http://ems-esp.local/api/thermostat` | `{"cmd":"mode", "data":"auto"}` | sets the thermostat mode to auto for heating circuit 1 |
+| `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | sets the room temperature to 23 degrees for for heating circuit 3 |
+| `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | sets the room temperature to 20.5 degrees for for heating circuit 2 |
 
 ### System Commands
 
 The URL path is `http://<hostname>/api/system/<endpoint>`
 
-| endpoint       | HTTP method | action                                                                          | authentication required? | body                                 |
-| -------------- | ----------- | ------------------------------------------------------------------------------- | ------------------------ | ------------------------------------ |
-| `info`         | GET         | outputs current system information                                              | no                       |
-| `fetch`        | GET         | forces at refresh of all device values                                          | no                       |                                      |
-| `restart`      | GET         | restarts EMS-ESP                                                                | yes                      |                                      |
-| `commands`     | GET         | lists the available system commands                                             | no                       |                                      |
-| `send`         | POST        | send telegram to the EMS bus                                                    | yes                      | `"XX XX...XX"`                       |
-| `publish`      | POST        | MQTT publish all values, and optional HA-configuration or specific for a device | yes                      | `[ha] \| [device]`                   |
-| `watch`        | POST        | watch incoming telegrams                                                        | yes                      | `<on \|off \| raw \| <type-id(hex)>` |
-| `syslog_level` | POST        | set syslog level                                                                | yes                      | `<level>`                            |
+<!-- prettier-ignore -->
+| endpoint | HTTP method | action | authentication required? | body |
+| - | - | - | - | - |
+| `info` | GET | outputs current system information | no |
+| `fetch` | GET | forces at refresh of all device values | no | |
+| `restart` | GET | restarts EMS-ESP | yes | |
+| `commands` | GET | lists the available system commands | no | |
+| `send` | POST | send telegram to the EMS bus | yes | `"XX XX...XX"` |
+| `publish` | POST | MQTT publish all values, and optional HA-configuration or specific for a device | yes | `[ha] \| [device]` |
+| `watch` | POST | watch incoming telegrams | yes | `<on \|off \| raw \| <type-id(hex)>` |
+| `syslog_level` | POST | set syslog level | yes | `<level>` |
 
 ### Fetching Dallas temperature sensor information
 
 The URL path is `http://<hostname>/api/dallassensor/`
 
-| endpoint | HTTP method | action                                        | authentication required? | body |
-| -------- | ----------- | --------------------------------------------- | ------------------------ | ---- |
-| `info`   | GET         | outputs connected Dallas sensors and readings | no                       |
+<!-- prettier-ignore -->
+| endpoint | HTTP method | action | authentication required? | body |
+| - | - | - | - | - |
+| `info` | GET | outputs connected Dallas sensors and readings | no |
 
 ### Controlling the analog sensors
 
 The URL path is `http://<hostname>/api/analogsensor/`
 
-| endpoint   | HTTP method | action                                                             | authentication required? | body                           |
-| ---------- | ----------- | ------------------------------------------------------------------ | ------------------------ | ------------------------------ |
-| `info`     | GET         | outputs configured analog sensors and readings                     | no                       |                                |
-| `commands` | GET         | lists the available system commands                                | no                       |                                |
-| `setvalue` | POST        | set value/offset of counter or output pin, +/- sign corrects value | yes                      | `{"value":<val>, "id":<gpio>}` |
+<!-- prettier-ignore -->
+| endpoint   | HTTP method | action | authentication required? | body |
+| - | - | - | - | - |
+| `info` | GET | outputs configured analog sensors and readings | no | |
+| `commands` | GET | lists the available system commands | no | |
+| `setvalue` | POST | set value/offset of counter or output pin, +/- sign corrects value | yes | `{"value":<val>, "id":<gpio>}` |
 
 ### Examples
 
@@ -155,13 +160,14 @@ The **payload** is the same as the `<data>` as described above and used in the A
 
 Examples:
 
-| topic                        | payload                                          | action                                                                                  |
-| ---------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------- |
-| `ems-esp/system/send`        | `"XX XX...XX"`                                   | send raw ems-command                                                                    |
-| `ems-esp/thermostat/seltemp` |                                                  | fetches the seltemp entity values and publishes it in the topic `ems-esp/response`      |
-| `ems-esp/thermostat/seltemp` | `23`                                             | change the selected setpoint temperature to 23 degrees on the master thermostat on hc1 |
-| `ems-esp/thermostat/mode`    | `"auto"`                                         | sets the thermostat mode to auto for hc1                                                |
-| `ems-esp/thermostat`         | `{\"cmd\":\"mode\",\"value\":\"heat\",\"id\":1}` | sets the thermostat mode to heat for hc1                                                |
+<!-- prettier-ignore -->
+| topic | payload | action |
+| - | - | - |
+| `ems-esp/system/send` | `"XX XX...XX"` | send raw ems-command |
+| `ems-esp/thermostat/seltemp` | | fetches the seltemp entity values and publishes it in the topic `ems-esp/response` |
+| `ems-esp/thermostat/seltemp` | `23` | change the selected setpoint temperature to 23 degrees on the master thermostat on hc1 |
+| `ems-esp/thermostat/mode` | `"auto"` | sets the thermostat mode to auto for hc1 |
+| `ems-esp/thermostat` | `{\"cmd\":\"mode\",\"value\":\"heat\",\"id\":1}` | sets the thermostat mode to heat for hc1 |
 
 ### Publishing Commands
 

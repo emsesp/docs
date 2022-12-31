@@ -40,6 +40,15 @@ For feedback, questions, live troubleshooting or just general chat
 
 <a href="https://discord.gg/Ks2Kzd4"><img src="https://discordapp.com/api/guilds/816637840644505620/widget.png?style=banner2"></a>
 
+## Contribute
+
+Everybody is welcome and invited to contribute to the EMS-ESP Project by:
+
+- providing Pull Requests (Features, Proof of Concepts, Language files or Fixes)
+- testing new released features and report issues
+- donating to acquire hardware for testing and implementing or out of gratitude
+- contributing missing [documentation](Contributing.md) for features and devices
+
 ## Report bugs and suggest features
 
 Open a new topic on [EMS-ESP discussions](https://github.com/emsesp/EMS-ESP32/discussions)
