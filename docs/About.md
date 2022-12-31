@@ -12,7 +12,8 @@ This program is licensed under GPL-3.0
 
 How it all started.
 
-- May 2018 - Version 0.1.0 - The first public prototype. Built only for the ESP8266. This version only had a very simple telnet interface. The GitHub repo had 4 .cpp files and was called Boiler
+- August 2017 - my first prototype, read only and based on an ESP8266. Because the Serial UART was used I couldn't display the values to the screen so had to write a Telnet service which consumed about 75% of the tine. The GitHub repo had 4 .cpp files and was called Boiler.
+- May 2018 - Version 0.1.0 - The first public prototype. Built only for the ESP8266. This version only had a very simple telnet interface and MQTT.
 - September 2018 - Version 1.0.0 - First official stable release on GitHub
 - December 2018 - Version 1.1.0 - Added the RC30 and RC35 thermostats
 - January 2019 - Version 1.3.0 - Added more boilers and thermostats, and EMS+ support
