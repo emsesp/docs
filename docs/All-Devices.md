@@ -8,6 +8,20 @@ Most Bosch branded boilers that support the Logamatic EMS bus protocols work wit
 
 EMS devices are being constantly added to the database on each new release.
 
+The following device types are supported:
+
+- boiler
+- thermostat
+- heatpump
+- solar
+- connect
+- mixer
+- controller
+- switch
+- gateway
+- alert
+- pump
+
 ## All devices and entities
 
 [Download the full CSV file](data/dump_entities.csv)

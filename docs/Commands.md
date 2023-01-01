@@ -18,7 +18,7 @@ First some important definitions.
         - the Dallas temperature sensors as `dallassensor`
     - `<command>` is the name of either
         - a generic command, or
-        - an EMS device entity also referred to as an `<entity>`. See the [table below](Command?id=ems-device-entity-names) for the complete list
+        - an EMS device entity also referred to as an `<entity>`. See the [Supported Devices](All-Devices) page for the complete list
     - `<id>` is an optional identifier and has different meanings depending on the context
     - `<data>` is used to represent the value to read or write. It can be either:
         - a single value. This can be of any type; integer, float, string or boolean
