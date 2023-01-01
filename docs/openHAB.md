@@ -1,5 +1,3 @@
 ![logo](_media/logo/openhab-logo.png)
 
-You can integrate EMS-ESP into OpenHAB by adding a bit of configuration.
-
-@BBQKees has a description which you can find [here](https://bbqkees-electronics.nl/wiki/gateway/openhab-configuration.html).
+You can integrate EMS-ESP into OpenHAB easily by using the MQTT Discovery feature. See https://www.openhab.org/addons/bindings/mqtt.homeassistant/.
