@@ -39,7 +39,7 @@ If this is a fresh install you will need to upload it manually and there are two
 
 If you are upgrading from a previous release it's recommended you perform the upgrade via the WebUI (`System->Upload`).
 
-!!! note "There was an issue with older BBQKees Gateway boards with a too small partition size. If you're upgrade from v3.4 or earlier and have one of these boards then make a backup of your settings and use the [EMS-ESP Flasher tool](https://github.com/emsesp/EMS-ESP-Flasher/releases)."
+!!! note "There was an issue with older BBQKees Gateway boards that used a smaller partition size on the ESP32. If you're upgrading from v3.4 or earlier and have one of these boards then make a backup of your settings and use the [EMS-ESP Flasher tool](https://github.com/emsesp/EMS-ESP-Flasher/releases)."
 
 Alternatively you can opt for an Over the Air (OTA) install using [`espota.py`](https://github.com/emsesp/EMS-ESP32/tree/main/scripts) and:
 
