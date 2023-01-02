@@ -8,16 +8,17 @@ docs_dir: docs
 # copyright: 'Copyright &copy; 2022 Proddy and MichaelDvP'
 
 plugins:
-  - search:
-      lang:
-        - de
-        - en
+  - search
   - alternate-link
   - minify:
       minify_html: true
   - redirects:
       redirect_maps:
   - table-reader
+  - git-revision-date-localized
+  - git-committers:
+      repository: emsesp/docs
+      branch: main
 # - htmlproofer
 
 # strict: true
@@ -28,16 +29,11 @@ theme:
   # custom_dir: 'overrides'
   logo: '_media/logo/boiler.svg'
   favicon: _media/favicon.ico
-  # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/?h=palett#primary-color
   palette:
-    scheme: slate
-    primary: blue grey
-    accent: light blue
-  # palette:
-  #   - media: '(prefers-color-scheme: dark)'
-  #     scheme: slate
-  #     primary: blue
-  #     accent: deep purple
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: blue grey
+      accent: light blue
 
   features:
     - navigation.instant
@@ -86,10 +82,12 @@ markdown_extensions:
 
 extra_css:
   - 'assets/css/anchor-fix.css'
+  - 'assets/css/github.css'
 
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - extra_javascript/tablesort.js
+  - extra_javascript/github.js
 
 nav:
   - Home:
@@ -126,6 +124,6 @@ nav:
       - Loxone: Loxone.md
       - Grafana: Grafana.md
   - Help:
-      - FAQ.md
+      - Support: Support.md
       - Troubleshooting.md
-      - Discord Support: https://discord.gg/3J3GgnzpyT "target=_blank"
+      - Tips & Tricks: tips-and-tricks.md
