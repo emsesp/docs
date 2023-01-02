@@ -76,7 +76,7 @@ But these are for the USB chip, not for the interface board.
 
 ### Changing a value on an EMS Device doesn't work
 
-If you notice that setting/writing an EMS device value has no effect then from the WebUI set the System Log level to DEBUG and repeat the action, noticing any errors or warnings in the System Log. For a more thorough analysis use the Telnet Console, `su`, then `log debug` and then repeat the action using the `call` command. Post the output to a new GitHub issue as described in [FAQ](FAQ.md).
+If you notice that setting/writing an EMS device value has no effect then from the WebUI set the System Log level to DEBUG and repeat the action, noticing any errors or warnings in the System Log. For a more thorough analysis use the Telnet Console, `su`, then `log debug` and then repeat the action using the `call` command. Post the output to a new GitHub issue as described in the [Support Section](Support).
 
 Note on some systems with for example a gateway or controller attached, any change will be reset or overwritten. This is just the behavior of the other master controllers and not much we can do about it.
 
@@ -139,7 +139,7 @@ ems-esp:# log debug
 ems-esp:# call thermostat seltemp 15
 ```
 
-You should see a log statement pop in the console like `[thermostat] Setting thermostat temperature to 15.0 for heating circuit 1, mode auto` followed by which telegrams are being sent. If you see errors then see the [FAQ](FAQ.md).
+You should see a log statement pop in the console like `[thermostat] Setting thermostat temperature to 15.0 for heating circuit 1, mode auto` followed by which telegrams are being sent. If you see log errors then create a GitHub issue (see [Support](Support)).
 
 ### Integration with Home Assistant breaks when MQTT broker restarts
 
