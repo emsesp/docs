@@ -30,7 +30,7 @@ Things to check:
 
 - If the WebUI is accessible, go to `System->System Status` and look at the Heap. If the Free memory is below 90KB or the Max allocation below 45KB then that is an issue and you'll need to turn of services, try again and report this.
 - Make sure the System Log's Max Buffer Size at `System->System Log` is at its lowest.
-- If you're still experiencing periodic restarts turn off all the services (SysLog, NTP, MQTT, Telnet) and see if it still restarts, and then add them back one by one to pinpoint the culprit.
+- If you're still experiencing periodic restarts turn off all the services (SysLog, mDNS, NTP, MQTT, Telnet) and see if it still restarts, and then add them back one by one to pinpoint the culprit. The mDNS can take up 5KB of heap memory.
 
 #### It could be code related
 
@@ -43,11 +43,9 @@ Things to check:
 
 Experiment with changing the Tx Mode value in the Settings page. The default EMS works for older EMS1.0 systems, EMS2 or EMSPlus systems and HT3 for Junkers/Worcester using the Heatronics protocol.
 
-If you have EMS devices that may not yet be supported by EMS-ESP then use `scan devices` from the Console to find out their details and then post an enhancement issue on GitHub. Remember the `su` password is default `ems-esp-neo` unless this has been changed via the console (`passwd`) or in the WebUI (`Security->Security Settings`).
+If you have EMS devices that may not yet be supported by EMS-ESP then use `scan devices` from the Console to find out their details and then post an enhancement issue on GitHub. Remember the `su` password is default `ems-esp-neo` unless this has been changed via the console (`passwd`) or in the WebUI (`Security->Security Settings`). For example:
 
-e.g.
-
-```
+```sh
 ems-esp:$ su
 Password:
 000+00:01:38.291 N 0: [shell] Admin session opened on console
@@ -117,23 +115,28 @@ If you're noticing that MQTT messages are failing to arrive at the broker try:
 - Use Console to force a publish to see what happens. (`log debug`, `su` and `publish`).
 - Increase the Publish Time. Perhaps there are too many messages and it is flooding the queue
 - If all fails, run a local copy of the MQTT mosquitto broker, in verbose mode (-v) so you see if there are errors
-  - download the latest version 2 of Mosquitto from https://mosquitto.org/download/
+
+  - download the latest version 2 of Mosquitto from `https://mosquitto.org/download/`
   - create a new `mosquitto.conf` file with:
+
   ```yaml
   listener 1883
   allow_anonymous true
   ```
+
   (or just edit the default `mosquitto.conf` and modify the `allow_anonymous` entry)
+
   - run with the -v flag so you see all the verbose messages, e.g. on Windows its:
-  ```
+
+  ```txt
   "C:\Program Files\mosquitto\mosquitto.exe" -v -c "C:\Program Files\mosquitto\mosquitto.conf"
   ```
 
 ### Commands sent via MQTT are not working
 
-Use the Console to manually test the commands, with logging on. For example if changing the thermostat temperature is not working try
+Use the Console to manually test the commands, with logging on. For example if changing the thermostat temperature is not working try:
 
-```
+```sh
 ems-esp:$ su
 ems-esp:# log debug
 ems-esp:# call thermostat seltemp 15
