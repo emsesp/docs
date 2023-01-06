@@ -72,17 +72,40 @@ The URL is `localhost:3000`
 
 The test data is hardcoded in `/mock-api/server.js`
 
-### Standalone Testing
+## Core standalone Testing
 
-You can also mimic the ESP32 running EMS-ESP in what we call the 'standalone' mode. This will give you the Telnet console and simulate the EMS bus, MQTT and API.
+You can also run EMS-ESP without an ESP32 using what is called the 'standalone' mode by building an OS-native executable which when run will enter into the Console where you use the `test` commands to simulate EMS traffic and watch the MQTT and API commands work.
 
-It works by compiling the code natively (without using PlatformIO) to create a binary executable. However it uses GNUMake's `make` so currently not compatible with Windows10 which uses CCMake. You'll need to use a Linux distribution, or run Windows WSL (Linux sub-system) or Apple's OSX.
+To build this executable, first make sure you have `gcc` in your system path. You can check by typing `gcc`. If you have PlatformIO then you'll already have the complete GCC toolchain installed via the `PlatformIO Core CLI`. If not you will need to download the GCC toolchain manually using:
 
-To install make use `sudo apt install build-essential make`
+- **Windows** - follow the [MSYS2](https://www.msys2.org/) installation guide and add the following paths to the PATH system environment variable:
 
-From the root directory command line type `make run` to build and run the EMS-ESP executable. `make clean` will remove old object files.
+  ```bat
+  C:\msys64\mingw64\bin
+  C:\msys64\ucrt64\bin
+  C:\msys64\usr\bin
+  ```
 
-Then from the EMS-ESP Console prompt use `test <test>` to run the simulations, eg. mixer, thermostat, general etc. See `test.cpp` for examples of the tests and what data is injected.
+- **Linux** - open the system terminal and run the following commands:
+
+  ```sh
+  sudo apt install build-essential
+  ```
+
+- **macOS** - open the system terminal and install Xcode Command Line Tools
+
+  ```sh
+  xcode-select --install
+  ```
+
+To compile and build the executable there are two ways
+
+1. Using PlatformIO with `pio run -e standalone -t exec` (recommended)
+1. Using GNUMake's `make` with `make run`
+
+You can also build and run directly from Visual Studio Code by `Terminal->Run Task...->PlatformIO: Execute EMS-ESP (standalone)`, and even step through and debug the code in real-time by placing breakpoints.
+
+When inside the Console you can try out the different test commands (coded in `test.cpp`) such as `test general` which will load in a single boiler and a thermostat with a few generic entities. This is great way for trying out new code logic without uploading firmware to an ESP32.
 
 ## Keeping the Web libraries up to date
 
