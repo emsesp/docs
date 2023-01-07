@@ -28,9 +28,12 @@ Things to check:
 
 #### It may be memory related
 
+The ESP32 has very limited RAM, split between run-time stack and the heap. The heap can quickly become fragmented reducing the maximum size of a buffer, and we use A LOT of buffers to prepare all that lovely JSON files for sending to MQTT and populating the Web pages. When the ESP32 runs out of available it'll simply crash and reboot. Things to check:
+
 - If the WebUI is accessible, go to `System->System Status` and look at the Heap. If the Free memory is below 90KB or the Max allocation below 45KB then that is an issue and you'll need to turn of services, try again and report this.
 - Make sure the System Log's Max Buffer Size at `System->System Log` is at its lowest.
-- If you're still experiencing periodic restarts turn off all the services (SysLog, mDNS, NTP, MQTT, Telnet) and see if it still restarts, and then add them back one by one to pinpoint the culprit. The mDNS can take up 5KB of heap memory.
+- Each network protocol (Ethernet, Wifi, AP) consumes memory. If you're only using Ethernet (e.g. an BBQKees E32 Gateway) switch off WiFi and the Access Point (use a blank WiFI ssid).
+- If you're still experiencing periodic restarts turn off all the services (SysLog, mDNS, NTP, MQTT, Telnet) and see if it still restarts, and then add them back one by one to pinpoint the culprit. (The mDNS can take up 5KB of heap memory).
 
 #### It could be code related
 
