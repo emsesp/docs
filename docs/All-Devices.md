@@ -11,6 +11,7 @@ The following device types are supported:
 - boiler
 - thermostat
 - heatpump
+- heatsource
 - solar
 - connect
 - mixer
