@@ -54,7 +54,7 @@ printf "%2.1f", bp}')
 
 curl --silent http://192.168.0.140/api/boiler/selburnpow \
   -H "Content-Type: application/json" -d "{ "value" : $burner_power }" \
-  -H "Authorization: Bearer $boiler_key""
+  -H "Authorization: Bearer $boiler_key"
 }
 
 function dhw_active(){
