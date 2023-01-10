@@ -1,3 +1,5 @@
+Below are answers to some common problems.
+
 ## General
 
 ### Can't connect to the WiFi
@@ -169,11 +171,3 @@ An alternative option without using persistance on the MQTT server is to tell EM
 
 This could happen when either upgrading from an earlier EMS-ESP version and some of the device entity names may have changed. Use a tool like MQTTExplorer to remove all the `homeassistant/sensor/ems-esp/*` and `homeassistant/*/ems-esp/*` topics from your MQTT broker and restart EMS-ESP.
 In v3.4 and higher no extra tools are needed: Go to "MQTT Settings" and disable "MQTT Discovery" setting (do NOT disable mqtt), click "Save", wait 5 minutes, reenable "MQTT Discovery"and click "Save".
-
-## Hardware Reset
-
-If you have a GPIO Button configured (enabled by default on all BBQKees boards) pressing this has different actions:
-
-- _single press_: does nothing
-- _double press_: re-connects the WiFi
-- _hold for 10 seconds_: performs a factory reset. EMS-ESP will restart in Access Point mode

@@ -125,5 +125,6 @@ nav:
       - Grafana: Grafana.md
   - Help:
       - Support: Support.md
-      - Troubleshooting.md
+      - Troubleshooting: Troubleshooting.md
+      - FAQ: FAQ.md
       - Tips & Tricks: tips-and-tricks.md
