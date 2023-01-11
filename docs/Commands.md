@@ -89,8 +89,8 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 | `restart` | GET | restarts EMS-ESP | yes | |
 | `commands` | GET | lists the available system commands | no | |
 | `send` | POST | send telegram to the EMS bus | yes | `"XX XX...XX"` |
-| `publish` | POST | MQTT publish all values, and optional HA-configuration or specific for a device | yes | `[ha] \| [device]` |
-| `watch` | POST | watch incoming telegrams | yes | `<on \|off \| raw \| <type-id(hex)>` |
+| `publish` | POST | MQTT publish all values, and optional HA-configuration or specific for a device | no | `[ha] \| [device]` |
+| `watch` | POST | watch incoming telegrams | no | `<on \|off \| raw \| <type-id(hex)>` |
 | `syslog_level` | POST | set syslog level | yes | `<level>` |
 
 ### Fetching Dallas temperature sensor information
