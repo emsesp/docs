@@ -2,7 +2,7 @@
 
 When MQTT is enabled EMS-ESP will publish MQTT topics for each device. The frequency can be configured from the WebUI to be either sent when data changes are dected or set to a specific period in seconds which is kinder on network traffic.
 
-When MQTT Discovery is enabled, EMS-ESP will automatically create a special Discovery topics (with `/config`) for each EMS device entity that has received a valid value in EMS-ESP. If the entity should 'disappears' (i.e. no longer has a valid value in an EMS telegram) then the discovery topic is automatically removed. This is to avoid warnings in systems like Home Assistant. When EMS-ESP starts all prior Discovery topics are removed to keep system clean.
+When MQTT Discovery is enabled, EMS-ESP will automatically create a special Discovery topics (with `/config`) for each EMS device entity that has received a valid value in EMS-ESP. If the entity should disappear (i.e. no longer has a valid value in an EMS telegram) then the discovery topic is automatically removed. This is to avoid warnings in systems like Home Assistant. When EMS-ESP starts all prior Discovery topics are removed to keep system clean.
 
 When a value is a boolean it will be rendered according to the Boolean setting you have defined in the settings.
 
