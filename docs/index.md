@@ -38,7 +38,7 @@ See a [live demo](https://ems-esp.derbyshire.nl/) and the full list of features 
 
 For feedback, questions, live troubleshooting or just general chat
 
-<a href="https://discord.gg/Ks2Kzd4"><img src="https://discordapp.com/api/guilds/816637840644505620/widget.png?style=banner2"></a>
+<a href="https://discord.gg/3J3GgnzpyT"><img src="https://discordapp.com/api/guilds/816637840644505620/widget.png?style=banner2"></a>
 
 ## Contribute
 
