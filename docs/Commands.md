@@ -60,8 +60,8 @@ The URL path is `http://<hostname>/api/<device>/`
 | `info` | GET | outputs current EMS device information in verbose | no | |
 | `values` | GET | outputs current EMS device information in short format | no | |
 | _(empty)_ | GET | same as `values` above | no | |
-| `commands` | GET | lists the available commands or entities to call | no |
-| `entities` | GET | lists the matching Home Assistant entities (HA only) | no | |
+| `commands` | GET | lists the available command entities to call | no | |
+| `entities` | GET | lists all enabled entities | no | |
 | `{entity}` | GET | outputs details of a specific entity, for reading | no | |
 | `{entity}/{hc}` | GET | same as the read command above but for a specific heating circuit | no | |
 | `{entity}` | POST | updates a entity value, for writing | yes | `<data>` |
@@ -91,7 +91,6 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 | `send` | POST | send telegram to the EMS bus | yes | `"XX XX...XX"` |
 | `publish` | POST | MQTT publish all values, and optional HA-configuration or specific for a device | no | `[ha] \| [device]` |
 | `watch` | POST | watch incoming telegrams | no | `<on \|off \| raw \| <type-id(hex)>` |
-| `syslog_level` | POST | set syslog level | yes | `<level>` |
 
 ### Fetching Dallas temperature sensor information
 
