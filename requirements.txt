@@ -3,7 +3,7 @@ mkdocs-material>=7.1.7
 Pygments>=2.4
 markdown>=3.2
 pymdown-extensions>=7.0
-mkdocs-redirects==1.0.0
+mkdocs-redirects>=1.0.0
 mkdocs-minify-plugin>=0.2.3
 mkdocs-htmlproofer-plugin>=0.0.3
 mkdocs-table-reader-plugin>=1.2
