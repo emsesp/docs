@@ -56,8 +56,9 @@ Easiest way is to run pip as a module (https://realpython.com/what-is-pip/#using
 ### Testing locally
 
 - `source ./venv/bin/activate` to go into the virtual environment
+- `pip install -r requirements.txt` to refresh latest libs
 - `mkdocs serve` to build the documentation
-- http://127.0.0.1:8000/docs
+- <http://127.0.0.1:8000/docs>
 
 ## Deploying manually
 
