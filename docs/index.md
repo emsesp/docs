@@ -14,17 +14,17 @@ hide:
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 [![chat](https://img.shields.io/discord/816637840644505620.svg?style=flat-square&color=blueviolet)](https://discord.gg/3J3GgnzpyT)
 
-<span style="font-size: 1.5rem">Current Releases<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.4.4">v3.4.4 Stable</a>
-<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">v3.5.0 Development</a></span>
+<span style="font-size: 1.5rem">Current Releases<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.5.0">v3.5.0 Stable</a>
+<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">v3.6.0 Development</a></span>
 
-## New Features coming soon in v3.5
+## New Features in v3.5.0
 
-The next major release v3.5 is in development and close to final release.
+Feb 6 2023: The next major is released!
 
-One major new enhancement is the multi language support and we currently have translations for the WebUI and device entities in German, Dutch, French, Swedish, Polish and Norwegian. We are looking for volunteers to help translate to other languages so if you want to help please get in contact with us on Discord.
+Now with multi language support in German, Dutch, French, Swedish, Polish and Norwegian. We are looking for volunteers to help translate to other languages so if you want to help please get in contact with us on Discord.
 ![login page](_media/screenshot/web_login.png){ width=300, align=right }
 
-Plus there is a new entity customization feature to change the entities that get displayed and sent to home automation systems.
+And a new entity customization feature to change the entity attributes that get sent to home automation systems.
 
 See a [live demo](https://ems-esp.derbyshire.nl/) and the full list of features in the [change log](Version-Release-History#350-current-development-version).
 
