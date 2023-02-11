@@ -81,7 +81,7 @@ In the `Settings` page in the WebUI you'll find:
 - **Enable Syslog**:
   <!-- prettier-ignore -->
     - **IP** is the IP address of a syslog server for capturing remote logs. Leave blank is not using SysLog.
-    - **Port** if using an alternate port number. The default is 514.
+    - **Port** if using an alternate port number. The default is 514. And it uses UDP (not TCP).
     - **Log Level** sets the maximum log level for reported messages. The highest level is DEBUG which will send a lot of log data so use with caution.
     - **Mark Interval** will send out a special `mark` message to the SysLog. This is useful for timing events.
 
