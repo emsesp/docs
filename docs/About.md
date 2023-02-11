@@ -49,4 +49,4 @@ How it all started.
 
 - December 2022 - Version 3.5.0 - Multi-Language, Heat pumps, Customizations and so much more
 
-  ![3.4.0](_media/screenshot/version350.png)
+  ![3.5.0](_media/screenshot/version350.png)
