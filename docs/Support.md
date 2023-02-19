@@ -1,13 +1,10 @@
-If you are looking for support, have a question or suggestion there are options:
+If you are looking for EMS-ESP support, have a question or suggestion here are the options:
 
 - If the request is **hardware** related go to [BBQKees' EMS Gateway Documentation](https://bbqkees-electronics.nl/wiki/).
 - Reaching out to the **Support Community** on [Discord](https://discord.gg/3J3GgnzpyT) is a good place for asking general questions and chatting with other users. You have better chances to getting fast responses here.
-- **Search** in existing open and closed [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) as you might find an answer to your question.
-- As a last resort **create a new GitHub issue**, either
-  <!-- prettier-ignore -->
-    - a [Bug Report](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) for reporting possible defects,
-    - a [Feature Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=feature_request.md) for a new idea or
-    - a [Question](https://github.com/emsesp/EMS-ESP32/issues/new?template=questions---troubleshooting.md) for general support.
+- **Search** in existing open and closed [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) as your issue may already be resolved.
+- **Search** the [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) as you might find an answer to your question.
+- As a last resort, create a [Problem Report](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) on GitHub.
 
 !!! tip "important!"
 
