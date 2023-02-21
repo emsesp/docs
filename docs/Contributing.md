@@ -6,6 +6,25 @@ _Any contribution helps make EMS-ESP better_. This project needs help with:
 
 The full Contributing guidelines can found in [CONTRIBUTING.md](https://github.com/emsesp/EMS-ESP32/blob/main/CONTRIBUTING.md) as part of the GitHub source code repository.
 
+## Basic design principles
+
+- The core services like telnet, logging and shell are based off the libraries from @nomis. This general design pattens focuses on making everything as asynchronous as possible so that no one operation should starve another operation of it's time to execute (<https://isocpp.org/wiki/faq/ctors#static-init-order>).
+- All EMS devices (e.g. boiler, thermostat, solar modules, mixer units etc) are derived from a factory base class and each class handles its own registering of telegram and mqtt handlers. This makes the EMS device code easier to manage and we can extend with new telegrams types and features.
+
+## Keeping the code tidy
+
+The web code uses `prettier`. To auto format run `npm run format` from the `interface` folder.
+
+The C++ code use `clang`. The easiest way to auto format the code is using the VSCode [Format Files](https://marketplace.visualstudio.com/items?itemName=jbockle.jbockle-format-files) extension. Then run the command `Start Format Files: From Glob` and select `src/**` as the glob pattern.
+
+## Keeping the Web libraries up to date
+
+Use an update like `ncu` to keep the package.\* web libraries up to date. You can install using `npm install -g npm-check-updates`. See [npm-check-updates](https://www.npmjs.com/package/npm-check-updates).
+
+```bash
+ncu -u
+```
+
 ## Pull Requests
 
 A Pull Request (PR) is the process where code modifications are managed in GitHub.

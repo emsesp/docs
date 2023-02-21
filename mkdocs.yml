@@ -101,7 +101,8 @@ nav:
       - Commands: Commands.md
       - Console: Console.md
       - For Developers:
-          - Coding: Coding.md
+          - Building & Testing the Firmware: Building.md
+          - Adding Languages: Adding-Languages.md
           - Contributing: Contributing.md
           - The EMS protocol: EMS-bus.md
           - Example EMS Circuit: EMS-Circuit.md
