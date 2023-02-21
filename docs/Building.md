@@ -15,7 +15,7 @@ We recommend using Visual Studio Code to build the firmware with the PlatformIO 
 
 ### WebUI
 
-!!! note "If you're building against the 3.6.0 version you will need to install `yarn` using `npm install -g yarn` and replace every instance of `npm` below with `yarn`."
+!!! note "If you're building against the 3.6.0 version you will need to install `yarn` using `npm install -g yarn` and replace every instance of `npm` below with `yarn`. You will also need to run `corepack enable` (https://yarnpkg.com/getting-started/install)"
 
 The WebUI can be developed and tested in real-time using mock dummy data. This is useful when making changes to the ReactJS files or translation files. Make sure you have `npm` installed and all the libraries installed in both the `interface` and `mock-api` folders using:
 
