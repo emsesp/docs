@@ -2,7 +2,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 
 ### **3.6.0 - current development version**
 
-Lots of optimizations to the core and new features coming.
+Lots of optimizations to the core, more entities, Discovery improvements, web improvements, scheduler and more new features coming (if it can fit into the 4MB Flash).
 
 ### **3.5.0 - Feb 6 2023**
 

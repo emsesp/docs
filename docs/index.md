@@ -13,13 +13,16 @@ hide:
 ![license](https://img.shields.io/github/license/emsesp/EMS-ESP.svg)
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 [![chat](https://img.shields.io/discord/816637840644505620.svg?style=flat-square&color=blueviolet)](https://discord.gg/3J3GgnzpyT)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=emsesp_EMS-ESP32&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=emsesp_EMS-ESP32)
 
-<span style="font-size: 1.5rem">Current Releases<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.5.0">v3.5.0 Stable</a>
-<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">v3.6.0 Development</a></span>
+<span style="font-size: 1.5rem">Current Releases
+<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.5.1">v3.5.1 Stable</a>
+<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">v3.6.0 Development</a>
+</span>
 
 ## New Features in v3.5.0
 
-Feb 6 2023: The next major is released!
+February 6 2023: The next major is released!
 
 Now with multi language support in German, Dutch, French, Swedish, Polish and Norwegian. We are looking for volunteers to help translate to other languages so if you want to help please get in contact with us on Discord.
 ![login page](_media/screenshot/web_login.png){ width=300, align=right }

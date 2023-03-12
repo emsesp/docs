@@ -47,6 +47,8 @@ How it all started.
 
   ![3.4.0](_media/screenshot/version340.png)
 
-- December 2022 - Version 3.5.0 - Multi-Language, Heat pumps, Customizations and so much more
+- February 2023 - Version 3.5.0 - Multi-Language, Heat pumps, Customizations and so much more
 
   ![3.5.0](_media/screenshot/version350.png)
+
+- March 2023 - Version 3.5.1 - Patch and MQTT Discovery improvement
