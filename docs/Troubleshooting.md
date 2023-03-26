@@ -169,4 +169,3 @@ An alternative option without using persistance on the MQTT server is to tell EM
 ### HA is showing errors like _"Received message on illegal discovery topic"_ or _"Template variable warning: 'dict object' has no attribute..."_
 
 This could happen when either upgrading from an earlier EMS-ESP version and some of the device entity names may have changed. Use a tool like MQTTExplorer to remove all the `homeassistant/sensor/ems-esp/*` and `homeassistant/*/ems-esp/*` topics from your MQTT broker and restart EMS-ESP.
-In v3.4 and higher no extra tools are needed: Go to "MQTT Settings" and disable "MQTT Discovery" setting (do NOT disable mqtt), click "Save", wait 5 minutes, reenable "MQTT Discovery"and click "Save".
