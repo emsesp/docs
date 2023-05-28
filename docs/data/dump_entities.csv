@@ -22,6 +22,7 @@ BK13/BK15/Smartline/GB1x2,boiler,64,heatingactivated,heating activated,boolean, 
 BK13/BK15/Smartline/GB1x2,boiler,64,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 BK13/BK15/Smartline/GB1x2,boiler,64,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 BK13/BK15/Smartline/GB1x2,boiler,64,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+BK13/BK15/Smartline/GB1x2,boiler,64,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 BK13/BK15/Smartline/GB1x2,boiler,64,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 BK13/BK15/Smartline/GB1x2,boiler,64,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 BK13/BK15/Smartline/GB1x2,boiler,64,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -112,6 +113,7 @@ GB125/GB135/MC10,boiler,72,heatingactivated,heating activated,boolean, ,true,swi
 GB125/GB135/MC10,boiler,72,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 GB125/GB135/MC10,boiler,72,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 GB125/GB135/MC10,boiler,72,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+GB125/GB135/MC10,boiler,72,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 GB125/GB135/MC10,boiler,72,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 GB125/GB135/MC10,boiler,72,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 GB125/GB135/MC10,boiler,72,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -202,6 +204,7 @@ Cascade CM10,boiler,81,heatingactivated,heating activated,boolean, ,true,switch.
 Cascade CM10,boiler,81,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Cascade CM10,boiler,81,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Cascade CM10,boiler,81,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Cascade CM10,boiler,81,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Cascade CM10,boiler,81,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Cascade CM10,boiler,81,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Cascade CM10,boiler,81,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -292,6 +295,7 @@ Logamax Plus GB022,boiler,84,heatingactivated,heating activated,boolean, ,true,s
 Logamax Plus GB022,boiler,84,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Logamax Plus GB022,boiler,84,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Logamax Plus GB022,boiler,84,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Logamax Plus GB022,boiler,84,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Logamax Plus GB022,boiler,84,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Logamax Plus GB022,boiler,84,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Logamax Plus GB022,boiler,84,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -382,6 +386,7 @@ Condens 2500/Logamax/Logomatic/Cerapur Top/Greenstar/Generic HT3,boiler,95,heati
 Condens 2500/Logamax/Logomatic/Cerapur Top/Greenstar/Generic HT3,boiler,95,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Condens 2500/Logamax/Logomatic/Cerapur Top/Greenstar/Generic HT3,boiler,95,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Condens 2500/Logamax/Logomatic/Cerapur Top/Greenstar/Generic HT3,boiler,95,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Condens 2500/Logamax/Logomatic/Cerapur Top/Greenstar/Generic HT3,boiler,95,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Condens 2500/Logamax/Logomatic/Cerapur Top/Greenstar/Generic HT3,boiler,95,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Condens 2500/Logamax/Logomatic/Cerapur Top/Greenstar/Generic HT3,boiler,95,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Condens 2500/Logamax/Logomatic/Cerapur Top/Greenstar/Generic HT3,boiler,95,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -472,6 +477,7 @@ Topline/GB162,boiler,115,heatingactivated,heating activated,boolean, ,true,switc
 Topline/GB162,boiler,115,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Topline/GB162,boiler,115,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Topline/GB162,boiler,115,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Topline/GB162,boiler,115,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Topline/GB162,boiler,115,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Topline/GB162,boiler,115,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Topline/GB162,boiler,115,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -562,6 +568,7 @@ Cascade MCM10,boiler,121,heatingactivated,heating activated,boolean, ,true,switc
 Cascade MCM10,boiler,121,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Cascade MCM10,boiler,121,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Cascade MCM10,boiler,121,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Cascade MCM10,boiler,121,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Cascade MCM10,boiler,121,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Cascade MCM10,boiler,121,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Cascade MCM10,boiler,121,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -652,6 +659,7 @@ Proline,boiler,122,heatingactivated,heating activated,boolean, ,true,switch.boil
 Proline,boiler,122,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Proline,boiler,122,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Proline,boiler,122,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Proline,boiler,122,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Proline,boiler,122,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Proline,boiler,122,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Proline,boiler,122,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -719,96 +727,97 @@ Proline,boiler,122,wwmixertemp,mixer temperature,ushort (>=0<=3199),C,false,sens
 Proline,boiler,122,wwcylmiddletemp,cylinder middle temperature (TS3),ushort (>=0<=3199),C,false,sensor.boiler_cylinder_middle_temperature_(TS3),sensor.boiler_wwcylmiddletemp
 Proline,boiler,122,wwstarts,starts,ulong (>=0<=65533), ,false,sensor.boiler_starts,sensor.boiler_wwstarts
 Proline,boiler,122,wwworkm,active time,time (>=0<=65533),minutes,false,sensor.boiler_active_time,sensor.boiler_wwworkm
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,reset,Reset,cmd [-\|maintenance\|error], ,true,sensor.boiler_Reset,sensor.boiler_reset
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,heatingactive,heating active,boolean, ,false,binary_sensor.boiler_heating_active,binary_sensor.boiler_heatingactive
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,tapwateractive,tapwater active,boolean, ,false,binary_sensor.boiler_tapwater_active,binary_sensor.boiler_tapwateractive
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,selflowtemp,selected flow temperature,uint (>=0<=254),C,true,number.boiler_selected_flow_temperature,number.boiler_selflowtemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,heatingpumpmod,heating pump modulation,uint (>=0<=100),%,false,sensor.boiler_heating_pump_modulation,sensor.boiler_heatingpumpmod
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,outdoortemp,outside temperature,short (>=-3199<=3199),C,false,sensor.boiler_outside_temperature,sensor.boiler_outdoortemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,curflowtemp,current flow temperature,ushort (>=0<=3199),C,false,sensor.boiler_current_flow_temperature,sensor.boiler_curflowtemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,rettemp,return temperature,ushort (>=0<=3199),C,false,sensor.boiler_return_temperature,sensor.boiler_rettemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,switchtemp,mixing switch temperature,ushort (>=0<=3199),C,false,sensor.boiler_mixing_switch_temperature,sensor.boiler_switchtemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,syspress,system pressure,uint (>=0<=25),bar,false,sensor.boiler_system_pressure,sensor.boiler_syspress
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,boiltemp,actual boiler temperature,ushort (>=0<=3199),C,false,sensor.boiler_actual_boiler_temperature,sensor.boiler_boiltemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,exhausttemp,exhaust temperature,ushort (>=0<=3199),C,false,sensor.boiler_exhaust_temperature,sensor.boiler_exhausttemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,burngas,gas,boolean, ,false,binary_sensor.boiler_gas,binary_sensor.boiler_burngas
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,burngas2,gas stage 2,boolean, ,false,binary_sensor.boiler_gas_stage_2,binary_sensor.boiler_burngas2
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,flamecurr,flame current,ushort (>=0<=3199),µA,false,sensor.boiler_flame_current,sensor.boiler_flamecurr
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,heatingpump,heating pump,boolean, ,false,binary_sensor.boiler_heating_pump,binary_sensor.boiler_heatingpump
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,fanwork,fan,boolean, ,false,binary_sensor.boiler_fan,binary_sensor.boiler_fanwork
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,ignwork,ignition,boolean, ,false,binary_sensor.boiler_ignition,binary_sensor.boiler_ignwork
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,oilpreheat,oil preheating,boolean, ,false,binary_sensor.boiler_oil_preheating,binary_sensor.boiler_oilpreheat
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,heatingactivated,heating activated,boolean, ,true,switch.boiler_heating_activated,switch.boiler_heatingactivated
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,burnmaxpower,burner max power,uint (>=0<=254),%,true,number.boiler_burner_max_power,number.boiler_burnmaxpower
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,boilhyston,hysteresis on temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_on_temperature,number.boiler_boilhyston
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,boilhystoff,hysteresis off temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_off_temperature,number.boiler_boilhystoff
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,boil2hyston,hysteresis stage 2 on temperature,int (>=-20<=0),C,true,number.boiler_hysteresis_stage_2_on_temperature,number.boiler_boil2hyston
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,boil2hystoff,hysteresis stage 2 off temperature,int (>=0<=20),C,true,number.boiler_hysteresis_stage_2_off_temperature,number.boiler_boil2hystoff
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,setflowtemp,set flow temperature,uint (>=0<=254),C,false,sensor.boiler_set_flow_temperature,sensor.boiler_setflowtemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,setburnpow,burner set power,uint (>=0<=100),%,false,sensor.boiler_burner_set_power,sensor.boiler_setburnpow
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,absburnpow,burner current power (absolute),uint (>=0<=100),%,false,sensor.boiler_burner_current_power_(absolute),sensor.boiler_absburnpow
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,selburnpow,burner selected max power,uint (>=0<=254),%,true,number.boiler_burner_selected_max_power,number.boiler_selburnpow
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,curburnpow,burner current power,uint (>=0<=100),%,false,sensor.boiler_burner_current_power,sensor.boiler_curburnpow
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,burnstarts,burner starts,ulong (>=0<=65533), ,false,sensor.boiler_burner_starts,sensor.boiler_burnstarts
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,burnworkmin,total burner operating time,time (>=0<=65533),minutes,false,sensor.boiler_total_burner_operating_time,sensor.boiler_burnworkmin
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,burn2workmin,burner stage 2 operating time,time (>=0<=65533),minutes,false,sensor.boiler_burner_stage_2_operating_time,sensor.boiler_burn2workmin
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,heatworkmin,total heat operating time,time (>=0<=65533),minutes,false,sensor.boiler_total_heat_operating_time,sensor.boiler_heatworkmin
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,heatstarts,burner starts heating,ulong (>=0<=65533), ,false,sensor.boiler_burner_starts_heating,sensor.boiler_heatstarts
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,ubauptime,total UBA operating time,time (>=0<=65533),minutes,false,sensor.boiler_total_UBA_operating_time,sensor.boiler_ubauptime
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,lastcode,last error code,string, ,false,sensor.boiler_last_error_code,sensor.boiler_lastcode
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,servicecode,service code,string, ,false,sensor.boiler_service_code,sensor.boiler_servicecode
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,servicecodenumber,service code number,ushort (>=0<=31999), ,false,sensor.boiler_service_code_number,sensor.boiler_servicecodenumber
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,maintenancemessage,maintenance message,string, ,false,sensor.boiler_maintenance_message,sensor.boiler_maintenancemessage
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,maintenance,maintenance scheduled,enum [off\|time\|date\|manual], ,true,select.boiler_maintenance_scheduled,select.boiler_maintenance
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,maintenancetime,time to next maintenance,ushort (>=0<=31999),hours,true,number.boiler_time_to_next_maintenance,number.boiler_maintenancetime
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,maintenancedate,next maintenance date,string, ,true,sensor.boiler_next_maintenance_date,sensor.boiler_maintenancedate
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,emergencyops,emergency operation,boolean, ,true,switch.boiler_emergency_operation,switch.boiler_emergencyops
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,emergencytemp,emergency temperature,uint (>=15<=70),C,true,number.boiler_emergency_temperature,number.boiler_emergencytemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwtapactivated,turn on/off,boolean, ,true,switch.boiler_turn_on/off,switch.boiler_wwtapactivated
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwsettemp,set temperature,uint (>=0<=254),C,false,sensor.boiler_set_temperature,sensor.boiler_wwsettemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwseltemp,selected temperature,uint (>=0<=254),C,true,number.boiler_selected_temperature,number.boiler_wwseltemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwseltemplow,selected lower temperature,uint (>=0<=254),C,true,number.boiler_selected_lower_temperature,number.boiler_wwseltemplow
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwseltempoff,selected temperature for off,uint (>=0<=254),C,false,sensor.boiler_selected_temperature_for_off,sensor.boiler_wwseltempoff
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwseltempsingle,single charge temperature,uint (>=0<=254),C,true,number.boiler_single_charge_temperature,number.boiler_wwseltempsingle
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwsolartemp,solar boiler temperature,ushort (>=0<=3199),C,false,sensor.boiler_solar_boiler_temperature,sensor.boiler_wwsolartemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwtype,type,enum [off\|flow\|buffered flow\|buffer\|layered buffer], ,false,sensor.boiler_type,sensor.boiler_wwtype
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwcomfort,comfort,enum [hot\|eco\|intelligent], ,true,select.boiler_comfort,select.boiler_wwcomfort
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwcomfort1,comfort mode,enum [high comfort\|eco], ,true,select.boiler_comfort_mode,select.boiler_wwcomfort1
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwflowtempoffset,flow temperature offset,uint (>=0<=100),C,true,number.boiler_flow_temperature_offset,number.boiler_wwflowtempoffset
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwchargeoptimization,charge optimization,boolean, ,true,switch.boiler_charge_optimization,switch.boiler_wwchargeoptimization
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwmaxpower,max power,uint (>=0<=254),%,true,number.boiler_max_power,number.boiler_wwmaxpower
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwmaxtemp,maximum temperature,uint (>=0<=70),C,true,number.boiler_maximum_temperature,number.boiler_wwmaxtemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwcircpump,circulation pump available,boolean, ,true,switch.boiler_circulation_pump_available,switch.boiler_wwcircpump
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwchargetype,charging type,enum [chargepump\|3-way valve], ,false,sensor.boiler_charging_type,sensor.boiler_wwchargetype
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwhyston,hysteresis on temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_on_temperature,number.boiler_wwhyston
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwhystoff,hysteresis off temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_off_temperature,number.boiler_wwhystoff
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwdisinfectiontemp,disinfection temperature,uint (>=0<=254),C,true,number.boiler_disinfection_temperature,number.boiler_wwdisinfectiontemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwcircmode,circulation pump mode,enum [off\|1x3min\|2x3min\|3x3min\|4x3min\|5x3min\|6x3min\|continuous], ,true,select.boiler_circulation_pump_mode,select.boiler_wwcircmode
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwcirc,circulation active,boolean, ,true,switch.boiler_circulation_active,switch.boiler_wwcirc
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwcurtemp,current intern temperature,ushort (>=0<=3199),C,false,sensor.boiler_current_intern_temperature,sensor.boiler_wwcurtemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwcurtemp2,current extern temperature,ushort (>=0<=3199),C,false,sensor.boiler_current_extern_temperature,sensor.boiler_wwcurtemp2
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwcurflow,current tap water flow,uint (>=0<=25),l/min,false,sensor.boiler_current_tap_water_flow,sensor.boiler_wwcurflow
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwstoragetemp1,storage intern temperature,ushort (>=0<=3199),C,false,sensor.boiler_storage_intern_temperature,sensor.boiler_wwstoragetemp1
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwstoragetemp2,storage extern temperature,ushort (>=0<=3199),C,false,sensor.boiler_storage_extern_temperature,sensor.boiler_wwstoragetemp2
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwactivated,activated,boolean, ,true,switch.boiler_activated,switch.boiler_wwactivated
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwonetime,one time charging,boolean, ,true,switch.boiler_one_time_charging,switch.boiler_wwonetime
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwdisinfecting,disinfecting,boolean, ,true,switch.boiler_disinfecting,switch.boiler_wwdisinfecting
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwcharging,charging,boolean, ,false,binary_sensor.boiler_charging,binary_sensor.boiler_wwcharging
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwrecharging,recharging,boolean, ,false,binary_sensor.boiler_recharging,binary_sensor.boiler_wwrecharging
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwtempok,temperature ok,boolean, ,false,binary_sensor.boiler_temperature_ok,binary_sensor.boiler_wwtempok
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwactive,active,boolean, ,false,binary_sensor.boiler_active,binary_sensor.boiler_wwactive
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,ww3wayvalve,3-way valve active,boolean, ,false,binary_sensor.boiler_3-way_valve_active,binary_sensor.boiler_ww3wayvalve
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwsetpumppower,set pump power,uint (>=0<=100),%,false,sensor.boiler_set_pump_power,sensor.boiler_wwsetpumppower
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwmixertemp,mixer temperature,ushort (>=0<=3199),C,false,sensor.boiler_mixer_temperature,sensor.boiler_wwmixertemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwcylmiddletemp,cylinder middle temperature (TS3),ushort (>=0<=3199),C,false,sensor.boiler_cylinder_middle_temperature_(TS3),sensor.boiler_wwcylmiddletemp
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwstarts,starts,ulong (>=0<=65533), ,false,sensor.boiler_starts,sensor.boiler_wwstarts
-GBx72/Trendline/Cerapur/Greenstar Si/27i-30i,boiler,123,wwworkm,active time,time (>=0<=65533),minutes,false,sensor.boiler_active_time,sensor.boiler_wwworkm
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,reset,Reset,cmd [-\|maintenance\|error], ,true,sensor.boiler_Reset,sensor.boiler_reset
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,heatingactive,heating active,boolean, ,false,binary_sensor.boiler_heating_active,binary_sensor.boiler_heatingactive
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,tapwateractive,tapwater active,boolean, ,false,binary_sensor.boiler_tapwater_active,binary_sensor.boiler_tapwateractive
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,selflowtemp,selected flow temperature,uint (>=0<=254),C,true,number.boiler_selected_flow_temperature,number.boiler_selflowtemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,heatingpumpmod,heating pump modulation,uint (>=0<=100),%,false,sensor.boiler_heating_pump_modulation,sensor.boiler_heatingpumpmod
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,outdoortemp,outside temperature,short (>=-3199<=3199),C,false,sensor.boiler_outside_temperature,sensor.boiler_outdoortemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,curflowtemp,current flow temperature,ushort (>=0<=3199),C,false,sensor.boiler_current_flow_temperature,sensor.boiler_curflowtemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,rettemp,return temperature,ushort (>=0<=3199),C,false,sensor.boiler_return_temperature,sensor.boiler_rettemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,switchtemp,mixing switch temperature,ushort (>=0<=3199),C,false,sensor.boiler_mixing_switch_temperature,sensor.boiler_switchtemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,syspress,system pressure,uint (>=0<=25),bar,false,sensor.boiler_system_pressure,sensor.boiler_syspress
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,boiltemp,actual boiler temperature,ushort (>=0<=3199),C,false,sensor.boiler_actual_boiler_temperature,sensor.boiler_boiltemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,exhausttemp,exhaust temperature,ushort (>=0<=3199),C,false,sensor.boiler_exhaust_temperature,sensor.boiler_exhausttemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,burngas,gas,boolean, ,false,binary_sensor.boiler_gas,binary_sensor.boiler_burngas
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,burngas2,gas stage 2,boolean, ,false,binary_sensor.boiler_gas_stage_2,binary_sensor.boiler_burngas2
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,flamecurr,flame current,ushort (>=0<=3199),µA,false,sensor.boiler_flame_current,sensor.boiler_flamecurr
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,heatingpump,heating pump,boolean, ,false,binary_sensor.boiler_heating_pump,binary_sensor.boiler_heatingpump
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,fanwork,fan,boolean, ,false,binary_sensor.boiler_fan,binary_sensor.boiler_fanwork
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,ignwork,ignition,boolean, ,false,binary_sensor.boiler_ignition,binary_sensor.boiler_ignwork
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,oilpreheat,oil preheating,boolean, ,false,binary_sensor.boiler_oil_preheating,binary_sensor.boiler_oilpreheat
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,heatingactivated,heating activated,boolean, ,true,switch.boiler_heating_activated,switch.boiler_heatingactivated
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,burnmaxpower,burner max power,uint (>=0<=254),%,true,number.boiler_burner_max_power,number.boiler_burnmaxpower
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,boilhyston,hysteresis on temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_on_temperature,number.boiler_boilhyston
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,boilhystoff,hysteresis off temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_off_temperature,number.boiler_boilhystoff
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,boil2hyston,hysteresis stage 2 on temperature,int (>=-20<=0),C,true,number.boiler_hysteresis_stage_2_on_temperature,number.boiler_boil2hyston
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,boil2hystoff,hysteresis stage 2 off temperature,int (>=0<=20),C,true,number.boiler_hysteresis_stage_2_off_temperature,number.boiler_boil2hystoff
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,setflowtemp,set flow temperature,uint (>=0<=254),C,false,sensor.boiler_set_flow_temperature,sensor.boiler_setflowtemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,setburnpow,burner set power,uint (>=0<=100),%,false,sensor.boiler_burner_set_power,sensor.boiler_setburnpow
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,absburnpow,burner current power (absolute),uint (>=0<=100),%,false,sensor.boiler_burner_current_power_(absolute),sensor.boiler_absburnpow
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,selburnpow,burner selected max power,uint (>=0<=254),%,true,number.boiler_burner_selected_max_power,number.boiler_selburnpow
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,curburnpow,burner current power,uint (>=0<=100),%,false,sensor.boiler_burner_current_power,sensor.boiler_curburnpow
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,burnstarts,burner starts,ulong (>=0<=65533), ,false,sensor.boiler_burner_starts,sensor.boiler_burnstarts
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,burnworkmin,total burner operating time,time (>=0<=65533),minutes,false,sensor.boiler_total_burner_operating_time,sensor.boiler_burnworkmin
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,burn2workmin,burner stage 2 operating time,time (>=0<=65533),minutes,false,sensor.boiler_burner_stage_2_operating_time,sensor.boiler_burn2workmin
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,heatworkmin,total heat operating time,time (>=0<=65533),minutes,false,sensor.boiler_total_heat_operating_time,sensor.boiler_heatworkmin
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,heatstarts,burner starts heating,ulong (>=0<=65533), ,false,sensor.boiler_burner_starts_heating,sensor.boiler_heatstarts
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,ubauptime,total UBA operating time,time (>=0<=65533),minutes,false,sensor.boiler_total_UBA_operating_time,sensor.boiler_ubauptime
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,lastcode,last error code,string, ,false,sensor.boiler_last_error_code,sensor.boiler_lastcode
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,servicecode,service code,string, ,false,sensor.boiler_service_code,sensor.boiler_servicecode
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,servicecodenumber,service code number,ushort (>=0<=31999), ,false,sensor.boiler_service_code_number,sensor.boiler_servicecodenumber
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,maintenancemessage,maintenance message,string, ,false,sensor.boiler_maintenance_message,sensor.boiler_maintenancemessage
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,maintenance,maintenance scheduled,enum [off\|time\|date\|manual], ,true,select.boiler_maintenance_scheduled,select.boiler_maintenance
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,maintenancetime,time to next maintenance,ushort (>=0<=31999),hours,true,number.boiler_time_to_next_maintenance,number.boiler_maintenancetime
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,maintenancedate,next maintenance date,string, ,true,sensor.boiler_next_maintenance_date,sensor.boiler_maintenancedate
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,emergencyops,emergency operation,boolean, ,true,switch.boiler_emergency_operation,switch.boiler_emergencyops
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,emergencytemp,emergency temperature,uint (>=15<=70),C,true,number.boiler_emergency_temperature,number.boiler_emergencytemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwtapactivated,turn on/off,boolean, ,true,switch.boiler_turn_on/off,switch.boiler_wwtapactivated
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwsettemp,set temperature,uint (>=0<=254),C,false,sensor.boiler_set_temperature,sensor.boiler_wwsettemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwseltemp,selected temperature,uint (>=0<=254),C,true,number.boiler_selected_temperature,number.boiler_wwseltemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwseltemplow,selected lower temperature,uint (>=0<=254),C,true,number.boiler_selected_lower_temperature,number.boiler_wwseltemplow
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwseltempoff,selected temperature for off,uint (>=0<=254),C,false,sensor.boiler_selected_temperature_for_off,sensor.boiler_wwseltempoff
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwseltempsingle,single charge temperature,uint (>=0<=254),C,true,number.boiler_single_charge_temperature,number.boiler_wwseltempsingle
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwsolartemp,solar boiler temperature,ushort (>=0<=3199),C,false,sensor.boiler_solar_boiler_temperature,sensor.boiler_wwsolartemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwtype,type,enum [off\|flow\|buffered flow\|buffer\|layered buffer], ,false,sensor.boiler_type,sensor.boiler_wwtype
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwcomfort,comfort,enum [hot\|eco\|intelligent], ,true,select.boiler_comfort,select.boiler_wwcomfort
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwcomfort1,comfort mode,enum [high comfort\|eco], ,true,select.boiler_comfort_mode,select.boiler_wwcomfort1
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwflowtempoffset,flow temperature offset,uint (>=0<=100),C,true,number.boiler_flow_temperature_offset,number.boiler_wwflowtempoffset
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwchargeoptimization,charge optimization,boolean, ,true,switch.boiler_charge_optimization,switch.boiler_wwchargeoptimization
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwmaxpower,max power,uint (>=0<=254),%,true,number.boiler_max_power,number.boiler_wwmaxpower
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwmaxtemp,maximum temperature,uint (>=0<=70),C,true,number.boiler_maximum_temperature,number.boiler_wwmaxtemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwcircpump,circulation pump available,boolean, ,true,switch.boiler_circulation_pump_available,switch.boiler_wwcircpump
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwchargetype,charging type,enum [chargepump\|3-way valve], ,false,sensor.boiler_charging_type,sensor.boiler_wwchargetype
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwhyston,hysteresis on temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_on_temperature,number.boiler_wwhyston
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwhystoff,hysteresis off temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_off_temperature,number.boiler_wwhystoff
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwdisinfectiontemp,disinfection temperature,uint (>=0<=254),C,true,number.boiler_disinfection_temperature,number.boiler_wwdisinfectiontemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwcircmode,circulation pump mode,enum [off\|1x3min\|2x3min\|3x3min\|4x3min\|5x3min\|6x3min\|continuous], ,true,select.boiler_circulation_pump_mode,select.boiler_wwcircmode
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwcirc,circulation active,boolean, ,true,switch.boiler_circulation_active,switch.boiler_wwcirc
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwcurtemp,current intern temperature,ushort (>=0<=3199),C,false,sensor.boiler_current_intern_temperature,sensor.boiler_wwcurtemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwcurtemp2,current extern temperature,ushort (>=0<=3199),C,false,sensor.boiler_current_extern_temperature,sensor.boiler_wwcurtemp2
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwcurflow,current tap water flow,uint (>=0<=25),l/min,false,sensor.boiler_current_tap_water_flow,sensor.boiler_wwcurflow
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwstoragetemp1,storage intern temperature,ushort (>=0<=3199),C,false,sensor.boiler_storage_intern_temperature,sensor.boiler_wwstoragetemp1
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwstoragetemp2,storage extern temperature,ushort (>=0<=3199),C,false,sensor.boiler_storage_extern_temperature,sensor.boiler_wwstoragetemp2
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwactivated,activated,boolean, ,true,switch.boiler_activated,switch.boiler_wwactivated
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwonetime,one time charging,boolean, ,true,switch.boiler_one_time_charging,switch.boiler_wwonetime
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwdisinfecting,disinfecting,boolean, ,true,switch.boiler_disinfecting,switch.boiler_wwdisinfecting
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwcharging,charging,boolean, ,false,binary_sensor.boiler_charging,binary_sensor.boiler_wwcharging
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwrecharging,recharging,boolean, ,false,binary_sensor.boiler_recharging,binary_sensor.boiler_wwrecharging
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwtempok,temperature ok,boolean, ,false,binary_sensor.boiler_temperature_ok,binary_sensor.boiler_wwtempok
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwactive,active,boolean, ,false,binary_sensor.boiler_active,binary_sensor.boiler_wwactive
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,ww3wayvalve,3-way valve active,boolean, ,false,binary_sensor.boiler_3-way_valve_active,binary_sensor.boiler_ww3wayvalve
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwsetpumppower,set pump power,uint (>=0<=100),%,false,sensor.boiler_set_pump_power,sensor.boiler_wwsetpumppower
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwmixertemp,mixer temperature,ushort (>=0<=3199),C,false,sensor.boiler_mixer_temperature,sensor.boiler_wwmixertemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwcylmiddletemp,cylinder middle temperature (TS3),ushort (>=0<=3199),C,false,sensor.boiler_cylinder_middle_temperature_(TS3),sensor.boiler_wwcylmiddletemp
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwstarts,starts,ulong (>=0<=65533), ,false,sensor.boiler_starts,sensor.boiler_wwstarts
+GBx72/Trendline/Cerapur/Greenstar Si,boiler,123,wwworkm,active time,time (>=0<=65533),minutes,false,sensor.boiler_active_time,sensor.boiler_wwworkm
 GB212,boiler,131,reset,Reset,cmd [-\|maintenance\|error], ,true,sensor.boiler_Reset,sensor.boiler_reset
 GB212,boiler,131,heatingactive,heating active,boolean, ,false,binary_sensor.boiler_heating_active,binary_sensor.boiler_heatingactive
 GB212,boiler,131,tapwateractive,tapwater active,boolean, ,false,binary_sensor.boiler_tapwater_active,binary_sensor.boiler_tapwateractive
@@ -832,6 +841,7 @@ GB212,boiler,131,heatingactivated,heating activated,boolean, ,true,switch.boiler
 GB212,boiler,131,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 GB212,boiler,131,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 GB212,boiler,131,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+GB212,boiler,131,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 GB212,boiler,131,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 GB212,boiler,131,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 GB212,boiler,131,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -922,6 +932,7 @@ GC7000F,boiler,132,heatingactivated,heating activated,boolean, ,true,switch.boil
 GC7000F,boiler,132,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 GC7000F,boiler,132,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 GC7000F,boiler,132,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+GC7000F,boiler,132,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 GC7000F,boiler,132,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 GC7000F,boiler,132,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 GC7000F,boiler,132,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -1012,6 +1023,7 @@ Logano GB125/KB195i/Logamatic MC110,boiler,133,heatingactivated,heating activate
 Logano GB125/KB195i/Logamatic MC110,boiler,133,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Logano GB125/KB195i/Logamatic MC110,boiler,133,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Logano GB125/KB195i/Logamatic MC110,boiler,133,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Logano GB125/KB195i/Logamatic MC110,boiler,133,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Logano GB125/KB195i/Logamatic MC110,boiler,133,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Logano GB125/KB195i/Logamatic MC110,boiler,133,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Logano GB125/KB195i/Logamatic MC110,boiler,133,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -1102,6 +1114,7 @@ Greenstar 30Ri Compact,boiler,154,heatingactivated,heating activated,boolean, ,t
 Greenstar 30Ri Compact,boiler,154,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Greenstar 30Ri Compact,boiler,154,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Greenstar 30Ri Compact,boiler,154,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Greenstar 30Ri Compact,boiler,154,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Greenstar 30Ri Compact,boiler,154,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Greenstar 30Ri Compact,boiler,154,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Greenstar 30Ri Compact,boiler,154,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -1192,6 +1205,7 @@ Cerapur Aero,boiler,167,heatingactivated,heating activated,boolean, ,true,switch
 Cerapur Aero,boiler,167,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Cerapur Aero,boiler,167,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Cerapur Aero,boiler,167,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Cerapur Aero,boiler,167,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Cerapur Aero,boiler,167,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Cerapur Aero,boiler,167,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Cerapur Aero,boiler,167,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -1282,6 +1296,7 @@ Hybrid Heatpump,boiler,168,heatingactivated,heating activated,boolean, ,true,swi
 Hybrid Heatpump,boiler,168,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Hybrid Heatpump,boiler,168,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Hybrid Heatpump,boiler,168,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Hybrid Heatpump,boiler,168,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Hybrid Heatpump,boiler,168,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Hybrid Heatpump,boiler,168,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Hybrid Heatpump,boiler,168,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -1372,6 +1387,7 @@ Logano GB212,boiler,170,heatingactivated,heating activated,boolean, ,true,switch
 Logano GB212,boiler,170,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Logano GB212,boiler,170,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Logano GB212,boiler,170,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Logano GB212,boiler,170,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Logano GB212,boiler,170,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Logano GB212,boiler,170,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Logano GB212,boiler,170,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -1462,6 +1478,7 @@ Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,bo
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -1506,10 +1523,10 @@ Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,bo
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,nrgconscompww,energy consumption compressor dhw,ulong (>=0<=65533),kWh,false,sensor.boiler_energy_consumption_compressor_dhw,sensor.boiler_nrgconscompww
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,nrgconscompcooling,energy consumption compressor cooling,ulong (>=0<=65533),kWh,false,sensor.boiler_energy_consumption_compressor_cooling,sensor.boiler_nrgconscompcooling
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,nrgconscomppool,energy consumption compressor pool,ulong (>=0<=65533),kWh,false,sensor.boiler_energy_consumption_compressor_pool,sensor.boiler_nrgconscomppool
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxelecheatnrgconstotal,total auxiliary electrical heater energy consumption,ulong (>=0<=65533),kWh,false,sensor.boiler_total_auxiliary_electrical_heater_energy_consumption,sensor.boiler_auxelecheatnrgconstotal
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxelecheatnrgconsheating,auxiliary electrical heater energy consumption heating,ulong (>=0<=65533),kWh,false,sensor.boiler_auxiliary_electrical_heater_energy_consumption_heating,sensor.boiler_auxelecheatnrgconsheating
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxelecheatnrgconsww,auxiliary electrical heater energy consumption dhw,ulong (>=0<=65533),kWh,false,sensor.boiler_auxiliary_electrical_heater_energy_consumption_dhw,sensor.boiler_auxelecheatnrgconsww
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxelecheatnrgconspool,auxiliary electrical heater energy consumption pool,ulong (>=0<=65533),kWh,false,sensor.boiler_auxiliary_electrical_heater_energy_consumption_pool,sensor.boiler_auxelecheatnrgconspool
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxelecheatnrgconstotal,total aux elec. heater energy consumption,ulong (>=0<=65533),kWh,false,sensor.boiler_total_aux_elec._heater_energy_consumption,sensor.boiler_auxelecheatnrgconstotal
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxelecheatnrgconsheating,aux elec. heater energy consumption heating,ulong (>=0<=65533),kWh,false,sensor.boiler_aux_elec._heater_energy_consumption_heating,sensor.boiler_auxelecheatnrgconsheating
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxelecheatnrgconsww,aux elec. heater energy consumption dhw,ulong (>=0<=65533),kWh,false,sensor.boiler_aux_elec._heater_energy_consumption_dhw,sensor.boiler_auxelecheatnrgconsww
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxelecheatnrgconspool,aux elec. heater energy consumption pool,ulong (>=0<=65533),kWh,false,sensor.boiler_aux_elec._heater_energy_consumption_pool,sensor.boiler_auxelecheatnrgconspool
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,nrgsupptotal,total energy supplied,ulong (>=0<=65533),kWh,false,sensor.boiler_total_energy_supplied,sensor.boiler_nrgsupptotal
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,nrgsuppheating,total energy supplied heating,ulong (>=0<=65533),kWh,false,sensor.boiler_total_energy_supplied_heating,sensor.boiler_nrgsuppheating
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,nrgsuppww,total energy warm supplied dhw,ulong (>=0<=65533),kWh,false,sensor.boiler_total_energy_warm_supplied_dhw,sensor.boiler_nrgsuppww
@@ -1550,10 +1567,10 @@ Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,bo
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,maxheatdhw,heat limit dhw,enum [0 kW\|2 kW\|3 kW\|4 kW\|6 kW\|9 kW], ,true,select.boiler_heat_limit_dhw,select.boiler_maxheatdhw
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,mandefrost,manual defrost,boolean, ,true,switch.boiler_manual_defrost,switch.boiler_mandefrost
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,pvcooling,Cooling only with PV,boolean, ,true,switch.boiler_Cooling_only_with_PV,switch.boiler_pvcooling
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxheateronly,auxilliary heater only,boolean, ,true,switch.boiler_auxilliary_heater_only,switch.boiler_auxheateronly
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxheateroff,disable auxilliary heater,boolean, ,true,switch.boiler_disable_auxilliary_heater,switch.boiler_auxheateroff
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxheaterstatus,auxilliary heater status,boolean, ,false,binary_sensor.boiler_auxilliary_heater_status,binary_sensor.boiler_auxheaterstatus
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxheaterdelay,auxilliary heater on delay,ushort (>=10<=1000),K*min,true,number.boiler_auxilliary_heater_on_delay,number.boiler_auxheaterdelay
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxheateronly,aux heater only,boolean, ,true,switch.boiler_aux_heater_only,switch.boiler_auxheateronly
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxheateroff,disable aux heater,boolean, ,true,switch.boiler_disable_aux_heater,switch.boiler_auxheateroff
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxheaterstatus,aux heater status,boolean, ,false,binary_sensor.boiler_aux_heater_status,binary_sensor.boiler_auxheaterstatus
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxheaterdelay,aux heater on delay,ushort (>=10<=1000),K*min,true,number.boiler_aux_heater_on_delay,number.boiler_auxheaterdelay
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxmaxlimit,aux heater max limit,uint (>=0<=10),K,true,number.boiler_aux_heater_max_limit,number.boiler_auxmaxlimit
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxlimitstart,aux heater limit start,uint (>=0<=10),K,true,number.boiler_aux_heater_limit_start,number.boiler_auxlimitstart
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxheatrmode,aux heater mode,enum [eco\|comfort], ,true,select.boiler_aux_heater_mode,select.boiler_auxheatrmode
@@ -1563,11 +1580,11 @@ Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,bo
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,silentmode,silent mode,enum [off\|auto\|on], ,true,select.boiler_silent_mode,select.boiler_silentmode
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,silentfrom,silent mode from,uint (>=0<=3810),minutes,true,number.boiler_silent_mode_from,number.boiler_silentfrom
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,silentto,silent mode to,uint (>=0<=3810),minutes,true,number.boiler_silent_mode_to,number.boiler_silentto
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,mintempsilent,min. outside temp. for silent mode,int (>=-126<=126),C,true,number.boiler_min._outside_temp._for_silent_mode,number.boiler_mintempsilent
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,tempparmode,outside temp. parallel mode,int (>=-126<=126),C,true,number.boiler_outside_temp._parallel_mode,number.boiler_tempparmode
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxheatmix,aux. heater mixing valve,int (>=-100<=100),%,false,sensor.boiler_aux._heater_mixing_valve,sensor.boiler_auxheatmix
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,tempdiffheat,temp. diff. TC3/TC0 heat,uint (>=3<=10),K,true,number.boiler_temp._diff._TC3/TC0_heat,number.boiler_tempdiffheat
-Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,tempdiffcool,temp. diff. TC3/TC0 cool,uint (>=3<=10),K,true,number.boiler_temp._diff._TC3/TC0_cool,number.boiler_tempdiffcool
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,mintempsilent,min outside temp for silent mode,int (>=-126<=126),C,true,number.boiler_min_outside_temp_for_silent_mode,number.boiler_mintempsilent
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,tempparmode,outside temp parallel mode,int (>=-126<=126),C,true,number.boiler_outside_temp_parallel_mode,number.boiler_tempparmode
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,auxheatmix,aux heater mixing valve,int (>=-100<=100),%,false,sensor.boiler_aux_heater_mixing_valve,sensor.boiler_auxheatmix
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,tempdiffheat,temp diff TC3/TC0 heat,uint (>=3<=10),K,true,number.boiler_temp_diff_TC3/TC0_heat,number.boiler_tempdiffheat
+Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,tempdiffcool,temp diff TC3/TC0 cool,uint (>=3<=10),K,true,number.boiler_temp_diff_TC3/TC0_cool,number.boiler_tempdiffcool
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,vpcooling,valve/pump cooling,boolean, ,true,switch.boiler_valve/pump_cooling,switch.boiler_vpcooling
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,heatcable,heating cable,boolean, ,true,switch.boiler_heating_cable,switch.boiler_heatcable
 Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i,boiler,172,vc0valve,VC0 valve,boolean, ,true,switch.boiler_VC0_valve,switch.boiler_vc0valve
@@ -1646,6 +1663,7 @@ Geo 5xx,boiler,173,heatingactivated,heating activated,boolean, ,true,switch.boil
 Geo 5xx,boiler,173,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Geo 5xx,boiler,173,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Geo 5xx,boiler,173,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Geo 5xx,boiler,173,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Geo 5xx,boiler,173,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Geo 5xx,boiler,173,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Geo 5xx,boiler,173,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -1690,10 +1708,10 @@ Geo 5xx,boiler,173,nrgconscompheating,energy consumption compressor heating,ulon
 Geo 5xx,boiler,173,nrgconscompww,energy consumption compressor dhw,ulong (>=0<=65533),kWh,false,sensor.boiler_energy_consumption_compressor_dhw,sensor.boiler_nrgconscompww
 Geo 5xx,boiler,173,nrgconscompcooling,energy consumption compressor cooling,ulong (>=0<=65533),kWh,false,sensor.boiler_energy_consumption_compressor_cooling,sensor.boiler_nrgconscompcooling
 Geo 5xx,boiler,173,nrgconscomppool,energy consumption compressor pool,ulong (>=0<=65533),kWh,false,sensor.boiler_energy_consumption_compressor_pool,sensor.boiler_nrgconscomppool
-Geo 5xx,boiler,173,auxelecheatnrgconstotal,total auxiliary electrical heater energy consumption,ulong (>=0<=65533),kWh,false,sensor.boiler_total_auxiliary_electrical_heater_energy_consumption,sensor.boiler_auxelecheatnrgconstotal
-Geo 5xx,boiler,173,auxelecheatnrgconsheating,auxiliary electrical heater energy consumption heating,ulong (>=0<=65533),kWh,false,sensor.boiler_auxiliary_electrical_heater_energy_consumption_heating,sensor.boiler_auxelecheatnrgconsheating
-Geo 5xx,boiler,173,auxelecheatnrgconsww,auxiliary electrical heater energy consumption dhw,ulong (>=0<=65533),kWh,false,sensor.boiler_auxiliary_electrical_heater_energy_consumption_dhw,sensor.boiler_auxelecheatnrgconsww
-Geo 5xx,boiler,173,auxelecheatnrgconspool,auxiliary electrical heater energy consumption pool,ulong (>=0<=65533),kWh,false,sensor.boiler_auxiliary_electrical_heater_energy_consumption_pool,sensor.boiler_auxelecheatnrgconspool
+Geo 5xx,boiler,173,auxelecheatnrgconstotal,total aux elec. heater energy consumption,ulong (>=0<=65533),kWh,false,sensor.boiler_total_aux_elec._heater_energy_consumption,sensor.boiler_auxelecheatnrgconstotal
+Geo 5xx,boiler,173,auxelecheatnrgconsheating,aux elec. heater energy consumption heating,ulong (>=0<=65533),kWh,false,sensor.boiler_aux_elec._heater_energy_consumption_heating,sensor.boiler_auxelecheatnrgconsheating
+Geo 5xx,boiler,173,auxelecheatnrgconsww,aux elec. heater energy consumption dhw,ulong (>=0<=65533),kWh,false,sensor.boiler_aux_elec._heater_energy_consumption_dhw,sensor.boiler_auxelecheatnrgconsww
+Geo 5xx,boiler,173,auxelecheatnrgconspool,aux elec. heater energy consumption pool,ulong (>=0<=65533),kWh,false,sensor.boiler_aux_elec._heater_energy_consumption_pool,sensor.boiler_auxelecheatnrgconspool
 Geo 5xx,boiler,173,nrgsupptotal,total energy supplied,ulong (>=0<=65533),kWh,false,sensor.boiler_total_energy_supplied,sensor.boiler_nrgsupptotal
 Geo 5xx,boiler,173,nrgsuppheating,total energy supplied heating,ulong (>=0<=65533),kWh,false,sensor.boiler_total_energy_supplied_heating,sensor.boiler_nrgsuppheating
 Geo 5xx,boiler,173,nrgsuppww,total energy warm supplied dhw,ulong (>=0<=65533),kWh,false,sensor.boiler_total_energy_warm_supplied_dhw,sensor.boiler_nrgsuppww
@@ -1734,10 +1752,10 @@ Geo 5xx,boiler,173,maxheatheat,heat limit heating,enum [0 kW\|2 kW\|3 kW\|4 kW\|
 Geo 5xx,boiler,173,maxheatdhw,heat limit dhw,enum [0 kW\|2 kW\|3 kW\|4 kW\|6 kW\|9 kW], ,true,select.boiler_heat_limit_dhw,select.boiler_maxheatdhw
 Geo 5xx,boiler,173,mandefrost,manual defrost,boolean, ,true,switch.boiler_manual_defrost,switch.boiler_mandefrost
 Geo 5xx,boiler,173,pvcooling,Cooling only with PV,boolean, ,true,switch.boiler_Cooling_only_with_PV,switch.boiler_pvcooling
-Geo 5xx,boiler,173,auxheateronly,auxilliary heater only,boolean, ,true,switch.boiler_auxilliary_heater_only,switch.boiler_auxheateronly
-Geo 5xx,boiler,173,auxheateroff,disable auxilliary heater,boolean, ,true,switch.boiler_disable_auxilliary_heater,switch.boiler_auxheateroff
-Geo 5xx,boiler,173,auxheaterstatus,auxilliary heater status,boolean, ,false,binary_sensor.boiler_auxilliary_heater_status,binary_sensor.boiler_auxheaterstatus
-Geo 5xx,boiler,173,auxheaterdelay,auxilliary heater on delay,ushort (>=10<=1000),K*min,true,number.boiler_auxilliary_heater_on_delay,number.boiler_auxheaterdelay
+Geo 5xx,boiler,173,auxheateronly,aux heater only,boolean, ,true,switch.boiler_aux_heater_only,switch.boiler_auxheateronly
+Geo 5xx,boiler,173,auxheateroff,disable aux heater,boolean, ,true,switch.boiler_disable_aux_heater,switch.boiler_auxheateroff
+Geo 5xx,boiler,173,auxheaterstatus,aux heater status,boolean, ,false,binary_sensor.boiler_aux_heater_status,binary_sensor.boiler_auxheaterstatus
+Geo 5xx,boiler,173,auxheaterdelay,aux heater on delay,ushort (>=10<=1000),K*min,true,number.boiler_aux_heater_on_delay,number.boiler_auxheaterdelay
 Geo 5xx,boiler,173,auxmaxlimit,aux heater max limit,uint (>=0<=10),K,true,number.boiler_aux_heater_max_limit,number.boiler_auxmaxlimit
 Geo 5xx,boiler,173,auxlimitstart,aux heater limit start,uint (>=0<=10),K,true,number.boiler_aux_heater_limit_start,number.boiler_auxlimitstart
 Geo 5xx,boiler,173,auxheatrmode,aux heater mode,enum [eco\|comfort], ,true,select.boiler_aux_heater_mode,select.boiler_auxheatrmode
@@ -1747,11 +1765,11 @@ Geo 5xx,boiler,173,hphystpool,on/off hyst pool,ushort (>=50<=1500),K*min,true,nu
 Geo 5xx,boiler,173,silentmode,silent mode,enum [off\|auto\|on], ,true,select.boiler_silent_mode,select.boiler_silentmode
 Geo 5xx,boiler,173,silentfrom,silent mode from,uint (>=0<=3810),minutes,true,number.boiler_silent_mode_from,number.boiler_silentfrom
 Geo 5xx,boiler,173,silentto,silent mode to,uint (>=0<=3810),minutes,true,number.boiler_silent_mode_to,number.boiler_silentto
-Geo 5xx,boiler,173,mintempsilent,min. outside temp. for silent mode,int (>=-126<=126),C,true,number.boiler_min._outside_temp._for_silent_mode,number.boiler_mintempsilent
-Geo 5xx,boiler,173,tempparmode,outside temp. parallel mode,int (>=-126<=126),C,true,number.boiler_outside_temp._parallel_mode,number.boiler_tempparmode
-Geo 5xx,boiler,173,auxheatmix,aux. heater mixing valve,int (>=-100<=100),%,false,sensor.boiler_aux._heater_mixing_valve,sensor.boiler_auxheatmix
-Geo 5xx,boiler,173,tempdiffheat,temp. diff. TC3/TC0 heat,uint (>=3<=10),K,true,number.boiler_temp._diff._TC3/TC0_heat,number.boiler_tempdiffheat
-Geo 5xx,boiler,173,tempdiffcool,temp. diff. TC3/TC0 cool,uint (>=3<=10),K,true,number.boiler_temp._diff._TC3/TC0_cool,number.boiler_tempdiffcool
+Geo 5xx,boiler,173,mintempsilent,min outside temp for silent mode,int (>=-126<=126),C,true,number.boiler_min_outside_temp_for_silent_mode,number.boiler_mintempsilent
+Geo 5xx,boiler,173,tempparmode,outside temp parallel mode,int (>=-126<=126),C,true,number.boiler_outside_temp_parallel_mode,number.boiler_tempparmode
+Geo 5xx,boiler,173,auxheatmix,aux heater mixing valve,int (>=-100<=100),%,false,sensor.boiler_aux_heater_mixing_valve,sensor.boiler_auxheatmix
+Geo 5xx,boiler,173,tempdiffheat,temp diff TC3/TC0 heat,uint (>=3<=10),K,true,number.boiler_temp_diff_TC3/TC0_heat,number.boiler_tempdiffheat
+Geo 5xx,boiler,173,tempdiffcool,temp diff TC3/TC0 cool,uint (>=3<=10),K,true,number.boiler_temp_diff_TC3/TC0_cool,number.boiler_tempdiffcool
 Geo 5xx,boiler,173,vpcooling,valve/pump cooling,boolean, ,true,switch.boiler_valve/pump_cooling,switch.boiler_vpcooling
 Geo 5xx,boiler,173,heatcable,heating cable,boolean, ,true,switch.boiler_heating_cable,switch.boiler_heatcable
 Geo 5xx,boiler,173,vc0valve,VC0 valve,boolean, ,true,switch.boiler_VC0_valve,switch.boiler_vc0valve
@@ -1830,6 +1848,7 @@ Condens 5000i/Greenstar 8000/GC9800IW,boiler,195,heatingactivated,heating activa
 Condens 5000i/Greenstar 8000/GC9800IW,boiler,195,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Condens 5000i/Greenstar 8000/GC9800IW,boiler,195,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Condens 5000i/Greenstar 8000/GC9800IW,boiler,195,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Condens 5000i/Greenstar 8000/GC9800IW,boiler,195,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Condens 5000i/Greenstar 8000/GC9800IW,boiler,195,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Condens 5000i/Greenstar 8000/GC9800IW,boiler,195,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Condens 5000i/Greenstar 8000/GC9800IW,boiler,195,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -1920,6 +1939,7 @@ Logamax U122/Cerapur,boiler,203,heatingactivated,heating activated,boolean, ,tru
 Logamax U122/Cerapur,boiler,203,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Logamax U122/Cerapur,boiler,203,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Logamax U122/Cerapur,boiler,203,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Logamax U122/Cerapur,boiler,203,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Logamax U122/Cerapur,boiler,203,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Logamax U122/Cerapur,boiler,203,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Logamax U122/Cerapur,boiler,203,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -2010,6 +2030,7 @@ Ecomline Excellent,boiler,206,heatingactivated,heating activated,boolean, ,true,
 Ecomline Excellent,boiler,206,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Ecomline Excellent,boiler,206,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Ecomline Excellent,boiler,206,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Ecomline Excellent,boiler,206,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Ecomline Excellent,boiler,206,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Ecomline Excellent,boiler,206,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Ecomline Excellent,boiler,206,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -2100,6 +2121,7 @@ Logamax Plus/GB192/Condens GC9000/Greenstar ErP,boiler,208,heatingactivated,heat
 Logamax Plus/GB192/Condens GC9000/Greenstar ErP,boiler,208,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Logamax Plus/GB192/Condens GC9000/Greenstar ErP,boiler,208,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Logamax Plus/GB192/Condens GC9000/Greenstar ErP,boiler,208,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Logamax Plus/GB192/Condens GC9000/Greenstar ErP,boiler,208,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Logamax Plus/GB192/Condens GC9000/Greenstar ErP,boiler,208,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Logamax Plus/GB192/Condens GC9000/Greenstar ErP,boiler,208,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Logamax Plus/GB192/Condens GC9000/Greenstar ErP,boiler,208,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -2190,6 +2212,7 @@ Cascade MC400,boiler,210,heatingactivated,heating activated,boolean, ,true,switc
 Cascade MC400,boiler,210,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Cascade MC400,boiler,210,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Cascade MC400,boiler,210,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Cascade MC400,boiler,210,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Cascade MC400,boiler,210,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Cascade MC400,boiler,210,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Cascade MC400,boiler,210,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -2280,6 +2303,7 @@ EasyControl Adapter,boiler,211,heatingactivated,heating activated,boolean, ,true
 EasyControl Adapter,boiler,211,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 EasyControl Adapter,boiler,211,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 EasyControl Adapter,boiler,211,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+EasyControl Adapter,boiler,211,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 EasyControl Adapter,boiler,211,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 EasyControl Adapter,boiler,211,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 EasyControl Adapter,boiler,211,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -2347,6 +2371,101 @@ EasyControl Adapter,boiler,211,wwmixertemp,mixer temperature,ushort (>=0<=3199),
 EasyControl Adapter,boiler,211,wwcylmiddletemp,cylinder middle temperature (TS3),ushort (>=0<=3199),C,false,sensor.boiler_cylinder_middle_temperature_(TS3),sensor.boiler_wwcylmiddletemp
 EasyControl Adapter,boiler,211,wwstarts,starts,ulong (>=0<=65533), ,false,sensor.boiler_starts,sensor.boiler_wwstarts
 EasyControl Adapter,boiler,211,wwworkm,active time,time (>=0<=65533),minutes,false,sensor.boiler_active_time,sensor.boiler_wwworkm
+Greenstar HIU,boiler,219,keepwarmtemp,keep warm temperature,uint (>=0<=254),C,true,number.boiler_keep_warm_temperature,number.boiler_keepwarmtemp
+Greenstar HIU,boiler,219,setreturntemp,set temp return,uint (>=0<=254),C,true,number.boiler_set_temp_return,number.boiler_setreturntemp
+Greenstar HIU,boiler,219,cwflowrate,cold water flow rate,ushort (>=0<=31999),l/min,false,sensor.boiler_cold_water_flow_rate,sensor.boiler_cwflowrate
+Greenstar HIU,boiler,219,netflowtemp,heat network flow temp,ushort (>=0<=31999),C,false,sensor.boiler_heat_network_flow_temp,sensor.boiler_netflowtemp
+Greenstar HIU,boiler,219,reset,Reset,cmd [-\|maintenance\|error], ,true,sensor.boiler_Reset,sensor.boiler_reset
+Greenstar HIU,boiler,219,heatingactive,heating active,boolean, ,false,binary_sensor.boiler_heating_active,binary_sensor.boiler_heatingactive
+Greenstar HIU,boiler,219,tapwateractive,tapwater active,boolean, ,false,binary_sensor.boiler_tapwater_active,binary_sensor.boiler_tapwateractive
+Greenstar HIU,boiler,219,selflowtemp,selected flow temperature,uint (>=0<=254),C,true,number.boiler_selected_flow_temperature,number.boiler_selflowtemp
+Greenstar HIU,boiler,219,heatingpumpmod,heating pump modulation,uint (>=0<=100),%,false,sensor.boiler_heating_pump_modulation,sensor.boiler_heatingpumpmod
+Greenstar HIU,boiler,219,outdoortemp,outside temperature,short (>=-3199<=3199),C,false,sensor.boiler_outside_temperature,sensor.boiler_outdoortemp
+Greenstar HIU,boiler,219,curflowtemp,current flow temperature,ushort (>=0<=3199),C,false,sensor.boiler_current_flow_temperature,sensor.boiler_curflowtemp
+Greenstar HIU,boiler,219,rettemp,return temperature,ushort (>=0<=3199),C,false,sensor.boiler_return_temperature,sensor.boiler_rettemp
+Greenstar HIU,boiler,219,switchtemp,mixing switch temperature,ushort (>=0<=3199),C,false,sensor.boiler_mixing_switch_temperature,sensor.boiler_switchtemp
+Greenstar HIU,boiler,219,syspress,system pressure,uint (>=0<=25),bar,false,sensor.boiler_system_pressure,sensor.boiler_syspress
+Greenstar HIU,boiler,219,boiltemp,actual boiler temperature,ushort (>=0<=3199),C,false,sensor.boiler_actual_boiler_temperature,sensor.boiler_boiltemp
+Greenstar HIU,boiler,219,exhausttemp,exhaust temperature,ushort (>=0<=3199),C,false,sensor.boiler_exhaust_temperature,sensor.boiler_exhausttemp
+Greenstar HIU,boiler,219,burngas,gas,boolean, ,false,binary_sensor.boiler_gas,binary_sensor.boiler_burngas
+Greenstar HIU,boiler,219,burngas2,gas stage 2,boolean, ,false,binary_sensor.boiler_gas_stage_2,binary_sensor.boiler_burngas2
+Greenstar HIU,boiler,219,flamecurr,flame current,ushort (>=0<=3199),µA,false,sensor.boiler_flame_current,sensor.boiler_flamecurr
+Greenstar HIU,boiler,219,heatingpump,heating pump,boolean, ,false,binary_sensor.boiler_heating_pump,binary_sensor.boiler_heatingpump
+Greenstar HIU,boiler,219,fanwork,fan,boolean, ,false,binary_sensor.boiler_fan,binary_sensor.boiler_fanwork
+Greenstar HIU,boiler,219,ignwork,ignition,boolean, ,false,binary_sensor.boiler_ignition,binary_sensor.boiler_ignwork
+Greenstar HIU,boiler,219,oilpreheat,oil preheating,boolean, ,false,binary_sensor.boiler_oil_preheating,binary_sensor.boiler_oilpreheat
+Greenstar HIU,boiler,219,heatingactivated,heating activated,boolean, ,true,switch.boiler_heating_activated,switch.boiler_heatingactivated
+Greenstar HIU,boiler,219,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
+Greenstar HIU,boiler,219,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
+Greenstar HIU,boiler,219,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Greenstar HIU,boiler,219,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
+Greenstar HIU,boiler,219,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
+Greenstar HIU,boiler,219,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
+Greenstar HIU,boiler,219,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
+Greenstar HIU,boiler,219,burnmaxpower,burner max power,uint (>=0<=254),%,true,number.boiler_burner_max_power,number.boiler_burnmaxpower
+Greenstar HIU,boiler,219,boilhyston,hysteresis on temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_on_temperature,number.boiler_boilhyston
+Greenstar HIU,boiler,219,boilhystoff,hysteresis off temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_off_temperature,number.boiler_boilhystoff
+Greenstar HIU,boiler,219,boil2hyston,hysteresis stage 2 on temperature,int (>=-20<=0),C,true,number.boiler_hysteresis_stage_2_on_temperature,number.boiler_boil2hyston
+Greenstar HIU,boiler,219,boil2hystoff,hysteresis stage 2 off temperature,int (>=0<=20),C,true,number.boiler_hysteresis_stage_2_off_temperature,number.boiler_boil2hystoff
+Greenstar HIU,boiler,219,setflowtemp,set flow temperature,uint (>=0<=254),C,false,sensor.boiler_set_flow_temperature,sensor.boiler_setflowtemp
+Greenstar HIU,boiler,219,setburnpow,burner set power,uint (>=0<=100),%,false,sensor.boiler_burner_set_power,sensor.boiler_setburnpow
+Greenstar HIU,boiler,219,absburnpow,burner current power (absolute),uint (>=0<=100),%,false,sensor.boiler_burner_current_power_(absolute),sensor.boiler_absburnpow
+Greenstar HIU,boiler,219,selburnpow,burner selected max power,uint (>=0<=254),%,true,number.boiler_burner_selected_max_power,number.boiler_selburnpow
+Greenstar HIU,boiler,219,curburnpow,burner current power,uint (>=0<=100),%,false,sensor.boiler_burner_current_power,sensor.boiler_curburnpow
+Greenstar HIU,boiler,219,burnstarts,burner starts,ulong (>=0<=65533), ,false,sensor.boiler_burner_starts,sensor.boiler_burnstarts
+Greenstar HIU,boiler,219,burnworkmin,total burner operating time,time (>=0<=65533),minutes,false,sensor.boiler_total_burner_operating_time,sensor.boiler_burnworkmin
+Greenstar HIU,boiler,219,burn2workmin,burner stage 2 operating time,time (>=0<=65533),minutes,false,sensor.boiler_burner_stage_2_operating_time,sensor.boiler_burn2workmin
+Greenstar HIU,boiler,219,heatworkmin,total heat operating time,time (>=0<=65533),minutes,false,sensor.boiler_total_heat_operating_time,sensor.boiler_heatworkmin
+Greenstar HIU,boiler,219,heatstarts,burner starts heating,ulong (>=0<=65533), ,false,sensor.boiler_burner_starts_heating,sensor.boiler_heatstarts
+Greenstar HIU,boiler,219,ubauptime,total UBA operating time,time (>=0<=65533),minutes,false,sensor.boiler_total_UBA_operating_time,sensor.boiler_ubauptime
+Greenstar HIU,boiler,219,lastcode,last error code,string, ,false,sensor.boiler_last_error_code,sensor.boiler_lastcode
+Greenstar HIU,boiler,219,servicecode,service code,string, ,false,sensor.boiler_service_code,sensor.boiler_servicecode
+Greenstar HIU,boiler,219,servicecodenumber,service code number,ushort (>=0<=31999), ,false,sensor.boiler_service_code_number,sensor.boiler_servicecodenumber
+Greenstar HIU,boiler,219,maintenancemessage,maintenance message,string, ,false,sensor.boiler_maintenance_message,sensor.boiler_maintenancemessage
+Greenstar HIU,boiler,219,maintenance,maintenance scheduled,enum [off\|time\|date\|manual], ,true,select.boiler_maintenance_scheduled,select.boiler_maintenance
+Greenstar HIU,boiler,219,maintenancetime,time to next maintenance,ushort (>=0<=31999),hours,true,number.boiler_time_to_next_maintenance,number.boiler_maintenancetime
+Greenstar HIU,boiler,219,maintenancedate,next maintenance date,string, ,true,sensor.boiler_next_maintenance_date,sensor.boiler_maintenancedate
+Greenstar HIU,boiler,219,emergencyops,emergency operation,boolean, ,true,switch.boiler_emergency_operation,switch.boiler_emergencyops
+Greenstar HIU,boiler,219,emergencytemp,emergency temperature,uint (>=15<=70),C,true,number.boiler_emergency_temperature,number.boiler_emergencytemp
+Greenstar HIU,boiler,219,wwtapactivated,turn on/off,boolean, ,true,switch.boiler_turn_on/off,switch.boiler_wwtapactivated
+Greenstar HIU,boiler,219,wwsettemp,set temperature,uint (>=0<=254),C,false,sensor.boiler_set_temperature,sensor.boiler_wwsettemp
+Greenstar HIU,boiler,219,wwseltemp,selected temperature,uint (>=0<=254),C,true,number.boiler_selected_temperature,number.boiler_wwseltemp
+Greenstar HIU,boiler,219,wwseltemplow,selected lower temperature,uint (>=0<=254),C,true,number.boiler_selected_lower_temperature,number.boiler_wwseltemplow
+Greenstar HIU,boiler,219,wwseltempoff,selected temperature for off,uint (>=0<=254),C,false,sensor.boiler_selected_temperature_for_off,sensor.boiler_wwseltempoff
+Greenstar HIU,boiler,219,wwseltempsingle,single charge temperature,uint (>=0<=254),C,true,number.boiler_single_charge_temperature,number.boiler_wwseltempsingle
+Greenstar HIU,boiler,219,wwsolartemp,solar boiler temperature,ushort (>=0<=3199),C,false,sensor.boiler_solar_boiler_temperature,sensor.boiler_wwsolartemp
+Greenstar HIU,boiler,219,wwtype,type,enum [off\|flow\|buffered flow\|buffer\|layered buffer], ,false,sensor.boiler_type,sensor.boiler_wwtype
+Greenstar HIU,boiler,219,wwcomfort,comfort,enum [hot\|eco\|intelligent], ,true,select.boiler_comfort,select.boiler_wwcomfort
+Greenstar HIU,boiler,219,wwcomfort1,comfort mode,enum [high comfort\|eco], ,true,select.boiler_comfort_mode,select.boiler_wwcomfort1
+Greenstar HIU,boiler,219,wwflowtempoffset,flow temperature offset,uint (>=0<=100),C,true,number.boiler_flow_temperature_offset,number.boiler_wwflowtempoffset
+Greenstar HIU,boiler,219,wwchargeoptimization,charge optimization,boolean, ,true,switch.boiler_charge_optimization,switch.boiler_wwchargeoptimization
+Greenstar HIU,boiler,219,wwmaxpower,max power,uint (>=0<=254),%,true,number.boiler_max_power,number.boiler_wwmaxpower
+Greenstar HIU,boiler,219,wwmaxtemp,maximum temperature,uint (>=0<=70),C,true,number.boiler_maximum_temperature,number.boiler_wwmaxtemp
+Greenstar HIU,boiler,219,wwcircpump,circulation pump available,boolean, ,true,switch.boiler_circulation_pump_available,switch.boiler_wwcircpump
+Greenstar HIU,boiler,219,wwchargetype,charging type,enum [chargepump\|3-way valve], ,false,sensor.boiler_charging_type,sensor.boiler_wwchargetype
+Greenstar HIU,boiler,219,wwhyston,hysteresis on temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_on_temperature,number.boiler_wwhyston
+Greenstar HIU,boiler,219,wwhystoff,hysteresis off temperature,int (>=-126<=126),C,true,number.boiler_hysteresis_off_temperature,number.boiler_wwhystoff
+Greenstar HIU,boiler,219,wwdisinfectiontemp,disinfection temperature,uint (>=0<=254),C,true,number.boiler_disinfection_temperature,number.boiler_wwdisinfectiontemp
+Greenstar HIU,boiler,219,wwcircmode,circulation pump mode,enum [off\|1x3min\|2x3min\|3x3min\|4x3min\|5x3min\|6x3min\|continuous], ,true,select.boiler_circulation_pump_mode,select.boiler_wwcircmode
+Greenstar HIU,boiler,219,wwcirc,circulation active,boolean, ,true,switch.boiler_circulation_active,switch.boiler_wwcirc
+Greenstar HIU,boiler,219,wwcurtemp,current intern temperature,ushort (>=0<=3199),C,false,sensor.boiler_current_intern_temperature,sensor.boiler_wwcurtemp
+Greenstar HIU,boiler,219,wwcurtemp2,current extern temperature,ushort (>=0<=3199),C,false,sensor.boiler_current_extern_temperature,sensor.boiler_wwcurtemp2
+Greenstar HIU,boiler,219,wwcurflow,current tap water flow,uint (>=0<=25),l/min,false,sensor.boiler_current_tap_water_flow,sensor.boiler_wwcurflow
+Greenstar HIU,boiler,219,wwstoragetemp1,storage intern temperature,ushort (>=0<=3199),C,false,sensor.boiler_storage_intern_temperature,sensor.boiler_wwstoragetemp1
+Greenstar HIU,boiler,219,wwstoragetemp2,storage extern temperature,ushort (>=0<=3199),C,false,sensor.boiler_storage_extern_temperature,sensor.boiler_wwstoragetemp2
+Greenstar HIU,boiler,219,wwactivated,activated,boolean, ,true,switch.boiler_activated,switch.boiler_wwactivated
+Greenstar HIU,boiler,219,wwonetime,one time charging,boolean, ,true,switch.boiler_one_time_charging,switch.boiler_wwonetime
+Greenstar HIU,boiler,219,wwdisinfecting,disinfecting,boolean, ,true,switch.boiler_disinfecting,switch.boiler_wwdisinfecting
+Greenstar HIU,boiler,219,wwcharging,charging,boolean, ,false,binary_sensor.boiler_charging,binary_sensor.boiler_wwcharging
+Greenstar HIU,boiler,219,wwrecharging,recharging,boolean, ,false,binary_sensor.boiler_recharging,binary_sensor.boiler_wwrecharging
+Greenstar HIU,boiler,219,wwtempok,temperature ok,boolean, ,false,binary_sensor.boiler_temperature_ok,binary_sensor.boiler_wwtempok
+Greenstar HIU,boiler,219,wwactive,active,boolean, ,false,binary_sensor.boiler_active,binary_sensor.boiler_wwactive
+Greenstar HIU,boiler,219,ww3wayvalve,3-way valve active,boolean, ,false,binary_sensor.boiler_3-way_valve_active,binary_sensor.boiler_ww3wayvalve
+Greenstar HIU,boiler,219,wwsetpumppower,set pump power,uint (>=0<=100),%,false,sensor.boiler_set_pump_power,sensor.boiler_wwsetpumppower
+Greenstar HIU,boiler,219,wwmixertemp,mixer temperature,ushort (>=0<=3199),C,false,sensor.boiler_mixer_temperature,sensor.boiler_wwmixertemp
+Greenstar HIU,boiler,219,wwcylmiddletemp,cylinder middle temperature (TS3),ushort (>=0<=3199),C,false,sensor.boiler_cylinder_middle_temperature_(TS3),sensor.boiler_wwcylmiddletemp
+Greenstar HIU,boiler,219,wwstarts,starts,ulong (>=0<=65533), ,false,sensor.boiler_starts,sensor.boiler_wwstarts
+Greenstar HIU,boiler,219,wwworkm,active time,time (>=0<=65533),minutes,false,sensor.boiler_active_time,sensor.boiler_wwworkm
 Logamax Plus GB122/Condense 2300,boiler,234,reset,Reset,cmd [-\|maintenance\|error], ,true,sensor.boiler_Reset,sensor.boiler_reset
 Logamax Plus GB122/Condense 2300,boiler,234,heatingactive,heating active,boolean, ,false,binary_sensor.boiler_heating_active,binary_sensor.boiler_heatingactive
 Logamax Plus GB122/Condense 2300,boiler,234,tapwateractive,tapwater active,boolean, ,false,binary_sensor.boiler_tapwater_active,binary_sensor.boiler_tapwateractive
@@ -2370,6 +2489,7 @@ Logamax Plus GB122/Condense 2300,boiler,234,heatingactivated,heating activated,b
 Logamax Plus GB122/Condense 2300,boiler,234,heatingtemp,heating temperature,uint (>=0<=254),C,true,number.boiler_heating_temperature,number.boiler_heatingtemp
 Logamax Plus GB122/Condense 2300,boiler,234,pumpmodmax,boiler pump max power,uint (>=0<=100),%,true,number.boiler_boiler_pump_max_power,number.boiler_pumpmodmax
 Logamax Plus GB122/Condense 2300,boiler,234,pumpmodmin,boiler pump min power,uint (>=0<=100),%,true,number.boiler_boiler_pump_min_power,number.boiler_pumpmodmin
+Logamax Plus GB122/Condense 2300,boiler,234,pumpmode,boiler pump mode,enum [proportional\|deltaP-1\|deltaP-2\|deltaP-3\|deltaP-4], ,true,select.boiler_boiler_pump_mode,select.boiler_pumpmode
 Logamax Plus GB122/Condense 2300,boiler,234,pumpdelay,pump delay,uint (>=0<=254),minutes,true,number.boiler_pump_delay,number.boiler_pumpdelay
 Logamax Plus GB122/Condense 2300,boiler,234,burnminperiod,burner min period,uint (>=0<=254),minutes,true,number.boiler_burner_min_period,number.boiler_burnminperiod
 Logamax Plus GB122/Condense 2300,boiler,234,burnminpower,burner min power,uint (>=0<=100),%,true,number.boiler_burner_min_power,number.boiler_burnminpower
@@ -2442,11 +2562,13 @@ Logamatic TC100/Moduline Easy,thermostat,202,lastcode,last error code,string, ,f
 Logamatic TC100/Moduline Easy,thermostat,202,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 Logamatic TC100/Moduline Easy,thermostat,202,seltemp,selected room temperature,short (>=-319<=319),C,false,sensor.thermostat_hc1_selected_room_temperature,sensor.thermostat_hc1_seltemp
 Logamatic TC100/Moduline Easy,thermostat,202,currtemp,current room temperature,short (>=-319<=319),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+Logamatic TC100/Moduline Easy,thermostat,202,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 EasyControl CT200,thermostat,203,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 EasyControl CT200,thermostat,203,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 EasyControl CT200,thermostat,203,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 EasyControl CT200,thermostat,203,seltemp,selected room temperature,short (>=-319<=319),C,false,sensor.thermostat_hc1_selected_room_temperature,sensor.thermostat_hc1_seltemp
 EasyControl CT200,thermostat,203,currtemp,current room temperature,short (>=-319<=319),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+EasyControl CT200,thermostat,203,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 UI800,thermostat,4,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 UI800,thermostat,4,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 UI800,thermostat,4,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
@@ -2480,6 +2602,7 @@ UI800,thermostat,4,pvraiseheat,raise heating with PV,int (>=0<=5),K,true,number.
 UI800,thermostat,4,pvlowercool,lower cooling with PV,int (>=-5<=0),K,true,number.thermostat_lower_cooling_with_PV,number.thermostat_pvlowercool
 UI800,thermostat,4,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 UI800,thermostat,4,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+UI800,thermostat,4,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 UI800,thermostat,4,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 UI800,thermostat,4,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 UI800,thermostat,4,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
@@ -2517,7 +2640,8 @@ RC10,thermostat,65,datetime,date/time,string, ,false,sensor.thermostat_date/time
 RC10,thermostat,65,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
 RC10,thermostat,65,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC10,thermostat,65,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
-RC10,thermostat,65,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC10,thermostat,65,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
+RC10,thermostat,65,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 RC10,thermostat,65,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 RC10,thermostat,65,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
 RC10,thermostat,65,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
@@ -2557,6 +2681,7 @@ RC30,thermostat,67,wwholidays,holiday dates,string, ,true,sensor.thermostat_holi
 RC30,thermostat,67,wwvacations,vacation dates,string, ,true,sensor.thermostat_vacation_dates,sensor.thermostat_wwvacations
 RC30,thermostat,67,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC30,thermostat,67,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC30,thermostat,67,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 RC30,thermostat,67,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 RC30,thermostat,67,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 RC30,thermostat,67,daytemp,day temperature,uint (>=5<=30),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
@@ -2569,7 +2694,7 @@ RC30,thermostat,67,summertemp,summer temperature,uint (>=9<=25),C,true,number.th
 RC30,thermostat,67,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
 RC30,thermostat,67,holidaymode,holiday mode,boolean, ,false,binary_sensor.thermostat_hc1_holiday_mode,binary_sensor.thermostat_hc1_holidaymode
 RC30,thermostat,67,nofrosttemp,nofrost temperature,int (>=-20<=10),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
-RC30,thermostat,67,nofrostmode,nofrost mode,enum [off\|room\|outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+RC30,thermostat,67,nofrostmode,nofrost mode,enum [off\|outdoor\|room], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
 RC30,thermostat,67,roominfluence,room influence,uint (>=0<=10),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
 RC30,thermostat,67,minflowtemp,min flow temperature,uint (>=5<=70),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
 RC30,thermostat,67,maxflowtemp,max flow temperature,uint (>=30<=90),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
@@ -2597,8 +2722,10 @@ RC20/Moduline 300,thermostat,77,lastcode,last error code,string, ,false,sensor.t
 RC20/Moduline 300,thermostat,77,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 RC20/Moduline 300,thermostat,77,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC20/Moduline 300,thermostat,77,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC20/Moduline 300,thermostat,77,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 RC20/Moduline 300,thermostat,77,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 RC20/Moduline 300,thermostat,77,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
+RC20/Moduline 300,thermostat,77,offtemp,temperature when mode is off,uint (>=0<=127),C,true,number.thermostat_hc1_temperature_when_mode_is_off,number.thermostat_hc1_offtemp
 RC20/Moduline 300,thermostat,77,daytemp2,day temperature T2,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T2,number.thermostat_hc1_daytemp2
 RC20/Moduline 300,thermostat,77,daytemp3,day temperature T3,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T3,number.thermostat_hc1_daytemp3
 RC20/Moduline 300,thermostat,77,daytemp4,day temperature T4,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T4,number.thermostat_hc1_daytemp4
@@ -2617,7 +2744,6 @@ Moduline 400,thermostat,78,building,building type,enum [light\|medium\|heavy], ,
 Moduline 400,thermostat,78,heatingpid,heating PID,enum [fast\|medium\|slow], ,true,select.thermostat_heating_PID,select.thermostat_heatingpid
 Moduline 400,thermostat,78,preheating,preheating in the clock program,boolean, ,true,switch.thermostat_preheating_in_the_clock_program,switch.thermostat_preheating
 Moduline 400,thermostat,78,intoffset,internal temperature offset,int (>=-12<=12),C,true,number.thermostat_internal_temperature_offset,number.thermostat_intoffset
-Moduline 400,thermostat,78,offtemp,temperature when mode is off,uint (>=5<=30),C,true,number.thermostat_temperature_when_mode_is_off,number.thermostat_offtemp
 Moduline 400,thermostat,78,wwmode,mode,enum [on\|off\|auto], ,true,select.thermostat_mode,select.thermostat_wwmode
 Moduline 400,thermostat,78,wwwhenmodeoff,when thermostat mode off,boolean, ,true,switch.thermostat_when_thermostat_mode_off,switch.thermostat_wwwhenmodeoff
 Moduline 400,thermostat,78,wwdisinfecting,disinfecting,boolean, ,true,switch.thermostat_disinfecting,switch.thermostat_wwdisinfecting
@@ -2627,7 +2753,8 @@ Moduline 400,thermostat,78,wwholidays,holiday dates,string, ,true,sensor.thermos
 Moduline 400,thermostat,78,wwvacations,vacation dates,string, ,true,sensor.thermostat_vacation_dates,sensor.thermostat_wwvacations
 Moduline 400,thermostat,78,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 Moduline 400,thermostat,78,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
-Moduline 400,thermostat,78,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+Moduline 400,thermostat,78,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
+Moduline 400,thermostat,78,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 Moduline 400,thermostat,78,holidays,holiday dates,string, ,true,sensor.thermostat_hc1_holiday_dates,sensor.thermostat_hc1_holidays
 Moduline 400,thermostat,78,vacations,vacation dates,string, ,true,sensor.thermostat_hc1_vacation_dates,sensor.thermostat_hc1_vacations
 Moduline 400,thermostat,78,program,program,enum [own 1\|family\|morning\|evening\|am\|pm\|midday\|singles\|seniors\|new\|own 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
@@ -2641,6 +2768,8 @@ Moduline 400,thermostat,78,nighttemp,night temperature T1,uint (>=0<=127),C,true
 Moduline 400,thermostat,78,daytemp2,day temperature T2,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T2,number.thermostat_hc1_daytemp2
 Moduline 400,thermostat,78,daytemp3,day temperature T3,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T3,number.thermostat_hc1_daytemp3
 Moduline 400,thermostat,78,daytemp4,day temperature T4,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T4,number.thermostat_hc1_daytemp4
+Moduline 400,thermostat,78,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
+Moduline 400,thermostat,78,offtemp,temperature when mode is off,uint (>=0<=127),C,true,number.thermostat_hc1_temperature_when_mode_is_off,number.thermostat_hc1_offtemp
 RC10/Moduline 100,thermostat,79,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC10/Moduline 100,thermostat,79,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC10/Moduline 100,thermostat,79,intoffset,internal temperature offset,int (>=-12<=12),C,true,number.thermostat_internal_temperature_offset,number.thermostat_intoffset
@@ -2649,6 +2778,7 @@ RC10/Moduline 100,thermostat,79,backlight,key backlight,boolean, ,true,switch.th
 RC10/Moduline 100,thermostat,79,wwmode,mode,enum [on\|off\|auto], ,true,select.thermostat_mode,select.thermostat_wwmode
 RC10/Moduline 100,thermostat,79,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC10/Moduline 100,thermostat,79,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC10/Moduline 100,thermostat,79,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 RC10/Moduline 100,thermostat,79,mode,mode,enum [nofrost\|night\|day], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 RC10/Moduline 100,thermostat,79,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
 RC10/Moduline 100,thermostat,79,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
@@ -2662,6 +2792,7 @@ Moduline 200,thermostat,80,backlight,key backlight,boolean, ,true,switch.thermos
 Moduline 200,thermostat,80,wwmode,mode,enum [on\|off\|auto], ,true,select.thermostat_mode,select.thermostat_wwmode
 Moduline 200,thermostat,80,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 Moduline 200,thermostat,80,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+Moduline 200,thermostat,80,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 Moduline 200,thermostat,80,mode,mode,enum [nofrost\|night\|day], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 Moduline 200,thermostat,80,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
 Moduline 200,thermostat,80,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
@@ -2692,6 +2823,7 @@ RC35,thermostat,86,wwholidays,holiday dates,string, ,true,sensor.thermostat_holi
 RC35,thermostat,86,wwvacations,vacation dates,string, ,true,sensor.thermostat_vacation_dates,sensor.thermostat_wwvacations
 RC35,thermostat,86,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC35,thermostat,86,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC35,thermostat,86,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 RC35,thermostat,86,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 RC35,thermostat,86,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 RC35,thermostat,86,daytemp,day temperature,uint (>=5<=30),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
@@ -2704,7 +2836,7 @@ RC35,thermostat,86,summertemp,summer temperature,uint (>=9<=25),C,true,number.th
 RC35,thermostat,86,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
 RC35,thermostat,86,holidaymode,holiday mode,boolean, ,false,binary_sensor.thermostat_hc1_holiday_mode,binary_sensor.thermostat_hc1_holidaymode
 RC35,thermostat,86,nofrosttemp,nofrost temperature,int (>=-20<=10),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
-RC35,thermostat,86,nofrostmode,nofrost mode,enum [off\|room\|outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+RC35,thermostat,86,nofrostmode,nofrost mode,enum [off\|outdoor\|room], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
 RC35,thermostat,86,roominfluence,room influence,uint (>=0<=10),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
 RC35,thermostat,86,minflowtemp,min flow temperature,uint (>=5<=70),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
 RC35,thermostat,86,maxflowtemp,max flow temperature,uint (>=30<=90),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
@@ -2733,7 +2865,8 @@ RC10/Moduline 100,thermostat,90,datetime,date/time,string, ,false,sensor.thermos
 RC10/Moduline 100,thermostat,90,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
 RC10/Moduline 100,thermostat,90,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC10/Moduline 100,thermostat,90,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
-RC10/Moduline 100,thermostat,90,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+RC10/Moduline 100,thermostat,90,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
+RC10/Moduline 100,thermostat,90,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 RC10/Moduline 100,thermostat,90,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 RC10/Moduline 100,thermostat,90,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
 RC10/Moduline 100,thermostat,90,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
@@ -2750,8 +2883,10 @@ RC20RF,thermostat,93,lastcode,last error code,string, ,false,sensor.thermostat_l
 RC20RF,thermostat,93,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 RC20RF,thermostat,93,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC20RF,thermostat,93,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC20RF,thermostat,93,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 RC20RF,thermostat,93,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 RC20RF,thermostat,93,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
+RC20RF,thermostat,93,offtemp,temperature when mode is off,uint (>=0<=127),C,true,number.thermostat_hc1_temperature_when_mode_is_off,number.thermostat_hc1_offtemp
 RC20RF,thermostat,93,daytemp2,day temperature T2,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T2,number.thermostat_hc1_daytemp2
 RC20RF,thermostat,93,daytemp3,day temperature T3,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T3,number.thermostat_hc1_daytemp3
 RC20RF,thermostat,93,daytemp4,day temperature T4,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature_T4,number.thermostat_hc1_daytemp4
@@ -2762,12 +2897,14 @@ RFM20 Remote,thermostat,94,lastcode,last error code,string, ,false,sensor.thermo
 RFM20 Remote,thermostat,94,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 RFM20 Remote,thermostat,94,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RFM20 Remote,thermostat,94,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RFM20 Remote,thermostat,94,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 RC25,thermostat,151,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC25,thermostat,151,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC25,thermostat,151,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 RC25,thermostat,151,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
 RC25,thermostat,151,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC25,thermostat,151,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC25,thermostat,151,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 RC25,thermostat,151,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 RC25,thermostat,151,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 RC25,thermostat,151,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
@@ -2812,6 +2949,7 @@ RC200/CW100,thermostat,157,pvraiseheat,raise heating with PV,int (>=0<=5),K,true
 RC200/CW100,thermostat,157,pvlowercool,lower cooling with PV,int (>=-5<=0),K,true,number.thermostat_lower_cooling_with_PV,number.thermostat_pvlowercool
 RC200/CW100,thermostat,157,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC200/CW100,thermostat,157,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC200/CW100,thermostat,157,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 RC200/CW100,thermostat,157,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 RC200/CW100,thermostat,157,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 RC200/CW100,thermostat,157,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
@@ -2876,6 +3014,7 @@ RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,thermostat,158,pvraiseheat
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,thermostat,158,pvlowercool,lower cooling with PV,int (>=-5<=0),K,true,number.thermostat_lower_cooling_with_PV,number.thermostat_pvlowercool
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,thermostat,158,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,thermostat,158,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,thermostat,158,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,thermostat,158,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,thermostat,158,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410,thermostat,158,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
@@ -2940,6 +3079,7 @@ RC100/Moduline 1000/1010,thermostat,165,pvraiseheat,raise heating with PV,int (>
 RC100/Moduline 1000/1010,thermostat,165,pvlowercool,lower cooling with PV,int (>=-5<=0),K,true,number.thermostat_lower_cooling_with_PV,number.thermostat_pvlowercool
 RC100/Moduline 1000/1010,thermostat,165,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC100/Moduline 1000/1010,thermostat,165,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RC100/Moduline 1000/1010,thermostat,165,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 RC100/Moduline 1000/1010,thermostat,165,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 RC100/Moduline 1000/1010,thermostat,165,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 RC100/Moduline 1000/1010,thermostat,165,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
@@ -3004,6 +3144,7 @@ Rego 2000/3000,thermostat,172,pvraiseheat,raise heating with PV,int (>=0<=5),K,t
 Rego 2000/3000,thermostat,172,pvlowercool,lower cooling with PV,int (>=-5<=0),K,true,number.thermostat_lower_cooling_with_PV,number.thermostat_pvlowercool
 Rego 2000/3000,thermostat,172,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 Rego 2000/3000,thermostat,172,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+Rego 2000/3000,thermostat,172,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 Rego 2000/3000,thermostat,172,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 Rego 2000/3000,thermostat,172,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 Rego 2000/3000,thermostat,172,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
@@ -3035,11 +3176,21 @@ Rego 2000/3000,thermostat,172,reducemode,reduce mode,enum [outdoor\|room\|reduce
 Rego 2000/3000,thermostat,172,noreducetemp,no reduce below temperature,int (>=-126<=126),C,true,number.thermostat_hc1_no_reduce_below_temperature,number.thermostat_hc1_noreducetemp
 Rego 2000/3000,thermostat,172,reducetemp,off/reduce switch temperature,int (>=-126<=126),C,true,number.thermostat_hc1_off/reduce_switch_temperature,number.thermostat_hc1_reducetemp
 Rego 2000/3000,thermostat,172,wwprio,dhw priority,boolean, ,true,switch.thermostat_hc1_dhw_priority,switch.thermostat_hc1_wwprio
+Comfort RF,thermostat,215,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
+Comfort RF,thermostat,215,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
+Comfort RF,thermostat,215,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
+Comfort RF,thermostat,215,seltemp,selected room temperature,short (>=-15999<=15999),C,false,sensor.thermostat_hc1_selected_room_temperature,sensor.thermostat_hc1_seltemp
+Comfort RF,thermostat,215,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+Comfort RF,thermostat,215,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
+Comfort RF,thermostat,215,mode,mode,enum [auto\|off], ,false,sensor.thermostat_hc1_mode,sensor.thermostat_hc1_mode
+Comfort RF,thermostat,215,modetype,mode type,enum [off\|on], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+Comfort RF,thermostat,215,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
 CRF200S,thermostat,216,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 CRF200S,thermostat,216,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 CRF200S,thermostat,216,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 CRF200S,thermostat,216,seltemp,selected room temperature,short (>=-15999<=15999),C,false,sensor.thermostat_hc1_selected_room_temperature,sensor.thermostat_hc1_seltemp
 CRF200S,thermostat,216,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+CRF200S,thermostat,216,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 CRF200S,thermostat,216,mode,mode,enum [auto\|off], ,false,sensor.thermostat_hc1_mode,sensor.thermostat_hc1_mode
 CRF200S,thermostat,216,modetype,mode type,enum [off\|on], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 CRF200S,thermostat,216,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
@@ -3048,80 +3199,83 @@ Comfort+2RF,thermostat,246,lastcode,last error code,string, ,false,sensor.thermo
 Comfort+2RF,thermostat,246,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 Comfort+2RF,thermostat,246,seltemp,selected room temperature,short (>=-15999<=15999),C,false,sensor.thermostat_hc1_selected_room_temperature,sensor.thermostat_hc1_seltemp
 Comfort+2RF,thermostat,246,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+Comfort+2RF,thermostat,246,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 Comfort+2RF,thermostat,246,mode,mode,enum [auto\|off], ,false,sensor.thermostat_hc1_mode,sensor.thermostat_hc1_mode
 Comfort+2RF,thermostat,246,modetype,mode type,enum [off\|on], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 Comfort+2RF,thermostat,246,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
-Rego 3000,thermostat,253,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
-Rego 3000,thermostat,253,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
-Rego 3000,thermostat,253,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
-Rego 3000,thermostat,253,intoffset,internal temperature offset,int (>=-12<=12),C,true,number.thermostat_internal_temperature_offset,number.thermostat_intoffset
-Rego 3000,thermostat,253,floordry,floor drying,enum [off\|start\|heat\|hold\|cool\|end], ,false,sensor.thermostat_floor_drying,sensor.thermostat_floordry
-Rego 3000,thermostat,253,dampedoutdoortemp,damped outdoor temperature,short (>=-3199<=3199),C,false,sensor.thermostat_damped_outdoor_temperature,sensor.thermostat_dampedoutdoortemp
-Rego 3000,thermostat,253,floordrytemp,floor drying temperature,uint (>=0<=254),C,false,sensor.thermostat_floor_drying_temperature,sensor.thermostat_floordrytemp
-Rego 3000,thermostat,253,building,building type,enum [light\|medium\|heavy], ,true,select.thermostat_building_type,select.thermostat_building
-Rego 3000,thermostat,253,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
-Rego 3000,thermostat,253,damping,damping outdoor temperature,boolean, ,true,switch.thermostat_damping_outdoor_temperature,switch.thermostat_damping
-Rego 3000,thermostat,253,wwsettemp,set temperature,uint (>=0<=254),C,true,number.thermostat_set_temperature,number.thermostat_wwsettemp
-Rego 3000,thermostat,253,wwmode,mode,enum [off\|normal\|comfort\|auto\|own prog\|eco], ,true,select.thermostat_mode,select.thermostat_wwmode
-Rego 3000,thermostat,253,wwsettemplow,set low temperature,uint (>=0<=254),C,true,number.thermostat_set_low_temperature,number.thermostat_wwsettemplow
-Rego 3000,thermostat,253,wwcircmode,circulation pump mode,enum [off\|on\|auto\|own prog], ,true,select.thermostat_circulation_pump_mode,select.thermostat_wwcircmode
-Rego 3000,thermostat,253,wwchargeduration,charge duration,uint (>=0<=3810),minutes,true,number.thermostat_charge_duration,number.thermostat_wwchargeduration
-Rego 3000,thermostat,253,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
-Rego 3000,thermostat,253,wwextra1,circuit 1 extra,uint (>=0<=254),C,false,sensor.thermostat_circuit_1_extra,sensor.thermostat_wwextra1
-Rego 3000,thermostat,253,wwextra2,circuit 2 extra,uint (>=0<=254),C,false,sensor.thermostat_circuit_2_extra,sensor.thermostat_wwextra2
-Rego 3000,thermostat,253,wwdisinfecting,disinfecting,boolean, ,true,switch.thermostat_disinfecting,switch.thermostat_wwdisinfecting
-Rego 3000,thermostat,253,wwdisinfectday,disinfection day,enum [mo\|tu\|we\|th\|fr\|sa\|su\|all], ,true,select.thermostat_disinfection_day,select.thermostat_wwdisinfectday
-Rego 3000,thermostat,253,wwdisinfecttime,disinfection time,uint (>=0<=1431),minutes,true,number.thermostat_disinfection_time,number.thermostat_wwdisinfecttime
-Rego 3000,thermostat,253,hybridstrategy,hybrid control strategy,enum [co2 optimized\|cost optimized\|outside temp switched\|co2 cost mix], ,true,select.thermostat_hybrid_control_strategy,select.thermostat_hybridstrategy
-Rego 3000,thermostat,253,switchovertemp,outside switchover temperature,int (>=-20<=20),C,true,number.thermostat_outside_switchover_temperature,number.thermostat_switchovertemp
-Rego 3000,thermostat,253,energycostratio,energy cost ratio,uint (>=0<=20), ,true,number.thermostat_energy_cost_ratio,number.thermostat_energycostratio
-Rego 3000,thermostat,253,fossilefactor,fossile energy factor,uint (>=0<=5), ,true,number.thermostat_fossile_energy_factor,number.thermostat_fossilefactor
-Rego 3000,thermostat,253,electricfactor,electric energy factor,uint (>=0<=5), ,true,number.thermostat_electric_energy_factor,number.thermostat_electricfactor
-Rego 3000,thermostat,253,delayboiler,delay boiler support,uint (>=5<=120),minutes,true,number.thermostat_delay_boiler_support,number.thermostat_delayboiler
-Rego 3000,thermostat,253,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,true,number.thermostat_temp_diff_boiler_support,number.thermostat_tempdiffboiler
-Rego 3000,thermostat,253,pvenableww,enable raise dhw,boolean, ,true,switch.thermostat_enable_raise_dhw,switch.thermostat_pvenableww
-Rego 3000,thermostat,253,pvraiseheat,raise heating with PV,int (>=0<=5),K,true,number.thermostat_raise_heating_with_PV,number.thermostat_pvraiseheat
-Rego 3000,thermostat,253,pvlowercool,lower cooling with PV,int (>=-5<=0),K,true,number.thermostat_lower_cooling_with_PV,number.thermostat_pvlowercool
-Rego 3000,thermostat,253,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
-Rego 3000,thermostat,253,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
-Rego 3000,thermostat,253,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
-Rego 3000,thermostat,253,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
-Rego 3000,thermostat,253,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
-Rego 3000,thermostat,253,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
-Rego 3000,thermostat,253,comforttemp,comfort temperature,uint (>=0<=127),C,true,number.thermostat_hc1_comfort_temperature,number.thermostat_hc1_comforttemp
-Rego 3000,thermostat,253,summertemp,summer temperature,uint (>=10<=30),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
-Rego 3000,thermostat,253,designtemp,design temperature,uint (>=0<=254),C,true,number.thermostat_hc1_design_temperature,number.thermostat_hc1_designtemp
-Rego 3000,thermostat,253,offsettemp,offset temperature,int (>=-126<=126),C,true,number.thermostat_hc1_offset_temperature,number.thermostat_hc1_offsettemp
-Rego 3000,thermostat,253,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
-Rego 3000,thermostat,253,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
-Rego 3000,thermostat,253,roominfluence,room influence,uint (>=0<=254),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
-Rego 3000,thermostat,253,roominflfactor,room influence factor,uint (>=0<=25), ,true,number.thermostat_hc1_room_influence_factor,number.thermostat_hc1_roominflfactor
-Rego 3000,thermostat,253,curroominfl,current room influence,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_influence,sensor.thermostat_hc1_curroominfl
-Rego 3000,thermostat,253,nofrostmode,nofrost mode,enum [room\|outdoor\|room outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
-Rego 3000,thermostat,253,nofrosttemp,nofrost temperature,int (>=-126<=126),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
-Rego 3000,thermostat,253,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
-Rego 3000,thermostat,253,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
-Rego 3000,thermostat,253,summersetmode,set summer mode,enum [summer\|auto\|winter], ,true,select.thermostat_hc1_set_summer_mode,select.thermostat_hc1_summersetmode
-Rego 3000,thermostat,253,hpoperatingmode,heatpump operating mode,enum [off\|auto\|heating\|cooling], ,true,select.thermostat_hc1_heatpump_operating_mode,select.thermostat_hc1_hpoperatingmode
-Rego 3000,thermostat,253,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
-Rego 3000,thermostat,253,hpoperatingstate,heatpump operating state,enum [heating\|off\|cooling], ,false,sensor.thermostat_hc1_heatpump_operating_state,sensor.thermostat_hc1_hpoperatingstate
-Rego 3000,thermostat,253,controlmode,control mode,enum [weather compensated\|outside basepoint\|n/a\|room\|power\|constant], ,true,select.thermostat_hc1_control_mode,select.thermostat_hc1_controlmode
-Rego 3000,thermostat,253,program,program,enum [prog 1\|prog 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
-Rego 3000,thermostat,253,tempautotemp,temporary set temperature automode,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
-Rego 3000,thermostat,253,remoteseltemp,temporary set temperature from remote,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_from_remote,number.thermostat_hc1_remoteseltemp
-Rego 3000,thermostat,253,fastheatup,fast heatup,uint (>=0<=100),%,true,number.thermostat_hc1_fast_heatup,number.thermostat_hc1_fastheatup
-Rego 3000,thermostat,253,switchonoptimization,switch-on optimization,boolean, ,true,switch.thermostat_hc1_switch-on_optimization,switch.thermostat_hc1_switchonoptimization
-Rego 3000,thermostat,253,reducemode,reduce mode,enum [outdoor\|room\|reduce], ,true,select.thermostat_hc1_reduce_mode,select.thermostat_hc1_reducemode
-Rego 3000,thermostat,253,noreducetemp,no reduce below temperature,int (>=-126<=126),C,true,number.thermostat_hc1_no_reduce_below_temperature,number.thermostat_hc1_noreducetemp
-Rego 3000,thermostat,253,reducetemp,off/reduce switch temperature,int (>=-126<=126),C,true,number.thermostat_hc1_off/reduce_switch_temperature,number.thermostat_hc1_reducetemp
-Rego 3000,thermostat,253,wwprio,dhw priority,boolean, ,true,switch.thermostat_hc1_dhw_priority,switch.thermostat_hc1_wwprio
+Rego 3000/UI800,thermostat,253,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
+Rego 3000/UI800,thermostat,253,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
+Rego 3000/UI800,thermostat,253,datetime,date/time,string, ,true,sensor.thermostat_date/time,sensor.thermostat_datetime
+Rego 3000/UI800,thermostat,253,intoffset,internal temperature offset,int (>=-12<=12),C,true,number.thermostat_internal_temperature_offset,number.thermostat_intoffset
+Rego 3000/UI800,thermostat,253,floordry,floor drying,enum [off\|start\|heat\|hold\|cool\|end], ,false,sensor.thermostat_floor_drying,sensor.thermostat_floordry
+Rego 3000/UI800,thermostat,253,dampedoutdoortemp,damped outdoor temperature,short (>=-3199<=3199),C,false,sensor.thermostat_damped_outdoor_temperature,sensor.thermostat_dampedoutdoortemp
+Rego 3000/UI800,thermostat,253,floordrytemp,floor drying temperature,uint (>=0<=254),C,false,sensor.thermostat_floor_drying_temperature,sensor.thermostat_floordrytemp
+Rego 3000/UI800,thermostat,253,building,building type,enum [light\|medium\|heavy], ,true,select.thermostat_building_type,select.thermostat_building
+Rego 3000/UI800,thermostat,253,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
+Rego 3000/UI800,thermostat,253,damping,damping outdoor temperature,boolean, ,true,switch.thermostat_damping_outdoor_temperature,switch.thermostat_damping
+Rego 3000/UI800,thermostat,253,wwsettemp,set temperature,uint (>=0<=254),C,true,number.thermostat_set_temperature,number.thermostat_wwsettemp
+Rego 3000/UI800,thermostat,253,wwmode,mode,enum [off\|normal\|comfort\|auto\|own prog\|eco], ,true,select.thermostat_mode,select.thermostat_wwmode
+Rego 3000/UI800,thermostat,253,wwsettemplow,set low temperature,uint (>=0<=254),C,true,number.thermostat_set_low_temperature,number.thermostat_wwsettemplow
+Rego 3000/UI800,thermostat,253,wwcircmode,circulation pump mode,enum [off\|on\|auto\|own prog], ,true,select.thermostat_circulation_pump_mode,select.thermostat_wwcircmode
+Rego 3000/UI800,thermostat,253,wwchargeduration,charge duration,uint (>=0<=3810),minutes,true,number.thermostat_charge_duration,number.thermostat_wwchargeduration
+Rego 3000/UI800,thermostat,253,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
+Rego 3000/UI800,thermostat,253,wwextra1,circuit 1 extra,uint (>=0<=254),C,false,sensor.thermostat_circuit_1_extra,sensor.thermostat_wwextra1
+Rego 3000/UI800,thermostat,253,wwextra2,circuit 2 extra,uint (>=0<=254),C,false,sensor.thermostat_circuit_2_extra,sensor.thermostat_wwextra2
+Rego 3000/UI800,thermostat,253,wwdisinfecting,disinfecting,boolean, ,true,switch.thermostat_disinfecting,switch.thermostat_wwdisinfecting
+Rego 3000/UI800,thermostat,253,wwdisinfectday,disinfection day,enum [mo\|tu\|we\|th\|fr\|sa\|su\|all], ,true,select.thermostat_disinfection_day,select.thermostat_wwdisinfectday
+Rego 3000/UI800,thermostat,253,wwdisinfecttime,disinfection time,uint (>=0<=1431),minutes,true,number.thermostat_disinfection_time,number.thermostat_wwdisinfecttime
+Rego 3000/UI800,thermostat,253,hybridstrategy,hybrid control strategy,enum [co2 optimized\|cost optimized\|outside temp switched\|co2 cost mix], ,true,select.thermostat_hybrid_control_strategy,select.thermostat_hybridstrategy
+Rego 3000/UI800,thermostat,253,switchovertemp,outside switchover temperature,int (>=-20<=20),C,true,number.thermostat_outside_switchover_temperature,number.thermostat_switchovertemp
+Rego 3000/UI800,thermostat,253,energycostratio,energy cost ratio,uint (>=0<=20), ,true,number.thermostat_energy_cost_ratio,number.thermostat_energycostratio
+Rego 3000/UI800,thermostat,253,fossilefactor,fossile energy factor,uint (>=0<=5), ,true,number.thermostat_fossile_energy_factor,number.thermostat_fossilefactor
+Rego 3000/UI800,thermostat,253,electricfactor,electric energy factor,uint (>=0<=5), ,true,number.thermostat_electric_energy_factor,number.thermostat_electricfactor
+Rego 3000/UI800,thermostat,253,delayboiler,delay boiler support,uint (>=5<=120),minutes,true,number.thermostat_delay_boiler_support,number.thermostat_delayboiler
+Rego 3000/UI800,thermostat,253,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,true,number.thermostat_temp_diff_boiler_support,number.thermostat_tempdiffboiler
+Rego 3000/UI800,thermostat,253,pvenableww,enable raise dhw,boolean, ,true,switch.thermostat_enable_raise_dhw,switch.thermostat_pvenableww
+Rego 3000/UI800,thermostat,253,pvraiseheat,raise heating with PV,int (>=0<=5),K,true,number.thermostat_raise_heating_with_PV,number.thermostat_pvraiseheat
+Rego 3000/UI800,thermostat,253,pvlowercool,lower cooling with PV,int (>=-5<=0),K,true,number.thermostat_lower_cooling_with_PV,number.thermostat_pvlowercool
+Rego 3000/UI800,thermostat,253,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
+Rego 3000/UI800,thermostat,253,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+Rego 3000/UI800,thermostat,253,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
+Rego 3000/UI800,thermostat,253,mode,mode,enum [manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+Rego 3000/UI800,thermostat,253,modetype,mode type,enum [eco\|comfort], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
+Rego 3000/UI800,thermostat,253,ecotemp,eco temperature,uint (>=0<=127),C,true,number.thermostat_hc1_eco_temperature,number.thermostat_hc1_ecotemp
+Rego 3000/UI800,thermostat,253,manualtemp,manual temperature,uint (>=0<=127),C,true,number.thermostat_hc1_manual_temperature,number.thermostat_hc1_manualtemp
+Rego 3000/UI800,thermostat,253,comforttemp,comfort temperature,uint (>=0<=127),C,true,number.thermostat_hc1_comfort_temperature,number.thermostat_hc1_comforttemp
+Rego 3000/UI800,thermostat,253,summertemp,summer temperature,uint (>=10<=30),C,true,number.thermostat_hc1_summer_temperature,number.thermostat_hc1_summertemp
+Rego 3000/UI800,thermostat,253,designtemp,design temperature,uint (>=0<=254),C,true,number.thermostat_hc1_design_temperature,number.thermostat_hc1_designtemp
+Rego 3000/UI800,thermostat,253,offsettemp,offset temperature,int (>=-126<=126),C,true,number.thermostat_hc1_offset_temperature,number.thermostat_hc1_offsettemp
+Rego 3000/UI800,thermostat,253,minflowtemp,min flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
+Rego 3000/UI800,thermostat,253,maxflowtemp,max flow temperature,uint (>=0<=254),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
+Rego 3000/UI800,thermostat,253,roominfluence,room influence,uint (>=0<=254),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
+Rego 3000/UI800,thermostat,253,roominflfactor,room influence factor,uint (>=0<=25), ,true,number.thermostat_hc1_room_influence_factor,number.thermostat_hc1_roominflfactor
+Rego 3000/UI800,thermostat,253,curroominfl,current room influence,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_influence,sensor.thermostat_hc1_curroominfl
+Rego 3000/UI800,thermostat,253,nofrostmode,nofrost mode,enum [room\|outdoor\|room outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+Rego 3000/UI800,thermostat,253,nofrosttemp,nofrost temperature,int (>=-126<=126),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
+Rego 3000/UI800,thermostat,253,targetflowtemp,target flow temperature,uint (>=0<=254),C,false,sensor.thermostat_hc1_target_flow_temperature,sensor.thermostat_hc1_targetflowtemp
+Rego 3000/UI800,thermostat,253,heatingtype,heating type,enum [off\|radiator\|convector\|floor], ,true,select.thermostat_hc1_heating_type,select.thermostat_hc1_heatingtype
+Rego 3000/UI800,thermostat,253,summersetmode,set summer mode,enum [summer\|auto\|winter], ,true,select.thermostat_hc1_set_summer_mode,select.thermostat_hc1_summersetmode
+Rego 3000/UI800,thermostat,253,hpoperatingmode,heatpump operating mode,enum [off\|auto\|heating\|cooling], ,true,select.thermostat_hc1_heatpump_operating_mode,select.thermostat_hc1_hpoperatingmode
+Rego 3000/UI800,thermostat,253,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
+Rego 3000/UI800,thermostat,253,hpoperatingstate,heatpump operating state,enum [heating\|off\|cooling], ,false,sensor.thermostat_hc1_heatpump_operating_state,sensor.thermostat_hc1_hpoperatingstate
+Rego 3000/UI800,thermostat,253,controlmode,control mode,enum [weather compensated\|outside basepoint\|n/a\|room\|power\|constant], ,true,select.thermostat_hc1_control_mode,select.thermostat_hc1_controlmode
+Rego 3000/UI800,thermostat,253,program,program,enum [prog 1\|prog 2], ,true,select.thermostat_hc1_program,select.thermostat_hc1_program
+Rego 3000/UI800,thermostat,253,tempautotemp,temporary set temperature automode,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_automode,number.thermostat_hc1_tempautotemp
+Rego 3000/UI800,thermostat,253,remoteseltemp,temporary set temperature from remote,int (>=-1<=30),C,true,number.thermostat_hc1_temporary_set_temperature_from_remote,number.thermostat_hc1_remoteseltemp
+Rego 3000/UI800,thermostat,253,fastheatup,fast heatup,uint (>=0<=100),%,true,number.thermostat_hc1_fast_heatup,number.thermostat_hc1_fastheatup
+Rego 3000/UI800,thermostat,253,switchonoptimization,switch-on optimization,boolean, ,true,switch.thermostat_hc1_switch-on_optimization,switch.thermostat_hc1_switchonoptimization
+Rego 3000/UI800,thermostat,253,reducemode,reduce mode,enum [outdoor\|room\|reduce], ,true,select.thermostat_hc1_reduce_mode,select.thermostat_hc1_reducemode
+Rego 3000/UI800,thermostat,253,noreducetemp,no reduce below temperature,int (>=-126<=126),C,true,number.thermostat_hc1_no_reduce_below_temperature,number.thermostat_hc1_noreducetemp
+Rego 3000/UI800,thermostat,253,reducetemp,off/reduce switch temperature,int (>=-126<=126),C,true,number.thermostat_hc1_off/reduce_switch_temperature,number.thermostat_hc1_reducetemp
+Rego 3000/UI800,thermostat,253,wwprio,dhw priority,boolean, ,true,switch.thermostat_hc1_dhw_priority,switch.thermostat_hc1_wwprio
 ES72/RC20,thermostat,66,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 ES72/RC20,thermostat,66,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 ES72/RC20,thermostat,66,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 ES72/RC20,thermostat,66,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
 ES72/RC20,thermostat,66,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 ES72/RC20,thermostat,66,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
-ES72/RC20,thermostat,66,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+ES72/RC20,thermostat,66,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
+ES72/RC20,thermostat,66,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 ES72/RC20,thermostat,66,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 ES72/RC20,thermostat,66,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
 ES72/RC20,thermostat,66,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
@@ -3161,6 +3315,7 @@ ES73,thermostat,76,wwholidays,holiday dates,string, ,true,sensor.thermostat_holi
 ES73,thermostat,76,wwvacations,vacation dates,string, ,true,sensor.thermostat_vacation_dates,sensor.thermostat_wwvacations
 ES73,thermostat,76,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 ES73,thermostat,76,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+ES73,thermostat,76,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 ES73,thermostat,76,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 ES73,thermostat,76,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 ES73,thermostat,76,daytemp,day temperature,uint (>=5<=30),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
@@ -3173,7 +3328,7 @@ ES73,thermostat,76,summertemp,summer temperature,uint (>=9<=25),C,true,number.th
 ES73,thermostat,76,summermode,summer mode,enum [winter\|summer], ,false,sensor.thermostat_hc1_summer_mode,sensor.thermostat_hc1_summermode
 ES73,thermostat,76,holidaymode,holiday mode,boolean, ,false,binary_sensor.thermostat_hc1_holiday_mode,binary_sensor.thermostat_hc1_holidaymode
 ES73,thermostat,76,nofrosttemp,nofrost temperature,int (>=-20<=10),C,true,number.thermostat_hc1_nofrost_temperature,number.thermostat_hc1_nofrosttemp
-ES73,thermostat,76,nofrostmode,nofrost mode,enum [off\|room\|outdoor], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
+ES73,thermostat,76,nofrostmode,nofrost mode,enum [off\|outdoor\|room], ,true,select.thermostat_hc1_nofrost_mode,select.thermostat_hc1_nofrostmode
 ES73,thermostat,76,roominfluence,room influence,uint (>=0<=10),C,true,number.thermostat_hc1_room_influence,number.thermostat_hc1_roominfluence
 ES73,thermostat,76,minflowtemp,min flow temperature,uint (>=5<=70),C,true,number.thermostat_hc1_min_flow_temperature,number.thermostat_hc1_minflowtemp
 ES73,thermostat,76,maxflowtemp,max flow temperature,uint (>=30<=90),C,true,number.thermostat_hc1_max_flow_temperature,number.thermostat_hc1_maxflowtemp
@@ -3202,7 +3357,8 @@ ES72/RC20,thermostat,113,datetime,date/time,string, ,false,sensor.thermostat_dat
 ES72/RC20,thermostat,113,minexttemp,minimal external temperature,int (>=-126<=126),C,true,number.thermostat_minimal_external_temperature,number.thermostat_minexttemp
 ES72/RC20,thermostat,113,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 ES72/RC20,thermostat,113,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
-ES72/RC20,thermostat,113,mode,mode,enum [off\|manual\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
+ES72/RC20,thermostat,113,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
+ES72/RC20,thermostat,113,mode,mode,enum [night\|day\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 ES72/RC20,thermostat,113,modetype,mode type,enum [night\|day], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 ES72/RC20,thermostat,113,daytemp,day temperature,uint (>=0<=127),C,true,number.thermostat_hc1_day_temperature,number.thermostat_hc1_daytemp
 ES72/RC20,thermostat,113,nighttemp,night temperature,uint (>=0<=127),C,true,number.thermostat_hc1_night_temperature,number.thermostat_hc1_nighttemp
@@ -3227,6 +3383,7 @@ FW100,thermostat,105,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FW100,thermostat,105,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FW100,thermostat,105,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FW100,thermostat,105,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FW100,thermostat,105,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 FW100,thermostat,105,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 FW100,thermostat,105,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 FW100,thermostat,105,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
@@ -3250,6 +3407,7 @@ FW200,thermostat,106,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FW200,thermostat,106,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FW200,thermostat,106,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FW200,thermostat,106,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FW200,thermostat,106,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 FW200,thermostat,106,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 FW200,thermostat,106,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 FW200,thermostat,106,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
@@ -3273,6 +3431,7 @@ FR100,thermostat,107,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FR100,thermostat,107,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FR100,thermostat,107,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FR100,thermostat,107,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FR100,thermostat,107,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 FR100,thermostat,107,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 FR100,thermostat,107,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 FR100,thermostat,107,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
@@ -3296,6 +3455,7 @@ FR110,thermostat,108,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FR110,thermostat,108,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FR110,thermostat,108,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FR110,thermostat,108,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FR110,thermostat,108,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 FR110,thermostat,108,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 FR110,thermostat,108,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 FR110,thermostat,108,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
@@ -3319,6 +3479,7 @@ FB10,thermostat,109,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tru
 FB10,thermostat,109,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FB10,thermostat,109,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FB10,thermostat,109,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FB10,thermostat,109,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 FB10,thermostat,109,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 FB10,thermostat,109,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 FB10,thermostat,109,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
@@ -3342,6 +3503,7 @@ FB100,thermostat,110,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FB100,thermostat,110,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FB100,thermostat,110,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FB100,thermostat,110,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FB100,thermostat,110,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 FB100,thermostat,110,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 FB100,thermostat,110,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 FB100,thermostat,110,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
@@ -3365,6 +3527,7 @@ FR10,thermostat,111,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tru
 FR10,thermostat,111,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FR10,thermostat,111,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FR10,thermostat,111,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FR10,thermostat,111,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 FR10,thermostat,111,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 FR10,thermostat,111,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 FR10,thermostat,111,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
@@ -3388,6 +3551,7 @@ FW500,thermostat,116,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FW500,thermostat,116,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FW500,thermostat,116,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FW500,thermostat,116,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FW500,thermostat,116,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 FW500,thermostat,116,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 FW500,thermostat,116,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 FW500,thermostat,116,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
@@ -3411,6 +3575,7 @@ FR50,thermostat,147,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tru
 FR50,thermostat,147,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FR50,thermostat,147,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FR50,thermostat,147,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FR50,thermostat,147,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 FR50,thermostat,147,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 FR50,thermostat,147,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 FR50,thermostat,147,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
@@ -3434,6 +3599,7 @@ FR120,thermostat,191,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FR120,thermostat,191,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FR120,thermostat,191,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FR120,thermostat,191,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FR120,thermostat,191,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 FR120,thermostat,191,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 FR120,thermostat,191,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 FR120,thermostat,191,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
@@ -3457,6 +3623,7 @@ FW120,thermostat,192,tempdiffboiler,temp diff boiler support,uint (>=1<=99),C,tr
 FW120,thermostat,192,wwcharge,charge,boolean, ,true,switch.thermostat_charge,switch.thermostat_wwcharge
 FW120,thermostat,192,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 FW120,thermostat,192,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+FW120,thermostat,192,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 FW120,thermostat,192,mode,mode,enum [nofrost\|eco\|heat\|auto], ,true,select.thermostat_hc1_mode,select.thermostat_hc1_mode
 FW120,thermostat,192,modetype,mode type,enum [nofrost\|eco\|heat], ,false,sensor.thermostat_hc1_mode_type,sensor.thermostat_hc1_modetype
 FW120,thermostat,192,heattemp,heat temperature,uint (>=0<=127),C,true,number.thermostat_hc1_heat_temperature,number.thermostat_hc1_heattemp
@@ -3472,32 +3639,35 @@ RT800,thermostat,3,lastcode,last error code,string, ,false,sensor.thermostat_las
 RT800,thermostat,3,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 RT800,thermostat,3,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RT800,thermostat,3,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+RT800,thermostat,3,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
 RC100H,thermostat,200,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
 RC100H,thermostat,200,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
 RC100H,thermostat,200,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
 RC100H,thermostat,200,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
 RC100H,thermostat,200,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
-TR120RF,thermostat,249,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
-TR120RF,thermostat,249,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
-TR120RF,thermostat,249,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
-TR120RF,thermostat,249,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
-TR120RF,thermostat,249,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
-MM10,mixer,69,flowtemphc,flow temperature (TC1),ushort (>=0<=3199),C,false,sensor.mixer_wwc4_flow_temperature_(TC1),sensor.mixer_wwc4_flowtemphc
-MM10,mixer,69,valvestatus,mixing valve actuator (VC1),int (>=-100<=100),%,false,sensor.mixer_wwc4_mixing_valve_actuator_(VC1),sensor.mixer_wwc4_valvestatus
-MM10,mixer,69,flowsettemp,setpoint flow temperature,uint (>=0<=254),C,true,number.mixer_wwc4_setpoint_flow_temperature,number.mixer_wwc4_flowsettemp
-MM10,mixer,69,pumpstatus,pump status (PC1),boolean, ,true,switch.mixer_wwc4_pump_status_(PC1),switch.mixer_wwc4_pumpstatus
-MM10,mixer,69,activated,activated,boolean, ,true,switch.mixer_wwc4_activated,switch.mixer_wwc4_activated
-MM10,mixer,69,valvesettime,time to set valve,uint (>=10<=120),seconds,true,number.mixer_wwc4_time_to_set_valve,number.mixer_wwc4_valvesettime
-IPM,mixer,100,flowtemphc,flow temperature (TC1),ushort (>=0<=3199),C,false,sensor.mixer_wwc4_flow_temperature_(TC1),sensor.mixer_wwc4_flowtemphc
-IPM,mixer,100,valvestatus,mixing valve actuator (VC1),int (>=-100<=100),%,false,sensor.mixer_wwc4_mixing_valve_actuator_(VC1),sensor.mixer_wwc4_valvestatus
-IPM,mixer,100,flowsettemp,setpoint flow temperature,uint (>=0<=254),C,true,number.mixer_wwc4_setpoint_flow_temperature,number.mixer_wwc4_flowsettemp
-IPM,mixer,100,pumpstatus,pump status (PC1),boolean, ,true,switch.mixer_wwc4_pump_status_(PC1),switch.mixer_wwc4_pumpstatus
-IPM,mixer,100,flowtempvf,flow temperature in header (T0/Vf),ushort (>=0<=3199),C,false,sensor.mixer_wwc4_flow_temperature_in_header_(T0/Vf),sensor.mixer_wwc4_flowtempvf
-IPM,mixer,102,flowtemphc,flow temperature (TC1),ushort (>=0<=3199),C,false,sensor.mixer_wwc4_flow_temperature_(TC1),sensor.mixer_wwc4_flowtemphc
-IPM,mixer,102,valvestatus,mixing valve actuator (VC1),int (>=-100<=100),%,false,sensor.mixer_wwc4_mixing_valve_actuator_(VC1),sensor.mixer_wwc4_valvestatus
-IPM,mixer,102,flowsettemp,setpoint flow temperature,uint (>=0<=254),C,true,number.mixer_wwc4_setpoint_flow_temperature,number.mixer_wwc4_flowsettemp
-IPM,mixer,102,pumpstatus,pump status (PC1),boolean, ,true,switch.mixer_wwc4_pump_status_(PC1),switch.mixer_wwc4_pumpstatus
-IPM,mixer,102,flowtempvf,flow temperature in header (T0/Vf),ushort (>=0<=3199),C,false,sensor.mixer_wwc4_flow_temperature_in_header_(T0/Vf),sensor.mixer_wwc4_flowtempvf
+RC100H,thermostat,200,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
+TR120RF/CR20RF,thermostat,249,errorcode,error code,string, ,false,sensor.thermostat_error_code,sensor.thermostat_errorcode
+TR120RF/CR20RF,thermostat,249,lastcode,last error code,string, ,false,sensor.thermostat_last_error_code,sensor.thermostat_lastcode
+TR120RF/CR20RF,thermostat,249,datetime,date/time,string, ,false,sensor.thermostat_date/time,sensor.thermostat_datetime
+TR120RF/CR20RF,thermostat,249,seltemp,selected room temperature,short (>=0<=30),C,true,number.thermostat_hc1_selected_room_temperature,number.thermostat_hc1_seltemp
+TR120RF/CR20RF,thermostat,249,currtemp,current room temperature,short (>=-3199<=3199),C,false,sensor.thermostat_hc1_current_room_temperature,sensor.thermostat_hc1_currtemp
+TR120RF/CR20RF,thermostat,249,haclimate,Discovery current room temperature,enum [selTemp\|roomTemp] (>=5<=30), ,false,sensor.thermostat_hc1_Discovery_current_room_temperature,sensor.thermostat_hc1_haclimate
+MM10,mixer,69,flowtemphc,flow temperature (TC1),ushort (>=0<=3199),C,false,sensor.mixer_hc1_flow_temperature_(TC1),sensor.mixer_hc1_flowtemphc
+MM10,mixer,69,valvestatus,mixing valve actuator (VC1),int (>=-100<=100),%,false,sensor.mixer_hc1_mixing_valve_actuator_(VC1),sensor.mixer_hc1_valvestatus
+MM10,mixer,69,flowsettemp,setpoint flow temperature,uint (>=0<=254),C,true,number.mixer_hc1_setpoint_flow_temperature,number.mixer_hc1_flowsettemp
+MM10,mixer,69,pumpstatus,pump status (PC1),boolean, ,true,switch.mixer_hc1_pump_status_(PC1),switch.mixer_hc1_pumpstatus
+MM10,mixer,69,activated,activated,boolean, ,true,switch.mixer_hc1_activated,switch.mixer_hc1_activated
+MM10,mixer,69,valvesettime,time to set valve,uint (>=10<=120),seconds,true,number.mixer_hc1_time_to_set_valve,number.mixer_hc1_valvesettime
+IPM,mixer,100,flowtemphc,flow temperature (TC1),ushort (>=0<=3199),C,false,sensor.mixer_hc1_flow_temperature_(TC1),sensor.mixer_hc1_flowtemphc
+IPM,mixer,100,valvestatus,mixing valve actuator (VC1),int (>=-100<=100),%,false,sensor.mixer_hc1_mixing_valve_actuator_(VC1),sensor.mixer_hc1_valvestatus
+IPM,mixer,100,flowsettemp,setpoint flow temperature,uint (>=0<=254),C,true,number.mixer_hc1_setpoint_flow_temperature,number.mixer_hc1_flowsettemp
+IPM,mixer,100,pumpstatus,pump status (PC1),boolean, ,true,switch.mixer_hc1_pump_status_(PC1),switch.mixer_hc1_pumpstatus
+IPM,mixer,100,flowtempvf,flow temperature in header (T0/Vf),ushort (>=0<=3199),C,false,sensor.mixer_hc1_flow_temperature_in_header_(T0/Vf),sensor.mixer_hc1_flowtempvf
+IPM,mixer,102,flowtemphc,flow temperature (TC1),ushort (>=0<=3199),C,false,sensor.mixer_hc1_flow_temperature_(TC1),sensor.mixer_hc1_flowtemphc
+IPM,mixer,102,valvestatus,mixing valve actuator (VC1),int (>=-100<=100),%,false,sensor.mixer_hc1_mixing_valve_actuator_(VC1),sensor.mixer_hc1_valvestatus
+IPM,mixer,102,flowsettemp,setpoint flow temperature,uint (>=0<=254),C,true,number.mixer_hc1_setpoint_flow_temperature,number.mixer_hc1_flowsettemp
+IPM,mixer,102,pumpstatus,pump status (PC1),boolean, ,true,switch.mixer_hc1_pump_status_(PC1),switch.mixer_hc1_pumpstatus
+IPM,mixer,102,flowtempvf,flow temperature in header (T0/Vf),ushort (>=0<=3199),C,false,sensor.mixer_hc1_flow_temperature_in_header_(T0/Vf),sensor.mixer_hc1_flowtempvf
 MM50,mixer,159,flowtemphc,flow temperature (TC1),ushort (>=0<=3199),C,false,sensor.mixer_hc1_flow_temperature_(TC1),sensor.mixer_hc1_flowtemphc
 MM50,mixer,159,valvestatus,mixing valve actuator (VC1),int (>=-100<=100),%,false,sensor.mixer_hc1_mixing_valve_actuator_(VC1),sensor.mixer_hc1_valvestatus
 MM50,mixer,159,flowsettemp,setpoint flow temperature,uint (>=0<=254),C,true,number.mixer_hc1_setpoint_flow_temperature,number.mixer_hc1_flowsettemp
@@ -3583,6 +3753,7 @@ SM50,solar,162,cyl2bottomtemp,second cylinder bottom temperature (TS5),short (>=
 SM50,solar,162,heatexchangertemp,heat exchanger temperature (TS6),short (>=-3199<=3199),C,false,sensor.solar_heat_exchanger_temperature_(TS6),sensor.solar_heatexchangertemp
 SM50,solar,162,cylpumpmod,cylinder pump modulation (PS5),uint (>=0<=100),%,false,sensor.solar_cylinder_pump_modulation_(PS5),sensor.solar_cylpumpmod
 SM50,solar,162,valvestatus,valve status,boolean, ,false,binary_sensor.solar_valve_status,binary_sensor.solar_valvestatus
+SM50,solar,162,vs1status,valve status VS1,boolean, ,false,binary_sensor.solar_valve_status_VS1,binary_sensor.solar_vs1status
 SM50,solar,162,cylheated,cyl heated,boolean, ,false,binary_sensor.solar_cyl_heated,binary_sensor.solar_cylheated
 SM50,solar,162,collectorshutdown,collector shutdown,boolean, ,false,binary_sensor.solar_collector_shutdown,binary_sensor.solar_collectorshutdown
 SM50,solar,162,collectormaxtemp,maximum collector temperature,uint (>=0<=254),C,true,number.solar_maximum_collector_temperature,number.solar_collectormaxtemp
@@ -3638,6 +3809,7 @@ SM100/MS100,solar,163,cyl2bottomtemp,second cylinder bottom temperature (TS5),sh
 SM100/MS100,solar,163,heatexchangertemp,heat exchanger temperature (TS6),short (>=-3199<=3199),C,false,sensor.solar_heat_exchanger_temperature_(TS6),sensor.solar_heatexchangertemp
 SM100/MS100,solar,163,cylpumpmod,cylinder pump modulation (PS5),uint (>=0<=100),%,false,sensor.solar_cylinder_pump_modulation_(PS5),sensor.solar_cylpumpmod
 SM100/MS100,solar,163,valvestatus,valve status,boolean, ,false,binary_sensor.solar_valve_status,binary_sensor.solar_valvestatus
+SM100/MS100,solar,163,vs1status,valve status VS1,boolean, ,false,binary_sensor.solar_valve_status_VS1,binary_sensor.solar_vs1status
 SM100/MS100,solar,163,cylheated,cyl heated,boolean, ,false,binary_sensor.solar_cyl_heated,binary_sensor.solar_cylheated
 SM100/MS100,solar,163,collectorshutdown,collector shutdown,boolean, ,false,binary_sensor.solar_collector_shutdown,binary_sensor.solar_collectorshutdown
 SM100/MS100,solar,163,collectormaxtemp,maximum collector temperature,uint (>=0<=254),C,true,number.solar_maximum_collector_temperature,number.solar_collectormaxtemp
@@ -3693,6 +3865,7 @@ SM200/MS200,solar,164,cyl2bottomtemp,second cylinder bottom temperature (TS5),sh
 SM200/MS200,solar,164,heatexchangertemp,heat exchanger temperature (TS6),short (>=-3199<=3199),C,false,sensor.solar_heat_exchanger_temperature_(TS6),sensor.solar_heatexchangertemp
 SM200/MS200,solar,164,cylpumpmod,cylinder pump modulation (PS5),uint (>=0<=100),%,false,sensor.solar_cylinder_pump_modulation_(PS5),sensor.solar_cylpumpmod
 SM200/MS200,solar,164,valvestatus,valve status,boolean, ,false,binary_sensor.solar_valve_status,binary_sensor.solar_valvestatus
+SM200/MS200,solar,164,vs1status,valve status VS1,boolean, ,false,binary_sensor.solar_valve_status_VS1,binary_sensor.solar_vs1status
 SM200/MS200,solar,164,cylheated,cyl heated,boolean, ,false,binary_sensor.solar_cyl_heated,binary_sensor.solar_cylheated
 SM200/MS200,solar,164,collectorshutdown,collector shutdown,boolean, ,false,binary_sensor.solar_collector_shutdown,binary_sensor.solar_collectorshutdown
 SM200/MS200,solar,164,collectormaxtemp,maximum collector temperature,uint (>=0<=254),C,true,number.solar_maximum_collector_temperature,number.solar_collectormaxtemp
@@ -3728,9 +3901,9 @@ SM200/MS200,solar,164,swapflowtemp,swap flow temperature (TS14),ushort (>=0<=319
 SM200/MS200,solar,164,swaprettemp,swap return temperature (TS15),ushort (>=0<=3199),C,false,sensor.solar_swap_return_temperature_(TS15),sensor.solar_swaprettemp
 HP Module,heatpump,252,airhumidity,relative air humidity,uint (>=0<=100),%,false,sensor.heatpump_relative_air_humidity,sensor.heatpump_airhumidity
 HP Module,heatpump,252,dewtemperature,dew point temperature,uint (>=0<=254),C,false,sensor.heatpump_dew_point_temperature,sensor.heatpump_dewtemperature
-HP Module,heatpump,252,curflowtemp,current flow temperature,uint (>=0<=254),C,false,sensor.heatpump_current_flow_temperature,sensor.heatpump_curflowtemp
-HP Module,heatpump,252,rettemp,return temperature,uint (>=0<=254),C,false,sensor.heatpump_return_temperature,sensor.heatpump_rettemp
-HP Module,heatpump,252,sysrettemp,system return temperature,uint (>=0<=254),C,false,sensor.heatpump_system_return_temperature,sensor.heatpump_sysrettemp
+HP Module,heatpump,252,curflowtemp,current flow temperature,short (>=-3199<=3199),C,false,sensor.heatpump_current_flow_temperature,sensor.heatpump_curflowtemp
+HP Module,heatpump,252,rettemp,return temperature,short (>=-3199<=3199),C,false,sensor.heatpump_return_temperature,sensor.heatpump_rettemp
+HP Module,heatpump,252,sysrettemp,system return temperature,short (>=-3199<=3199),C,false,sensor.heatpump_system_return_temperature,sensor.heatpump_sysrettemp
 HP Module,heatpump,252,hpta4,drain pan temp (TA4),short (>=-3199<=3199),C,false,sensor.heatpump_drain_pan_temp_(TA4),sensor.heatpump_hpta4
 HP Module,heatpump,252,hptr1,compressor temperature (TR1),short (>=-3199<=3199),C,false,sensor.heatpump_compressor_temperature_(TR1),sensor.heatpump_hptr1
 HP Module,heatpump,252,hptr3,refrigerant temperature liquid side (condenser output) (TR3),short (>=-3199<=3199),C,false,sensor.heatpump_refrigerant_temperature_liquid_side_(condenser_output)_(TR3),sensor.heatpump_hptr3
@@ -3740,6 +3913,8 @@ HP Module,heatpump,252,hptr6,compressor outlet temperature (TR6),short (>=-3199<
 HP Module,heatpump,252,hptl2,air inlet temperature (TL2),short (>=-3199<=3199),C,false,sensor.heatpump_air_inlet_temperature_(TL2),sensor.heatpump_hptl2
 HP Module,heatpump,252,hppl1,low pressure side temperature (PL1),short (>=-3199<=3199),C,false,sensor.heatpump_low_pressure_side_temperature_(PL1),sensor.heatpump_hppl1
 HP Module,heatpump,252,hpph1,high pressure side temperature (PH1),short (>=-3199<=3199),C,false,sensor.heatpump_high_pressure_side_temperature_(PH1),sensor.heatpump_hpph1
+HP Module,heatpump,252,heatingpumpmod,heating pump modulation,uint (>=0<=100),%,false,sensor.heatpump_heating_pump_modulation,sensor.heatpump_heatingpumpmod
+HP Module,heatpump,252,hpcompspd,compressor speed,uint (>=0<=100),%,false,sensor.heatpump_compressor_speed,sensor.heatpump_hpcompspd
 HP Module,heatpump,252,hybridstrategy,hybrid control strategy,enum [cost optimized\|co2 optimized\|outside temperature alt.\|outside temperature parallel\|heatpump prefered\|boiler only], ,true,select.heatpump_hybrid_control_strategy,select.heatpump_hybridstrategy
 HP Module,heatpump,252,lownoisemode,low noise mode,enum [off\|reduced output\|switch off hp\|perm. reduced], ,true,select.heatpump_low_noise_mode,select.heatpump_lownoisemode
 HP Module,heatpump,252,lownoisestart,low noise starttime,uint (>=0<=23), ,true,number.heatpump_low_noise_starttime,number.heatpump_lownoisestart
@@ -3757,9 +3932,9 @@ HP Module,heatpump,252,heatdrainpan,heat drain pan,boolean, ,true,switch.heatpum
 HP Module,heatpump,252,heatcable,heating cable,boolean, ,true,switch.heatpump_heating_cable,switch.heatpump_heatcable
 Hybrid Manager HM200,heatpump,248,airhumidity,relative air humidity,uint (>=0<=100),%,false,sensor.heatpump_relative_air_humidity,sensor.heatpump_airhumidity
 Hybrid Manager HM200,heatpump,248,dewtemperature,dew point temperature,uint (>=0<=254),C,false,sensor.heatpump_dew_point_temperature,sensor.heatpump_dewtemperature
-Hybrid Manager HM200,heatpump,248,curflowtemp,current flow temperature,uint (>=0<=254),C,false,sensor.heatpump_current_flow_temperature,sensor.heatpump_curflowtemp
-Hybrid Manager HM200,heatpump,248,rettemp,return temperature,uint (>=0<=254),C,false,sensor.heatpump_return_temperature,sensor.heatpump_rettemp
-Hybrid Manager HM200,heatpump,248,sysrettemp,system return temperature,uint (>=0<=254),C,false,sensor.heatpump_system_return_temperature,sensor.heatpump_sysrettemp
+Hybrid Manager HM200,heatpump,248,curflowtemp,current flow temperature,short (>=-3199<=3199),C,false,sensor.heatpump_current_flow_temperature,sensor.heatpump_curflowtemp
+Hybrid Manager HM200,heatpump,248,rettemp,return temperature,short (>=-3199<=3199),C,false,sensor.heatpump_return_temperature,sensor.heatpump_rettemp
+Hybrid Manager HM200,heatpump,248,sysrettemp,system return temperature,short (>=-3199<=3199),C,false,sensor.heatpump_system_return_temperature,sensor.heatpump_sysrettemp
 Hybrid Manager HM200,heatpump,248,hpta4,drain pan temp (TA4),short (>=-3199<=3199),C,false,sensor.heatpump_drain_pan_temp_(TA4),sensor.heatpump_hpta4
 Hybrid Manager HM200,heatpump,248,hptr1,compressor temperature (TR1),short (>=-3199<=3199),C,false,sensor.heatpump_compressor_temperature_(TR1),sensor.heatpump_hptr1
 Hybrid Manager HM200,heatpump,248,hptr3,refrigerant temperature liquid side (condenser output) (TR3),short (>=-3199<=3199),C,false,sensor.heatpump_refrigerant_temperature_liquid_side_(condenser_output)_(TR3),sensor.heatpump_hptr3
@@ -3769,6 +3944,8 @@ Hybrid Manager HM200,heatpump,248,hptr6,compressor outlet temperature (TR6),shor
 Hybrid Manager HM200,heatpump,248,hptl2,air inlet temperature (TL2),short (>=-3199<=3199),C,false,sensor.heatpump_air_inlet_temperature_(TL2),sensor.heatpump_hptl2
 Hybrid Manager HM200,heatpump,248,hppl1,low pressure side temperature (PL1),short (>=-3199<=3199),C,false,sensor.heatpump_low_pressure_side_temperature_(PL1),sensor.heatpump_hppl1
 Hybrid Manager HM200,heatpump,248,hpph1,high pressure side temperature (PH1),short (>=-3199<=3199),C,false,sensor.heatpump_high_pressure_side_temperature_(PH1),sensor.heatpump_hpph1
+Hybrid Manager HM200,heatpump,248,heatingpumpmod,heating pump modulation,uint (>=0<=100),%,false,sensor.heatpump_heating_pump_modulation,sensor.heatpump_heatingpumpmod
+Hybrid Manager HM200,heatpump,248,hpcompspd,compressor speed,uint (>=0<=100),%,false,sensor.heatpump_compressor_speed,sensor.heatpump_hpcompspd
 Hybrid Manager HM200,heatpump,248,hybridstrategy,hybrid control strategy,enum [cost optimized\|co2 optimized\|outside temperature alt.\|outside temperature parallel\|heatpump prefered\|boiler only], ,true,select.heatpump_hybrid_control_strategy,select.heatpump_hybridstrategy
 Hybrid Manager HM200,heatpump,248,lownoisemode,low noise mode,enum [off\|reduced output\|switch off hp\|perm. reduced], ,true,select.heatpump_low_noise_mode,select.heatpump_lownoisemode
 Hybrid Manager HM200,heatpump,248,lownoisestart,low noise starttime,uint (>=0<=23), ,true,number.heatpump_low_noise_starttime,number.heatpump_lownoisestart
@@ -3788,3 +3965,11 @@ WM10,switch,71,activated,activated,boolean, ,false,binary_sensor.switch_activate
 WM10,switch,71,flowtemphc,flow temperature (TC1),ushort (>=0<=3199),C,false,sensor.switch_flow_temperature_(TC1),sensor.switch_flowtemphc
 WM10,switch,71,status,status,int (>=-126<=126), ,false,sensor.switch_status,sensor.switch_status
 Rego 3000,controller,240,datetime,date/time,string, ,false,sensor.controller_date/time,sensor.controller_datetime
+Logavent HRV176,ventilation,231,outfresh,outdoor fresh air,short (>=-3199<=3199),C,false,sensor.ventilation_outdoor_fresh_air,sensor.ventilation_outfresh
+Logavent HRV176,ventilation,231,infresh,indoor fresh air,short (>=-3199<=3199),C,false,sensor.ventilation_indoor_fresh_air,sensor.ventilation_infresh
+Logavent HRV176,ventilation,231,outexhaust,outdoor exhaust air,short (>=-3199<=3199),C,false,sensor.ventilation_outdoor_exhaust_air,sensor.ventilation_outexhaust
+Logavent HRV176,ventilation,231,inexhaust,indoor exhaust air,short (>=-3199<=3199),C,false,sensor.ventilation_indoor_exhaust_air,sensor.ventilation_inexhaust
+Logavent HRV176,ventilation,231,ventinspeed,in blower speed,uint (>=0<=100),%,false,sensor.ventilation_in_blower_speed,sensor.ventilation_ventinspeed
+Logavent HRV176,ventilation,231,ventoutspeed,out blower speed,uint (>=0<=100),%,false,sensor.ventilation_out_blower_speed,sensor.ventilation_ventoutspeed
+Logavent HRV176,ventilation,231,ventinspeed,in blower speed,enum [auto\|off\|L1\|L2\|L3\|L4\|demand\|sleep\|intense\|bypass\|party\|fireplace], ,true,select.ventilation_in_blower_speed,select.ventilation_ventinspeed
+Logavent HRV176,ventilation,231,airquality,air quality (voc),ushort (>=0<=3199), ,false,sensor.ventilation_air_quality_(voc),sensor.ventilation_airquality
