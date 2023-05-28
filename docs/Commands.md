@@ -15,7 +15,7 @@ First some important definitions.
     - `<device>` is the short-name of either
         - an EMS Device such as `boiler`, `thermostat`, `mixer`, `heatpump`, `solar` or `gateway`
         - the EMS-ESP system itself as `system`
-        - the Dallas temperature sensors as `dallassensor`
+        - the Dallas temperature sensors as `temperaturesensor`
     - `<command>` is the name of either
         - a generic command, or
         - an EMS device entity also referred to as an `<entity>`. See the [Supported Devices](All-Devices) page for the complete list
@@ -94,7 +94,7 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 
 ### Fetching Dallas temperature sensor information
 
-The URL path is `http://<hostname>/api/dallassensor/`
+The URL path is `http://<hostname>/api/temperaturesensor/`
 
 <!-- prettier-ignore -->
 | endpoint | HTTP method | action | authentication required? | body |

@@ -25,8 +25,8 @@ The table below list the topics being published. The format shown in the table b
 | `mixer_data_hc<id>` `mixer_data_wwc<id>` | single | data from The Mixer in single format for each of its Heating Circuits where `<id>` is circuit number | `{"type":"hc", "flowTemp":55, "pumpStatus":"on", "valveStatus":55}` |
 | `shower_data` | | the shower timer and alert toggles plus the duration of the last shower taken | `{"timer":"0","alert":"0","duration":"4 minutes 32 seconds"}` |
 | `solar_data` | all | all data from the Solar Module (if connected) | `{ "collectorTemp": 15.8, "tankBottomTemp": 29.8, "solarPumpModulation": 0, "cylinderPumpModulation": 0, "solarPump": "off", "valveStatus": "off", "tankHeated": "off", "collectorShutdown": "off", "energyLastHour": 0, "energyToday": 1792, "energyTotal": 2784.7 }` |
-| `dallassensor_data` | nested| temperature readings from any external Dallas sensors attached to the ESP | `{"28-233D-9497-0C03":{"name":"zolder32","temp":19.6}}` |
-| `dallassensor_data` | single | temperature readings from Dallas sensor in single format with unique sensor id | `{"28-FF47-AC90-1604":20.94}` |
+| `temperaturesensor_data` | nested| temperature readings from any external Dallas temperature sensors attached to the ESP | `{"28-233D-9497-0C03":{"name":"zolder32","temp":19.6}}` |
+| `temperaturesensor_data` | single | temperature readings from Dallas temperature sensor in single format with unique sensor id | `{"28-FF47-AC90-1604":20.94}` |
 | `analogsensor_data` | nested | readings from external analog sensors | `{"31":{"name":"analog31","value":0}}` |
 
 # Using MQTT to send commands
