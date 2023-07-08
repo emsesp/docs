@@ -169,3 +169,7 @@ An alternative option without using persistance on the MQTT server is to tell EM
 ### HA is showing errors like _"Received message on illegal discovery topic"_ or _"Template variable warning: 'dict object' has no attribute..."_
 
 This could happen when either upgrading from an earlier EMS-ESP version and some of the device entity names may have changed. Use a tool like MQTTExplorer to remove all the `homeassistant/sensor/ems-esp/*` and `homeassistant/*/ems-esp/*` topics from your MQTT broker and restart EMS-ESP.
+
+### HA has duplicate entities, prefixed with \_2
+
+See @swa72's fix [here](https://github.com/swa72/home-assistant/blob/main/README-mqtt.md).
