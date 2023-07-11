@@ -150,7 +150,7 @@ You should see a log statement pop in the console like `[thermostat] Setting the
 
 ### Integration with Home Assistant breaks when MQTT broker restarts
 
-The integration with Home Assistant uses MQTT Discovery which are 'retained' topics in the MQTT broker. If the MQTT service stops and restarts and the MQTT server is not saving the topics in a database then these messages will obviously be lost and the integration with Home Assistant removed. To solve this add persistance to your MQTT service. For example using Mosquitto a .conf file would look like:
+The integration with Home Assistant uses MQTT Discovery which are 'retained' topics in the MQTT broker. If the MQTT service stops and restarts and the MQTT server is not saving the topics in a database then these messages will obviously be lost and the integration with Home Assistant removed. To solve this add persistance to your MQTT service. For example using Mosquitto a `.conf` file would look like:
 
 ```
 listener 1883

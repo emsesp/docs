@@ -2,12 +2,13 @@
 
 You will need the following installed before you can get started:
 
-- [PlatformIO](https://platformio.org/) - IDE for development
+- [PlatformIO](https://platformio.org/) - For building the firmware
 - [Node.js](https://nodejs.org) - For building the web interface
+- The `yarn` package installed via `npm install -g yarn`
 
 It is assumed you are familiar with coding, git and using platformio to build firmware binaries.
 
-The included `platformio.ini` file will build the firmware for an 4M ESP32 board, including the Web frontend. If you want to customize the build create a `pio_local.ini` file (there is an example file included). This is useful if you want to upload to a specific port or compile the code with DEBUG flags.
+The included `platformio.ini` file will build the firmware for an 4M ESP32 board as its default target, including the Web frontend. If you want to customize the build create a `pio_local.ini` file (there is an example file included). This is useful if you want to upload to a specific port or compile the code with DEBUG flags or change to a different ESP32 platform like an S3.
 
 We recommend using Visual Studio Code to build the firmware with the PlatformIO extension installed.
 
@@ -15,26 +16,24 @@ We recommend using Visual Studio Code to build the firmware with the PlatformIO 
 
 ### WebUI
 
-!!! note "If you're building against the 3.6.0 version you will need to install `yarn` using `npm install -g yarn` and replace every instance of `npm` below with `yarn`. You will also need to run `corepack enable` (https://yarnpkg.com/getting-started/install)"
-
-The WebUI can be developed and tested in real-time using mock dummy data. This is useful when making changes to the ReactJS files or translation files. Make sure you have `npm` installed and all the libraries installed in both the `interface` and `mock-api` folders using:
+The WebUI can be developed and tested in real-time using mock dummy data. This is useful when making changes to the web content files or translation files. To install the packages it only needs do be done once using:
 
 ```sh
 % cd interface
-% npm install
+% yarn
 % cd mock-api
-% npm install
+% yarn
 ```
 
-and from the `interface` folder run:
+and then from the `interface` folder run:
 
 ```sh
-% npm run standalone
+% yarn run standalone
 ```
 
-The URL is `localhost:3000`
+to build the web interface and launch a browser window with URL `localhost:3000`
 
-The test data is hardcoded in `/mock-api/server.js`
+The test data is hardcoded and can be changed in `/mock-api/server.js`
 
 ### Simulating without an ESP32
 
