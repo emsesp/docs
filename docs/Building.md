@@ -16,7 +16,7 @@ We recommend using Visual Studio Code to build the firmware with the PlatformIO 
 
 ### WebUI
 
-The WebUI can be developed and tested in real-time using mock dummy data. This is useful when making changes to the web content files or translation files. To install the packages it only needs do be done once using:
+The WebUI can be developed and tested in real-time using mock dummy data. This is useful when making changes to the web content files or translation files. To install or update the packages do:
 
 ```sh
 % cd interface
@@ -31,49 +31,59 @@ and then from the `interface` folder run:
 % yarn run standalone
 ```
 
-to build the web interface and launch a browser window with URL `localhost:3000`
+This will open a browser window with URL `localhost:3000`.
 
-The test data is hardcoded and can be changed in `/mock-api/server.js`
+The mock data used is all hardcoded in `/mock-api/server.js`.
 
 ### Simulating without an ESP32
 
-You can also run EMS-ESP without an ESP32 using what is called the 'standalone' mode by building an OS-native executable which when run will enter into the Console where you use the `test` commands to simulate EMS traffic and watch the MQTT and API commands work.
+You can also run EMS-ESP without an ESP32 using what we call 'standalone'. This will create a native executable that can be run on Windows/Linux/Mac and simulates the EMS-ESP's console. This is ideal for quickly testing and debugging without constantly having to flash an ESP32.
 
-To compile and build the executable there are two ways which are described in detail below
+Use the `test` command to run tests (e.g. MQTT or API) and simulate incoming EMS data.
 
-1. Using PlatformIO with `pio run -e standalone -t exec` (recommended)
-2. Using GNUMake's `make` with `make run`
+There are two methods for building the executable, either via PlatformIO or using the associated makefile. In both case you will need the gcc compiler installed. Instructions for installing gcc can be found on <https://docs.platformio.org/en/latest/platforms/native.html>.
 
-When you're all setup simply run the executable which take you to the EMS-ESP console and from here you can try out the different test commands such as `test general` which will load in a single boiler and a thermostat with a few generic entities. This is great way for trying out new code logic without uploading firmware to an ESP32.
+Note there are issues compiling the code on Windows so it's recommended to use WSL2 or a Linux VM.
 
-All the tests are coded in the file `test.cpp`.
+Using the PlatformIO direct method, run this command:
 
-#### Using PlatformIO
+```sh
+% pio run -e standalone
+```
 
-Simply from Visual Studio Code with PlatformIO installed select `standalone->General->Build` from the extension menu. You can also choose to run it within the pio environment by first going into the `PlatformIO Core CLI` and typing `pio run -e standalone -t exec`.
+This is the same as selecting `standalone->General->Build` from the Visual Studio PlatformIO menu.
 
-For debugging you can also run the task via `Terminal->Run Task...->PlatformIO: Execute EMS-ESP (standalone)` and step through and debug the code in real-time by placing breakpoints.
+If you prefer to use the Makefile run:
 
-#### Building natively using gcc
+```sh
+% make run
+```
 
-EMS-ESP comes with GNU Makefile. You will need the GNU tools like gcc and GNUMake for these. First make sure you have `gcc` in your system path. You can check by typing `gcc`. If you have PlatformIO then you'll already have the complete GCC toolchain installed via the `PlatformIO Core CLI`. If not you will need to download the GCC toolchain manually using:
+which will create an executable called `emsesp`.
 
-- **Windows** - follow the [MSYS2](https://www.msys2.org/) installation guide and add the following paths to the PATH system environment variable:
+The EMS-ESP console will show and from here you can try out the different `test` commands. `test general` which will load in a single boiler and a thermostat with a few generic entities.
 
-  ```bat
-  C:\msys64\mingw64\bin
-  C:\msys64\ucrt64\bin
-  C:\msys64\usr\bin
-  ```
+All the tests are hardcoded in the file `test.cpp` and can be easily adapted.
 
-- **Linux** - open the system terminal and run the following commands:
+### Debugging
 
-  ```sh
-  sudo apt install build-essential
-  ```
+To debug from Visual Studio Code and step through the code, peek at variables, put in breakpoints etc. First build the executable using the `make` method above which will place the .o object files in a `build` folder, and then invoke the debugger (F5 on Windows).
 
-- **macOS** - open the system terminal and install Xcode Command Line Tools
+You can also create a VSC's task in `launch.json` file to automate this for you, like adding:
 
-  ```sh
-  xcode-select --install
-  ```
+```json
+    ...
+    {
+      "name": "Debug ems-esp standalone",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/emsesp",
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "miDebuggerPath": "/usr/bin/gdb",
+      "MIMode": "gdb",
+      "launchCompleteCommand": "exec-run",
+      ]
+    }
+    ...
+```
