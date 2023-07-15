@@ -2,7 +2,7 @@
 
 EMS-ESP can be integrated into openHab through different ways:
 
-- HomeAssistant MQTT Components Binding (based on Home Assistent discovery protocol)
+- HomeAssistant MQTT Components Binding (based on Home Assistant discovery protocol)
 - MQTT Binding (Generic MQTT Thing)
 
 <figure markdown>
