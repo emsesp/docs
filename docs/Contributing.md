@@ -19,11 +19,7 @@ The C++ code use `clang`. The easiest way to auto format the code is using the V
 
 ## Keeping the Web libraries up to date
 
-Use an update like `ncu` to keep the package.\* web libraries up to date. You can install using `npm install -g npm-check-updates`. See [npm-check-updates](https://www.npmjs.com/package/npm-check-updates).
-
-```bash
-ncu -u
-```
+Use an update check tool like `ncu` to keep the web libraries up to date. You can run using `npx npm-check-updates`. See [npm-check-updates](https://github.com/raineorshine/npm-check-updates).
 
 ## Pull Requests
 
