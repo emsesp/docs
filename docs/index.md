@@ -20,22 +20,27 @@ hide:
 <BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">v3.7.0 Development</a>
 </span>
 
-## New Features in v3.5.0
+## New Features in v3.6.0
 
-February 6 2023: The next major is released!
+13 August 2023: The next major is released!
 
-Now with multi language support in German, Dutch, French, Swedish, Polish and Norwegian. We are looking for volunteers to help translate to other languages so if you want to help please get in contact with us on Discord.
-![login page](_media/screenshot/web_login.png){ width=300, align=right }
+As well as bug fixes, memory and performance optimizations and more responsive Web layout, these are the other noticeable new features and enhancements:
 
-And a new entity customization feature to change the entity attributes that get sent to home automation systems.
+- Added Italian and Turkish translations (Please do reach out on Discord if you want to help translate to other languages)
+- Added support for ESP32 S2, C3 mini and S3
+- Added 10 new EMS devices
+- Added a Scheduler to allow setting of EMS parameters at specific times
+- Custom Entity feature to extend entities directly from the telegram data
 
 See a [live demo](https://ems-esp.derbyshire.nl/) and the full list of features in the [change log](Version-Release-History#350-current-development-version).
 
-### :warning: Breaking Changes in v3.5 :warning:
+### :warning: Breaking Changes in v3.6.x :warning:
 
 !!! warning
 
-    When upgrading to v3.5 for the first time from v3.4 on a BBQKees Gateway board you will need to use the [EMS-EPS Flasher](https://github.com/emsesp/EMS-ESP-Flasher/releases) to correctly re-partition the flash. Make sure you backup the settings and customizations from the WebUI (`System->Upload/Download`) and restore after the upgrade.
+    The sensors have been renamed. dallassensor is now temperaturesensor in the MQTT topic and named ts in the Customizations file. Likewise analogs is now analogsensor in MQTT and called as in the Customizations file. If you have previous customizations you will need to manually update by downloading, changing the JSON file and uploading. It's also recommended cleaning up any old MQTT topics from your broker using an application like MQTTExplorer.
+
+    When upgrading to v3.6 for the first time from v3.4 on a BBQKees Gateway board you will need to use the [EMS-EPS Flasher](https://github.com/emsesp/EMS-ESP-Flasher/releases) to correctly re-partition the flash. Make sure you backup the settings and customizations from the WebUI (`System->Upload/Download`) and restore after the upgrade.
 
 ## Join Our Community
 
