@@ -85,10 +85,6 @@ These settings can be found in the `MQTT` tab on the WebUI. Most are self-explan
 
 ### WiFi Settings (`Network->Network Settings`)
 
-<!-- prettier-ignore -->
-!!! warning "Do not use WPA3"
-    Version 3.5.x does not support WPA3 so make sure you've configured your SSID as WPA2. Version 3.6.0 will have this support.
-
 ## Adding External Sensors (`Dashboard->Device & Sensors`)
 
 External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees Gateway board it already has an external plug for Dallas temperature sensors which will be visible in the WebUI without any configuration.

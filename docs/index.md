@@ -16,8 +16,8 @@ hide:
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=emsesp_EMS-ESP32&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=emsesp_EMS-ESP32)
 
 <span style="font-size: 1.5rem">Current Releases
-<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.5.1">v3.5.1 Stable</a>
-<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">v3.6.0 Development</a>
+<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.0">v3.6.0 Stable</a>
+<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">v3.7.0 Development</a>
 </span>
 
 ## New Features in v3.5.0
