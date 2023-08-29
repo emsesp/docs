@@ -13,11 +13,11 @@ First some important definitions.
 <!-- prettier-ignore -->
 !!! important
 - `<device>` is the short-name of either
-- an EMS Device such as `boiler`, `thermostat`, `mixer`, `heatpump`, `solar`, `heatsource`, `alert`, `pump`, or `ventilation`
-- the EMS-ESP system itself as `system`
-- the Dallas temperature sensors as `temperaturesensor`, the analog sensors as `analogsensor`
-- the scheduler as `scheduler`
-- the custom defined entities as `custom`
+    - an EMS Device such as `boiler`, `thermostat`, `mixer`, `heatpump`, `solar`, `heatsource`, `alert`, `pump`, or `ventilation`
+    - the EMS-ESP system itself as `system`
+    - the Dallas temperature sensors as `temperaturesensor`, the analog sensors as `analogsensor`
+    - the scheduler as `scheduler`
+    - the custom defined entities as `custom`
 - `<command>` is the name of either
     - a generic command, or
     - an EMS device entity also referred to as an `<entity>`. See the [Supported Devices](All-Devices) page for the complete list
@@ -25,9 +25,9 @@ First some important definitions.
 - `<data>` is used to represent the value to read or write. It can be either:
     - a single value. This can be of any type; integer, float, string or boolean
     - as a JSON object containing the following optional key/values:
-- **"cmd"** is the `<command>`. The key **"cmd"** may also be substituted for **"entity"**.
-- **"value"** is the value and can be either a text string in quotes, an integer, float of boolean. **"data"** is an alias that can also be used instead for the key.
-- **"hc"**, **"wwc"** and **"id"** are all are used to represent a value or in the context of an EMS Device a heating or warm water circuit.
+        - **"cmd"** is the `<command>`. The key **"cmd"** may also be substituted for **"entity"**.
+        - **"value"** is the value and can be either a text string in quotes, an integer, float of boolean. **"data"** is an alias that can also be used instead for the key.
+        - **"hc"**, **"wwc"** and **"id"** are all are used to represent a value or in the context of an EMS Device a heating or warm water circuit.
 - A boolean value can be represented in many forms:
     - as a True value, "TRUE", "yes", true, "true", "on", 1
     - as a False value, "FALSE", "no", false, "false", "off", 0
@@ -66,8 +66,8 @@ The URL path is `http://<hostname>/api/<device>/`
 | `entities` | GET | lists all enabled entities | no | |
 | `{entity}` | GET | outputs details of a specific entity, for reading | no | |
 | `{entity}` | GET | outputs details of a specific entity, for reading | no | |
-| `{hc}/{entity}` | GET | same as the read command above but for a specific heating circuit | no | |
-| `{hc}/{entity}/{value}` | GET | read a single info from this entity, like `value`, `uom`, `min`, `max`, etc. | no | |
+| `hc{hc}/{entity}` | GET | same as the read command above but for a specific heating circuit | no | |
+| `hc{hc}/{entity}/{value}` | GET | read a single info from this entity, like `value`, `uom`, `min`, `max`, etc. | no | |
 | `{entity}` | POST | updates a entity value, for writing | yes | `<data>` |
 | `{entity}/{hc}` | POST | same as the write command above but for a specific heating circuit | yes | `<data>` |
 
@@ -120,7 +120,7 @@ The URL path is `http://<hostname>/api/analogsensor/`
 
 ### Controlling other ems-esp specific devices like `custom`, `scheduler`
 
-The URL path follows the same scheme as above and is `http://<hostname>/api/<devices>/`
+The URL path follows the same scheme as above and is `http://<hostname>/api/<device>/`
 
 <!-- prettier-ignore -->
 | endpoint   | HTTP method | action | authentication required? | body |
@@ -183,10 +183,10 @@ Examples:
 | `ems-esp/system/send` | `"XX XX...XX"` | send raw ems-command |
 | `ems-esp/thermostat/seltemp` | | fetches the seltemp entity values and publishes it in the topic `ems-esp/response` |
 | `ems-esp/thermostat/seltemp` | `23` | change the selected setpoint temperature to 23 degrees on the master thermostat on default hc |
-| `ems-esp/thermostat/hc1/seltemp` | `{\"value\":23}` | change the selected setpoint temperature to 23 degrees on the master thermostat on hc1, send data as json |
-| `ems-esp/thermostat` | `{\"cmd\":\"seltemp\", \"hc\": 1, \"value\":23}` | same as above |
+| `ems-esp/thermostat/hc1/seltemp` | `{"value":23}` | change the selected setpoint temperature to 23 degrees on the master thermostat on hc1, send data as json |
+| `ems-esp/thermostat` | `{"cmd":"seltemp", "hc": 1, "value":23}` | same as above |
 | `ems-esp/thermostat/mode` | `auto` | sets the thermostat mode to auto for default hc |
-| `ems-esp/thermostat` | `{\"cmd\":\"mode\",\"value\":\"heat\",\"id\":1}` | sets the thermostat mode to heat for hc1 |
+| `ems-esp/thermostat` | `{"cmd":"mode","value":"heat","id":1}` | sets the thermostat mode to heat for hc1 |
 
 ### Publishing Commands
 
