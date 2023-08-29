@@ -32,27 +32,118 @@ action:
 mode: single
 ```
 
-### Alert length of shower
+### Shower Integration
 
-Below is an example using a trigger to notify when a shower has finished. This works when the setting `Shower Timer` is enabled in EMS-ESP.
+The below are additions to the HA files to show the state of the shower, if the setting `Shower Timer` is enabled in EMS-ESP.
+
+The cold shot feature is available in EMS-ESP versions 3.7.0-dev.1 and above.
+
+![Home Assistant Shower](_media/screenshot/ha_shower.jpg)
 
 ![Home Assistant iPhone notify](_media/screenshot/ha_notify.jpg)
 
+Add to `configuration.yaml` (make sure you change the token):
+
 ```yaml
-alias: Shower Alert
-description: ''
-trigger:
-  - platform: mqtt
-    topic: ems-esp/shower_data
-condition:
-  - condition: template
-    value_template: '{{ trigger.payload_json.duration is defined }}'
-action:
-  - service: notify.notify
-    data:
-      title: Shower finished at {{ now().strftime("%H:%M") }}
-      message: '{{ trigger.payload_json.duration }}'
-mode: single
+rest_command:
+  emsesp:
+    url: 'http://ems-esp.local/api/{{device}}'
+    method: POST
+    headers:
+      authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWV9.2bHpWya2C7Q12WjNUBD6_7N3RCD7CMl-EGhyQVzFdDg'
+    content_type: 'application/json'
+    payload: '{"entity":"{{entity}}","value":"{{value}}"}'
+```
+
+Add to `scripts.yaml`:
+
+```yaml
+coldshot:
+  alias: Cold shot of water
+  mode: single
+  sequence:
+    - service: rest_command.emsesp
+      data:
+        device: 'boiler'
+        entity: 'coldshot'
+        value: 'on'
+```
+
+Add to `automations.yaml`:
+
+```yaml
+- id: shower_alert
+  alias: Shower Alert
+  description: Shower Alert
+  trigger:
+    - platform: state
+      entity_id:
+        - sensor.last_shower_duration
+  condition: []
+  action:
+    - service: notify.notify
+      data:
+        message: "Duration: {{ states('sensor.last_shower_duration') }}"
+        title: Shower finished at {{ now().strftime("%H:%M") }}
+  mode: single
+```
+
+Add directly into ` configuration.yaml`` or merge into an existing  `sensors.yaml`` file:
+
+```yaml
+sensor:
+- platform: template
+  sensors:
+  last_shower_duration:
+  friendly_name: Last shower duration
+  value_template: "{{ int(states('sensor.ems_esp_shower_duration')) | timestamp_custom('%-M min %-S sec', false)}}"
+  last_shower_time:
+  friendly_name: Last shower timestamp
+  value_template: '{{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated) | int | timestamp_custom("%-I:%M %P on %a %-d %b") }}'
+```
+
+Add a new card to an existing Dashboard. I'm using custom cards called 'mushroom' which can be installed via the HACS plugin. Like:
+
+```yaml
+type: vertical-stack
+cards:
+  - type: custom:mushroom-title-card
+    title: Shower
+    subtitle: Shower details via EMS-ESP
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-entity-card
+        entity: binary_sensor.ems_esp_shower_active
+        icon: mdi:shower
+        icon_color: red
+        primary_info: state
+        secondary_info: none
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-entity-card
+        entity: sensor.last_shower_time
+        primary_info: state
+        secondary_info: last-updated
+        icon_color: amber
+        icon: mdi:calendar-month
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-entity-card
+        entity: sensor.last_shower_duration
+        primary_info: state
+        secondary_info: none
+        icon_color: amber
+        icon: mdi:camera-timer
+  - show_name: true
+    show_icon: true
+    type: button
+    name: Send cold shot of water
+    tap_action:
+    action: call-service
+    service: script.coldshot
+    show_state: false
+    icon: mdi:snowflake-alert
+    icon_height: 24px
 ```
 
 ### Alert change of thermostat set temperature
