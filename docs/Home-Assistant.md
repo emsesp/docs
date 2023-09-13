@@ -88,21 +88,23 @@ Add to `automations.yaml`:
   mode: single
 ```
 
-Add directly into ` configuration.yaml`` or merge into an existing  `sensors.yaml`` file:
+Add directly to the `configuration.yaml` or merge into an existing `sensors.yaml` file:
 
 ```yaml
 sensor:
-- platform: template
-  sensors:
-  last_shower_duration:
-  friendly_name: Last shower duration
-  value_template: "{{ int(states('sensor.ems_esp_shower_duration')) | timestamp_custom('%-M min %-S sec', false)}}"
-  last_shower_time:
-  friendly_name: Last shower timestamp
-  value_template: '{{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated) | int | timestamp_custom("%-I:%M %P on %a %-d %b") }}'
+  - platform: template
+    sensors:
+      last_shower_duration:
+        friendly_name: Last shower duration
+        value_template: "{{ int(states('sensor.ems_esp_shower_duration')) | timestamp_custom('%-M min %-S sec', false)}}"
+      last_shower_time:
+        friendly_name: Last shower timestamp
+        value_template: '{{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated) | int | timestamp_custom("%-I:%M %P on %a %-d %b") }}'
 ```
 
-Add a new card to an existing Dashboard. I'm using custom cards called 'mushroom' which can be installed via the HACS plugin. Like:
+Note you can configure the `timestamp_custom()` to your own preferred format.
+
+Add a new card to an existing Dashboard. I'm using custom cards called 'mushroom' which can be installed via the HACS plugin. Such a card would look like:
 
 ```yaml
 type: vertical-stack
