@@ -1,10 +1,12 @@
 ## First-time Setup
 
-- First connect to the Access Point called `ems-esp` using the default WPA password `ems-esp-neo`.
-- When you see the captive portal sign-in with username `admin` and password `admin`.
-- Set the WiFi credentials and go back to <http://ems-esp>. Remember to change the password!
-- Now check is if Tx is working and that you have a connection to the EMS bus. If Tx failures are shown in the Web interface try changing the Tx Mode from the settings page. There is no need to re-start the EMS-ESP.
-- Use the WebUI (<http://ems-esp> or <http://ems-esp.local>) to further configure the settings.
+After uploading the firmware for the first time, it will use with the default settings and start an WiFi Access Point called `ems-esp`. Connect to this using the default WPA password `ems-esp-neo`. When prompted with a login screen (called a captive portal) sign-in with username `admin` and password `admin`.
+
+Now you're ready to further configure the settings. The recommended first step is to connect to your home network and this can be configured through the Network menu option on the web page, or directly using a Telnet Command Line interface (CLI). If you haven't adjusted the hostname you can reach the web UI via <http://ems-esp> or <http://ems-esp.local>.
+
+Next are the board settings and some other MQTT tweaking which you can read below.
+
+If you're seeing warnings that it failed to connect to the EMS bus, or there are Tx or Rx errors then follow the [troubleshooting](Troubleshooting) guide.
 
 !!! note "If Rx incomplete telegrams are reported in the log, don't panic. Some telegrams can be missed and this is usually caused by noise interference on the line."
 
@@ -12,19 +14,19 @@
 
 This next section describes some of key settings that can be configured via the WebUI.
 
-### Board Profile (`Settings`)
+### Board Profile (`Settings->Application Settings`)
 
-- If you have your own ESP32 development board you can choose from a pre-configured board (If you purchased a BBQKees Gateway this is already preselected) or select `Custom` to see and change the hardware settings:
+- If you have your own ESP32 development board you can choose from a pre-configured board (which is already set on a BBQKees Gateway) or select `Custom` to view and change the hardware settings:
   - **Rx GPIO** - Which GPIO pin the Rx is assigned to. By default this is GPIO 23 but it can be almost any free pin. Connect this GPIO pin to the RX port on the EMS interface board.
   - **Tx GPIO** - Which GPIO pin the Tx is assigned to. By default this is GPIO 5 but it can be almost any free pin. Connect this GPIO pin to the TX port on the EMS interface board.
   - **Button GPIO**. Set a pin with pull-up. The button is used for different functions, such as holding for 10 seconds to reset to factory settings.
   - **Temperature GPIO**. This is the pin where any external temperature sensors are attached. The Dallas chips DS1822, DS18S20, DS18B20, DS1825 are supported including their parasite varieties and can also be daisy-chained onto a single line, up to 100 sensors.
   - **LED GPIO**. This is the pin for the LED, defaulted to the onboard LED on the ESP dev board.
-  - And a set of Ethernet settings for the advanced tweakers.
+  - **Eth PHY Type** for choosing the Ethernet chip used.
 
-!!! note "On ESP32 development boards there are often also pins marked RX and TX. However, these are usually connected to the USB chip and cannot be used for the EMS interface circuit"
+!!! note "On ESP32 development boards there are often also pins marked RX and TX. However, these are usually connected to the USB chip and cannot be used for the EMS interface circuit."
 
-### EMS Bus (`Settings`)
+### EMS Bus (`Settings->Application Settings`)
 
 - **Tx Mode**. Tx Mode is the mode in which EMS-ESP sends telegrams on the EMS bus. Choose the mode that works best for your system and watch for Tx errors in the Web Dashboard and `show ems` in the Console. Changing the value has immediate effect.
   - `EMS` is the default for EMS1.0 systems but also compatible with most other bus protocols.
@@ -33,7 +35,7 @@ This next section describes some of key settings that can be configured via the 
   - `Hardware` uses the internal ESP's hardware to send out the telegram. Telegrams are sent immediately. It is the fastest and most efficient method but works only on some systems.
 - **Bus ID**. The EMS-ESP can simulate multiple devices. Stick to the `Service Key (0x0B)` unless using more than one EMS gateways/interface board.
 
-### General Options (`Settings`)
+### General Options (`Settings->Application Settings`)
 
 - **Hide LED**. Turns off the LED when in normal operating mode. The LED is still shown when booting or when there are connection issues.
 - **Enable Telnet Console**. This is on by default and allows users to connect to the in-secure Telnet server on port 23.
@@ -43,19 +45,19 @@ This next section describes some of key settings that can be configured via the 
 - **Enable Read only mode**. This disables any outgoing Tx write commands to the EMS bus, essentially putting EMS-ESP into listening mode.
 - **Underclock CPU speed**. Under-clocks the ESP to 160Mhz, saving on power, heat and prolonging the lifespan of the chip at the cost of performance and response time. A reboot of EMS-ESP is required.
 - **Enable Shower Timer**. Enable to time how long the hot water runs for and it will send out an MQTT message with the duration. The timer starts after a minimal of 2 minutes running time.
-- **Enable Shower Alert**. This is experimental and may not work on all systems. After 7 minutes running hot water, send out a warning by 3 short bursts of cold water. The boiler goes into test mode to perform this operation so use with caution.
+- **Enable Shower Alert**. This is somewhat experimental and may not work on all boilers. After 7 minutes (configurable) running the hot water it will send out a warning by sending cold water for 10 seconds (also configurable). The boiler goes into test mode to perform this operation so use with caution!
 
-### Formatting Options (`Settings`)
+### Formatting Options (`Settings->Application Settings`)
 
 - **Boolean Format Dashboard**. This is how boolean values are displayed in the WebUI and MQTT payloads.
 - **Boolean Format API/MQTT**. This is how boolean values are written in the MQTT payloads and API JSON output.
-- **Enum Format API/MQTT**. This is how list values are presented in the MQTT payloads and API JSON, either by it's value or the index position within the list.
+- **Enum Format API/MQTT**. This is how list values are presented in the MQTT payloads and API JSON, either by it's value or the index position within the list. Not if using Home Assitant you will not see the values but integer numbers for some entities, e.g. instead of `off, hot, cold` it will display `0, 1, 2`.
 
-### Temperature Sensors (`Settings`)
+### Temperature Sensors (`Settings->Application Settings`)
 
 - **Enable parasite power**. Select this option when using (Dallas) temperature sensors with parasitic power.
 
-### Logging (`Settings`)
+### Logging (`Settings->Application Settings`)
 
 - **Log EMS telegrams in hexadecimal** will write the telegrams in raw format as hexadecimal values everywhere.
 - **Enable Syslog**:
@@ -65,16 +67,36 @@ This next section describes some of key settings that can be configured via the 
     - **Log Level** sets the maximum log level for reported messages. The highest level is DEBUG which will send a lot of log data so use with caution.
     - **Mark Interval** will send out a special `mark` message to the SysLog. This is useful for timing events.
 
+### Customization (`Settings->Customizations`)
+
+The Customization page shows all registered entities and allows to exclude commands and values from publishing via mqtt/api or remove them from dashboard. The dashboard only shows entities with values, the customization page shows all. If an entity has no value then it is supported by EMS-ESP, but not by your boiler/thermostat/etc.
+
+![Web](_media/screenshot/web_customizations.png)
+
+### Customization (`Settings->Scheduler`)
+
+Use the scheduler to call commands at specific intervals. This is useful for example to set the hot water temperature to a higher value in the morning and evening, or do a system restart each week.
+
+![Web](_media/screenshot/web_scheduler.png)
+
+### Customization (`Settings->Custom Entities`)
+
+If you know where specific data is hiding in a telegram you can sniff them out and create a custom entity. This is useful way to test for new values before we can extend officially in the firmware.
+
+![Web](_media/screenshot/web_customentities.png)
+
 ### MQTT Settings (`MQTT->MQTT Settings`)
 
-These settings can be found in the `MQTT` tab on the WebUI. Most are self-explanatory and the settings that are specific to EMS-ESP are:
+Most are self-explanatory and the settings that are specific to EMS-ESP are:
 
 - **Broker Address**. Use the IP address.
-- **Client ID**. This is used internally to identify EMS-ESP with the broker and is optional. Note MQTT topics will be postfixed with the hostname (default `ems-esp`) and not the client ID.
-- **Base**. All topics are prefixed with `Base`, which is defaulted to `ems-esp` and can be changed to an individual path.
+- **Port**. The default is 1883 and 8883 for SSL.
+- **Base**. All topics are prefixed with the `Base` so this is important. Use when having multiple devices.
+- **Client ID**. This is used internally to identify EMS-ESP with the broker and is optional. Note MQTT topics will be postfixed with the hostname (default `ems-esp`) and not the client ID. Use when having multiple devices.
+- **Username** and **Password** are optional.
 - **Set Clean Session**. Creates a non-persistent session when enabled. Default is disabled.
 - **QoS**. Quality of Service, 0, 1 or 2. 0 is the default and suitable for more scenarios. 1 will give a guarantee that the message has been sent, but will create slightly more traffic and overhead.
-- **Always use Retain Flag**. Enable if you want to persist all the messages on the broker. Default is off.
+- **Always use Retain Flag**. Enable if you want to persist all the messages on the broker. Default is disabled.
 - **Formatting**. The `As individual topics` option will send all data as separate topics, and `Nested` will group the data into one single JSON payload. The default is nested.
 - **Publish command output to a 'response' topic'**. This takes the output from an API command (e.g. read) and publishes the result in a topic called `response`.
 - **Publish single value topics on change**. This option will immediately publish the topic and payload for each operation and only available when MQTT Discovery is disabled.
@@ -83,13 +105,15 @@ These settings can be found in the `MQTT` tab on the WebUI. Most are self-explan
       - **Entity ID format**: There are 3 options. The first `single instance, long names` uses the older < v3.5 format. The default and recommended setting for all new installs is the 2nd option called `Single instance, short name` which uses the EMS-ESP device entity name, which is fixed and can be seen in the `Settings->Customization` page. The last option is targeted for multiple instances of EMS-ESP running and prefixes all MQTT topics with the base name (which must be unique to work).
 - **Publish Intervals**. This section is per device and sets how frequent an MQTT message is sent. When set to 0 EMS-ESP will send data automatically when there is a noticeable change, which could be within a few seconds.
 
-### WiFi Settings (`Network->Network Settings`)
+### Network Settings (`Network->Network Settings`)
 
-## Adding External Sensors (`Dashboard->Device & Sensors`)
+We recommend sticking to the default settings.
 
-External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees Gateway board it already has an external plug for Dallas temperature sensors which will be visible in the WebUI without any configuration.
+## Sensors (`Dashboard->Sensors`)
 
-To add custom sensors click on the `+` next to `Sensors` from the Dashboard and choose between a normal Digital in/out, a Counter (counting on/off pulses), ADC for measuring voltages, Timer, Rate and PWM 0-2.
+External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees Gateway board it already has an external plug for Dallas temperature sensors which will be visible in the WebUI without any additional configuration.
+
+To add analog sensors click on `Add Analog Sensor` and choose between a normal Digital in/out, a Counter (counting on/off pulses), ADC for measuring voltages, Timer, Rate and PWM 0-2.
 
 ![Web](_media/screenshot/web_sensor.png)
 
@@ -103,21 +127,27 @@ To add custom sensors click on the `+` next to `Sensors` from the Dashboard and 
 
 The following GPIOs are recommended:
 
-- digital output: 13, 19, 21, 22, 27, 33, 37, 38
-- digital input/counter/timer/rate: 13, 19, 21, 22, 25, 26, 27, 33, 35, 37, 38, 39 (note no pullup on 35 & 39)
-- ADC input: 13, 19, 21, 22, 25, 26, 27, 33, 35, 37, 38, 39
-- DAC output: 25, 26
-- PWM output: 13, 19, 21, 22, 25, 26, 27, 33, 37, 38
+- digital output: `13, 19, 21, 22, 27, 33, 37, 38`
+- digital input/counter/timer/rate: `13, 19, 21, 22, 25, 26, 27, 33, 35, 37, 38, 39 (note no pullup on 35 & 39)`
+- ADC input: `13, 19, 21, 22, 25, 26, 27, 33, 35, 37, 38, 39`
+- DAC output: `25, 26`
+- PWM output: `13, 19, 21, 22, 25, 26, 27, 33, 37, 38`
 
 Limits:
 
-- ADC: 1.5V
-- DAC 8bit
-- PWM: max. frequency 5000Hz, resolution 13bits
-- Counter/timer/rate trigger on high->low edge with 15 ms debounce. Only for low pulse rates.
+- ADC: `1.5V`
+- DAC `8bit`
+- PWM: `max frequency 5000Hz, resolution 13bits``
+- Counter/timer/rate trigger: `high->low edge with 15 ms debounce. Only for low pulse rates.`
 
-## Customization (`Settings->Customizations`)
+## Security (`Security->Security Settings`)
 
-The Customization page shows all registered entities and allows to exclude commands and values from publishing via mqtt/api or remove them from dashboard. The dashboard only shows entities with values, the customization page shows all. If an entity has no value then it is supported by EMS-ESP, but not by your boiler/thermostat/etc.
+The Security page allows you to change the default password for the captive portal and Telnet CLI. It also allows you to enable HTTPS for the captive portal and MQTT broker.
 
-![Web](_media/screenshot/web_customizations.png)
+## Users (`Security->Manage Users`)
+
+The Users page allows you to create additional users for the captive portal and Telnet CLI. The default user is `admin` with password `admin`.
+
+Each user has an unique Access Token (viewable by clicking on the key icon) which is used for RESTful write commands via HTTP POST. This is for security reasons to prevent anyone changing device settings.
+
+![Web](_media/screenshot/web_users.png)

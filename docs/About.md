@@ -8,7 +8,7 @@ EMS-ESP is an open source firmware for [Espressif](https://www.espressif.com/en/
 
 ## License
 
-This program is licensed under GPL-3.0
+This program is licensed under GPL-3.0.
 
 ## A Brief history
 
@@ -34,21 +34,24 @@ How it all started.
 - April 2020 - Version 1.9.5 - Big update with more solar, mixer support and writing to HT3
 - August 2020 - Version 2.0.0 - Complete re-write of the Telnet Console and WebUI. Added HA support plus an additional 50 new EMS devices
 
-  ![3.0.1](_media/screenshot/version301.png)
-
 - November 2020 - Version 2.1.0 - More console commands and Web additions
 - December 2020 - Version 2.2.0 - added RESTful API, SysLog
 - March 2021 - Version 2.2.1 - the last version 2 for the ESP8266
 - March 2021 - Version 3.0.0 - exclusive to the ESP32. Ethernet support, improved MQTT
 - May 2021 - Version 3.1.0 - write to device from WebUI
+
+  ![3.0.1](_media/screenshot/version301.png)
+
 - August 2021 - Version 3.2.0 - IPv6 support, System Log in WebUI, more features
 - November 2021 - Version 3.3.0 - More devices, pool data, mDNS
 - January 2022 - Version 3.4.0 - New UI and more features
 
   ![3.4.0](_media/screenshot/version340.png)
 
-- February 2023 - Version 3.5.0 - Multi-Language, Heat pumps, Customizations and so much more
+- February 2023 - Version 3.5.0 - Multi-Language, Heat pumps, Customizations, MQTT Discovery improvements.
 
   ![3.5.0](_media/screenshot/version350.png)
 
-- March 2023 - Version 3.5.1 - Patch and MQTT Discovery improvement
+- August 2023 - Version 3.6.0 - Sensors in it's own tab and able to browse all entities from the list. Added Scheduler and Custom Entity editor, plus Italian and Turkish.
+
+  ![3.6.0](_media/screenshot/version360.png)

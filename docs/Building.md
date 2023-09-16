@@ -31,6 +31,8 @@ and then from the `interface` folder run:
 % yarn run standalone
 ```
 
+Make sure you have the latest version of node installed. You need at least 18.20 and can check with `node -v`. An easy way to switch between different node versions is to use [nvm](https://github.com/nvm-sh/nvm).
+
 This will open a browser window with URL `localhost:3000`.
 
 The mock data used is all hardcoded in `/mock-api/server.js`.

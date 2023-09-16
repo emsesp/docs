@@ -173,3 +173,7 @@ This could happen when either upgrading from an earlier EMS-ESP version and some
 ### HA has duplicate entities, prefixed with \_2
 
 See @swa72's fix [here](https://github.com/swa72/home-assistant/blob/main/README-mqtt.md).
+
+### HA has messed up the names of my entities
+
+This happens, when HA make changes to MQTT Discovery. There's a nice tool called [homeassistant-entity-renamer](https://github.com/saladpanda/homeassistant-entity-renamer) that can help you fix this.

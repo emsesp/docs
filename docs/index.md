@@ -16,17 +16,17 @@ hide:
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=emsesp_EMS-ESP32&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=emsesp_EMS-ESP32)
 
 <span style="font-size: 1.5rem">Current Releases
-<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.0">v3.6.0 Stable</a>
-<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">v3.7.0 Development</a>
+<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.1">v3.6.1 Main</a>
+<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">v3 Development</a>
 </span>
 
-## New Features in v3.6.0
+## New Features introduced in v3.6.x
 
-13 August 2023: The next major is released!
+13 August 2023
 
 As well as bug fixes, memory and performance optimizations and more responsive Web layout, these are the other noticeable new features and enhancements:
 
-- Added Italian and Turkish translations (Please do reach out on Discord if you want to help translate to other languages)
+- Added Italian and Turkish translations (please do reach out on Discord if you want to help translate to other languages)
 - Added support for ESP32 S2, C3 mini and S3
 - Added 10 new EMS devices
 - Added a Scheduler to allow setting of EMS parameters at specific times

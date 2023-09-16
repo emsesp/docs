@@ -16,9 +16,9 @@ plugins:
       redirect_maps:
   - table-reader
   - git-revision-date-localized
-  - git-committers:
-      repository: emsesp/docs
-      branch: main
+  # - git-committers:
+  #     repository: emsesp/docs
+  #     branch: main
 # - htmlproofer
 
 # strict: true

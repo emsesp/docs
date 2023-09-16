@@ -53,11 +53,11 @@ espota.py --debug --progress --port 8266 --auth ems-esp-neo -i <IP address> -f <
 
     During the power-on sequence you'll see a sequence of LED flashes:
 
-    * 1 flash means the EMS bus is not connected
+    * 1 x flash = the EMS bus is not connected
 
-    * 2 flashes means the network (wifi or ethernet) is not connected
+    * 2 x flash = the network (wifi or ethernet) is not connected
 
-    * 3 flashes means both EMS bus and network are failing. This is a critical error!
+    * 3 x flash = both EMS bus and network are failing. This is a critical error!
 
     During normal operation the LED displays the current status:
 
