@@ -15,12 +15,13 @@ hide:
 [![chat](https://img.shields.io/discord/816637840644505620.svg?style=flat-square&color=blueviolet)](https://discord.gg/3J3GgnzpyT)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=emsesp_EMS-ESP32&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=emsesp_EMS-ESP32)
 
-<span style="font-size: 1.5rem">Current Releases
-<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.1">v3.6.1 Main</a>
-<BR><a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">v3 Development</a>
+<span style="font-size: 1.5rem">Current Releases</span>
+<span style="font-size: 1.2rem">
+<BR>Main - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.1">version 3.6.1</a>
+<BR>Development - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">version 3.6.x</a>
 </span>
 
-## New Features introduced in v3.6.x
+## New Features introduced in 3.6
 
 13 August 2023
 
