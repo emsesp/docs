@@ -68,7 +68,7 @@ You need to install the [MQTT Binding](https://www.openhab.org/addons/bindings/m
 
 #### Generic MQTT Thing
 
-It is possible to create for each device a seperate `Generic MQTT Thing` or all in just one. In the following an example will be provided that can be adapted to your corresponding setup and you wishes. It is a common approach to have a seperate set topic that is used to send data back to the broker. stateTopic represents the state of the thing and commandTopic is been used to set a value. You can find all relevant information regarding the topic you need to send a command to in the [**Commands**](Commands#mqtt).
+It is possible to create for each device a separate `Generic MQTT Thing` or all in just one. In the following an example will be provided that can be adapted to your corresponding setup and you wishes. It is a common approach to have a separate set topic that is used to send data back to the broker. stateTopic represents the state of the thing and commandTopic is been used to set a value. You can find all relevant information regarding the topic you need to send a command to in the [**Commands**](Commands#mqtt).
 
 ```python title="things/mqtt.things"
 Bridge mqtt:broker:broker "MQTT Bridge" [ host="127.0.0.1", secure=false ]{

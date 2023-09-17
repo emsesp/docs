@@ -8,7 +8,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 
 ## Added
 
-- Workaround for better Domoticz MQTT intergration? [#904](https://github.com/emsesp/EMS-ESP32/issues/904)
+- Workaround for better Domoticz MQTT integration? [#904](https://github.com/emsesp/EMS-ESP32/issues/904)
 - Show MAC address without connecting to network enhancement [#933](https://github.com/emsesp/EMS-ESP32/issues/933)
 - Warn user in WebUI of unsaved changes [#911](https://github.com/emsesp/EMS-ESP32/issues/911)
 - Detect old Tado thermostat, device-id 0x19, no entities
