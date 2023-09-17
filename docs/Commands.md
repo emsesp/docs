@@ -2,9 +2,9 @@ EMS-ESP has a command API which can be used to read and write values to EMS devi
 
 There are 3 methods commands can be invoked:
 
-- via the [**Console**](#console) using Telnet
-- via [**HTTP**](#http) using RESTful http calls
-- via [**MQTT**](#mqtt) using topics and payloads
+- via the [**Console**](#console) using Telnet CLI
+- via [**HTTP**](#http) using RESTful HTTP calls
+- via [**MQTT**](#mqtt) via topics their payloads
 
 ## Definitions
 
@@ -12,21 +12,22 @@ First some important definitions.
 
 <!-- prettier-ignore -->
 !!! important
-    - `<device>` is the short-name of either
-        - an EMS Device such as `boiler`, `thermostat`, `mixer`, `heatpump`, `solar` or `gateway`
-        - the EMS-ESP system itself as `system`
+    - `<device>` is the short-name. It can be either
+        1. an EMS Device and supported devices include: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
+        - the EMS-ESP system itself identified as `system`
         - the Dallas temperature sensors as `temperaturesensor`
+        - any custom Analog sensors as `analogsensor`
+        - any EMS telegram custom entities as `custom`
     - `<command>` is the name of either
         - a generic command, or
         - an EMS device entity also referred to as an `<entity>`. See the [Supported Devices](All-Devices) page for the complete list
     - `<id>` is an optional identifier and has different meanings depending on the context
-    - `<data>` is used to represent the value to read or write. It can be either:
-        - a single value. This can be of any type; integer, float, string or boolean
-        - as a JSON object containing the following optional key/values:
+    - `<data>` is used to represent the value to read or write. It can be either a single value as any type (integer, float, string or boolean) or a JSON object {} string containing multiple key/values pairs as:
           - **"cmd"** is the `<command>`. The key **"cmd"** may also be substituted for **"entity"**.
           - **"value"** is the value and can be either a text string in quotes, an integer, float of boolean. **"data"** is an alias that can also be used instead for the key.
           - **"hc"**, **"wwc"** and **"id"** are all are used to represent a value or in the context of an EMS Device a heating or warm water circuit.
-    - A boolean value can be represented in many forms:
+
+    Note: A boolean value can be represented in many forms:
         - as a True value, "TRUE", "yes", true, "true", "on", 1
         - as a False value, "FALSE", "no", false, "false", "off", 0
 
@@ -77,6 +78,35 @@ Examples:
 | `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | sets the room temperature to 23 degrees for for heating circuit 3 |
 | `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | sets the room temperature to 20.5 degrees for for heating circuit 2 |
 
+### Fetching custom entities (EMS telegrams)
+
+The URL path is `http://<hostname>/api/custom/`
+
+<!-- prettier-ignore -->
+| endpoint | HTTP method | action | authentication required? | body |
+| - | - | - | - | - |
+| `info` or blank | GET | outputs all custom entities and their values | no |
+
+### Fetching Temperature Sensor information
+
+The URL path is `http://<hostname>/api/temperaturesensor/`
+
+<!-- prettier-ignore -->
+| endpoint | HTTP method | action | authentication required? | body |
+| - | - | - | - | - |
+| `info` or blank | GET | outputs connected Dallas temperature sensors and readings | no |
+
+### Controlling the Analog Sensors
+
+The URL path is `http://<hostname>/api/analogsensor/`
+
+<!-- prettier-ignore -->
+| endpoint   | HTTP method | action | authentication required? | body |
+| - | - | - | - | - |
+| `info` or blank | GET | outputs configured analog sensors and readings | no | |
+| `commands` | GET | lists the available system commands | no | |
+| `setvalue` | POST | set value/offset of counter or output pin, +/- sign corrects value | yes | `{"value":<val>, "id":<gpio>}` |
+
 ### System Commands
 
 The URL path is `http://<hostname>/api/system/<endpoint>`
@@ -84,7 +114,7 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 <!-- prettier-ignore -->
 | endpoint | HTTP method | action | authentication required? | body |
 | - | - | - | - | - |
-| `info` | GET | outputs current system information | no |
+| `info` or blank | GET | outputs current system information | no |
 | `fetch` | GET | forces at refresh of all device values | no | |
 | `restart` | GET | restarts EMS-ESP | yes | |
 | `commands` | GET | lists the available system commands | no | |
@@ -92,36 +122,16 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 | `publish` | POST | MQTT publish all values, and optional HA-configuration or specific for a device | no | `[ha] \| [device]` |
 | `watch` | POST | watch incoming telegrams | no | `<on \|off \| raw \| <type-id(hex)>` |
 
-### Fetching Dallas temperature sensor information
-
-The URL path is `http://<hostname>/api/temperaturesensor/`
-
-<!-- prettier-ignore -->
-| endpoint | HTTP method | action | authentication required? | body |
-| - | - | - | - | - |
-| `info` | GET | outputs connected Dallas sensors and readings | no |
-
-### Controlling the analog sensors
-
-The URL path is `http://<hostname>/api/analogsensor/`
-
-<!-- prettier-ignore -->
-| endpoint   | HTTP method | action | authentication required? | body |
-| - | - | - | - | - |
-| `info` | GET | outputs configured analog sensors and readings | no | |
-| `commands` | GET | lists the available system commands | no | |
-| `setvalue` | POST | set value/offset of counter or output pin, +/- sign corrects value | yes | `{"value":<val>, "id":<gpio>}` |
-
 ### Examples
 
 #### ...via the command line
 
 ```bash
-# GETs do not need authentication
-% curl http://ems-esp.local/api/thermostat/temp
+# Most GETs do not need authentication
+% curl http://ems-esp.local/api/thermostat/seltemp
 
 # POSTs (with -d) need authentication tokens
-% curl http://ems-esp.local/api/thermostat/temp \
+% curl http://ems-esp.local/api/thermostat/seltemp \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0' \
   -d '{ "value" : 22.5 }'
