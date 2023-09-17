@@ -55,6 +55,7 @@ extra:
   analytics:
     provider: google
     property: G-SVDSJ3QTVC
+  generator: false
 
 markdown_extensions:
   - admonition
