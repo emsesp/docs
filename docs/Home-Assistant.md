@@ -99,7 +99,7 @@ sensor:
         value_template: "{{ int(states('sensor.ems_esp_shower_duration')) | timestamp_custom('%-M min %-S sec', false)}}"
       last_shower_time:
         friendly_name: Last shower timestamp
-        value_template: '{{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated) | int | timestamp_custom("%-I:%M %P on %a %-d %b") }}'
+        value_template: '{{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated) | int | timestamp_custom("%-I:%M %p on %a %-d %b") }}'
 ```
 
 Note you can configure the `timestamp_custom()` to your own preferred format.
