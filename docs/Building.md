@@ -2,11 +2,11 @@
 
 You will need the following installed before you can get started:
 
-- [PlatformIO](https://platformio.org/) - For building the firmware
-- [Node.js](https://nodejs.org) - For building the web interface
-- The `yarn` package installed via `npm install -g yarn`
+- [PlatformIO](https://platformio.org/)
+- [Node.js](https://nodejs.org)
+- [yarn](https://yarnpkg.com/getting-started/install)
 
-It is assumed you are familiar with coding, git and using platformio to build firmware binaries.
+It is assumed you are familiar with coding, git and using PlatformIO to build firmware binaries.
 
 The included `platformio.ini` file will build the firmware for an 4M ESP32 board as its default target, including the Web frontend. If you want to customize the build create a `pio_local.ini` file (there is an example file included). This is useful if you want to upload to a specific port or compile the code with DEBUG flags or change to a different ESP32 platform like an S3.
 
