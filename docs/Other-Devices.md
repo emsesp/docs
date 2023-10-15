@@ -16,7 +16,3 @@ Classed as Connect modules:
 Classed as Alert modules:
 
 - EM10
-
-Classed as Pump modules:
-
-- PM10

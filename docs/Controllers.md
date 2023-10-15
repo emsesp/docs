@@ -2,12 +2,26 @@
 
 This is the current list of supported controller modules:
 
-- Buderus BC10, BC25, BC30, BC40 Base Controller
-- Generic HT3 controller
-- Buderus RFM20 receiver, RFM200, M200
+- BC10/RFM20
 - CM10
+- GB022
+- BC10 GB142
+- HT3
+- BC10
+- MCM10
+- BC25
+- Controller
+- Hybrid Heatpump
+- BC40
+- BC10
+- BC10
 - Ecomline
 - Sense II/CS200
 - ErP
-- 5000i, 8700i, 9000i
-- Rego 3000
+- M200/RFM200
+- BC30
+- 9000i
+- 8700i
+- BC Base
+- Rego 3000 IVT
+- Condens 5000i

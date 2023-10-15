@@ -1,13 +1,33 @@
 # List of Boilers
 
-This is the current list of supported boilers:
+This is the current list of supported boilers from Buderus, Nefit, Sieger, Junkers and Bosch:
 
-- Buderus Logamax, Logamax Plus, Logano, Logano Plus (GBx72, GB162, GB152, GB125, GB212, U122, GB062, GB122, GB192, KB195), GC7000F, 8700i
-- Bosch Condens GC2300, 2500, 5000i, Compress 6000AW
-- Worcester-Bosch Greenstar 550CDi, Greenstar 24i
-- Junkers Cerapur
-- Nefit Proline, Trendline, Topline, Enviline, Smartline, EcomLine
-- Sieger BK13, BK15
+- BK13/BK15/Smartline/GB1x2i
+- GB125/GB135/MC10
+- Cascade CM10
+- Logamax Plus GB022
+- Condens 2500/Logamax/Logomatic/Cerapur Top/Greenstar/Generic HT3
+- Topline/GB162
+- Cascade MCM10
+- Proline
+- GBx72/Trendline/Cerapur/Greenstar Si
+- GB212
+- GC7000F
+- Logano GB125/KB195i/Logamatic MC110
+- Greenstar 30Ri Compact
+- Cerapur Aero
+- Hybrid Heatpump
+- Logano GB212
+- Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i
+- Geo 5xx
+- Condens 5000i/Greenstar 8000/GC9800IW/GB192i.2
+- Logamax U122/Cerapur
+- Ecomline Excellent
+- Logamax Plus/GB192/Condens GC9000/Greenstar ErP
+- Cascade MC400
+- EasyControl Adapter
+- Greenstar HIU
+- Logamax Plus GB122/Condense 2300
 
 ## Device Entities
 
