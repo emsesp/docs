@@ -25,52 +25,30 @@ The full list of console commands are shown below:
 exit
 help
 log [level]
-read <device ID> <type ID> [offset] [length]
-set
-set timeout <n>
-show
-show commands
-show devices
-show ems
-show mqtt
-show system
-show values
-su
-watch [off | on | raw | unknown] [ID]
-```
-
-and these extra commands as admin (after a `su`):
-
-```yaml
-call [device] [cmd] [data] [id|hc]
-exit
-format
-help
-log [level]
-mqtt subscribe <topic>
-passwd
-read <device ID> <type ID> [offset] [length]
-restart
-scan devices [deep]
-set
-set board_profile <name>
-set bus_id <device ID>
-set hostname <name>
-set timeout <n>
-set tx_mode <n>
-set wifi password
-set wifi ssid <name>
-show
-show commands
-show devices
-show ems
-show mqtt
 show system
 show users
+show devices
+show ems
 show values
+show mqtt
+show commands
+test [name] [data]
 su
-watch [off | on | raw | unknown] [ID]
+passwd
+restart
 wifi reconnect
+format
+set wifi password
+set hostname <name>
+set wifi ssid <name>
+set board_profile <name>
+set bus_id <device ID>
+set tx_mode <n>
+set
+scan [deep]
+read <device ID> <type ID> [offset] [length]
+watch [off | on | raw | unknown] [ID]
+call [device] [cmd] [data] [id|hc]
 ```
 
 ## Examples

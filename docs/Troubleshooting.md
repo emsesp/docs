@@ -14,7 +14,7 @@ A slow pulse means either there is no WiFi connection or EMS-ESP cannot read fro
 
 See the explanation on [what the LED shows](Configuring#what-the-onboard-led-is-showing-you).
 
-### EMS-ESP sometimes crashes and restarts
+### EMS-ESP often crashes and restarts
 
 A healthy gateway/interface board running EMS-ESP should run happily for long periods without spontaneous restarts so, if yours is restarting by itself at random intervals, then something's not right.
 
@@ -41,24 +41,34 @@ The ESP32 has very limited RAM, split between run-time stack and the heap. The h
 - Go to `System->System Log` and set the `Log Level` to `INFO`. This will make sure you'll see the restart log at the top next time it restarts. It'll show something similar to `2022-12-30 11:58:02.000    INFO 0:      [emsesp]     Last system reset reason Core0: Software reset CPU, Core1: Software reset CPU`.
 - And finally, if none of the above works then the problem is the core processing the incoming telegrams. Try and capture some logs just before it crashes (using SysLog is good for this) and post the information in a new GitHub issue.
 
-## EMS Connectivity
+### EMS-ESP freezes
 
-### Not all EMS devices are recognized or data is missing
+If the LEDs are not flashing and EMS-ESP is still appearing on the network, it has probably gone into a reconnect-loop. This could happen with the MQTT trying to reconnect when a Wifi Access Point switches channels, specially on Mesh networks. Report this on GitHub and pick one of the later dev builds which supports fixing a BSSID.
+
+## EMS data connectivity
+
+### Not all EMS devices are recognized
 
 Experiment with changing the Tx Mode value in the Settings page. The default EMS works for older EMS1.0 systems, EMS2 or EMSPlus systems and HT3 for Junkers/Worcester using the Heatronics protocol.
 
-If you have EMS devices that may not yet be supported by EMS-ESP then use `scan devices` from the Console to find out their details and then post an enhancement issue on GitHub. Remember the `su` password is default `ems-esp-neo` unless this has been changed via the console (`passwd`) or in the WebUI (`Security->Security Settings`). For example:
+If you have EMS devices that may not yet be supported by EMS-ESP then use `scan` or `scan deep` from the Console to find out their details and then post an enhancement issue on GitHub. Remember the `su` password is default `ems-esp-neo` unless this has been changed via the console (`passwd`) or in the WebUI (`Security->Security Settings`). For example:
 
 ```sh
 ems-esp:$ su
 Password:
 000+00:01:38.291 N 0: [shell] Admin session opened on console
-ems-esp:# scan devices
+ems-esp:# scan
 000+00:01:41.034 N 1: [emsesp] Unrecognized EMS device (device ID 0x08, product ID 123). Please report on GitHub.
 ems-esp:#
 ```
 
 If you want to see the EMS data streaming in, use the `watch` command. See [Console](Console?id=monitoring-the-ems-traffic).
+
+### I'm missing certain data from an EMS device
+
+If data is missing then this is where we need your help to expand our database. Try and locate which telegram could contain the data by making the change on the device (e.g. boiler or thermostat) with EMS-ESP running and looking at the System Log in Trace mode to spot which commands are being sent and what the new values are from incoming telegrams. You can simulate adding a entry using the `Custom Entities` page in the WebUI.
+
+If it from a Thermostat like the Nefit Easy or an Buderus Easy Control CT200 then these will only show you the current room and setpoint temperatures as read-only attributes as these devices do not send data on the EMS bus.
 
 ### Many Rx errors
 

@@ -6,7 +6,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 
 - Power entities
 - Optional input of BSSID for AP connection
-- Return empty json if no entries in scheduler/custom/analogsnesor/temperaturesensor
+- Return empty json if no entries in scheduler/custom/analogsensor/temperaturesensor
 
 ## Fixed
 
