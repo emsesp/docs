@@ -62,7 +62,7 @@ ems-esp:# scan
 ems-esp:#
 ```
 
-If you want to see the EMS data streaming in, use the `watch` command. See [Console](Console?id=monitoring-the-ems-traffic).
+If you want to see the EMS data streaming in, use the `watch` command. See [Console](Console.md?id=monitoring-the-ems-traffic).
 
 ### I'm missing certain data from an EMS device
 
