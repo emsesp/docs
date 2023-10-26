@@ -1,53 +1,53 @@
 This lists the Change Log for only the rolled-up major versions since v3's primary release in March 2021. For a list of all releases and their fixes, changes and new features see the [latest dev Change Log](https://github.com/emsesp/EMS-ESP32/blob/dev/CHANGELOG_LATEST.md).
 
-### **3.6.2 - October 1 2023**
+## 3.6.2 - October 1 2023
 
-## Added
+**Added**
 
 - Power entities
 - Optional input of BSSID for AP connection
 - Return empty json if no entries in scheduler/custom/analogsensor/temperaturesensor
 
-## Fixed
+**Fixed**
 
 - Wifi full scan to get strongest AP. This prevents some freezes when EMS-ESP would jump to a weaker AP in a Mesh setup.
 - Add missing dhw tags
 - Sending a dash/- to the Reset command doesn't return an error [#1308](https://github.com/emsesp/EMS-ESP32/discussions/1308)
 
-## Changed
+**Changed**
 
 - MQTT queue max 300 messages, check heap and maxAlloc
 - API call commands are logged as WARN in the log
 - Reset Command renamed to 'reset' in lowercase in EN
 
-### **3.6.1 - September 9 2023**
+## 3.6.1 - September 9 2023
 
-## **IMPORTANT! BREAKING CHANGES**
+**IMPORTANT! BREAKING CHANGES**
 
 - `shower_data` MQTT topic shows duration is seconds (was previously a full english sentence)
 
-## Added
+**Added**
 
 - Show WiFi rssi in Network Status Page, show quality as color
 
-## Fixed
+**Fixed**
 
 - Issue in espMqttClient causing a memory leak when MQTT broker is disconnected due to network unavailability [#1264](https://github.com/emsesp/EMS-ESP32/issues/1264)
 - Using MQTT enum values correctly formatted in MQTT Discovery [#1280](https://github.com/emsesp/EMS-ESP32/issues/1280)
 
-## Changed
+**Changed**
 
 - MQTT free mem check set to 60 kb
 - Small cosmetic changes to Searching in Customization web page
 - Updated to espressif32@6.4.0
 
-### **3.6.0 - August 13 2023**
+## 3.6.0 - August 13 2023
 
 !!! warning ":rotating_light: **BREAKING CHANGE** :rotating_light:"
 
     - The sensors have been renamed. `dallassensor` is now `temperaturesensor` in the MQTT topic and named `ts` in the Customizations file. Likewise `analogs` is now `analogsensor` in MQTT and called `as` in the Customizations file. If you have previous customizations you will need to manually update by downloading, changing the JSON file and uploading. It's also recommended cleaning up any old MQTT topics from your broker using an application like MQTTExplorer.
 
-## Added
+**Added**
 
 - Workaround for better Domoticz MQTT integration? [#904](https://github.com/emsesp/EMS-ESP32/issues/904)
 - Show MAC address without connecting to network enhancement [#933](https://github.com/emsesp/EMS-ESP32/issues/933)
@@ -79,7 +79,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - Custom entity type RAW [#1212](https://github.com/emsesp/EMS-ESP32/discussions/1212)
 - API command response [#1212](https://github.com/emsesp/EMS-ESP32/discussions/1212)
 
-## Fixed
+**Fixed**
 
 - HA-discovery for analog sensor commands [#1035](https://github.com/emsesp/EMS-ESP32/issues/1035)
 - Enum order of RC3x nofrost mode
@@ -90,7 +90,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - Missing Status of VS1 for Buderus SM200 enhancement [#1034](https://github.com/emsesp/EMS-ESP32/issues/1034)
 - Allowed gpios for S3
 
-## Changed
+**Changed**
 
 - Optional upgrade to platform-espressif32 6.3.0 (after 5.3.0) [#862](https://github.com/emsesp/EMS-ESP32/issues/862)
 - Use byte 3 for detection RC30 active heatingcircuit [#786](https://github.com/emsesp/EMS-ESP32/issues/786)
@@ -108,7 +108,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - Replace React core library with Preact to save on memory footprint
 - Response to `system/send` raw reads gives combined data for telegrams with more parts
 
-### **3.5.0 - February 6 2023**
+## 3.5.0 - February 6 2023
 
 !!! warning ":rotating_light: **BREAKING CHANGE** :rotating_light:"
 
@@ -170,7 +170,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - HA duration class for time entities [[#822](https://github.com/emsesp/EMS-ESP32/issues/822)
 - AM200 alternative heatsource as class heatsource [[#857](https://github.com/emsesp/EMS-ESP32/issues/857)
 
-### **3.4.4 - Oct 29 2022**
+## 3.4.4 - Oct 29 2022
 
 **Added**
 
@@ -199,7 +199,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - remove master-thermostat, support multiple thermostats
 - merge up- and download in webui [#577](https://github.com/emsesp/EMS-ESP32/issues/577)
 
-### **3.4.0 - May 23 2022**
+## 3.4.0 - May 23 2022
 
 !!! warning ":rotating_light: **BREAKING CHANGE** :rotating_light:"
 
@@ -287,7 +287,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - thermostat clock formate date-time: dd.mm.yyyy hh:mm
 - RC300 summermode as other thermostats `winter/summer` instead of `off/on`
 
-### **3.3.1 - Jan 20 2022**
+## 3.3.1 - Jan 20 2022
 
 !!! warning ":rotating_light: **BREAKING CHANGE** :rotating_light:"
 
@@ -354,7 +354,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - Layout changes in the WebUI, showing stripped table rows in Dashboard
 - Alternative font for log window [#219](https://github.com/emsesp/EMS-ESP32/issues/219)
 
-### **3.2.1 - Aug 8 2021**
+## 3.2.1 - Aug 8 2021
 
 **Added**
 
@@ -398,7 +398,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - Updated AsyncMqttClient to 0.9.0 and ArduinoJson to 6.18.3
 - Download buttons for settings and info under the Help tab
 
-### **3.1.1 - Jun 26 2021**
+## 3.1.1 - Jun 26 2021
 
 **Added**
 
@@ -433,7 +433,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - lowercased Flow temp in commands
 - system console commands to main
 
-### **3.0.1 - Mar 30 2021**
+## 3.0.1 - Mar 30 2021
 
 **Added**
 
