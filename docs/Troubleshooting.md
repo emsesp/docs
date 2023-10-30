@@ -43,7 +43,12 @@ The ESP32 has very limited RAM, split between run-time stack and the heap. The h
 
 ### EMS-ESP freezes
 
-If the LEDs are not flashing and EMS-ESP is still appearing on the network, it has probably gone into a reconnect-loop. This could happen with the MQTT trying to reconnect when a Wifi Access Point switches channels, specially on Mesh networks. Report this on GitHub and pick one of the later dev builds which supports fixing a BSSID.
+If EMS-ESP becomes unresponsive, as in it appears to be active and hasn't restarted itself but accessing either the telnet console, the webUI or simply responding to ping fails then EMS-ESP has gone into a network loop. We have seen this behavior with Mesh'd WiFi Access Points and also unstable MQTT servers, and coded fail-safe's to avoid them. If you do encounter this annoying problem then first try setting a BSSID (only if using WiFi). Otherwise please report it on GitHub along with this additional information:
+
+- the System Info (so we can see version, MQTT config and any errors)
+- any signs of LEDs (on the board/gateway) or the Ethernet port if using an E32 Gateway
+- description of your network (which vendor, WiFi or Ethernet, etc)
+- any anomalies in the network (servers down, Access point roaming, channel switching etc)
 
 ## EMS data connectivity
 
