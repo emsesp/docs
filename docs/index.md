@@ -35,7 +35,7 @@ As well as bug fixes, memory and performance optimizations and more responsive W
 
 See a [live demo](https://ems-esp.derbyshire.nl/) and the full list of features in the [change log](Version-Release-History#350-current-development-version).
 
-### :warning: Breaking Changes in v3.6.x :warning:
+### Breaking Changes in v3.6.x
 
 !!! warning
 
