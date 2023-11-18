@@ -17,7 +17,7 @@ hide:
 
 <span style="font-size: 1.5rem">Current Releases</span>
 <span style="font-size: 1.2rem">
-<BR>Main - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.2">version 3.6.2</a>
+<BR>Main - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.3">version 3.6.3</a>
 <BR>Development - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">version 3.6.x</a>
 </span>
 
@@ -29,7 +29,7 @@ As well as bug fixes, memory and performance optimizations and more responsive W
 
 - Added Italian and Turkish translations (please do reach out on Discord if you want to help translate to other languages)
 - Added support for ESP32 S2, C3 mini and S3
-- Added 10 new EMS devices
+- Added 20 new EMS devices
 - Added a Scheduler to allow setting of EMS parameters at specific times
 - Custom Entity feature to extend entities directly from the telegram data
 
