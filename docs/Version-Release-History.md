@@ -1,6 +1,6 @@
 This lists the Change Log for only the rolled-up major versions since v3's primary release in March 2021. For a list of all releases and their fixes, changes and new features see the [latest dev Change Log](https://github.com/emsesp/EMS-ESP32/blob/dev/CHANGELOG_LATEST.md).
 
-## 3.6.3 - November 18 2023
+## 3.6.4 - November 24 2023
 
 **Added**
 
@@ -24,6 +24,8 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - shower_data MQTT payload contains the timestamp [#1329](https://github.com/emsesp/EMS-ESP32/issues/1329)
 - fixed helper text in Web Device Entity dialog box for numerical ranges
 - MQTT base with paths not working in HA [#1393](https://github.com/emsesp/EMS-ESP32/issues/1393)
+- set/read thermostat mode for RC100-RC300, [#1440](https://github.com/emsesp/EMS-ESP32/issues/1440) [#1442](https://github.com/emsesp/EMS-ESP32/issues/1442)
+- some setting commands for ems-boiler have used wrong ems+ telegram in 3.6.3
 
 **Changed**
 
