@@ -50,7 +50,7 @@ If EMS-ESP becomes unresponsive, as in it appears to be active and hasn't restar
 - description of your network (which vendor, WiFi or Ethernet, etc)
 - any anomalies in the network (servers down, Access point roaming, channel switching etc)
 
-## EMS data connectivity
+## EMS data and bus connectivity
 
 ### Not all EMS devices are recognized
 
@@ -71,9 +71,9 @@ If you want to see the EMS data streaming in, use the `watch` command. See [Cons
 
 ### I'm missing certain data from an EMS device
 
-If data is missing then this is where we need your help to expand our database. Try and locate which telegram could contain the data by making the change on the device (e.g. boiler or thermostat) with EMS-ESP running and looking at the System Log in Trace mode to spot which commands are being sent and what the new values are from incoming telegrams. You can simulate adding a entry using the `Custom Entities` page in the WebUI.
+If data is missing then this is where we need your help to expand our database. Try and locate which telegram could contain the data by making the change on the device (e.g. boiler or thermostat) with EMS-ESP running and looking at the System Log in Trace mode to spot which commands are being sent and what the new values are from incoming telegrams. When you have located the telegram, find the offset and use the `Custom Entities` page in the WebUI to create a new entity which you can test. Pay attention to the Unit of Measure. Then take a screenshot of this screen and post it to a new GitHub issue, along with a suitable 'long' name and a 'short' name which will allow us to quickly implement in.
 
-If it from a Thermostat like the Nefit Easy or an Buderus Easy Control CT200 then these will only show you the current room and setpoint temperatures as read-only attributes as these devices do not send data on the EMS bus.
+Note that not all EMS devices allow their data to be published on the EMS bus, for example the smart thermostats like the Nefit Easy and Buderus Easy Control CT200 which only transmits the current room and setpoint temperatures as read-only attributes.
 
 ### Many Rx errors
 
