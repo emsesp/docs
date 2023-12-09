@@ -118,6 +118,7 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 | `fetch` | GET | forces at refresh of all device values | no | |
 | `restart` | GET | restarts EMS-ESP | yes | |
 | `commands` | GET | lists the available system commands | no | |
+| `allvalues` | GET | lists all connect devices and sensors and their entity values | no | |
 | `send` | POST | send telegram to the EMS bus | yes | `"XX XX...XX"` |
 | `publish` | POST | MQTT publish all values, and optional HA-configuration or specific for a device | no | `[ha] \| [device]` |
 | `watch` | POST | watch incoming telegrams | no | `<on \|off \| raw \| <type-id(hex)>` |
