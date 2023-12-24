@@ -6,6 +6,10 @@ You will need the following installed before you can get started:
 - [Node.js](https://nodejs.org)
 - [yarn](https://yarnpkg.com/getting-started/install)
 
+Note: on Windows 10 you will need to enable UTF-8 from the Regional Settings, to compile the Slovakian translation.
+
+Note: on some Windows system you may also need to run `corepack enable` for yarn, as mention in the link above.
+
 It is assumed you are familiar with coding, git and using PlatformIO to build firmware binaries.
 
 The included `platformio.ini` file will build the firmware for an 4M ESP32 board as its default target, including the Web frontend. If you want to customize the build create a `pio_local.ini` file (there is an example file included). This is useful if you want to upload to a specific port or compile the code with DEBUG flags or change to a different ESP32 platform like an S3.
@@ -28,7 +32,7 @@ The WebUI can be developed and tested in real-time using mock dummy data. This i
 and then from the `interface` folder run:
 
 ```sh
-% yarn run standalone
+% yarn standalone
 ```
 
 Make sure you have the latest version of node installed. You need at least 18.20 and can check with `node -v`. An easy way to switch between different node versions is to use [nvm](https://github.com/nvm-sh/nvm).
