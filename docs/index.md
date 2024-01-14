@@ -5,7 +5,7 @@ hide:
   - toc
 ---
 
-# ESP32 Firmware to communicate with EMS heating appliances
+# ESP32 firmware to communicate with EMS heating appliances
 
 <img style="margin: 10px 10px; float:right; width:20%" src="_media/logo/boiler.svg" alt="EMS-ESP Logo"></img>
 **EMS-ESP** is an open-source firmware for the Espressif ESP32 microcontroller that communicates with **EMS** (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger
@@ -23,7 +23,7 @@ hide:
 
 ## New Features introduced in 3.6
 
-13 August 2023
+_13 August 2023_
 
 As well as bug fixes, memory and performance optimizations and more responsive Web layout, these are the other noticeable new features and enhancements:
 
