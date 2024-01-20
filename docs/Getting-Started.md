@@ -25,15 +25,16 @@ The firmware is a single binary file. First decide whether you want to take the 
 
 If this is a fresh install you will need to upload it manually and there are two methods for this.
 
-1. The easiest way is to use our [EMS-ESP Flasher tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). The are versions for Windows, Linux and Mac OSX. Note you may see a false negative security vulnerability on Windows which you can ignore.
-2. Or via the command line interface of your OS. You will need [Python](https://www.python.org/downloads/) installed for this.
+1. The easiest way is to use our custom [EMS-ESP Flasher tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). The are versions for Windows, Linux and Mac OSX. Note you may see a security vulnerability warning on Windows which you can safely ignore.
+2. Or via the command line interface of your OS. You will need [Python](https://www.python.org/downloads/) installed for this as well as `pip` and use `pip` to grab the `esptool` using the command `pip install esptool`. Then use the following command to upload the firmware:
 
 ```
-    pip install esptool
-    esptool.py --chip esp32 --port "COM3" --baud 921600 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 <firmware.bin>
+esptool.py --chip esp32 --port <COM Port> --baud 921600 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 <firmware.bin file>
 ```
 
-!!! info "the .bin files needed for esptool can be found [here](https://github.com/emsesp/EMS-ESP32/tree/main/scripts)"
+!!! info "Note: the three `.bin` files needed for esptool can be found [here](https://github.com/emsesp/EMS-ESP32/tree/main/scripts)"
+
+3. Or using the PlatformIO CLI like `pio run -e esp32_4M -t upload`
 
 ### Upgrading from a previous release
 
