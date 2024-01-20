@@ -283,7 +283,7 @@ in the automations:
     service: rest_command.emsesp
     data:
       device: 'boiler'
-      name: 'wwseltemp'
+      entity: 'wwseltemp'
       value: "{{ states('input_number.wwselected_temp') | int }}"
 
 - id: 'set_ww_seltemp'
