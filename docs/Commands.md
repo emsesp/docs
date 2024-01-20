@@ -181,7 +181,9 @@ Examples:
 
 ### Publishing Commands
 
-EMS-ESP will subscribe to specific topics depending on the EMS devices attached. For example `boiler`, `thermostat` etc. Commands can be sent to EMS-ESP via these topics using the payload format:
+EMS-ESP will MQTT 'subscribe' to specific topics depending on the EMS devices attached. For example `boiler`, `thermostat` etc.
+
+Commands can be sent to EMS-ESP via these MQTT topics using the payload format:
 
 ```json
 {"cmd":"<cmd>", "data":<data>, "id":<n>}
@@ -189,9 +191,9 @@ EMS-ESP will subscribe to specific topics depending on the EMS devices attached.
 
 where
 
-- `cmd` is one of the commands listed in the [Commands](Commands) and **_must_** be enclosed in quotes.
-- `data` can be a string or numeric value.
-- `id` can be replaced with `hc` for some devices that use heating circuits, and represented either as a string or a number.
+- `cmd` is one of the commands listed in the [Commands](Commands) and **_must_** be enclosed in quotes as a String. The key `entity` may also be used instead of `cmd`.
+- `data` (or `value`) holds the value for the command, and can be either a String or numeric value.
+- `id` is used as an generic indicator. `hc`, `wwc`, `ahs` and `hs` are other suppoerted aliases. For example with `hc` it is used to indicated a specific Heating Circuit. A numeric value or String can be both used.
 
 With Home Assistant, Thermostat commands can also be sent to control individual heating circuits via sending a mode string or temperature number to a topic `thermostat_hc<n>`.
 
