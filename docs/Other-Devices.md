@@ -5,6 +5,7 @@ This is the current list of supported other devices.
 Classed as Gateway modules:
 
 - Buderus Web Gateway KM200, MB LAN2
+- Buderus Communication Module MX300
 
 Classed as Connect modules:
 
