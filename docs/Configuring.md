@@ -42,7 +42,7 @@ This next section describes some of key application settings that can be configu
 - **Enable Analog Sensors**. This enables any GPIO to collect signals, whether it's a digital I/O, a pulse counter or ADC measuring mv.
 - **Convert temperature values to Fahrenheit**. For our US friends.
 - **Bypass Access Token authorization on API calls**. For RESTful write commands via HTTP POST the access token is required. This is for security reasons to prevent anyone changing device settings. Setting this flag makes the API open. Not recommended!
-- **Enable Read only mode**. This disables any outgoing Tx write commands to the EMS bus, essentially putting EMS-ESP into listening mode.
+- **Enable Read only mode**. This disables any outgoing Tx write commands to the EMS bus, essentially putting EMS-ESP into listening mode. However Tx is needed to detect EMS devices (as it sends out a Version command). If you want to explicitly put EMS-ESP into a read-only/sniffer mode use `set tx_mode 0` from the console.
 - **Underclock CPU speed**. Under-clocks the ESP to 160Mhz, saving on power, heat and prolonging the lifespan of the chip at the cost of performance and response time. A reboot of EMS-ESP is required.
 - **Enable Shower Timer**. Enable to time how long the hot water runs for and it will send out an MQTT message with the duration. The timer starts after a minimal of 2 minutes running time.
 - **Enable Shower Alert**. This is somewhat experimental and may not work on all boilers. After 7 minutes (configurable) running the hot water it will send out a warning by sending cold water for 10 seconds (also configurable). The boiler goes into test mode to perform this operation so use with caution!
@@ -128,6 +128,14 @@ Limits:
 - PWM: `max frequency 5000Hz, resolution 13bits``
 - Counter/timer/rate trigger: `high->low edge with 15 ms debounce. Only for low pulse rates.`
 
+### Controlling Relay's
+
+A common use case is to control a relay to switch on/off a device. This can be done by adding a digital output sensor and then creating a command to control it. The command can be added to the dashboard and scheduled to turn on/off at specific times.
+
+Create an Analog Sensor with type 'Digital Out'.
+
+The professional way is to use a separate relay board with opto-isolation and a flyback diode. The relay board is then powered by a separate power supply and the relay is connected to the digital output of the EMS-ESP as described above. The relay board is then connected to the device you want to control. This way the device is completely isolated from the EMS-ESP and the relay board can handle the higher voltage and current.
+
 ## Customizing Entities
 
 The Customization page shows all registered entities and allows to exclude commands and values from publishing via mqtt/api or remove them from dashboard. The dashboard only shows entities with values, the customization page shows all. If an entity has no value then it is supported by EMS-ESP, but not by your boiler/thermostat/etc.
@@ -142,6 +150,6 @@ Use the scheduler to call commands at specific intervals. This is useful for exa
 
 ## Creating Custom Entities
 
-If you know where specific data is hiding in a telegram you can sniff them out and create a custom entity. This is useful way to test for new values before we can extend officially in the firmware.
+Custom Entities is an advanced and powerful way to extend EMS-ESP by adding your own EMS entities that extracts data from a specific EMS telegram. This is useful when EMS-ESP doesn't yet support a specific entity, or when you want to extract data from a telegram that is not yet supported. Another common use case is for debugging or watching specific behaviour when changing parameters on an EMS device. For example, a modern Heat Pump may have new features that are not included in EMS-ESP. Here you would use the `watch` command to view the incoming EMS traffic in combination with manual adjusting specific parameters and when you have located the specific telegram and the offset, create a Custom Entity to fine-tune the type and verify the the value. Then request it to be included in the next EMS-ESP release update.
 
 ![Web](_media/screenshot/web_customentities.png)

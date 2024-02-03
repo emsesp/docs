@@ -6,6 +6,8 @@ Below are answers to some common problems.
 
 The EMS-ESP is probably in Access Point mode. Look for a wifi SSID `ems-esp`, connect to this and open a browser to 'http://192.168.4.1'. If you have configured a WiFi client your router would have appointed an IP address via DHCP. You should be able to then connect via https://ems-esp or https://ems-esp.local.
 
+On boards with Ethernet, Ethernet will be disabled if a WiFi SSID exists. If you want to use Ethernet, set this clear this setting.
+
 ### The LED is constantly flashing
 
 A fast pulse of the LED means the system is booting or in installation mode. Connect via the WiFi to its Access Point (`ems-esp`) to complete the configuration.
@@ -50,7 +52,7 @@ If EMS-ESP becomes unresponsive, as in it appears to be active and hasn't restar
 - description of your network (which vendor, WiFi or Ethernet, etc)
 - any anomalies in the network (servers down, Access point roaming, channel switching etc)
 
-## EMS data and bus connectivity
+## EMS Data and Connectivity
 
 ### Not all EMS devices are recognized
 
@@ -88,8 +90,7 @@ If you're using the EMS wires, on some systems the order is important. Try switc
 
 A BBQKees Gateway is DCE, and the ESP32s are DTE so you have to connect TX(esp)-TX(gateway) and RX-RX. TX on the ESP32 is sending data, TX on gateway is the input for sending data to the ems-bus. Note a crossed (nullmodem) connection is only used for DTE-DTE connections.
 
-The most common wiring mistake though is that when people connect the interface board to an ESP32 module, they connect it to the pins marked TX and RX on the ESP32 module.
-But these are for the USB chip, not for the interface board.
+The most common wiring mistake though is that when people connect the interface board to an ESP32 module, they connect it to the pins marked TX and RX on the ESP32 module. If you're unsure of which pins to use, go to EMS-ESP Settings, select the Interface Board Profile for your board and select 'Custom' to view the default assigned GPIOs.
 
 ### Changing a value on an EMS Device doesn't work
 
@@ -194,3 +195,19 @@ See @swa72's fix [here](https://github.com/swa72/home-assistant/blob/main/README
 ### HA has messed up the names of my entities
 
 This happens, when HA make changes to MQTT Discovery. There's a nice tool called [homeassistant-entity-renamer](https://github.com/saladpanda/homeassistant-entity-renamer) that can help you fix this.
+
+## Specific EMS settings
+
+### Thermostat Date/Time
+
+The correct format for setting the Thermostat time is:
+
+```
+< NTP | dd.mm.yyyy-hh:mm:ss-day(0-6)-dst(0/1) >
+```
+
+The thermostat needs a setting of day-of-week and daylight-saving. Bosch day-of-week is Mo-0, Su-6, unlike unix-time.
+
+If you have enabled NTP you can just enter "NTP" and the ntp time is set to the thermostat.
+
+With NTP enabled the thermostat clock is also automatically set by EMS-ESP if it differs from the ntp time.
