@@ -148,6 +148,11 @@ Use the scheduler to call commands at specific intervals. This is useful for exa
 
 ![Web](_media/screenshot/web_scheduler.png)
 
+The scheduler can also be used to periodically set values based on another entity value, or even a user-defined custom entity (variable). For example to set the flow temperature of the boiler every minute based on a user managed entity which is controlled externally (e.g. in Home Assistant) it would look like:
+
+![Web](_media/screenshot/web_scheduler_custom.png)
+![Web](_media/screenshot/web_scheduler_flowtemp.png)
+
 ## Creating Custom Entities
 
 Custom Entities is an advanced and powerful way to extend EMS-ESP by adding your own EMS entities that extracts data from a specific EMS telegram. This is useful when EMS-ESP doesn't yet support a specific entity, or when you want to extract data from a telegram that is not yet supported. Another common use case is for debugging or watching specific behaviour when changing parameters on an EMS device. For example, a modern Heat Pump may have new features that are not included in EMS-ESP. Here you would use the `watch` command to view the incoming EMS traffic in combination with manual adjusting specific parameters and when you have located the specific telegram and the offset, create a Custom Entity to fine-tune the type and verify the the value. Then request it to be included in the next EMS-ESP release update.
