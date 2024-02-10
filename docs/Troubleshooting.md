@@ -77,6 +77,8 @@ If data is missing then this is where we need your help to expand our database. 
 
 Note that not all EMS devices allow their data to be published on the EMS bus, for example the smart thermostats like the Nefit Easy and Buderus Easy Control CT200 which only transmits the current room and setpoint temperatures as read-only attributes.
 
+See this article on [Decoding EMS Telegrams](FAQ.md?id=decoding-ems-telegrams) for more information.
+
 ### Many Rx errors
 
 It is quite usual to see a few warnings in the log about incomplete telegrams. This could be due to interference on the line. The warnings are usually harmless as EMS-ESP will either wait for the next broadcast or keep trying to fetch the telegram. If you're seeing an Rx or Tx quality less than 80% then try:

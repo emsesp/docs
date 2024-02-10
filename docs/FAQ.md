@@ -6,6 +6,27 @@ If you have a GPIO Button configured (enabled by default on all BBQKees boards) 
 - _double press_: re-connects the WiFi
 - _hold for 10 seconds_: performs a factory reset. EMS-ESP will restart in Access Point mode
 
+## Decoding EMS Telegrams
+
+_Written by @MichaelDvP in [this article](https://github.com/emsesp/EMS-ESP32/discussions/1612#discussioncomment-8408868):_
+
+Best overview of known telegrams is from [Norberts1](https://github.com/norberts1/hometop_HT3/blob/master/HT3/docu/HT_EMS_Bus_messages.pdf) and the [EMS-Wiki](https://ems-wiki.org/index.php/EMS_Bus). In general we can say:
+
+- measurement values are broadcasted periodical 10 sec / 1 min
+- settings are only broadcasted after a change
+- changing a setting of a device via the UI of thermostat results in a message thermostat -w-> device with only this value
+- some devices broadcast fast changing values as single values
+- measured temperatures are normally 2 bytes (SHORT) with factor 0.1 (e.g. 01 23 -> 0x0123 -> dez 291 -> 29.1°C)
+- air temperature settings are often factor 0.5 as single byte (INT) (e.g. 0x2D -> dez 45 -> 22.5°C)
+- water temperature settings are typically single byte (UINT) (e.g. 0x3C -> 60°C), differential values (hysteresis in Kelvin) are signed (INT)
+- percent settings are single byte (UINT) (0x64 -> 100%)
+- on/off states or settings can be single byte with on/off 0xFF/0x00, or 0x01/0x00 or a single bit in a byte together with 7 other states
+- times and energy is typically 3 or 4 bytes with or without factor
+
+For different brands/devices Bosch sometimes use different expressions for the same value, Maybe changing developers or they like to make reverse engineering difficult!
+
+If you search a setting, log the telegrams for the device (log all or watch <device-id>) and change the setting on the thermostat to different states/values. Then search for these values in the log. If you search for a measurement, log the device and view the value on the thermostat and wait for changes, note old/new values and time. Then check the log for this time stamp (or 10 sec / 1 min later) and the value within a telegram. Best to have more changes/values to be sure.
+
 ## Can EMS-ESP simulate a Thermostat?
 
 No, but in theory it could.
