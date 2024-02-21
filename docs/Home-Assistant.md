@@ -17,12 +17,13 @@ You can then add each of these devices to a new lovelace view using the "add to 
 ### Alert when EMS-ESP boots
 
 ```yaml
-alias: EMS-ESP booted
-description: ''
+alias: EMS-ESP boots
+description: Notify when EMS-ESP boots
 trigger:
   - platform: mqtt
-    topic: ems-esp/status
-    payload: online
+    topic: ems-esp/heartbeat
+    payload: connecting
+    value_template: '{{ value_json.bus_status }}'
 condition: []
 action:
   - service: notify.notify
