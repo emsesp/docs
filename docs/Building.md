@@ -93,3 +93,81 @@ You can also create a VSC's task in `launch.json` file to automate this for you,
     }
     ...
 ```
+
+### WSL (building a Linux environment on Windows)
+
+I recently had to rebuild my Linux WSL on Windows from scratch to build EMS-ESP I thought I'd share the steps I took to get it working.
+
+#### WSL:
+
+if you need to remove any old ones use `wsl.exe --terminate <dist>`
+
+```sh
+wsl.exe --setdefault <new dist>
+wsl -l -v
+```
+
+#### Setup Linux under WSL:
+
+```sh
+sudo apt install unzip
+sudo apt install make
+sudo apt install g++
+sudo apt install python3-venv
+sudo apt install nodejs
+sudo apt install curl
+```
+
+#### USB on WSL:
+
+This is so the USB port is available within VS code.
+
+install https://github.com/dorssel/usbipd-win/releases
+
+from Administrator Powershell:
+
+```cmd
+usbipd list (to find COM port)
+usbipd bind -b 1-6
+usbipd attach -w -b 1-6
+```
+
+in WSL:
+
+you should see `/dev/ttyUSB0`
+
+install PlatformIO rules following https://docs.platformio.org/en/latest/core/installation/udev-rules.html to stop the warnings when firmware uploading.
+
+#### nvm (npm version manager):
+
+```sh
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+yarn (disable report backs)
+yarn config set --home enableTelemetry 0
+
+ncu (to check for package updates)
+npm install -g npm-check-updates
+ncu -p yarn
+```
+
+#### bun:
+
+This is needed for standalone testing.
+
+```sh
+curl -fsSL https://bun.sh/install | bash
+```
+
+#### zsh:
+
+This is my preferred shell. I extend with Oh-My-zsh and the Powerlevel10k theme.
+
+```sh
+sudo apt install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+#### Visual Studio Code:
+
+Use vscode on Windows, connect to the `WSL`. First time install all extensions and restart. If you have the settings saved and sync'd it should be very quick.
