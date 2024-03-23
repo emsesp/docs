@@ -1,5 +1,7 @@
 This lists the Change Log for only the rolled-up major versions since v3's primary release in March 2021. For a list of all releases and their fixes, changes and new features see the [latest dev Change Log](https://github.com/emsesp/EMS-ESP32/blob/dev/CHANGELOG_LATEST.md).
 
+## 3.6.5 - March 23 2024
+
 ## 3.6.4 - November 24 2023
 
 **Added**

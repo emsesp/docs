@@ -17,8 +17,8 @@ hide:
 
 <span style="font-size: 1.5rem">Current Releases</span>
 <span style="font-size: 1.2rem">
-<BR>Main - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.4">version 3.6.4</a>
-<BR>Development - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">version 3.6.x</a>
+<BR>Main - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.5">version 3.6.5</a>
+<BR>Development - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">version 3.x</a>
 </span>
 
 ## New Features introduced in 3.6
@@ -35,7 +35,7 @@ As well as bug fixes, memory and performance optimizations and more responsive W
 
 See a [live demo](https://ems-esp.derbyshire.nl/) and the full list of features in the [change log](Version-Release-History#350-current-development-version).
 
-### Breaking Changes in v3.6.x
+### Breaking Changes since v3.6.x
 
 !!! warning
 
