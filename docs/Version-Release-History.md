@@ -2,10 +2,6 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 
 ## 3.6.5 - March 23 2024
 
-## **IMPORTANT! BREAKING CHANGES**
-
-- The Wifi Tx Power setting in Network Settings will be reset to Auto
-
 **Added**
 
 - thermostat boost mode and boost time [#1446](https://github.com/emsesp/EMS-ESP32/issues/1446)
