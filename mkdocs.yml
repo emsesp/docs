@@ -97,6 +97,7 @@ nav:
       - Version Release History: Version-Release-History.md
       - Getting Started: Getting-Started.md
       - Configuring: Configuring.md
+      - Special Functions: Special-Functions.md
       - WebUI: WebUI.md
       - MQTT: MQTT.md
       - Commands: Commands.md
