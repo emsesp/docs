@@ -15,31 +15,35 @@ The function `boiler/forceheatingoff` repeats this command every minute, so the 
 
 ## Energy Measurement
 
-For gas and oil burners, Bosch does not measure the energy consumption. EMS-ESP calculates the consumption of each boiler message by burner modulation and nominal boiler power. Some gas boilers have the nominal power stored, some do not. 
+For gas and oil burners, Bosch does not measure the energy consumption. EMS-ESP calculates the consumption of each boiler message by burner modulation and nominal boiler power. Some gas boilers have the nominal power stored, some do not.
 Also the stored power is not always correct, a boiler of same type could be equipped with different burners or have its burners adjusted by air/nozzle size.
 In these cases, the nominal power `boiler/nonpower` can be changed and stored in EMS-ESP. Check the setting before using the energy values.
 
 ## Remote Thermostats
 
-Modern thermostats mainly use outdoor temperature to calculate the flow temperature. A single thermostat placed on the boiler can do this for different heating circuits. This type of control is slow. 
+Modern thermostats mainly use outdoor temperature to calculate the flow temperature. A single thermostat placed on the boiler can do this for different heating circuits. This type of control is slow.
+
 If you change the target room temperature, the thermostat calculates the flow temp to reach and hold this temperature.
-A room thermostat could measure that the actual temperture is much lower and raise the flowtemp much higher until the temperature is reached.
-This is called outdoorcontrolled with room influence and needs a remote thermostat in the room. In `thermostat/hcx/control` the remote has to be set.
+A room thermostat could measure that the actual temperture is much lower and raise the flowtemp much higher until the temperature is reached. This is called outdoorcontrolled with room influence and needs a remote thermostat in the room. In `thermostat/hcx/control` the remote has to be set.
 
 EMS-ESP can emulate a remote thermostat and send a temperature as a measured room temperature to the master-thermostat.
 The original remote thermostats can also change the dhw settings, the setpoint, etc. In EMS-ESP this could set on the master.
+
 With `thermostat/hcx/remotetemp` and a valid temperature the function is started. EMS-ESP now sends the value with origin of a remote roomthermostat, thus emulating a remote thermostat.
+
 For the master thermostat RC30/RC35 a RC20 is emulated, for RC3x0/BC400 you have to choose the control first to RC200 or RC100H, EMS-ESP then emulates the selected room thermostat.
 For Junkers/Bosch FW120 and similar an FB10 is emulated and has to be selected for emulation.
 
-To activate this function do:
+To activate this function, follow these steps:
+
 - set `thermostat/hcx/control` to the right Remote
 - send `thermostat/hcx/remotetemp` with your measured temperature
 - for RC100H send `thermostat/hcx/remotehum` with a value
 - EMS-ESP will find a new thermostat with entities for room temperature and humidity
 - update the remote values on change, there is no need for periodic sending as this is done by EMS-ESP
 
-to stop the function
+and to stop the function:
+
 - send `thermostat/hcx/remotetemp` with value `-1`
 - set `thermostat/hcx/control` to the master thermostst (RC35/RC300/FW120, etc.)
 - the remote thermostat in the EMS-ESP device list stays, but has no entities
