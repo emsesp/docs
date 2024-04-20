@@ -37,3 +37,11 @@ And **mtc716** said _"A thermostat creates a heat curve that is constantly adapt
 
 See [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/issues/144)
 and [thermostat emulation](https://github.com/emsesp/EMS-ESP32/issues/151).
+
+## Bus protocols and Tx mode explained
+
+Protocol and timing are different things, you pick the tx-mode that works best.
+
+HT3 is the Junkers electronic and HT3 protocol is the same as EMS, only in first byte (sender) the highest bit is set. Each telegram we send starts with 0B in a Buderus system, but with 8B in Junkers. This makes the devices of the different brands incompatible. EMS-ESP checks the bus on start and select the right protocol automatically. Also Junkers uses different telegram numbers/orders. Bosch labeled modules uses the same telegram numbers as Buderus, but addressing like Junkers, so also incompatible. You can't connect Junkers or Buderus modules to a Bosch heating system.
+
+Tx-mode is the send timing: The client devices send by current modulation, the master by voltage modulation. This allows full duplex (Hardware mode), but depending on line impedance drawing current also influences the voltage. When sending, the master repeats every byte sent by the device to publish it to the other devices. With a Tx-mode of "EMS" we wait for the master byte before sending the next. The older Junkers seems to have a lower timeout so we need to start the next byte before the master echo is completed ("HT3"). "EMS+" is less critical and we can wait a bit longer than one byte to allow voltage to be stabilized after the sending.
