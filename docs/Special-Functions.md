@@ -49,3 +49,18 @@ and to stop the function:
 - the remote thermostat in the EMS-ESP device list stays, but has no entities
 
 If the control is set to roomthermostat and the first remotetemp is not set within a minute, the master will show an error message.
+
+## Schedule
+
+The `schedule` function can be used to permanently maintain the remote thermostat. The thermostat is recreated and provided with starting values ​​every time the EMS-ESP is restarted.
+
+![EMS-SCHEDULE-EDIT](https://github.com/emsesp/docs/assets/80219712/d1009d40-7d80-41a8-9690-d3222d9a0612)
+
+- `Timer 00:00` for trigger once on start-up
+- `Command` is `thermostat/hcx/remotetemp` or/and `thermostat/hcx/remotehum` for RC100H
+- `Value` is a typical tempetature for your home
+- `Name` is freely selectable
+
+![EMS-SCHEDULE-MAIN](https://github.com/emsesp/docs/assets/80219712/bc0487fe-a214-4c56-a454-1870c27a9de9)
+
+In the overview it should look like this for the RC100H example.
