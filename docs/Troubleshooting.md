@@ -4,7 +4,7 @@ Below are answers to some common problems.
 
 ### Can't connect to the WiFi
 
-The EMS-ESP is probably in Access Point mode. Look for a wifi SSID `ems-esp`, connect to this and open a browser to 'http://192.168.4.1'. If you have configured a WiFi client your router would have appointed an IP address via DHCP. You should be able to then connect via https://ems-esp or https://ems-esp.local.
+The EMS-ESP is probably in Access Point mode. Look for a wifi SSID `ems-esp`, connect to this and open a browser to '<http://192.168.4.1>'. If you have configured a WiFi client your router would have appointed an IP address via DHCP. You should be able to then connect via <https://ems-esp> or <https://ems-esp.local>.
 
 On boards with Ethernet, Ethernet will be disabled if a WiFi SSID exists. If you want to use Ethernet, set this clear this setting.
 
@@ -14,7 +14,7 @@ A fast pulse of the LED means the system is booting or in installation mode. Con
 
 A slow pulse means either there is no WiFi connection or EMS-ESP cannot read from the EMS bus. In this case go to the Web interface and try a different Tx Mode setting.
 
-See the explanation on [what the LED shows](Configuring#what-the-onboard-led-is-showing-you).
+See the explanation on [what the LED shows](Getting-Started#what-the-onboard-led-is-telling-you).
 
 ### EMS-ESP often crashes and restarts
 
@@ -182,7 +182,7 @@ persistence_location /mosquitto/data/
 log_dest file /mosquitto/log/mosquitto.log
 ```
 
-To read up more on this visit https://pagefault.blog/2020/02/05/how-to-set-up-persistent-storage-for-mosquitto-mqtt-broker.
+To read up more on this visit <https://pagefault.blog/2020/02/05/how-to-set-up-persistent-storage-for-mosquitto-mqtt-broker>.
 
 An alternative option without using persistance on the MQTT server is to tell EMS-ESP to republish all the Home Assistant MQTT topics. You can do this via the EMS-ESP WebUI from version 3.4 and higher.
 
