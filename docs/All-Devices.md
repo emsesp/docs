@@ -21,6 +21,12 @@ The following device types are supported:
 - alert
 - pump
 
+## All EMS Telegrams
+
+[Download the full CSV file](data/dump_telegrams.csv)
+
+{{ read_csv('docs/data/dump_telegrams.csv') }}
+
 ## All devices and entities
 
 [Download the full CSV file](data/dump_entities.csv)
