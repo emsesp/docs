@@ -42,12 +42,6 @@ If you are upgrading from a previous release it's recommended you perform the up
 
 !!! note "There was an issue with older BBQKees Gateway boards that used a smaller partition size on the ESP32. If you're upgrading from v3.4 or earlier and have one of these boards then make a backup of your settings and use the [EMS-ESP Flasher tool](https://github.com/emsesp/EMS-ESP-Flasher/releases)."
 
-Alternatively you can opt for an Over the Air (OTA) install using [`espota.py`](https://github.com/emsesp/EMS-ESP32/tree/main/scripts) and:
-
-```
-espota.py --debug --progress --port 8266 --auth ems-esp-neo -i <IP address> -f <firmware.bin>
-```
-
 ## What the onboard LED is telling you
 
 !!! info
