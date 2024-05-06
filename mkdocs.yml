@@ -107,7 +107,6 @@ nav:
           - Adding Languages: Adding-Languages.md
           - Contributing: Contributing.md
           - The EMS protocol: EMS-bus.md
-          - Example EMS Circuit: EMS-Circuit.md
   - Supported Devices:
       - All Devices and Entities: All-Devices.md
       - Boilers: Boilers.md
