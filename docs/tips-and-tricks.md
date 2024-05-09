@@ -10,6 +10,14 @@ Once the `current flow temperature` exceeds the `selected flow temperature` + `t
 
 Thus to activate the heating you will need to set `heatingactivated` to `on` and set an appropriate `flowtemp`. The latter should be derived from the `heating temperature setting` which can be set using the physical dial/control on the boiler. It should be considered as the maximum flow temperature. You can also use a lower flow temperature to maintain a constant room temperature once the initial heating is done.
 
+Additional info from Michael:
+
+You can set the flowtemp with EMS-ESP directly on the boiler without using a Thermostat. Many users do this. Some pointers:
+
+- the flowtemp value on the control panel has to be set higher as the temperature sent over the EMS bus is only accepted if it has a lower value
+- you have to send a value at least every minute to maintain the flowtemp, otherwise the boiler will automatically fall back to the higher setpoint from the control panel.
+- There is a special EMS-ESP entity called `forceheatingoff` that sets the flowtemp value to 0 every minute automatically to the boiler. Other users prefer like to use an on/off control instead.
+
 ## Retrieve data via REST using PHP
 
 _(by @flohse123)_
@@ -135,7 +143,7 @@ set_flowtemp $flowtemp
 
 ## Home Assistant sensor template for all status numbers on a GB192 Boiler
 
-(by @tefracky from https://github.com/emsesp/EMS-ESP32/issues/938#issuecomment-1417592878)
+(by @tefracky from <https://github.com/emsesp/EMS-ESP32/issues/938#issuecomment-1417592878>)
 
 Here is the sensor in the new Home-Assistant template format for all status numbers for the Buderus GB192i-19 in German:
 
