@@ -145,7 +145,7 @@ The Customization page shows all registered entities and allows to exclude comma
 
 ## Scheduling Actions
 
-Use the scheduler to call commands at specific intervals. This is useful for example to set the hot water temperature to a higher value in the morning and evening, or do a system restart each week.
+Use the scheduler to call commands at specific intervals. This is useful for example to set the hot water temperature to a higher value in the morning and evening, or do a system restart each week (by using `system/restart` in the Command field).
 
 ![Web](_media/screenshot/web_scheduler.png)
 
