@@ -154,8 +154,37 @@ The scheduler can also be used to periodically set values based on another entit
 ![Web](_media/screenshot/web_scheduler_custom.png)
 ![Web](_media/screenshot/web_scheduler_flowtemp.png)
 
-## Creating Custom Entities
+### Conditions
 
-Custom Entities is an advanced and powerful way to extend EMS-ESP by adding your own EMS entities that extracts data from a specific EMS telegram. This is useful when EMS-ESP doesn't yet support a specific entity, or when you want to extract data from a telegram that is not yet supported. Another common use case is for debugging or watching specific behaviour when changing parameters on an EMS device. For example, a modern Heat Pump may have new features that are not included in EMS-ESP. Here you would use the `watch` command to view the incoming EMS traffic in combination with manual adjusting specific parameters and when you have located the specific telegram and the offset, create a Custom Entity to fine-tune the type and verify the the value. Then request it to be included in the next EMS-ESP release update.
+Introduced in **version 3.7**, the Scheduler has been extended to support conditional statements used in the `Command` and/or `Value` fields. Conditions have a strict syntax (see below) and are evaluated every 10 seconds. The condition is only executed when the condition changes from false to true. This is powerful new feature and allows, for example, to set a schedule based on a condition, or to set a value based on a condition.
+
+Pay attention to the following rules:
+
+- a condition has to be a logic value `0` or `1`, the condition is `true` only for `1`, an arithmetic result `1` is also interpreted as `true`
+  schedule command executed for `3 > 2, 3 - 2`
+  schedule command not executed for `3 < 2`, `3 + 2`
+- blanks are not needed, but makes the formula more readable
+- EMS-ESP values are accessed `<device>/<entity>` or `<device>/<entity>/value`, `<entity>` may contain prefixes like `<hc2>`.
+- checking enum and bool values depends on the user's API setting! Check the right value before setting a schedule
+  e.g. check output <http://ems-esp.local/api/thermostat> to see if building = "medium", create the rule with `thermostat/building == medium`
+  also for boolean values check if you have to use `0/1`, `off/on`, `OFF/ON`, or `false/true`
+- strings containing special characters have to be written in quotations, e.g. `boiler/pumpmode == "delta-P2"`, to avoid a calculation error on delta minus P2,
+  other strings can be written with or without quotations
+- commands followed by a divider (`/`) have to be set in parenthesis e.g. `(boiler/seltemp)/2`
+- condition command is only executed on a change of the condition from `false` to `true`. If the condition stays true, the command is not repeated
+- command value can also be a formula
+- allowed operations : arithmetic: `+ - \* / %` and prefix- logic: `== != <= >= < > && ||` and prefix `!`
+  are useful for the value of onChange and condition: a single instance of `<cond1> ? <cond2> : <cond3>`
+- on change trigger is always one or more entities `<device>/<entity>`, where device is not system. It can have multiple triggers. e.g. `boiler/outdoortemp custom/setpoint` and triggers on change of each value (entities never change the same time (it's a callback) and logical operations here like `&&` makes no sense)
+
+![Web](_media/screenshot/web_conditions_1.png)
+
+![Web](_media/screenshot/web_conditions_2.png)
+
+## Adding Custom Entities
+
+Custom Entities is an advanced and powerful way to extend EMS-ESP by adding your own EMS entities that extracts data from a specific EMS telegram. This is useful when EMS-ESP doesn't yet support a specific entity, or when you want to extract data from a telegram that is not yet supported. Another common use case is for debugging or watching specific behavior when changing parameters on an EMS device.
+
+For example, a modern Heat Pump may have new features that are not included in EMS-ESP. Here you would use the `watch` command to view the incoming EMS traffic in combination with manual adjusting specific parameters and when you have located the specific telegram and the offset, create a Custom Entity to fine-tune the type and verify the the value. Then request it to be included in the next EMS-ESP release update.
 
 ![Web](_media/screenshot/web_customentities.png)
