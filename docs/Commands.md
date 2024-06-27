@@ -56,7 +56,7 @@ Things to note:
 The URL path is `http://<hostname>/api/<device>/`
 
 <!-- prettier-ignore -->
-| endpoint | HTTP method | action | authentication required? | body |
+| endpoint | HTTP method | action | authentication required? | post body |
 | - | - | - | - | - |
 | `info` | GET | outputs current EMS device information in verbose | no | |
 | `values` | GET | outputs current EMS device information in short format | no | |
@@ -71,7 +71,7 @@ The URL path is `http://<hostname>/api/<device>/`
 Examples:
 
 <!-- prettier-ignore -->
-| URL | body | action |
+| URL | post body | action |
 | - | - | - |
 | `http://ems-esp.local/api/thermostat/temp` | `22` | sets the selected room temperature of the master thermostat on heating circuit 1 |
 | `http://ems-esp.local/api/thermostat` | `{"cmd":"mode", "data":"auto"}` | sets the thermostat mode to auto for heating circuit 1 |
@@ -83,27 +83,32 @@ Examples:
 The URL path is `http://<hostname>/api/custom/`
 
 <!-- prettier-ignore -->
-| endpoint | HTTP method | action | authentication required? | body |
+| endpoint | HTTP method | action | authentication required? | post body |
 | - | - | - | - | - |
-| `info` or blank | GET | outputs all custom entities and their values | no |
+| blank or `info`| GET | outputs all custom entities and their values | no |
+| `<name>` | GET | outputs all characteristics for a specific custom entity | no |
 
 ### Fetching Temperature Sensor information
 
 The URL path is `http://<hostname>/api/temperaturesensor/`
 
 <!-- prettier-ignore -->
-| endpoint | HTTP method | action | authentication required? | body |
+| endpoint | HTTP method | action | authentication required? | post body |
 | - | - | - | - | - |
-| `info` or blank | GET | outputs connected Dallas temperature sensors and readings | no |
+| blank | GET | outputs connected Dallas temperature sensor names and readings | no |
+| `info` | GET | outputs all details on the connected Dallas temperature sensors | no |
+| `<name>` | GET | outputs all characteristics for a specific temperature sensors | no |
 
 ### Controlling the Analog Sensors
 
 The URL path is `http://<hostname>/api/analogsensor/`
 
 <!-- prettier-ignore -->
-| endpoint   | HTTP method | action | authentication required? | body |
+| endpoint   | HTTP method | action | authentication required? | post body |
 | - | - | - | - | - |
-| `info` or blank | GET | outputs configured analog sensors and readings | no | |
+| blank | GET | outputs analog sensors and their readings | no | |
+| `info` | GET | outputs all details on the connected analog sensors | no |
+| `<name>` | GET | outputs all characteristics for a specific analog sensors | no |
 | `commands` | GET | lists the available system commands | no | |
 | `setvalue` | POST | set value/offset of counter or output pin, +/- sign corrects value | yes | `{"value":<val>, "id":<gpio>}` |
 
@@ -112,7 +117,7 @@ The URL path is `http://<hostname>/api/analogsensor/`
 The URL path is `http://<hostname>/api/system/<endpoint>`
 
 <!-- prettier-ignore -->
-| endpoint | HTTP method | action | authentication required? | body |
+| endpoint | HTTP method | action | authentication required? | post body |
 | - | - | - | - | - |
 | `info` or blank | GET | outputs current system information | no |
 | `fetch` | GET | forces at refresh of all device values | no | |
