@@ -100,6 +100,13 @@ nav:
       - Special Functions: Special-Functions.md
       - WebUI: WebUI.md
       - MQTT: MQTT.md
+      - Modbus/TCP:
+          - Overview: Modbus.md
+          - Settings: Modbus-Settings.md
+          - Server Unit Identifiers: Modbus-Server-IDs.md
+          - The SYSTEM Server: Modbus-System-Server.md
+          - Register Block Offsets: Modbus-Register-Blocks.md
+          - Entity Register Offsets: Modbus-Entity-Registers.md
       - Commands: Commands.md
       - Console: Console.md
       - For Developers:
@@ -107,6 +114,7 @@ nav:
           - Adding Languages: Adding-Languages.md
           - Contributing: Contributing.md
           - The EMS protocol: EMS-bus.md
+          - Maintaining Modbus Parameters: Modbus-Dev.md
   - Supported Devices:
       - All Devices and Entities: All-Devices.md
       - Boilers: Boilers.md
