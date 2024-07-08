@@ -50,7 +50,7 @@ The EMS-ESP Scheduler can be used to permanently maintain the remote thermostat'
 - `Timer` to `00:00` for triggering as soon as EMS-ESP powers on
 - `Command` is `thermostat/hc1/remotetemp` for heating circuit 1 (or `thermostat/hc1/remotehum` for an RC100H)
 - `Value` is the optimal room temperature for your home, or a command (see below)
-- `Name` can be anything you like
+- `Name` is optional. By giving it a name it can be set remotely as a command and the activation state is published in an MQTT topic.
 
 If you have an external Dallas temperature sensor attached to the EMS-ESP you can set the `value` to this value by using `temperaturesensor/<dallas_id_or_name>` as the `value`.
 

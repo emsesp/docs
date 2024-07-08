@@ -147,6 +147,8 @@ The Customization page shows all registered entities and allows to exclude comma
 
 Use the scheduler to call commands at specific intervals. This is useful for example to set the hot water temperature to a higher value in the morning and evening, or do a system restart each week (by using `system/restart` in the Command field).
 
+When creating a scheduler entry, the `name` is optional but it's useful to assign a name and then you can control it via a command (enable/disable) and see the status in the MQTT topic `scheduler_data`.
+
 ![Web](_media/screenshot/web_scheduler.png)
 
 The scheduler can also be used to periodically set values based on another entity value, or even a user-defined custom entity (variable). For example to set the flow temperature of the boiler every minute based on a user managed entity which is controlled externally (e.g. in Home Assistant) it would look like:
@@ -170,6 +172,7 @@ Pay attention to the following rules:
   also for boolean values check if you have to use `0/1`, `off/on`, `OFF/ON`, or `false/true`
 - strings containing special characters have to be written in quotations, e.g. `boiler/pumpmode == "delta-P2"`, to avoid a calculation error on delta minus P2,
   other strings can be written with or without quotations
+- all strings are converted to lowercase
 - commands followed by a divider (`/`) have to be set in parenthesis e.g. `(boiler/seltemp)/2`
 - condition command is only executed on a change of the condition from `false` to `true`. If the condition stays true, the command is not repeated
 - command value can also be a formula
