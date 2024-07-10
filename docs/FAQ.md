@@ -10,7 +10,7 @@ If you have a GPIO Button configured (enabled by default on all BBQKees boards) 
 
 _Written by @MichaelDvP in [this article](https://github.com/emsesp/EMS-ESP32/discussions/1612#discussioncomment-8408868):_
 
-Best overview of known telegrams is from [Norberts1](https://github.com/norberts1/hometop_HT3/blob/master/HT3/docu/HT_EMS_Bus_messages.pdf) and the [EMS-Wiki](https://ems-wiki.org/index.php/EMS_Bus). In general we can say:
+Best overview of known telegrams is from [Norberts1](https://github.com/norberts1/hometop_HT3/blob/master/HT3/docu/HT_EMS_Bus_messages.pdf) and the [EMS-Wiki](https://emswiki.thefischer.net/doku.php). In general we can say:
 
 - measurement values are broadcasted periodical 10 sec / 1 min
 - settings are only broadcasted after a change
