@@ -101,7 +101,7 @@ nav:
       - WebUI: WebUI.md
       - MQTT: MQTT.md
       - Modbus/TCP:
-          - Overview: Modbus.md
+          - Modbus: Modbus.md
           - Settings: Modbus-Settings.md
           - Server Unit Identifiers: Modbus-Server-IDs.md
           - The SYSTEM Server: Modbus-System-Server.md
@@ -133,6 +133,7 @@ nav:
       - openHAB: openHAB.md
       - Loxone: Loxone.md
       - Grafana: Grafana.md
+      - Modbus: Modbus.md
   - Help:
       - Support: Support.md
       - Troubleshooting: Troubleshooting.md
