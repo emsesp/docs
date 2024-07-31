@@ -53,10 +53,10 @@ Following a write request, the `[dest]` doesn't have the 8th bit set and after t
 
 ### Fetching EMS telegrams
 
-Not all telegrams are broadcasted frequently, a lot of setting telegrams are only broadcasted partial if there is a change. To get all values from a telegram ems-esp has send a read request to the device and the device reply's the telegram only to emsesp, this we call "fetching a telegram".
+Not all telegrams are broadcasted frequently, a lot of setting telegrams are only broadcasted partial if there is a change. To get all values from a telegram EMS-ESP has send a read request to the device and the device reply's the telegram only to emsesp, this we call "fetching a telegram".
 
 In `system/info` the devices listed with the handlers (type-ids that are processed):
 
 - `handlers received`: Telegrams that are frequently broadcasted by device to all: _"Boiler(0x08) -> All(0x00)..."_
-- `handlers fetched`: Telegrams that are not broadcasted and requested by ems-esp once a minute: _"Me(0x0B) <- Boiler(0x08) .. Boiler(0x08) -> Me(0x0B)..."_
+- `handlers fetched`: Telegrams that are not broadcasted and requested by EMS-ESP once a minute: _"Me(0x0B) <- Boiler(0x08) .. Boiler(0x08) -> Me(0x0B)..."_
 - `handlers pending`: Telegrams not received yet or empty on fetch. Example: ems-boilers uses telegram 0x18 to monitor actual values, ems+ boilers uses telegram 0xE4 for the same information. If you find 0x18 on the received list, you have a ems boiler and 0xE4 is pending.

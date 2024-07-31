@@ -68,6 +68,16 @@ This next section describes some of key application settings that can be configu
   - **Log Level** sets the maximum log level for reported messages. The highest level is DEBUG which will send a lot of log data so use with caution.
   - **Mark Interval** will send out a special `mark` message to the SysLog. This is useful for timing events.
 
+## Setting up the Network
+
+The Network page allows you to connect EMS-ESP to your home network. You can choose between WiFi or Ethernet. EMS-ESP will auto-detect which and set the settings accordingly. Anything in the Board Profile will override these settings.
+
+### CORS (Cross-Origin Resource Sharing)
+
+CORS, when enabled adds new HTTP headers to each Web request to allow the Web API to make `fetch` and `XMLHttpRequest` requests across different domains. It disables the pre-flight check which follows the same-origin policy by default. See <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS> for more details. There is also a "CORS unblock" browser addon that works the same way.
+
+Enable this function when running in VPNs or you have other servers (like Grafana) running on other domains that are making calls to EMS-ESP's API.
+
 ## Setting up MQTT
 
 Most are self-explanatory and the settings that are specific to EMS-ESP are:

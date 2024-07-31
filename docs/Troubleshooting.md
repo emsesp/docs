@@ -83,10 +83,11 @@ See this article on [Decoding EMS Telegrams](FAQ.md?id=decoding-ems-telegrams) f
 
 ### Many Rx errors
 
-It is quite usual to see a few warnings in the log about incomplete telegrams. This could be due to interference on the line. The warnings are usually harmless as EMS-ESP will either wait for the next broadcast or keep trying to fetch the telegram. If you're seeing an Rx or Tx quality less than 80% then try:
+It is quite usual to see a few warnings in the log about incomplete telegrams. This could be due to interference on the line, inadequate power or a wrong Tx Mode. The warnings are usually harmless as EMS-ESP will either wait for the next broadcast or keep trying to fetch the telegram. If you're seeing an Rx quality less than 80% then try:
 
-- powering: try to power ems-esp by USB or service-jack. We've seen examples where a noisy or failing DC supply can cause RX Fail or incomplete telegrams and trying USB power (check how to switch to USB powering in the [wiki](https://bbqkees-electronics.nl/wiki/)) can help track this down.
-- disruptions on the bus (emc, reflections, etc): try to connect ems-esp to another device on the bus. In general a previously unconnected bus-out on a devices like MM100 is better than a split connection on an already used connector.
+- a different Tx Mode, for example switch between EMS+ and EMS.
+- powering the EMS-ESP by USB or service-jack. We've seen examples where a noisy or failing DC supply can cause RX Fail or incomplete telegrams and trying USB power (check how to switch to USB powering in the [BBQKees wiki](https://bbqkees-electronics.nl/wiki/)) can help track this down.
+- removing disruptions on the bus line from emc, reflections, other units. Connect the EMS-ESP to another device on the bus. In general a previously unconnected bus-out on a devices like MM100 is better than a split connection on an already used connector.
 
 ### Bus is not connecting
 
