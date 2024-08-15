@@ -18,7 +18,7 @@ hide:
 <span style="font-size: 1.5rem">Current Releases</span>
 <span style="font-size: 1.2rem">
 <BR>Main - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.5">version 3.6.5</a>
-<BR>Development - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">version 3.x</a>
+<BR>Development - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">version 3.7.0</a>
 </span>
 
 ## New Features introduced in 3.6
