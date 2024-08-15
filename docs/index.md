@@ -33,7 +33,7 @@ As well as bug fixes, memory and performance optimizations and more responsive W
 - Added a Scheduler to allow setting of EMS parameters at specific times
 - Custom Entity feature to extend entities directly from the telegram data
 
-See a [live demo](https://ems-esp.derbyshire.nl/) and the full list of features in the [change log](Version-Release-History).
+See a [live demo](https://demo.emsesp.org) and the full list of features in the [change log](Version-Release-History).
 
 ### Breaking Changes since v3.6.x
 
