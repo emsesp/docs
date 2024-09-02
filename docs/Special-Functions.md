@@ -41,6 +41,10 @@ The remote thermostat will remain in the EMS-ESP device dashboard but will have 
 
 Note, if the control is set to `roomthermostat` and the first `remotetemp` is not set within a minute, the master thermostat will likely show an error message.
 
+<!-- prettier-ignore -->
+!!! warning "Disclaimer"
+    With the remote setting of the humidity you are able to set a heat pump to start cooling even when it is below the actual dew point, which can cause condensation on pipes and the floor, and subsequently damage the system. Use at your own risk!
+
 ### Scheduling temperatures
 
 The EMS-ESP Scheduler can be used to permanently maintain the remote thermostat's values. The thermostat is recreated once the command is and has an initial value as shown below:
