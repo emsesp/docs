@@ -16,7 +16,7 @@ A slow pulse means either there is no WiFi connection or EMS-ESP cannot read fro
 
 See the explanation on [what the LED shows](Getting-Started#what-the-onboard-led-is-telling-you).
 
-### EMS-ESP often crashes and restarts
+### EMS-ESP often restarts
 
 A healthy gateway/interface board running EMS-ESP should run happily for long periods without spontaneous restarts so, if yours is restarting by itself at random intervals, then something's not right.
 
@@ -32,11 +32,12 @@ Things to check:
 
 #### It may be memory related
 
-The ESP32 has very limited RAM, split between run-time stack and the heap. The heap can quickly become fragmented reducing the maximum size of a buffer, and we use A LOT of buffers to prepare all that lovely JSON files for sending to MQTT and populating the Web pages. When the ESP32 runs out of available it'll simply crash and reboot. Things to check:
+The ESP32 has very limited RAM, split between run-time stack and the heap. The heap can quickly become fragmented reducing the maximum size of a buffer, and we use A LOT of buffers to prepare all that lovely JSON files for sending to MQTT and populating the Web pages. When the ESP32 runs out of available it will simply restart itself. Things to check:
 
-- If the WebUI is accessible, go to `System->System Status` and look at the Heap. If the Free memory is below 90KB or the Max allocation below 45KB then that may be an issue and you'll need to turn of services, try again and report this. Start by disabling mDNS and SysLog (if running) one by one and see if that helps.
-- Make sure the System Log's Max Buffer Size at `System->System Log` is at its lowest.
+- If the WebUI is accessible, go to `System->System Status` and look at the Heap. If the Free memory is below 90KB or the Max allocation below 45KB then that may be an issue and you'll need to turn off services, try again and report this. Start by disabling mDNS and SysLog (if running) one by one and see if that helps.
+- Make sure the System Log's Max Buffer Size at `System->System Log` is at its lowest (25).
 - Each network protocol (Ethernet, Wifi, AP) consumes memory. If you're only using Ethernet (e.g. an BBQKees E32 Gateway) switch off WiFi and the Access Point (use a blank WiFI ssid).
+- If you have many EMS entities use the Customizations page and set any unused entities (shown by having a blank value) to "remove from memory".
 
 #### It could be code related
 
@@ -89,7 +90,7 @@ It is quite usual to see a few warnings in the log about incomplete telegrams. T
 - powering the EMS-ESP by USB or service-jack. We've seen examples where a noisy or failing DC supply can cause RX Fail or incomplete telegrams and trying USB power (check how to switch to USB powering in the [BBQKees wiki](https://bbqkees-electronics.nl/wiki/)) can help track this down.
 - removing disruptions on the bus line from emc, reflections, other units. Connect the EMS-ESP to another device on the bus. In general a previously unconnected bus-out on a devices like MM100 is better than a split connection on an already used connector.
 
-### Bus is not connecting
+### EMS Bus is not connecting
 
 If you're using the EMS wires, on some systems the order is important. Try switching them!
 
@@ -136,7 +137,7 @@ If you're seeing unusual Dallas sensor readings (crazy negative temperatures, su
 
 If you're noticing that MQTT messages are failing to arrive at the broker try:
 
-- Check the EMS-ESP logs for errors
+- Check the EMS-ESP logs for errors. If you see "low memory" errors then read [It may be memory related](Troubleshooting.md?id=general#it-may-be-memory-related) to see how you reduce memory usage.
 - Check the broker for errors. You have incorrect credentials or duplicate Client IDs
 - Set the log level to Debug (via Web or Console) and monitor the traffic
 - Use Console to force a publish to see what happens. (`log debug`, `su` and `publish`).
