@@ -1,11 +1,11 @@
 site_name: EMS-ESP
 site_description: Documentation (Wiki) for EMS-ESP
-site_url: https://emsesp.github.io/docs/
+site_url: https://emsesp.org/
 repo_name: 'emsesp/EMS-ESP32'
 repo_url: 'https://github.com/emsesp/EMS-ESP32'
 edit_uri: 'https://github.com/emsesp/docs/blob/master/docs/'
 docs_dir: docs
-# copyright: 'Copyright &copy; 2022 Proddy and MichaelDvP'
+# copyright: 'Copyright &copy; 2022 emsesp.org (@proddy, @MichaelDvP)'
 
 plugins:
   - search
@@ -16,9 +16,9 @@ plugins:
       redirect_maps:
   - table-reader
   - git-revision-date-localized
-  # - git-committers:
-  #     repository: emsesp/docs
-  #     branch: main
+  - git-committers:
+      repository: emsesp/docs
+      branch: main
 # - htmlproofer
 
 # strict: true
@@ -109,6 +109,30 @@ nav:
           - Entity Register Offsets: Modbus-Entity-Registers.md
       - Commands: Commands.md
       - Console: Console.md
+      - Supported Devices:
+          - All Devices and Entities: All-Devices.md
+          - Boilers: Boilers.md
+          - Thermostats: Thermostats.md
+          - Solar Modules: Solar-Modules.md
+          - Mixer Modules: Mixer-Modules.md
+          - Heat Pumps: Heat-Pumps.md
+          - Controllers: Controllers.md
+          - Switches: Switches.md
+          - Other Devices: Other-Devices.md
+      - Integrations:
+          - Introduction: Integrations.md
+          - Home Assistant: Home-Assistant.md
+          - IOBroker: IOBroker.md
+          - Domoticz: Domoticz.md
+          - openHAB: openHAB.md
+          - Loxone: Loxone.md
+          - Grafana: Grafana.md
+          - Modbus: Modbus.md
+      - Help:
+          - Support: Support.md
+          - Troubleshooting: Troubleshooting.md
+          - FAQ: FAQ.md
+          - Tips & Tricks: tips-and-tricks.md
       - For Developers:
           - Building & Testing the Firmware: Building.md
           - Adding Languages: Adding-Languages.md

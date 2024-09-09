@@ -1,6 +1,6 @@
 # EMS-ESP Documentation
 
-This is the official documentation for EMS-ESP and hosted on https://emsesp.github.io/docs/
+This is the official documentation for EMS-ESP and hosted on <https://emsesp.github.io/docs/>
 
 Built on [MkDocs](https://www.mkdocs.org/) using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme and borrowed from [Tasmota](https://github.com/tasmota/docs/tree/master).
 
@@ -47,7 +47,7 @@ Enclose text in `^ ^` to superscript it. Example `H^2^0` renders H<sup>2</sup>O
 
 ## Installing
 
-Easiest way is to run pip as a module (https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment). On Linux to install pip and this projects dependencies use:
+Easiest way is to run pip as a module (<https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment>). On Linux to install pip and this projects dependencies use:
 
 - `python3 -m venv venv` to create the virtual environment
 - `source ./venv/bin/activate` to enter it
@@ -59,7 +59,7 @@ Easiest way is to run pip as a module (https://realpython.com/what-is-pip/#using
 - `pip install -r requirements.txt` to refresh latest libs
 - `mkdocs serve` to build the documentation
 - <http://127.0.0.1:8000/docs>
-- TIP: comment out the `git-committers` in `mkdocs.yml` to speed up the build
+- TIP: comment out the `git-committers` in `mkdocs.yml` to speed up the build and prevent exceeding the GitHub API calls, but remember to uncomment it before committing
 
 ## Deploying manually
 
