@@ -17,7 +17,7 @@ EMS-ESP also requires a separate circuit to read and write to the EMS bus. You c
 
 ## Uploading the firmware
 
-The firmware is a single binary file. First decide whether you want to take the [current stable version](https://github.com/emsesp/EMS-ESP32/releases/latest) or risk it and take the [latest development version](https://github.com/emsesp/EMS-ESP32/releases/tag/latest) to have the latest features and of course any possible bugs.
+The firmware is a single binary `.bin` file. First decide whether you want to take the [current stable version](https://github.com/emsesp/EMS-ESP32/releases/latest) or risk it and take the [latest development version](https://github.com/emsesp/EMS-ESP32/releases/tag/latest) to have the latest features and of course any possible issues.
 
 !!! warning "Pay attention to the [Change Log](Version-Release-History) before upgrading for any breaking changes"
 
@@ -25,12 +25,13 @@ The firmware is a single binary file. First decide whether you want to take the 
 
 If this is a fresh install you will need to upload it manually and there are two methods for this.
 
-1. The easiest way is to use our custom [EMS-ESP Flasher tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). The are versions for Windows, Linux and Mac OSX. Note you may see a security vulnerability warning on Windows which you can safely ignore.
-2. Using the PlatformIO CLI like `pio run -e esp32_4M -t upload`
+1. via the Web at [install.emsesp.org](http://install.emsesp.org).
+1. using the [EMS-ESP Flasher tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). The are versions for Windows, Linux and Mac OSX. Note you may see a security vulnerability warning on Windows which you can safely ignore.
+1. using the PlatformIO CLI like `pio run -e <target> -t upload`
 
 ### Upgrading from a previous release
 
-If you are upgrading from a previous release it's recommended you perform the upgrade via the WebUI (`System->Upload`).
+If you are upgrading from a previous release it's recommended you perform the upgrade directly via the WebUI (`Settings>Download/Upload`).
 
 !!! note "There was an issue with older BBQKees Gateway boards that used a smaller partition size on the ESP32. If you're upgrading from v3.4 or earlier and have one of these boards then make a backup of your settings and use the [EMS-ESP Flasher tool](https://github.com/emsesp/EMS-ESP-Flasher/releases)."
 

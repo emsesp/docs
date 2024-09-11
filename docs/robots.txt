@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://emsesp.github.io/docs/sitemap.xml
+Sitemap: https://emsesp.org/sitemap.xml

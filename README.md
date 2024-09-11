@@ -1,6 +1,6 @@
 # EMS-ESP Documentation
 
-This is the official documentation for EMS-ESP and hosted on <https://emsesp.github.io/docs/>
+This is the official documentation for EMS-ESP and hosted on <https://emsesp.org>
 
 Built on [MkDocs](https://www.mkdocs.org/) using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme and borrowed from [Tasmota](https://github.com/tasmota/docs/tree/master).
 
