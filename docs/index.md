@@ -5,15 +5,19 @@ hide:
   - toc
 ---
 
-# ESP32 firmware to communicate with EMS heating appliances
+# Open-source firmware to communicate with EMS heating appliances
 
-<img style="margin: 10px 10px; float:right; width:20%" src="_media/logo/boiler.svg" alt="EMS-ESP Logo"></img>
+<img style="margin: 10px 10px; float:right; width:10%" src="_media/logo/boiler.svg" alt="EMS-ESP Logo"></img>
 **EMS-ESP** is an open-source firmware for the Espressif ESP32 microcontroller that communicates with **EMS** (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger
 
-![license](https://img.shields.io/github/license/emsesp/EMS-ESP.svg)
-[![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
-[![chat](https://img.shields.io/discord/816637840644505620.svg?style=flat-square&color=blueviolet)](https://discord.gg/3J3GgnzpyT)
+[![version](https://img.shields.io/github/release/emsesp/EMS-ESP32.svg?label=Latest%20Release)](https://github.com/emsesp/EMS-ESP32/blob/main/CHANGELOG.md)
+[![release-date](https://img.shields.io/github/release-date/emsesp/EMS-ESP32.svg?label=Released)](https://github.com/emsesp/EMS-ESP32/commits/main)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=emsesp_EMS-ESP32&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=emsesp_EMS-ESP32)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/9441142f49424ef891e8f5251866ee6b)](https://www.codacy.com/gh/emsesp/EMS-ESP32/dashboard?utm_source=github.com&utm_medium=referral&utm_content=emsesp/EMS-ESP32&utm_campaign=Badge_Grade)
+[![downloads](https://img.shields.io/github/downloads/emsesp/EMS-ESP32/total.svg)](https://github.com/emsesp/EMS-ESP32/releases)
+[![chat](https://img.shields.io/discord/816637840644505620.svg?style=flat-square&color=blueviolet)](https://discord.gg/3J3GgnzpyT)
+
+[![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 
 <span style="font-size: 1.5rem">Current Releases</span>
 <span style="font-size: 1.2rem">
@@ -21,47 +25,42 @@ hide:
 <BR>Development - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">version 3.7.0</a>
 </span>
 
-## New Features introduced in 3.6
+## Key Features
 
-_13 August 2023_
-
-As well as bug fixes, memory and performance optimizations and more responsive Web layout, these are the other noticeable new features and enhancements:
-
-- Added Italian and Turkish translations (please do reach out on Discord if you want to help translate to other languages)
-- Added support for ESP32 S2, C3 mini and S3
-- Added 20 new EMS devices
-- Added a Scheduler to allow setting of EMS parameters at specific times
-- Custom Entity feature to extend entities directly from the telegram data
-
-See a [live demo](https://demo.emsesp.org) at `https://demo.emsesp.org`. Change the language on the sign-on page and use any username/password to enter.
+- A multi-user, multi-language web interface to change settings and monitor incoming data
+- An advanced console, accessible via Serial/USB or Telnet for more operations and monitoring
+- Native integration with Home Assistant, Domoticz, openHAB and Modbus
+- Easy setup and install with automatic updates
+- Supporting over 120 different EMS compatible devices from thermostats, boilers, heat pumps, mixing units, solar modules from brands as Bosch, Buderus, Nefit, Junkers, Worcester and Sieger
+- Simulate remote thermostats
+- Localized to 10 languages, and customizable to change names to your preference
+- Extendable via adding external modules or adding your own custom entities directly within the WebUI
+- A powerful scheduler to automate tasks and trigger events based data changes
+- A Notification service to alert you of important events
 
 For a full list of features read the [change log](Version-Release-History).
 
-### Breaking Changes since v3.6.x
+![Console](_media/screenshot/main-screen.png)
 
-!!! warning
+## See a demo
 
-    The sensors have been renamed. dallassensor is now temperaturesensor in the MQTT topic and named ts in the Customizations file. Likewise analogs is now analogsensor in MQTT and called as in the Customizations file. If you have previous customizations you will need to manually update by downloading, changing the JSON file and uploading. It's also recommended cleaning up any old MQTT topics from your broker using an application like MQTTExplorer.
+Play with a [live demo](https://demo.emsesp.org) at `https://demo.emsesp.org`. Select your language on the sign-on page and log in with and username and password.
 
-    When upgrading to v3.6 for the first time from v3.4 on a BBQKees Gateway board you will need to use the [EMS-EPS Flasher](https://github.com/emsesp/EMS-ESP-Flasher/releases) to correctly re-partition the flash. Make sure you backup the settings and customizations from the WebUI (`System->Upload/Download`) and restore after the upgrade.
+## Requesting features or reporting issues
+
+See the support page for [reporting issues](Support).
 
 ## Join Our Community
 
-For feedback, questions, live troubleshooting or just general chat
+For feedback, questions, live troubleshooting or just general chat hop on to our Discord channel:
 
 <a href="https://discord.gg/3J3GgnzpyT"><img src="https://discordapp.com/api/guilds/816637840644505620/widget.png?style=banner2"></a>
 
 ## Contribute
 
-Everybody is welcome and invited to contribute to the EMS-ESP Project by:
+Everybody is welcome and invited to contribute to this EMS-ESP project by:
 
 - providing Pull Requests (Features, Proof of Concepts, Language files or Fixes)
-- testing new released features and report issues
+- testing new released features and report back on issues or feedback
 - donating to acquire hardware for testing and implementing or out of gratitude
-- contributing missing [documentation](Contributing.md) for features and devices
-
-## Report bugs and suggest features
-
-Open a new topic on [EMS-ESP discussions](https://github.com/emsesp/EMS-ESP32/discussions)
-
-Report a bug in [EMS-ESP issues](https://github.com/emsesp/EMS-ESP32/issues)
+- contributing missing [documentation](Contributing.md) and expanding the community FAQ
