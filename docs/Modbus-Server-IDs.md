@@ -3,7 +3,7 @@
 This table shows how device types are mapped to server unit identifiers.
 
 | Device type      | Unit Identifier |
-|------------------|-----------------|
+| ---------------- | --------------- |
 | SYSTEM (EMS-ESP) | 1               |
 | BOILER           | 5               |
 | THERMOSTAT       | 6               |

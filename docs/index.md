@@ -64,3 +64,7 @@ Everybody is welcome and invited to contribute to this EMS-ESP project by:
 - testing new released features and report back on issues or feedback
 - donating to acquire hardware for testing and implementing or out of gratitude
 - contributing missing [documentation](Contributing.md) and expanding the community FAQ
+
+## Contact us
+
+For general questions, feedback or support, please use the [contact form](Contact).

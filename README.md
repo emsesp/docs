@@ -59,7 +59,7 @@ Easiest way is to run pip as a module (<https://realpython.com/what-is-pip/#usin
 - `pip install -r requirements.txt` to refresh latest libs
 - `mkdocs serve` to build the documentation
 - <http://127.0.0.1:8000/docs>
-- TIP: comment out the `git-committers` in `mkdocs.yml` to speed up the build and prevent exceeding the GitHub API calls, but remember to uncomment it before committing
+- TIP: comment out the `git-committers` and `git-revision-date-localized` sections in `mkdocs.yml` to speed up the build and prevent exceeding the GitHub API calls, but remember to uncomment it before committing
 
 ## Deploying manually
 

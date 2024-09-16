@@ -41,7 +41,7 @@ This will open a browser window with URL `localhost:3000`.
 
 The mock data used is all hardcoded in `/mock-api/rest_server.js`.
 
-### Simulating offline, without an ESP32 microncontroller
+### Simulating offline, without an ESP32 microcontroller
 
 You can also run EMS-ESP without an ESP32 (which we call 'standalone'). The platformIO environment has two `native` environments that will build emsesp executables to support this for all Linux, Windows and Max OSX.
 

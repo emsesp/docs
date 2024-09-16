@@ -3,7 +3,7 @@
 This table shows how entity tags are mapped to Modbus register block offsets.
 
 | Tag         | Register Offset |
-|-------------|-----------------|
+| ----------- | --------------- |
 | DEVICE_DATA | 0               |
 | HC1         | 1000            |
 | HC2         | 2000            |

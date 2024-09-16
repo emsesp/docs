@@ -197,28 +197,31 @@ Pay attention to the following rules:
 ### Web Commands
 
 Sending or getting data via web request can be used in a json command:
-- GET a value from webserver: 
+
+- GET a value from webserver:
   `{"url":"http://server.tld/path/file"}`
-- GET a json value from webserver and select the key: 
+- GET a json value from webserver and select the key:
   `{"url":"http://server.tld/path/file", "key":"nameofkey"}`
 - set a value with POST:
- Command: `{"url":"http://server.tld/path/file", "header":{"content-type":"text/plain", "token":"mytoken"}` 
- Value: the post message, if it is a json the content-type header is set in header, no need to set it.
+  Command: `{"url":"http://server.tld/path/file", "header":{"content-type":"text/plain", "token":"mytoken"}`
+  Value: the post message, if it is a json the content-type header is set in header, no need to set it.
 
-Examples: 
-- getting power state of a tasmota plug (exampleIP): 
+Examples:
+
+- getting power state of a tasmota plug (exampleIP):
   `{"url":"http://192.168.0.100/cm?cmnd=power", "key":"power"} == off`
   is identical with
   `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
-- setting a tasmoto plug: 
+- setting a tasmoto plug:
   `{"url":"http://192.168.0.100/cm?cmnd=power%20on"}`
 
 ### Notification
+
 With web commands a service like [pushover](https://pushover.net) can be used to send a push-message on events. To send different message create a custom entity in RAM named `message`, or what you like. Create a schedule on change triggering the change of this message and sending the pushover message.
 
 ![grafik](https://github.com/user-attachments/assets/570576b5-b382-4ab2-bff3-4468291334a3)
 
-Now you can create other scheduls with the command `custom/message` and individual text as data.
+Now you can create other schedules with the command `custom/message` and individual text as data.
 
 ## Adding Custom Entities
 
