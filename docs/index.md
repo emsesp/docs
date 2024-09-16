@@ -19,9 +19,9 @@ hide:
 
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 
-<span style="font-size: 1.5rem">Current Releases</span>
-<span style="font-size: 1.2rem">
-<BR>Main - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.5">version 3.6.5</a>
+<span style="font-size: 1.5rem">Latest Releases</span>
+<span style="font-size: 1.0rem">
+<BR>Stable - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.6.5">version 3.6.5</a>
 <BR>Development - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">version 3.7.0</a>
 </span>
 
@@ -40,15 +40,17 @@ hide:
 
 For a full list of features read the [change log](Version-Release-History).
 
-![Console](_media/screenshot/main-screen.png)
-
-## See a demo
-
 Play with a [live demo](https://demo.emsesp.org) at `https://demo.emsesp.org`. Select your language on the sign-on page and log in with and username and password.
 
-## Requesting features or reporting issues
+<img style="width:75%" src="../_media/screenshot/main-screen.png"></img>
 
-See the support page for [reporting issues](Support).
+## Installing
+
+Head over to the [Getting Started](Getting-Started) guide to see what hardware you need and how to install the firmware.
+
+## Support
+
+See the support page for [reporting issues](Support) and requesting new features.
 
 ## Join Our Community
 
@@ -56,15 +58,6 @@ For feedback, questions, live troubleshooting or just general chat hop on to our
 
 <a href="https://discord.gg/3J3GgnzpyT"><img src="https://discordapp.com/api/guilds/816637840644505620/widget.png?style=banner2"></a>
 
-## Contribute
-
-Everybody is welcome and invited to contribute to this EMS-ESP project by:
-
-- providing Pull Requests (Features, Proof of Concepts, Language files or Fixes)
-- testing new released features and report back on issues or feedback
-- donating to acquire hardware for testing and implementing or out of gratitude
-- contributing missing [documentation](Contributing.md) and expanding the community FAQ
-
 ## Contact us
 
-For general questions, feedback or support, please use the [contact form](Contact).
+For general questions about this project please use the [contact form](Contact).
