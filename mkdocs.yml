@@ -5,7 +5,7 @@ repo_name: 'emsesp/EMS-ESP32'
 repo_url: 'https://github.com/emsesp/EMS-ESP32'
 edit_uri: 'https://github.com/emsesp/docs/blob/master/docs/'
 docs_dir: docs
-# copyright: 'Copyright &copy; 2022 emsesp.org (@proddy, @MichaelDvP)'
+copyright: 'Copyright &copy; 2024 emsesp.org (@proddy, @MichaelDvP)'
 
 plugins:
   - search
