@@ -19,7 +19,7 @@ EMS-ESP also requires a separate circuit to read and write to the EMS bus. You c
 
 The firmware is a single binary `.bin` file. First decide whether you want to take the [current stable version](https://github.com/emsesp/EMS-ESP32/releases/latest) or risk it and take the [latest development version](https://github.com/emsesp/EMS-ESP32/releases/tag/latest) to have the latest features and of course any possible issues.
 
-Make sure you pick the right firmare .bin file for your ESP32. The format for the file is
+Make sure you pick the right firmware .bin file for your ESP32. The format for the file is
 
 `EMS-ESP-<version>-<chip type>-<flash mem>[+].bin`
 

@@ -1,6 +1,6 @@
 ---
 title: EMS-ESP Documentation
-description: Open-source firmware for the Espressif ESP32 microcontroller that communicates with EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.
+description: Open-source firmware for the Espressif ESP32 microcontroller that communicates with EMS (Energy Management System) based equipment
 hide:
   - toc
 ---
@@ -8,7 +8,7 @@ hide:
 # Open-source firmware to communicate with EMS heating appliances
 
 <img style="margin: 10px 10px; float:right; width:10%" src="_media/logo/boiler.svg" alt="EMS-ESP Logo"></img>
-**EMS-ESP** is an open-source firmware for the Espressif ESP32 microcontroller that communicates with **EMS** (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger
+**EMS-ESP** is an open-source firmware for the Espressif ESP32 microcontroller to communicate with **EMS** (Energy Management System) compatible equipment from manufacturers such as Bosch, Buderus, Nefit, Junkers, Worcester, Sieger, elm.leblanc and iVT.
 
 [![version](https://img.shields.io/github/release/emsesp/EMS-ESP32.svg?label=Latest%20Release)](https://github.com/emsesp/EMS-ESP32/blob/main/CHANGELOG.md)
 [![release-date](https://img.shields.io/github/release-date/emsesp/EMS-ESP32.svg?label=Released)](https://github.com/emsesp/EMS-ESP32/commits/main)
@@ -27,20 +27,23 @@ hide:
 
 ## Key Features
 
+- Compatible with EMS, EMS+, EMS2, EMS Plus, Logamatic EMS, Junkers 2-wire, Heatronic 3 and 4
+- Supporting over 120 different EMS compatible devices such as thermostats, boilers, heat pumps, mixing units, solar modules, connect modules, ventilation units, switches and more
+- Easy to add external Temperature and Analog sensors that are attached to GPIO pins on the ESP32 board
 - A multi-user, multi-language web interface to change settings and monitor incoming data
-- An advanced console, accessible via Serial/USB or Telnet for more operations and monitoring
+- A simple to use console, accessible via Serial/USB or Telnet for advanced operations and detailed monitoring
 - Native integration with Home Assistant, Domoticz, openHAB and Modbus
 - Easy setup and install with automatic updates
-- Supporting over 120 different EMS compatible devices from thermostats, boilers, heat pumps, mixing units, solar modules from brands as Bosch, Buderus, Nefit, Junkers, Worcester and Sieger
-- Simulate remote thermostats
-- Localized to 10 languages, and customizable to change names to your preference
-- Extendable via adding external modules or adding your own custom entities directly within the WebUI
-- A powerful scheduler to automate tasks and trigger events based data changes
+- Simulation of remote thermostats
+- Localized to 10 languages, and customizable to rename any device or sensor
+- Extendable by adding own custom EMS entities
+- Expandable via adding user-built external modules
+- A powerful Scheduler to automate tasks and trigger events based data changes
 - A Notification service to alert you of important events
 
 For a full list of features read the [change log](Version-Release-History).
 
-Play with a [live demo](https://demo.emsesp.org) at `https://demo.emsesp.org`. Select your language on the sign-on page and log in with and username and password.
+See a [live demo](https://demo.emsesp.org) at `https://demo.emsesp.org`. Select your language on the sign-on page and log in with any username and password.
 
 <img style="width:75%" src="../_media/screenshot/main-screen.png"></img>
 

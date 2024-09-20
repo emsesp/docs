@@ -1031,3 +1031,5 @@ Zündungsversuchs
 über
 überprüfen
 überschritten
+PSRAM
+Heatronic
