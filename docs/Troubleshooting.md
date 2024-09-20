@@ -44,14 +44,17 @@ The ESP32 has very limited RAM, split between run-time stack and the heap. The h
 - Go to `System->System Log` and set the `Log Level` to `INFO`. This will make sure you'll see the restart log at the top next time it restarts. It'll show something similar to `2022-12-30 11:58:02.000    INFO 0:      [emsesp]     Last system reset reason Core0: Software reset CPU, Core1: Software reset CPU`.
 - And finally, if none of the above works then the problem is the core processing the incoming telegrams. Try and capture some logs just before it crashes (using SysLog is good for this) and post the information in a new GitHub issue.
 
-### EMS-ESP freezes
+### EMS-ESP becomes unresponsive
 
-If EMS-ESP becomes unresponsive, as in it appears to be active and hasn't restarted itself but accessing either the telnet console, the webUI or simply responding to ping fails then EMS-ESP has gone into a network loop. We have seen this behavior with Mesh'd WiFi Access Points and also unstable MQTT servers, and coded fail-safe's to avoid them. If you do encounter this annoying problem then first try setting a BSSID (only if using WiFi). Otherwise please report it on GitHub along with this additional information:
+If EMS-ESP becomes unresponsive and you cannot access the WebUI, follow these steps:
 
-- the System Info (so we can see version, MQTT config and any errors)
-- any signs of LEDs (on the board/gateway) or the Ethernet port if using an E32 Gateway
-- description of your network (which vendor, WiFi or Ethernet, etc)
-- any anomalies in the network (servers down, Access point roaming, channel switching etc)
+- Check your network router to see if ems-esp is still active. If you're running a Mesh of WiFi Access Points it may have been roamed to a new location or switched WiFi channels. The work-around for this is to set a BSSID in EMS-ESP (WiFI only).
+- Look at the on-board LED, if you haven't disabled it. If the LED is flashing or solid it means EMS-ESP is still running.
+- Next check the EMS-ESP services. Can you Telnet to port 25 to access the Console? Are MQTT messages still being sent, if enabled?
+- If you're using the Ethernet port, do you see the LED on the port flashing showing traffic in and out?
+- If EMS-ESP has restarted itself check the system logs for the Reset Reason. It will be one of the first messages. See above.
+- Attach the board to a computer via USB, without restarting on powering down EMS-ESP and access the Serial console to see if there are any errors.
+- Lastly, log a GitHub issue with the Support Info and details of your setup.
 
 ## EMS Data and Connectivity
 
