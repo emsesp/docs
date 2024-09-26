@@ -10,9 +10,10 @@ The EMS-ESP firmware runs on an ESP32 module from [Espressif](https://www.espres
 
 <img style="width:500px" src="../_media/images/esp32-dev-boards.jpg"></img>
 
-#### EMS Interface board
+#### EMS Interface boards
 
-<img style="float:right;width:150px" src="../_media/images/ems-gw-e32a.jpg"></img>
+<img style="float:right;width:150px" src="../_media/images/EMS-Gateway-S3.png"></img>
+<img style="float:right;width:150px" src="../_media/images/EMS-Gateway-E32-V2.png"></img>
 EMS-ESP also requires a separate circuit to read and write to the EMS bus. You can either build your own or purchase an [interface board](https://bbqkees-electronics.nl/product/ems-interface-board-v3/) from BBQKees or what is highly recommended is to buy an all-in-one [EMS Gateway](https://bbqkees-electronics.nl/shop/) from BBQKees that comes pre-installed and tested with the latest version of EMS-ESP.
 
 ## Uploading the firmware
