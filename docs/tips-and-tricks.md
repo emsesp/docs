@@ -411,3 +411,65 @@ header:
 view_layout:
   position: main
 ```
+
+## Automating the on/off of the heat pump in Home Assistant
+
+`waengr` on our Discord channel posted an [message](https://discord.com/channels/816637840644505620/816958041345884180/1287897271148609566) on how to automate a simple switch to turn on and off the heat pump. He references GitHub issues <https://github.com/emsesp/EMS-ESP32/discussions/1600> and <https://github.com/emsesp/EMS-ESP32/issues/1717>.
+
+In his own words, this is what he did:
+
+"I went with analyzing the input binary string as suggested, which was provided by EMS-ESP in `text.boiler_hpin1opt` shown in Home Assistant. I changed the toggles on the pump's UI and watched the string change. Then I manually changed the string in Home Assistant and watched the pump's UI changing. So bidirectional communication is possible!
+
+I haven't tried out all options yet, but here are a few comments:
+
+- I thought I was smart by thinking ahead, so when selecting "Kompressorbetr. sperren" (block compressor operation) I have also selected "Zuheizerbetr. sperren" (block auxiliary heater). BUT - I shit you not - ONLY aux actually came on wasting a lot of power (at least for a few minutes).
+- "Heizbetrieb sperren" (block heating operation) also shuts down the circulation pump, which is not what I want since I have a 500 L buffer tank.
+- "EVU-Sperrzeit 1" (power company block time 1) works nicely so far (what are the other EVU-Sperrzeit for?)
+
+Next was changing the string with automations.
+
+For the time being, I am going with fixed times: A heating period during the night when we have low tariff and then another around noon where I might have some excess PV power. I can later tinker around with hooking it to actuall PV production. I am just changing the first bit which is to invert the always off input "Eingang invertiert" (invert input) as suggested. The second bit is "EVU-Sperrzeit 1".
+
+```yaml
+automation heating:
+  - id: 'heating_on_by_time'
+    alias: 'Allow heating to operate at fixed times (low tariff / expected PV)'
+    description: Controls boiler_hpin1opt based on specified times
+    trigger:
+      - platform: time
+        at: '20:00:00'
+      - platform: time
+        at: '10:00:00'
+    action:
+      - service: text.set_value
+        target:
+          entity_id: text.boiler_hpin1opt
+        data:
+          value: '010000000000000'
+  - id: 'heating_off_by_time'
+    alias: 'Disallow heating to operate at fixed times (low tariff / expected PV)'
+    description: Controls boiler_hpin1opt based on specified times
+    trigger:
+      - platform: time
+        at: '06:00:00'
+      - platform: time
+        at: '16:00:00'
+    action:
+      - service: text.set_value
+        target:
+          entity_id: text.boiler_hpin1opt
+        data:
+          value: '110000000000000'
+```
+
+Here is my work-in-progress dashboard in Home Assistant:
+
+![Dashboard](_media/screenshot/PV_HA_dash.png)
+
+- left: `text.boiler_hpin1opt` and the above automations to change it to "on" and "off".
+- top right: a hand drawn schema where I try to map some of the 200+ values from EMS-ESP.
+- bottom right: the 200+ values.
+
+"
+
+The next thing he is investigating is how to obtain a clear power reading (in W) of how much power the heatpump currently uses.
