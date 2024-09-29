@@ -14,7 +14,6 @@ This is the current list of supported controller modules:
 - Hybrid Heatpump
 - BC40
 - BC10
-- BC10
 - Ecomline
 - Sense II/CS200
 - ErP

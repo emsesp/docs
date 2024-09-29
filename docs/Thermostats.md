@@ -1,41 +1,29 @@
 # List of Thermostats
 
-This is the current list of supported thermostats from Buderus, Nefit, Sieger, Junkers and Bosch:
+This is the current list of supported thermostats from brands like Buderus, Nefit, Sieger, Junkers and Bosch:
 
-- TC100/Moduline Easy EASY
-- EasyControl CT200 EASY
+- TC100/Moduline Easy Easy
+- EasyControl, CT200 Easy
+- WSW196i
 - UI800/BC400
-- RC10
-- RC20/Moduline 300
-- Moduline 400
-- RC10/Moduline 100
-- Moduline 200
-- RC35
-- RC10/Moduline 100
-- RC20RF
-- RFM20 Remote
-- RC25
-- RC200/CW100
-- RC300/RC310/Moduline 3000/1010H/CW400/Sense II/HPC410
-- RC100/Moduline 1000/1010
-- Rego 2000/3000
-- Comfort RF CRF
-- CRF200S CRF
-- Comfort+2RF CRF
-- Rego 3000/UI800 RC300
-- ES72/RC20
-- FW100
-- FW200
-- FR110
-- FB10
-- FB100
-- FR10
-- FW500
-- FR50
-- FR120
-- RT800
+- Moduline 100, 200, 300, 400, 1000, 1010, 3000
+- RC10, RC20, RC25, RC30, RC35, RC100, RC200, RC300, RC310, RC3
 - RC100H
-- TR120RF/CR20RF
+- RC20RF
+- Remotes: RFM20, RT800, RC220, RC100H, TR120RF, CR20RF, Moduline 1010H
+- CW100, CW400
+- Sense II
+- HPC410
+- Rego 2000, 3000
+- Comfort RF CRF, Comfort+
+- CR10, CRF200S, CRF200S, CR20RF, CR50, CR120
+- UI800
+- ES72, ES73, ES72, ES79
+- FW100, FW120, FW200, FW500
+- FR10, FR50, FR100, FR110, FR120
+- FB10, FB100
+- RT800
+- TR120RF
 
 <!-- prettier-ignore -->
 !!! note

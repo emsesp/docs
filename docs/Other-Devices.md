@@ -2,18 +2,27 @@
 
 This is the current list of supported other devices.
 
-Classed as Gateway modules:
+Gateway modules:
 
-- Buderus Web Gateway KM200, MB LAN2
-- Buderus Communication Module MX300
+- Buderus Web Gateway KM200, MB LAN 2
+- Buderus Communication Module MX300, K30RF
 
-Classed as Connect modules:
+Connect modules:
 
 - Nefit Moduline Easy Connect
 - Bosch Easy Connect
 - EMS-OT OpenTherm converter
 - Wireless sensor base
+- M200, RFM200
 
-Classed as Alert modules:
+Alert modules:
 
 - EM10
+
+Ventilation modules:
+
+- Logavent HRV176
+
+Extension modules:
+
+- T1RF

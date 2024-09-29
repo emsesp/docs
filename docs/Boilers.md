@@ -1,33 +1,33 @@
 # List of Boilers
 
-This is the current list of supported boilers from Buderus, Nefit, Sieger, Junkers and Bosch:
+This is the current list of supported boilers from brands like Buderus, Nefit, Sieger, Junkers and Bosch:
 
-- BK13/BK15/Smartline/GB1x2i
-- GB125/GB135/MC10
-- Cascade CM10
-- Logamax Plus GB022
-- Condens 2500/Logamax/Logomatic/Cerapur Top/Greenstar/Generic HT3
-- Topline/GB162
+- BK13, BK15
+- GB125, GB135, GB1x2i, GB162, GBx72, GB212, GB162, GB192, GB122, GB192i.2
+- MC10
+- Cascade CM10, MC400
+- Logano
+- Logamax Plus GB022, U122
+- Logamatic MC10, MC110
+- Condens 2500, GC9000
+- Logomatic
+- Cerapur Top, Aero
+- Greenstar Si, 30Ri Compact, ErP, HIU, 8000
+- Nefit Topline, Trendline
 - Cascade MCM10
-- Proline
-- GBx72/Trendline/Cerapur/Greenstar Si
-- GB212
-- GC7000F
-- Logano GB125/KB195i/Logamatic MC110
-- Greenstar 30Ri Compact
-- Cerapur Aero
+- Nefit Proline
+- Nefit Smartline
+- GC7000F, GC9800IW
+- KB195i
 - Hybrid Heatpump
-- Logano GB212
-- Enviline/Compress 6000AW/Hybrid 3000-7000iAW/SupraEco/Geo 5xx/WLW196i/WSW196i
-- Geo 5xx
-- Condens 5000i/Greenstar 8000/GC9800IW/GB192i.2
-- Logamax U122/Cerapur
+- Enviline
+- Compress 6000AW
+- Hybrid 3000-7000iAW
+- SupraEco
+- WLW196i, WSW196i
+- Condens 2300, 5000i
 - Ecomline Excellent
-- Logamax Plus/GB192/Condens GC9000/Greenstar ErP
-- Cascade MC400
 - EasyControl Adapter
-- Greenstar HIU
-- Logamax Plus GB122/Condense 2300
 
 ## Device Entities
 
