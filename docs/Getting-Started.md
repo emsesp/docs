@@ -63,18 +63,18 @@ If you are upgrading from a previous release it's recommended you perform the up
 
 !!! info
 
-    During the power-on sequence you'll see a sequence of LED flashes:
+    During the power-on, you'll see a sequence of LED flashes:
 
-    * 1 x flash = the EMS bus is not connected
+    * 1 flash indicates the EMS bus is not yet connected. If this takes more than a few seconds check the EMS Tx Mode and the physical connection to the EMS bus.
 
-    * 2 x flash = the network (wifi or ethernet) is not connected
+    * 2 flashes indicates the network (WiFi or Ethernet) is connecting. If this persists check the EMS-ESP Network settings.
 
-    * 3 x flash = both EMS bus and network are failing. This is a critical error!
+    * 3 flashes indicates that both the EMS bus and Network are still trying to connect. This could be due to an incorrect EMS-ESP Board Profile setting.
 
     During normal operation the LED displays the current status:
 
-    * A steady solid light indicates a good connection and EMS data is flowing in
+    * A steady solid light indicates a good connection and EMS data is flowing in.
 
-    * A slow pulse can mean either the WiFi or the EMS bus are not connected yet
+    * A slow pulse can mean either the WiFi or the EMS bus are still connecting.
 
-    * A very fast pulse is when the system is booting up and configuring itself which can typically takes a few seconds
+    * A very fast pulse is when the system is booting up and configuring itself.
