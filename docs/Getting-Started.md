@@ -67,7 +67,7 @@ If you are upgrading from a previous release it's recommended you perform the up
 
     * 1 flash indicates the EMS bus is not yet connected. If this takes more than a few seconds check the EMS Tx Mode and the physical connection to the EMS bus.
 
-    * 2 flashes indicates the network (WiFi or Ethernet) is connecting. If this persists check the EMS-ESP Network settings.
+    * 2 flashes indicates the network (WiFi or Ethernet) is connecting. If this persists check the EMS-ESP Network settings. EMS-ESP uses 2.4GHz/WPA2 only.
 
     * 3 flashes indicates that both the EMS bus and Network are still trying to connect. This could be due to an incorrect EMS-ESP Board Profile setting.
 
