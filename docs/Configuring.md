@@ -37,7 +37,7 @@ This next section describes some of key application settings that can be configu
 
 ### General Options
 
-- **Language**. This sets the language to be used for the EMS Device Entity names, as shown in the WebUI Devices Dashboard and also for MQTT Discovery. The default is English. When using Home Assistant you may need to remove the previous EMS-ESP MQTT entries (from HA's Settings->Devices & Services->MQTT) and restart EMS-ESP just to be sure.
+- **Language**. This sets the language to be used for the EMS Device Entity names, as shown in the WebUI Devices Dashboard and also for MQTT Discovery. The default is English. When using Home Assistant, and switching the language you may need to remove the previous EMS-ESP MQTT entries (from HA's Settings->Devices & Services->MQTT) and restart EMS-ESP just to be sure.
 - **Hide LED**. Turns off the LED when in normal operating mode. The LED is still shown when booting or when there are connection issues.
 - **Enable Telnet Console**. This is on by default and allows users to connect to the in-secure Telnet server on port 23.
 - **Enable Analog Sensors**. This enables any GPIO to collect signals, whether it's a digital I/O, a pulse counter or ADC measuring mv.
@@ -70,7 +70,7 @@ This next section describes some of key application settings that can be configu
 
 ## Setting up the Network
 
-The Network page allows you to connect EMS-ESP to your home network. You can choose between WiFi or Ethernet. EMS-ESP will auto-detect which and set the settings accordingly. Anything in the Board Profile will override these settings.
+The Network page allows you to connect EMS-ESP to your home network. You can choose between WiFi and Ethernet if the hardware board support this. Note WiFi must be 2.4GHz/WPA2. It will not connect to a 5GHz WifFi access point.
 
 ### CORS (Cross-Origin Resource Sharing)
 
