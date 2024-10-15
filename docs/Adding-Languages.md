@@ -5,7 +5,7 @@
 - Copy `interface/src/i18n/en/index.ts` to `interface/src/i18n/XY/index.ts`
 - Change in the first and last line `en` to your language and in the first lines `BaseTranslation` to `Translation`
 - Edit `interface/src/i18n/XY/index.ts` and replace the English texts by your language
-- Edit `interface/src/components/layout/LayoutAuthMenu.tsx` and add the following:
+- Edit `interface/src/components/layout/LanguageSelector.tsx` and add the following:
 
 ```
 import { ReactComponent as XYflag } from 'i18n/XY.svg';
@@ -14,17 +14,6 @@ import { ReactComponent as XYflag } from 'i18n/XY.svg';
           <XYflag style={{ width: 16, verticalAlign: 'middle' }} />
           &nbsp;XY
         </MenuItem>
-```
-
-- Edit `interface/src/SignIn.tsx` and add a button:
-
-```
-import { ReactComponent as XYflag } from './i18n/XY.svg';
-...
-      <Button size="small" variant={locale === 'XY' ? 'contained' : 'outlined'} onClick={() => selectLocale('XY')}>
-        <XYflag style={{ width: 24 }} />
-        &nbsp;XY
-      </Button>
 ```
 
 - Navigate to the `interface` folder and type `npm run standalone` or `npm run typesafe-i18n` and test the WebUI
