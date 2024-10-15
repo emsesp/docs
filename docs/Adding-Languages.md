@@ -16,7 +16,7 @@ import { ReactComponent as XYflag } from 'i18n/XY.svg';
         </MenuItem>
 ```
 
-- Navigate to the `interface` folder and type `npm run standalone` or `npm run typesafe-i18n` and test the WebUI
+- Navigate to the `interface` folder and type `yarn standalone` and test the WebUI
 
 ### How to add language XY to device entities
 
