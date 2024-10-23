@@ -186,9 +186,13 @@ Pay attention to the following rules:
 - commands followed by a divider (`/`) have to be set in parenthesis e.g. `(boiler/seltemp)/2`
 - condition command is only executed on a change of the condition from `false` to `true`. If the condition stays true, the command is not repeated
 - command value can also be a formula
-- allowed operations : arithmetic: `+ - \* / %` and prefix- logic: `== != <= >= < > && ||` and prefix `!`
-  are useful for the value of onChange and condition: a single instance of `<cond1> ? <cond2> : <cond3>`
-- on change trigger is always one or more entities `<device>/<entity>`, where device is not system. It can have multiple triggers. e.g. `boiler/outdoortemp custom/setpoint` and triggers on change of each value (entities never change the same time (it's a callback) and logical operations here like `&&` makes no sense)
+- allowed operations:
+  - arithmetic: `+` `-` `*` `/` `%`
+  - prefix: `-` `round` `abs` `int` `exp` `log` `sqrt` `pow`
+  - logic: `==` `!=` `<=` `>=` `<` `>` `&&` `||`
+  - prefix: `!`
+  - conditional operations: `<cond1> ? <expr1> : <expr2>` only surrounding a formula, not within a formula (not allowed: `5 + (<cond> ? <expr1> : <expr2>)`, allowed: `<cond> ? 5 + <expr1> : 5 + <expr2>`), cascaded conditions can be used (`<cond1> ? <cond2> ? <expr1> : <expr2> : <cond3> ? <expr3> : <expr4>`) 
+- on change trigger is always one or more entities `<device>/<entity>`, where device is **not** system. It can have multiple triggers. e.g. `boiler/outdoortemp custom/setpoint` and triggers on change of each value (entities never change the same time (it's a callback) and logical operations here like `&&` makes no sense)
 
 ![Web](_media/screenshot/web_conditions_1.png)
 
