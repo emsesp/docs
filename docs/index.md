@@ -35,7 +35,7 @@ hide:
 - Native integration with Home Assistant, Domoticz, openHAB and Modbus
 - Easy setup and install with automatic updates
 - Simulation of remote thermostats
-- Localized to 10 languages, and customizable to rename any device or sensor
+- Localized in 11 languages, and customizable to rename any device or sensor
 - Extendable by adding own custom EMS entities
 - Expandable via adding user-built external modules
 - A powerful Scheduler to automate tasks and trigger events based data changes
