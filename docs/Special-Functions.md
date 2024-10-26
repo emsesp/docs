@@ -49,7 +49,7 @@ Note, if the control is set to `roomthermostat` and the first `remotetemp` is no
 
 The EMS-ESP Scheduler can be used to permanently maintain the remote thermostat's values. The thermostat is recreated once the command is and has an initial value as shown below:
 
-![EMS-SCHEDULE-EDIT](https://github.com/emsesp/docs/assets/80219712/d1009d40-7d80-41a8-9690-d3222d9a0612)
+![EMS-SCHEDULE-EDIT](_media/screenshot/scheduler_a.jpg)
 
 - `Timer` to `00:00` for triggering as soon as EMS-ESP powers on
 - `Command` is `thermostat/hc1/remotetemp` for heating circuit 1 (or `thermostat/hc1/remotehum` for an RC100H)
@@ -60,4 +60,4 @@ If you have an external Dallas temperature sensor attached to the EMS-ESP you ca
 
 With both a temperature and humidity value set, the emulated RC100H would look lie this:
 
-![EMS-SCHEDULE-MAIN](https://github.com/emsesp/docs/assets/80219712/bc0487fe-a214-4c56-a454-1870c27a9de9)
+![EMS-SCHEDULE-MAIN](_media/screenshot/scheduler_b.jpg)
