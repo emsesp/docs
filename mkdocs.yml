@@ -15,10 +15,10 @@ plugins:
   - redirects:
       redirect_maps:
   - table-reader
-  - git-revision-date-localized
-  - git-committers:
-      repository: emsesp/docs
-      branch: main
+  # - git-revision-date-localized
+  # - git-committers:
+  #     repository: emsesp/docs
+  #     branch: main
 # - htmlproofer
 
 # strict: true
@@ -64,22 +64,26 @@ markdown_extensions:
       toc_depth: 3
   - pymdownx.tabbed:
       alternate_style: true
-  # - pymdownx.emoji:
-  #     emoji_index: !!python/name:material.extensions.emoji.twemoji
-  #     emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.betterem
   - pymdownx.caret
   - pymdownx.details
-  - pymdownx.highlight
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      linenums: true
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.superfences
   - pymdownx.snippets
   - pymdownx.tilde
+  - pymdownx.details
   - meta
   - def_list
   - attr_list
   - md_in_html
+  # support pad width = 2, as formatted with prettier
+  - mdx_truly_sane_lists
 
 extra_css:
   - 'assets/css/anchor-fix.css'

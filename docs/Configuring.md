@@ -168,31 +168,34 @@ The scheduler can also be used to periodically set values based on another entit
 
 ### Conditions
 
-Introduced in **version 3.7**, the Scheduler has been extended to support conditional statements used in the `Command` and/or `Value` fields. Conditions have a strict syntax (see below) and are evaluated every 10 seconds. The condition is only executed when the condition changes from false to true. This is powerful new feature and allows, for example, to set a schedule based on a condition, or to set a value based on a condition.
+Introduced in **version 3.7**, the Scheduler has been extended to support conditional statements and formulas that can be used in the `Command` and/or `Value` fields for Timer, On Change and Condition types.
+
+Conditions have a strict syntax (see below) and are evaluated every 10 seconds. The condition is only executed when the condition changes from false to true. This is powerful new feature and allows, for example, to set a schedule based on a condition or set a value based on a condition.
 
 Pay attention to the following rules:
 
 - a condition has to be a logic value `0` or `1`, the condition is `true` only for `1`, an arithmetic result `1` is also interpreted as `true`
   schedule command executed for `3 > 2, 3 - 2`
   schedule command not executed for `3 < 2`, `3 + 2`
-- blanks are not needed, but makes the formula more readable
-- EMS-ESP values are accessed `<device>/<entity>` or `<device>/<entity>/value`, `<entity>` may contain prefixes like `<hc2>`.
-- checking enum and bool values depends on the user's API setting! Check the right value before setting a schedule
-  e.g. check output <http://ems-esp.local/api/thermostat> to see if building = "medium", create the rule with `thermostat/building == medium`
-  also for boolean values check if you have to use `0/1`, `off/on`, `OFF/ON`, or `false/true`
-- strings containing special characters have to be written in quotations, e.g. `boiler/pumpmode == "delta-P2"`, to avoid a calculation error on delta minus P2,
-  other strings can be written with or without quotations
+- spaces are not needed, but makes the formula more readable
+- EMS-ESP values are accessed `<device>/<entity>` or `<device>/<entity>/value`. The `<entity>` may contain additional prefixes like `<hc2>`.
+- The user's Boolean Format (`0/1`, `off/on`, `OFF/ON`, or `false/true`) and Enum Format (value/index) Settings are used when evaluating bool and enums. Check the right value before setting a schedule by querying the API directly. For example go to `http://ems-esp.local/api/thermostat` to see if building is "medium", then create the rule with `thermostat/building == medium`.
+- strings containing special characters have to be quoted. e.g. `boiler/pumpmode == "delta-P2"`, to avoid a calculation error on delta minus P2.
 - all strings are converted to lowercase
 - commands followed by a divider (`/`) have to be set in parenthesis e.g. `(boiler/seltemp)/2`
 - condition command is only executed on a change of the condition from `false` to `true`. If the condition stays true, the command is not repeated
-- command value can also be a formula
+- a command Value can also be a formula
 - allowed operations:
+
   - arithmetic: `+` `-` `*` `/` `%`
-  - prefix: `-` `round` `abs` `int` `exp` `log` `sqrt` `pow`
+  - functions: `round` `abs` `int` `exp` `log` `sqrt` `pow`
   - logic: `==` `!=` `<=` `>=` `<` `>` `&&` `||`
-  - prefix: `!`
-  - conditional operations: `<cond1> ? <expr1> : <expr2>` only surrounding a formula, not within a formula (not allowed: `5 + (<cond> ? <expr1> : <expr2>)`, allowed: `<cond> ? 5 + <expr1> : 5 + <expr2>`), cascaded conditions can be used (`<cond1> ? <cond2> ? <expr1> : <expr2> : <cond3> ? <expr3> : <expr4>`) 
-- on change trigger is always one or more entities `<device>/<entity>`, where device is **not** system. It can have multiple triggers. e.g. `boiler/outdoortemp custom/setpoint` and triggers on change of each value (entities never change the same time (it's a callback) and logical operations here like `&&` makes no sense)
+  - prefix: `!` (not) and `-` (negation)
+  - conditional operations: `<cond1> ? <expr1> : <expr2>` only surrounding a formula, not within a formula. Examples:
+    - (allowed) `<cond> ? 5 + <expr1> : 5 + <expr2>`
+    - (not allowed) `5 + (<cond> ? <expr1> : <expr2>)` and cascaded conditions `<cond1> ? <cond2> ? <expr1> : <expr2> : <cond3> ? <expr3> : <expr4>`
+
+An On Change trigger is a list of entities following the format `<device>/<entity>`. Note, a `<device>` of "system" is not supported. e.g. `boiler/outdoortemp custom/setpoint`. As entities never change at the same time using logical operations here like `&&` aren't useful.
 
 ![Web](_media/screenshot/web_conditions_1.png)
 
