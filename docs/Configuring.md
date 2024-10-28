@@ -155,7 +155,14 @@ The Customization page shows all registered entities and allows to exclude comma
 
 ## Scheduling Actions
 
-Use the scheduler to call commands at specific intervals. This is useful for example to set the hot water temperature to a higher value in the morning and evening, or do a system restart each week (by using `system/restart` in the Command field).
+Use the scheduler to call commands at specific intervals. A few examples:
+
+- set the hot water temperature to a higher value in the morning and evening
+- do a periodic system restart each week (although you shouldn't need to!) using `system/restart` in the Command field
+- send a message to the log and mqtt using the Command `system/message`
+- use in combination with a custom 'ram' entity to fetch data via another API like `{"url":"http://server.tld/path/file", "key":"nameofkey"}` and using this as a condition in the scheduler
+- send data to an external API, via a RESTful HTTP POST command, for example `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
+- use to call a Home Assistant script or service when a condition is triggered, e.g. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
 When creating a scheduler entry, the `name` is optional but it's useful to assign a name and then you can control it via a command (enable/disable) and see the status in the MQTT topic `scheduler_data`.
 
@@ -215,20 +222,20 @@ Sending or getting data via web request can be used in a json command:
 
 Examples:
 
-- getting power state of a tasmota plug (exampleIP):
+- getting power state of a tasmota plug example:
   `{"url":"http://192.168.0.100/cm?cmnd=power", "key":"power"} == off`
-  is identical with
+  is identical to
   `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - setting a tasmoto plug:
   `{"url":"http://192.168.0.100/cm?cmnd=power%20on"}`
 
 ### Notification
 
-With web commands a service like [pushover](https://pushover.net) can be used to send a push-message on events. To send different message create a custom entity in RAM named `message`, or what you like. Create a schedule on change triggering the change of this message and sending the pushover message.
+With web commands a service like [pushover](https://pushover.net) can be used to send a push-message on events. To send different message create a custom entity in RAM named `message`, or what ever you like. Create a schedule On Change triggering the change of this message and sending the pushover message.
 
 ![grafik](https://github.com/user-attachments/assets/570576b5-b382-4ab2-bff3-4468291334a3)
 
-Now you can create other schedules with the command `custom/message` and individual text as data.
+Now you can create other schedules with the command `custom/message` and use individual text as data.
 
 ## Adding Custom Entities
 
