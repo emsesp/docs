@@ -85,76 +85,23 @@ You can also create a VSC's task in `launch.json` file to automate this for you,
 
 I recently had to rebuild my Linux WSL on Windows from scratch to build EMS-ESP I thought I'd share the steps I took to get it working.
 
-#### WSL
+Create a new WSL2 environment. Note a WSL2 instance can take up to 8GB RAM so first make sure your PC can handle it.
 
-if you need to remove any old ones use `wsl.exe --terminate <dist>`
+- `wsl.exe -l -v` to view any current installations.
+- `wsl.exe --list --online` to view available installations.
+- `wsl.exe -d <dist>` to start the distro. If in doubt use `Ubuntu-24.04` as it is the latest LTS.
+- `lsb_release -a` after it's installed to check the version.
+- `do-release-upgrade` (optional) to upgrade to the latest version. I upgraded to 24.10. You may need to set "Prompt=normal" in the `/etc/update-manager/release-upgrades` file.
+- `wsl.exe --setdefault <dist name>` to make this installation the default one. You can use `wsl.exe --terminate <dist name>` to remove any old ones.
 
-```sh
-wsl.exe --setdefault <new dist>
-wsl -l -v
-```
+Go into the WSL instance (`wsl`) and setup the following:
 
-#### Setup Linux under WSL
+- `sudo apt install unzip make g++ python3-venv nodejs curl zsh`
+- `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` (optional) to install zsh
+- `npm install -g npm-check-updates` for the ncu command
+- `curl -fsSL https://bun.sh/install | bash` for the mock-api
+- `yarn set version stable` in both `interface` and `mock-api` folders to get the latest Yarn version. Also here, do a `yarn config set --home enableTelemetry 0` to stop yarn spying on you.
 
-```sh
-sudo apt install unzip
-sudo apt install make
-sudo apt install g++
-sudo apt install python3-venv
-sudo apt install nodejs
-sudo apt install curl
-```
+To usb USB install <https://github.com/dorssel/usbipd-win/releases> from an DOS Admin command window. In that window you can use `usbipd list` to find the COM port and then for example `usbipd bind -b 1-6` and `usbipd attach -w -b 1-6` to attach it to the WSL instance. This will give you a `/dev/ttyUSB0` or `/dev/ttyACM0` device.
 
-#### USB on WSL
-
-This is so the USB port is available within VS code.
-
-install <https://github.com/dorssel/usbipd-win/releases>
-
-from Administrator Powershell:
-
-```cmd
-usbipd list (to find COM port)
-usbipd bind -b 1-6
-usbipd attach -w -b 1-6
-```
-
-in WSL:
-
-you should see `/dev/ttyUSB0`
-
-install PlatformIO rules following <https://docs.platformio.org/en/latest/core/installation/udev-rules.html> to stop the warnings when firmware uploading.
-
-#### nvm (npm version manager)
-
-```sh
-curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-
-yarn (disable report backs)
-yarn config set --home enableTelemetry 0
-
-ncu (to check for package updates)
-npm install -g npm-check-updates
-ncu -p yarn
-```
-
-#### bun
-
-This is needed for standalone testing.
-
-```sh
-curl -fsSL https://bun.sh/install | bash
-```
-
-#### zsh
-
-This is my preferred shell. I extend with Oh-My-zsh and the Powerlevel10k theme.
-
-```sh
-sudo apt install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-#### Visual Studio Code
-
-Use vscode on Windows, connect to the `WSL`. First time install all extensions and restart. If you have the settings saved and sync'd it should be very quick.
+Run Visual Studio Code on your Windows environment and click "Connect to WSL" to connect to the WSL instance. You can then use the WSL terminal to build the firmware. You'll find building and compiling EMS-ESP will be 2-3 times faster than on Windows.
