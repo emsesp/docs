@@ -428,7 +428,7 @@ I haven't tried out all options yet, but here are a few comments:
 
 Next was changing the string with automations.
 
-For the time being, I am going with fixed times: A heating period during the night when we have low tariff and then another around noon where I might have some excess PV power. I can later tinker around with hooking it to actuall PV production. I am just changing the first bit which is to invert the always off input "Eingang invertiert" (invert input) as suggested. The second bit is "EVU-Sperrzeit 1".
+For the time being, I am going with fixed times: A heating period during the night when we have low tariff and then another around noon where I might have some excess PV power. I can later tinker around with hooking it to actual PV production. I am just changing the first bit which is to invert the always off input "Eingang invertiert" (invert input) as suggested. The second bit is "EVU-Sperrzeit 1".
 
 ```yaml
 automation heating:

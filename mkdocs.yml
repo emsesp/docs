@@ -8,6 +8,7 @@ docs_dir: docs
 copyright: 'Copyright &copy; 2024 emsesp.org (@proddy, @MichaelDvP)'
 
 plugins:
+  # - htmlproofer
   - search
   - alternate-link
   - minify:
@@ -19,7 +20,6 @@ plugins:
   - git-committers:
       repository: emsesp/docs
       branch: main
-# - htmlproofer
 
 # strict: true
 
@@ -100,10 +100,12 @@ nav:
       - About EMS-ESP: About.md
       - Version Release History: Version-Release-History.md
       - Getting Started: Getting-Started.md
-      - Configuring: Configuring.md
-      - Special Functions: Special-Functions.md
+      - Configuring EMS-ESP: Configuring.md
       - WebUI: WebUI.md
       - MQTT: MQTT.md
+      - Commands: Commands.md
+      - Console: Console.md
+      - Special Functions: Special-Functions.md
       - Modbus/TCP:
           - Modbus: Modbus.md
           - Settings: Modbus-Settings.md
@@ -111,10 +113,8 @@ nav:
           - The SYSTEM Server: Modbus-System-Server.md
           - Register Block Offsets: Modbus-Register-Blocks.md
           - Entity Register Offsets: Modbus-Entity-Registers.md
-      - Commands: Commands.md
-      - Console: Console.md
       - Supported Devices:
-          - All Devices and Entities: All-Devices.md
+          - All EMS Devices and their Entities: All-Devices.md
           - Boilers: Boilers.md
           - Thermostats: Thermostats.md
           - Solar Modules: Solar-Modules.md

@@ -49,7 +49,7 @@ See a [live demo](https://demo.emsesp.org) at `https://demo.emsesp.org`. Select 
 
 ## Installing
 
-Head over to the [Getting Started](Getting-Started) guide to see what hardware you need and how to install the firmware.
+Head over to the [Getting Started](Getting-Started) section to see what hardware you need and how to install the firmware software.
 
 ## Support
 

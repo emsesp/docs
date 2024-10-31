@@ -55,3 +55,6 @@ How it all started.
 - August 2023 - Version 3.6.0 - Sensors in it's own tab and able to browse all entities from the list. Added Scheduler and Custom Entity editor, plus Italian and Turkish.
 
   ![3.6.0](_media/screenshot/version360.png)
+
+- March 2024 - Version 3.6.5 - More supported devices, custom entities and variables, added Slovak language
+- October 2024 - Version 3.7.0 - More of everything. Web UI refreshed with a Dashboard. Added Modbus support. Added Scheduler conditions and functions.

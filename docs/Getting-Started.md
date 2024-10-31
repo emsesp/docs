@@ -18,15 +18,13 @@ EMS-ESP also requires a separate circuit to read and write to the EMS bus. You c
 
 ## Uploading the firmware
 
-The firmware is a single binary `.bin` file. First decide whether you want to take the [current stable version](https://github.com/emsesp/EMS-ESP32/releases/latest) or risk it and take the [latest development version](https://github.com/emsesp/EMS-ESP32/releases/tag/latest) to have the latest features and of course any possible issues.
+Go to [download.emsesp.org](https://download.emsesp.org) to get the latest firmware to match your hardware. There are multiple methods to install the firmware on your ESP32 board.
 
-Go to [download.emsesp.org](https://download.emsesp.org) to get the latest firmware to match your hardware.
-
-!!! warning "Pay attention to the [Change Log](Version-Release-History) before upgrading for any breaking changes"
+!!! warning "Pay attention to the [Change Log](Version-Release-History) before upgrading so you are aware of any breaking changes"
 
 ### Upgrading to a new major release
 
-If you are upgrading from a previous release it's recommended you make a backup copy of any settings and configurations before performing the installation.
+If you are upgrading from a previous release it's recommended you make a backup copy of any settings and configurations before performing the installation. This can be done from the WebUI Settings page 'Download/Upload'.
 
 ## What the onboard LED is telling you
 
