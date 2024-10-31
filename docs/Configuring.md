@@ -80,22 +80,20 @@ Enable this function when running in VPNs or you have other servers (like Grafan
 
 ## MQTT Setup
 
-Most are self-explanatory and the settings that are specific to EMS-ESP are:
-
-- **Broker Address**. Use the IP address.
+- **Broker Address**. Use the IP address, not a FQDN.
 - **Port**. The default is 1883 and 8883 for SSL.
-- **Base**. All topics are prefixed with the `Base` so this is important. Make sure this is unique when using more than one EMS-ESP.
+- **Base**. All topics are prefixed with the `Base` so this is important. Make sure this is unique when using more than one EMS-ESP with the same broker.
 - **Client ID**. This is used internally to identify EMS-ESP with the broker and is optional. Note MQTT topics will be postfixed with the hostname (default `ems-esp`) and not the client ID. Use when having multiple devices.
 - **Username** and **Password** are optional.
-- **Set Clean Session**. Creates a non-persistent session when enabled. Default is disabled and is recommended to keep it disabled when using home automation systems.
-- **QoS**. Quality of Service, 0, 1 or 2. 0 is the default and suitable for more scenarios. 1 will give a guarantee that the message has been sent, but will create slightly more traffic and overhead.
-- **Always use Retain Flag**. Enable if you want to persist all the messages on the broker. Default is disabled.
+- **Set Clean Session**. Creates a non-persistent session when enabled. Default and recommended setting is disabled to keep it disabled when using home automation systems.
+- **QoS**. Quality of Service, 0, 1 or 2. 0 is the default and suitable for more scenarios. A value of 1 will give a guarantee that the message has been sent, but will create slightly more network traffic and overhead.
+- **Always set Retain Flag**. Enable if you want to persist all the messages on the MQTT broker. Default is disabled.
 - **Formatting**. The `As individual topics` option will send all data as separate topics, and `Nested` will group the data into one single JSON payload. The default is nested.
-- **Publish command output to a 'response' topic'**. This takes the output from an API command (e.g. read) and publishes the result in a topic called `response`.
+- **Publish command output to a 'response' topic'**. This takes the output from an API command and publishes the result in a topic called `response`.
 - **Publish single value topics on change**. This option will immediately publish the topic and payload for each operation and only available when MQTT Discovery is disabled.
-- **Enable MQTT Discovery**. Enables the integration with Home Assistant and Domoticz.
-  <!-- - prettier-ignore -->
-      - **Entity ID format**: There are 3 options. The first `single instance, long names` uses the older < v3.5 format. The default and recommended setting for all new installs is the 2nd option called `Single instance, short name` which uses the EMS-ESP device entity name, which is fixed and can be seen in the `Settings->Customization` page. The last option must be used when running more than one version of the EMS-ESP firmware as it makes each unique by prefixing all MQTT topics with the base name.
+- **Enable MQTT Discovery** enables the integration using MQTT Discovery, fully supported with Home Assistant and partially with Domoticz.
+  - **Discovery type**. Choose between "Home Assistant" and two protocols for "Domoticz". `Domoticz (latest)` will use Numbers, Switches, Select and other modern types, while `Domoticz` will just use Sensors for everything and also remove any templating conditions.
+  - **Entity ID format**: There are 3 options. The first `single instance, long names` uses the older < v3.5 format. The default and recommended setting for all new installs is the 2nd option called `Single instance, short name` which uses the EMS-ESP device entity name, which is fixed and can be seen in the `Settings->Customization` page. The last option must be used when running more than one version of the EMS-ESP firmware as it makes each unique by prefixing all MQTT topics with the base name.
 - **Publish Intervals**. This section is per device and sets how frequent an MQTT message is sent. When set to 0 EMS-ESP will send data automatically when there is a noticeable change, which could be within a few seconds.
 
 ## Managing Users
