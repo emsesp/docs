@@ -2,9 +2,9 @@ EMS-ESP has a command API which can be used to read and write values to EMS devi
 
 There are 3 methods commands can be invoked:
 
-- via the [**Console**](#console) using Telnet CLI
-- via [**HTTP**](#http) using RESTful HTTP calls
-- via [**MQTT**](#mqtt) via topics their payloads
+- via the [**Console**](#console) using Telnet or Serial
+- via [**HTTP**](#http) using RESTful API calls
+- via [**MQTT**](#mqtt) via topics and their payloads
 
 ## Definitions
 

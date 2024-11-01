@@ -1,8 +1,18 @@
-Below are answers to some common problems.
+Below are responses to some common problems.
 
-## General
+## Firmware Installation issues
 
-### Can't connect to the WiFi
+### Unable to upload via the Web interface
+
+When uploading the firmware via the Web interface and you see the error "Invalid file extension or incompatible bin file", check that you are using the correct firmware binary file that matches your board and ESP32 chip set. If that is correct, it may be because the firmware is too large for the boot partition, which could be the case when moving from 3.6.5 to 3.7.0 in certain situations. The solution is to use one of the flash tools.
+
+### Web Interface shows old data or errors in browser after an update
+
+This is caused by the browser caching the old files. To fix this, clear the browser cache and reload the page. CTRL-R or CMD-R or F5 on most browsers.
+
+## Stability
+
+### EMS-ESP can not connect to the WiFi
 
 The EMS-ESP is probably in Access Point mode. Look for a wifi SSID `ems-esp`, connect to this and open a browser to '<http://192.168.4.1>'. If you have configured a WiFi client your router would have appointed an IP address via DHCP. You should be able to then connect via <https://ems-esp> or <https://ems-esp.local>.
 
@@ -124,11 +134,11 @@ If you notice that certain values are displayed incorrectly, either in the WebUI
 
 and then either a `read` or `watch`, e.g. `read 21 2D8` to show all the data from HC2 on a Mixing MM100.
 
-## Dallas Sensors
+## Temperature Sensors
 
-### Unusual Dallas sensor readings
+### Unusual sensor readings
 
-If you're seeing unusual Dallas sensor readings (crazy negative temperatures, sudden spikes in readings etc.) check...
+If you're seeing unusual Dallas sensor readings (crazy negative temperatures, sudden spikes in readings etc.) check the following:
 
 - Wiring to the JST connector on the gateway.
 - That you're in the right powering mode for your application : parasitic or non-parasitic
@@ -220,3 +230,5 @@ The thermostat needs a setting of day-of-week and daylight-saving. Bosch day-of-
 If you have enabled NTP you can just enter "NTP" and the ntp time is set to the thermostat.
 
 With NTP enabled the thermostat clock is also automatically set by EMS-ESP if it differs from the ntp time.
+
+Pay attention to whether or not you want to enable daylight-saving time. This should be consistent with the setting on your thermostat.
