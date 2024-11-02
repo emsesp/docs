@@ -44,14 +44,14 @@ Things to check:
 
 The ESP32 has very limited RAM, split between run-time stack and the heap. The heap can quickly become fragmented reducing the maximum size of a buffer, and we use A LOT of buffers to prepare all that lovely JSON files for sending to MQTT and populating the Web pages. When the ESP32 runs out of available it will simply restart itself. Things to check:
 
-- If the WebUI is accessible, go to `System->System Status` and look at the Heap. If the Free memory is below 90KB or the Max allocation below 45KB then that may be an issue and you'll need to turn off services, try again and report this. Start by disabling mDNS and SysLog (if running) one by one and see if that helps.
-- Make sure the System Log's Max Buffer Size at `System->System Log` is at its lowest (25).
+- If the WebUI is accessible, go to `Status->Hardware` and look at the Heap. If the Free memory is below 90KB or the Max allocation below 45KB then that may be an issue and you'll need to turn off services, try again and report this. Start by disabling mDNS and SysLog (if running) one by one and see if that helps.
+- Make sure the System Log's Max Buffer Size at `Status->System Log` is at its lowest (25).
 - Each network protocol (Ethernet, Wifi, AP) consumes memory. If you're only using Ethernet (e.g. an BBQKees E32 Gateway) switch off WiFi and the Access Point (use a blank WiFI ssid).
 - If you have many EMS entities use the Customizations page and set any unused entities (shown by having a blank value) to "remove from memory".
 
 #### It could be code related
 
-- Go to `System->System Log` and set the `Log Level` to `INFO`. This will make sure you'll see the restart log at the top next time it restarts. It'll show something similar to `2022-12-30 11:58:02.000    INFO 0:      [emsesp]     Last system reset reason Core0: Software reset CPU, Core1: Software reset CPU`.
+- Go to `Status->System Log` and set the `Log Level` to `INFO`. This will make sure you'll see the restart log at the top next time it restarts. It'll show something similar to `2022-12-30 11:58:02.000    INFO 0:      [emsesp]     Last system reset reason Core0: Software reset CPU, Core1: Software reset CPU`.
 - And finally, if none of the above works then the problem is the core processing the incoming telegrams. Try and capture some logs just before it crashes (using SysLog is good for this) and post the information in a new GitHub issue.
 
 ### EMS-ESP becomes unresponsive
