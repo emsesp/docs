@@ -29,16 +29,19 @@ If you search a setting, log the telegrams for the device (log all or watch <dev
 
 ## Can EMS-ESP simulate a Thermostat?
 
-Partially.
+Partially. As the folks over at [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) nicely put it:
+
+!!! quote "Why use a Thermostat?"
+
+    - The thermostat manufacturers have spent years of research to work out the heating characteristics for the most efficient and comfortable way to heat a house.
+    - The thermostat provides a control interface that people are familiar with, so other members of the household are still able to adjust the setpoint.
+    - It provides convenient housing for the room temperature sensor, which is needed unless you use a heating curve based solely on the outside temperature.
 
 As **MichaelDvP** points out _"a thermostat is a clever electronic device. You can put in the desired room temperature and it calculates from some parameters and measurements the required flowtemp for this room temperature and sends it to the boiler. This happens in a control loop and is updated often."_
 
 And **mtc716** said _"A thermostat creates a heat curve that is constantly adapted to the surrounding temperatures and used to estimate which water temperature is necessary in order to bring the room temperature up. There are some good articles in the net about how to setup the heat curve correctly. The main parameters you need are "design temp" which is the heating water temp at minimal outside temp. Furthermore you need the "comfort temp" like explained before and the "temp offset" which causes a parallel shift in the heating curve."_
 
-See [This article on changing the boiler heating directly](tips-and-tricks#control-the-boiler-heating).
-
-Some more details on GitHub at [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/issues/144)
-and [thermostat emulation](https://github.com/emsesp/EMS-ESP32/issues/151).
+See this article on [changing the boiler heating directly](tips-and-tricks#control-the-boiler-heating), and these issues: [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/issues/144) and [thermostat emulation](https://github.com/emsesp/EMS-ESP32/issues/151).
 
 ## What are Bus protocols and Tx modes?
 
