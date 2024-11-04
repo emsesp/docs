@@ -41,7 +41,12 @@ As **MichaelDvP** points out _"a thermostat is a clever electronic device. You c
 
 And **mtc716** said _"A thermostat creates a heat curve that is constantly adapted to the surrounding temperatures and used to estimate which water temperature is necessary in order to bring the room temperature up. There are some good articles in the net about how to setup the heat curve correctly. The main parameters you need are "design temp" which is the heating water temp at minimal outside temp. Furthermore you need the "comfort temp" like explained before and the "temp offset" which causes a parallel shift in the heating curve."_
 
-See this article on [changing the boiler heating directly](tips-and-tricks#control-the-boiler-heating), and these issues: [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/issues/144) and [thermostat emulation](https://github.com/emsesp/EMS-ESP32/issues/151).
+For further reading, check out these discussions:
+
+- [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/discussions/965)
+- [Thermostat emulation](https://github.com/emsesp/EMS-ESP32/issues/151)
+- [Changing the boiler heating directly](tips-and-tricks#control-the-boiler-heating)
+- [Implementing a smart thermostat (using SAT)](https://github.com/emsesp/EMS-ESP32/issues/2103)
 
 ## What are Bus protocols and Tx modes?
 
