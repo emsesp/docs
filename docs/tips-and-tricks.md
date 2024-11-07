@@ -1,6 +1,6 @@
 **Below are a collection of useful tips, tricks and code submitted by the community:**
 
-## Control the boiler heating
+## Controlling the boiler heating
 
 _(by @Oderik)_
 
@@ -17,6 +17,8 @@ You can set the flowtemp with EMS-ESP directly on the boiler without using a The
 - the flowtemp value on the control panel has to be set higher as the temperature sent over the EMS bus is only accepted if it has a lower value
 - you have to send a value at least every minute to maintain the flowtemp, otherwise the boiler will automatically fall back to the higher setpoint from the control panel.
 - There is a special EMS-ESP entity called `forceheatingoff` that sets the flowtemp value to 0 every minute automatically to the boiler. Other users prefer like to use an on/off control instead.
+
+The boiler onetime has a special logic. It's not recharging on call as most people expect. It checks the current temperature and only recharges if it is out of setpoint range (setpoint-hysteresis). If dhw is set to automatic recharge, it will never work, only in dhw eco mode and low dhw storage temperature. For just recharging you have to use the thermostat charge function. That sets the dhw setpoint temporary to a higher value,so the boiler triggers a recharge, and then back to old setpoint.
 
 ## Retrieve data via REST using PHP
 
