@@ -45,7 +45,7 @@ For further reading, check out these discussions:
 
 - [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/discussions/965)
 - [Thermostat emulation](https://github.com/emsesp/EMS-ESP32/issues/151)
-- [Changing the boiler heating directly](tips-and-tricks#control-the-boiler-heating)
+- [Changing the boiler heating directly](tips-and-tricks#controlling-the-boiler-heating)
 - [Implementing a smart thermostat (using SAT)](https://github.com/emsesp/EMS-ESP32/issues/2103)
 
 ## What are Bus protocols and Tx modes?
