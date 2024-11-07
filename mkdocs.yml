@@ -143,6 +143,7 @@ nav:
           - Contributing: Contributing.md
           - The EMS protocol: EMS-bus.md
           - Maintaining Modbus Parameters: Modbus-Dev.md
+          - Building an EMS circuit: EMS-Circuit.md
   - Supported Devices:
       - All Devices and Entities: All-Devices.md
       - Boilers: Boilers.md
