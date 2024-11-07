@@ -61,6 +61,8 @@ For feedback, questions, live troubleshooting or just general chat hop on to our
 
 <a href="https://discord.gg/3J3GgnzpyT"><img src="https://discordapp.com/api/guilds/816637840644505620/widget.png?style=banner2"></a>
 
-## Contact us
+## Business Inquiries
 
-For general questions about this project please use the [contact form](Contact).
+For general questions about this software project, such as which devices and equipment it supports, please reach out to the team and the wider community via GitHub discussions or Discord.
+
+For non-technical business inquiries, please use the [contact form](Contact).
