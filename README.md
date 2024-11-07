@@ -61,8 +61,6 @@ Easiest way is to run pip as a module (<https://realpython.com/what-is-pip/#usin
 - <http://127.0.0.1:8000>
 - TIP: comment out the `git-committers` and `git-revision-date-localized` sections in `mkdocs.yml` to speed up the build and prevent exceeding the GitHub API calls, but remember to uncomment it before committing
 
-## Deploying manually
+## Production
 
-The GitHub actions take care of the re-deployments, but if you want to force it you can use:
-
-`mkdocs gh-deploy --force --strict`
+After checking in your changes, Cloudflare Pages will automatically build and deploy the changes to <https://emsesp.org>.
