@@ -43,13 +43,13 @@ hide:
 
 For a full list of features read the [change log](Version-Release-History).
 
-See a [live demo](https://demo.emsesp.org) at `https://demo.emsesp.org`. Select your language on the sign-on page and log in with any username and password.
-
 <img style="width:75%" src="../_media/screenshot/main-screen.png"></img>
+
+[See a live demo](https://demo.emsesp.org){ .md-button .md-button--primary }  (_select your language on the sign-on page and log in with any username and password_)
 
 ## Installing
 
-Head over to the [Getting Started](Getting-Started) section to see what hardware you need and how to install the firmware software.
+Go to [Installing EMS-ESP](Installing) to get started and see which hardware you need and how to install the firmware software.
 
 ## Support
 

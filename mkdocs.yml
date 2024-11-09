@@ -99,7 +99,7 @@ nav:
       - News: index.md
       - About EMS-ESP: About.md
       - Version Release History: Version-Release-History.md
-      - Getting Started: Getting-Started.md
+      - Installing EMS-ESP: Installing.md
       - Configuring EMS-ESP: Configuring.md
       - WebUI: WebUI.md
       - MQTT: MQTT.md

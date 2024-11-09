@@ -24,7 +24,7 @@ A fast pulse of the LED means the system is booting or in installation mode. Con
 
 A slow pulse means either there is no WiFi connection or EMS-ESP cannot read from the EMS bus. In this case go to the Web interface and try a different Tx Mode setting.
 
-See the explanation on [what the LED shows](Getting-Started#what-the-onboard-led-is-telling-you).
+See further details on that the LED flashes mean in the [Installing EMS-ESP](Installing.md) section.
 
 ### EMS-ESP often restarts
 
