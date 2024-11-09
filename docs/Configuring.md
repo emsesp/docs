@@ -96,7 +96,12 @@ Enable this function when running in VPNs or you have other servers (like Grafan
   - **Entity ID format**: There are 3 options. The first `single instance, long names` uses the older < v3.5 format. The default and recommended setting for all new installs is the 2nd option called `Single instance, short name` which uses the EMS-ESP device entity name, which is fixed and can be seen in the `Settings->Customization` page. The last option must be used when running more than one version of the EMS-ESP firmware as it makes each unique by prefixing all MQTT topics with the base name.
 - **Publish Intervals**. This section is per device and sets how frequent an MQTT message is sent. When set to 0 EMS-ESP will send data automatically when there is a noticeable change, which could be within a few seconds.
 
-## Managing Users
+## NTP Setup
+
+- The default **NTP Server** is `time.google.com`. This can be changed to a local NTP server or a specific one, such as `pool.ntp.org`.
+- The default **Time Zone** is "Europe/Amsterdam". This can be changed to any of the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) time zones.
+
+## Managing Users and Roles
 
 The Security page allows you to change the default password for the captive portal and Telnet CLI. It also allows you to enable HTTPS for the captive portal and MQTT broker.
 
