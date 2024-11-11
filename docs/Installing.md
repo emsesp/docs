@@ -16,7 +16,7 @@ EMS-ESP also requires a separate circuit to read and write to the EMS bus. You c
 
 ## Installing EMS-ESP
 
-Click the link below to rediect to the download page, to see the multiple methods to install the firmware on your ESP32 board.
+Click the link below to go to the download page ans see multiple methods to install the firmware on your ESP32 board.
 
 [Install Firmware](https://download.emsesp.org){ .md-button .md-button--primary }
 
