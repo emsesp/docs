@@ -16,10 +16,10 @@ plugins:
   - redirects:
       redirect_maps:
   - table-reader
-  - git-revision-date-localized
-  - git-committers:
-      repository: emsesp/docs
-      branch: main
+  # - git-revision-date-localized
+  # - git-committers:
+  #     repository: emsesp/docs
+  #     branch: main
 
 # strict: true
 
@@ -32,8 +32,10 @@ theme:
   palette:
     - media: '(prefers-color-scheme: dark)'
       scheme: slate
-      primary: blue grey
-      accent: light blue
+      # primary: blue grey
+      # accent: light blue
+      primary: custom
+      accent: custom
 
   features:
     - navigation.instant
@@ -88,6 +90,7 @@ markdown_extensions:
 extra_css:
   - 'assets/css/anchor-fix.css'
   - 'assets/css/github.css'
+  - 'assets/css/emsesp.css'
 
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js

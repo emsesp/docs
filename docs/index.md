@@ -45,15 +45,17 @@ For a full list of features read the [change log](Version-Release-History).
 
 <img style="width:75%" src="../_media/screenshot/main-screen.png"></img>
 
-[See a live demo](https://demo.emsesp.org){ .md-button .md-button--primary }  (_select your language on the sign-on page and log in with any username and password_)
+[See a live demo](https://demo.emsesp.org){ .md-button .md-button--primary }
+
+(_select your language on the sign-on page and log in with any username and password_)
 
 ## Installing
 
-Go to [Installing EMS-ESP](Installing) to get started and see which hardware you need and how to install the firmware software.
+Go to the [Installing EMS-ESP](Installing) page to see which hardware you need and how to install the firmware software.
 
 ## Support
 
-See the support page for [reporting issues](Support) and requesting new features.
+Go to the [Support](Support) page to see how to get help and how to report issues and request new features.
 
 ## Join Our Community
 
