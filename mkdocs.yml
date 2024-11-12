@@ -1,6 +1,6 @@
 site_name: EMS-ESP
 site_description: Documentation (Wiki) for EMS-ESP
-site_url: https://emsesp.org/
+site_url: https://docs.emsesp.org/
 repo_name: 'emsesp/EMS-ESP32'
 repo_url: 'https://github.com/emsesp/EMS-ESP32'
 edit_uri: 'https://github.com/emsesp/docs/blob/master/docs/'

@@ -4,7 +4,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
 
 ### 1. An ESP32 development board
 
-The EMS-ESP firmware runs on an ESP32 module from [Espressif](https://www.espressif.com/en/products/socs). The chipsets ESP32-S, ESP32-S2, ESP32-S3 and ESP32-C3 are suppoted. See the post [here](https://github.com/emsesp/EMS-ESP32/discussions/839#discussioncomment-4493156) on which development boards we have tested against.
+The EMS-ESP firmware runs on an ESP32 module from [Espressif](https://www.espressif.com/en/products/socs). The chipsets ESP32-S, ESP32-S2, ESP32-S3 and ESP32-C3 are supported. See the post [here](https://github.com/emsesp/EMS-ESP32/discussions/839#discussioncomment-4493156) on which development boards we have tested against.
 
 <img style="width:500px" src="../_media/images/esp32-dev-boards.jpg"></img>
 
@@ -12,11 +12,11 @@ The EMS-ESP firmware runs on an ESP32 module from [Espressif](https://www.espres
 
 <img style="float:right;width:150px" src="../_media/images/EMS-Gateway-S3.png"></img>
 <img style="float:right;width:150px" src="../_media/images/EMS-Gateway-E32-V2.png"></img>
-EMS-ESP also requires a separate circuit to read and write to the EMS bus. You can either [build your own](EMS-Circuit) or purchase a EMS Gateway board direftly from BBQKees Electronics at [www.bbqkees-electronics.nl](https://bbqkees-electronics.nl).
+EMS-ESP also requires a separate circuit to read and write to the EMS bus. You can either [build your own](EMS-Circuit) or purchase a EMS Gateway board directly from BBQKees Electronics at [www.bbqkees-electronics.nl](https://bbqkees-electronics.nl).
 
 ## Installing EMS-ESP
 
-Click the link below to go to the download page ans see multiple methods to install the firmware on your ESP32 board.
+Click the link below to go to the download page and see the multiple methods available to install the firmware onto your ESP32 board.
 
 [Install Firmware](https://download.emsesp.org){ .md-button .md-button--primary }
 

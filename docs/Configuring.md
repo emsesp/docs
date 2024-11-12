@@ -64,7 +64,7 @@ This next section describes some of key settings that can be adjusted via the We
 
 - **Developer Mode** will enable advanced features in the WebUI, like the Read command from the System Log.
 - **Start boiler with forced heating off**. TBD.
-- **Disabled remote on missing room termperature**. TBD.
+- **Disabled remote on missing room temperature**. TBD.
 - **Enable Shower Timer**. Enable to time how long the hot water runs for and it will send out an MQTT message with the duration. The timer starts after a minimal of 2 minutes running time.
 - **Enable Shower Alert**. This is somewhat experimental and may not work on all boilers. After 7 minutes (configurable) running the hot water it will send out a warning by sending cold water for 10 seconds (also configurable). The boiler goes into test mode to perform this operation so use with caution!
 

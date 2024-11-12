@@ -1,6 +1,6 @@
 # EMS-ESP Documentation
 
-This is the official documentation for EMS-ESP and hosted on <https://emsesp.org>
+This is the official documentation for EMS-ESP and hosted on <https://docs.emsesp.org>
 
 Built on [MkDocs](https://www.mkdocs.org/) using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme and borrowed from [Tasmota](https://github.com/tasmota/docs/tree/master).
 
@@ -63,4 +63,4 @@ Easiest way is to run pip as a module (<https://realpython.com/what-is-pip/#usin
 
 ## Production
 
-After checking in your changes, Cloudflare Pages will automatically build and deploy the changes to <https://emsesp.org>.
+After checking in your changes, Cloudflare Pages will automatically build and deploy the changes to <https://docs.emsesp.org>.

@@ -9,8 +9,6 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - The automatically generated temperature sensor ID has replaced dashes (`-`) with underscores (`_`) to be compatible with Home Assistant.
 - `api/system/info` has it's JSON key names changed to camelCase syntax.
 
-For more details go to [www.emsesp.org](https://www.emsesp.org/).
-
 **Added**
 
 - some more entities for dhw with SM100 module
