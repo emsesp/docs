@@ -12,7 +12,7 @@ The table below list the topics being published. The format shown in the table b
 | Topic | Format | Description | Payload Example |
 | - | - | - | - |
 | `status` | n/a | this is the MQTT will and testament messages | `online` or `offline` |
-| `info` | n/a | for events | `{"version":"3.7.1-dev.3","boot time":"2024-11-01T13:02:48+0100","network":"ethernet","hostname":"ems-esp"}`|
+| `info` | n/a | for events | `{"version":"3.7.1","boot time":"2024-11-01T13:02:48+0100","network":"ethernet","hostname":"ems-esp"}`|
 | `heartbeat` | all | system stats in JSON, default is every minute | `{"bus_status":"connected","uptime":"000+02:16:00.285","uptime_sec":8160,"ntp_status":"on","rxreceived":8153,"rxfails":3,"txreads":1942,"txwrites":0,"txfails":1,"mqttcount":2728,"mqttfails":0,"mqttconnects":1,"apicalls":0,"apifails":0,"sensorreads":1631,"sensorfails":0,"freemem":164,"max_alloc":107}` |
 | `tapwater_active` | all | boolean to show if the hot tap water is running (DHW) | |
 | `heating_active` | all | boolean to show if the heating is on | |
