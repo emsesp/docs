@@ -19,25 +19,25 @@ You can then add each of these devices to a new lovelace view using the "add to 
 ```yaml
 alias: EMS-ESP boots
 description: Notify when EMS-ESP boots
-trigger:
-  - platform: mqtt
-    topic: ems-esp/heartbeat
-    payload: connecting
-    value_template: '{{ value_json.bus_status }}'
-condition: []
-action:
-  - service: notify.notify
-    data:
-      message: EMS-ESP
-      title: EMS-ESP has booted
 mode: single
+triggers:
+  - topic: ems-esp/heartbeat
+    payload: connecting
+    value_template: "{{ value_json.bus_status }}"
+    trigger: mqtt
+condition: []
+actions:
+  - data:
+      message: EMS-ESPS3
+      title: EMS-ESPS3 has booted
+    action: notify.mobile_app_my_iphone
 ```
 
 ### Shower Integration
 
 The below are additions to the HA files to show the state of the shower, if the setting `Shower Timer` is enabled in EMS-ESP.
 
-The cold shot feature is available in EMS-ESP versions 3.7.0-dev.1 and above.
+The cold shot feature is available in EMS-ESP versions 3.7.0 and above.
 
 ![Home Assistant Shower](_media/screenshot/ha_shower.jpg)
 
