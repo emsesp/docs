@@ -39,14 +39,33 @@ This next section describes some of key settings that can be adjusted via the We
 
 ### Hardware Settings
 
-- **Board Profile**. If you have your own ESP32 development board you can choose from a pre-configured board (which is already set on a BBQKees Gateway) or select `Custom` to view and change the hardware settings:
+- **Board Profile**. Board Profiles are pre-configured GPIO settings for a set of common ESP32 development boards and EMS Gateway circuits. The following profiles are available:
 
-  - **Rx GPIO** - Which GPIO pin the Rx is assigned to. By default this is GPIO 23 but it can be almost any free pin. Connect this GPIO pin to the RX port on the EMS interface board.
-  - **Tx GPIO** - Which GPIO pin the Tx is assigned to. By default this is GPIO 5 but it can be almost any free pin. Connect this GPIO pin to the TX port on the EMS interface board.
-  - **Button GPIO**. Set a pin with pull-up. The button is used for different functions, such as holding for 10 seconds to reset to factory settings.
-  - **Temperature GPIO**. This is the pin where any external temperature sensors are attached. The Dallas chips DS1822, DS18S20, DS18B20, DS1825 are supported including their parasite varieties and can also be daisy-chained onto a single line, up to 100 sensors.
-  - **LED GPIO**. This is the pin for the LED, defaulted to the onboard LED on the ESP dev board.
-  - **Eth PHY Type** for choosing the Ethernet chip used.
+| profile name  | based on board         | led | dallas | rx  | tx  | button | phy_type | eth_power | eth_phy_addr | eth_clock_mode               |
+| ------------ | ---------------------- | --- | ------ | --- | --- | ------ | -------- | --------- | ------------ | ---------------------------- |
+| S32          | BBQKees Gateway S32    | 2   | 18     | 23  | 5   | 0      |          |           |              |                              |
+| E32          | BBQKees Gateway E32    | 2   | 4      | 5   | 17  | 33     | LAN8720  | 16        | 1            | input to GPIO0               |
+| E32V2        | BBQKees Gateway E32 V2 | 2   | 14     | 4   | 5   | 34     | LAN8720  | 15        | 0            | output from GPIO0            |
+| S32S3        | BBQKees Gateway S3     | 2   | 18     | 5   | 17  | 0      |          |           |              |                              |
+| MH-ET        | MH-ET Live D1 Mini     | 2   | 18     | 23  | 5   | 0      |          |           |              |                              |
+| NODEMCU      | NodeMCU 32S            | 2   | 18     | 23  | 5   | 0      |          |           |              |                              |
+| LOLIN        | Lolin D32              | 2   | 18     | 17  | 16  | 0      |          |           |              |                              |
+| OLIMEX       | Olimex ESP32-EVB       | 0   | 0      | 36  | 4   | 34     | LAN8720  | -1        | 0            | input to GPIO0               |
+| OLIMEXPOE    | Olimex ESP32-POE       | 0   | 0      | 36  | 4   | 34     | LAN8720  | 12        | 0            | output from GPIO17, inverted |
+| C3MINI       | Lolin C3 Mini          | 7   | 1      | 4   | 5   | 9      |          |           |              |                              |
+| S2MINI       | Lolin S2 Mini          | 15  | 7      | 11  | 12  | 0      |          |           |              |                              |
+| S3MINI       | Liligo S3              | 17  | 18     | 8   | 5   | 0      |          |           |              |                              |
+
+Choosing `Custom` will show the following additional settings to manually configure the GPIOs to match your own board. You can also select `Custom` at any time to display the current board profile settings, without saving.
+
+> **Custom board Settings:**
+>
+> - **Rx GPIO** - Which GPIO pin the Rx is assigned to. By default this is GPIO 23 but it can be almost any free pin. Connect this GPIO pin to the RX port on the EMS interface board.
+> - **Tx GPIO** - Which GPIO pin the Tx is assigned to. By default this is GPIO 5 but it can be almost any free pin. Connect this GPIO pin to the TX port on the EMS interface board.
+> - **Button GPIO**. Set a pin with pull-up. The button is used for different functions, such as holding for 10 seconds to reset to factory settings.
+> - **Temperature GPIO**. This is the pin where any external temperature sensors are attached. The Dallas chips DS1822, DS18S20, DS18B20, DS1825 are supported including their parasite varieties and can also be daisy-chained onto a single line, up to 100 sensors.
+> - **LED GPIO**. This is the pin for the LED, defaulted to the onboard LED on the ESP dev board.
+> - **Eth PHY Type** for choosing the Ethernet chip used.
 
 !!! note "On ESP32 development boards there are often also pins marked RX and TX. However, these are usually connected to the USB chip and cannot be used for the EMS interface circuit."
 
