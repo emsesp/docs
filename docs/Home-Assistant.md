@@ -33,6 +33,24 @@ actions:
     action: notify.mobile_app_my_iphone
 ```
 
+### Alert when EMS-ESP goes offline and reconnects back to the WiFi network
+
+```yaml
+alias: EMS-ESP Wifi Reconnected
+description: Notify when EMS-ESP reconnects
+triggers:
+  - entity_id:
+      - sensor.system_wifireconnects
+    trigger: state
+conditions: []
+actions:
+  - data:
+      message: EMS-ESP has reconnected!
+      title: EMS-ESP
+    action: notify.mobile_app_my_iphone
+mode: single
+```
+
 ### Shower Integration
 
 The below are additions to the HA files to show the state of the shower, if the setting `Shower Timer` is enabled in EMS-ESP.
