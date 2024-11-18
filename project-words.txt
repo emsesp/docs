@@ -1033,3 +1033,17 @@ Zündungsversuchs
 überschritten
 PSRAM
 Heatronic
+nrgww
+mheyse
+switchprogmode
+wifireconnects
+bbqkees
+OTGW
+distro
+NODEMCU
+OLIMEXPOE
+Liligo
+polyfuses
+Pololu
+thingiverse
+ESPS

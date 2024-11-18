@@ -1,30 +1,32 @@
+
 ### Prerequisites
 
-You will need the following installed before you can get started:
+It is assumed you have a basic understanding of coding and building software for microcontrollers using git and using PlatformIO.
+
+To start, you will need the following software packages installed:
 
 - [PlatformIO](https://platformio.org/)
 - [Node.js](https://nodejs.org)
 - [yarn](https://yarnpkg.com/getting-started/install)
 
-Note: on Windows 10 you will need to enable UTF-8 from the Regional Settings, to compile the Slovakian translation.
+Visual Studio Code is recommended as the IDE to use with PlatformIO.
 
-Note: on some Windows system you may also need to run `corepack enable` for yarn, as mention in the link above.
+Special notes for Windows users:
 
-It is assumed you are familiar with coding, git and using PlatformIO to build firmware binaries.
+- on Windows 10 you will need to enable UTF-8 from the Regional Settings, for compiling the Slovakian translations.
+- on some Windows system you may also need to run `corepack enable` before installing `yarn`. Seen the link above.
 
-The included `platformio.ini` file will build the firmware for an 4M ESP32 board as its default target, including the Web frontend. If you want to customize the build create a `pio_local.ini` file (there is an example file included). This is useful if you want to upload to a specific port or compile the code with DEBUG flags or change to a different ESP32 platform like an S3.
-
-We recommend using Visual Studio Code to build the firmware with the PlatformIO extension installed.
+PlatformIO's default targets are used specifically by the GitHub CI (Continuous Integration) process to to build firmware binaries for various ESP32 boards. These targets start with 'ci_' as seen in the `platformio.ini` file and should not be used. If you see the error "fatal error: WWWData.h: No such file or directory" then you are using the wrong target. For local builds create a `pio_local.ini` file (an example file is provided) and choose the target board you want to build for. You can also set additional flags here such as DEBUG for additional debug information or TEST to load the unit tests. You can also choose how to upload the firmware, via USB or OTA.
 
 ## Testing locally
 
 ### WebUI
 
-The WebUI can be developed and tested in real-time using mock dummy data. This is useful when making changes to the web content files or translation files. To install or update the packages do:
+The WebUI can be developed and tested in real-time using mock dummy data. This is useful when making changes to the Web UI, testing translations or watching the behaviour when test data changes.
+
+Build the mock API data service:
 
 ```sh
-% cd interface
-% yarn
 % cd mock-api
 % yarn
 ```
@@ -37,26 +39,25 @@ and then from the `interface` folder run:
 
 Make sure you have the latest version of node installed. You need at least 18.20 and can check with `node -v`. An easy way to switch between different node versions is to use [nvm](https://github.com/nvm-sh/nvm).
 
-This will open a browser window with URL `localhost:3000`.
+This will open a browser window with URL `http://localhost:3000`.
 
-The mock data used is all hardcoded in `/mock-api/rest_server.js`.
+The mock data used is all hardcoded in the file `/mock-api/rest_server.js`.
 
 ### Simulating offline, without an ESP32 microcontroller
 
-You can also run EMS-ESP without an ESP32 (which we call 'standalone'). The platformIO environment has two `native` environments that will build emsesp executables to support this for all Linux, Windows and Max OSX.
+You can also run EMS-ESP without an ESP32 (which we call 'standalone'). The PlatformIO environment has two `native` environments that will build `emsesp` executables compatible with Linux, Windows and Max OSX.
 
-On **Linux** (including `WSL` in Windows), in VSCode start a "PlatformIO Core CLI" terminal and simply run: `pio run -e native -t exec
-`
+On **Linux/OSX** (including Windows' `WSL2`) simply run: `pio run -e native -t exec`
 
-On **Windows**, because of the EMS-ESP console needs Winsock for the key input, the easiest way is to install [Msys2](https://www.msys2.org) onto your windows machine, followed by installing the GNU g++ compiler straight after with `run pacman -S mingw-w64-ucrt-x86_64-gcc`. This is only needed once. From then on, you can run the `pio` command to build the Windows .exe executabled with `pio run -e native` and launch it in a Msys terminal, like:
+On **Windows**, it's a little trickier because of the EMS-ESP console needs Winsock for the key input, the easiest way is to install [Msys2](https://www.msys2.org) onto your windows machine, followed by installing the GNU g++ compiler straight after with `run pacman -S mingw-w64-ucrt-x86_64-gcc`. This is only needed once. From then on, you can run the `pio` command to build the Windows .exe executabled with `pio run -e native` and launch it in a Msys terminal, like:
 
 `C:/msys64/msys2_shell.cmd -defterm -here -no-start -ucrt64 -c <source location>/.pio/build/native/program.exe`
 
-Use the `test` command to run tests. `test general` is a generic test that will setup a standard boiler and thermostat with default entities.
+Use the `test` command to run tests. `test general` is a generic test that will setup a standard boiler and thermostat with all its default entities.
 
-All the tests are hardcoded in the file `test.cpp` and can be easily adapted.
+All the tests are hardcoded in the file `test/test.cpp` and can be easily adapted.
 
-There are also a set of Unit Tests which can be run from the pio environment with `pio run -e native-test -t exec`. This works natively on every platform and doesn't require any additional setup.
+There are also a set of Unit Tests which can be run from the pio environment as well with `pio run -e native-test -t exec`. This works natively on every platform and doesn't require any additional setup.
 
 ### Debugging
 
