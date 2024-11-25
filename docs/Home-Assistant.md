@@ -23,7 +23,7 @@ mode: single
 triggers:
   - topic: ems-esp/heartbeat
     payload: connecting
-    value_template: "{{ value_json.bus_status }}"
+    value_template: '{{ value_json.bus_status }}'
     trigger: mqtt
 condition: []
 actions:

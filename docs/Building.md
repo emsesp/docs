@@ -1,4 +1,3 @@
-
 ### Prerequisites
 
 It is assumed you have a basic understanding of coding and building software for microcontrollers using git and using PlatformIO.
@@ -16,7 +15,7 @@ Special notes for Windows users:
 - on Windows 10 you will need to enable UTF-8 from the Regional Settings, for compiling the Slovakian translations.
 - on some Windows system you may also need to run `corepack enable` before installing `yarn`. Seen the link above.
 
-PlatformIO's default targets are used specifically by the GitHub CI (Continuous Integration) process to to build firmware binaries for various ESP32 boards. These targets start with 'ci_' as seen in the `platformio.ini` file and should not be used. If you see the error "fatal error: WWWData.h: No such file or directory" then you are using the wrong target. For local builds create a `pio_local.ini` file (an example file is provided) and choose the target board you want to build for. You can also set additional flags here such as DEBUG for additional debug information or TEST to load the unit tests. You can also choose how to upload the firmware, via USB or OTA.
+PlatformIO's default targets are used specifically by the GitHub CI (Continuous Integration) process to to build firmware binaries for various ESP32 boards. These targets start with 'ci\_' as seen in the `platformio.ini` file and should not be used. If you see the error "fatal error: WWWData.h: No such file or directory" then you are using the wrong target. For local builds create a `pio_local.ini` file (an example file is provided) and choose the target board you want to build for. You can also set additional flags here such as DEBUG for additional debug information or TEST to load the unit tests. You can also choose how to upload the firmware, via USB or OTA.
 
 ## Testing locally
 

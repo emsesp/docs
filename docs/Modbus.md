@@ -5,8 +5,8 @@ on how to enable and configure the Modbus connector.
 
 ## EMS Entity / Modbus Register Mapping
 
-This document refers to the device issuing a Modbus request as the *client* (formerly known as a *Modbus master*) and to
-the device listening and fulfilling the requests, i.e. EMS-ESP, as the *server* (formerly known as a *Modbus slave*).
+This document refers to the device issuing a Modbus request as the _client_ (formerly known as a _Modbus master_) and to
+the device listening and fulfilling the requests, i.e. EMS-ESP, as the _server_ (formerly known as a _Modbus slave_).
 
 EMS-ESP creates a Modbus server for each device connected to the EMS bus, including EMS-ESP itself. Each server is
 addressed with a numeric identifier representing the device type. See [Server Unit Identifiers](Modbus-Server-IDs.md)
@@ -19,7 +19,7 @@ the first heating circuit). The entities are addressed with an offset within the
 All values are stored in one or more registers.
 
 - Each Modbus register contains a 16 bit value.
-- Numeric values are stored as 16 or 32 bit integers, in one or two registers. An entity specific scale factor may be 
+- Numeric values are stored as 16 or 32 bit integers, in one or two registers. An entity specific scale factor may be
   applied. The scale factor is defined separately for each device and entity.
 - Enums are stored in a single register.
 - Strings are null terminated and stored with two characters per register.
@@ -31,14 +31,14 @@ factors.
 
     A Modbus client wants to read the target flow temperature of the second heating circuit (hc2) of a thermostat
     of type RC310 connected to the EMS bus.
-    
+
     - Table [Server IDs](Modbus-Server-IDs.md) indicates that the unit identifier of a *thermostat* device
       is `6`. So the client needs to specify the unit identifier `6` in all requests.
     - Table [Register Blocks](Modbus-Register-Blocks.md) shows that the offset for HC2 is 2000.
     - The row *targetflowtemp* in table [Entity/Register Mapping for thermostat RC310](http://localhost:8000/docs/Modbus-Entity-Registers/#rc300rc310moduline-30001010hcw400sense-iihpc410)
       lists register offset 18, register count 1 and scale factor 1. Hint: click a column header to sort the table,
       e.g. by entity shortnames.
-    
+
     So the final register offset for the target flow temperature in hc2 is 2000 + 18 = 2018. We need to read one
     register at offset 2018 from the server with unit ID 6 and multiply the result by the scale factor which in this
     case is 1.

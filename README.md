@@ -63,4 +63,16 @@ Easiest way is to run pip as a module (<https://realpython.com/what-is-pip/#usin
 
 ## Production
 
+Format the .md files using prettier:
+
+```sh
+npx prettier --write docs/*.md
+```
+
+Fix spellings:
+
+```sh
+npx cspell "**"
+```
+
 After checking in your changes, Cloudflare Pages will automatically build and deploy the changes to <https://docs.emsesp.org>.

@@ -148,30 +148,30 @@ If you're seeing unusual Dallas sensor readings (crazy negative temperatures, su
 
 ### Messages are not always coming in via MQTT
 
-If you're noticing that MQTT messages are failing to arrive at the broker try:
+If you're noticing that MQTT messages are failing to arrive at the MQTT broker/server try:
 
-- Check the EMS-ESP logs for errors. If you see "low memory" errors then read [It may be memory related](Troubleshooting.md?id=general#it-may-be-memory-related) to see how you reduce memory usage.
-- Check the broker for errors. You have incorrect credentials or duplicate Client IDs
-- Set the log level to Debug (via Web or Console) and monitor the traffic
-- Use Console to force a publish to see what happens. (`log debug`, `su` and `publish`).
+- Check the EMS-ESP logs for errors. If you see "low memory" errors then read [It may be memory related](Troubleshooting.md?id=general#it-may-be-memory-related) to see how you reduce memory usage
+- Check the MQTT broker for errors. You may have incorrect credentials or duplicate Client IDs causing a connection conflict
+- Set the EMS-ESP System log level to ALL (via Web or Console) and monitor the traffic
+- Use the Telnet Console to force a publish to see what happens. (`log debug`, `su` and `publish`)
 - Increase the Publish Time. Perhaps there are too many messages and it is flooding the queue
-- If all fails, run a local copy of the MQTT mosquitto broker, in verbose mode (-v) so you see if there are errors
+- If it still fails, run a local copy of the MQTT mosquitto broker and monitor the output like:
 
-  - download the latest version 2 of Mosquitto from `https://mosquitto.org/download/`
-  - create a new `mosquitto.conf` file with:
+  - download the latest version of Mosquitto from `https://mosquitto.org/download/`
+  - create a new `mosquitto.conf` file or update an existing with just:
 
   ```yaml
   listener 1883
   allow_anonymous true
   ```
 
-  (or just edit the default `mosquitto.conf` and modify the `allow_anonymous` entry)
-
   - run with the -v flag so you see all the verbose messages, e.g. on Windows its:
 
   ```txt
   "C:\Program Files\mosquitto\mosquitto.exe" -v -c "C:\Program Files\mosquitto\mosquitto.conf"
   ```
+
+  Note, running with allow_anonymous true is not recommended for production environments.
 
 ### Commands sent via MQTT are not working
 
@@ -191,7 +191,7 @@ The integration with Home Assistant uses MQTT Discovery which are 'retained' top
 
 ```
 listener 1883
-allow_anonymous true
+allow_anonymous false
 persistence true
 persistence_location /mosquitto/data/
 log_dest file /mosquitto/log/mosquitto.log

@@ -30,18 +30,18 @@ When EMS-ESP starts-up and is running, the onboard LED will show the system stat
 
 ### During the power-on boot sequence
 
-* 1 flash indicates the EMS bus is not yet connected. If this takes more than a few seconds check the EMS Tx Mode and the physical connection to the EMS bus.
+- 1 flash indicates the EMS bus is not yet connected. If this takes more than a few seconds check the EMS Tx Mode and the physical connection to the EMS bus.
 
-* 2 flashes indicates the network (WiFi or Ethernet) is connecting. If this persists check the EMS-ESP Network settings. EMS-ESP uses 2.4GHz/WPA2 only.
+- 2 flashes indicates the network (WiFi or Ethernet) is connecting. If this persists check the EMS-ESP Network settings. EMS-ESP uses 2.4GHz/WPA2 only.
 
-* 3 flashes indicates that both the EMS bus and Network are still trying to connect. This could be due to an incorrect EMS-ESP Board Profile setting.
+- 3 flashes indicates that both the EMS bus and Network are still trying to connect. This could be due to an incorrect EMS-ESP Board Profile setting.
 
 ### During normal operation
 
 Unless the LED has been disabled in the settings, the LED will show the system status.
 
-* A steady solid light indicates a good connection and EMS data is flowing in.
+- A steady solid light indicates a good connection and EMS data is flowing in.
 
-* A slow pulse can mean either the WiFi or the EMS bus are still connecting.
+- A slow pulse can mean either the WiFi or the EMS bus are still connecting.
 
-* A very fast pulse is when the system is booting up and configuring itself.
+- A very fast pulse is when the system is booting up and configuring itself.
