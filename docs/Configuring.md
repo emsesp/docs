@@ -41,7 +41,7 @@ This next section describes some of key settings that can be adjusted via the We
 
 - **Board Profile**. Board Profiles are pre-configured GPIO settings for a set of common ESP32 development boards and EMS Gateway circuits. The following profiles are available:
 
-| profile name  | based on board         | led | dallas | rx  | tx  | button | phy_type | eth_power | eth_phy_addr | eth_clock_mode               |
+| profile name | based on board         | led | dallas | rx  | tx  | button | phy_type | eth_power | eth_phy_addr | eth_clock_mode               |
 | ------------ | ---------------------- | --- | ------ | --- | --- | ------ | -------- | --------- | ------------ | ---------------------------- |
 | S32          | BBQKees Gateway S32    | 2   | 18     | 23  | 5   | 0      |          |           |              |                              |
 | E32          | BBQKees Gateway E32    | 2   | 4      | 5   | 17  | 33     | LAN8720  | 16        | 1            | input to GPIO0               |
@@ -82,8 +82,8 @@ Choosing `Custom` will show the following additional settings to manually config
 ### Special Functions
 
 - **Developer Mode** will enable advanced features in the WebUI, like the Read command from the System Log.
-- **Start boiler with forced heating off**. TBD.
-- **Disabled remote on missing room temperature**. TBD.
+- **Start boiler with forced heating off**.
+- **Disable remote on missing room temperature**. This is a safety feature to prevent the boiler from starting when the simulated room temperature sensor is missing or not working.
 - **Enable Shower Timer**. Enable to time how long the hot water runs for and it will send out an MQTT message with the duration. The timer starts after a minimal of 2 minutes running time.
 - **Enable Shower Alert**. This is somewhat experimental and may not work on all boilers. After 7 minutes (configurable) running the hot water it will send out a warning by sending cold water for 10 seconds (also configurable). The boiler goes into test mode to perform this operation so use with caution!
 
@@ -103,7 +103,7 @@ Enable this function when running in VPNs or you have other servers (like Grafan
 - **Port**. The default is 1883 and 8883 for SSL.
 - **Base**. All topics are prefixed with the `Base` so this is important. Make sure this is unique when using more than one EMS-ESP with the same broker.
 - **Client ID**. This is used internally to identify EMS-ESP with the broker and is optional. Note MQTT topics will be postfixed with the hostname (default `ems-esp`) and not the client ID. Use when having multiple devices.
-- **Username** and **Password** are optional.
+- **Username** and **Password** are optional but recommended for security. By default Mosquitto MQTT broker requires a username/password so pay attention if using the Home Assistant Add-On here.
 - **Set Clean Session**. Creates a non-persistent session when enabled. Default and recommended setting is disabled to keep it disabled when using home automation systems.
 - **QoS**. Quality of Service, 0, 1 or 2. 0 is the default and suitable for more scenarios. A value of 1 will give a guarantee that the message has been sent, but will create slightly more network traffic and overhead.
 - **Always set Retain Flag**. Enable if you want to persist all the messages on the MQTT broker. Default is disabled.
