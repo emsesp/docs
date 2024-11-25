@@ -29,7 +29,7 @@ This is the current list of supported boilers from brands like Buderus, Nefit, S
 - Ecomline Excellent
 - EasyControl Adapter
 
-## Device Entities
+## Device Entities with Commands
 
 <!-- prettier-ignore -->
 !!! notice
@@ -64,3 +64,9 @@ This is the current list of supported boilers from brands like Buderus, Nefit, S
 | `pumpmodmin` | `<%>` | | Changeable only for modulated pumps |
 | `pumpmodmax` | `<%>` | | Changeable only for modulated pumps |
 | `reset` | `<error \| maintenance>` | | Use `reset error` only if there is an active error! |
+
+## All Generic Boiler Entities
+
+[Download the full CSV file](data/dump_boiler_entities.csv)
+
+{{ read_csv('docs/data/dump_boiler_entities.csv', sep=';') }}
