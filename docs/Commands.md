@@ -36,7 +36,8 @@ First some important definitions.
 - Commands can be executed using the `call` command
 - You need to be admin to use the `call` command. First `su` and enter the password
 - For a list of all available commands you can use `show commands`
-- The syntax is `call <device> <command> <data> <id>`
+- The syntax is `call <device> <command> [data] [id]`
+- For a complete list of commands use `call <device> commands`
 
 For more information on how to use the Telnet Console see the [**Console**](Console) section.
 
@@ -50,6 +51,8 @@ Things to note:
 - Some commands require can be dangerous and require security authentication, unless disabled via an EMS-ESP setting. The authentication is in the form of an Access Token which is generated from the WebUI's Security->Manage Users and then clicking on the key button for the admin user. The 152 character long string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date
 - With HTTP PUSH/PUT/PATCH commands an HTTP body may be required. This can be in the form of either plain text or as a JSON object `<data>`
 - HTTPS with self-signed certificates are not yet supported
+- For a complete list of commands use `http://<hostname>/api/<device>/commands`
+
 
 ### Reading and Writing EMS Device information
 
