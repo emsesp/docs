@@ -16,6 +16,7 @@ This next section describes some of key settings that can be adjusted via the We
 
 - **Bypass Access Token authorization on API calls**. For RESTful write commands via HTTP POST the access token is required. This is for security reasons to prevent anyone changing device settings. Setting this flag makes the API open. Not recommended!
 - **Enable Telnet Console**. This is on by default and allows users to connect to the in-secure Telnet server on port 23.
+- **Enable Modbus**. This is off by default and allows users to connect to the Modbus TCP server (default port 502). Due to memory constraints this feature is only available on boards with additional PSRAM.
 - **Enable Syslog**:
   <!-- prettier-ignore -->
   - **IP** is the IP address of a syslog server for capturing remote logs. Leave blank is not using SysLog.
