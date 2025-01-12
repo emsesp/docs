@@ -107,7 +107,7 @@ Enable this function when running in VPNs or you have other servers (like Grafan
 - **Set Clean Session**. Creates a non-persistent session when enabled. Default and recommended setting is disabled to keep it disabled when using home automation systems.
 - **QoS**. Quality of Service, 0, 1 or 2. 0 is the default and suitable for more scenarios. A value of 1 will give a guarantee that the message has been sent, but will create slightly more network traffic and overhead.
 - **Always set Retain Flag**. Enable if you want to persist all the messages on the MQTT broker. Default is disabled.
-- **Formatting**. The `As individual topics` option will send all data as separate topics, and `Nested` will group the data into one single JSON payload. The default is nested.
+- **Formatting**. The `Nested` option will group all the device data into a single MQTT topic by using embedded JSON objects such as `dhw` in `boiler_data`, `hc1` in `thermostat_data` etc. `As individual topics` will split this into separate MQTT topics without grouping, so MQTT topics will become `boiler_data` and `boiler_data_dhw`, `thermostat_data` and `thermostat_data_hc1` and so on. The same applies to the Analog and Temperature sensors. The default is nested.
 - **Publish command output to a 'response' topic'**. This takes the output from an API command and publishes the result in a topic called `response`.
 - **Publish single value topics on change**. This option will immediately publish the topic and payload for each operation and only available when MQTT Discovery is disabled.
 - **Enable MQTT Discovery** enables the integration using MQTT Discovery, fully supported with Home Assistant and partially with Domoticz.
