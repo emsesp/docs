@@ -476,6 +476,8 @@ The next thing he is investigating is how to obtain a clear power reading (in W)
 
 ## Simple extra hot water charge trigger in Home Assistant
 
+_(by @oliof)_
+
 Here is a simple automation that toggles extra hot water by double clicking a Zigbee based button[^button]. This trigger could easily be swapped with a voice command or scanned QR code if desired.
 
 ![image](https://github.com/user-attachments/assets/da3795fd-5bba-411c-a533-49fe5efc70c3)
@@ -483,7 +485,7 @@ Here is a simple automation that toggles extra hot water by double clicking a Zi
 
 ## Low load optimisation of a Buderus GB172 gas boiler
 
-_by @oliof with additional input by @tz_ 
+_(by @oliof with additional input by @tz)_ 
 
 When you start tuning your boiler, you will most likely end up with situations where the boiler will produce too much heat
 even at it's lowest modulation setting. In those cases it may be worthwhile to consider an additional control scheme that
@@ -495,7 +497,7 @@ This low load optimisation can reduce gas usage by 15-20% with little change in 
 
 ### Pre-requisites
  - A high resolution, high frequency updating thermometer [^thermometers].
- - Setting up this thermometer as a [Remote Thermostat](/Special-Functions/#remote-thermostats).
+ - Setting up this thermometer as a [Remote Thermostat](https://docs.emsesp.org/Special-Functions/#remote-thermostats).
  - A boiler where setting `Heating Activated` to `off` actually disables heating. This seems to be true for gas boilers, but will most
    likely not work for heatpumps. Make use of the `forceheatingoff` entity in that case.
 
