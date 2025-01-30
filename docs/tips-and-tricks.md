@@ -472,6 +472,141 @@ Here is my work-in-progress dashboard in Home Assistant:
 - top right: a hand drawn schema where I try to map some of the 200+ values from EMS-ESP.
 - bottom right: the 200+ values.
 
-"
-
 The next thing he is investigating is how to obtain a clear power reading (in W) of how much power the heatpump currently uses.
+
+## Simple extra hot water charge trigger in Home Assistant
+
+_(by @oliof)_
+
+Here is a simple automation that toggles extra hot water by double clicking a Zigbee based button[^button]. This trigger could easily be swapped with a voice command or scanned QR code if desired.
+
+![image](https://github.com/user-attachments/assets/da3795fd-5bba-411c-a533-49fe5efc70c3)
+
+
+## Low load optimisation of a Buderus GB172 gas boiler
+
+_(by @oliof with additional input by @tz)_ 
+
+When you start tuning your boiler, you will most likely end up with situations where the boiler will produce too much heat
+even at it's lowest modulation setting. In those cases it may be worthwhile to consider an additional control scheme that
+switches off the boiler for some time when the target temperature has been reached. Here is one possible implementation which
+basically is a two point controller. Thermal inertia will keep switching events reasonably far apart without additional delay
+or time limits on most heating systems, but it's easy to add those if you want to reduce the number of switch-on events.
+
+This low load optimisation can reduce gas usage by 15-20% with little change in temperature comfort. 
+
+### Pre-requisites
+ - A high resolution, high frequency updating thermometer [^thermometers].
+ - Setting up this thermometer as a [Remote Thermostat](https://docs.emsesp.org/Special-Functions/#remote-thermostats).
+ - A boiler where setting `Heating Activated` to `off` actually disables heating. This seems to be true for gas boilers, but will most
+   likely not work for heatpumps. Make use of the `forceheatingoff` entity in that case.
+
+### Derived Sensors and Automations
+
+One of the drawbacks of a high resolution thermometer is that there is some noise on the temperature measurements. You can use a filter
+to get a smooth curve (with some delay). For example (excerpt from HomeAssistant's `configuration.yaml`):
+
+```yaml
+sensor:
+  -platform: filter
+   name: "filtered reference room temperature"
+   entity_id: sensor.reference_room_temperature
+   unique_id: filtered_reference_room_temperature
+   filters:
+     - filter: outlier
+       window_size: 4
+       radius: 2.0
+     - filter: lowpass
+       time_constant: 10
+     - filter: time_simple_moving_average
+       window_size: "00:15"
+       precision: 2
+```
+
+In the following image, you can see the noisy raw temps and the filtered temp. Adjust the `lowpass` filter's `time_constant` and the `simple_moving_average` filter's `window_size` to try and fit the curve closer if desired.
+
+![image](https://github.com/user-attachments/assets/cfe1cf9c-d825-4693-80ce-28e8684b9ecf)
+
+With the filtered sensor, it is now possible to set up the automations to turn heating off and on as the reference room temperature passes a threshold. The thermostat's `temperature` attribute is used as threshold so you can still adjust the target temperature via the usual means.
+
+As of HA 2025.01, Home Assistant's numeric trigger only allows single precision values to trigger on. Since we want to keep our two point control closer to the set point, we use a custom template trigger:
+
+```yaml
+alias: Deactivate Heating
+description: >-
+  Deactivate heating when reference room temperature exceeds a limit
+triggers:
+  - trigger: template
+    value_template: >-
+      {{ (states('sensor.filtered_reference_room_temperature') | float) >  
+      (state_attr('climate.thermostat_hc1', 'temperature') | float) -0.02 }}
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+conditions:
+  - condition: state
+    entity_id: switch.boiler_heating_activated
+    state: "on"
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+actions:
+  - action: switch.turn_off
+    target:
+      entity_id:
+        - switch.boiler_heating_activated
+    data: {}
+mode: single
+```
+
+Please note that we disable the heating a smidge below set point temperature so we don't deviate too much above.
+The `-0.02` value probably needs tuning to your heating system and preferences. With the filtered sensor we may not
+strictly need the `for:` block, but it's another small safety to have something in there. There is an additional 5
+minute delay before triggering to avoid bouncing. Adjust as needed for your system (may not be needed with the 
+filtered reference temperature).
+
+The automation to activate heating again follows the same pattern (with a different fudge factor of `-0.05` that you should
+adjust according to your needs):
+
+```yaml
+alias: Activate Heating
+description: "Activate heating when the reference room's temperature runs lower than a threshold"
+triggers:
+  - trigger: template
+    value_template: >-
+      {{ (states('sensor.filtered_reference_room_temperature') | float) <  
+      (state_attr('climate.thermostat_hc1', 'temperature') | float) -0.05 }}
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+conditions:
+  - condition: state
+    entity_id: switch.boiler_heating_activated
+    state: "off"
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+actions:
+  - action: switch.turn_on
+    target:
+      entity_id:
+        - switch.boiler_heating_activated
+    data: {}
+mode: single
+```
+
+This is an example chart showing the `Heating activated` entity and the reference room's temperature with a target temperature of
+20.5C, changed  to 20C towards the end of the time period shown. As you can see, despite the primitive control algorithm, temperature
+deviation is roughly +-0.1K with long periods of the heating system being off (at other times, deviation dipped to roughly -0.25K, but still recovered quite quickly. YMMV). 
+
+![image](https://github.com/user-attachments/assets/76cdbdcd-2010-493b-85f8-4253220888d9)
+
+[^button]: This is a simple Aqara zigbee button. 
+
+[^thermometers]: I am using an [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) with the [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), as it provides two digits of precision and updates roughly once to twice per minute).  
+  Please note that low resolution thermometers with low update frequency will affect your ability to quickly react to temperature changes.  
+  If you are so inclined, you can build a high resolution, frequently updating thermometer with tasmota and a DS18B20 or BME820 sensor.
