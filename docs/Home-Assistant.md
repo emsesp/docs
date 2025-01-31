@@ -336,6 +336,42 @@ Now in HA you can dynamically adjust the values. Like:
 
 Check if it's working by going to `http://ems-esp/api/boiler/wwseltemp`
 
+### LoveLace Section View, Tiles and setting values via EMS-ESP
+
+_(by @oliof)_
+
+Since HA2024.12, lovelace defaults to Sections views and auto generates Tiles for most entities.
+While Tiles appear to be just simple dislpay helpers, their functionality can be extensively modified by adding Features. Here is a graphical guide to create a similar control as above from within lovelace with no changes to `configuration.yaml`
+
+1. In a Section View, addd a tile for a settable value, for example for the selected hot water temperature. Entity selection supports auto-complete:
+
+![image](https://github.com/user-attachments/assets/90ad3a45-e84e-497d-a975-f4313ad356c0)
+
+2. Hit the checkmark and 'Continue'. This will yield a preview of the autoselected Tile:
+
+![image](https://github.com/user-attachments/assets/58da9622-9a5b-4df0-aeec-daabb0ba8f80)
+
+3. Hit add to dashboard. This will add the Tile to the dashboard in it's default setting, which just displays the value of the entity:
+
+![image](https://github.com/user-attachments/assets/1be160cb-4527-4db4-bd12-04599eed84af)
+
+4. Edit the Tile to adjust size and add a Feature to get the numeric input functionality.
+
+![image](https://github.com/user-attachments/assets/be44cc79-bdf1-4bff-b054-118d1b3c7382)
+
+![image](https://github.com/user-attachments/assets/efb00a7b-4b92-4eaf-8aa4-6dcbc1b38a66)
+
+Optionally, if you prefer a slider over the buttons, hit `SHOW CODE EDITOR` and remove `style: buttons` from the feature definition:
+
+![image](https://github.com/user-attachments/assets/a47dfd30-d5b9-4387-b7a6-67e115ecf170)
+
+Do note that the Tile component that comes with HA does not allow you to set minimum and maximum values. Either use `numeric_input` as outlined in the previous section, or check out [Service Call Tiles on HACS](https://github.com/Nerwyn/service-call-tile-feature).
+
+5. Hit Save and enjoy your UI-generated EMS-ESP control tile:
+
+![image](https://github.com/user-attachments/assets/f5a3ca3e-afa9-4f33-b004-254349b3806a)
+
+
 ### Showing the Boiler status based on the service code
 
 (by @glitterball)
