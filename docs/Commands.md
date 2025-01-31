@@ -204,6 +204,30 @@ where
 - `data` (or `value`) holds the value for the command, and can be either a String or numeric value.
 - `id` is used as an generic indicator. `hc`, `wwc`, `ahs` and `hs` are other suppoerted aliases. For example with `hc` it is used to indicated a specific Heating Circuit. A numeric value or String can be both used.
 
+Some more examples:
+<!-- prettier-ignore -->
+| topic | payload | action |
+| - | - | - |
+| `ems-esp/boiler` | `{"cmd":"heatingactivated", "data":"on"}` | turn on heatingactivated in boiler |
+| `ems-esp/boiler/heatingactivated` | `{"data":"on"}` | turn on DHW disinfecting in boiler (equivalent to command above) |
+| `ems-esp/boiler` | `{"cmd":"dhw.disinfecting", "data":"on"}` | turn on DHW disinfecting in boiler |
+
+You can check the log in Status - System Log if the command was accepted by EMS-ESP.
+
+The first command in the table above was valid and thus accepted:\
+Topic:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"on"}`
+```
+[command] Called command boiler/heatingactivated (heating activated) with value on
+```
+
+And the following bogus command is not accepted:\
+Topic:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"5000"}`
+```
+[command] Command failed: no values in boiler
+[mqtt] MQTT command failed with error no values in boiler (Error)
+```
+!!! note "You can easily test the MQTT commands with [MQTT Explorer](https://www.mqtt-explorer.com). Just connect to the MQTT broker and publish the payload to the topic."
+
 With Home Assistant, Thermostat commands can also be sent to control individual heating circuits via sending a mode string or temperature number to a topic `thermostat_hc<n>`.
 
 Depending on mqtt-settings there are also direct subscriptions for each value like `boiler/wwtemp`, `thermostat/hc1/daytemp`, etc. Thermostats which supports only a single heating circuits will subscribe to `/thermostat/daytemp`.
