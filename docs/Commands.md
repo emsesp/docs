@@ -53,7 +53,6 @@ Things to note:
 - HTTPS with self-signed certificates are not yet supported
 - For a complete list of commands use `http://<hostname>/api/<device>/commands`
 
-
 ### Reading and Writing EMS Device information
 
 The URL path is `http://<hostname>/api/<device>/`
@@ -88,8 +87,8 @@ The URL path is `http://<hostname>/api/custom/`
 <!-- prettier-ignore -->
 | endpoint | HTTP method | action | authentication required? | post body |
 | - | - | - | - | - |
-| blank or `info`| GET | outputs all custom entities and their values | no |
-| `<name>` | GET | outputs all characteristics for a specific custom entity | no |
+| blank or `info`| GET | outputs all custom entities and their values | no | |
+| `<name>` | GET | outputs all characteristics for a specific custom entity | no | |
 
 ### Fetching Temperature Sensor information
 
@@ -98,9 +97,9 @@ The URL path is `http://<hostname>/api/temperaturesensor/`
 <!-- prettier-ignore -->
 | endpoint | HTTP method | action | authentication required? | post body |
 | - | - | - | - | - |
-| blank | GET | outputs connected Dallas temperature sensor names and readings | no |
-| `info` | GET | outputs all details on the connected Dallas temperature sensors | no |
-| `<name>` | GET | outputs all characteristics for a specific temperature sensors | no |
+| blank | GET | outputs connected Dallas temperature sensor names and readings | no | |
+| `info` | GET | outputs all details on the connected Dallas temperature sensors | no | |
+| `<name>` | GET | outputs all characteristics for a specific temperature sensors | no | |
 
 ### Controlling the Analog Sensors
 
@@ -110,8 +109,8 @@ The URL path is `http://<hostname>/api/analogsensor/`
 | endpoint   | HTTP method | action | authentication required? | post body |
 | - | - | - | - | - |
 | blank | GET | outputs analog sensors and their readings | no | |
-| `info` | GET | outputs all details on the connected analog sensors | no |
-| `<name>` | GET | outputs all characteristics for a specific analog sensors | no |
+| `info` | GET | outputs all details on the connected analog sensors | no | |
+| `<name>` | GET | outputs all characteristics for a specific analog sensors | no | |
 | `commands` | GET | lists the available system commands | no | |
 | `setvalue` | POST | set value/offset of counter or output pin, +/- sign corrects value | yes | `{"value":<val>, "id":<gpio>}` |
 
@@ -122,15 +121,26 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 <!-- prettier-ignore -->
 | endpoint | HTTP method | action | authentication required? | post body |
 | - | - | - | - | - |
-| `info` or blank | GET | outputs current system information | no |
+| `info` or blank | GET | outputs current system information | no | |
 | `fetch` | GET | forces at refresh of all device values | no | |
 | `restart` | GET | restarts EMS-ESP | yes | |
+| `format` | GET | factory reset's EMS-ESP | yes | |
 | `commands` | GET | lists the available system commands | no | |
-| `allvalues` | GET | lists all connect devices and sensors and their entity values | no | |
 | `send` | POST | send telegram to the EMS bus | yes | `"XX XX...XX"` |
 | `message` | POST | send a message to the log and MQTT | yes | `".."` |
 | `publish` | POST | MQTT publish all values, and optional HA-configuration or specific for a device | no | `[ha] \| [device]` |
 | `watch` | POST | watch incoming telegrams | no | `<on \|off \| raw \| <type-id(hex)>` |
+| `values` | GET | outputs all values in short format | no | |
+| `read` | GET | queries a specific EMS device and a typeID | yes | `<deviceID> <type ID> [offset] [length]` |
+| `response` | GET | outputs the last response from EMS-ESP | no | |
+| `entities` | GET | lists all enabled entities | no | |
+| `mqtt/enabled` | GET | enable/disable MQTT | yes | `<bool>` |
+| `ap/enabled` | GET | enable/disable Access Point | yes | `<bool>` |
+| `settings/analogenabled` | GET | enable/disable analog sensor | yes | `<bool>` |
+| `settings/hideled` | GET | enable/disable LED | yes | `<bool>` |
+| `settings/showeralert` | GET |  enable/disable shower alert | yes | `<bool>` |
+| `settings/showertimer` | GET | enable/disable shower timer | yes | `<bool>` |
+| `syslog/enabled` | GET | enable/disable syslog | yes | `<bool>` |
 
 ### Examples
 
@@ -151,6 +161,24 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 
 # GET to restart EMS-ESP
 curl http://ems-esp.local/api/system/restart -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0'
+
+# This example will get the system info, via a GET request
+curl -X GET ${emsesp_url}/api/system/info
+
+# This example will execute a read command on product ID 8 and type ID 1
+curl -X POST \
+    -H "Authorization: Bearer ${emsesp_token}" \
+    -H "Content-Type: application/json" \
+    -d '{"data":"8 1"}' \
+    ${emsesp_url}/api/system/read
+
+# This example will export all values to a json file, including custom entities, sensors and schedules
+curl -X POST \
+    -H "Authorization: Bearer ${emsesp_token}" \
+    -H "Content-Type: application/json" \
+    -d '{"action":"export", "param":"allvalues"}' \
+    ${emsesp_url}/rest/action
+
 ```
 
 #### ...using a Python script
@@ -216,16 +244,19 @@ You can check the log in Status - System Log if the command was accepted by EMS-
 
 The first command in the table above was valid and thus accepted:\
 Topic:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"on"}`
+
 ```
 [command] Called command boiler/heatingactivated (heating activated) with value on
 ```
 
 And the following bogus command is not accepted:\
 Topic:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"5000"}`
+
 ```
 [command] Command failed: no values in boiler
 [mqtt] MQTT command failed with error no values in boiler (Error)
 ```
+
 !!! note "You can easily test the MQTT commands with [MQTT Explorer](https://www.mqtt-explorer.com). Just connect to the MQTT broker and publish the payload to the topic."
 
 With Home Assistant, Thermostat commands can also be sent to control individual heating circuits via sending a mode string or temperature number to a topic `thermostat_hc<n>`.
