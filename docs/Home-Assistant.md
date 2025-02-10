@@ -341,9 +341,9 @@ Check if it's working by going to `http://ems-esp/api/boiler/wwseltemp`
 _(by @oliof)_
 
 Since HA2024.12, lovelace defaults to Sections views and auto generates Tiles for most entities.
-While Tiles appear to be just simple dislpay helpers, their functionality can be extensively modified by adding Features. Here is a graphical guide to create a similar control as above from within lovelace with no changes to `configuration.yaml`
+While Tiles appear to be just simple display helpers, their functionality can be extensively modified by adding Features. Here is a graphical guide to create a similar control as above from within lovelace with no changes to `configuration.yaml`
 
-1. In a Section View, addd a tile for a settable value, for example for the selected hot water temperature. Entity selection supports auto-complete:
+1. In a Section View, add a tile for a settable value, for example for the selected hot water temperature. Entity selection supports auto-complete:
 
 ![image](https://github.com/user-attachments/assets/90ad3a45-e84e-497d-a975-f4313ad356c0)
 
@@ -370,7 +370,6 @@ Do note that the Tile component that comes with HA does not allow you to set min
 5. Hit Save and enjoy your UI-generated EMS-ESP control tile:
 
 ![image](https://github.com/user-attachments/assets/f5a3ca3e-afa9-4f33-b004-254349b3806a)
-
 
 ### Showing the Boiler status based on the service code
 

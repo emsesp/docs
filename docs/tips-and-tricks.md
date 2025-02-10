@@ -482,10 +482,9 @@ Here is a simple automation that toggles extra hot water by double clicking a Zi
 
 ![image](https://github.com/user-attachments/assets/da3795fd-5bba-411c-a533-49fe5efc70c3)
 
-
 ## Low load optimisation of a Buderus GB172 gas boiler
 
-_(by @oliof with additional input by @tz)_ 
+_(by @oliof with additional input by @tz)_
 
 When you start tuning your boiler, you will most likely end up with situations where the boiler will produce too much heat
 even at it's lowest modulation setting. In those cases it may be worthwhile to consider an additional control scheme that
@@ -493,13 +492,14 @@ switches off the boiler for some time when the target temperature has been reach
 basically is a two point controller. Thermal inertia will keep switching events reasonably far apart without additional delay
 or time limits on most heating systems, but it's easy to add those if you want to reduce the number of switch-on events.
 
-This low load optimisation can reduce gas usage by 15-20% with little change in temperature comfort. 
+This low load optimisation can reduce gas usage by 15-20% with little change in temperature comfort.
 
 ### Pre-requisites
- - A high resolution, high frequency updating thermometer [^thermometers].
- - Setting up this thermometer as a [Remote Thermostat](https://docs.emsesp.org/Special-Functions/#remote-thermostats).
- - A boiler where setting `Heating Activated` to `off` actually disables heating. This seems to be true for gas boilers, but will most
-   likely not work for heatpumps. Make use of the `forceheatingoff` entity in that case.
+
+- A high resolution, high frequency updating thermometer [^thermometers].
+- Setting up this thermometer as a [Remote Thermostat](https://docs.emsesp.org/Special-Functions/#remote-thermostats).
+- A boiler where setting `Heating Activated` to `off` actually disables heating. This seems to be true for gas boilers, but will most
+  likely not work for heatpumps. Make use of the `forceheatingoff` entity in that case.
 
 ### Derived Sensors and Automations
 
@@ -547,7 +547,7 @@ triggers:
 conditions:
   - condition: state
     entity_id: switch.boiler_heating_activated
-    state: "on"
+    state: 'on'
     for:
       hours: 0
       minutes: 5
@@ -564,7 +564,7 @@ mode: single
 Please note that we disable the heating a smidge below set point temperature so we don't deviate too much above.
 The `-0.02` value probably needs tuning to your heating system and preferences. With the filtered sensor we may not
 strictly need the `for:` block, but it's another small safety to have something in there. There is an additional 5
-minute delay before triggering to avoid bouncing. Adjust as needed for your system (may not be needed with the 
+minute delay before triggering to avoid bouncing. Adjust as needed for your system (may not be needed with the
 filtered reference temperature).
 
 The automation to activate heating again follows the same pattern (with a different fudge factor of `-0.05` that you should
@@ -585,7 +585,7 @@ triggers:
 conditions:
   - condition: state
     entity_id: switch.boiler_heating_activated
-    state: "off"
+    state: 'off'
     for:
       hours: 0
       minutes: 5
@@ -600,13 +600,14 @@ mode: single
 ```
 
 This is an example chart showing the `Heating activated` entity and the reference room's temperature with a target temperature of
-20.5C, changed  to 20C towards the end of the time period shown. As you can see, despite the primitive control algorithm, temperature
-deviation is roughly +-0.1K with long periods of the heating system being off (at other times, deviation dipped to roughly -0.25K, but still recovered quite quickly. YMMV). 
+20.5C, changed to 20C towards the end of the time period shown. As you can see, despite the primitive control algorithm, temperature
+deviation is roughly +-0.1K with long periods of the heating system being off (at other times, deviation dipped to roughly -0.25K, but still recovered quite quickly. YMMV).
 
 ![image](https://github.com/user-attachments/assets/76cdbdcd-2010-493b-85f8-4253220888d9)
 
-[^button]: This is a simple Aqara zigbee button. 
+[^button]: This is a simple Aqara zigbee button.
 
-[^thermometers]: I am using an [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) with the [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), as it provides two digits of precision and updates roughly once to twice per minute).  
-  Please note that low resolution thermometers with low update frequency will affect your ability to quickly react to temperature changes.  
-  If you are so inclined, you can build a high resolution, frequently updating thermometer with tasmota and a DS18B20 or BME820 sensor.
+[^thermometers]:
+    I am using an [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) with the [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), as it provides two digits of precision and updates roughly once to twice per minute).  
+    Please note that low resolution thermometers with low update frequency will affect your ability to quickly react to temperature changes.  
+    If you are so inclined, you can build a high resolution, frequently updating thermometer with tasmota and a DS18B20 or BME820 sensor.

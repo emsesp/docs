@@ -140,6 +140,7 @@ nav:
           - Troubleshooting: Troubleshooting.md
           - FAQ: FAQ.md
           - Tips & Tricks: tips-and-tricks.md
+          - EMS Library: ems-library.md
       - For Developers:
           - Building & Testing the Firmware: Building.md
           - Adding Languages: Adding-Languages.md

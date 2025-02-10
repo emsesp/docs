@@ -16,6 +16,7 @@
     "**/*.css",
     "**/venv/**",
     "**/*.csv",
-    "/project-words.txt"
+    "/project-words.txt",
+    "docs/Modbus-Entity-Registers.md"
   ]
 }
