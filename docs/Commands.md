@@ -233,6 +233,7 @@ where
 - `id` is used as an generic indicator. `hc`, `wwc`, `ahs` and `hs` are other suppoerted aliases. For example with `hc` it is used to indicated a specific Heating Circuit. A numeric value or String can be both used.
 
 Some more examples:
+
 <!-- prettier-ignore -->
 | topic | payload | action |
 | - | - | - |

@@ -31,7 +31,7 @@ This next section describes some of key settings that can be adjusted via the We
 
 ### Formatting Options
 
-- **Language**. This sets the language to be used for the EMS Device Entity names, as shown in the WebUI Devices Dashboard and also for MQTT Discovery. The default is English. When using Home Assistant, and switching the language you may need to remove the previous EMS-ESP MQTT entries (from HA's Settings->Devices & Services->MQTT) and restart EMS-ESP just to be sure.
+- **Language**. This sets the language to be used for the EMS Device Entity names, as shown in the WebUI Devices and Dashboard, and also for MQTT Discovery. The default is English. When using Home Assistant, and switching the language you may need to remove the previous EMS-ESP MQTT entries (from HA's Settings->Devices & Services->MQTT) and restart EMS-ESP just to be sure.
 - **Boolean Format Dashboard**. This is how boolean values are displayed in the WebUI and MQTT payloads.
 - **Boolean Format API/MQTT**. This is how boolean values are written in the MQTT payloads and API JSON output.
 - **Enum Format API/MQTT**. This is how list values are presented in the MQTT payloads and API JSON, either by it's value or the index position within the list. Not if using Home Assitant you will not see the values but integer numbers for some entities, e.g. instead of `off, hot, cold` it will display `0, 1, 2`.
