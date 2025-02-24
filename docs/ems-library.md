@@ -51,8 +51,8 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 
 ### Telegram: 0x02C3, 0x02C4, 0x02C5, 0x02C6, 0x02C7, 0x02C8, 0x02C9, 0x02CA
 
-*Name:* NSC Clock Program for HCx  
-*Used in:* CR50  
+*Name:* NSC Clock Program **1** for HCx  
+*Used in:* CR50, RC310  
 *Description:* Sets heating level switch points for HC1, HC2, ... HC8  
 *Class:* parameter  
 *EMS category:* EMS2.0  
@@ -359,6 +359,105 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 3| holiday end year| 9| 99| 1| |add 2000|
 | 4| holiday end month| 1| 12| 1| ||
 | 5| holiday end day| 1| 31| 1| ||
+
+### Telegram: 0x0449, 0x044A, 0x044B, 0x044C, 0x044D, 0x044E, 0x044F, 0x0450
+
+*Name:* NSC Clock Program **2** for HCx  
+*Used in:* RC310  
+*Description:* Sets heating level switch points for HC1, HC2, ... HC8  
+*Class:* parameter  
+*EMS category:* EMS2.0  
+*Distribution:* broadcast-on-change, unicast-on-request, unicast-write-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0| 1st switch point Monday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 1| 1st switch point Monday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 2| 2nd switch point Monday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 3| 2nd switch point Monday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 4| 3rd switch point Monday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 5| 3rd switch point Monday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 6| 4th switch point Monday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 7| 4th switch point Monday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 8| 5th switch point Monday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 9| 5th switch point Monday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 10| 6th switch point Monday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 11| 6th switch point Monday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 12| 1st switch point Tuesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 13| 1st switch point Tuesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 14| 2nd switch point Tuesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 15| 2nd switch point Tuesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 16| 3rd switch point Tuesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 17| 3rd switch point Tuesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 18| 4th switch point Tuesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 19| 4th switch point Tuesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 20| 5th switch point Tuesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 21| 5th switch point Tuesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 22| 6th switch point Tuesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 23| 6th switch point Tuesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 24| 1st switch point Wednesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 25| 1st switch point Wednesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 26| 2nd switch point Wednesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 27| 2nd switch point Wednesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 28| 3rd switch point Wednesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 29| 3rd switch point Wednesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 30| 4th switch point Wednesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 31| 4th switch point Wednesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 32| 5th switch point Wednesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 33| 5th switch point Wednesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 34| 6th switch point Wednesday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 35| 6th switch point Wednesday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 36| 1st switch point Thursday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 37| 1st switch point Thursday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 38| 2nd switch point Thursday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 39| 2nd switch point Thursday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 40| 3rd switch point Thursday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 41| 3rd switch point Thursday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 42| 4th switch point Thursday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 43| 4th switch point Thursday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 44| 5th switch point Thursday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 45| 5th switch point Thursday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 46| 6th switch point Thursday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 47| 6th switch point Thursday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 48| 1st switch point Friday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 49| 1st switch point Friday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 50| 2nd switch point Friday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 51| 2nd switch point Friday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 52| 3rd switch point Friday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 53| 3rd switch point Friday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 54| 4th switch point Friday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 55| 4th switch point Friday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 56| 5th switch point Friday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 57| 5th switch point Friday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 58| 6th switch point Friday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 59| 6th switch point Friday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 60| 1st switch point Saturday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 61| 1st switch point Saturday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 62| 2nd switch point Saturday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 63| 2nd switch point Saturday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 64| 3rd switch point Saturday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 65| 3rd switch point Saturday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 66| 4th switch point Saturday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 67| 4th switch point Saturday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 68| 5th switch point Saturday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 69| 5th switch point Saturday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 70| 6th switch point Saturday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 71| 6th switch point Saturday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 72| 1st switch point Sunday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 73| 1st switch point Sunday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 74| 2nd switch point Sunday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 75| 2nd switch point Sunday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 76| 3rd switch point Sunday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 77| 3rd switch point Sunday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 78| 4th switch point Sunday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 79| 4th switch point Sunday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 80| 5th switch point Sunday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 81| 5th switch point Sunday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 82| 6th switch point Sunday level| -1| 30| 1| |1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3|
+| 83| 6th switch point Sunday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+| 84-101|Heating program name | 32 | 255 | 1 | ASCII | 18 ASCII characters|
+
 
 ### Telegram: 0x0683, 0x0684, 0x0685, 0x0686, 0x0687, 0x0688, 0x0689, 0x068A
 
