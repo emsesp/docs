@@ -21,25 +21,25 @@ In these cases, the nominal power `boiler/nonpower` can be changed and stored in
 
 ## Remote Thermostats
 
-Modern thermostats can use the outdoor temperature to calculate the appropriate boiler flow temperature. A single thermostat placed inside the boiler can do this for different heating circuits, however is slow and inaccurate. If a room thermostat measures that the actual temperature is much lower it should raise the flowtemp to a much higher value until the temperature is reached. This is called "outdoorcontrolled" with "room influence" but requires a hardware remote thermostat present in the room. EMS-ESP can simulate a remote thermostat by calling `thermostat/hc<x>/control` and setting the temperature and other dhw settings via `thermostat/hcx/remotetemp`. This will also send the settings on to the master thermostat.
+Modern thermostats can use the outdoor temperature to calculate the appropriate boiler flow temperature. A single thermostat placed inside the boiler can do this for different heating circuits, however it is slow and inaccurate. If a room thermostat measures that the actual temperature is much lower it should raise the flowtemp to a much higher value until the correct temperature is reached. This is called "outdoorcontrolled" with "room influence" and typically requires a physical remote thermostat present in the room. EMS-ESP can simulate such a remote thermostat. This is done by setting the Master thermostat's Control Device (`thermostat/hc<x>/control`) and sending the temperature and optionally humidity via `thermostat/hcx/remotetemp` and `thermostat/hcx/remotehum`. This will then send the values on to the master thermostat.
 
-For a master thermostat of type RC30/RC35 an RC20 is emulated. For the RC3x0/BC400 you have to choose the control first to RC200 or RC100H. For a Junkers/Bosch FW120 and similar an FB10 is emulated.
+For a master thermostat of type RC30/RC35 an RC20 is emulated. For the BC400 the options are RC100, RC100H and RT800. For a Junkers/Bosch FW120 and similar an FB10 or FB100 are emulated. And for RC100/RC200/RC3x0 you can use choose to emulate a RC100, RC200 or a RC100H.
 
 To activate the Remote Thermostat feature follow these steps:
 
-- set `thermostat/hc<x>/control` to the right Remote thermostat you want to control
-- send `thermostat/hc<x>/remotetemp` with your desired temperature. Optionally for an RC100H send `thermostat/hc<x>/remotehum` with a value
+- set `thermostat/hc<x>/control` (or Room Control in the WebUI) to the remote thermostat you want to control
+- send `thermostat/hc<x>/remotetemp` with your desired temperature. Optionally for an RC100H send `thermostat/hc<x>/remotehum` with a value for the humidity
 
-EMS-ESP will search for the master thermostat and create a new thermostat with entities for room temperature and optionally humidity. The values will be automatically updated and synchronized with the master thermostat.
+EMS-ESP will search for the master thermostat and create a new thermostat with entities for room temperature and optionally humidity. These values will automatically be updated and synchronized with the master thermostat.
 
 To stop the function, follow these steps:
 
 - send `thermostat/hc<x>/remotetemp` with a value of `-1`
-- set `thermostat/hc<x>/control` to the master thermostat (e.g. RC35/RC300/FW120...)
+- set `thermostat/hc<x>/control` back to the master thermostat model type
 
 The remote thermostat will remain in the EMS-ESP device dashboard but will have no entities.
 
-Note, if the control is set to `roomthermostat` and the first `remotetemp` is not set within a minute, the master thermostat will likely show an error message.
+Note, if the control is set to `roomthermostat` and the first temperature value for `remotetemp` is not sent within a minute, the master thermostat will likely show an error message.
 
 <!-- prettier-ignore -->
 !!! warning "Disclaimer"
