@@ -147,6 +147,43 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 83| 6th switch point Sunday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
 | 84-101|Heating program name | 32 | 255 | 1 | ASCII | 18 ASCII characters|
 
+### Telegram: 0x02F5, 0x02F6
+
+*Name:* Configuration of DHWx  
+*Used in:* CR50  
+*Description:* Configuration of DHW1, DHW2  
+*Class:* parameter  
+*EMS category:* EMS2.0  
+*Distribution:* broadcast-on-change, unicast-on-request, unicast-write-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0| DHW configuration | 0| 3| 1 | enum | 0=none, 1=appliance, 2=module, 3=fresh water station |
+| 1| Circulation pump installed | -1 | 0 | 1| bool | -1(0xFF)=yes, 0=no |
+| 2| Operation mode | 0| 5| 1 | enum | 0=off, 1=on low, 2=on high, 3=HC program, 4=own program, 5=on eco |
+| 3| Circulation pump operation mode| 0| 3| 1| enum | 0=off, 1=on, 2=like DHW program, 3=own program |
+| 4| according HC program | 0| 8| 1 | enum | according HC program x |
+| 5| Automatic thermal desinfection | -1| 0 | 1| bool | -1(0xFF)=yes, 0=no |
+| 6| Thermal desinfection time | 0| 95 | 1 | 15 min | |
+| 7| Weekday for thermal desinfection | 0 | 7 | 1| enum | 0=Mo, 1=Tu, 2=We, 3=Th, 4=Fr, 5=Sa, 6=So, 7=every day |
+| 8| Daily heat up | -1 | 0| 1 | bool | -1(0xFF)=yes, 0=no |
+| 9| Daily heat up time | 0 | 95| 1| 15 min | |
+| 10| Extra heat heat up duration | 0| 95| 1 | 15 min | |
+| 11| Extra heat up from main controller | -1| 0 | 1| bool | -1(0xFF)=yes, 0=no |
+| 12| Extra heat up from HC1 controller | -1| 0 | 1| bool | -1(0xFF)=yes, 0=no |
+| 13| Extra heat up from HC2 controller | -1| 0 | 1| bool | -1(0xFF)=yes, 0=no |
+| 14| Extra heat up from HC3 controller | -1| 0 | 1| bool | -1(0xFF)=yes, 0=no |
+| 15| Extra heat up from HC4 controller | -1| 0 | 1| bool | -1(0xFF)=yes, 0=no |
+| 16| Extra heat up from HC5 controller | -1| 0 | 1| bool | -1(0xFF)=yes, 0=no |
+| 17| Extra heat up from HC6 controller | -1| 0 | 1| bool | -1(0xFF)=yes, 0=no |
+| 18| Extra heat up from HC7 controller | -1| 0 | 1| bool | -1(0xFF)=yes, 0=no |
+| 19| Extra heat up from HC8 controller | -1| 0 | 1| bool | -1(0xFF)=yes, 0=no |
+| 20| Fresh water system | 1| 2| 1 | enum | 1=appliance, 2=module |
+| 21| Solar start time | -1 | 95 | 1| 15 min | -1=na |
+| 22| Solar stop time | -1 | 95 | 1 | 15 min | -1=na |
+| 23| All operation modes allowed | -1| 0 | 1 | bool | -1=yes, 0=no |
+
 ### Telegram: 0x02FF, 0x0300
 
 *Name:* NSC Clock Program for dhw  
@@ -340,6 +377,28 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 81| 5th switch point Sunday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
 | 82| 6th switch point Sunday on/off| -1| 0| 1| bool |-1=on, 0=off|
 | 83| 6th switch point Sunday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
+
+### Telegram: 0x031D, 0x031E
+
+*Name:* Monitoring DHWx  
+*Used in:* CR50  
+*Description:* Monitors the values of DHW1, DHW2  
+*Class:* monitor  
+*EMS category:* EMS2.0  
+*Distribution:* broadcast-on-change, unicast-on-request, broadcast-periodically  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0| DHW extra active | 0| 1| 1 | bool | 0=false, 1=true |
+| 1| Holiday mode | 0 | 3 | 1| enum | 0=none, 1=auto, 2=off, 3=thermal desinfection off |
+| 2| Status DHW setpoint | 1 | 10 | 1 | enum | 1=?, 2=extra hot water, 3=off, 4=low, 5=high, 6=holiday off, 7=holiday low, 8=clock off, 9=clock low, 10=clock high |
+| 3| Status DHW circulation pump | 1 | 7 | 1 | enum | 1=?, 2=extra, 3=off, 4=on, 5=holiday off, 6=clock off, 7=clock on |
+| 4-5| Remaining time in extra mode | 0| 2880 | 1 | min | |
+| 6| Holiday mode 2 | 0 | 5 | 1| enum | 0=none, 1=auto, 2=off, 3=exo, 4=low, 5=high |
+| 7| Auto thermal desinfection during holiday | 0| 1 | 1 | bool | 0=no, 1=yes |
+| 8| Current DHW status | 0 | 3 | 1 | enum | 0=off, 1=low, 2=high, 3=eco |
+
 
 ### Telegram: 0x043F, 0x0440, 0x0441, 0x0442, 0x0443, 0x0444, 0x0445, 0x0446
 
