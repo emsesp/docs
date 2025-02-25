@@ -713,3 +713,25 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 82| 6th switch point Sunday temp value | 0| 60| 0.5 | °C | 0=off |
 | 83| 6th switch point Sunday time| -1| 95| 1| 15min |-1=na, 15min increments from midnight |
 | 84-101|Heating program name | 32 | 255 | 1 | ASCII | 18 ASCII characters|
+
+### Telegram: 0x099A
+
+*Name:* Hybrid module monitor  
+*Used in:* CT210b  
+*Description:* Monitor data of the hybrid module  
+*Class:* monitor  
+*EMS category:* EMS2.0  
+*Distribution:* broadcast-on-change, unicast-on-request, broadcast periodically  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| ... |||||||
+| 2 | HP activity | 0 | 4 | 1 | enum | 0=off, 1=heating, 2=DHW, 3=defrost,4=alarm |
+| ... |||||||
+| 5-7 | HP operation time heating | 0 | 16777215 | 1 | h | 3 byte unsigned int |
+| 8-10 | HP operation time dhw | 0 | 16777215 | 1 | h | 3 byte unsigned int |
+| ... |||||||
+| 11-13 | HP starts heating | 0 | 16777215 | 1 | | 3 byte unsigned int |
+| 14-17 | HP starts dhw |  0 | 16777215 | 1 | | 3 byte unsigned int |
+| ... |||||||
