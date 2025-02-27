@@ -29,6 +29,7 @@ su
 passwd
 restart [partitionname]
 wifi reconnect
+set admin password
 set wifi password
 set hostname <name>
 set wifi ssid <name>

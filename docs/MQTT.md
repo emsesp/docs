@@ -27,6 +27,7 @@ The table below list the topics being published. The format shown in the table b
 | `temperaturesensor_data` | nested| temperature readings from any external Dallas temperature sensors attached to the ESP | `{"28-233D-9497-0C03":{"name":"zolder32","temp":19.6}}` |
 | `temperaturesensor_data` | single | temperature readings from Dallas temperature sensor in single format with unique sensor id | `{"28-FF47-AC90-1604":20.94}` |
 | `analogsensor_data` | nested | readings from external analog sensors | `{"31":{"name":"analog31","value":0}}` |
+| `custom_data` | nested | readings from custom entities | |
 
 # Using MQTT to send commands
 
