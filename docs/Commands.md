@@ -113,6 +113,7 @@ The URL path is `http://<hostname>/api/analogsensor/`
 | `<name>` | GET | outputs all characteristics for a specific analog sensors | no | |
 | `commands` | GET | lists the available system commands | no | |
 | `setvalue` | POST | set value/offset of counter or output pin, +/- sign corrects value | yes | `{"value":<val>, "id":<gpio>}` |
+| `<name>` | POST | set value/offset of counter or output pin, +/- sign corrects value | yes | `{"value":<val>}` |
 
 ### System Commands
 
