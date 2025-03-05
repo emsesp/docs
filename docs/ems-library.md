@@ -853,5 +853,8 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 8-10 | HP operation time dhw | 0 | 16777215 | 1 | h | 3 byte unsigned int |
 | ... |||||||
 | 11-13 | HP starts heating | 0 | 16777215 | 1 | | 3 byte unsigned int |
-| 14-17 | HP starts dhw |  0 | 16777215 | 1 | | 3 byte unsigned int |
+| 14-16 | HP starts dhw |  0 | 16777215 | 1 | | 3 byte unsigned int |
+| 17 | Smart grid mode | 0 | 3 | 1 | enum | 0=Mode1 (I1 closed, I4 open = Heat pump blocked by energy supplier); 1=Mode2 (I1 open, I4 open = Normal operation); 2=Mode3 (I1 open, I4 closed = Heatpump prefered); 3=Mode4 (I1 closed, I4 closed = Forced operation of heatpump) |
+
+
 | ... |||||||
