@@ -129,6 +129,45 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 32| Room temp sensor value controller extsensor. Value defines the requested relative heating power for the heating circuit| 0| 100| 1| %||
 | ...|||||||
 
+### Telegram 0x02B9, 0x02BA, 0x02BB, 0x02BC, 0x02BD, 0x02BE, 0x02BF, 0x02C0
+
+*Name:* NSC Controller RTSD Configuration for HCx  
+*Used in:* HMC310, RC300, CR120, BC400, RC100(H)  
+*Description:* Configures variables for the **R**oom **T**emperature **S**etpoint **D**etermination for HC1, HC2, ... HC8  
+*Class:* parameter  
+*EMS category:* EMS2.0  
+*Distribution:* broadcast-on-change, unicast-on-request, unicast-write-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0 | Operation Mode |-1 | 0 | 1 | enum | auto=-1, manual=0 |
+| 1 | Setpoint Comfort 3 | 10 | 60 | 0,5 |°C | 5°C ... 30°C |
+| 2	| Setpoint Comfort 2 | 10 | 60 | 0,5 |°C | 5°C ... 30°C |
+| 3	| Setpoint Comfort 1 | 10 | 60 | 0,5 |°C | 5°C ... 30°C |
+| 4 | Setpoint Eco | 10 | 60 | 0,5 |°C | 5°C ... 30°C |
+| 5 | Eco Mode | 0 | 3 | 1 | enum | off=0, outdoor=1, room=2,reduced=3 |
+| 6 | Time Limit for manual operation mode: time | 0 | 95 | 1 | 15min | 15 minutes steps from midnight |
+| 7 | Time Limit for manual operation mode: weekday	| -1 | 6 | 1 | enum | OFF=-1, MONDAY=0, TUESDAY=1, WEDNESDAY=2, THURSDAY=3, FRIDAY=4, SATURDAY=5, SUNDAY=6 |
+| 8 | Temporary Room Temp Setpoint | -1 | 60 | 0,5 | °C | NA=-1, OFF = 0 |
+| 9 | Outdoor Temp Threshold | -20 | 10 | 1 | °C | |
+| 10 | Manual Setpoint | 10 | 60 | 0,5 |°C  | OFF = 0 |
+| 11 | Active Clock Program | 1 | 2 | 1 | enum | clock program 1 or 2 |	
+| 12 | Outdoor temp threshold for prevention of reduced temp | -30 | 10 | 1 | °C | OFF = -31 |
+| ... | | | | | | |
+| 17 | Room temperature setpoint for cooling | 5 | 30 | 0,5 | °C | OFF=0 |
+| ... | | | | | | |
+| 19 | Switch Clock Value Mode | 1 | 2 | 1 | enum  | LEVELS=1, ABS_TEMP = 2 |
+| 20 | Comfort Eco Temp Threshold | 24 | 44 | 0,5 | °C | | |
+| 21 | Heating Mode New | 0 | 2 | 1 | enum | OFF=0, ON=1, AUTO=2 |
+| 22 | Setpoint manual temp| 10 | 60 | 0,5 |°C | 5°C ... 30°C |
+| 23 | Boost mode | -1 | 0 | 1 | bool | YES=-1, NO=0 |
+| 24 | Boost mode duration | 1 | 8 | 1 | h | |
+| ... | | | | | | |
+| 28 | Cooling Operation Mode | 0 | 1 | 1 | enum | OFF=0, ON=1 |
+| 29 | Room temperature setpoint for cooling (new)| 10 | 60 | 0,5 |°C | 5°C ... 30°C |
+
+
 ### Telegram: 0x02C3, 0x02C4, 0x02C5, 0x02C6, 0x02C7, 0x02C8, 0x02C9, 0x02CA
 
 *Name:* NSC Clock Program **1** for HCx  
