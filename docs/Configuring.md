@@ -211,21 +211,22 @@ Pay attention to the following rules:
 - EMS-ESP values are accessed `<device>/<entity>` or `<device>/<entity>/value`. The `<entity>` may contain additional prefixes like `<hc2>`.
 - The user's Boolean Format (`0/1`, `off/on`, `OFF/ON`, or `false/true`) and Enum Format (value/index) Settings are used when evaluating bool and enums. Check the right value before setting a schedule by querying the API directly. For example go to `http://ems-esp.local/api/thermostat` to see if building is "medium", then create the rule with `thermostat/building == medium`.
 - strings containing special characters have to be quoted. e.g. `boiler/pumpmode == "delta-P2"`, to avoid a calculation error on delta minus P2.
-- all strings are converted to lowercase
+- all strings are converted to lowercase (before v3.7.2)
 - commands followed by a divider (`/`) have to be set in parenthesis e.g. `(boiler/seltemp)/2`
 - condition command is only executed on a change of the condition from `false` to `true`. If the condition stays true, the command is not repeated
 - a command Value can also be a formula
 - allowed operations:
 
   - arithmetic: `+` `-` `*` `/` `%`
-  - functions: `round` `abs` `int` `exp` `log` `sqrt` `pow`
+  - functions: `round` `abs` `int` `exp` `log` `sqrt` `pow`, `hex`
   - logic: `==` `!=` `<=` `>=` `<` `>` `&&` `||`
   - prefix: `!` (not) and `-` (negation)
-  - conditional operations: `<cond1> ? <expr1> : <expr2>` only surrounding a formula, not within a formula. Examples:
-    - (allowed) `<cond> ? 5 + <expr1> : 5 + <expr2>`
-    - (not allowed) `5 + (<cond> ? <expr1> : <expr2>)` and cascaded conditions `<cond1> ? <cond2> ? <expr1> : <expr2> : <cond3> ? <expr3> : <expr4>`
+  - conditional operations: `<cond1> ? <expr1> : <expr2>`  Examples:
+    - (allowed before v3.7.2) `<cond> ? 5 + <expr1> : 5 + <expr2>`
+    - (allowed since v3.7.2) `5 + (<cond> ? <expr1> : <expr2>)` and cascaded conditions `<cond1> ? <cond2> ? <expr1> : <expr2> : <cond3> ? <expr3> : <expr4>`
 
-An On Change trigger is a list of entities following the format `<device>/<entity>`. Note, a `<device>` of "system" is not supported. e.g. `boiler/outdoortemp custom/setpoint`. As entities never change at the same time using logical operations here like `&&` aren't useful.
+An On Change trigger is a list of entities following the format `<device>/<entity>`. Note, the `<device>`: "system" is not supported for onChange. 
+e.g. `boiler/outdoortemp custom/setpoint`. As entities never change at the same time using logical operations here like `&&` aren't useful.
 
 ![Web](_media/screenshot/web_conditions_1.png)
 
