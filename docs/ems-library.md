@@ -4,6 +4,34 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 
 ---
 
+### Telegram: 0x0005
+
+*Name:* Special commands  
+*Used in:* Various controllers, thermostats and boilers  
+*Description:* Collection of different special functions/commands   
+*Class:* Command  
+*EMS category:* EMS1.0  
+*Distribution:* unicast-write-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0 | Reset Error | 0 | 255 | 1 | enum | 90=error reset, also 153 and 245 do a reset (maybe on a different level) |
+| 2 | Reset burner timer and starts | 0 | 255 | 1 | enum | 165=reset burner timer and restarts |
+| 4 | Chimney sweeper mode | 0 | 255 | 1 | enum | 100=activate, 0=off |
+| 6 | Reset to factory setting | 0 | 255 | 1 | enum | 154=do a reset |
+| 8 | Reset maintenance message | 0 | 255 | 1 | enum | 255=resets maintenance request |
+| ... | | | | | | |
+| 12 | Erase error history | 0 | 255 | 1 | enum | 169=erase error history |
+|...| | | | | | |
+| 42 | Clear error history | 0 | 255 | 1 | enum | 1=local history, 2=global history, 3=both |
+| 44 | Thermal desinfection | 0 | 255 | 1 | enum | 255=start, 254=stop |
+| ... | | | | | | |
+| 52 | Force manual defrost | 0 | 255 | 1 | enum | 1=start |
+| ... |||||||
+| 68 | Standby mode | 0 | 255| 1 | enum | 85=activate if standby can be selected in the menu, 170=deactivate, status is visible in 0x00E4 offset 12.0 |
+| 70 | DHW ECO | 0 | 255 | 1 | enum | 85=activate, 170=deactivate |
+
 ### Telegram: 0x00C0, 0x00C1
 
 *Name:* System error history 
