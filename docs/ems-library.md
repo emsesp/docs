@@ -331,6 +331,45 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 22| Solar stop time | -1 | 95 | 1 | 15 min | -1=na |
 | 23| All operation modes allowed | -1| 0 | 1 | bool | -1=yes, 0=no |
 
+### Telegram: 0x02CC
+
+*Name:* DHW priority for unmixed heating circits  
+*Used in:* HMC310  
+*Description:* Enables/disables dhw priority in unmixed circuits where HC1 is directly connected to the heat source  
+*Class:* parameter  
+*EMS category:* EMS2.0  
+*Distribution:* broadcast-on-change, unicast-on-request, unicast-write-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| ... |||||||
+| 3 | DHW priority | 0 | 1 | 1 | bool | 0=no, 1=yes |
+| ... |||||||
+
+Missing offsets may be like in 0x02CD. But some make no sense because they are related to the mixer and this is for unmixed circuits.
+
+### Telegram: 0x02CD, 0x02CE, 0x02CF, 0x02D0, 0x02D1, 0x02D2, 0x02D3, 0x02D4
+
+*Name:* DHW priority for mixed heating circits HC1, ..., HC8  
+*Used in:* RC310  
+*Description:* Enables/disables dhw priority in unmixed circuits where HC1 is directly connected to the heat source  
+*Class:* parameter  
+*EMS category:* EMS2.0  
+*Distribution:* broadcast-on-change, unicast-on-request, unicast-write-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0 | HC mixed indicator | -1 | 0 | 1 | bool | -1=yes, 0=no |
+| 1 | Mixer cycle time | 1 | 60 | 1 | 10sec |  |
+| 2 | Supply temp offset | 0 | 20 | 1 | K |  |
+| 3 | DHW priority | -1 | 0 | 1 | bool | -1=yes, 0=no |
+| 4 | Mixer pos for condesation protection | 0 | 100 | 1 | % | |
+| 5 | Constant heating hc | -1 | 0 | 1 | bool | -1=yes, 0=no |
+| 6 | Detection of low flow volume | -1 | 0 | 1 | bool | -1=yes, 0=no |
+
+
 ### Telegram: 0x02FF, 0x0300
 
 *Name:* NSC Clock Program for dhw  
