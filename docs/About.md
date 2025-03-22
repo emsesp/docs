@@ -59,3 +59,4 @@ How it all started.
 - March 2024 - Version 3.6.5 - More supported devices, custom entities and variables, added Slovak language
 - October 2024 - Version 3.7.0 - More of everything. Web UI refreshed with a Dashboard. Added Modbus support. Added Scheduler conditions and functions.
 - November 2024 - Version 3.7.1 - Minor fixes and updates.
+- March 2025 - Version 3.7.2 - Many improvements and fixes.

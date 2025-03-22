@@ -21,8 +21,8 @@ hide:
 
 <span style="font-size: 1.5rem">Latest Releases</span>
 <span style="font-size: 1.0rem">
-<BR>Stable - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.7.1">version 3.7.1</a>
-<BR>Development - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">version 3.7.2</a>
+<BR>Stable - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/v3.7.2">version 3.7.2</a>
+<BR>Development - <a href="https://github.com/emsesp/EMS-ESP32/releases/tag/latest">version 3.7.3</a>
 </span>
 
 ## Key Features
