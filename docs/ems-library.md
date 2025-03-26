@@ -4,6 +4,37 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 
 ---
 
+### Telegram: 0x0001
+
+*Name:* Product data electronics hardware  
+*Used in:* Various controllers, thermostats and boilers  
+*Description:* Holds ASCII coded device information   
+*Class:* Constant  
+*EMS category:* EMS1.0 & EMS2.0  
+*Distribution:* unicast-on-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0-26 | ASCII coded numbers | 0 | 255 | 1 | ASCII | Sequence of numbers. Examples: HMC310 25303763146288737718903, RC100.2 H 05704801002367738112973, MX300 25303394051798738806124 |
+| 27-42 | Product name ASCII coded | 0 | 255 | 1 | ASCII | it should be \0 terminated, but is not always. i.e. Heat Pump responds with 43 55 48 50 = "CUHP", but \0 is missing |
+| 43-69 | more data | 0 | 255 | 1 | | some devices send more data after offset 43. Either a series of 00 or FF | 
+
+### Telegram: 0x0003
+
+*Name:* Product data appliance  
+*Used in:* Various controllers, thermostats and boilers  
+*Description:* Holds ASCII coded device information   
+*Class:* Constant  
+*EMS category:* EMS1.0 & EMS2.0  
+*Distribution:* unicast-on-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0-26 | ASCII coded numbers | 0 | 255 | 1 | ASCII | Example heat pump 26003750000018738212162 |
+| 27 -54? | more data | 0 | 255 | 1 | | some appliances return a series of 00 or FF |
+
 ### Telegram: 0x0005
 
 *Name:* Special commands  
@@ -111,6 +142,24 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 140 - 159 | Error 8 ||||| same as offset 0 ff. for error 1 |
 | 160 - 179 | Error 9 ||||| same as offset 0 ff. for error 1 |
 | 180 - 199 | Error 10 ||||| same as offset 0 ff. for error 1 |
+
+### Telegram: 0x00FB
+
+*Name:* Write data than be read with telegrams 0x0001 or 0x0003  
+*Used in:* Various controllers, thermostats and boilers?  
+*Description:* Found by accident. **I would be careful with this, no idea what it can cause**   
+*Class:* Command  
+*EMS category:* EMS2.0  
+*Distribution:* unicast-write-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0-26 | ASCII coded numbers | 0 | 255 | 1 | ASCII | set the data that can be read with telegram 0x0003 offset 0-26|
+| 27-54 | ASCII coded numbers | 0 | 255 | 1 | ASCII | set the data that can be read with telegram 0x0003 offset 27-54|
+| 54-80 | ASCII coded numbers | 0 | 255 | 1 | ASCII | set the data that can be read with telegram 0x0001 offset 0-26|
+| 81-107 | ASCII coded numbers | 0 | 255 | 1 | ASCII | set the data that can be read with telegram 0x0001 offset 43-69|
+
 
 ### Telegram: 0x02A5, 0x02A6, 0x02A7, 0x02A8, 0x02A9, 0x02AA, 0x02AB, 0x02AC
 
