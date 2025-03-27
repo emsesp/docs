@@ -22,12 +22,12 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 
 ### Telegram: 0x0002
 
-*Name:* Product data electronics hardware  
+*Name:* Module identification data  
 *Used in:* Various controllers, thermostats and boilers  
-*Description:* Holds ASCII coded device information   
+*Description:* Holds device information   
 *Class:* Constant  
 *EMS category:* EMS1.0 & EMS2.0  
-*Distribution:* unicast-on-request  
+*Distribution:* unicast-on-request, broadcast-on-powerup  
 *Offset of variables:*  
 
 | Offset | Variable name | min | max | resolution | unit | comment |
