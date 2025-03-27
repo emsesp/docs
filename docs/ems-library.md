@@ -20,6 +20,28 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 27-42 | Product name ASCII coded | 0 | 255 | 1 | ASCII | it should be \0 terminated, but is not always. i.e. Heat Pump responds with 43 55 48 50 = "CUHP", but \0 is missing |
 | 43-69 | more data | 0 | 255 | 1 | | some devices send more data after offset 43. Either a series of 00 or FF | 
 
+### Telegram: 0x0002
+
+*Name:* Module identification data  
+*Used in:* Various controllers, thermostats and boilers  
+*Description:* Holds device information   
+*Class:* Constant  
+*EMS category:* EMS1.0 & EMS2.0  
+*Distribution:* unicast-on-request, broadcast-on-powerup  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0 | product ID | 0 | 255 | 1 | | 0=invalid?; 64=UBA3; ... ; 68=BC10; 69=MM10; ...; 72=GB125; 73=SM10; ...; 77=M300; 78=M400; ...; 86=RC35; ...; 95=HT3; 109=JunkersFW100; ...; 123=CBS ; ...; 125=MX25; 157=CW100; 158=HMC310/CW400/RC310; 160=MM100; ...; 172=CUHP;...; 190=BC10; ...; 195=GB172i; ...; 200=Sensor w/humidity; 219=WS170 234=ACU; 248=HM200; 252=KF30; 253=HMI800; ....|
+| 1 | major version | 0 | 255 | 1 | | Major software version |
+| 2 | minor version | 0 | 255 | 1 | | Minor software version |
+| 3 | 2nd product ID | 0 | 255 | 1 | | |
+| 4 | major version of 2nd product ID | 0 | 255 | 1 | | |
+| 5 | minor version of 2nd product ID | 0 | 255 | 1 | | |
+| ... | | | | | | |
+| 9 | Brand ID | 0 | 255 | 1 | | 1=Bosch; 2= Junkers; 3=Buderus; 4=Nefit; ...; 13=IVT;  
+
+
 ### Telegram: 0x0003
 
 *Name:* Product data appliance  
