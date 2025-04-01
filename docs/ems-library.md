@@ -782,6 +782,7 @@ Missing offsets may be like in 0x02CD. But some make no sense because they are r
 *EMS category:* EMS2.0  
 *Distribution:* broadcast-on-change, unicast-on-request  
 *Offset of variables:* 
+
 | Offset | Variable name | min | max | resolution | unit | comment |
 | --- | --- | --- | --- | --- | --- | ---|
 | 0.0 | Heating circulation pump | 0 | 1 | 1 | bool | from source code |
