@@ -165,6 +165,88 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 160 - 179 | Error 9 ||||| same as offset 0 ff. for error 1 |
 | 180 - 199 | Error 10 ||||| same as offset 0 ff. for error 1 |
 
+### Telegram: 0x00C6
+
+*Name:* Local heat pump error history  
+*Used in:* heat pump (boiler)  
+*Description:* Hold the history of errors. Error 1 is the most recent one. Going down the list the errors get older. This list is the same as 0x00C2, but has a unique identified at the beginning of each error. This list has 10 entries and is continued in 0x00C7  
+*Class:* monitor  
+*EMS category:* EMS2.0  
+*Distribution:* unicast-on-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0 | Error UID | 0 | 254 | 1 | | ID of error 1
+| 1 | Error 1 source address | 0 | 127 | 1 | | if 0x00, then no error |
+| 2 | Error 1 module ID | 0 | 255 | 1 | | same as in telegram 0x02 offset 0 |
+| 3 | Error 1 module ID extension? | 0 | 255 | 1 | | is always 0, but maybe used if offset 1 is more than 255 |
+| 4 | Error 1 reason | 0 | 255 | 1 | enum | found so far: 0x0A=safety shutdown, 0x0C=intended shutdown, 0x10=after power on, minor?, 0x18=maintenance after reset, 0x20=maintenance |
+| 5.0 | Error 1 Log error | 0 | 1 | 1 | bool | 1=yes, 0=no |
+| 5.1-5.4 | Error 1 display level | 0 | ? | 1 | enum | 0=no display, 2=expert, 4=installer, 8=user |
+| 6-8 | Error 1 code | 0 | 255 | 1 | ASCII | displayed error code |
+| 9-10 | Error 1 code numeric | 0 | 65535 | 1 | enum | numerical part of displayed error |
+| 11 | Error 1 start year | 0 | 255 | 1 | | Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offest 11-13 |
+| 12 | Error 1 start month | 0 | 12 | 1 | | may be bigger than 12 if minutes since power on are stored here, see comment on offset 10 |
+| 13 | Error 1 start hour | 0 | 23 | 1 | | may be bigger than 23 if minutes since power on are stored here, see comment on offset 10|
+| 14 | Error 1 start day | 0 | 31 | 1 | | may be bigger than 31 if minutes since power on are stored here, see comment on offset 10|
+| 15 | Error 1 start minute | 0 | 59 | 1 | | Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13 |
+| 16 | Error 1 end year | 0 | 255 | 1 | | Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offest 11-13 |
+| 17 | Error 1 end month | 0 | 12 | 1 | | may be bigger than 12 if minutes since power on are stored here, see comment on offset 10 |
+| 18 | Error 1 end hour | 0 | 23 | 1 | | may be bigger than 23 if minutes since power on are stored here, see comment on offset 10|
+| 19 | Error 1 end day | 0 | 31 | 1 | | may be bigger than 31 if minutes since power on are stored here, see comment on offset 10|
+| 20 | Error 1 end minute | 0 | 59 | 1 | | Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13 |
+| 21 - 41 | Error 2 ||||| same as offset 0 ff. for error 1 |
+| 42 - 62 | Error 3 ||||| same as offset 0 ff. for error 1 |
+| 63 - 83 | Error 4 ||||| same as offset 0 ff. for error 1 |
+| 84 - 104 | Error 5 ||||| same as offset 0 ff. for error 1 |
+| 105 - 125 | Error 6 ||||| same as offset 0 ff. for error 1 |
+| 126 - 146 | Error 7 ||||| same as offset 0 ff. for error 1 |
+| 147 - 167 | Error 8 ||||| same as offset 0 ff. for error 1 |
+| 168 - 188 | Error 9 ||||| same as offset 0 ff. for error 1 |
+| 189 - 209 | Error 10 ||||| same as offset 0 ff. for error 1 |
+
+### Telegram: 0x00C7
+
+*Name:* Local heat pump error history  
+*Used in:* heat pump (boiler)  
+*Description:* This list is the continuation of 0x00C6. Here are the errors 11 ... 20 stored
+*Class:* monitor  
+*EMS category:* EMS2.0  
+*Distribution:* unicast-on-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0 | Error UID | 0 | 254 | 1 | | ID of error 11
+| 1 | Error 11 source address | 0 | 127 | 1 | | if 0x00, then no error |
+| 2 | Error 11 module ID | 0 | 255 | 1 | | same as in telegram 0x02 offset 0 |
+| 3 | Error 11 module ID extension? | 0 | 255 | 1 | | is always 0, but maybe used if offset 1 is more than 255 |
+| 4 | Error 11 reason | 0 | 255 | 1 | enum | found so far: 0x0A=safety shutdown, 0x0C=intended shutdown, 0x10=after power on, minor?, 0x18=maintenance after reset, 0x20=maintenance |
+| 5.0 | Error 11 Log error | 0 | 1 | 1 | bool | 1=yes, 0=no |
+| 5.1-5.4 | Error 11 display level | 0 | ? | 1 | enum | 0=no display, 2=expert, 4=installer, 8=user |
+| 6-8 | Error 11 code | 0 | 255 | 1 | ASCII | displayed error code |
+| 9-10 | Error 11 code numeric | 0 | 65535 | 1 | enum | numerical part of displayed error |
+| 11 | Error 11 start year | 0 | 255 | 1 | | Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offest 11-13 |
+| 12 | Error 11 start month | 0 | 12 | 1 | | may be bigger than 12 if minutes since power on are stored here, see comment on offset 10 |
+| 13 | Error 11 start hour | 0 | 23 | 1 | | may be bigger than 23 if minutes since power on are stored here, see comment on offset 10|
+| 14 | Error 11 start day | 0 | 31 | 1 | | may be bigger than 31 if minutes since power on are stored here, see comment on offset 10|
+| 15 | Error 11 start minute | 0 | 59 | 1 | | Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13 |
+| 16 | Error 11 end year | 0 | 255 | 1 | | Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offest 11-13 |
+| 17 | Error 11 end month | 0 | 12 | 1 | | may be bigger than 12 if minutes since power on are stored here, see comment on offset 10 |
+| 18 | Error 11 end hour | 0 | 23 | 1 | | may be bigger than 23 if minutes since power on are stored here, see comment on offset 10|
+| 19 | Error 11 end day | 0 | 31 | 1 | | may be bigger than 31 if minutes since power on are stored here, see comment on offset 10|
+| 20 | Error 11 end minute | 0 | 59 | 1 | | Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13 |
+| 21 - 41 | Error 12 ||||| same as offset 0 ff. for error 11 |
+| 42 - 62 | Error 13 ||||| same as offset 0 ff. for error 11 |
+| 63 - 83 | Error 14 ||||| same as offset 0 ff. for error 11 |
+| 84 - 104 | Error 15 ||||| same as offset 0 ff. for error 11 |
+| 105 - 125 | Error 16 ||||| same as offset 0 ff. for error 11 |
+| 126 - 146 | Error 17 ||||| same as offset 0 ff. for error 11 |
+| 147 - 167 | Error 18 ||||| same as offset 0 ff. for error 11 |
+| 168 - 188 | Error 19 ||||| same as offset 0 ff. for error 11 |
+| 189 - 209 | Error 20 ||||| same as offset 0 ff. for error 11 |
+
 ### Telegram: 0x00FB
 
 *Name:* Write data than be read with telegrams 0x0001 or 0x0003  
