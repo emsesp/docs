@@ -264,6 +264,60 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 54-80 | ASCII coded numbers | 0 | 255 | 1 | ASCII | set the data that can be read with telegram 0x0001 offset 0-26|
 | 81-107 | ASCII coded numbers | 0 | 255 | 1 | ASCII | set the data that can be read with telegram 0x0001 offset 43-69|
 
+### Telegram: 0x0165, 0x0166, 0x0167, 0x0168, 0x0169, 0x016A, 0x016B, 0x016C
+
+*Name:* HMI800 holiday mode parameters  
+*Used in:* Buderus/Bosch RC300, HMC310, and similar   
+*Description:* Up to 8 hoiday periods can be defined with the above telegrams   
+*Class:* Parameter  
+*EMS category:* EMS2.0  
+*Distribution:* broadcast-on-change, unicast-write-request, unicast-on-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0 | holiday start year | 0 | 99 | 1 | year | 0=invalid, offset 0-7 to be sent together |
+| 1 | holiday start month | 0 | 12 | 1 | month | 0=invalid, offset 0-7 to be sent together |
+| 2 | holiday start day | 0 | 31 | 1 | day | 0=invalid, offset 0-7 to be sent together |
+| 3 | holiday start time | 0 | 95 | 1 | 15 min | 0=invalid, 15 minute steps starting midnight, offset 0-7 to be sent together |
+| 4 | holiday end year | 0 | 99 | 1 | year | 0=invalid, offset 0-7 to be sent together |
+| 5 | holiday end month | 0 | 12 | 1 | month | 0=invalid, offset 0-7 to be sent together |
+| 6 | holiday end day | 0 | 31 | 1 | day | 0=invalid, offset 0-7 to be sent together |
+| 7 | holiday end time | 0 | 95 | 1 | 15 min | 0=invalid, 15 minute steps starting midnight, offset 0-7 to be sent together |
+| 8 | Holiday heating operation mode | 1 | 4 | 1 | enum | 1=auto, 2=fixed temp, 3=off, 4=eco |
+| 9 | Holiday fixed heating temp | 5 | 30 | 1 | °C ||
+| 10 | Holiday DHW operation mode | 1 | 5 | 1 | enum | 1=auto, 2=off, 3=eco, 4=low, 5=high |
+| 11 | Holioday auto thermal desinfection | -1 | 1 | 1 | bool | -1=yes, 1=no |
+| 12 | Holiday ventilation operation mode | -1 | 5 | 1 | enum | -1=time, 0=off, 1=min, 2=reduced, 3=normal, 4=max, 5=demand |
+| 13 | valid for HC1 | -1 | 1 | 1 | bool | -1=yes, 1=no |
+| 14 | valid for HC2 | -1 | 1 | 1 | bool | -1=yes, 1=no |
+| 15 | valid for HC3 | -1 | 1 | 1 | bool | -1=yes, 1=no |
+| 16 | valid for HC4 | -1 | 1 | 1 | bool | -1=yes, 1=no |
+| 17 | valid for DHW1 | -1 | 1 | 1 | bool | -1=yes, 1=no |
+| 18 | valid for DHW2 | -1 | 1 | 1 | bool | -1=yes, 1=no |
+| 19 | valid for vent1 | -1 | 1 | 1 | bool | -1=yes, 1=no |
+| 20 | valid for vent2 | -1 | 1 | 1 | bool | -1=yes, 1=no |
+| 21 | valid for vent3 | -1 | 1 | 1 | bool | -1=yes, 1=no |
+| 22 | valid for vent4 | -1 | 1 | 1 | bool | -1=yes, 1=no |
+
+### Telegram: 0x016F, 0x0170, 0x0171, 0x0172, 0x0173, 0x0174, 0x0175, 0x0176, 0x0177, 0x0178
+
+*Name:* FX100 Monitor heating circuit values  
+*Used in:* Junkers FB100/FW120 controllers   
+*Description:* Junkers monitor values of heating circuit. 10 heating circuits can be monitored   
+*Class:* Monitor  
+*EMS category:* EMS1.0  
+*Distribution:* broadcast-on-change, broadcast-periodically, unicast-on-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0 | Heating level | 0 | 3 | 1 | enum | 0=undefined, 1=frost, 2=low, 3=high |
+| 1 | Operating mode | 0 | 5 | 1 | enum | 0=undefinde, 1=permanent, 2=auto, 3=holiday, 4=floor drying waiting, 5=floor drying running |
+| 2-3 | Requested room temperature setpoint | 0 | 300 | 0,1 | °C | |
+| 4-5 | Current internal temperature | -32768 | 32767 | 0,1 | °C | 2 byte signed int |
+| 6-7 Current external temperature | -32768 | 32767 | 0,1 | °C | 2 byte signed int |
+| 8 | Solar influence value | 0 | 50 | 1 | 0,1 | °C | |
 
 ### Telegram: 0x02A5, 0x02A6, 0x02A7, 0x02A8, 0x02A9, 0x02AA, 0x02AB, 0x02AC
 
