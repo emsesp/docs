@@ -268,7 +268,7 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 
 *Name:* HMI800 holiday mode parameters  
 *Used in:* Buderus/Bosch RC300, HMC310, and similar   
-*Description:* Up to 8 hoiday periods can be defined with the above telegrams   
+*Description:* Up to 8 holiday periods can be defined with the above telegrams   
 *Class:* Parameter  
 *EMS category:* EMS2.0  
 *Distribution:* broadcast-on-change, unicast-write-request, unicast-on-request  
@@ -316,8 +316,8 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 1 | Operating mode | 0 | 5 | 1 | enum | 0=undefinde, 1=permanent, 2=auto, 3=holiday, 4=floor drying waiting, 5=floor drying running |
 | 2-3 | Requested room temperature setpoint | 0 | 300 | 0,1 | °C | |
 | 4-5 | Current internal temperature | -32768 | 32767 | 0,1 | °C | 2 byte signed int |
-| 6-7 Current external temperature | -32768 | 32767 | 0,1 | °C | 2 byte signed int |
-| 8 | Solar influence value | 0 | 50 | 1 | 0,1 | °C | |
+| 6-7 | Current external temperature | -32768 | 32767 | 0,1 | °C | 2 byte signed int |
+| 8 | Solar influence value | 0 | 50 | 0,1 | °C | |
 
 ### Telegram: 0x02A5, 0x02A6, 0x02A7, 0x02A8, 0x02A9, 0x02AA, 0x02AB, 0x02AC
 
