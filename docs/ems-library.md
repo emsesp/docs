@@ -268,7 +268,7 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 
 ==The telegrams 0x0165...0016E are used in a different way in Junkers systems. See next table==  
 *Name:* HMI800 holiday mode parameters  
-*Used in:* Buderus/Bosch RC300, HMC310, and similar   
+*Used in:* Buderus/Bosch RC300, HMC310 and similar, newer Junkers controllers "Cxyz" (MY>2019)  
 *Description:* Up to 8 holiday periods can be defined with the above telegrams   
 *Class:* Parameter  
 *EMS category:* EMS2.0  
@@ -305,8 +305,8 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 
 ==The telegrams 0x0165...0016C are used in a different way in Buderus systems. See table before==
 This is a transscript from [hometop_HT3](https://github.com/norberts1/hometop_HT3/blob/master/HT3/sw/etc/html/HT3-Bus_Telegramme.html#26)  
-*Name:* Junkers heating circuit control  
-*Used in:* Junkers controllers   
+*Name:* Older Junkers heating circuit control  
+*Used in:* older Junkers controllers "Fxyz" (MY<2019)  
 *Description:* Up to 10 heating circuits can be controller with these telegrams. 0x0165=HC1, 0x0166=HC2, ...  
 *Class:* Parameter  
 *EMS category:* EMS1.0  
