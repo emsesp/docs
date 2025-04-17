@@ -266,6 +266,7 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 
 ### Telegram: 0x0165, 0x0166, 0x0167, 0x0168, 0x0169, 0x016A, 0x016B, 0x016C
 
+==The telegrams 0x0165...0016E are used in a different way in Junkers systems. See next table==  
 *Name:* HMI800 holiday mode parameters  
 *Used in:* Buderus/Bosch RC300, HMC310, and similar   
 *Description:* Up to 8 holiday periods can be defined with the above telegrams   
@@ -299,6 +300,42 @@ Please contribute, content is in [Markdown](https://www.markdownguide.org/cheat-
 | 20 | valid for vent2 | -1 | 1 | 1 | bool | -1=yes, 1=no |
 | 21 | valid for vent3 | -1 | 1 | 1 | bool | -1=yes, 1=no |
 | 22 | valid for vent4 | -1 | 1 | 1 | bool | -1=yes, 1=no |
+
+### Telegram: 0x0165, 0x0166, 0x0167, 0x0168, 0x0169, 0x016A, 0x016B, 0x016C, 0x016D, 0x016E
+
+==The telegrams 0x0165...0016C are used in a different way in Buderus systems. See table before==
+This is a transscript from [hometop_HT3](https://github.com/norberts1/hometop_HT3/blob/master/HT3/sw/etc/html/HT3-Bus_Telegramme.html#26)  
+*Name:* Junkers heating circuit control  
+*Used in:* Junkers controllers   
+*Description:* Up to 10 heating circuits can be controller with these telegrams. 0x0165=HC1, 0x0166=HC2, ...  
+*Class:* Parameter  
+*EMS category:* EMS1.0  
+*Distribution:* broadcast-on-change, unicast-write-request, unicast-on-request  
+*Offset of variables:*  
+
+| Offset | Variable name | min | max | resolution | unit | comment |
+| --- | --- | --- | --- | --- | --- | ---|
+| 0 | type of HC | 0 | 3 | 1 | enum | 0=not available, 1=unmixed HC without IPM, 2=unmixed HC with IPM, 3=mixed HC |
+| 1 | Remote controller | 0 | 2 | 1 | enum | 0=not available, 1=FB10, 2=FB100 |
+| 2 | type 2 of HC | 0 | 4 | 1 | enum | 0=undefined, 1=foot/endpoint, 2=radiators, 3=convectors, 4=floor heating |
+| 3 | foot point of heating curve | ? | ? | 1 | °C | |
+| 4 | end point of heating curve | ? | ? | 1 | °C | |
+| 5 | max flow temperature | ? | ? | 1 | °C | |
+| 6 | room influence factor | 0 | 100 | 1 | % | |
+| 7 | room influence at operation mode | 0 | 2 | 1 | enum | 0=undefined, 1=normal/eco/frost protect, 2=eco/frost protect|
+| 8 | room temperature correction | ? | ? | 1 | °C | |
+| 9 |room temperature sensor | 0 | 3 | 1 | enum | 0=undefined, 1=ext. sensor, 2=int. sensor, 3=temperature during eco |
+| 10 | frost protect | -1 | 1 | 1 | bool | -1=ON, 1=OFF |
+| 11 | stop heating at outside temp | ? | ? | 0.5 | °C | 
+| 12 | frost protection temp | ? | ? | 0.5 | °C | 
+| 13 | active heatig program | 0 | 6 | 1 | enum | 0=undefined, 1-6=heating program (1=A, 2=B, ...) |
+| 14 | operation mode HC | 0 | 4 | 1 | enum | 0=undefined, 1=frost protect, 2=eco, 3=normal, 4=auto |
+| 15 | flow temp at frost protect mode | ? | ? | 0.5 | °C ||
+| 16 | flow temp at eco mode | ? | ? | 0.5 | °C ||
+| 17 | flow temp at normal mode | ? | ? | 0.5 | °C ||
+| 18 | heat up speed | 0 | 3 | 1 | enum | 0=undefined, 1=slow, 2=normal, 3=fast |
+| 19 | holiday program | 0 | 4 | 1 | enum | 0=undefinde, 1=op mode frost protect, 2=op mode eco, 3= op mode nomral. 4=op mode auto |
+| 20 | solar influence | ? | ? | 1 | °C | |
 
 ### Telegram: 0x016F, 0x0170, 0x0171, 0x0172, 0x0173, 0x0174, 0x0175, 0x0176, 0x0177, 0x0178
 
