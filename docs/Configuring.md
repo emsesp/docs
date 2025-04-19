@@ -221,12 +221,12 @@ Pay attention to the following rules:
   - functions: `round` `abs` `int` `exp` `log` `sqrt` `pow`, `hex`
   - logic: `==` `!=` `<=` `>=` `<` `>` `&&` `||`
   - prefix: `!` (not) and `-` (negation)
-  - conditional operations: `<cond1> ? <expr1> : <expr2>`  Examples:
+  - conditional operations: `<cond1> ? <expr1> : <expr2>` Examples:
     - (allowed before v3.7.2) `<cond> ? 5 + <expr1> : 5 + <expr2>`
     - (allowed since v3.7.2) `5 + (<cond> ? <expr1> : <expr2>)` and cascaded conditions `<cond1> ? <cond2> ? <expr1> : <expr2> : <cond3> ? <expr3> : <expr4>`
 
-An On Change trigger is a list of entities following the format `<device>/<entity>`. Note, the `<device>`: "system" is not supported for onChange. 
-e.g. `boiler/outdoortemp custom/setpoint`. As entities never change at the same time using logical operations here like `&&` aren't useful.
+An On Change trigger is a list of entities using the format `<device>/<entity>`, for example `boiler/outdoortemp custom/setpoint`.
+As entities never change at the same time using logical operations here like `&&` aren't useful. Note, using `system` as the `<device>` is not supported.
 
 ![Web](_media/screenshot/web_conditions_1.png)
 
