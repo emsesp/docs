@@ -84,11 +84,119 @@ _Offset of variables:_
 | 68     | Standby mode                  | 0   |  255 | 1          | enum | 85=activate if standby can be selected in the menu, 170=deactivate, status is visible in 0x00E4 offset 12.0 |
 | 70     | DHW ECO                       | 0   | 255  | 1          | enum | 85=activate, 170=deactivate                                                                                 |
 
+### Telegram: 0x0010
+
+_Name:_ Locking error history  
+_Used in:_ Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7  
+_Description:_ Holds the history of locking errors.   
+_Class:_ monitor  
+_EMS category:_ EMS1.0 and EMS2.0  
+_Distribution:_ unicast-on-request  
+_Offset of variables:_
+
+| Offset    | Variable name                | min | max   | resolution | unit  | comment                                                                                                                                                           |
+| --------- | ---------------------------- | --- | ----- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0-1       | Error 1 display code         | 0   | 255   | 1          | ASCII | displayed error code                                                                                                                                              |
+| 2-3       | Error 1 cause code           | 0   | 65535 | 1          |       | numbers >= 200, list used in Nefit and Buderus                                                                                                                    |
+| 4         | Error 1 Start year           | 0   | 255   | 1          |       | Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused                                          |
+| 5         | Error 1 Start month          | 1   | 12    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7 |
+| 6         | Error 1 Start hour           | 1   | 31    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7  |
+| 7         | Error 1 Start day            | 1   | 31    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7   |
+| 8         | Error 1 Start minute         | 1   | 59    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty                        |
+| 9-10      | Error 1 duration             | 1   | 65535 | 1          | min   |                                                                                                                                                                   |
+| 11        | Error 1 source               | 1   | 127   | 1          |       | device ID of the error souce                                                                                                                                      |
+| 12 - 23   | Error 2                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 24 - 35   | Error 3                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 36 - 47   | Error 4                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 48 - 59   | Error 5                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 60 - 71   | Error 6                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 72 - 83   | Error 7                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 84 - 95   | Error 8                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+
+### Telegram: 0x0011
+
+_Name:_ Blocking error history  
+_Used in:_ Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7  
+_Description:_ Holds the history of blocking errors.   
+_Class:_ monitor  
+_EMS category:_ EMS1.0    
+_Distribution:_ unicast-on-request  
+_Offset of variables:_
+
+| Offset    | Variable name                | min | max   | resolution | unit  | comment                                                                                                                                                           |
+| --------- | ---------------------------- | --- | ----- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0-1       | Error 1 display code         | 0   | 255   | 1          | ASCII | displayed error code                                                                                                                                              |
+| 2-3       | Error 1 cause code           | 0   | 65535 | 1          |       | numbers >= 200, list used in Nefit and Buderus                                                                                                                    |
+| 4         | Error 1 Start year           | 0   | 255   | 1          |       | Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused                                          |
+| 5         | Error 1 Start month          | 1   | 12    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7 |
+| 6         | Error 1 Start hour           | 1   | 31    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7  |
+| 7         | Error 1 Start day            | 1   | 31    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7   |
+| 8         | Error 1 Start minute         | 1   | 59    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty                        |
+| 9-10      | Error 1 duration             | 1   | 65535 | 1          | min   |                                                                                                                                                                   |
+| 11        | Error 1 source               | 1   | 127   | 1          |       | device ID of the error souce                                                                                                                                      |
+| 12 - 23   | Error 2                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 24 - 35   | Error 3                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 36 - 47   | Error 4                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 48 - 59   | Error 5                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 60 - 71   | Error 6                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 72 - 83   | Error 7                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 84 - 95   | Error 8                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+
+### Telegram: 0x0012
+
+_Name:_ Blocking actual system error history  
+_Used in:_ Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7  
+_Description:_ Holds the history of blocking errors of the system.   
+_Class:_ monitor  
+_EMS category:_ EMS1.0  
+_Distribution:_ unicast-on-request  
+_Offset of variables:_
+
+| Offset    | Variable name                | min | max   | resolution | unit  | comment                                                                                                                                                           |
+| --------- | ---------------------------- | --- | ----- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0-1       | Error 1 display code         | 0   | 255   | 1          | ASCII | displayed error code                                                                                                                                              |
+| 2-3       | Error 1 cause code           | 0   | 65535 | 1          |       | numbers >= 200, list used in Nefit and Buderus                                                                                                                    |
+| 4         | Error 1 Start year           | 0   | 255   | 1          |       | Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused                                          |
+| 5         | Error 1 Start month          | 1   | 12    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7 |
+| 6         | Error 1 Start hour           | 1   | 31    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7  |
+| 7         | Error 1 Start day            | 1   | 31    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7   |
+| 8         | Error 1 Start minute         | 1   | 59    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty                        |
+| 9-10      | Error 1 duration             | 1   | 65535 | 1          | min   |                                                                                                                                                                   |
+| 11        | Error 1 source               | 1   | 127   | 1          |       | device ID of the error souce                                                                                                                                      |
+| 12 - 23   | Error 2                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 24 - 35   | Error 3                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 36 - 47   | Error 4                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+
+### Telegram: 0x0013
+
+_Name:_ System error history  
+_Used in:_ Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7  
+_Description:_ Holds the history of system errors.   
+_Class:_ monitor  
+_EMS category:_ EMS1.0  
+_Distribution:_ unicast-on-request  
+_Offset of variables:_
+
+| Offset    | Variable name                | min | max   | resolution | unit  | comment                                                                                                                                                           |
+| --------- | ---------------------------- | --- | ----- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0-1       | Error 1 display code         | 0   | 255   | 1          | ASCII | displayed error code                                                                                                                                              |
+| 2-3       | Error 1 cause code           | 0   | 65535 | 1          |       | numbers >= 200, list used in Nefit and Buderus                                                                                                                    |
+| 4         | Error 1 Start year           | 0   | 255   | 1          |       | Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused                                          |
+| 5         | Error 1 Start month          | 1   | 12    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7 |
+| 6         | Error 1 Start hour           | 1   | 31    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7  |
+| 7         | Error 1 Start day            | 1   | 31    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7   |
+| 8         | Error 1 Start minute         | 1   | 59    | 1          |       | Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty                        |
+| 9-10      | Error 1 duration             | 1   | 65535 | 1          | min   |                                                                                                                                                                   |
+| 11        | Error 1 source               | 1   | 127   | 1          |       | device ID of the error souce                                                                                                                                      |
+| 12 - 23   | Error 2                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 24 - 35   | Error 3                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+| 36 - 47   | Error 4                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+
 ### Telegram: 0x00C0, 0x00C1
 
 _Name:_ System error history
 _Used in:_ Various controllers, thermostats and boilers  
-_Description:_ Hold the history of errors. 0x00C0 holds the first 10 error messages and 0x00C1 the next 10. Error #1 is the most recent one. Going down the list the errors get older.  
+_Description:_ Hold the history of errors. 0x00C0 holds the first 10 error messages and 0x00C1 the next 10. Error #1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0012 and 0x0013.  
 _Class:_ monitor  
 _EMS category:_ EMS2.0  
 _Distribution:_ unicast-on-request  
@@ -128,7 +236,7 @@ _Offset of variables:_
 
 _Name:_ Local device error history
 _Used in:_ Various controllers, thermostats and boilers  
-_Description:_ Hold the history of errors. Each device has it´s own list of own errors. Error 1 is the most recent one. Going down the list the errors get older.  
+_Description:_ Hold the history of errors. Each device has it´s own list of own errors. Error 1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0010 and 0x0011.  
 _Class:_ monitor  
 _EMS category:_ EMS2.0  
 _Distribution:_ unicast-on-request  
@@ -139,7 +247,7 @@ _Offset of variables:_
 | 0         | Error 1 source address       | 0   | 127   | 1          |       | if 0x00, then no error                                                                                                                                     |
 | 1         | Error 1 module ID            | 0   | 255   | 1          |       | same as in telegram 0x02 offset 0                                                                                                                          |
 | 2         | Error 1 module ID extension? | 0   | 255   | 1          |       | is always 0, but maybe used if offset 1 is more than 255                                                                                                   |
-| 3         | Error 1 reason               | 0   | 255   | 1          | enum  | found so far: 0x0A=safety shutdown, 0x0C=intended shutdown, 0x10=after power on, minor?, 0x18=maintenance after reset, 0x20=maintenance                    |
+| 3         | Error 1 reason               | 0   | 255   | 1          | enum  | found so far: found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance                    |
 | 4.0       | Error 1 Log error            | 0   | 1     | 1          | bool  | 1=yes, 0=no                                                                                                                                                |
 | 4.1-4.4   | Error 1 display level        | 0   | ?     | 1          | enum  | 0=no display, 2=expert, 4=installer, 8=user                                                                                                                |
 | 5-7       | Error 1 code                 | 0   | 255   | 1          | ASCII | displayed error code                                                                                                                                       |
@@ -168,7 +276,7 @@ _Offset of variables:_
 
 _Name:_ Local heat pump error history  
 _Used in:_ heat pump (boiler)  
-_Description:_ Hold the history of errors. Error 1 is the most recent one. Going down the list the errors get older. This list is the same as 0x00C2, but has a unique identified at the beginning of each error. This list has 10 entries and is continued in 0x00C7  
+_Description:_ Hold the history of errors. Error 1 is the most recent one. Going down the list the errors get older. This list is the same as 0x00C2, but has a unique identified at the beginning of each error. This list has 10 entries and is continued in 0x00C7. Older systems use telegrams 0x0010 and 0x0011.  
 _Class:_ monitor  
 _EMS category:_ EMS2.0  
 _Distribution:_ unicast-on-request  
@@ -180,7 +288,7 @@ _Offset of variables:_
 | 1 | Error 1 source address | 0 | 127 | 1 | | if 0x00, then no error |
 | 2 | Error 1 module ID | 0 | 255 | 1 | | same as in telegram 0x02 offset 0 |
 | 3 | Error 1 module ID extension? | 0 | 255 | 1 | | is always 0, but maybe used if offset 1 is more than 255 |
-| 4 | Error 1 reason | 0 | 255 | 1 | enum | found so far: 0x0A=safety shutdown, 0x0C=intended shutdown, 0x10=after power on, minor?, 0x18=maintenance after reset, 0x20=maintenance |
+| 4 | Error 1 reason | 0 | 255 | 1 | enum | found so far: found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance |
 | 5.0 | Error 1 Log error | 0 | 1 | 1 | bool | 1=yes, 0=no |
 | 5.1-5.4 | Error 1 display level | 0 | ? | 1 | enum | 0=no display, 2=expert, 4=installer, 8=user |
 | 6-8 | Error 1 code | 0 | 255 | 1 | ASCII | displayed error code |
@@ -209,7 +317,7 @@ _Offset of variables:_
 
 _Name:_ Local heat pump error history  
 _Used in:_ heat pump (boiler)  
-_Description:_ This list is the continuation of 0x00C6. Here are the errors 11 ... 20 stored
+_Description:_ This list is the continuation of 0x00C6. Here are the errors 11 ... 20 stored. Older systems use telegrams 0x0010 and 0x0011.
 _Class:_ monitor  
 _EMS category:_ EMS2.0  
 _Distribution:_ unicast-on-request  
@@ -221,7 +329,7 @@ _Offset of variables:_
 | 1 | Error 11 source address | 0 | 127 | 1 | | if 0x00, then no error |
 | 2 | Error 11 module ID | 0 | 255 | 1 | | same as in telegram 0x02 offset 0 |
 | 3 | Error 11 module ID extension? | 0 | 255 | 1 | | is always 0, but maybe used if offset 1 is more than 255 |
-| 4 | Error 11 reason | 0 | 255 | 1 | enum | found so far: 0x0A=safety shutdown, 0x0C=intended shutdown, 0x10=after power on, minor?, 0x18=maintenance after reset, 0x20=maintenance |
+| 4 | Error 11 reason | 0 | 255 | 1 | enum | found so far: found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance |
 | 5.0 | Error 11 Log error | 0 | 1 | 1 | bool | 1=yes, 0=no |
 | 5.1-5.4 | Error 11 display level | 0 | ? | 1 | enum | 0=no display, 2=expert, 4=installer, 8=user |
 | 6-8 | Error 11 code | 0 | 255 | 1 | ASCII | displayed error code |
