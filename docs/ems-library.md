@@ -145,7 +145,7 @@ _Offset of variables:_
 ### Telegram: 0x0012
 
 _Name:_ Blocking actual system error history  
-_Used in:_ Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7  
+_Used in:_ Older systems hold this error list while newer systems use 0x00C0 and 0x00C1  
 _Description:_ Holds the history of blocking errors of the system.   
 _Class:_ monitor  
 _EMS category:_ EMS1.0  
@@ -170,7 +170,7 @@ _Offset of variables:_
 ### Telegram: 0x0013
 
 _Name:_ System error history  
-_Used in:_ Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7  
+_Used in:_ Older systems hold this error list while newer systems use 0x00C0 and 0x00C1  
 _Description:_ Holds the history of system errors.   
 _Class:_ monitor  
 _EMS category:_ EMS1.0  
@@ -207,7 +207,7 @@ _Offset of variables:_
 | 0         | Error 1 source address       | 0   | 127   | 1          |       | if 0x00, then no error                                                                                                                                     |
 | 1         | Error 1 module ID            | 0   | 255   | 1          |       | same as in telegram 0x02 offset 0                                                                                                                          |
 | 2         | Error 1 module ID extension? | 0   | 255   | 1          |       | is always 0, but maybe used if offset 1 is more than 255                                                                                                   |
-| 3         | Error 1 reason               | 0   | 255   | 1          | enum  | found so far: 0x0A=safety shutdown, 0x0C=intended shutdown, 0x10=after power on, minor?, 0x18=maintenance after reset, 0x20=maintenance                    |
+| 3         | Error 1 reason               | 0   | 255   | 1          | enum  | found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance                    |
 | 4.0       | Error 1 Log error            | 0   | 1     | 1          | bool  | 1=yes, 0=no                                                                                                                                                |
 | 4.1-4.4   | Error 1 display level        | 0   | ?     | 1          | enum  | 0=no display, 2=expert, 4=installer, 8=user                                                                                                                |
 | 5-7       | Error 1 code                 | 0   | 255   | 1          | ASCII | displayed error code                                                                                                                                       |
@@ -247,7 +247,7 @@ _Offset of variables:_
 | 0         | Error 1 source address       | 0   | 127   | 1          |       | if 0x00, then no error                                                                                                                                     |
 | 1         | Error 1 module ID            | 0   | 255   | 1          |       | same as in telegram 0x02 offset 0                                                                                                                          |
 | 2         | Error 1 module ID extension? | 0   | 255   | 1          |       | is always 0, but maybe used if offset 1 is more than 255                                                                                                   |
-| 3         | Error 1 reason               | 0   | 255   | 1          | enum  | found so far: found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance                    |
+| 3         | Error 1 reason               | 0   | 255   | 1          | enum  | found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance                    |
 | 4.0       | Error 1 Log error            | 0   | 1     | 1          | bool  | 1=yes, 0=no                                                                                                                                                |
 | 4.1-4.4   | Error 1 display level        | 0   | ?     | 1          | enum  | 0=no display, 2=expert, 4=installer, 8=user                                                                                                                |
 | 5-7       | Error 1 code                 | 0   | 255   | 1          | ASCII | displayed error code                                                                                                                                       |
@@ -288,7 +288,7 @@ _Offset of variables:_
 | 1 | Error 1 source address | 0 | 127 | 1 | | if 0x00, then no error |
 | 2 | Error 1 module ID | 0 | 255 | 1 | | same as in telegram 0x02 offset 0 |
 | 3 | Error 1 module ID extension? | 0 | 255 | 1 | | is always 0, but maybe used if offset 1 is more than 255 |
-| 4 | Error 1 reason | 0 | 255 | 1 | enum | found so far: found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance |
+| 4 | Error 1 reason | 0 | 255 | 1 | enum | found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance |
 | 5.0 | Error 1 Log error | 0 | 1 | 1 | bool | 1=yes, 0=no |
 | 5.1-5.4 | Error 1 display level | 0 | ? | 1 | enum | 0=no display, 2=expert, 4=installer, 8=user |
 | 6-8 | Error 1 code | 0 | 255 | 1 | ASCII | displayed error code |
@@ -329,7 +329,7 @@ _Offset of variables:_
 | 1 | Error 11 source address | 0 | 127 | 1 | | if 0x00, then no error |
 | 2 | Error 11 module ID | 0 | 255 | 1 | | same as in telegram 0x02 offset 0 |
 | 3 | Error 11 module ID extension? | 0 | 255 | 1 | | is always 0, but maybe used if offset 1 is more than 255 |
-| 4 | Error 11 reason | 0 | 255 | 1 | enum | found so far: found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance |
+| 4 | Error 11 reason | 0 | 255 | 1 | enum | found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance |
 | 5.0 | Error 11 Log error | 0 | 1 | 1 | bool | 1=yes, 0=no |
 | 5.1-5.4 | Error 11 display level | 0 | ? | 1 | enum | 0=no display, 2=expert, 4=installer, 8=user |
 | 6-8 | Error 11 code | 0 | 255 | 1 | ASCII | displayed error code |
