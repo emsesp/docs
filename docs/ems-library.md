@@ -91,7 +91,7 @@ _Used in:_ Older systems hold this error list while newer systems use 0x00C2 and
 _Description:_ Holds the history of locking errors.   
 _Class:_ monitor  
 _EMS category:_ EMS1.0 and EMS2.0  
-_Distribution:_ unicast-on-request  
+_Distribution:_ unicast-on-request, broadcast-on-change  
 _Offset of variables:_
 
 | Offset    | Variable name                | min | max   | resolution | unit  | comment                                                                                                                                                           |
@@ -120,7 +120,7 @@ _Used in:_ Older systems hold this error list while newer systems use 0x00C2 and
 _Description:_ Holds the history of blocking errors.   
 _Class:_ monitor  
 _EMS category:_ EMS1.0    
-_Distribution:_ unicast-on-request  
+_Distribution:_ unicast-on-request, broadcast-on-change  
 _Offset of variables:_
 
 | Offset    | Variable name                | min | max   | resolution | unit  | comment                                                                                                                                                           |
@@ -149,7 +149,7 @@ _Used in:_ Older systems hold this error list while newer systems use 0x00C0 and
 _Description:_ Holds the history of blocking errors of the system.   
 _Class:_ monitor  
 _EMS category:_ EMS1.0  
-_Distribution:_ unicast-on-request  
+_Distribution:_ unicast-on-request, broadcast-on-change  
 _Offset of variables:_
 
 | Offset    | Variable name                | min | max   | resolution | unit  | comment                                                                                                                                                           |
@@ -174,7 +174,7 @@ _Used in:_ Older systems hold this error list while newer systems use 0x00C0 and
 _Description:_ Holds the history of system errors.   
 _Class:_ monitor  
 _EMS category:_ EMS1.0  
-_Distribution:_ unicast-on-request  
+_Distribution:_ unicast-on-request, broadcast-on-change   
 _Offset of variables:_
 
 | Offset    | Variable name                | min | max   | resolution | unit  | comment                                                                                                                                                           |
@@ -191,10 +191,33 @@ _Offset of variables:_
 | 12 - 23   | Error 2                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
 | 24 - 35   | Error 3                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
 | 36 - 47   | Error 4                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+### Telegram: 0x00BF
+
+_Name:_ Local error list  
+_Used in:_ Used in systems that use the 0x00C2/0x00C6/0x00C7 error history lists  
+_Description:_ The lists holds up to three active errors, sorted by criticallity   
+_Class:_ monitor  
+_EMS category:_ EMS2.0  
+_Distribution:_ unicast-on-request, broadcast-on-change, broadcast-periodically   
+_Offset of variables:_
+
+| Offset    | Variable name                | min | max   | resolution | unit  | comment                                                   |
+| --------- | ---------------------------- | --- | ----- | ---------- | ----- | --- |
+| 0 | Source address | 0 | 127 | 1 | | 0=invalid |
+| 1 | module ID | 0 | 255 | 1 | | 0=invalid |
+| 2 | module ID | 0 | 255 | 1 | | if offset 1 > 255 |
+| 3 | Error 1  | 0 | 255 | 1 | enum | error with highest prio; enums see 0x00C0/0x00C2 offset 3 and 0x00C6 offset 4 | 
+| 4.0 | Error 1 logging | 0 | 1 | 1 | bool | Log this error, see also 0x00C0/0x00C2 offset 4.0 and 0x00C6 offset 5.0|
+| 4.1-4.4 | Error 1 display level | 0 | 15 | 1 | enum | see 0x00C0/0x00C2 offset 4.1-4.4 and 0x00C6 offset 5.1-5.4|
+| 4.5 | Error 1 local overrule | 0 | 1 | 1 | bool | |
+| 5-7 | Error 1 display code | 0 | 255 | 1 | ASCII | see 0x00C0/0x00C2 offset 5-7 and 0x00C6 offset 6-8; displayed error |
+| 8-9       | Error 1 code numeric         | 0   | 65535 | 1          | enum  | see 0x00C0/0x00C2 offset 8-9 and 0x00C6 offset 9-10; numerical part of displayed error              |
+| 10-16 | Error 2 | | | | | next lower prio error; offsets see 3-9 | 
+| 17-23 | Error 3 | | | | | next lower prio error; offsets see 3-9 | 
 
 ### Telegram: 0x00C0, 0x00C1
 
-_Name:_ System error history
+_Name:_ System error history  
 _Used in:_ Various controllers, thermostats and boilers  
 _Description:_ Hold the history of errors. 0x00C0 holds the first 10 error messages and 0x00C1 the next 10. Error #1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0012 and 0x0013.  
 _Class:_ monitor  
@@ -209,7 +232,7 @@ _Offset of variables:_
 | 2         | Error 1 module ID extension? | 0   | 255   | 1          |       | is always 0, but maybe used if offset 1 is more than 255                                                                                                   |
 | 3         | Error 1 reason               | 0   | 255   | 1          | enum  | found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance                    |
 | 4.0       | Error 1 Log error            | 0   | 1     | 1          | bool  | 1=yes, 0=no                                                                                                                                                |
-| 4.1-4.4   | Error 1 display level        | 0   | ?     | 1          | enum  | 0=no display, 2=expert, 4=installer, 8=user                                                                                                                |
+| 4.1-4.4   | Error 1 display level        | 0   | 15     | 1          | enum  | 0=no display, 2=expert, 4=installer, 8=user                                                                                                                |
 | 5-7       | Error 1 code                 | 0   | 255   | 1          | ASCII | displayed error code                                                                                                                                       |
 | 8-9       | Error 1 code numeric         | 0   | 65535 | 1          | enum  | numerical part of displayed error                                                                                                                          |
 | 10        | Error 1 start year           | 0   | 255   | 1          |       | Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13 |
@@ -234,7 +257,7 @@ _Offset of variables:_
 
 ### Telegram: 0x00C2
 
-_Name:_ Local device error history
+_Name:_ Local device error history  
 _Used in:_ Various controllers, thermostats and boilers  
 _Description:_ Hold the history of errors. Each device has it´s own list of own errors. Error 1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0010 and 0x0011.  
 _Class:_ monitor  
