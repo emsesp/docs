@@ -80,7 +80,7 @@ Examples:
 | `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | sets the room temperature to 23 degrees for for heating circuit 3 |
 | `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | sets the room temperature to 20.5 degrees for for heating circuit 2 |
 
-### Fetching custom entities (EMS telegrams)
+### Fetching and writing to custom entities
 
 The URL path is `http://<hostname>/api/custom/`
 
@@ -88,7 +88,9 @@ The URL path is `http://<hostname>/api/custom/`
 | endpoint | HTTP method | action | authentication required? | post body |
 | - | - | - | - | - |
 | blank or `info`| GET | outputs all custom entities and their values | no | |
+| `commands` | GET | lists the available custom entity commands | no | |
 | `<name>` | GET | outputs all characteristics for a specific custom entity | no | |
+| `<name>` | POST | updates a custom entity value, for writing | yes | `<data>` |
 
 ### Fetching Temperature Sensor information
 
