@@ -8,28 +8,31 @@ There are 3 methods commands can be invoked:
 
 ## Definitions
 
-First some important definitions.
-
 <!-- prettier-ignore -->
-!!! important
-    - `<device>` is the short-name. It can be either
-        1. an EMS Device and supported devices include: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
-        - the EMS-ESP system itself identified as `system`
-        - the Dallas temperature sensors as `temperaturesensor`
-        - any custom Analog sensors as `analogsensor`
-        - any EMS telegram custom entities as `custom`
+!!! important "Important Definitions"
+    - `<device>` is the short-name. It can be either:
+
+        * a EMS Device and supported devices include: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
+        * the EMS-ESP system itself identified as `system`
+        * the Dallas temperature sensors as `temperaturesensor`
+        * any custom Analog sensors as `analogsensor`
+        * any EMS telegram custom entities as `custom`
     - `<command>` is the name of either
-        - a generic command, or
-        - an EMS device entity also referred to as an `<entity>`. See the [Supported Devices](All-Devices) page for the complete list
+        * a generic command, or
+        * an EMS device entity also referred to as an `<entity>`. See the [Supported Devices](All-Devices) page for the complete list
     - `<id>` is an optional identifier and has different meanings depending on the context
     - `<data>` is used to represent the value to read or write. It can be either a single value as any type (integer, float, string or boolean) or a JSON object {} string containing multiple key/values pairs as:
-          - **"cmd"** is the `<command>`. The key **"cmd"** may also be substituted for **"entity"**.
-          - **"value"** is the value and can be either a text string in quotes, an integer, float of boolean. **"data"** is an alias that can also be used instead for the key.
-          - **"hc"**, **"wwc"** and **"id"** are all are used to represent a value or in the context of an EMS Device a heating or warm water circuit.
 
-    Note: A boolean value can be represented in many forms:
-        - as a True value, "TRUE", "yes", true, "true", "on", 1
-        - as a False value, "FALSE", "no", false, "false", "off", 0
+        * **"cmd"** is the `<command>`. The key **"cmd"** may also be substituted for **"entity"**.
+        * **"value"** is the value and can be either a text string in quotes, an integer, float of boolean. **"data"** is an alias that can also be used instead for the key.
+        * **"hc"**, **"wwc"** and **"id"** are all are used to represent a value or in the context of an EMS Device a heating or warm water circuit.
+
+    - A boolean value can be represented in many forms:
+
+        * as a True value, "TRUE", "yes", true, "true", "on", 1
+        * as a False value, "FALSE", "no", false, "false", "off", 0
+
+    - The bearer Access Token is used to authenticate the HTTP requests and is generated from the WebUI's Security->Manage Users and then clicking on the key button for the `admin` user. The 152 character long string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date.
 
 ## Console
 
@@ -146,6 +149,10 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 | `syslog/enabled` | GET | enable/disable syslog | yes | `<bool>` |
 
 ### Examples
+
+!!! tip "Note"
+
+    In these examples the URL is `http://ems-esp.local/api/` but adjust to your actual hostname. Also the change the bearer access token to your own as described in the [Definitions](#definitions) section.
 
 #### ...via the command line
 
