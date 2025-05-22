@@ -13,7 +13,7 @@ The full Contributing guidelines can found in [CONTRIBUTING.md](https://github.c
 
 ## Keeping the code tidy
 
-The web code uses `prettier`. To auto format run `yarn format` from the `interface` folder.
+The web code uses `prettier`. To auto format run `pnpm format` from the `interface` folder.
 
 The C++ code use `clang`. The easiest way to auto format the code is using the VSCode [Format Files](https://marketplace.visualstudio.com/items?itemName=jbockle.jbockle-format-files) extension. Then run the command `Start Format Files: From Glob` and select `src/**` as the glob pattern.
 
