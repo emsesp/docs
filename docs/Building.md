@@ -6,14 +6,13 @@ To start, you will need the following software packages installed:
 
 - [PlatformIO](https://platformio.org/)
 - [Node.js](https://nodejs.org)
-- [yarn](https://yarnpkg.com/getting-started/install)
+- pnpm (`corepack use pnpm@latest-10` on linux or `winget install -e --id pnpm.pnpm` on windows). See <https://pnpm.io/installation>
 
 Visual Studio Code is recommended as the IDE to use with PlatformIO.
 
 Special notes for Windows users:
 
 - on Windows 10 you will need to enable UTF-8 from the Regional Settings, for compiling the Slovakian translations.
-- on some Windows system you may also need to run `corepack enable` before installing `yarn`. Seen the link above.
 
 PlatformIO's default targets are used specifically by the GitHub CI (Continuous Integration) process to to build firmware binaries for various ESP32 boards. These targets start with 'ci\_' as seen in the `platformio.ini` file and should not be used. If you see the error "fatal error: WWWData.h: No such file or directory" then you are using the wrong target. For local builds create a `pio_local.ini` file (an example file is provided) and choose the target board you want to build for. You can also set additional flags here such as DEBUG for additional debug information or TEST to load the unit tests. You can also choose how to upload the firmware, via USB or OTA.
 
@@ -27,13 +26,13 @@ Build the mock API data service:
 
 ```sh
 % cd mock-api
-% yarn
+% pnpm install
 ```
 
 and then from the `interface` folder run:
 
 ```sh
-% yarn standalone
+% pnpm standalone
 ```
 
 Make sure you have the latest version of node installed. You need at least 18.20 and can check with `node -v`. An easy way to switch between different node versions is to use [nvm](https://github.com/nvm-sh/nvm).
@@ -100,7 +99,6 @@ Go into the WSL instance (`wsl`) and setup the following:
 - `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` (optional) to install zsh
 - `npm install -g npm-check-updates` for the ncu command
 - `curl -fsSL https://bun.sh/install | bash` for the mock-api
-- `yarn set version stable` in both `interface` and `mock-api` folders to get the latest Yarn version. Also here, do a `yarn config set --home enableTelemetry 0` to stop yarn spying on you.
 
 To usb USB install <https://github.com/dorssel/usbipd-win/releases> from an DOS Admin command window. In that window you can use `usbipd list` to find the COM port and then for example `usbipd bind -b 1-6` and `usbipd attach -w -b 1-6` to attach it to the WSL instance. This will give you a `/dev/ttyUSB0` or `/dev/ttyACM0` device.
 
