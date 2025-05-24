@@ -32,7 +32,7 @@ There are 3 methods commands can be invoked:
         * as a True value, "TRUE", "yes", true, "true", "on", 1
         * as a False value, "FALSE", "no", false, "false", "off", 0
 
-    - The bearer Access Token is used to authenticate the HTTP requests and is generated from the WebUI's Security->Manage Users and then clicking on the key button for the `admin` user. The 152 character long string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date.
+    - The bearer Access Token (JWT) is used to authenticate HTTP requests and can be obtained from the WebUI's `Settings->Security->Manage Users` page and then clicking on the key icon for the user that has admin privileges (`is Admin` set). The token is generated using a combination of the username and a secret key which is the super user (su) password found in the WebUI's `Settings->Security->Security Settings` page. This 152 character long string must be included in the HTTP header as `"Authorization: Bearer {ACCESS_TOKEN}"`. Note the token has no expiry date.
 
 ## Console
 
@@ -51,7 +51,7 @@ Things to note:
 - The REST API follows the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
 - The URL path always starts with `http://<hostname>/api/`
 - `<hostname>` is either an IP address or the mDNS name, which default is `ems-esp.local`
-- Some commands require can be dangerous and require security authentication, unless disabled via an EMS-ESP setting. The authentication is in the form of an Access Token which is generated from the WebUI's Security->Manage Users and then clicking on the key button for the admin user. The 152 character long string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date
+- Some commands require security authentication, unless disabled via an EMS-ESP setting. The authentication is in the form of an Access Token which is generated from the WebUI's Security->Manage Users and then clicking on the key button for the admin user. The 152 character long string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date
 - With HTTP PUSH/PUT/PATCH commands an HTTP body may be required. This can be in the form of either plain text or as a JSON object `<data>`
 - HTTPS with self-signed certificates are not yet supported
 - For a complete list of commands use `http://<hostname>/api/<device>/commands`
