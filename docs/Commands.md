@@ -209,11 +209,9 @@ print(response.json())
 
 ## MQTT
 
-MQTT uses the same format as the API.
+MQTT uses the same format as the API, but with a few differences. For the **topic** the `<hostname>` is replaced with the MQTT Base name as defined in the Settings (default is `ems-esp`). The `<device>` follows the same names as listed at the top of this page. For example `ems-esp/thermostat/<entity>` or `ems-esp/custom/<name>`.
 
-The **topic** matches the URL path except the `<hostname>` is replaced with the MQTT Base name as defined in the Settings (default is ems-esp).
-
-The **payload** is the same as the `<data>` as described above and used in the API.
+The MQTT **payload** is the same as the `<data>` as described above and used in the API, and can be a JSON object or a string.
 
 Examples:
 
@@ -225,6 +223,7 @@ Examples:
 | `ems-esp/thermostat/seltemp` | `23` | change the selected setpoint temperature to 23 degrees on the master thermostat on hc1 |
 | `ems-esp/thermostat/mode` | `auto` | sets the thermostat mode to auto for hc1 |
 | `ems-esp/thermostat` | `{\"cmd\":\"mode\",\"value\":\"heat\",\"id\":1}` | sets the thermostat mode to heat for hc1 |
+| `ems-esp/custom/myCustomEntity` | `7` | sets the value of the EMS-ESP Custom Entity named `myCustomEntity` to 7 |
 
 ### Publishing Commands
 
