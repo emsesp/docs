@@ -17,7 +17,7 @@ This is the current list of supported boilers from brands like Buderus, Nefit, S
 - Cascade MCM10
 - Nefit Proline
 - Nefit Smartline
-- GC7000F, GC9800IW
+- GC7000F, GC700iW, GC9800IW
 - KB195i
 - Hybrid Heatpump
 - Enviline
