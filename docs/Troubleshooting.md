@@ -56,7 +56,7 @@ The ESP32 has very limited RAM, split between run-time stack and the heap. The h
 
 ### EMS-ESP becomes unresponsive
 
-If EMS-ESP becomes unresponsive and you cannot access the WebUI, follow these steps:
+If the EMS-ESP becomes unresponsive and you cannot access the WebUI, follow these steps:
 
 - Check your network router to see if ems-esp is still active. If you're running a Mesh of WiFi Access Points it may have been roamed to a new location or switched WiFi channels. The work-around for this is to set a BSSID in EMS-ESP (WiFI only).
 - Look at the on-board LED, if you haven't disabled it. If the LED is flashing or solid it means EMS-ESP is still running.
@@ -65,6 +65,15 @@ If EMS-ESP becomes unresponsive and you cannot access the WebUI, follow these st
 - If EMS-ESP has restarted itself check the system logs for the Reset Reason. It will be one of the first messages. See above.
 - Attach the board to a computer via USB, without restarting on powering down EMS-ESP and access the Serial console to see if there are any errors.
 - Lastly, log a GitHub issue with the Support Info and details of your setup.
+
+### You forgot the admin password
+
+If you forgot the admin password, you can reset it via the Console using the `set admin password` command.
+
+```sh
+ems-esp:$ su
+ems-esp:# set admin password
+```
 
 ## EMS Data and Connectivity
 

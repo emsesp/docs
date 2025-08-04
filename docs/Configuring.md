@@ -63,7 +63,7 @@ Choosing `Custom` will show the following additional settings to manually config
 >
 > - **Rx GPIO** - Which GPIO pin the Rx is assigned to. By default this is GPIO 23 but it can be almost any free pin. Connect this GPIO pin to the RX port on the EMS interface board.
 > - **Tx GPIO** - Which GPIO pin the Tx is assigned to. By default this is GPIO 5 but it can be almost any free pin. Connect this GPIO pin to the TX port on the EMS interface board.
-> - **Button GPIO**. Set a pin with pull-up. The button is used for different functions, such as holding for 10 seconds to reset to factory settings.
+> - **Button GPIO**. Set a pin with pull-up. The button is used for different functions, such as holding for 10 seconds and releasing to reset to factory settings.
 > - **Temperature GPIO**. This is the pin where any external temperature sensors are attached. The Dallas chips DS1822, DS18S20, DS18B20, DS1825 are supported including their parasite varieties and can also be daisy-chained onto a single line, up to 100 sensors.
 > - **LED GPIO**. This is the pin for the LED, defaulted to the onboard LED on the ESP dev board.
 > - **Eth PHY Type** for choosing the Ethernet chip used.
