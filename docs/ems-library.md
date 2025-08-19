@@ -191,6 +191,55 @@ _Offset of variables:_
 | 12 - 23   | Error 2                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
 | 24 - 35   | Error 3                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
 | 36 - 47   | Error 4                      |     |       |            |       | same as offset 0 ff. for error 1                                                                                                                                  |
+
+### Telegram: 0x0026
+
+_Name:_ EMS service tool heating parameters  
+_Used in:_ HT3 Junkers systems  
+_Description:_ This telegrams contains HT3 configuration parameters for Netcom service tools   
+_Class:_ parameter  
+_EMS category:_ EMS1.0  
+_Distribution:_ unicast-on-request, broadcast-on-change, broadcast-on-power-up, unicast-write-request   
+_Offset of variables:_
+
+| Offset    | Variable name                | min | max   | resolution | unit  | comment                                                   |
+| --------- | ---------------------------- | --- | ----- | ---------- | ----- | --- |
+| 0 | CH pump speed | 1 | 10 | 1 | enum | 1 = No predefined settings. Minimum pump speed telegram 0x16,offset 10 and maximum pump speed telegram 0x16 offset 9 manually adjustable; 2-7 = Constant speeds (minimum pump speed telegram 0x16 offset 10 and maximum pump speed telegram 0x16 offset 9 are the same). 8-10 = Predefined minimum pump speed 0x16 offset 10 and maximum pump speed 0x16 offset 9 settings. |
+| 1 | pump switch mode | 0 | 5 | 1 | enum | auto = 0, according burner = 1, acc room temp control = 2,  acc outdoor temp control = 3, acc outdoor temp control optimized = 4, enery saving = 4, acc CH heat request = 5 |
+| 2 | automatic anti cycle mode | -1 | 0 | 1 | bool | time delay between switching the boiler off and on again, 0 = off, FF = on |
+| 3 | Min appliance power for CH and dhw | 0 | 100 | 1 | percent | |
+| 4 | Fan overrun time | 1 | 18 | 1 | 10 sec | |
+| 5 | min flow temp setpoint | 30 | 90 | 1 | °C | |
+| 6 | max flow temp setpoint | 30 | 90 | 1 | °C | |
+| 7 | max appliance power in CH mode | 0 | 100 | 1 | percent | |
+
+### Telegram: 0x0027
+
+_Name:_ EMS service tool dhw parameters  
+_Used in:_ HT3 Junkers systems  
+_Description:_ This telegrams contains HT3 configuration parameters for Netcom service tools   
+_Class:_ parameter  
+_EMS category:_ EMS1.0  
+_Distribution:_ unicast-on-request, broadcast-on-change, broadcast-on-power-up, unicast-write-request   
+_Offset of variables:_
+
+| Offset    | Variable name                | min | max   | resolution | unit  | comment                                                   |
+| --------- | ---------------------------- | --- | ----- | ---------- | ----- | --- |
+| 0 | thermal desinfection | -1 | 0 | 1 | bool | 0 = no, FF = yes |
+| 1 | anti cycle time for dhw | 20 | 60 | 1 | min | time delay between switching the boiler off and on again |
+| 2 | dhw standby time after tapping | 0 | 30 | 1 | min | |
+| 3 | max pre heat temp | 40 | 65 | 1 | °C | |
+| 4 | water flow threshold for dhw demand | 25 | 50 | 1 | 0.1 l/min | |
+| 5 | turbine signal delay time | 2 | 16 | 1 | 0.25 sec | |
+| 6 | hot water on demand active | -1 | 0 | 1 | bool | 0 = off, FF = on |
+| 7 | activate stratifying tank pump for circulation | -1 | 0 | 1 | bool | 0 = off, FF = on |
+| 8 | pump off in case of dhw demand | -1 | 0 | 1 | bool | 0 = off, FF = on |
+| 9 | solar mode min activation time | 0 | 50 | 1 | min | |
+| 10 | max appliance power in dhw mode | 0 | 100 | 1 | percent | |
+| 11 | min dhw temperature | 10  80 | 1 | °C | user interface knob left position |
+| 12 | max dhw temperature | 10  80 | 1 | °C | user interface knob right position |
+| 13 | maximum of the max of the appliance power in dhw mode | 0 | 100 | 1 | percent | |
+
 ### Telegram: 0x00BF
 
 _Name:_ Local error list  
