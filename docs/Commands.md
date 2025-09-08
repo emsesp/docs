@@ -52,9 +52,10 @@ Things to note:
 - The URL path always starts with `http://<hostname>/api/`
 - `<hostname>` is either an IP address or the mDNS name, which default is `ems-esp.local`
 - Some commands require security authentication, unless disabled via an EMS-ESP setting. The authentication is in the form of an Access Token which is generated from the WebUI's Security->Manage Users and then clicking on the key button for the admin user. The 152 character long string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date
-- With HTTP PUSH/PUT/PATCH commands an HTTP body may be required. This can be in the form of either plain text or as a JSON object `<data>`
+- With HTTP POST commands an HTTP body may be required. This can be in the form of either plain text or as a JSON object `<data>`, the Content-Type-header has to be set to `application/json` in both cases.
 - HTTPS with self-signed certificates are not yet supported
 - For a complete list of commands use `http://<hostname>/api/<device>/commands`
+- using ems-esp v2-api style GET commands is still suported (`http://<hostname>/api?device=<device>&id=<id>&cmd=<cmd>`)
 
 ### Reading and Writing EMS Device information
 
@@ -78,10 +79,13 @@ Examples:
 <!-- prettier-ignore -->
 | URL | post body | action |
 | - | - | - |
-| `http://ems-esp.local/api/thermostat/temp` | `22` | sets the selected room temperature of the master thermostat on heating circuit 1 |
+| `http://ems-esp.local/api/thermostat/seltemp` | `22` | sets the selected room temperature of the master thermostat on heating circuit 1 |
+| `http://ems-esp.local/api/thermostat/hc2/seltemp` | `{"data":22}` | sets the selected room temperature of the master thermostat on heating circuit 2 |
+| `http://ems-esp.local/api/thermostat/mode` | `'auto'` | sets the thermostat mode to auto for heating circuit 1 |
 | `http://ems-esp.local/api/thermostat` | `{"cmd":"mode", "data":"auto"}` | sets the thermostat mode to auto for heating circuit 1 |
-| `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | sets the room temperature to 23 degrees for for heating circuit 3 |
-| `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | sets the room temperature to 20.5 degrees for for heating circuit 2 |
+| `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | sets the selected room temperature to 23 degrees for for heating circuit 3 |
+| `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | sets the selected room temperature to 20.5 degrees for for heating circuit 2 |
+| `http://ems-esp.local/api` | `{"device":"thermostat", cmd":"seltemp", "data":23, "hc":3}` | sets the selected room temperature of the master thermostat on heating circuit 3 |
 
 ### Fetching and writing to custom entities
 
@@ -93,6 +97,7 @@ The URL path is `http://<hostname>/api/custom/`
 | blank or `info`| GET | outputs all custom entities and their values | no | |
 | `commands` | GET | lists the available custom entity commands | no | |
 | `<name>` | GET | outputs all characteristics for a specific custom entity | no | |
+| `<name>/<attribute>` | GET | outputs for a attribute of a specific custom entity | no | |
 | `<name>` | POST | updates a custom entity value, for writing | yes | `<data>` |
 
 ### Fetching Temperature Sensor information
@@ -105,6 +110,7 @@ The URL path is `http://<hostname>/api/temperaturesensor/`
 | blank | GET | outputs connected Dallas temperature sensor names and readings | no | |
 | `info` | GET | outputs all details on the connected Dallas temperature sensors | no | |
 | `<name>` | GET | outputs all characteristics for a specific temperature sensors | no | |
+| `<name>/value` | GET | outputs the value of a specific temperature sensor | no | |
 
 ### Controlling the Analog Sensors
 
@@ -222,7 +228,7 @@ Examples:
 | `ems-esp/thermostat/seltemp` | | fetches the seltemp entity values and publishes it in the topic `ems-esp/response` |
 | `ems-esp/thermostat/seltemp` | `23` | change the selected setpoint temperature to 23 degrees on the master thermostat on hc1 |
 | `ems-esp/thermostat/mode` | `auto` | sets the thermostat mode to auto for hc1 |
-| `ems-esp/thermostat` | `{\"cmd\":\"mode\",\"value\":\"heat\",\"id\":1}` | sets the thermostat mode to heat for hc1 |
+| `ems-esp/thermostat` | `{"cmd":"mode","value":"heat","id":1}` | sets the thermostat mode to heat for hc1 |
 | `ems-esp/custom/myCustomEntity` | `7` | sets the value of the EMS-ESP Custom Entity named `myCustomEntity` to 7 |
 
 ### Publishing Commands
