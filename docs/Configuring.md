@@ -216,7 +216,6 @@ Pay attention to the following rules:
 - condition command is only executed on a change of the condition from `false` to `true`. If the condition stays true, the command is not repeated
 - a command Value can also be a formula
 - allowed operations:
-
   - arithmetic: `+` `-` `*` `/` `%`
   - functions: `round` `abs` `int` `exp` `log` `sqrt` `pow`, `hex`
   - logic: `==` `!=` `<=` `>=` `<` `>` `&&` `||`

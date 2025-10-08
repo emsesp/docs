@@ -1,4 +1,4 @@
-# List of Controller Modules
+# List of supported Controller Modules
 
 This is the current list of supported controller modules:
 

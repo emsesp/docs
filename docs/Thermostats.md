@@ -1,4 +1,4 @@
-# List of Thermostats
+# List of supported Thermostats
 
 This is the current list of supported thermostats from brands like Buderus, Nefit, Sieger, Junkers and Bosch:
 

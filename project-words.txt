@@ -1088,4 +1088,6 @@ invertiert
 hometop
 Fxyz
 Cxyz
-
+winget
+Netcom
+prio

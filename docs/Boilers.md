@@ -1,4 +1,4 @@
-# List of Boilers
+# List of supported Boilers
 
 This is the current list of supported boilers from brands like Buderus, Nefit, Sieger, Junkers and Bosch:
 

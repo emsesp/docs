@@ -7,21 +7,26 @@ edit_uri: 'https://github.com/emsesp/docs/blob/master/docs/'
 docs_dir: docs
 copyright: 'Copyright &copy; 2025 emsesp.org'
 
+# Enable strict mode for better error detection
+# strict: true
+
 plugins:
-  # - htmlproofer
   - search
   - alternate-link
   - minify:
       minify_html: true
+      minify_js: true
+      minify_css: true
   - redirects:
       redirect_maps:
+        # Add your redirect mappings here
   - table-reader
-  - git-revision-date-localized
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
   - git-committers:
       repository: emsesp/docs
       branch: main
-
-# strict: true
 
 theme:
   name: material
@@ -29,13 +34,25 @@ theme:
   # custom_dir: 'overrides'
   logo: '_media/logo/boiler.svg'
   favicon: _media/favicon.ico
+
   palette:
+    # Light mode
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Dark mode
     - media: '(prefers-color-scheme: dark)'
       scheme: slate
-      # primary: blue grey
-      # accent: light blue
-      primary: custom
-      accent: custom
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
 
   features:
     - navigation.instant
@@ -43,6 +60,16 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
+    - navigation.expand
+    - navigation.sections
+    - navigation.path
+    - navigation.indexes
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+    - content.action.view
 
   font:
     text: Barlow
@@ -52,40 +79,81 @@ extra:
   social:
     - icon: fontawesome/brands/discord
       link: 'https://discord.gg/3J3GgnzpyT'
+      name: Discord
     - icon: fontawesome/brands/github-alt
       link: 'https://github.com/emsesp/EMS-ESP32'
+      name: GitHub
+
   analytics:
     provider: google
     property: G-SVDSJ3QTVC
+
+  version:
+    provider: mike
+
   generator: false
 
+  # Additional Material theme options
+  tags:
+    - name: installation
+      description: Installation guides and setup instructions
+    - name: configuration
+      description: Configuration and setup guides
+    - name: devices
+      description: Supported devices and hardware
+    - name: integrations
+      description: Third-party integrations and APIs
+    - name: troubleshooting
+      description: Troubleshooting guides and solutions
+
 markdown_extensions:
+  # Core extensions
   - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+
+  # Navigation and structure
   - toc:
       permalink: '~'
+      permalink_title: 'Link to this section'
       toc_depth: 3
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.betterem
+      title: 'On this page'
+
+  # Text formatting
+  - pymdownx.betterem:
+      smart_enable: all
   - pymdownx.caret
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.highlight:
-      linenums: true
   - pymdownx.keys
   - pymdownx.mark
-  - pymdownx.superfences
-  - pymdownx.snippets
   - pymdownx.tilde
-  - pymdownx.details
-  - meta
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+
+  # Emoji support
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
   - def_list
   - attr_list
   - md_in_html
-  # support pad width = 2, as formatted with prettier
   - mdx_truly_sane_lists
+
+  # Metadata
+  - meta
 
 extra_css:
   - 'assets/css/anchor-fix.css'
@@ -100,64 +168,36 @@ extra_javascript:
 nav:
   - Home:
       - News: index.md
-      - About EMS-ESP: About.md
+      - About: About.md
       - Version Release History: Version-Release-History.md
-      - Installing EMS-ESP: Installing.md
-      - Configuring EMS-ESP: Configuring.md
+      - Installing: Installing.md
+      - Configuring: Configuring.md
       - WebUI: WebUI.md
       - MQTT: MQTT.md
       - Commands: Commands.md
       - Console: Console.md
       - Special Functions: Special-Functions.md
-      - Modbus/TCP:
-          - Modbus: Modbus.md
-          - Settings: Modbus-Settings.md
-          - Server Unit Identifiers: Modbus-Server-IDs.md
-          - The SYSTEM Server: Modbus-System-Server.md
-          - Register Block Offsets: Modbus-Register-Blocks.md
-          - Entity Register Offsets: Modbus-Entity-Registers.md
-      - Supported Devices:
-          - All EMS Devices and their Entities: All-Devices.md
-          - Boilers: Boilers.md
-          - Thermostats: Thermostats.md
-          - Solar Modules: Solar-Modules.md
-          - Mixer Modules: Mixer-Modules.md
-          - Heat Pumps: Heat-Pumps.md
-          - Controllers: Controllers.md
-          - Switches: Switches.md
-          - Other Devices: Other-Devices.md
-      - Integrations:
-          - Introduction: Integrations.md
-          - Home Assistant: Home-Assistant.md
-          - IOBroker: IOBroker.md
-          - Domoticz: Domoticz.md
-          - openHAB: openHAB.md
-          - Loxone: Loxone.md
-          - Grafana: Grafana.md
-          - Modbus: Modbus.md
-      - Help:
-          - Support: Support.md
-          - Troubleshooting: Troubleshooting.md
-          - FAQ: FAQ.md
-          - Tips & Tricks: tips-and-tricks.md
-          - EMS Library: ems-library.md
-      - For Developers:
-          - Building & Testing the Firmware: Building.md
-          - Adding Languages: Adding-Languages.md
-          - Contributing: Contributing.md
-          - The EMS protocol: EMS-bus.md
-          - Maintaining Modbus Parameters: Modbus-Dev.md
-          - Building an EMS circuit: EMS-Circuit.md
-  - Supported Devices:
-      - All Devices and Entities: All-Devices.md
+      - Supported EMS Devices: All-Devices.md
+      - All Entities: All-Entities.md
+      - EMS Telegrams: EMS-Telegrams.md
+      - Integrations: Integrations.md
+      - Help: Support.md
+      - For developers: Building.md
+
+  - Devices:
+      - Introduction: All-Devices.md
       - Boilers: Boilers.md
       - Thermostats: Thermostats.md
-      - Solar Modules: Solar-Modules.md
-      - Mixer Modules: Mixer-Modules.md
+      - Controllers Modules: Controllers.md
       - Heat Pumps: Heat-Pumps.md
-      - Controllers: Controllers.md
-      - Switches: Switches.md
-      - Other Devices: Other-Devices.md
+      - Alert Modules: Alert.md
+      - Connect Modules: Connect.md
+      - Extension Modules: Extension.md
+      - Gateway Modules: Gateways.md
+      - Mixer Modules: Mixer-Modules.md
+      - Solar Modules: Solar-Modules.md
+      - Switch Modules: Switches.md
+
   - Integrations:
       - Introduction: Integrations.md
       - Home Assistant: Home-Assistant.md
@@ -167,8 +207,29 @@ nav:
       - Loxone: Loxone.md
       - Grafana: Grafana.md
       - Modbus: Modbus.md
+
+  - Modbus:
+      - Introduction: Modbus.md
+      - Settings: Modbus-Settings.md
+      - Entity Registers: Modbus-Entity-Registers.md
+      - Register Blocks: Modbus-Register-Blocks.md
+      - Server IDs: Modbus-Server-IDs.md
+      - System Server: Modbus-System-Server.md
+
   - Help:
       - Support: Support.md
       - Troubleshooting: Troubleshooting.md
       - FAQ: FAQ.md
       - Tips & Tricks: tips-and-tricks.md
+
+  - Developers:
+      - Building & Testing the Firmware: Building.md
+      - Adding Languages: Adding-Languages.md
+      - Contributing: Contributing.md
+      - The EMS protocol: EMS-bus.md
+      - EMS Library: ems-library.md
+      - Building an EMS circuit: EMS-Circuit.md
+
+# Additional configuration for better compatibility
+use_directory_urls: true
+dev_addr: '127.0.0.1:8000'

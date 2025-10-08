@@ -45,7 +45,7 @@ Note, if the control is set to `roomthermostat` and the first temperature value 
 !!! warning "Disclaimer"
     With the remote setting of the humidity you are able to set a heat pump to start cooling even when it is below the actual dew point, which can cause condensation on pipes and the floor, and subsequently damage the system. Use at your own risk!
 
-### Scheduling temperatures
+### Scheduling temperature settings
 
 The EMS-ESP Scheduler can be used to permanently maintain the remote thermostat's values. The thermostat is recreated once the command is and has an initial value as shown below:
 
@@ -61,3 +61,20 @@ If you have an external Dallas temperature sensor attached to the EMS-ESP you ca
 With both a temperature and humidity value set, the emulated RC100H would look lie this:
 
 ![EMS-SCHEDULE-MAIN](_media/screenshot/scheduler_b.jpg)
+
+## Using the Message API for advanced logic functions
+
+You can use the system API endpoint `message` to text send a message to the log and MQTT, however the message can also contain complex logic similar to that seen in the Scheduler. For example sending
+
+``` sh
+curl -X POST \
+    -H "Authorization: Bearer ${emsesp_token}" \
+    -H "Content-Type: application/json" \
+    -d '{"value":"system/settings/locale"}' \
+    ${emsesp_url}/api/system/message
+```
+
+And examples replacing the value with:
+
+- `(custom/test_seltemp - boiler/flowtempoffset) * 2.8 + 5"`
+- `"boiler/storagetemp2 == null ? 'no' : 'yes'"`

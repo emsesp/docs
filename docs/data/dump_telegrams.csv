@@ -15,7 +15,7 @@ telegram_type_id,name,is_fetched
 0x1C,UBAMaintenanceStatus, 
 0x1E,HydrTemp, 
 0x23,JunkersSetMixer,fetched
-0x26,UBASettingsWW,fetched
+0x27,UBASettingsWW,fetched
 0x28,WeatherComp,fetched
 0x2A,MC110Status, 
 0x2E,Meters, 
@@ -76,7 +76,7 @@ telegram_type_id,name,is_fetched
 0x0103,ISM1StatusMessage,fetched
 0x0104,ISM2StatusMessage, 
 0x010C,IPMStatusMessage, 
-0x011E,IPMTempMessage, 
+0x011E,JunkersDisp,fetched
 0x012E,HPEnergy1, 
 0x013B,HPEnergy2, 
 0x0165,JunkersSet, 
@@ -111,7 +111,7 @@ telegram_type_id,name,is_fetched
 0x02A0,RC300Curves, 
 0x02A1,RC300Curves, 
 0x02A2,RC300Curves, 
-0x02A5,EasyMonitor, 
+0x02A5,RC300Monitor, 
 0x02A6,RC300Monitor, 
 0x02A7,RC300Monitor, 
 0x02A8,RC300Monitor, 
@@ -135,13 +135,14 @@ telegram_type_id,name,is_fetched
 0x02BE,RC300Set, 
 0x02BF,RC300Set, 
 0x02C0,RC300Set, 
-0x02CC,RC300Set2, 
+0x02CC,HPPressure,fetched
 0x02CD,MMPLUSConfigMessage,fetched
 0x02CE,RC300Set2, 
 0x02D0,RC300Set2, 
 0x02D2,RC300Set2, 
 0x02D6,HPPump2,fetched
 0x02D7,MMPLUSStatusMessage, 
+0x02E0,UBASetPoints, 
 0x02F5,RC300WWmode,fetched
 0x02F6,RC300WW2mode,fetched
 0x0313,MMPLUSConfigMessage_WWC,fetched
@@ -198,6 +199,7 @@ telegram_type_id,name,is_fetched
 0x04AA,HPPower2,fetched
 0x04AE,HPEnergy,fetched
 0x04AF,HPMeters,fetched
+0x055C,VentilationSet,fetched
 0x056B,VentilationMode,fetched
 0x0583,VentilationMonitor, 
 0x0585,Blowerspeed, 

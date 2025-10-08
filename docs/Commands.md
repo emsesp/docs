@@ -55,7 +55,7 @@ Things to note:
 - With HTTP POST commands an HTTP body may be required. This can be in the form of either plain text or as a JSON object `<data>`, the Content-Type-header has to be set to `application/json` in both cases.
 - HTTPS with self-signed certificates are not yet supported
 - For a complete list of commands use `http://<hostname>/api/<device>/commands`
-- using ems-esp v2-api style GET commands is still suported (`http://<hostname>/api?device=<device>&id=<id>&cmd=<cmd>`)
+- using ems-esp v2-api style GET commands is still supported (`http://<hostname>/api?device=<device>&id=<id>&cmd=<cmd>`)
 
 ### Reading and Writing EMS Device information
 
@@ -139,7 +139,7 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 | `format` | GET | factory reset's EMS-ESP | yes | |
 | `commands` | GET | lists the available system commands | no | |
 | `send` | POST | send telegram to the EMS bus | yes | `"XX XX...XX"` |
-| `message` | POST | send a message to the log and MQTT | yes | `".."` |
+| `message` | POST | send a message to the log and MQTT. The message can also a logic command as used in the Scheduler | yes | `".."` or `'{"value":"system/settings/locale"}'` |
 | `publish` | POST | MQTT publish all values, and optional HA-configuration or specific for a device | no | `[ha] \| [device]` |
 | `watch` | POST | watch incoming telegrams | no | `<on \|off \| raw \| <type-id(hex)>` |
 | `values` | GET | outputs all values in short format | no | |

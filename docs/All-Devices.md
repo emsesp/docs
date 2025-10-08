@@ -4,31 +4,31 @@
 
 Most Bosch branded boilers that support the Logamatic EMS bus protocols work with this design. This includes Nefit, Buderus, Worcester, Junkers and Sieger (all copyrighted).
 
-EMS devices are being constantly added to the database on each new release.
+EMS devices are being constantly added to the database on each new EMS-ESP firmware release.
 
-The following device types are supported:
+The following EMS device types are supported:
 
-- boiler
-- thermostat
-- heatpump
-- heatsource
-- solar
-- connect
-- mixer
-- controller
-- switch
-- gateway
-- alert
-- pump
+- [boiler](Boilers.md)
+- [thermostat](Thermostats.md)
+- [heatpump](Heat-Pumps.md)
+- [heatsource](Heat-Pumps.md)
+- [ventilation](Heat-Pumps.md)
+- [solar](Solar-Modules.md)
+- [connect](Connect.md)
+- [mixer](Mixer-Modules.md)
+- [controller](Controllers.md)
+- [switch](Switches.md)
+- [gateway](Gateways.md)
+- [alert](Alert.md)
+- [extension](Extension.md)
+- water
+- pool
+- generic
 
 ## All EMS Telegrams
 
-[Download the full CSV file](data/dump_telegrams.csv)
-
-{{ read_csv('docs/data/dump_telegrams.csv') }}
+For a comprehensive list of all EMS telegrams, see the [EMS Telegrams](EMS-Telegrams.md) page.
 
 ## All devices and entities
 
-[Download the full CSV file](data/dump_entities.csv)
-
-{{ read_csv('docs/data/dump_entities.csv') }}
+For a comprehensive list of all devices and entities, see the [All Entities](All-Entities.md) page.
