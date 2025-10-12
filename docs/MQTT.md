@@ -1,38 +1,182 @@
-## Published Data
+---
+title: MQTT Integration
+description: Complete guide to MQTT integration with EMS-ESP for home automation systems
+---
 
-When MQTT is enabled EMS-ESP will publish MQTT topics for each device. The frequency can be configured from the WebUI to be either sent when data changes are detected or set to a specific period in seconds which is kinder on network traffic.
+<div class="mqtt-hero" style="text-align: center; margin: 2rem 0; padding: 2rem; background: var(--md-default-bg-color--lighter); border-radius: 10px; border: 1px solid var(--md-default-fg-color--lightest);">
+  <div style="font-size: 3rem; margin-bottom: 1rem;">📡</div>
+  <h1 style="margin: 0; color: var(--md-default-fg-color);">MQTT Integration</h1>
+  <p style="font-size: 1.2rem; margin: 1rem 0; color: var(--md-default-fg-color--light);">
+    Connect EMS-ESP to your home automation system via MQTT
+  </p>
+</div>
 
-When MQTT Discovery is enabled, EMS-ESP will automatically create a special Discovery topics (with `/config`) for each EMS device entity that has received a valid value in EMS-ESP. If the entity should disappear (i.e. no longer has a valid value in an EMS telegram) then the discovery topic is automatically removed. This is to avoid warnings in systems like Home Assistant. When EMS-ESP starts all prior Discovery topics are removed to keep system clean.
+<div class="mqtt-overview" style="margin: 3rem 0;">
+  <h2 style="color: var(--md-default-fg-color);">📊 Published Data</h2>
+  
+  <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest); margin-bottom: 2rem;">
+    <p style="margin: 0; color: var(--md-default-fg-color);">
+      When MQTT is enabled, EMS-ESP will publish MQTT topics for each device. The frequency can be configured from the WebUI to be either sent when data changes are detected or set to a specific period in seconds which is kinder on network traffic.
+    </p>
+  </div>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+    <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #28a745; border: 1px solid var(--md-default-fg-color--lightest);">
+      <h4 style="margin-top: 0; color: #28a745;">🔍 MQTT Discovery</h4>
+      <p style="margin: 0; color: var(--md-default-fg-color);">
+        When MQTT Discovery is enabled, EMS-ESP will automatically create special Discovery topics (with <code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">/config</code>) for each EMS device entity that has received a valid value.
+      </p>
+    </div>
 
-When a value is a boolean it will be rendered according to the Boolean setting you have defined in the settings.
+    <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #007bff; border: 1px solid var(--md-default-fg-color--lightest);">
+      <h4 style="margin-top: 0; color: #007bff;">📋 Data Formats</h4>
+      <p style="margin: 0; color: var(--md-default-fg-color);">
+        The table below lists the topics being published. The format shown is the MQTT Format as defined in EMS-ESP's settings. Default format is <code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">Nested</code> which uses a single topic to show multiple entries in the payload.
+      </p>
+    </div>
+  </div>
+</div>
 
-The table below list the topics being published. The format shown in the table below is the MQTT Format as defined in EMS-ESP's settings. Default format is `Nested` which uses a single topic to show multiple entries in the payload. Format `Single` will send each group as single payloads on multiple topics.
+<div class="mqtt-topics" style="margin: 3rem 0;">
+  <h2 style="color: var(--md-default-fg-color);">📋 MQTT Topics Reference</h2>
+  
+  <div style="overflow-x: auto; margin: 2rem 0;">
+    <table style="width: 100%; border-collapse: collapse; background: var(--md-default-bg-color); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <thead>
+        <tr style="background: var(--md-default-bg-color--lighter);">
+          <th style="padding: 1rem; text-align: left; color: var(--md-default-fg-color); border-bottom: 1px solid var(--md-default-fg-color--lightest);">Topic</th>
+          <th style="padding: 1rem; text-align: center; color: var(--md-default-fg-color); border-bottom: 1px solid var(--md-default-fg-color--lightest);">Format</th>
+          <th style="padding: 1rem; text-align: left; color: var(--md-default-fg-color); border-bottom: 1px solid var(--md-default-fg-color--lightest);">Description</th>
+          <th style="padding: 1rem; text-align: left; color: var(--md-default-fg-color); border-bottom: 1px solid var(--md-default-fg-color--lightest);">Payload Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">status</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">n/a</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">MQTT will and testament messages</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">online</code> or <code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">offline</code></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">info</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">n/a</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">System information and events</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">{"version":"3.7.2","hostname":"ems-esp"}</code></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">heartbeat</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">all</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">System stats in JSON (default every minute)</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">{"bus_status":"connected","uptime":"02:16:00"}</code></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">tapwater_active</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">all</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">Boolean: hot tap water running (DHW)</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color--light);">-</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">heating_active</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">all</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">Boolean: heating is on</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color--light);">-</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">boiler_data</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">all</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">Non warm water data from Boiler device</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">{"heatingactive":"off","curflowtemp":57.5}</code></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">thermostat_data</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">nested</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">Thermostat data and Heating Circuits</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">{"hc1":{"seltemp":15.0,"mode":"auto"}}</code></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">thermostat_data_hc&lt;id&gt;</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">single</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">Individual heating circuit data</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">{"seltemp":15,"mode":"auto"}</code></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">mixer_data</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">nested</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">Mixer data with hc1-hc4 and wwc1, wwc2</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">{"hc1":{"flowTemp":55,"pumpStatus":"on"}}</code></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">shower_data</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">all</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">Shower timer and alert toggles</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">{"timer":"0","duration":"4m 32s"}</code></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">solar_data</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">all</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">Solar Module data (if connected)</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">{"collectorTemp":15.8,"energyToday":1792}</code></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">temperaturesensor_data</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">nested</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">External Dallas temperature sensors</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">{"28-233D-9497":{"temp":19.6}}</code></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--md-default-fg-color--lightest);">
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">analogsensor_data</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">nested</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">External analog sensors</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">{"31":{"name":"analog31","value":0}}</code></td>
+        </tr>
+        <tr>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);"><code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">custom_data</code></td>
+          <td style="padding: 1rem; text-align: center; color: var(--md-default-fg-color);">nested</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color);">Custom entities</td>
+          <td style="padding: 1rem; color: var(--md-default-fg-color--light);">-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<!-- prettier-ignore -->
-| Topic | Format | Description | Payload Example |
-| - | - | - | - |
-| `status` | n/a | this is the MQTT will and testament messages | `online` or `offline` |
-| `info` | n/a | for events | `{"version":"3.7.2","boot time":"2024-11-01T13:02:48+0100","network":"ethernet","hostname":"ems-esp"}`|
-| `heartbeat` | all | system stats in JSON, default is every minute | `{"bus_status":"connected","uptime":"000+02:16:00.285","uptime_sec":8160,"ntp_status":"on","rxreceived":8153,"rxfails":3,"txreads":1942,"txwrites":0,"txfails":1,"mqttcount":2728,"mqttfails":0,"mqttconnects":1,"apicalls":0,"apifails":0,"sensorreads":1631,"sensorfails":0,"freemem":164,"max_alloc":107, "wifireconnects":1}` |
-| `tapwater_active` | all | boolean to show if the hot tap water is running (DHW) | |
-| `heating_active` | all | boolean to show if the heating is on | |
-| `boiler_data` | all | non warm water data from the Boiler device | `{"heatingactive":"off","tapwateractive":"off","selflowtemp":0,"selburnpow":23,"heatingpumpmod":0,"curflowtemp":57.5,"rettemp":56.9,"syspress":1.5,"boiltemp":60.8,"burngas":"off","burngas2":"off","flamecurr":0.0,"heatingpump":"off","fanwork":"off","ignwork":"off","oilpreheat":"off","heatingactivated":"on","heatingtemp":65,"pumpmodmax":70,"pumpmodmin":30,"pumpdelay":1,"burnminperiod":10,"burnminpower":0,"burnmaxpower":50,"boilhyston":-6,"boilhystoff":6,"boil2hyston":0,"boil2hystoff":0,"curburnpow":0,"burnstarts":359634,"burnworkmin":620952,"burn2workmin":0,"heatworkmin":508794,"heatstarts":42076,"ubauptime":5166357,"servicecode":"0A","servicecodenumber":305,"maintenancemessage":"H00","maintenance":"manual","maintenancetime":6000,"maintenancedate":"01.01.2012"}` |
-| `thermostat_data` | nested | data from the thermostat and for each of its Heating Circuits. | `{"datetime":"31.12.2022 12:25","hc1":{"seltemp":15.0,"currtemp":20.7,"mode":"auto","manualtemp":21.0,"daytemp2":20.5,"daytemp3":20.0,"daytemp4":20.5,"nighttemp":15.0,"switchtime":"00 mo 00:00 T1"}}` |
-| `thermostat_data` | single | In single format each heating circuit is published with own topic | `{"datetime":"31.12.2022 12:25"}` |
-| `thermostat_data_hc<id>` | single | hc in single format | `{"seltemp":15, "currtemp":20.6, "mode":"auto"}` |
-| `mixer_data` | nested | data from The Mixer with nests `hc1` to `hc4`and `wwc1`, `wwc2` | `{"hc1": {"flowTemp":55, "pumpStatus":"on", "valveStatus":25}}` |
-| `mixer_data_hc<id>` `mixer_data_wwc<id>` | single | data from The Mixer in single format for each of its Heating Circuits where `<id>` is circuit number | `{"type":"hc", "flowTemp":55, "pumpStatus":"on", "valveStatus":55}` |
-| `shower_data` | | the shower timer and alert toggles plus the duration of the last shower taken | `{"timer":"0","alert":"0","duration":"4 minutes 32 seconds"}` |
-| `solar_data` | all | all data from the Solar Module (if connected) | `{ "collectorTemp": 15.8, "tankBottomTemp": 29.8, "solarPumpModulation": 0, "cylinderPumpModulation": 0, "solarPump": "off", "valveStatus": "off", "tankHeated": "off", "collectorShutdown": "off", "energyLastHour": 0, "energyToday": 1792, "energyTotal": 2784.7 }` |
-| `temperaturesensor_data` | nested| temperature readings from any external Dallas temperature sensors attached to the ESP | `{"28-233D-9497-0C03":{"name":"zolder32","temp":19.6}}` |
-| `temperaturesensor_data` | single | temperature readings from Dallas temperature sensor in single format with unique sensor id | `{"28-FF47-AC90-1604":20.94}` |
-| `analogsensor_data` | nested | readings from external analog sensors | `{"31":{"name":"analog31","value":0}}` |
-| `custom_data` | nested | readings from custom entities | |
+<div class="mqtt-commands" style="margin: 3rem 0;">
+  <h2 style="color: var(--md-default-fg-color);">📤 Using MQTT to Send Commands</h2>
+  
+  <div style="background: var(--md-default-bg-color); padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest);">
+    <div style="text-align: center;">
+      <h3 style="margin-top: 0; color: var(--md-default-fg-color);">🔧 Command Reference</h3>
+      <p style="color: var(--md-default-fg-color--light); margin-bottom: 2rem;">
+        Learn how to use MQTT to send commands to EMS-ESP for controlling your heating system.
+      </p>
+      <a href="/Commands#mqtt" style="display: inline-block; padding: 1rem 2rem; background: #007bff; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">View Commands Guide</a>
+    </div>
+  </div>
+</div>
 
-# Using MQTT to send commands
+<div class="mqtt-monitoring" style="margin: 3rem 0;">
+  <h2 style="color: var(--md-default-fg-color);">📊 Monitoring MQTT Traffic</h2>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+    <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #28a745; border: 1px solid var(--md-default-fg-color--lightest);">
+      <h4 style="margin-top: 0; color: #28a745;">🔍 MQTT Explorer</h4>
+      <p style="margin: 0; color: var(--md-default-fg-color);">
+        For precise monitoring of MQTT traffic, I suggest using <a href="http://mqtt-explorer.com/" style="color: #007bff;">MQTT Explorer</a>. This tool provides a visual interface to monitor all MQTT topics and messages.
+      </p>
+    </div>
 
-Refer to the [Commands](Commands#mqtt) Section for how to use MQTT to send commands to EMS-ESP.
-
-## Monitoring the Queue
-
-If you want more precise monitoring of the MQTT traffic I suggest using [MQTT Explorer](http://mqtt-explorer.com/). The console command `show mqtt` will show the status of the MQTT service and also the topic subscriptions and outbound publishing queue. In the WebUI you can see the size of the queue and overall stats are in the `Status` page.
+    <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #17a2b8; border: 1px solid var(--md-default-fg-color--lightest);">
+      <h4 style="margin-top: 0; color: #17a2b8;">💻 Console Commands</h4>
+      <p style="margin: 0; color: var(--md-default-fg-color);">
+        Use the console command <code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">show mqtt</code> to display the status of the MQTT service, topic subscriptions, and outbound publishing queue.
+      </p>
+    </div>
+    
+    <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #ffc107; border: 1px solid var(--md-default-fg-color--lightest);">
+      <h4 style="margin-top: 0; color: #e0a800;">📈 WebUI Status</h4>
+      <p style="margin: 0; color: var(--md-default-fg-color);">
+        In the WebUI you can see the size of the queue and overall stats are available in the <strong>Status</strong> page.
+      </p>
+    </div>
+  </div>
+</div>

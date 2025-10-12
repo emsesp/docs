@@ -1,4 +1,4 @@
-# All EMS Telegrams
+# EMS Telegrams
 
 This page contains a comprehensive list of all EMS telegrams supported by EMS-ESP.
 

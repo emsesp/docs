@@ -24,9 +24,9 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
-  - git-committers:
-      repository: emsesp/docs
-      branch: main
+  # - git-committers:
+  #     repository: emsesp/docs
+  #     branch: main
 
 theme:
   name: material
@@ -88,8 +88,8 @@ extra:
     provider: google
     property: G-SVDSJ3QTVC
 
-  version:
-    provider: mike
+  # version:
+  #   provider: mike
 
   generator: false
 
@@ -169,7 +169,6 @@ nav:
   - Home:
       - News: index.md
       - About: About.md
-      - Version Release History: Version-Release-History.md
       - Installing: Installing.md
       - Configuring: Configuring.md
       - WebUI: WebUI.md
@@ -178,11 +177,12 @@ nav:
       - Console: Console.md
       - Special Functions: Special-Functions.md
       - Supported EMS Devices: All-Devices.md
-      - All Entities: All-Entities.md
+      - EMS Devices and Entities: All-Entities.md
       - EMS Telegrams: EMS-Telegrams.md
       - Integrations: Integrations.md
-      - Help: Support.md
-      - For developers: Building.md
+      - Help and Support: Support.md
+      - Tips & Tricks: tips-and-tricks.md
+      - For Developers: Building.md
 
   - Devices:
       - Introduction: All-Devices.md
@@ -199,7 +199,7 @@ nav:
       - Switch Modules: Switches.md
 
   - Integrations:
-      - Introduction: Integrations.md
+      - 3rd party integrations: Integrations.md
       - Home Assistant: Home-Assistant.md
       - IOBroker: IOBroker.md
       - Domoticz: Domoticz.md
@@ -220,7 +220,6 @@ nav:
       - Support: Support.md
       - Troubleshooting: Troubleshooting.md
       - FAQ: FAQ.md
-      - Tips & Tricks: tips-and-tricks.md
 
   - Developers:
       - Building & Testing the Firmware: Building.md
@@ -229,6 +228,7 @@ nav:
       - The EMS protocol: EMS-bus.md
       - EMS Library: ems-library.md
       - Building an EMS circuit: EMS-Circuit.md
+      - Version Release History: Version-Release-History.md
 
 # Additional configuration for better compatibility
 use_directory_urls: true
