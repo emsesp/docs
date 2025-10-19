@@ -606,8 +606,11 @@ deviation is roughly +-0.1K with long periods of the heating system being off (a
 ![image](https://github.com/user-attachments/assets/76cdbdcd-2010-493b-85f8-4253220888d9)
 
 [^button]: This is a simple Aqara zigbee button.
-
 [^thermometers]:
     I am using an [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) with the [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), as it provides two digits of precision and updates roughly once to twice per minute).  
     Please note that low resolution thermometers with low update frequency will affect your ability to quickly react to temperature changes.  
     If you are so inclined, you can build a high resolution, frequently updating thermometer with tasmota and a DS18B20 or BME820 sensor.
+
+## Optimizing for heatpumps
+
+Matthias documented his setup Bosch/Buderus Heatpump on <https://bosch-buderus-wp.github.io/xps/matthias> and even goes to showing how you can use AI to setup a MCP/LLM to control the heatpump. See [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) for more details.
