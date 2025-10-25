@@ -199,6 +199,19 @@
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #20c997; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
       <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest);">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4 style="margin: 0; color: #20c997;">November 2024</h4>
+          <span style="background: #20c997; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">v3.7.1</span>
+        </div>
+        <p style="margin: 0; color: var(--md-default-fg-color);">
+          Bug fixes and stability improvements.
+        </p>
+      </div>
+    </div>
+    
+    <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
+      <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #20c997; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
+      <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
           <h4 style="margin: 0; color: #20c997;">March 2025</h4>
           <span style="background: #20c997; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">v3.7.2</span>
         </div>
