@@ -39,17 +39,17 @@ Make sure you have the latest version of node installed. You need at least 18.20
 
 This will open a browser window with URL `http://localhost:3000`.
 
-The mock data used is all hardcoded in the file `/mock-api/rest_server.js`.
+The mock data used is all hardcoded in the file `/mock-api/restServer.ts`.
 
 ### Simulating offline, without an ESP32 microcontroller
 
-You can also run EMS-ESP without an ESP32 (which we call 'standalone'). The PlatformIO environment has two `native` environments that will build `emsesp` executables compatible with Linux, Windows and Max OSX.
+You can also run EMS-ESP without an ESP32 (which we call 'standalone'). The PlatformIO environment has two `native` type environments that will build `emsesp` executables compatible with Linux, Windows and Max OSX.
 
-On **Linux/OSX** (including Windows' `WSL2`) simply run: `pio run -e native -t exec`
+On **Linux/OSX** (including Windows' `WSL2`) simply run: `pio run -e standalone -t exec`
 
-On **Windows**, it's a little trickier because of the EMS-ESP console needs Winsock for the key input, the easiest way is to install [Msys2](https://www.msys2.org) onto your windows machine, followed by installing the GNU g++ compiler straight after with `run pacman -S mingw-w64-ucrt-x86_64-gcc`. This is only needed once. From then on, you can run the `pio` command to build the Windows .exe executabled with `pio run -e native` and launch it in a Msys terminal, like:
+On **Windows**, it's a little trickier because of the EMS-ESP console needs Winsock for the key input, the easiest way is to install [Msys2](https://www.msys2.org) onto your windows machine, followed by installing the GNU g++ compiler straight after with `run pacman -S mingw-w64-ucrt-x86_64-gcc`. This is only needed once. From then on, you can run the `pio` command to build the Windows .exe executabled with `pio run -e standalone` and launch it in a Msys terminal, like:
 
-`C:/msys64/msys2_shell.cmd -defterm -here -no-start -ucrt64 -c <source location>/.pio/build/native/program.exe`
+`C:/msys64/msys2_shell.cmd -defterm -here -no-start -ucrt64 -c <source location>/.pio/build/standalone/program.exe`
 
 Use the `test` command to run tests. `test general` is a generic test that will setup a standard boiler and thermostat with all its default entities.
 
