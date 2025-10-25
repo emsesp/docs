@@ -37,7 +37,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
         <h3 style="margin: 0; color: var(--md-default-fg-color);">EMS Interface Board</h3>
       </div>
       <p style="color: var(--md-default-fg-color); margin-bottom: 1rem;">
-        EMS-ESP also requires a separate circuit to read and write to the EMS bus. You can either <a href="EMS-Circuit" style="color: #007bff;">build your own</a> or purchase a EMS Gateway board directly from BBQKees Electronics.
+        EMS-ESP also requires a separate circuit to read and write to the EMS bus. You can either <a href="../EMS-Circuit" style="color: #007bff;">build your own</a> or purchase a EMS Gateway board directly from BBQKees Electronics.
       </p>
       <div style="text-align: center; margin: 1.5rem 0;">
         <img style="width: 120px; margin: 0.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" src="../_media/images/EMS-Gateway-S3.png" alt="EMS Gateway S3">
@@ -47,6 +47,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
         <a href="https://bbqkees-electronics.nl" style="display: inline-block; padding: 0.8rem 1.5rem; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Visit BBQKees Electronics</a>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -77,6 +78,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
         If you are upgrading from a previous release it's recommended you make a backup copy of any settings and configurations before performing the installation. This can be done from the WebUI Settings page 'Download/Upload'.
       </p>
     </div>
+
   </div>
 </div>
 
@@ -99,7 +101,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
           EMS bus is not yet connected. If this takes more than a few seconds check the EMS Tx Mode and the physical connection to the EMS bus.
         </p>
       </div>
-      
+
       <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #ffc107; border: 1px solid var(--md-default-fg-color--lightest);">
         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
           <div style="width: 20px; height: 20px; background: #ffc107; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite;"></div>
@@ -110,7 +112,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
           Network (WiFi or Ethernet) is connecting. If this persists check the EMS-ESP Network settings. EMS-ESP uses 2.4GHz/WPA2 only.
         </p>
       </div>
-      
+
       <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #6f42c1; border: 1px solid var(--md-default-fg-color--lightest);">
         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
           <div style="width: 20px; height: 20px; background: #6f42c1; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite;"></div>
@@ -123,6 +125,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
         </p>
       </div>
     </div>
+
   </div>
   
   <div class="normal-operation" style="margin: 2rem 0;">
@@ -141,7 +144,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
           Good connection and EMS data is flowing in.
         </p>
       </div>
-      
+
       <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #ffc107; border: 1px solid var(--md-default-fg-color--lightest);">
         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
           <div style="width: 20px; height: 20px; background: #ffc107; border-radius: 50%; margin-right: 1rem; animation: pulse 2s infinite;"></div>
@@ -151,7 +154,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
           Either the WiFi or the EMS bus are still connecting.
         </p>
       </div>
-      
+
       <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #17a2b8; border: 1px solid var(--md-default-fg-color--lightest);">
         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
           <div style="width: 20px; height: 20px; background: #17a2b8; border-radius: 50%; margin-right: 1rem; animation: blink 0.3s infinite;"></div>
@@ -162,6 +165,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
         </p>
       </div>
     </div>
+
   </div>
 </div>
 
