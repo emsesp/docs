@@ -51,7 +51,7 @@
         </p>
       </div>
     </div>
-    
+
     <!-- 2018 -->
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #28a745; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
@@ -65,7 +65,7 @@
         </p>
       </div>
     </div>
-    
+
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #28a745; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
       <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest);">
@@ -78,7 +78,7 @@
         </p>
       </div>
     </div>
-    
+
     <!-- 2019 -->
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #ffc107; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
@@ -93,7 +93,7 @@
         <img style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 1rem;" src="../_media/screenshot/telnet_menu.jpg" alt="Telnet Menu v1.5.0">
       </div>
     </div>
-    
+
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #ffc107; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
       <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest);">
@@ -107,7 +107,7 @@
         <img style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 1rem;" src="../_media/screenshot/ems_dashboard.png" alt="EMS Dashboard v1.9.0">
       </div>
     </div>
-    
+
     <!-- 2020 -->
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #dc3545; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
@@ -121,7 +121,7 @@
         </p>
       </div>
     </div>
-    
+
     <!-- 2021 -->
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #6f42c1; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
@@ -136,7 +136,7 @@
         <img style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 1rem;" src="../_media/screenshot/version301.png" alt="Version 3.0.1">
       </div>
     </div>
-    
+
     <!-- 2022 -->
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #17a2b8; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
@@ -151,7 +151,7 @@
         <img style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 1rem;" src="../_media/screenshot/version340.png" alt="Version 3.4.0">
       </div>
     </div>
-    
+
     <!-- 2023 -->
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #fd7e14; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
@@ -166,7 +166,7 @@
         <img style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 1rem;" src="../_media/screenshot/version350.png" alt="Version 3.5.0">
       </div>
     </div>
-    
+
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #fd7e14; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
       <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest);">
@@ -180,7 +180,7 @@
         <img style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 1rem;" src="../_media/screenshot/version360.png" alt="Version 3.6.0">
       </div>
     </div>
-    
+
     <!-- 2024-2025 -->
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #20c997; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
@@ -194,7 +194,7 @@
         </p>
       </div>
     </div>
-    
+
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #20c997; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
       <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest);">
@@ -207,7 +207,7 @@
         </p>
       </div>
     </div>
-    
+
     <div class="timeline-item" style="position: relative; margin-bottom: 3rem; padding-left: 80px;">
       <div style="position: absolute; left: 20px; top: 10px; width: 20px; height: 20px; background: #20c997; border-radius: 50%; border: 3px solid var(--md-default-bg-color);"></div>
       <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest);">
@@ -220,5 +220,6 @@
         </p>
       </div>
     </div>
+
   </div>
 </div>
