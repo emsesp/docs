@@ -181,7 +181,6 @@ nav:
       - EMS Telegrams: EMS-Telegrams.md
       - Integrations: Integrations.md
       - Help and Support: Support.md
-      - Tips & Tricks: tips-and-tricks.md
       - For Developers: Building.md
 
   - Devices:
@@ -220,6 +219,7 @@ nav:
       - Support: Support.md
       - Troubleshooting: Troubleshooting.md
       - FAQ: FAQ.md
+      - Tips & Tricks: tips-and-tricks.md
 
   - Developers:
       - Building & Testing the Firmware: Building.md
