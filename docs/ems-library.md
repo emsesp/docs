@@ -598,9 +598,18 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 | 27-28 | Offset on room temperature setpoint due to room temperature influence | -100 | 300 | 0.1 | K |  |
 | ... |  |  |  |  |  |  |
 | 32 | Room temp sensor value controller extsensor. Value defines the requested relative heating power for the heating circuit | 0 | 100 | 1 | % |  |
-| ... |  |  |  |  |  |  |
+
+### Telegram: 0x02B9
+
+!!! info "Thermostat settings"
+    **Used in:** ems+ thermostats
+    **Description:** hc settings
+    **Class:** parameter
+    **EMS category:** EMS2.0
+    **Distribution:** broadcast-on-change, unicast-on-request, writable
+
 | Offset | Variable name | min | max | resolution | unit | comment |
-| ------ | ----------------------------------------------------- | --- | --- | ---------- | ----- | ------------------------------------------------------------------------------------ | --- |
+| ------ | ----------------------------------------------------------------------------------------------------------------------- | ---- | ---- | ---------- | ---- | -------------------------------------------- |
 | 0 | Operation Mode | -1 | 0 | 1 | enum | auto=-1, manual=0 |
 | 1 | Setpoint Comfort 3 | 10 | 60 | 0,5 | °C | 5°C ... 30°C |
 | 2 | Setpoint Comfort 2 | 10 | 60 | 0,5 | °C | 5°C ... 30°C |
