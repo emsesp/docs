@@ -19,7 +19,7 @@ This next section describes some of key settings that can be adjusted via the We
 - **Enable Modbus**. This is off by default and allows users to connect to the Modbus TCP server (default port 502). Due to memory constraints this feature is only available on boards with additional PSRAM.
 - **Enable Syslog**:
   <!-- prettier-ignore -->
-  - **IP** is the IP address of a syslog server for capturing remote logs. Leave blank is not using SysLog.
+  - **IP** is the IP address of a syslog server for capturing remote logs. Leave blank is not using SysLog. Note EMS-ESP uses the standard [RFC5424](https://datatracker.ietf.org/doc/html/rfc5424) protocol so make sure your syslog server is setup to process these messages and not for example RFC3164 (BSD Syslog).
   - **Port** if using an alternate port number. The default is 514. And it uses UDP (not TCP).
   - **Log Level** sets the maximum log level for reported messages. The highest level is DEBUG which will send a lot of log data so use with caution.
   - **Mark Interval** will send out a special `mark` message to the SysLog. This is useful for timing events.
