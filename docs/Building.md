@@ -2,7 +2,7 @@
 
 It is assumed you have a basic understanding of coding and building software for microcontrollers using git and using PlatformIO.
 
-To start, you will need the following software packages installed:
+To start, you will need the following software packages installed. Alternatively you can use a [Devcontainer](https://containers.dev/) (see below):
 
 - [PlatformIO](https://platformio.org/)
 - [Node.js](https://nodejs.org)
@@ -103,3 +103,17 @@ Go into the WSL instance (`wsl`) and setup the following:
 To usb USB install <https://github.com/dorssel/usbipd-win/releases> from an DOS Admin command window. In that window you can use `usbipd list` to find the COM port and then for example `usbipd bind -b 1-6` and `usbipd attach -w -b 1-6` to attach it to the WSL instance. This will give you a `/dev/ttyUSB0` or `/dev/ttyACM0` device.
 
 Run Visual Studio Code on your Windows environment and click "Connect to WSL" to connect to the WSL instance. You can then use the WSL terminal to build the firmware. You'll find building and compiling EMS-ESP will be 2-3 times faster than on Windows.
+
+### Using a devcontainer for development
+You can use the devcontainer locally or spin up a codespace on github.
+
+When using the devcontainer and running the standalone UI you have to run the standalone-devcontainer script instead of the default standalone one. Otherwise your vite port wont be accessible from your machine.
+
+```sh
+% pnpm standalone-devcontainer
+```
+#### Codespace
+
+Click "Code" and the "Create codespace on dev" to start a codespace that you can use for developing without having to install anything locally.
+
+![Codespace start](_media/screenshot/codespace_start.jpg)
