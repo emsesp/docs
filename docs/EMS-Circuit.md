@@ -4,7 +4,7 @@
 
 ### A Breadboard prototype
 
-Below is a prototype board you can build yourself on a breadboard for testing. The layout was done using [DIY Layout Creator](https://github.com/bancika/diy-layout-creator) and sources file is [here](_media/schematics/ems_full.diy).
+Below is a prototype board you can build yourself on a breadboard for testing. The layout was done using [DIY Layout Creator](https://github.com/bancika/diy-layout-creator).
 
 ![Breadboard Circuit](_media/schematics/breadboard.png)
 
