@@ -10,9 +10,10 @@ This is the current list of supported boilers from brands like Buderus, Nefit, S
 - Logamax Plus GB022, U122
 - Logamatic MC10, MC110
 - Condens 2500, GC9000
-- Cerapur GC2200W
+- Bosch/Junkers Cerapur GC2200W
 - Logomatic
-- Cerapur Top, Aero
+- Bosch/Junkers Cerapur Top, Aero
+- Bosch/Junkers Cerapur ZSB 14-3 A
 - Greenstar Si, 30Ri Compact, ErP, HIU, 8000
 - Nefit Topline, Trendline
 - Cascade MCM10
