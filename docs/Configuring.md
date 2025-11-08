@@ -61,12 +61,12 @@ Choosing `Custom` will show the following additional settings to manually config
 
 > **Custom board Settings:**
 >
-> - **Rx GPIO** - Which GPIO pin the Rx is assigned to. By default this is GPIO 23 but it can be almost any free pin. Connect this GPIO pin to the RX port on the EMS interface board.
-> - **Tx GPIO** - Which GPIO pin the Tx is assigned to. By default this is GPIO 5 but it can be almost any free pin. Connect this GPIO pin to the TX port on the EMS interface board.
-> - **Button GPIO**. Set a pin with pull-up. The button is used for different functions, such as holding for 10 seconds and releasing to reset to factory settings.
+> - **Rx GPIO**. This is the GPIO pin the Rx signal is assigned to. By default this is GPIO 23 but it can be almost any free pin. Connect this GPIO pin to the RX port on the EMS interface board.
+> - **Tx GPIO**. This is the GPIO pin the Tx signal is assigned to. By default this is GPIO 5 but it can be almost any free pin. Connect this GPIO pin to the TX port on the EMS interface board.
+> - **Button GPIO**. This is the GPIO pin the button is assigned to. It's a pull-up. The button is used for different functions. A single-click does nothing, a double-click will do a WiFi reconnect, a long-press for 10 seconds and release will perform a factory reset and a very long press for at least 20 seconds without a release will reboot the EMS-ESP to the initial boot partition.
 > - **Temperature GPIO**. This is the pin where any external temperature sensors are attached. The Dallas chips DS1822, DS18S20, DS18B20, DS1825 are supported including their parasite varieties and can also be daisy-chained onto a single line, up to 100 sensors.
 > - **LED GPIO**. This is the pin for the LED, defaulted to the onboard LED on the ESP dev board.
-> - **Eth PHY Type** for choosing the Ethernet chip used.
+> - **Eth PHY Type**. This is type of Ethernet chip used.
 
 !!! note "On ESP32 development boards there are often also pins marked RX and TX. However, these are usually connected to the USB chip and cannot be used for the EMS interface circuit."
 

@@ -1,10 +1,6 @@
 ## How to Factory Reset EMS-ESP?
 
-If you have a GPIO Button configured (enabled by default on all BBQKees boards) pressing this has different actions:
-
-- _single press_: does nothing
-- _double press_: re-connects the WiFi
-- _hold for 10 seconds_ and release: performs a factory reset. EMS-ESP will restart in Access Point mode
+If you have a GPIO Button configured (enabled by default on all BBQKees boards) pressing this for 10 seconds and releasing will perform a factory reset. EMS-ESP will restart in Access Point mode.
 
 ## What is an EMS Telegrams?
 
