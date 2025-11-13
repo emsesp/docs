@@ -26,7 +26,7 @@ This next section describes some of key settings that can be adjusted via the We
 
 ### Sensors
 
-- **Enable Analog Sensors**. This enables any GPIO to collect signals, whether it's a digital I/O, a pulse counter or ADC measuring mv.
+- **Enable Analog Sensors**. This enables any GPIO to collect signals, whether it's a digital I/O, a pulse counter or ADC measuring mv. There are many more options available too. Note the `Factor` is a divider.
 - **Enable 1-Wire Parasite-Power**. Select this option when using (Dallas) temperature sensors with parasitic power.
 
 ### Formatting Options
