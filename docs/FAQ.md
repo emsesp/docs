@@ -37,6 +37,18 @@ As **MichaelDvP** points out _"a thermostat is a clever electronic device. You c
 
 And **mtc716** said _"A thermostat creates a heat curve that is constantly adapted to the surrounding temperatures and used to estimate which water temperature is necessary in order to bring the room temperature up. There are some good articles in the net about how to setup the heat curve correctly. The main parameters you need are "design temp" which is the heating water temp at minimal outside temp. Furthermore you need the "comfort temp" like explained before and the "temp offset" which causes a parallel shift in the heating curve."_
 
+Additionally, As **MichaelDvP** says "If you want to build a software controlled thermostat, you can use different methods:"
+
+- outdoortemperature controlled:
+define a heatingcurve for your building. This is a linear interpolation between a minimum outdoortemp for your region (typical-11°C for middle europe) with max flowtemp (designtemp ~76°C for radiators, 40°C for floor) and the actual room setpoint (e.g. 21°C) for outdoor and flowtemp. You can add an offset.
+selflowtemp = offset + setpoint + (designtemp- setpoint) * (setpoint - outdoortemp) / (setpoint - minoutdoor)
+- room controlled, switched:
+measure the roomtemperature and switch the boiler with heatingoff enabled for roomtemp > setpoint. To avoid many switching add a hysteresis
+- room controled, dynamic
+Here you need to calculate a PID control. A bit out of scope for the ems-esp scheduler. But maybe possible. With HA you can check Implementing a smart thermostat (using SAT). See [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
+- controlled by smart TRVs:
+If you can read the opening of the TRVs make a simple I-Control. If a TRV is fully open: increase flowtemp, if the most open TRV is below 90% opening: decrease flowtemp. Heating is a slow process, so increase/decreas carefully.
+
 For further reading, check out these discussions:
 
 - [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/discussions/965)
@@ -61,3 +73,7 @@ Yes you can. Keep in mind the following settings:
 - (Settings->MQTT Settings) MQTT `Base` is unique (just be sure). Usually set this to the hostname.
 - (Settings->Network Settings) `Hostname` is unique, to avoid network conflicts
 - (Settings->Application Settings) `EMS BUS ID` are different (not both 0x0B)
+
+## Why do EMS telegram's in `raw watch` mode have a type 0x100 higher then in `raw` mode?
+
+See <https://github.com/emsesp/EMS-ESP32/discussions/2025>
