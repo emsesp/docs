@@ -10,6 +10,7 @@ EMS-ESP integrates with a few home automation systems to report status and senso
 [![IOBroker](_media/logo/iobroker-logo.png)](IOBroker.md)
 [![Domoticz](_media/logo/domoticz.png)](Domoticz.md)
 [![openHAB](_media/logo/openhab-logo.png)](openHAB.md)
+[![Prometheus](_media/logo/prometheus-logo.png)](Prometheus.md)
 [![Grafana](_media/logo/grafana-logo.png)](Grafana.md)
 [![loxone](_media/logo/loxone-logo.png)](Loxone.md)
 [![modbus](_media/logo/modbus.jpg)](Modbus.md)
