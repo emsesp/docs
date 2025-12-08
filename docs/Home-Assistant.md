@@ -17,20 +17,19 @@ You can then add each of these devices to a new lovelace view using the "add to 
 ### Alert when EMS-ESP boots
 
 ```yaml
-alias: EMS-ESP boots
+alias: EMS-ESP booted
 description: Notify when EMS-ESP boots
-mode: single
 triggers:
-  - topic: ems-esp/heartbeat
-    payload: connecting
-    value_template: '{{ value_json.bus_status }}'
+  - topic: ems-esp/status
+    payload: online
     trigger: mqtt
-condition: []
+conditions: []
 actions:
   - data:
-      message: EMS-ESPS3
-      title: EMS-ESPS3 has booted
-    action: notify.mobile_app_my_iphone
+      message: EMS-ESP
+      title: EMS-ESP has booted
+    action: notify.mobile_app_iphone
+mode: single
 ```
 
 ### Alert when EMS-ESP goes offline and reconnects back to the WiFi network
