@@ -52,7 +52,7 @@ mode: single
 
 ### Shower Integration
 
-The below are additions to the HA files to show the state of the shower, if the setting `Shower Timer` is enabled in EMS-ESP.
+Below are the additions to the HA files to show the state of the shower, if the setting `Shower Timer` is enabled in EMS-ESP.
 
 The cold shot feature is available in EMS-ESP versions 3.7.0 and above.
 
@@ -106,29 +106,22 @@ Add to `automations.yaml`:
   mode: single
 ```
 
-Add directly to the `configuration.yaml` or merge into an existing `sensors.yaml` file:
+Add to `templates.yaml`:
 
 ```yaml
-sensor:
-  - platform: template
-    sensors:
-      last_shower_duration:
-        friendly_name: Last shower duration
-        value_template: >-
-          {% if has_value('sensor.ems_esp_shower_duration') %}
-            {{ int(states('sensor.ems_esp_shower_duration')) | timestamp_custom('%-M min %-S sec', false)}}
-          {% else %}
-            unknown
-          {% endif %}
-      last_shower_time:
-        friendly_name: Last shower timestamp
-        value_template: >-
-          {% if has_value('sensor.ems_esp_shower_duration') %}
-            {{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated) | int | timestamp_custom("%-I:%M %p on %a %-d %b") }}
-          {% else %}
-            unknown
-          {% endif %}
-```
+- sensor:
+  - default_entity_id: sensor.last_shower_duration
+    name: Last shower duration
+    state: "{% if has_value('sensor.ems_esp_shower_duration') %}\n  {{ int(states('sensor.ems_esp_shower_duration'))
+      | timestamp_custom('%-M min %-S sec', false)}}\n{% else %}\n  unknown\n{% endif
+      %}"
+
+- sensor:
+  - default_entity_id: sensor.last_shower_time
+    name: Last shower timestamp
+    state: "{% if has_value('sensor.ems_esp_shower_duration') %}\n  {{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated)
+      | int | timestamp_custom(\"%-I:%M %p on %a %-d %b\") }}\n{% else %}\n  unknown\n{%
+      endif %}"```
 
 Note you can configure the `timestamp_custom()` to your own preferred format.
 
