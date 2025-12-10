@@ -75,7 +75,7 @@ Choosing `Custom` will show the following additional settings to manually config
   - `EMS+` is designed to work better for EMS2.0/EMS+ systems.
   - `HT3` for Heatronics3 used primarily by Junkers.
   - `Hardware` uses the internal ESP's hardware to send out the telegram. Telegrams are sent immediately. It is the fastest and most efficient method but works only on some systems.
-- **EMS Bus ID**. The EMS-ESP can simulate multiple devices. Stick to the `Service Key (0x0B)` unless using more than one EMS gateways/interface board.
+- **EMS Bus ID**. The EMS-ESP can simulate multiple devices. Keep to the default `Service Key (0x0B)` unless using more than one EMS gateways/interface board. It's important to note the Service Key will also be used by certified service/maintenance engineers when servicing your heating systems so make sure you power-down EMS-ESP before they arrive or they will not be able to connect to the EMS bus.
 - **Enable Read only mode**. This disables any outgoing Tx write commands to the EMS bus, essentially putting EMS-ESP into listening mode. However Tx is needed to detect EMS devices (as it sends out a Version command). If you want to explicitly put EMS-ESP into a read-only/sniffer mode use `set tx_mode 0` from the console.
 - **Hide LED**. Turns off the LED when in normal operating mode. The LED is still shown when booting or when there are connection issues.
 - **Underclock CPU speed**. Under-clocks the ESP to 160Mhz, saving on power, heat and prolonging the lifespan of the chip at the cost of performance and response time. A reboot of EMS-ESP is required.
