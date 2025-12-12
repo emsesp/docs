@@ -122,6 +122,7 @@ Add to `templates.yaml`:
     state: "{% if has_value('sensor.ems_esp_shower_duration') %}\n  {{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated)
       | int | timestamp_custom(\"%-I:%M %p on %a %-d %b\") }}\n{% else %}\n  unknown\n{%
       endif %}"```
+```
 
 Note you can configure the `timestamp_custom()` to your own preferred format.
 
