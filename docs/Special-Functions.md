@@ -66,7 +66,7 @@ With both a temperature and humidity value set, the emulated RC100H would look l
 
 You can use the system API endpoint `message` to text send a message to the log and MQTT, however the message can also contain complex logic similar to that seen in the Scheduler. For example sending
 
-``` sh
+```sh
 curl -X POST \
     -H "Authorization: Bearer ${emsesp_token}" \
     -H "Content-Type: application/json" \

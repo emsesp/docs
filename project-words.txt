@@ -1091,3 +1091,7 @@ Cxyz
 winget
 Netcom
 prio
+rgba
+minmax
+outdoortemperature
+minoutdoor

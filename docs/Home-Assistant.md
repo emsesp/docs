@@ -73,7 +73,16 @@ rest_command:
     payload: '{"entity":"{{entity}}","value":"{{value}}"}'
 ```
 
-Add to `scripts.yaml`:
+and make sure you include the yaml files in your `configuration.yaml` file like this:
+
+```yaml
+template: !include template.yaml        
+automation: !include automation.yaml
+script: !include script.yaml
+scene: !include scene.yaml
+```
+
+Add to `script.yaml`:
 
 ```yaml
 coldshot:
@@ -87,7 +96,7 @@ coldshot:
         value: 'on'
 ```
 
-Add to `automations.yaml`:
+Add to `automation.yaml`:
 
 ```yaml
 - id: shower_alert
@@ -106,22 +115,24 @@ Add to `automations.yaml`:
   mode: single
 ```
 
-Add to `templates.yaml`:
+Add to `template.yaml`:
 
 ```yaml
 - sensor:
-  - default_entity_id: sensor.last_shower_duration
-    name: Last shower duration
-    state: "{% if has_value('sensor.ems_esp_shower_duration') %}\n  {{ int(states('sensor.ems_esp_shower_duration'))
-      | timestamp_custom('%-M min %-S sec', false)}}\n{% else %}\n  unknown\n{% endif
-      %}"
+    - default_entity_id: sensor.last_shower_duration
+      name: Last shower duration
+      state:
+        "{% if has_value('sensor.ems_esp_shower_duration') %}\n  {{ int(states('sensor.ems_esp_shower_duration'))
+        | timestamp_custom('%-M min %-S sec', false)}}\n{% else %}\n  unknown\n{% endif
+        %}"
 
 - sensor:
-  - default_entity_id: sensor.last_shower_time
-    name: Last shower timestamp
-    state: "{% if has_value('sensor.ems_esp_shower_duration') %}\n  {{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated)
-      | int | timestamp_custom(\"%-I:%M %p on %a %-d %b\") }}\n{% else %}\n  unknown\n{%
-      endif %}"```
+    - default_entity_id: sensor.last_shower_time
+      name: Last shower timestamp
+      state:
+        "{% if has_value('sensor.ems_esp_shower_duration') %}\n  {{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated)
+        | int | timestamp_custom(\"%-I:%M %p on %a %-d %b\") }}\n{% else %}\n  unknown\n{%
+        endif %}"
 ```
 
 Note you can configure the `timestamp_custom()` to your own preferred format.

@@ -34,6 +34,7 @@ description: Complete guide to MQTT integration with EMS-ESP for home automation
         The table below lists the topics being published. The format shown is the MQTT Format as defined in EMS-ESP's settings. Default format is <code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">Nested</code> which uses a single topic to show multiple entries in the payload.
       </p>
     </div>
+
   </div>
 </div>
 
@@ -171,12 +172,13 @@ description: Complete guide to MQTT integration with EMS-ESP for home automation
         Use the console command <code style="background: var(--md-code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--md-code-fg);">show mqtt</code> to display the status of the MQTT service, topic subscriptions, and outbound publishing queue.
       </p>
     </div>
-    
+
     <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #ffc107; border: 1px solid var(--md-default-fg-color--lightest);">
       <h4 style="margin-top: 0; color: #e0a800;">📈 WebUI Status</h4>
       <p style="margin: 0; color: var(--md-default-fg-color);">
         In the WebUI you can see the size of the queue and overall stats are available in the <strong>Status</strong> page.
       </p>
     </div>
+
   </div>
 </div>
