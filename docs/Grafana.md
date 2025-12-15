@@ -2,9 +2,9 @@
 
 This page features all EMS-ESP Community Grafana dashboards:
 
-| Dashboard   | Author                               | Database & Datasource   |
-|-------------|--------------------------------------|------------|
-| [EMS-ESP](https://grafana.com/grafana/dashboards/15940-ems-esp)     | [@samvdb](https://github.com/samvdb) | InfluxDB / Telegraf   |
+| Name                                                            | Author                               | Database               |
+|-----------------------------------------------------------------|--------------------------------------|------------------------|
+| [EMS-ESP](https://grafana.com/grafana/dashboards/15940-ems-esp) | [@samvdb](https://github.com/samvdb) | MQTT, Telegraf, Influx |
 
 
 <br> 
