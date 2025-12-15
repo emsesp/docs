@@ -17,20 +17,19 @@ You can then add each of these devices to a new lovelace view using the "add to 
 ### Alert when EMS-ESP boots
 
 ```yaml
-alias: EMS-ESP boots
+alias: EMS-ESP booted
 description: Notify when EMS-ESP boots
-mode: single
 triggers:
-  - topic: ems-esp/heartbeat
-    payload: connecting
-    value_template: '{{ value_json.bus_status }}'
+  - topic: ems-esp/status
+    payload: online
     trigger: mqtt
-condition: []
+conditions: []
 actions:
   - data:
-      message: EMS-ESPS3
-      title: EMS-ESPS3 has booted
-    action: notify.mobile_app_my_iphone
+      message: EMS-ESP
+      title: EMS-ESP has booted
+    action: notify.mobile_app_iphone
+mode: single
 ```
 
 ### Alert when EMS-ESP goes offline and reconnects back to the WiFi network
@@ -53,7 +52,7 @@ mode: single
 
 ### Shower Integration
 
-The below are additions to the HA files to show the state of the shower, if the setting `Shower Timer` is enabled in EMS-ESP.
+Below are the additions to the HA files to show the state of the shower, if the setting `Shower Timer` is enabled in EMS-ESP.
 
 The cold shot feature is available in EMS-ESP versions 3.7.0 and above.
 
@@ -74,7 +73,16 @@ rest_command:
     payload: '{"entity":"{{entity}}","value":"{{value}}"}'
 ```
 
-Add to `scripts.yaml`:
+and make sure you include the yaml files in your `configuration.yaml` file like this:
+
+```yaml
+template: !include template.yaml        
+automation: !include automation.yaml
+script: !include script.yaml
+scene: !include scene.yaml
+```
+
+Add to `script.yaml`:
 
 ```yaml
 coldshot:
@@ -88,7 +96,7 @@ coldshot:
         value: 'on'
 ```
 
-Add to `automations.yaml`:
+Add to `automation.yaml`:
 
 ```yaml
 - id: shower_alert
@@ -107,28 +115,24 @@ Add to `automations.yaml`:
   mode: single
 ```
 
-Add directly to the `configuration.yaml` or merge into an existing `sensors.yaml` file:
+Add to `template.yaml`:
 
 ```yaml
-sensor:
-  - platform: template
-    sensors:
-      last_shower_duration:
-        friendly_name: Last shower duration
-        value_template: >-
-          {% if has_value('sensor.ems_esp_shower_duration') %}
-            {{ int(states('sensor.ems_esp_shower_duration')) | timestamp_custom('%-M min %-S sec', false)}}
-          {% else %}
-            unknown
-          {% endif %}
-      last_shower_time:
-        friendly_name: Last shower timestamp
-        value_template: >-
-          {% if has_value('sensor.ems_esp_shower_duration') %}
-            {{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated) | int | timestamp_custom("%-I:%M %p on %a %-d %b") }}
-          {% else %}
-            unknown
-          {% endif %}
+- sensor:
+    - default_entity_id: sensor.last_shower_duration
+      name: Last shower duration
+      state:
+        "{% if has_value('sensor.ems_esp_shower_duration') %}\n  {{ int(states('sensor.ems_esp_shower_duration'))
+        | timestamp_custom('%-M min %-S sec', false)}}\n{% else %}\n  unknown\n{% endif
+        %}"
+
+- sensor:
+    - default_entity_id: sensor.last_shower_time
+      name: Last shower timestamp
+      state:
+        "{% if has_value('sensor.ems_esp_shower_duration') %}\n  {{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated)
+        | int | timestamp_custom(\"%-I:%M %p on %a %-d %b\") }}\n{% else %}\n  unknown\n{%
+        endif %}"
 ```
 
 Note you can configure the `timestamp_custom()` to your own preferred format.

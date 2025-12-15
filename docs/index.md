@@ -17,6 +17,7 @@ hide:
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/9441142f49424ef891e8f5251866ee6b)](https://www.codacy.com/gh/emsesp/EMS-ESP32/dashboard?utm_source=github.com&utm_medium=referral&utm_content=emsesp/EMS-ESP32&utm_campaign=Badge_Grade)
 [![downloads](https://img.shields.io/github/downloads/emsesp/EMS-ESP32/total.svg)](https://github.com/emsesp/EMS-ESP32/releases)
 [![chat](https://img.shields.io/discord/816637840644505620.svg?style=flat-square&color=blueviolet)](https://discord.gg/3J3GgnzpyT)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/emsesp/EMS-ESP32)
 
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 
@@ -61,7 +62,7 @@ hide:
         <li>11 languages supported</li>
       </ul>
     </div>
-    
+
     <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #ffc107; border: 1px solid var(--md-default-fg-color--lightest);">
       <h4 style="margin-top: 0; color: #e0a800;">🔧 Integration & Automation</h4>
       <ul style="margin: 0; padding-left: 1.2rem; color: var(--md-default-fg-color);">
@@ -71,7 +72,7 @@ hide:
         <li>Notification service</li>
       </ul>
     </div>
-    
+
     <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #dc3545; border: 1px solid var(--md-default-fg-color--lightest);">
       <h4 style="margin-top: 0; color: #dc3545;">⚡ Advanced Features</h4>
       <ul style="margin: 0; padding-left: 1.2rem; color: var(--md-default-fg-color);">
@@ -81,6 +82,7 @@ hide:
         <li>Custom EMS entities</li>
       </ul>
     </div>
+
   </div>
   
   <div style="text-align: center; margin: 2rem 0;">

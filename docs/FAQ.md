@@ -40,14 +40,14 @@ And **mtc716** said _"A thermostat creates a heat curve that is constantly adapt
 Additionally, As **MichaelDvP** says "If you want to build a software controlled thermostat, you can use different methods:"
 
 - outdoortemperature controlled:
-define a heatingcurve for your building. This is a linear interpolation between a minimum outdoortemp for your region (typical-11°C for middle europe) with max flowtemp (designtemp ~76°C for radiators, 40°C for floor) and the actual room setpoint (e.g. 21°C) for outdoor and flowtemp. You can add an offset.
-selflowtemp = offset + setpoint + (designtemp- setpoint) * (setpoint - outdoortemp) / (setpoint - minoutdoor)
+  define a heatingcurve for your building. This is a linear interpolation between a minimum outdoortemp for your region (typical-11°C for middle europe) with max flowtemp (designtemp ~76°C for radiators, 40°C for floor) and the actual room setpoint (e.g. 21°C) for outdoor and flowtemp. You can add an offset.
+  selflowtemp = offset + setpoint + (designtemp- setpoint) \* (setpoint - outdoortemp) / (setpoint - minoutdoor)
 - room controlled, switched:
-measure the roomtemperature and switch the boiler with heatingoff enabled for roomtemp > setpoint. To avoid many switching add a hysteresis
-- room controled, dynamic
-Here you need to calculate a PID control. A bit out of scope for the ems-esp scheduler. But maybe possible. With HA you can check Implementing a smart thermostat (using SAT). See [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
+  measure the roomtemperature and switch the boiler with heatingoff enabled for roomtemp > setpoint. To avoid many switching add a hysteresis
+- room controlled, dynamic
+  Here you need to calculate a PID control. A bit out of scope for the ems-esp scheduler. But maybe possible. With HA you can check Implementing a smart thermostat (using SAT). See [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
 - controlled by smart TRVs:
-If you can read the opening of the TRVs make a simple I-Control. If a TRV is fully open: increase flowtemp, if the most open TRV is below 90% opening: decrease flowtemp. Heating is a slow process, so increase/decreas carefully.
+  If you can read the opening of the TRVs make a simple I-Control. If a TRV is fully open: increase flowtemp, if the most open TRV is below 90% opening: decrease flowtemp. Heating is a slow process, so increase/decrease carefully.
 
 For further reading, check out these discussions:
 
