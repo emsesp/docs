@@ -33,18 +33,19 @@ description: Access and navigate the EMS-ESP web interface
       <p style="color: var(--md-default-fg-color--light); margin-bottom: 1rem;">Configure and manage your EMS devices</p>
       <img style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" src="../_media/screenshot/web_devices.png" alt="Web Devices Management">
     </div>
-    
+
     <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest); text-align: center;">
       <h4 style="margin-top: 0; color: var(--md-default-fg-color);">⚙️ System Settings</h4>
       <p style="color: var(--md-default-fg-color--light); margin-bottom: 1rem;">Configure system parameters and preferences</p>
       <img style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" src="../_media/screenshot/web_settings.png" alt="Web Settings Configuration">
     </div>
-    
+
     <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest); text-align: center;">
       <h4 style="margin-top: 0; color: var(--md-default-fg-color);">📡 MQTT Configuration</h4>
       <p style="color: var(--md-default-fg-color--light); margin-bottom: 1rem;">Set up MQTT broker connection and topics</p>
       <img style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" src="../_media/screenshot/web_mqtt.png" alt="Web MQTT Configuration">
     </div>
+
   </div>
 </div>
 
@@ -69,7 +70,7 @@ description: Access and navigate the EMS-ESP web interface
         <li>Network configuration</li>
       </ul>
     </div>
-    
+
     <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #ffc107; border: 1px solid var(--md-default-fg-color--lightest);">
       <h4 style="margin-top: 0; color: #e0a800;">🌐 Multi-language Support</h4>
       <ul style="margin: 0; padding-left: 1.2rem; color: var(--md-default-fg-color);">
@@ -78,7 +79,7 @@ description: Access and navigate the EMS-ESP web interface
         <li>Customizable labels</li>
       </ul>
     </div>
-    
+
     <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #dc3545; border: 1px solid var(--md-default-fg-color--lightest);">
       <h4 style="margin-top: 0; color: #dc3545;">📱 Responsive Design</h4>
       <ul style="margin: 0; padding-left: 1.2rem; color: var(--md-default-fg-color);">
@@ -87,6 +88,7 @@ description: Access and navigate the EMS-ESP web interface
         <li>Desktop compatibility</li>
       </ul>
     </div>
+
   </div>
 </div>
 
