@@ -157,10 +157,14 @@ The following GPIOs are recommended:
 
 Limits:
 
-- ADC: `1.5V`
-- DAC `8bit`
-- PWM: `max frequency 5000Hz, resolution 13bits``
-- Counter/timer/rate trigger: `high->low edge with 15 ms debounce. Only for low pulse rates.`
+- ADC: max. input 3.3V, reads as milliVolts
+- DAC 8bit, value range 0..255 for 0V-3.3V output, Configure as `Digital out` on gpio 25 or 26 (ESP32), 17, 18 (ESP32S2), not available for ESP32S3, ESP32C3
+- PWM 0-2: max frequency 5000Hz, resolution 13bits. Each channel can only be used for one gpio.
+- Pulse is a digital output for a single pulse with setable length. Setting to `on` by command, the sensor goes to `off` after the pulse is completed.
+- Counter/timer/rate trigger: `high->low edge with 15 ms debounce. Only for low pulse rates < 30Hz.`
+- Counter 0-2, Frequ 0-2: high speed inputs for 1 Hz to 100kHz signals, no debounce, use RC-filter for noisy signals. Interrupt driven, each channel can only be used for one gpio.
+
+Counters are stored on reboot/update and every hour to nvs. I case of crashes, power cuts, the value may be lower after.
 
 ### Controlling Relay's
 
