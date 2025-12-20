@@ -76,7 +76,7 @@ rest_command:
 and make sure you include the yaml files in your `configuration.yaml` file like this:
 
 ```yaml
-template: !include template.yaml        
+template: !include template.yaml
 automation: !include automation.yaml
 script: !include script.yaml
 scene: !include scene.yaml
