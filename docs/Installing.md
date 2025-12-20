@@ -68,7 +68,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
     <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #ffc107; border: 1px solid var(--md-default-fg-color--lightest);">
       <h4 style="margin-top: 0; color: #e0a800;">⚠️ Important Notice</h4>
       <p style="margin: 0; color: var(--md-default-fg-color);">
-        Pay attention to the <a href="Version-Release-History" style="color: #007bff;">Change Log</a> before upgrading so you are aware of any breaking changes.
+        Pay attention to the <a href="https://github.com/emsesp/EMS-ESP32/blob/dev/CHANGELOG.md" style="color: #007bff;">Change Log</a> before upgrading so you are aware of any breaking changes.
       </p>
     </div>
 
