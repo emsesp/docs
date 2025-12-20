@@ -1095,3 +1095,5 @@ rgba
 minmax
 outdoortemperature
 minoutdoor
+setable
+Frequ

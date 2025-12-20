@@ -60,6 +60,7 @@ Easiest way is to run pip as a module (<https://realpython.com/what-is-pip/#usin
 - `mkdocs serve` to build the documentation
 - <http://127.0.0.1:8000>
 - TIP: comment out the `git-committers` and `git-revision-date-localized` sections in `mkdocs.yml` to speed up the build and prevent exceeding the GitHub API calls, but remember to uncomment it before committing
+- check for broken links with `npx markdown-link-check docs/**/*.md`
 
 ## Production
 
