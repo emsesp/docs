@@ -10,6 +10,10 @@ When uploading the firmware via the Web interface and you see the error "Invalid
 
 This is caused by the browser caching the old files. To fix this, clear the browser cache and reload the page. CTRL-R or CMD-R or F5 on most browsers.
 
+### EMS-ESP fails to connect to a hidden WiFi network
+
+There is known issue with some WiFi routers (e.g. Unifi) that hidden networks are not supported with the ESP32. Try to connect to the network using the BSSID name (sometimes the MAC address of the Access Point).
+
 ## Stability
 
 ### EMS-ESP can not connect to the WiFi
