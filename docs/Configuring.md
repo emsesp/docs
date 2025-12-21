@@ -191,6 +191,9 @@ Use the scheduler to call commands at specific intervals. A few examples:
 - send data to an external API, via a RESTful HTTP POST command, for example `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - use to call a Home Assistant script or service when a condition is triggered, e.g. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
+!!! warning "Using HTTPS in scheduler commands"
+    HTTPS is only supported on the ESP32 and ESP32-S3 variants with PSRAM when using with `url` to an external endpoint. The https will fall back to using http and may report an error.
+
 When creating a scheduler entry, the `name` is optional but it's useful to assign a name and then you can control it via a command (enable/disable) and see the status in the MQTT topic `scheduler_data`.
 
 ![Web](_media/screenshot/web_scheduler.png)
