@@ -17,7 +17,7 @@ The function `boiler/forceheatingoff` repeats this command every minute, so the 
 
 For gas and oil burners, Bosch does not measure the energy consumption. EMS-ESP calculates the consumption of each boiler message by burner modulation and nominal boiler power. Some gas boilers have the nominal power stored, some do not.
 Also the stored power is not always correct, a boiler of same type could be equipped with different burners or have its burners adjusted by air/nozzle size.
-In these cases, the nominal power `boiler/nonpower` can be changed and stored in EMS-ESP. Check the setting before using the energy values.
+In these cases, the nominal power `boiler/nompower` can be changed and stored in EMS-ESP. Check the setting before using the energy values.
 
 ## Remote Thermostats
 
