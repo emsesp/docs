@@ -1171,6 +1171,34 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 | ...    |                          |     |     |            |         |                                                                                                             |
 | 17     | Compressor speed         | 0   | 100 | 1          | percent | hpCompSpd from source code                                                                                  |
 
+### Telegram: 0x04A2
+
+!!! info "Information from the heat pump to the HMI"
+**Used in:** HMC310
+**Description:** Sends the status of several information from the heat source to the HMI
+**Class:** monitor
+**EMS category:** EMS2.0
+**Distribution:** broadcast-on-change, unicast-on-request, broadcast-periodically
+
+| Offset | Variable name                         | min | max | resolution | unit  | comment                               |
+| ------ | ------------------------------------- | --- | --- | ---------- | ----- | ------------------------------------- |
+| 0.0 | HMI EVU active | 0 | 1 | 1 | bool | On if any EVU function is active; FALSE = 0,TRUE = 1 |
+| 0.1 | HMI remote active | 0 | 1 | 1 | bool | On if any external input is active; FALSE = 0,TRUE = 1 |
+| 0.2 | HMI additional electric active | 0 | 1 | 1 | bool | On if any electrical heater is active; FALSE = 0,TRUE = 1 |
+| 0.3 | HMI additional mixed active | 0 | 1 | 1 | bool | On if the mixed additional heater is active; FALSE = 0,TRUE = 1 |
+| 0.4 | HMI compressor active | 0 | 1 | 1 | bool | On if any compressor is running; FALSE = 0,TRUE = 1 |
+| 0.5 | HMI mixed additional start | 0 | 1 | 1 | bool | Value says whether output of additional mixed heater is activated or not; FALSE = 0,TRUE = 1 |
+| 0.6 | HMI powerguard active | 0 | 1 | 1 | bool | Value says whether the electrical power usage is capped due to low power availability; FALSE = 0,TRUE = 1 |
+| 0.7 | HMI heating active | 0 | 1 | 1 | bool | Value says whether heating is being produced; FALSE = 0,TRUE = 1 |
+| 1 | HMI ODU type | 0 | 11 | 1 | enum | _3p_17kW = 0,_3p_13kW = 1,_1p_13kW = 2,_1p_9kW = 3,_1p_7kW = 4,_1p_5kW = 5,_1p_3kW = 6,_1p_5_9kW = 7,_3p_12_16kW = 8,_1p_12_16kW = 9,_3p_3_12kW = 10,_1p_6kW = 11 |
+| 2 | HMI IDU type | 0 | 7 | 1 | enum | Tower9_5To9 = 1,Tower9_13To17 = 2,Tower15_13To17 = 3,Comfort_5To9 = 4,Comfort_13To17 = 5,Light_5To9 = 6,Light_13To17 = 7 |
+| 3 | Smart Grid Mode | 0 | 4 | 1 | enum | Not_used = 0,EVU_block_active = 1,Normal_operation = 2,Smart_grid = 3,Force_smart_grid = 4 |
+| 4.0 | Electric solar sollector active | 0 | 1 | 1 | bool | True if the photo voltaic system supplying power; FALSE = 0,TRUE = 1 |
+| 4.1 | HMI buzzer active | 0 | 1 | 1 | bool | True if the buzzer of the HMI shall be active; FALSE = 0,TRUE = 1 |
+| 5 | HMI heat pump type | 0 | 2 | 1 | enum | A_W = 0,L_W = 1,EXHAUST_AIR = 2 |
+| 6 | HMI error symbol | 0 | 2 | 1 | enum | Indication for error icon color; NO_ERROR = 0,NON_SEVERE = 1,SEVERE = 2 |
+| 7 | HMI error LED | 0 | 2 | 1 | enum | Indication for error LED color; NO_ERROR = 0,NON_SEVERE = 1,SEVERE = 2|
+
 ### Telegram: 0x0683
 
 !!! info "NSC Clock Program **3** for HCx"
