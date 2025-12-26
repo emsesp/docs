@@ -610,7 +610,7 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 **Distribution:** broadcast-on-change, unicast-on-request, writable
 
 | Offset | Variable name                                         | min | max | resolution | unit  | comment                                                                              |
-| ------ | ----------------------------------------------------- | --- | --- | ---------- | ----- | ------------------------------------------------------------------------------------ | --- |
+| ------ | ----------------------------------------------------- | --- | --- | ---------- | ----- | ------------------------------------------------------------------------------------ |
 | 0      | Operation Mode                                        | -1  | 0   | 1          | enum  | auto=-1, manual=0                                                                    |
 | 1      | Setpoint Comfort 3                                    | 10  | 60  | 0,5        | °C    | 5°C ... 30°C                                                                         |
 | 2      | Setpoint Comfort 2                                    | 10  | 60  | 0,5        | °C    | 5°C ... 30°C                                                                         |
@@ -628,7 +628,7 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 | 17     | Room temperature setpoint for cooling                 | 5   | 30  | 0,5        | °C    | OFF=0                                                                                |
 | ...    |                                                       |     |     |            |       |                                                                                      |
 | 19     | Switch Clock Value Mode                               | 1   | 2   | 1          | enum  | LEVELS=1, ABS_TEMP = 2                                                               |
-| 20     | Comfort Eco Temp Threshold                            | 24  | 44  | 0,5        | °C    |                                                                                      |     |
+| 20     | Comfort Eco Temp Threshold                            | 24  | 44  | 0,5        | °C    |                                                                                      |
 | 21     | Heating Mode New                                      | 0   | 2   | 1          | enum  | OFF=0, ON=1, AUTO=2                                                                  |
 | 22     | Setpoint manual temp                                  | 10  | 60  | 0,5        | °C    | 5°C ... 30°C                                                                         |
 | 23     | Boost mode                                            | -1  | 0   | 1          | bool  | YES=-1, NO=0                                                                         |
