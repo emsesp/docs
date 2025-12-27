@@ -95,7 +95,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
       <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #dc3545; border: 1px solid var(--md-default-fg-color--lightest);">
         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
           <div style="width: 20px; height: 20px; background: #dc3545; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite;"></div>
-          <h4 style="margin: 0; color: #dc3545;">1 Flash</h4>
+          <h4 style="margin: 0; color: #dc3545;">1 Flash (blue)</h4>
         </div>
         <p style="margin: 0; color: var(--md-default-fg-color);">
           EMS bus is not yet connected. If this takes more than a few seconds check the EMS Tx Mode and the physical connection to the EMS bus.
@@ -106,7 +106,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
           <div style="width: 20px; height: 20px; background: #ffc107; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite;"></div>
           <div style="width: 20px; height: 20px; background: #ffc107; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite; animation-delay: 0.5s;"></div>
-          <h4 style="margin: 0; color: #e0a800;">2 Flashes</h4>
+          <h4 style="margin: 0; color: #e0a800;">2 Flashes (red)</h4>
         </div>
         <p style="margin: 0; color: var(--md-default-fg-color);">
           Network (WiFi or Ethernet) is connecting. If this persists check the EMS-ESP Network settings. EMS-ESP uses 2.4GHz/WPA2 only.
@@ -118,7 +118,7 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
           <div style="width: 20px; height: 20px; background: #6f42c1; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite;"></div>
           <div style="width: 20px; height: 20px; background: #6f42c1; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite; animation-delay: 0.3s;"></div>
           <div style="width: 20px; height: 20px; background: #6f42c1; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite; animation-delay: 0.6s;"></div>
-          <h4 style="margin: 0; color: #6f42c1;">3 Flashes</h4>
+          <h4 style="margin: 0; color: #6f42c1;">3 Flashes (red,red,blue)</h4>
         </div>
         <p style="margin: 0; color: var(--md-default-fg-color);">
           Both the EMS bus and Network are still trying to connect. This could be due to an incorrect EMS-ESP Board Profile setting.
