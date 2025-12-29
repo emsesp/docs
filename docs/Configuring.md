@@ -1,12 +1,15 @@
+# Configuring
+
 ## First time setup
 
-The default 'factory' configuration will start an WiFi Access Point called `ems-esp`. Connect to this using the WPA password `ems-esp-neo`. When prompted with a login screen (captive portal) sign-in with the username `admin` and password `admin`. These can be modified later. If you have an Ethernet board then you can connect directly to it's IP address or via <http://ems-esp> or <http://ems-esp.local>.
+The default 'factory' configuration will start an WiFi Access Point called `ems-esp`. Connect to this using the WPA password `ems-esp-neo`. When prompted with a login screen (captive portal) sign-in with the username `admin` and password `admin`. These can be modified later. If you have an Ethernet board then you can connect directly to it's IP address or via `http://ems-esp` or `http://ems-esp.local`.
 
 Now you're ready to further configure the settings. If not connected to your WiFi network, do this first from the Settings->Network page. You can also do this via the the Console when connected to a Serial/USB port and using the commands `set wifi ssid` and `set wifi password`.
 
 If you're seeing warnings that it failed to connect to the EMS bus, or there are Tx or Rx errors then follow the [troubleshooting](Troubleshooting) guide.
 
-!!! note "If Rx incomplete telegrams are reported in the log, don't panic. Some telegrams can be missed and this is usually caused by noise interference on the line."
+:::note If you see 'Rx incomplete telegrams' reported in the log, don't panic. Some telegrams can be missed and this is usually caused by noise interference on the line.
+:::
 
 This next section describes some of key settings that can be adjusted via the WebUI, found under the Settings section. Most are self-explanatory so only the important ones are described here.
 
@@ -18,7 +21,6 @@ This next section describes some of key settings that can be adjusted via the We
 - **Enable Telnet Console**. This is on by default and allows users to connect to the in-secure Telnet server on port 23.
 - **Enable Modbus**. This is off by default and allows users to connect to the Modbus TCP server (default port 502). Due to memory constraints this feature is only available on boards with additional PSRAM.
 - **Enable Syslog**:
-  <!-- prettier-ignore -->
   - **IP** is the IP address of a syslog server for capturing remote logs. Leave blank is not using SysLog. Note EMS-ESP uses the standard [RFC5424](https://datatracker.ietf.org/doc/html/rfc5424) protocol so make sure your syslog server is setup to process these messages and not for example RFC3164 (BSD Syslog).
   - **Port** if using an alternate port number. The default is 514. And it uses UDP (not TCP).
   - **Log Level** sets the maximum log level for reported messages. The highest level is DEBUG which will send a lot of log data so use with caution.
@@ -68,7 +70,8 @@ Choosing `Custom` will show the following additional settings to manually config
 > - **LED GPIO**. This is the pin for the LED, defaulted to the onboard LED on the ESP dev board.
 > - **Eth PHY Type**. This is type of Ethernet chip used.
 
-!!! note "On ESP32 development boards there are often also pins marked RX and TX. However, these are usually connected to the USB chip and cannot be used for the EMS interface circuit."
+:::note On ESP32 development boards there are often also pins marked RX and TX. However, these are usually connected to the USB chip and cannot be used for the EMS interface circuit.
+:::
 
 - **EMS Tx Mode**. Tx Mode is the mode in which EMS-ESP sends telegrams on the EMS bus. Choose the mode that works best for your system and watch for Tx errors in the Web Dashboard and `show ems` in the Console. Changing the value has immediate effect.
   - `EMS` is the default for EMS1.0 systems but also compatible with most other bus protocols.
@@ -94,7 +97,7 @@ The Network page allows you to connect EMS-ESP to your home network. You can cho
 
 ### CORS (Cross-Origin Resource Sharing)
 
-CORS, when enabled adds new HTTP headers to each Web request to allow the Web API to make `fetch` and `XMLHttpRequest` requests across different domains. It disables the pre-flight check which follows the same-origin policy by default. See <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS> for more details. There is also a "CORS unblock" browser addon that works the same way.
+CORS, when enabled adds new HTTP headers to each Web request to allow the Web API to make `fetch` and `XMLHttpRequest` requests across different domains. It disables the pre-flight check which follows the same-origin policy by default. See [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) for more details. There is also a "CORS unblock" browser addon that works the same way.
 
 Enable this function when running in VPNs or you have other servers (like Grafana) running on other domains that are making calls to EMS-ESP's API.
 
@@ -129,7 +132,7 @@ The Users page allows you to create additional users for the captive portal and 
 
 Each user has an unique Access Token (viewable by clicking on the key icon) which is used for RESTful write commands via HTTP POST. This is for security reasons to prevent anyone changing device settings.
 
-![Web](_media/screenshot/web_users.png)
+![Web](/_media/screenshot/web_users.png)
 
 ## Adding Analog and Temperature Sensors
 
@@ -137,15 +140,16 @@ External sensors, like temperature and analog sensors can be attached to a range
 
 To add analog sensors click on `Add` and choose between a normal Digital in/out, a Counter (counting on/off pulses), ADC for measuring voltages, Timer, Rate and PWM 0-2. Note, the counter value is persisted and not reset on reboot.
 
-![Web](_media/screenshot/web_sensor.png)
+![Web](/_media/screenshot/web_sensor.png)
 
-!!! warning
-
-    Be careful when picking a GPIO so it doesn't clash with the other used GPIOs (you can select CUSTOM board profile to view your current configuration).
+:::warning
+Be careful when picking a GPIO so it doesn't clash with the other used GPIOs (you can select CUSTOM board profile to view your current configuration).
 
     EMS-ESP is connected to the low voltage bus of your heating and any over-voltage can damage the EMS-ESP board and possible your heating devices. Never power external equipment from the EMS-ESP board directly.
 
     ESP32 development boards vary in their available pin configuration. Typically you can't use 1, 6-11, 12, 14, 15, 20, 24, 28-31 and 40+. See these links [here](https://diyprojects.io/esp32-how-to-use-gpio-digital-io-arduino-code/#.YFpVEq9KhjG) and [here](https://nodemcu.readthedocs.io/en/dev-esp32/modules/gpio/).
+
+:::
 
 The following GPIOs are recommended:
 
@@ -178,7 +182,7 @@ The professional way is to use a separate relay board with opto-isolation and a 
 
 The Customization page shows all registered entities and allows to exclude commands and values from publishing via MQTT/API or remove them from WebUI pages. The Devices and Dashboard only show entities with value while the Customization module will show all of them. If an entity has no value then it is supported by EMS-ESP, but not by your boiler/thermostat/etc and will not be published or visible to any integrations like Home Assistant.
 
-![Web](_media/screenshot/web_customizations.png)
+![Web](/_media/screenshot/web_customizations.png)
 
 ## Scheduling Actions
 
@@ -191,17 +195,18 @@ Use the scheduler to call commands at specific intervals. A few examples:
 - send data to an external API, via a RESTful HTTP POST command, for example `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - use to call a Home Assistant script or service when a condition is triggered, e.g. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
-!!! warning "Using HTTPS in scheduler commands"
-    HTTPS is only supported on the ESP32 and ESP32-S3 variants with PSRAM when using with `url` to an external endpoint. The https will fall back to using http and may report an error.
+:::warning Using HTTPS in scheduler commands
+HTTPS is only supported on the ESP32 and ESP32-S3 variants with PSRAM when using with `url` to an external endpoint. The https will fall back to using http and may report an error.
+:::
 
 When creating a scheduler entry, the `name` is optional but it's useful to assign a name and then you can control it via a command (enable/disable) and see the status in the MQTT topic `scheduler_data`.
 
-![Web](_media/screenshot/web_scheduler.png)
+![Web](/_media/screenshot/web_scheduler.png)
 
 The scheduler can also be used to periodically set values based on another entity value, or even a user-defined custom entity (variable). For example to set the flow temperature of the boiler every minute based on a user managed entity which is controlled externally (e.g. in Home Assistant) it would look like:
 
-![Web](_media/screenshot/web_scheduler_custom.png)
-![Web](_media/screenshot/web_scheduler_flowtemp.png)
+![Web](/_media/screenshot/web_scheduler_custom.png)
+![Web](/_media/screenshot/web_scheduler_flowtemp.png)
 
 ### Conditions
 
@@ -234,9 +239,9 @@ Pay attention to the following rules:
 An On Change trigger is a list of entities using the format `<device>/<entity>`, for example `boiler/outdoortemp custom/setpoint`.
 As entities never change at the same time using logical operations here like `&&` aren't useful. Note, using `system` as the `<device>` is not supported.
 
-![Web](_media/screenshot/web_conditions_1.png)
+![Web](/_media/screenshot/web_conditions_1.png)
 
-![Web](_media/screenshot/web_conditions_2.png)
+![Web](/_media/screenshot/web_conditions_2.png)
 
 ### Web Commands
 
@@ -273,4 +278,4 @@ Custom Entities is an advanced and powerful way to extend EMS-ESP by adding your
 
 For example, a modern Heat Pump may have new features that are not included in EMS-ESP. Here you would use the `watch` command to view the incoming EMS traffic in combination with manual adjusting specific parameters and when you have located the specific telegram and the offset, create a Custom Entity to fine-tune the type and verify the the value. Then request it to be included in the next EMS-ESP release update.
 
-![Web](_media/screenshot/web_customentities.png)
+![Web](/_media/screenshot/web_customentities.png)

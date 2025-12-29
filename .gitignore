@@ -9,9 +9,13 @@
 # !.vscode/extensions.json
 
 .history
-site/
 
-# Python
+# Docusaurus
+.docusaurus/
+build/
+node_modules/
+
+# Python (legacy)
 venv
 .venv
 .cache/plugin/git-committers/page-authors.json

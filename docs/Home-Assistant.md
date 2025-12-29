@@ -1,4 +1,6 @@
-![logo](_media/logo/home-assistant.png)
+# Home Assistant
+
+![logo](/_media/logo/home-assistant.png)
 
 EMS-ESP has automatic integration with Home Assistant via the [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/) protocol. To use this feature enable simply enable the Discovery option from the MQTT Settings page.
 
@@ -6,11 +8,11 @@ EMS-ESP will create retained MQTT messages prefixed with `homeassistant/` for ea
 
 To add this device and its values to a Home Assistant UI click on the "ADD TO LOVELACE" button.
 
-![device](_media/screenshot/ha_device.png)
+![device](/_media/screenshot/ha_device.png)
 
 You can then add each of these devices to a new lovelace view using the "add to lovelace" button, and get something looking like:
 
-![lovelace](_media/screenshot/ha_lovelace.png)
+![lovelace](/_media/screenshot/ha_lovelace.png)
 
 ## Example Automations
 
@@ -56,9 +58,9 @@ Below are the additions to the HA files to show the state of the shower, if the 
 
 The cold shot feature is available in EMS-ESP versions 3.7.0 and above.
 
-![Home Assistant Shower](_media/screenshot/ha_shower.jpg)
+![Home Assistant Shower](/_media/screenshot/ha_shower.jpg)
 
-![Home Assistant iPhone notify](_media/screenshot/ha_notify.jpg)
+![Home Assistant iPhone notify](/_media/screenshot/ha_notify.jpg)
 
 Add to `configuration.yaml` (make sure you change the token):
 
@@ -239,7 +241,7 @@ one_time_water_off:
 
 ### Calculating values
 
-(from @Glitter-ball)
+(from Glitter-ball)
 
 ```yaml
 - platform: template
@@ -253,7 +255,7 @@ one_time_water_off:
 
 ### Solar Pump Working Hours
 
-(from @PhillyGilly)
+(from PhillyGilly)
 
 ```yaml
 - platform: mqtt
@@ -351,15 +353,15 @@ While Tiles appear to be just simple display helpers, their functionality can be
 
 ![image](https://github.com/user-attachments/assets/90ad3a45-e84e-497d-a975-f4313ad356c0)
 
-2. Hit the checkmark and 'Continue'. This will yield a preview of the autoselected Tile:
+1. Hit the checkmark and 'Continue'. This will yield a preview of the autoselected Tile:
 
 ![image](https://github.com/user-attachments/assets/58da9622-9a5b-4df0-aeec-daabb0ba8f80)
 
-3. Hit add to dashboard. This will add the Tile to the dashboard in it's default setting, which just displays the value of the entity:
+1. Hit add to dashboard. This will add the Tile to the dashboard in it's default setting, which just displays the value of the entity:
 
 ![image](https://github.com/user-attachments/assets/1be160cb-4527-4db4-bd12-04599eed84af)
 
-4. Edit the Tile to adjust size and add a Feature to get the numeric input functionality.
+1. Edit the Tile to adjust size and add a Feature to get the numeric input functionality.
 
 ![image](https://github.com/user-attachments/assets/be44cc79-bdf1-4bff-b054-118d1b3c7382)
 
@@ -371,7 +373,7 @@ Optionally, if you prefer a slider over the buttons, hit `SHOW CODE EDITOR` and 
 
 Do note that the Tile component that comes with HA does not allow you to set minimum and maximum values. Either use `numeric_input` as outlined in the previous section, or check out [Service Call Tiles on HACS](https://github.com/Nerwyn/service-call-tile-feature).
 
-5. Hit Save and enjoy your UI-generated EMS-ESP control tile:
+1. Hit Save and enjoy your UI-generated EMS-ESP control tile:
 
 ![image](https://github.com/user-attachments/assets/f5a3ca3e-afa9-4f33-b004-254349b3806a)
 

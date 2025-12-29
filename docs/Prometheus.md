@@ -1,6 +1,8 @@
-![logo](_media/logo/prometheus-logo.png)
+# Prometheus
 
-!!! info "Experimental Feature"
+![logo](/_media/logo/prometheus-logo.png)
+
+:::info Experimental Feature
     This feature is currently still being tested. The Prometheus API is available starting with EMS-ESP32 version 3.7.3-dev_36.
 
 EMS-ESP exposes the `/api/<device>/metrics` & `/api/system/metrics` endpoints for integration with Prometheus. All EMS-ESP metrics are prefixed with `emsesp_`.
@@ -74,5 +76,5 @@ scrape_configs:
 ```
 
 To visualize the Prometheus metrics, see also: [Integrations: Grafana](Grafana.md).
-<br>
+<br />
 More information about the Prometheus Data model can be found in the [official documentation](https://prometheus.io/docs/concepts/data_model/).

@@ -1,4 +1,4 @@
-# List of supported Extension Modules
+# Extension Modules
 
 This is the current list of supported extension modules:
 

@@ -1,4 +1,4 @@
-# List of supported Connect Modules
+# Connect Modules
 
 - Nefit Moduline Easy Connect
 - Bosch Easy Connect

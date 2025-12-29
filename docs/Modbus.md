@@ -1,4 +1,4 @@
-# Modbus/TCP
+# Modbus
 
 The Modbus connector allows to read and write entities using the Modbus/TCP protocol. See [Settings](Modbus-Settings.md)
 on how to enable and configure the Modbus connector.
@@ -27,7 +27,7 @@ All values are stored in one or more registers.
 See [Entity/Register Mapping](Modbus-Entity-Registers.md) for a list of all register offsets, data types and scale
 factors.
 
-!!! example
+:::tip
 
     A Modbus client wants to read the target flow temperature of the second heating circuit (hc2) of a thermostat
     of type RC310 connected to the EMS bus.
@@ -42,6 +42,8 @@ factors.
     So the final register offset for the target flow temperature in hc2 is 2000 + 18 = 2018. We need to read one
     register at offset 2018 from the server with unit ID 6 and multiply the result by the scale factor which in this
     case is 1.
+
+:::
 
 ## The SYSTEM server
 
@@ -80,7 +82,7 @@ from the EMS-ESP root folder. It runs on Linux/OSX and requires `GNUmake` and `p
 
 After the adjusted `modbus_entity_parameters.hpp` file is updated as well as the documentation (.md file), build, test and then commit and push to the EMS-ESP dev repository.
 
-!!! note
+:::note
 
     The size of string entities is not known to EMS-ESP at runtime. So in case you add a new string entity you must
     also add the size of the string field to variable `string_sizes` in `scripts/update_modbus_registers.py` which maps entity short names to string sizes.

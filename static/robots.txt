@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://emsesp.org/sitemap.xml
+# Algolia-Crawler-Verif: BB2D6AE8CA1CF507

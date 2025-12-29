@@ -1,3 +1,5 @@
+# FAQ
+
 ## How to Factory Reset EMS-ESP?
 
 If you have a GPIO Button configured (enabled by default on all BBQKees boards) pressing this for 10 seconds and releasing will perform a factory reset. EMS-ESP will restart in Access Point mode.
@@ -21,17 +23,19 @@ Best overview of known telegrams is from [Norberts1](https://github.com/norberts
 
 For different brands/devices Bosch sometimes use different expressions for the same value, Maybe changing developers or they like to make reverse engineering difficult!
 
-If you search a setting, log the telegrams for the device (log all or watch <device-id>) and change the setting on the thermostat to different states/values. Then search for these values in the log. If you search for a measurement, log the device and view the value on the thermostat and wait for changes, note old/new values and time. Then check the log for this time stamp (or 10 sec / 1 min later) and the value within a telegram. Best to have more changes/values to be sure.
+If you search a setting, log the telegrams for the device (log all or watch &lt;device-id&gt;) and change the setting on the thermostat to different states/values. Then search for these values in the log. If you search for a measurement, log the device and view the value on the thermostat and wait for changes, note old/new values and time. Then check the log for this time stamp (or 10 sec / 1 min later) and the value within a telegram. Best to have more changes/values to be sure.
 
 ## Can EMS-ESP simulate a Thermostat?
 
 Partially. As the folks over at [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) nicely put it:
 
-!!! quote "Why use a Thermostat?"
+:::quote Why use a Thermostat?
 
     - The thermostat manufacturers have spent years of research to work out the heating characteristics for the most efficient and comfortable way to heat a house.
     - The thermostat provides a control interface that people are familiar with, so other members of the household are still able to adjust the setpoint.
     - It provides convenient housing for the room temperature sensor, which is needed unless you use a heating curve based solely on the outside temperature.
+
+:::
 
 As **MichaelDvP** points out _"a thermostat is a clever electronic device. You can put in the desired room temperature and it calculates from some parameters and measurements the required flowtemp for this room temperature and sends it to the boiler. This happens in a control loop and is updated often."_
 
@@ -76,4 +80,4 @@ Yes you can. Keep in mind the following settings:
 
 ## Why do EMS telegram's in `raw watch` mode have a type 0x100 higher then in `raw` mode?
 
-See <https://github.com/emsesp/EMS-ESP32/discussions/2025>
+See [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/2025)

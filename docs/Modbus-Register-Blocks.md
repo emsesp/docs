@@ -1,4 +1,4 @@
-# Register Blocks
+# Modbus Register Blocks
 
 This table shows how entity tags are mapped to Modbus register block offsets.
 

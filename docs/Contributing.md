@@ -1,3 +1,5 @@
+# Contributing
+
 _Any contribution helps make EMS-ESP better_. This project needs help with:
 
 - guides for integrating into home automation systems
@@ -8,7 +10,7 @@ The full Contributing guidelines can found in [CONTRIBUTING.md](https://github.c
 
 ## Basic design principles
 
-- The core services like telnet, logging and shell are based off the libraries from @nomis. This general design pattens focuses on making everything as asynchronous as possible so that no one operation should starve another operation of it's time to execute (<https://isocpp.org/wiki/faq/ctors#static-init-order>).
+- The core services like telnet, logging and shell are based off the libraries `@nomis`. This general design pattens focuses on making everything as asynchronous as possible so that no one operation should starve another operation of it's time to execute (https://isocpp.org/wiki/faq/ctors#static-init-order).
 - All EMS devices (e.g. boiler, thermostat, solar modules, mixer units etc) are derived from a factory base class and each class handles its own registering of telegram and mqtt handlers. This makes the EMS device code easier to manage and we can extend with new telegrams types and features.
 
 ## Keeping the code tidy
@@ -54,7 +56,7 @@ Make sure you adhere to these rules:
 
 Format: `<type>(<scope>): <subject>`
 
-`<scope>` is optional. See <https://www.conventionalcommits.org/>.
+`<scope>` is optional. See https://www.conventionalcommits.org/.
 
 #### Example
 

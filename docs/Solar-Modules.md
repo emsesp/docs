@@ -1,4 +1,4 @@
-# List of Solar Modules
+# Solar Modules
 
 This is the current list of supported solar modules:
 

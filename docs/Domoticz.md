@@ -1,4 +1,6 @@
-![logo](_media/logo/domoticz.png)
+# Domoticz
+
+![logo](/_media/logo/domoticz.png)
 
 Domoticz Beta versions from December 2021 or later support the MQTT Discovery protocol.
 As EMS-ESP also fully supports Home Assistant MQTT Discovery this will automatically provide you with all available entities in Domoticz.

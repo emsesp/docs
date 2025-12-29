@@ -1,4 +1,4 @@
-# List of supported Thermostats
+# Thermostats
 
 This is the current list of supported thermostats from brands like Buderus, Nefit, Sieger, Junkers and Bosch:
 
@@ -25,8 +25,7 @@ This is the current list of supported thermostats from brands like Buderus, Nefi
 - RT800
 - TR120RF
 
-<!-- prettier-ignore -->
-!!! note
+:::note
     These thermostats below unfortunately do not support direct EMS write commands so will appear in EMS-ESP as read-only devices:
 
     - Buderus Logamatic TC100, Bosch EasyControl CT200, Junkers CT100, Moduline Easy. See [here](https://community.home-assistant.io/t/buderus-tc100-junkers-ct100-thermostat/67992)
@@ -35,12 +34,10 @@ This is the current list of supported thermostats from brands like Buderus, Nefi
 
 ## Device Entities
 
-<!-- prettier-ignore -->
-!!! warning
+:::warning
     The actual thermostat commands below will vary depending on which Thermostat brand and model you have.
     This list is also not complete and subject to change between versions.
 
-<!-- prettier-ignore -->
 | command | data | id | comments |
 | - | - | - | - |
 | `datetime` | `<ntp \| dd.mm.yyyy-hh:mm:ss-dw-dst>` | | RC35, RC100, RC300, `dw`:day of week: 0-mo,.. `dst`:daylight saving 0/1 |

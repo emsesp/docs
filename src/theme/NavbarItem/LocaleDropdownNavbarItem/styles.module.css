@@ -1,0 +1,40 @@
+.iconLanguage {
+  margin-right: 0.25rem;
+  vertical-align: text-bottom;
+}
+
+/* Reset ALL dropdown links to remove any active/selected styling */
+:global(.dropdown__menu .dropdown__link) {
+  font-weight: normal !important;
+  background-color: transparent !important;
+}
+
+/* Remove hover effects that might make items look selected */
+:global(.dropdown__menu .dropdown__link:hover) {
+  background-color: var(--ifm-menu-color-background-hover) !important;
+}
+
+/* ONLY apply active styles to the item with dropdown__link--active class */
+:global(.dropdown__menu .dropdown__link.dropdown__link--active) {
+  font-weight: bold !important;
+  background-color: var(--ifm-menu-color-background-active) !important;
+}
+
+/* Don't show hover on active item */
+:global(.dropdown__menu .dropdown__link.dropdown__link--active:hover) {
+  background-color: var(--ifm-menu-color-background-active) !important;
+}
+
+/* Add checkmark ONLY to active locale */
+:global(.dropdown__menu .dropdown__link.dropdown__link--active)::before {
+  content: '✓ ';
+  color: var(--ifm-color-primary);
+  margin-right: 0.25rem;
+  font-weight: bold;
+}
+
+/* Ensure non-active items don't have checkmark */
+:global(.dropdown__menu .dropdown__link):not(:global(.dropdown__link--active))::before {
+  content: none !important;
+}
+

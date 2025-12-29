@@ -1,3 +1,5 @@
+# Getting Support
+
 If you are looking for EMS-ESP support, have a question or suggestion here are the options:
 
 - If the request is **hardware** related go to [BBQKees' EMS Gateway Documentation](https://bbqkees-electronics.nl/wiki/).
@@ -6,11 +8,11 @@ If you are looking for EMS-ESP support, have a question or suggestion here are t
 - **Search** the [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) as you might find an answer to your question.
 - As a last resort, create a [Problem Report](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) on GitHub. See below for the required information.
 
-!!! tip "important!"
+:::tip important!
 
     When creating a new GitHub issue make sure:
 
-    1. you attach the EMS-ESP support information. You can fetch this from the URL [http://<hostname\>/api/system/info](http://ems-esp.local/api/system/info) or by clicking on the `Support Info` button from the Help page in the WebUI.
+    1. you attach the EMS-ESP support information. You can fetch this from the URL [http://&lt;hostname&gt;/api/system/info](http://ems-esp.local/api/system/info) or by clicking on the `Support Info` button from the Help page in the WebUI.
     2. you include the firmware version you are using. You can find this in the `Support Info` or in the WebUI under the `About` page. It is strongly recommended you switch to the latest development firmware version before creating an issue as the problem may already have been fixed.
     3. you include the hardware or gateway board you are using. You can find this in the `Support Info` or in the WebUI under the `About` page.
     6. you include the problem you are experiencing.

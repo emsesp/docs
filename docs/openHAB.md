@@ -1,19 +1,22 @@
-![logo](_media/logo/openhab-logo.png)
+# openHAB
+
+![logo](/_media/logo/openhab-logo.png)
 
 EMS-ESP can be integrated into openHab through different ways:
 
 - HomeAssistant MQTT Components Binding (based on Home Assistant discovery protocol)
 - MQTT Binding (Generic MQTT Thing)
 
-<figure markdown>
-  ![dashboard](_media/screenshot/oh_dashboard.png)
-  <figcaption>Example Dashboard (items depend on heating system)
-</figcaption>
+<figure>
+  <img src="/_media/screenshot/oh_dashboard.png" alt="Example Dashboard (items depend on heating system)" />
+  <figcaption>Example Dashboard (items depend on heating system)</figcaption>
 </figure>
 
-!!! note "It depends on the entity and the device if it is writable or just readable. Have a look into the list of entities [**Entities**](All-Devices) for all available entities and related attributes."
+:::note It depends on the entity and the device if it is writable or just readable. Have a look into the list of entities [**Entities**](All-Devices) for all available entities and related attributes.
+:::
 
-!!! note "Documentation has been created for openHab version 3.x"
+:::note Documentation has been created for openHab version 3.x
+:::
 
 ## HomeAssistant MQTT Components Binding
 
@@ -27,18 +30,16 @@ Objects in HA are mapped to `Things`, Component+Node to `ChannelGroup` and Compo
 
 You should see based on your heating setup related `Things` in your Inbox
 
-<figure markdown>
-  ![inbox](_media/screenshot/oh_inbox.png)
-  <figcaption>Inbox with EMS-ESP discovered Things
-</figcaption>
+<figure>
+  <img src="/_media/screenshot/oh_inbox.png" alt="Inbox with EMS-ESP discovered Things" />
+  <figcaption>Inbox with EMS-ESP discovered Things</figcaption>
 </figure>
 
 After adding the `Things` you can see all `Channels` that are available for the specific device and which you have enabled in EMS-ESP for MQTT.
 
-<figure markdown>
-  ![inbox_2](_media/screenshot/oh_ex_thermostat.png)
-  <figcaption>Channels of a thermostat Thing
-</figcaption>
+<figure>
+  <img src="/_media/screenshot/oh_ex_thermostat.png" alt="Channels of a thermostat Thing" />
+  <figcaption>Channels of a thermostat Thing</figcaption>
 </figure>
 
 ### Limitations
@@ -118,10 +119,9 @@ Frame label="Heating" {
 }
 ```
 
-<figure markdown>
-  ![sitemap](_media/screenshot/oh_sitemap.png)
-  <figcaption>Example Sitemap (items depend on heating system)
-</figcaption>
+<figure>
+  <img src="/_media/screenshot/oh_sitemap.png" alt="Example Sitemap (items depend on heating system)" />
+  <figcaption>Example Sitemap (items depend on heating system)</figcaption>
 </figure>
 
 ### UI based approach
@@ -151,8 +151,8 @@ configuration:
   enableDiscovery: true
 ```
 
-3. Create a `Generic MQTT Thing` (Things -> (+) Icon -> MQTT Binding -> Generic MQTT Thing)
-4. Edit the created `Generic MQTT Thing` and paste the code below. Change attributes where needed or change them in the UI. (Things -> -Your Created Generic MQTT Thing- -> Code-Tab)
+1. Create a `Generic MQTT Thing` (Things -> (+) Icon -> MQTT Binding -> Generic MQTT Thing)
+2. Edit the created `Generic MQTT Thing` and paste the code below. Change attributes where needed or change them in the UI. (Things -> -Your Created Generic MQTT Thing- -> Code-Tab)
 
 ```yaml title="Generic MQTT Thing"
 UID: mqtt:topic:broker:ems-esp

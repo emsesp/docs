@@ -3,180 +3,59 @@ title: Installation Guide
 description: Getting started with EMS-ESP. What you need, how to install and do initial configuration.
 ---
 
-<div class="install-hero" style="text-align: center; margin: 2rem 0; padding: 2rem; background: var(--md-default-bg-color--lighter); border-radius: 10px; border: 1px solid var(--md-default-fg-color--lightest);">
-  <div style="font-size: 3rem; margin-bottom: 1rem;">📦</div>
-  <h1 style="margin: 0; color: var(--md-default-fg-color);">Installation Guide</h1>
-  <p style="font-size: 1.2rem; margin: 1rem 0; color: var(--md-default-fg-color--light);">
-    Everything you need to get EMS-ESP up and running
-  </p>
-</div>
+# 📦 Installing
 
-<div class="hardware-requirements" style="margin: 3rem 0;">
-  <h2 style="color: var(--md-default-fg-color);">🔧 Required Hardware</h2>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin: 2rem 0;">
-    <div style="background: var(--md-default-bg-color); padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest);">
-      <div style="text-align: center; margin-bottom: 1.5rem;">
-        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔌</div>
-        <h3 style="margin: 0; color: var(--md-default-fg-color);">ESP32 Development Board</h3>
-      </div>
-      <p style="color: var(--md-default-fg-color); margin-bottom: 1rem;">
-        The EMS-ESP firmware runs on an ESP32 module from <a href="https://www.espressif.com/en/products/socs" style="color: #007bff;">Espressif</a>. The chipsets ESP32-S, ESP32-S2, ESP32-S3 and ESP32-C3 are supported.
-      </p>
-      <p style="color: var(--md-default-fg-color--light); font-size: 0.9rem;">
-        See the post <a href="https://github.com/emsesp/EMS-ESP32/discussions/839#discussioncomment-4493156" style="color: #007bff;">here</a> on which development boards we have tested against.
-      </p>
-      <div style="text-align: center; margin-top: 1.5rem;">
-        <img style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" src="../_media/images/esp32-dev-boards.jpg" alt="ESP32 Development Boards">
-      </div>
-    </div>
+There are a number of ways to install the firmware on your ESP32 device:
 
-    <div style="background: var(--md-default-bg-color); padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest);">
-      <div style="text-align: center; margin-bottom: 1.5rem;">
-        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔗</div>
-        <h3 style="margin: 0; color: var(--md-default-fg-color);">EMS Interface Board</h3>
-      </div>
-      <p style="color: var(--md-default-fg-color); margin-bottom: 1rem;">
-        EMS-ESP also requires a separate circuit to read and write to the EMS bus. You can either <a href="../EMS-Circuit" style="color: #007bff;">build your own</a> or purchase a EMS Gateway board directly from BBQKees Electronics.
-      </p>
-      <div style="text-align: center; margin: 1.5rem 0;">
-        <img style="width: 120px; margin: 0.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" src="../_media/images/EMS-Gateway-S3.png" alt="EMS Gateway S3">
-        <img style="width: 120px; margin: 0.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" src="../_media/images/EMS-Gateway-E32-V2.png" alt="EMS Gateway E32 V2">
-      </div>
-      <div style="text-align: center;">
-        <a href="https://bbqkees-electronics.nl" style="display: inline-block; padding: 0.8rem 1.5rem; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Visit BBQKees Electronics</a>
-      </div>
-    </div>
+1. Using the [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). This is a native application for Windows, MacOS and Linux/Ubuntu. Your ESP32 device needs to be psychically connected to your computer via the USB or Serial port.
+2. Using the [EMS-ESP Web Installer](https://install.emsesp.org/) which is an online installer supporting 16MB/PSRAM variants that requires the EMS-ESP device to be connected via the USB/Serial port.
+3. Using EMS-ESP directly from the WebUI Settings page to automatically detect and install the latest version (v3.7 onwards).
+4. Using a copy of the [EMS-ESP CLI Installer](https://github.com/emsesp/EMS-ESP-Flasher-CLI) command line tool. This is Unix based, so does not support Windows (unless using WSL2).
+5. Building the firmware from the source code and uploading directly, using the guide at [Building](Building.md).
 
-  </div>
-</div>
+## Choosing the right firmware version
 
-<div class="installation-section" style="margin: 3rem 0;">
-  <h2 style="color: var(--md-default-fg-color);">🚀 Installing EMS-ESP</h2>
-  
-  <div style="background: var(--md-default-bg-color); padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--md-default-fg-color--lightest); margin-bottom: 2rem;">
-    <div style="text-align: center;">
-      <h3 style="margin-top: 0; color: var(--md-default-fg-color);">📥 Download & Install</h3>
-      <p style="color: var(--md-default-fg-color--light); margin-bottom: 2rem;">
-        Click the link below to go to the download page and see the multiple methods available to install the firmware onto your ESP32 board.
-      </p>
-      <a href="https://download.emsesp.org" style="display: inline-block; padding: 1rem 2rem; background: #007bff; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Install Firmware</a>
-    </div>
-  </div>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-    <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #ffc107; border: 1px solid var(--md-default-fg-color--lightest);">
-      <h4 style="margin-top: 0; color: #e0a800;">⚠️ Important Notice</h4>
-      <p style="margin: 0; color: var(--md-default-fg-color);">
-        Pay attention to the <a href="https://github.com/emsesp/EMS-ESP32/blob/dev/CHANGELOG.md" style="color: #007bff;">Change Log</a> before upgrading so you are aware of any breaking changes.
-      </p>
-    </div>
+There are pre-built firmware binaries for the ESP32 and ESP32-S3 chips sets. There are variations of these based on the allocated flash size (4MB, 16MB) and whether the board has additional PSRAM present. For other chip sets, such as the ESP32-C3, the firmware can be manually built from the source using PlatformIO.
 
-    <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #17a2b8; border: 1px solid var(--md-default-fg-color--lightest);">
-      <h4 style="margin-top: 0; color: #17a2b8;">💾 Backup Recommendation</h4>
-      <p style="margin: 0; color: var(--md-default-fg-color);">
-        If you are upgrading from a previous release it's recommended you make a backup copy of any settings and configurations before performing the installation. This can be done from the WebUI Settings page 'Download/Upload'.
-      </p>
-    </div>
+You can choose either to use the current _Stable_ or latest _Development_ version. The Stable versions are typically updated within a few months, or patched when a critical issue is found. The Development versions (with the word `dev` in the filename) are updated more frequently, but may contain bugs. This is recommended for advanced users who want to test out new features. You can switch from Stable to Development at any time via the EMS-ESP Web interface.
 
-  </div>
-</div>
+### Upgrading from versions prior to v3.7
 
-<div class="led-status-section" style="margin: 3rem 0;">
-  <h2 style="color: var(--md-default-fg-color);">💡 LED Status Indicators</h2>
-  <p style="color: var(--md-default-fg-color--light); margin-bottom: 2rem;">
-    When EMS-ESP starts-up and is running, the onboard LED will show the system status.
-  </p>
-  
-  <div class="boot-sequence" style="margin: 2rem 0;">
-    <h3 style="color: var(--md-default-fg-color);">🔄 During Boot Sequence</h3>
+It is always recommended to upgrade to the latest version of the firmware. If you are upgrading from a version prior to v3.7 (v3.6.4 or v3.6.5) then make a backup of your configuration settings first before upgrading in case the flash process fails. This can be done via the EMS-ESP web interface. If you run into any issues using one of the Flashing methods described above then 'flash erase' the EMS-ESP and start over with a fresh install, and then upload your saved settings. If you are upgrading from v3.7 or later, then you can safely upgrade without needing to backup your configuration settings.
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-      <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #dc3545; border: 1px solid var(--md-default-fg-color--lightest);">
-        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-          <div style="width: 20px; height: 20px; background: #dc3545; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite;"></div>
-          <h4 style="margin: 0; color: #dc3545;">1 Flash (blue)</h4>
-        </div>
-        <p style="margin: 0; color: var(--md-default-fg-color);">
-          EMS bus is not yet connected. If this takes more than a few seconds check the EMS Tx Mode and the physical connection to the EMS bus.
-        </p>
-      </div>
+### How the firmware binary files are named
 
-      <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #ffc107; border: 1px solid var(--md-default-fg-color--lightest);">
-        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-          <div style="width: 20px; height: 20px; background: #ffc107; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite;"></div>
-          <div style="width: 20px; height: 20px; background: #ffc107; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite; animation-delay: 0.5s;"></div>
-          <h4 style="margin: 0; color: #e0a800;">2 Flashes (red)</h4>
-        </div>
-        <p style="margin: 0; color: var(--md-default-fg-color);">
-          Network (WiFi or Ethernet) is connecting. If this persists check the EMS-ESP Network settings. EMS-ESP uses 2.4GHz/WPA2 only.
-        </p>
-      </div>
+The firmware filename format used is:
 
-      <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #6f42c1; border: 1px solid var(--md-default-fg-color--lightest);">
-        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-          <div style="width: 20px; height: 20px; background: #6f42c1; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite;"></div>
-          <div style="width: 20px; height: 20px; background: #6f42c1; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite; animation-delay: 0.3s;"></div>
-          <div style="width: 20px; height: 20px; background: #6f42c1; border-radius: 50%; margin-right: 1rem; animation: blink 1s infinite; animation-delay: 0.6s;"></div>
-          <h4 style="margin: 0; color: #6f42c1;">3 Flashes (red,red,blue)</h4>
-        </div>
-        <p style="margin: 0; color: var(--md-default-fg-color);">
-          Both the EMS bus and Network are still trying to connect. This could be due to an incorrect EMS-ESP Board Profile setting.
-        </p>
-      </div>
-    </div>
+`EMS-ESP-<version>-<chipset>-<flashsize>[+].bin`
 
-  </div>
-  
-  <div class="normal-operation" style="margin: 2rem 0;">
-    <h3 style="color: var(--md-default-fg-color);">✨ During Normal Operation</h3>
-    <p style="color: var(--md-default-fg-color--light); margin-bottom: 1.5rem;">
-      Unless the LED has been disabled in the settings, the LED will show the system status.
-    </p>
+where `<chipset>` is `ESP32` or `ESP32S3` and `<flashsize>` either `4MB` or `16MB`. The `+` indicates that the firmware is built to use any additional RAM (called PSRAM) if available.
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-      <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #28a745; border: 1px solid var(--md-default-fg-color--lightest);">
-        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-          <div style="width: 20px; height: 20px; background: #28a745; border-radius: 50%; margin-right: 1rem;"></div>
-          <h4 style="margin: 0; color: #28a745;">Steady Light</h4>
-        </div>
-        <p style="margin: 0; color: var(--md-default-fg-color);">
-          Good connection and EMS data is flowing in.
-        </p>
-      </div>
+Determine the correct type of your ESP32 device and download the latest stable version of the firmware using the table below. If you're not sure which firmware to use contact us.
 
-      <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #ffc107; border: 1px solid var(--md-default-fg-color--lightest);">
-        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-          <div style="width: 20px; height: 20px; background: #ffc107; border-radius: 50%; margin-right: 1rem; animation: pulse 2s infinite;"></div>
-          <h4 style="margin: 0; color: #e0a800;">Slow Pulse</h4>
-        </div>
-        <p style="margin: 0; color: var(--md-default-fg-color);">
-          Either the WiFi or the EMS bus are still connecting.
-        </p>
-      </div>
+| chipset  | flashsize | PSRAM | Firmware file                                                                                                                   |
+| -------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
+| ESP32    | 16MB      | 8MB   | [EMS-ESP-3_8_0-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-16MB+.bin)     |
+| ESP32-S3 | 16MB      | 8MB   | [EMS-ESP-3_8_0-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32S3-16MB+.bin) |
+| ESP32    | 4MB       |       | [EMS-ESP-3_8_0-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-4MB.bin)         |
+| ESP32    | 16MB      |       | [EMS-ESP-3_8_0-ESP32-16MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-16MB.bin)       |
 
-      <div style="background: var(--md-default-bg-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #17a2b8; border: 1px solid var(--md-default-fg-color--lightest);">
-        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-          <div style="width: 20px; height: 20px; background: #17a2b8; border-radius: 50%; margin-right: 1rem; animation: blink 0.3s infinite;"></div>
-          <h4 style="margin: 0; color: #17a2b8;">Fast Pulse</h4>
-        </div>
-        <p style="margin: 0; color: var(--md-default-fg-color);">
-          System is booting up and configuring itself.
-        </p>
-      </div>
-    </div>
+If using a [BBQKees Electronics Gateway](https://bbqkees-electronics.nl) board, follow this guide to ensure you are select the correct firmware:
 
-  </div>
-</div>
+| Model                 | Release Year  | Has PSRAM? | Firmware file                                                                                                                  |
+| --------------------- | ------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Gateway E32 V2        | >01-2024      | Yes        | [EMS-ESP-3_8_0-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-16MB+.bin)          |
+| Gateway S3(-LR)       | >09-2023      | Yes        | [EMS-ESP-3_8_0-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32S3-16MB+.bin)      |
+| Gateway E32 V1.5      | >12-21 &lt;06-23 | No         | [EMS-ESP-3_8_0-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-4MB.bin)              |
+| Gateway E32 V1.0/V1.4 | >04-21 &lt;12-21 | No         | [EMS-ESP-3_8_0-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-4MB.bin)              |
+| Gateway S32 V2        | >02-22 &lt;01-23 | No         | [EMS-ESP-3_8_0-ESP32-16MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-16MB.bin)            |
+| Gateway S32 V1        | >02-21 &lt;02-22 | No         | [EMS-ESP-3_8_0-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-4MB.bin)              |
 
-<style>
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0.3; }
-}
+## Help needed?
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-</style>
+- If you run into issues during the installation process, please refer to the [Troubleshooting](Troubleshooting.md).
+- If you're using a BBQKees Electronics EMS gateway board and have connectivity questions, refer to the [EMS Gateway Wiki](https://bbqkees-electronics.nl/wiki/).
+- Get in touch with the EMS-ESP community via our [Discord](https://discord.gg/3J3GgnzpyT) channel. This is a good place for asking general questions and chatting with other users. You have better chances to getting fast responses here.
+- Search in existing open and closed [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) and [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) as your issue may already be addressed, perhaps in a later version.
+- Create a [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) on the EMS-ESP project. Do make sure you include the required Support Info so the issue can be addressed as quickly as possible.
+- Go to the [Getting Support](Support.md) page for further information.

@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Aktuell",
+    "description": "The label for version current"
+  },
+  "sidebar.homeSidebar.doc.News": {
+    "message": "Neuigkeiten",
+    "description": "The label for the doc item 'News' in sidebar 'homeSidebar', linking to the doc index"
+  },
+  "sidebar.devicesSidebar.doc.Introduction": {
+    "message": "Einführung",
+    "description": "The label for the doc item 'Introduction' in sidebar 'devicesSidebar', linking to the doc All-Devices"
+  },
+  "sidebar.modbusSidebar.doc.Introduction": {
+    "message": "Einführung",
+    "description": "The label for the doc item 'Introduction' in sidebar 'modbusSidebar', linking to the doc Modbus"
+  },
+  "sidebar.integrationsSidebar.doc.Introduction": {
+    "message": "Einführung",
+    "description": "The label for the doc item 'Introduction' in sidebar 'integrationsSidebar', linking to the doc Integrations"
+  }
+}

@@ -1,3 +1,5 @@
+# Console
+
 EMS-ESP has a telnet server that enables clients to connect using a telnet client such as [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) or natively via the OS like this example with [Windows](https://www.technipages.com/windows-10-enable-telnet). The port is 23.
 
 You can also access the console via a USB Serial port, using baud 115200. You will need to press CTRL-D to open the Serial console.
@@ -49,11 +51,11 @@ call [device] [cmd] [data] [id|hc]
 
 Note you have `su` first to get access to all the `call` commands.
 
-![Console](_media/screenshot/console1.png)
+![Console](/_media/screenshot/console1.png)
 
 ### Showing device values
 
-![Console](_media/screenshot/console0.png)
+![Console](/_media/screenshot/console0.png)
 
 ### Monitoring the EMS traffic
 
@@ -67,4 +69,4 @@ If you want to see only telegrams that are not registered yet, use `watch unknow
 
 If you want to see the raw bytes including CRC as transmitted on the EMS line use `watch raw <ID>`.
 
-![Console](_media/screenshot/console3.png)
+![Console](/_media/screenshot/console3.png)
