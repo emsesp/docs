@@ -4,7 +4,7 @@ hide_table_of_contents: true
 
 # About EMS-ESP
 
-![EMS-ESP Logo](/_media/logo/boiler_64.png)
+![EMS-ESP Logo](/media/logo/boiler_64.png)
 
 **EMS-ESP** is an open source firmware for [Espressif](https://www.espressif.com/en/products/socs) ESP32 based chipsets originally developed by [@Proddy](https://github.com/proddy) back in 2018 and now owned and maintained exclusively by both **Proddy** and [@MichaelDvP](https://github.com/MichaelDvP).
 

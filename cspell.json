@@ -10,7 +10,7 @@
   ],
   "dictionaries": ["project-words"],
   "ignorePaths": [
-    "**/_media/**",
+    "**/media/**",
     "**/*.yml",
     "**/*.json",
     "**/*.yaml",

@@ -1,6 +1,6 @@
 # Home Assistant
 
-![logo](/_media/logo/home-assistant.png)
+![logo](/media/logo/home-assistant.png)
 
 EMS-ESP has automatic integration with Home Assistant via the [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/) protocol. To use this feature enable simply enable the Discovery option from the MQTT Settings page.
 
@@ -8,11 +8,11 @@ EMS-ESP will create retained MQTT messages prefixed with `homeassistant/` for ea
 
 To add this device and its values to a Home Assistant UI click on the "ADD TO LOVELACE" button.
 
-![device](/_media/screenshot/ha_device.png)
+![device](/media/screenshot/ha_device.png)
 
 You can then add each of these devices to a new lovelace view using the "add to lovelace" button, and get something looking like:
 
-![lovelace](/_media/screenshot/ha_lovelace.png)
+![lovelace](/media/screenshot/ha_lovelace.png)
 
 ## Example Automations
 
@@ -58,9 +58,9 @@ Below are the additions to the HA files to show the state of the shower, if the 
 
 The cold shot feature is available in EMS-ESP versions 3.7.0 and above.
 
-![Home Assistant Shower](/_media/screenshot/ha_shower.jpg)
+![Home Assistant Shower](/media/screenshot/ha_shower.jpg)
 
-![Home Assistant iPhone notify](/_media/screenshot/ha_notify.jpg)
+![Home Assistant iPhone notify](/media/screenshot/ha_notify.jpg)
 
 Add to `configuration.yaml` (make sure you change the token):
 

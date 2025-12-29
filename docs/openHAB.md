@@ -1,6 +1,6 @@
 # openHAB
 
-![logo](/_media/logo/openhab-logo.png)
+![logo](/media/logo/openhab-logo.png)
 
 EMS-ESP can be integrated into openHab through different ways:
 
@@ -8,7 +8,7 @@ EMS-ESP can be integrated into openHab through different ways:
 - MQTT Binding (Generic MQTT Thing)
 
 <figure>
-  <img src="/_media/screenshot/oh_dashboard.png" alt="Example Dashboard (items depend on heating system)" />
+  <img src="/media/screenshot/oh_dashboard.png" alt="Example Dashboard (items depend on heating system)" />
   <figcaption>Example Dashboard (items depend on heating system)</figcaption>
 </figure>
 
@@ -31,14 +31,14 @@ Objects in HA are mapped to `Things`, Component+Node to `ChannelGroup` and Compo
 You should see based on your heating setup related `Things` in your Inbox
 
 <figure>
-  <img src="/_media/screenshot/oh_inbox.png" alt="Inbox with EMS-ESP discovered Things" />
+  <img src="/media/screenshot/oh_inbox.png" alt="Inbox with EMS-ESP discovered Things" />
   <figcaption>Inbox with EMS-ESP discovered Things</figcaption>
 </figure>
 
 After adding the `Things` you can see all `Channels` that are available for the specific device and which you have enabled in EMS-ESP for MQTT.
 
 <figure>
-  <img src="/_media/screenshot/oh_ex_thermostat.png" alt="Channels of a thermostat Thing" />
+  <img src="/media/screenshot/oh_ex_thermostat.png" alt="Channels of a thermostat Thing" />
   <figcaption>Channels of a thermostat Thing</figcaption>
 </figure>
 
@@ -120,7 +120,7 @@ Frame label="Heating" {
 ```
 
 <figure>
-  <img src="/_media/screenshot/oh_sitemap.png" alt="Example Sitemap (items depend on heating system)" />
+  <img src="/media/screenshot/oh_sitemap.png" alt="Example Sitemap (items depend on heating system)" />
   <figcaption>Example Sitemap (items depend on heating system)</figcaption>
 </figure>
 

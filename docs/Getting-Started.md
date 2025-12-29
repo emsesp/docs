@@ -14,14 +14,14 @@ The EMS-ESP firmware runs on an ESP32 module from [Espressif](https://www.espres
 
 See the post [here](https://github.com/emsesp/EMS-ESP32/discussions/839#discussioncomment-4493156) on which development boards we have tested against.
 
-![ESP32 Development Boards](/_media/images/esp32-dev-boards.jpg)
+![ESP32 Development Boards](/media/images/esp32-dev-boards.jpg)
 
 ### 🔗 EMS Interface Board
 
 EMS-ESP also requires a separate circuit to read and write to the EMS bus. You can either [build your own](../EMS-Circuit) or purchase a EMS Gateway board directly from BBQKees Electronics.
 
-![EMS Gateway S3](/_media/images/EMS-Gateway-S3.png)
-![EMS Gateway E32 V2](/_media/images/EMS-Gateway-E32-V2.png)
+![EMS Gateway S3](/media/images/EMS-Gateway-S3.png)
+![EMS Gateway E32 V2](/media/images/EMS-Gateway-E32-V2.png)
 
 [Visit BBQKees Electronics](https://bbqkees-electronics.nl)
 

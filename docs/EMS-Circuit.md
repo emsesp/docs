@@ -10,11 +10,11 @@
 
 Below is a prototype board you can build yourself on a breadboard for testing. The layout was done using [DIY Layout Creator](https://github.com/bancika/diy-layout-creator).
 
-![Breadboard Circuit](/_media/schematics/breadboard.png)
+![Breadboard Circuit](/media/schematics/breadboard.png)
 
 The schematic used for this design is:
 
-![Schematic](/_media/schematics/circuit.png)
+![Schematic](/media/schematics/circuit.png)
 
 _Optionally I've also added 2 0.5A/72V polyfuses between the EMS and the two inductors L1 and L2 for extra protection._
 
@@ -22,7 +22,7 @@ _Optionally I've also added 2 0.5A/72V polyfuses between the EMS and the two ind
 
 Below is my original design for the EMS-ESP circuit board based off an ESP8266. Although the project has progressed and we're now on the more powerful ESP32 the basic design is still the same and will work with some GPIO tweaking. Here the circuit is powered from the EMS line itself via either the two EMS wires or the 3.5mm service jack. A cheap buck converter (like a [Pololu D24C22F5](https://www.pololu.com/product/2858)) is used to step this down the dangerous 15V DC to 5V to provide enough power to the ESP which needs at least 250mA.
 
-![Power circuit](/_media/schematics/Schematic_EMS-ESP.png) |
+![Power circuit](/media/schematics/Schematic_EMS-ESP.png) |
 
 ## Other user's designs
 

@@ -17,13 +17,13 @@ keywords:
   - IoT heating
 hide_table_of_contents: true
 hide_title: true
-image: /_media/screenshot/main-screen.png
+image: /media/screenshot/main-screen.png
 ---
 
 <div style={{display: 'flex', alignItems: 'center', gap: '2rem', marginBottom: '2rem', flexWrap: 'wrap'}}>
 
 <div style={{flex: '0 0 auto'}}>
-<img src="/_media/logo/boiler.svg" alt="EMS-ESP Logo" width="200" />
+<img src="/media/logo/boiler.svg" alt="EMS-ESP Logo" width="200" />
 </div>
 
 <div style={{flex: '1 1 400px'}}>
@@ -44,9 +44,11 @@ EMS-ESP requires a small additional circuit to interface between the EMS bus lin
 
 ### 🔌 Device Compatibility
 
-Compatible with EMS, EMS+, EMS2, EMS Plus, Logamatic EMS, Junkers 2-wire, Heatronic 3 and 4
+Compatible with EMS, EMS+, EMS2, EMS Plus, Logamatic EMS, Junkers 2-wire and Heatronic 3 and 4.
 
-Supporting 130 different EMS compatible devices such as thermostats, boilers, heat pumps, mixing units, solar modules, connect modules, ventilation units, switches and more
+Supporting over 130 EMS compatible devices from thermostats, boilers, heat pumps, mixing units, solar modules, connect modules, ventilation units, switches from brands like Buderus, Nefit, Sieger, Junkers, Bosch, Worcester, elm.leblanc and iVT.
+
+Attach Temperature sensors or any type of Analog sensor and manage it within EMS-ESP.
 
 </div>
 
@@ -54,9 +56,9 @@ Supporting 130 different EMS compatible devices such as thermostats, boilers, he
 
 ### 🌐 User Interface
 
-A versatile multi-user, multi-language web interface to change settings and monitor incoming data. Translated into 10 different languages.
+A versatile web interface to configure and manage your EMS devices, with translations to 10 languages.
 
-A simple to use console, accessible via Serial/USB or Telnet for advanced operations and detailed monitoring
+A simple to use console, accessible via Serial/USB or Telnet for advanced operations and detailed monitoring.
 
 </div>
 
@@ -64,9 +66,11 @@ A simple to use console, accessible via Serial/USB or Telnet for advanced operat
 
 ### 🔧 Integrations
 
-Native integration with home automation systems such as Home Assistant, Domoticz and  openHAB, as well as Modbus and Prometheus.
+Native integration with popular home automation systems such as Home Assistant, Domoticz, IOBroker, Loxone and openHAB.
 
-MQTT and RESTful API for automation and integration with other systems.
+Support for Modbus and Prometheus.
+
+MQTT and RESTful APIs for deeper integrations with other systems.
 
 </div>
 
@@ -74,20 +78,20 @@ MQTT and RESTful API for automation and integration with other systems.
 
 ### ⚡ Advanced Features
 
-Simulation of remote thermostats for RC100H, RC200 and FB10
+Simulation of remote thermostats for RC100H, RC200 and FB10 devices.
 
-Custom EMS entities for any device or sensor
+Create your own custom EMS entities for any device or sensor.
 
-Powerful scheduler for automatic control of devices and sensors
+Use the powerful scheduler to automate actions.
 
-Notification service for alerts and warnings
+Use the notification service to send alerts and warnings.
 
 </div>
 
 </div>
 
 <div style={{flex: '0 0 auto'}}>
-<img src="/_media/screenshot/main-screen.png" alt="EMS-ESP Main Screen" width="700" />
+<img src="/media/screenshot/main-screen.png" alt="EMS-ESP Main Screen" width="700" />
 </div>
 
 ## 📦 Latest Releases
