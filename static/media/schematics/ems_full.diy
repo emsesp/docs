@@ -173,7 +173,7 @@
 
 
 
-    <link rel="canonical" href="https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy" data-pjax-transient>
+    <link rel="canonical" href="https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy" data-pjax-transient>
 
 
   <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
@@ -216,7 +216,7 @@
   href="https://github.com/"
   data-hotkey="g d"
   aria-label="Homepage "
-  data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="c5db99a4ccb645a22df495832bacda14d70e0440dcd9c07e6b1d6eeb638d15fa" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;}"
+  data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="c5db99a4ccb645a22df495832bacda14d70e0440dcd9c07e6b1d6eeb638d15fa" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;}"
 >
   <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
     <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
@@ -473,7 +473,7 @@
     <a class="js-selected-navigation-item Header-link d-block d-md-none py-2 py-md-3 border-top border-md-top-0 border-white-fade" data-ga-click="Header, click, Nav menu - item:workspaces context:user" data-selected-links="/codespaces /codespaces" href="/codespaces">
       Codespaces
 </a>
-      <a class="js-selected-navigation-item Header-link d-block d-md-none py-2 py-md-3 border-top border-md-top-0 border-white-fade" data-ga-click="Header, click, Nav menu - item:Sponsors" data-hydro-click="{&quot;event_type&quot;:&quot;sponsors.button_click&quot;,&quot;payload&quot;:{&quot;button&quot;:&quot;HEADER_SPONSORS_DASHBOARD&quot;,&quot;sponsorable_login&quot;:&quot;proddy&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="fe2465119b621652a861a4e778e4758106b4519124893d92c50afe96feba9772" data-selected-links=" /sponsors/accounts" href="/sponsors/accounts">Sponsors</a>
+      <a class="js-selected-navigation-item Header-link d-block d-md-none py-2 py-md-3 border-top border-md-top-0 border-white-fade" data-ga-click="Header, click, Nav menu - item:Sponsors" data-hydro-click="{&quot;event_type&quot;:&quot;sponsors.button_click&quot;,&quot;payload&quot;:{&quot;button&quot;:&quot;HEADER_SPONSORS_DASHBOARD&quot;,&quot;sponsorable_login&quot;:&quot;proddy&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="fe2465119b621652a861a4e778e4758106b4519124893d92c50afe96feba9772" data-selected-links=" /sponsors/accounts" href="/sponsors/accounts">Sponsors</a>
 
     <a class="Header-link d-block d-md-none mr-0 mr-md-3 py-2 py-md-3 border-top border-md-top-0 border-white-fade" href="/settings/profile">
       Settings
@@ -487,7 +487,7 @@
         type="submit"
         class="Header-link mr-0 mr-md-3 py-2 py-md-3 border-top border-md-top-0 border-white-fade d-md-none btn-link d-block width-full text-left"
         style="padding-left: 2px;"
-        data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;sign out&quot;,&quot;label&quot;:&quot;icon:logout&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="85a2055a86088ca5d92c5e8642d995bbe8a4d071a284b75c88c6a8420f00f332" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;sign out&quot;,&quot;label&quot;:&quot;icon:logout&quot;}"
+        data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;sign out&quot;,&quot;label&quot;:&quot;icon:logout&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="85a2055a86088ca5d92c5e8642d995bbe8a4d071a284b75c88c6a8420f00f332" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;sign out&quot;,&quot;label&quot;:&quot;icon:logout&quot;}"
       >
         <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-sign-out v-align-middle">
     <path fill-rule="evenodd" d="M2 2.75C2 1.784 2.784 1 3.75 1h2.5a.75.75 0 010 1.5h-2.5a.25.25 0 00-.25.25v10.5c0 .138.112.25.25.25h2.5a.75.75 0 010 1.5h-2.5A1.75 1.75 0 012 13.25V2.75zm10.44 4.5H6.75a.75.75 0 000 1.5h5.69l-1.97 1.97a.75.75 0 101.06 1.06l3.25-3.25a.75.75 0 000-1.06l-3.25-3.25a.75.75 0 10-1.06 1.06l1.97 1.97z"></path>
@@ -504,7 +504,7 @@
   href="https://github.com/"
   data-hotkey="g d"
   aria-label="Homepage "
-  data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="c5db99a4ccb645a22df495832bacda14d70e0440dcd9c07e6b1d6eeb638d15fa" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;}"
+  data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="c5db99a4ccb645a22df495832bacda14d70e0440dcd9c07e6b1d6eeb638d15fa" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;}"
 >
   <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
     <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
@@ -543,7 +543,7 @@
   <summary
     class="Header-link"
     aria-label="Create new…"
-    data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;create new&quot;,&quot;label&quot;:&quot;icon:add&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="cb6a5670148792f8a62e3d7a0d694d4c42fc4faa9af0d92006d6d27ede95e5c0" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;create new&quot;,&quot;label&quot;:&quot;icon:add&quot;}"
+    data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;create new&quot;,&quot;label&quot;:&quot;icon:add&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="cb6a5670148792f8a62e3d7a0d694d4c42fc4faa9af0d92006d6d27ede95e5c0" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;create new&quot;,&quot;label&quot;:&quot;icon:add&quot;}"
   >
       <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus">
     <path fill-rule="evenodd" d="M7.75 2a.75.75 0 01.75.75V7h4.25a.75.75 0 110 1.5H8.5v4.25a.75.75 0 11-1.5 0V8.5H2.75a.75.75 0 010-1.5H7V2.75A.75.75 0 017.75 2z"></path>
@@ -581,7 +581,7 @@
   <summary
     class="Header-link"
     aria-label="View profile and more"
-    data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;show menu&quot;,&quot;label&quot;:&quot;icon:avatar&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="cc3e4698b78d3a4124ef511361e63d1c8f0f0f865f5062707789653fc7b26de1" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;show menu&quot;,&quot;label&quot;:&quot;icon:avatar&quot;}"
+    data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;show menu&quot;,&quot;label&quot;:&quot;icon:avatar&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="cc3e4698b78d3a4124ef511361e63d1c8f0f0f865f5062707789653fc7b26de1" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;show menu&quot;,&quot;label&quot;:&quot;icon:avatar&quot;}"
   >
     <img src="https://avatars.githubusercontent.com/u/1230712?s=40&amp;v=4" alt="@proddy" size="20" height="20" width="20" data-view-component="true" class="avatar avatar-small circle"></img>
       <span class="feature-preview-indicator js-feature-preview-indicator" style="top: 1px;" hidden></span>
@@ -655,7 +655,7 @@
   <details-dialog class="command-palette-details-dialog d-flex flex-column flex-justify-center height-fit">
     <command-palette
       class="command-palette color-bg-default rounded-3"
-      data-return-to=/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy
+      data-return-to=/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy
       data-user-id="1230712"
       >
       <input type="hidden" value="k+mbh0uboHV+Fb4+p+JRSliMGCKP1OEkRd02KxvcTTotybcQqOH76N0RIZyy+Lz3mX4/LCzFLXR5hyo+k+d3NQ==" data-csrf="true" class="js-graphql-csrf" />
@@ -1333,7 +1333,7 @@
         data-action="toggle:notifications-list-subscription-form#detailsToggled"
       >
 
-      <summary data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;WATCH_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="e99a5f12c47a390edac09c748d3735dd66dab7d0e52f4993673c01758fde0ede" data-ga-click="Repository, click Watch settings, action:blob#show" aria-label="Notification settings" role="button" data-view-component="true" class="rounded-right-0 btn-sm btn">
+      <summary data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;WATCH_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="e99a5f12c47a390edac09c748d3735dd66dab7d0e52f4993673c01758fde0ede" data-ga-click="Repository, click Watch settings, action:blob#show" aria-label="Notification settings" role="button" data-view-component="true" class="rounded-right-0 btn-sm btn">
   
   
           <span data-menu-button>
@@ -1671,7 +1671,7 @@
           <div class="js-toggler-container js-social-container starring-container d-block on">
     <form class="starred js-social-form" action="/emsesp/docs/unstar" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="jT5RkFCm6YnyN7QfJh4lRFsX2PGNIYiyPaBS8SNLsjCk1D5PPJjRZ861L/n0iA/FVjQgKySnovlScBAI4zmLLw==" autocomplete="off" />
       <input type="hidden" name="context" value="repository">
-      <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="cbfb90233a284dfa3ecc0528a773eb016b97d29200217b0b2595634f144a5b71" data-ga-click="Repository, click unstar button, action:blob#show; text:Unstar" aria-label="Unstar this repository" type="submit" data-view-component="true" class="js-toggler-target btn-with-count btn-sm btn">
+      <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="cbfb90233a284dfa3ecc0528a773eb016b97d29200217b0b2595634f144a5b71" data-ga-click="Repository, click unstar button, action:blob#show; text:Unstar" aria-label="Unstar this repository" type="submit" data-view-component="true" class="js-toggler-target btn-with-count btn-sm btn">
   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star-fill mr-1">
     <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
 </svg>
@@ -1693,7 +1693,7 @@
 </form>
     <form class="unstarred js-social-form" action="/emsesp/docs/star" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="pnfYj7AyuBe5O/Oyyb7CztDd9J6rXyl0crI4b/c9rQm7K8R/+x7zi4+4aWF7zuxgPx5xdnQPr3SMGkAUva05ew==" autocomplete="off" />
       <input type="hidden" name="context" value="repository">
-      <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="5d2040d915034b4e4a531df1341d0f54446dcafe310b9edc027843cc7de9ea98" data-ga-click="Repository, click star button, action:blob#show; text:Star" aria-label="Star this repository" type="submit" data-view-component="true" class="js-toggler-target btn-with-count btn-sm btn">
+      <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="5d2040d915034b4e4a531df1341d0f54446dcafe310b9edc027843cc7de9ea98" data-ga-click="Repository, click star button, action:blob#show; text:Star" aria-label="Star this repository" type="submit" data-view-component="true" class="js-toggler-target btn-with-count btn-sm btn">
   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star mr-1">
     <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
 </svg>
@@ -1720,7 +1720,7 @@
     <li>
               <div class="float-left">
         <details class="details-reset details-overlay details-overlay-dark " >
-                <summary data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FORK_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="8f975fd3bd2cdeb27fa8e664436b274fb4e433a7b23471dd0e86ba660a0c788e" data-ga-click="Repository, show fork modal, action:blob#show; text:Fork" aria-label="Fork your own copy of emsesp/docs to your account" role="button" data-view-component="true" class="btn-with-count btn-sm btn">
+                <summary data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FORK_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="8f975fd3bd2cdeb27fa8e664436b274fb4e433a7b23471dd0e86ba660a0c788e" data-ga-click="Repository, show fork modal, action:blob#show; text:Fork" aria-label="Fork your own copy of emsesp/docs to your account" role="button" data-view-component="true" class="btn-with-count btn-sm btn">
   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked">
     <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
 </svg>
@@ -1920,7 +1920,7 @@
   
 
 
-    <a class="d-none js-permalink-shortcut" data-hotkey="y" href="/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy">Permalink</a>
+    <a class="d-none js-permalink-shortcut" data-hotkey="y" href="/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy">Permalink</a>
 
     <div class="d-flex flex-items-start flex-shrink-0 pb-3 flex-wrap flex-md-nowrap flex-justify-between flex-md-justify-start">
       
@@ -2021,7 +2021,7 @@
             </div>
 
               <template data-target="ref-selector.itemTemplate">
-  <a href="https://github.com/emsesp/docs/blob/{{ urlEncodedRefName }}/_media/schematics/ems_full.diy" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
+  <a href="https://github.com/emsesp/docs/blob/{{ urlEncodedRefName }}/media/schematics/ems_full.diy" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
     <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
     <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
 </svg>
@@ -2061,7 +2061,7 @@
             </template>
 
               <template data-target="ref-selector.itemTemplate">
-  <a href="https://github.com/emsesp/docs/blob/{{ urlEncodedRefName }}/_media/schematics/ems_full.diy" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
+  <a href="https://github.com/emsesp/docs/blob/{{ urlEncodedRefName }}/media/schematics/ems_full.diy" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
     <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
     <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
 </svg>
@@ -2095,7 +2095,7 @@
 </div>
 
       <h2 id="blob-path" class="breadcrumb flex-auto flex-self-center min-width-0 text-normal mx-2 width-full width-md-auto flex-order-1 flex-md-order-none mt-3 mt-md-0">
-        <span class="js-repo-root text-bold"><span class="js-path-segment d-inline-block wb-break-all"><a data-pjax="#repo-content-pjax-container" rel="nofollow" href="/emsesp/docs/tree/aa18b8ca0ec89033be84442318b8b5fa67fd9756"><span>docs</span></a></span></span><span class="separator">/</span><span class="js-path-segment d-inline-block wb-break-all"><a data-pjax="#repo-content-pjax-container" rel="nofollow" href="/emsesp/docs/tree/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media"><span>_media</span></a></span><span class="separator">/</span><span class="js-path-segment d-inline-block wb-break-all"><a data-pjax="#repo-content-pjax-container" rel="nofollow" href="/emsesp/docs/tree/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics"><span>schematics</span></a></span><span class="separator">/</span><strong class="final-path">ems_full.diy</strong>
+        <span class="js-repo-root text-bold"><span class="js-path-segment d-inline-block wb-break-all"><a data-pjax="#repo-content-pjax-container" rel="nofollow" href="/emsesp/docs/tree/aa18b8ca0ec89033be84442318b8b5fa67fd9756"><span>docs</span></a></span></span><span class="separator">/</span><span class="js-path-segment d-inline-block wb-break-all"><a data-pjax="#repo-content-pjax-container" rel="nofollow" href="/emsesp/docs/tree/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media"><span>media</span></a></span><span class="separator">/</span><span class="js-path-segment d-inline-block wb-break-all"><a data-pjax="#repo-content-pjax-container" rel="nofollow" href="/emsesp/docs/tree/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics"><span>schematics</span></a></span><span class="separator">/</span><strong class="final-path">ems_full.diy</strong>
       </h2>
       <a href="/emsesp/docs/find/aa18b8ca0ec89033be84442318b8b5fa67fd9756"
             class="js-pjax-capture-input btn mr-2 d-none d-md-block"
@@ -2116,7 +2116,7 @@
 </summary>
   <div data-view-component="true">          <ul class="dropdown-menu dropdown-menu-sw">
             <li class="d-block d-md-none">
-              <a class="dropdown-item d-flex flex-items-baseline" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FIND_FILE_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="cc094327510e1b4f226247e0a189dca9d73af38ae2bd6587db9d483c47f5c35d" data-ga-click="Repository, find file, location:repo overview" data-hotkey="t" data-pjax="true" href="/emsesp/docs/find/aa18b8ca0ec89033be84442318b8b5fa67fd9756">
+              <a class="dropdown-item d-flex flex-items-baseline" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FIND_FILE_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="cc094327510e1b4f226247e0a189dca9d73af38ae2bd6587db9d483c47f5c35d" data-ga-click="Repository, find file, location:repo overview" data-hotkey="t" data-pjax="true" href="/emsesp/docs/find/aa18b8ca0ec89033be84442318b8b5fa67fd9756">
                 <span class="flex-auto">Go to file</span>
                 <span class="text-small color-fg-muted" aria-hidden="true">T</span>
 </a>            </li>
@@ -2134,13 +2134,13 @@
 </button>            </li>
             <li class="dropdown-divider" role="none"></li>
             <li>
-              <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy path" value="_media/schematics/ems_full.diy" data-view-component="true" class="dropdown-item cursor-pointer">
+              <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy path" value="media/schematics/ems_full.diy" data-view-component="true" class="dropdown-item cursor-pointer">
     
                 Copy path
 
 </clipboard-copy>            </li>
             <li>
-              <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy permalink" value="https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy" data-view-component="true" class="dropdown-item cursor-pointer">
+              <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy permalink" value="https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy" data-view-component="true" class="dropdown-item cursor-pointer">
     
                 <span class="d-flex flex-items-baseline">
                   <span class="flex-auto">Copy permalink</span>
@@ -2155,7 +2155,7 @@
 
 
     <div class="Box d-flex flex-column flex-shrink-0 mb-3">
-      <include-fragment src="/emsesp/docs/contributors/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy" class="commit-loader">
+      <include-fragment src="/emsesp/docs/contributors/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy" class="commit-loader">
         <div class="Box-header d-flex flex-items-center">
           <div class="Skeleton avatar avatar-user flex-shrink-0 ml-n1 mr-n1 mt-n1 mb-n1" style="width:24px;height:24px;"></div>
           <div class="Skeleton Skeleton--text col-5 ml-2">&nbsp;</div>
@@ -2198,13 +2198,13 @@
       
 
     <div class="BtnGroup">
-      <a href="/emsesp/docs/raw/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy" id="raw-url" role="button" data-view-component="true" class="btn-sm btn BtnGroup-item">
+      <a href="/emsesp/docs/raw/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy" id="raw-url" role="button" data-view-component="true" class="btn-sm btn BtnGroup-item">
   
   Raw
   
 
 </a>
-        <a href="/emsesp/docs/blame/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy" data-hotkey="b" role="button" data-view-component="true" class="js-update-url-with-hash btn-sm btn BtnGroup-item">
+        <a href="/emsesp/docs/blame/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy" data-hotkey="b" role="button" data-view-component="true" class="js-update-url-with-hash btn-sm btn BtnGroup-item">
   
   Blame
   
@@ -2221,11 +2221,11 @@
 </svg>
           </button>
 
-        <remote-clipboard-copy class="d-inline-block btn-octicon" style="height: 26px" data-src="/emsesp/docs/raw/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy" data-action="click:remote-clipboard-copy#remoteCopy">
+        <remote-clipboard-copy class="d-inline-block btn-octicon" style="height: 26px" data-src="/emsesp/docs/raw/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy" data-action="click:remote-clipboard-copy#remoteCopy">
   
 
 
-  <span data-target="remote-clipboard-copy.idle">            <span class="tooltipped tooltipped-nw cursor-pointer" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;COPY_RAW_CONTENTS_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="487f8d75970726c02abb4f7e76fac5263fe25508ec29161278efafcd591a66ec" aria-label="Copy raw contents">
+  <span data-target="remote-clipboard-copy.idle">            <span class="tooltipped tooltipped-nw cursor-pointer" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;COPY_RAW_CONTENTS_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="487f8d75970726c02abb4f7e76fac5263fe25508ec29161278efafcd591a66ec" aria-label="Copy raw contents">
               <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy">
     <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
 </svg>
@@ -2251,13 +2251,13 @@
             </span>
 </span>
 </remote-clipboard-copy>
-          <a href="/login?return_to=https%3A%2F%2Fgithub.com%2Femsesp%2Fdocs%2Fblob%2Faa18b8ca0ec89033be84442318b8b5fa67fd9756%2F_media%2Fschematics%2Fems_full.diy" class="btn-octicon disabled tooltipped tooltipped-nw"
+          <a href="/login?return_to=https%3A%2F%2Fgithub.com%2Femsesp%2Fdocs%2Fblob%2Faa18b8ca0ec89033be84442318b8b5fa67fd9756%2Fmedia%2Fschematics%2Fems_full.diy" class="btn-octicon disabled tooltipped tooltipped-nw"
             aria-label="You must be on a branch to make or propose changes to this file">
             <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-pencil">
     <path fill-rule="evenodd" d="M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81l-6.286 6.287a.25.25 0 00-.064.108l-.558 1.953 1.953-.558a.249.249 0 00.108-.064l6.286-6.286z"></path>
 </svg>
           </a>
-          <a href="/login?return_to=https%3A%2F%2Fgithub.com%2Femsesp%2Fdocs%2Fblob%2Faa18b8ca0ec89033be84442318b8b5fa67fd9756%2F_media%2Fschematics%2Fems_full.diy" class="btn-octicon btn-octicon-danger disabled tooltipped tooltipped-nw"
+          <a href="/login?return_to=https%3A%2F%2Fgithub.com%2Femsesp%2Fdocs%2Fblob%2Faa18b8ca0ec89033be84442318b8b5fa67fd9756%2Fmedia%2Fschematics%2Fems_full.diy" class="btn-octicon btn-octicon-danger disabled tooltipped tooltipped-nw"
             aria-label="You must be on a branch to make or propose changes to this file">
             <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-trash">
     <path fill-rule="evenodd" d="M6.5 1.75a.25.25 0 01.25-.25h2.5a.25.25 0 01.25.25V3h-3V1.75zm4.5 0V3h2.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75zM4.496 6.675a.75.75 0 10-1.492.15l.66 6.6A1.75 1.75 0 005.405 15h5.19c.9 0 1.652-.681 1.741-1.576l.66-6.6a.75.75 0 00-1.492-.149l-.66 6.6a.25.25 0 01-.249.225h-5.19a.25.25 0 01-.249-.225l-.66-6.6z"></path>
@@ -2278,15 +2278,15 @@
             <li>
             </li>
           <li>
-            <a class="dropdown-item" href="/emsesp/docs/raw/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy">
+            <a class="dropdown-item" href="/emsesp/docs/raw/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy">
               View raw
             </a>
           </li>
             <li>
-              <remote-clipboard-copy class="dropdown-item" data-src="/emsesp/docs/raw/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy" data-action="click:remote-clipboard-copy#remoteCopy">
+              <remote-clipboard-copy class="dropdown-item" data-src="/emsesp/docs/raw/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy" data-action="click:remote-clipboard-copy#remoteCopy">
   
 
-  <span data-target="remote-clipboard-copy.idle">                  <span class="cursor-pointer" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;COPY_RAW_CONTENTS_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="487f8d75970726c02abb4f7e76fac5263fe25508ec29161278efafcd591a66ec">
+  <span data-target="remote-clipboard-copy.idle">                  <span class="cursor-pointer" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;COPY_RAW_CONTENTS_BUTTON&quot;,&quot;repository_id&quot;:233230143,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="487f8d75970726c02abb4f7e76fac5263fe25508ec29161278efafcd591a66ec">
                     Copy raw contents
 </span></span>
   <span data-target="remote-clipboard-copy.fetching" hidden="hidden">                  Copy raw contents
@@ -2312,7 +2312,7 @@
 </span>
 </remote-clipboard-copy>            </li>
             <li>
-              <a class="dropdown-item" href="/emsesp/docs/blame/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy">
+              <a class="dropdown-item" href="/emsesp/docs/blame/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy">
                 View blame
               </a>
             </li>
@@ -11489,7 +11489,7 @@
             Copy permalink
           </clipboard-copy>
         </li>
-        <li><a class="dropdown-item js-update-url-with-hash" id="js-view-git-blame" role="menuitem" href="/emsesp/docs/blame/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy">View git blame</a></li>
+        <li><a class="dropdown-item js-update-url-with-hash" id="js-view-git-blame" role="menuitem" href="/emsesp/docs/blame/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy">View git blame</a></li>
       </ul>
     </details-menu>
   </details>
@@ -11533,10 +11533,10 @@
   <div class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 color-fg-muted border-top color-border-muted ">
     <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
       <li class="mr-3 mr-lg-0">&copy; 2021 GitHub, Inc.</li>
-        <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-terms-of-service" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to terms&quot;,&quot;label&quot;:&quot;text:terms&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="cbd73f4f5e1a4573a99e43e7cbc78931675f3a626193228b8ec6f5f2c5e41a2e" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to terms&quot;,&quot;label&quot;:&quot;text:terms&quot;}">Terms</a></li>
-        <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-privacy-statement" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="ae629b3050672e49a4536e5f42b225226140e4e712d85d9539aa890dc6d8a59b" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;}">Privacy</a></li>
-        <li class="mr-3 mr-lg-0"><a data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="d96c39c062d6aedfd97eeefc995ab98618800620e91209e58e807f1ed806357a" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;}" href="https://github.com/security">Security</a></li>
-        <li class="mr-3 mr-lg-0"><a href="https://www.githubstatus.com/" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="c791e9cbe971cbab49a84ab05e3f3eaa8c015e6b98121d808654c5ae88ca1d42" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;}">Status</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-terms-of-service" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to terms&quot;,&quot;label&quot;:&quot;text:terms&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="cbd73f4f5e1a4573a99e43e7cbc78931675f3a626193228b8ec6f5f2c5e41a2e" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to terms&quot;,&quot;label&quot;:&quot;text:terms&quot;}">Terms</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-privacy-statement" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="ae629b3050672e49a4536e5f42b225226140e4e712d85d9539aa890dc6d8a59b" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;}">Privacy</a></li>
+        <li class="mr-3 mr-lg-0"><a data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="d96c39c062d6aedfd97eeefc995ab98618800620e91209e58e807f1ed806357a" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;}" href="https://github.com/security">Security</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://www.githubstatus.com/" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="c791e9cbe971cbab49a84ab05e3f3eaa8c015e6b98121d808654c5ae88ca1d42" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;}">Status</a></li>
         <li><a data-ga-click="Footer, go to help, text:Docs" href="https://docs.github.com">Docs</a></li>
     </ul>
 
@@ -11546,11 +11546,11 @@
 </svg>
 </a>
     <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
-        <li class="mr-3 mr-lg-0"><a href="https://support.github.com?tags=dotcom-footer" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="d80614f0e7e09ecb6500678520df3ebf8687868f1537ed207ff03deb7ae2819e" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;}">Contact GitHub</a></li>
-        <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Pricing&quot;,&quot;label&quot;:&quot;text:Pricing&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="1f33dec962ba68b8bffd0636f51f3b5fcbcecc5bee706e3815e8fdf910a11b50" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Pricing&quot;,&quot;label&quot;:&quot;text:Pricing&quot;}">Pricing</a></li>
-      <li class="mr-3 mr-lg-0"><a href="https://docs.github.com" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to api&quot;,&quot;label&quot;:&quot;text:api&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="2b5521fb88aa6c3534b16bf2bd5d7360676145b28a7a46fe24433d384fd775ca" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to api&quot;,&quot;label&quot;:&quot;text:api&quot;}">API</a></li>
-      <li class="mr-3 mr-lg-0"><a href="https://services.github.com" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to training&quot;,&quot;label&quot;:&quot;text:training&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="b137d5a95aef2102240212de0fa8275d4d6ec8fe9b5b4a7df654e2484f8bc13d" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to training&quot;,&quot;label&quot;:&quot;text:training&quot;}">Training</a></li>
-        <li class="mr-3 mr-lg-0"><a href="https://github.blog" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to blog&quot;,&quot;label&quot;:&quot;text:blog&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/_media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="2bec48305e5616bb63cec973aa42c748b3cfb2bf5d84fcf76c9f353406f0b4cb" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to blog&quot;,&quot;label&quot;:&quot;text:blog&quot;}">Blog</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://support.github.com?tags=dotcom-footer" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="d80614f0e7e09ecb6500678520df3ebf8687868f1537ed207ff03deb7ae2819e" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;}">Contact GitHub</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Pricing&quot;,&quot;label&quot;:&quot;text:Pricing&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="1f33dec962ba68b8bffd0636f51f3b5fcbcecc5bee706e3815e8fdf910a11b50" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Pricing&quot;,&quot;label&quot;:&quot;text:Pricing&quot;}">Pricing</a></li>
+      <li class="mr-3 mr-lg-0"><a href="https://docs.github.com" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to api&quot;,&quot;label&quot;:&quot;text:api&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="2b5521fb88aa6c3534b16bf2bd5d7360676145b28a7a46fe24433d384fd775ca" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to api&quot;,&quot;label&quot;:&quot;text:api&quot;}">API</a></li>
+      <li class="mr-3 mr-lg-0"><a href="https://services.github.com" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to training&quot;,&quot;label&quot;:&quot;text:training&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="b137d5a95aef2102240212de0fa8275d4d6ec8fe9b5b4a7df654e2484f8bc13d" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to training&quot;,&quot;label&quot;:&quot;text:training&quot;}">Training</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://github.blog" data-hydro-click="{&quot;event_type&quot;:&quot;analytics.event&quot;,&quot;payload&quot;:{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to blog&quot;,&quot;label&quot;:&quot;text:blog&quot;,&quot;originating_url&quot;:&quot;https://github.com/emsesp/docs/blob/aa18b8ca0ec89033be84442318b8b5fa67fd9756/media/schematics/ems_full.diy&quot;,&quot;user_id&quot;:1230712}}" data-hydro-click-hmac="2bec48305e5616bb63cec973aa42c748b3cfb2bf5d84fcf76c9f353406f0b4cb" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to blog&quot;,&quot;label&quot;:&quot;text:blog&quot;}">Blog</a></li>
         <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
     </ul>
   </div>

@@ -1,6 +1,6 @@
 # Loxone
 
-![logo](/_media/logo/loxone-logo.png)
+![logo](/media/logo/loxone-logo.png)
 
 EMS-ESP can be integrated in Loxone by using the simple Restful API so Loxone can communicate with EMS-ESP via HTTP requests.
 Alternatively MQTT can be used but you have to install a Raspberry Pi with Loxberry.

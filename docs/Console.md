@@ -51,11 +51,11 @@ call [device] [cmd] [data] [id|hc]
 
 Note you have `su` first to get access to all the `call` commands.
 
-![Console](/_media/screenshot/console1.png)
+![Console](/media/screenshot/console1.png)
 
 ### Showing device values
 
-![Console](/_media/screenshot/console0.png)
+![Console](/media/screenshot/console0.png)
 
 ### Monitoring the EMS traffic
 
@@ -69,4 +69,4 @@ If you want to see only telegrams that are not registered yet, use `watch unknow
 
 If you want to see the raw bytes including CRC as transmitted on the EMS line use `watch raw <ID>`.
 
-![Console](/_media/screenshot/console3.png)
+![Console](/media/screenshot/console3.png)

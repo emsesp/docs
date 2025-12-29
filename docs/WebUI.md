@@ -17,25 +17,25 @@ Access the WebUI via `http://ems-esp` or `http://ems-esp.local`. The `ems-esp` i
 
 Monitor your EMS system status and real-time data
 
-![Web Status Dashboard](/_media/screenshot/web_status.png)
+![Web Status Dashboard](/media/screenshot/web_status.png)
 
 ### 🔧 Device Management
 
 Configure and manage your EMS devices
 
-![Web Devices Management](/_media/screenshot/web_devices.png)
+![Web Devices Management](/media/screenshot/web_devices.png)
 
 ### ⚙️ System Settings
 
 Configure system parameters and preferences
 
-![Web Settings Configuration](/_media/screenshot/web_settings.png)
+![Web Settings Configuration](/media/screenshot/web_settings.png)
 
 ### 📡 MQTT Configuration
 
 Set up MQTT broker connection and topics
 
-![Web MQTT Configuration](/_media/screenshot/web_mqtt.png)
+![Web MQTT Configuration](/media/screenshot/web_mqtt.png)
 
 ## ✨ WebUI Features
 

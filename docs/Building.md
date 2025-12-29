@@ -120,10 +120,9 @@ When using the devcontainer and running the standalone UI you have to run the st
 
 Click "Code" and the "Create codespace on dev" to start a codespace that you can use for developing without having to install anything locally.
 
-![Codespace start](/_media/screenshot/codespace_start.jpg)
+![Codespace start](/media/screenshot/codespace_start.jpg)
 
 ### The partition structure
-
 
 | Name       | Type       | SubType  | Offset        | Size               | Notes                           | File                            |
 |------------|------------|----------|---------------|--------------------|---------------------------------|---------------------------------|
@@ -148,4 +147,3 @@ Click "Code" and the "Create codespace on dev" to start a codespace that you can
 - EMS-ESP can be restarted to other partitions using the command `restart <boot|app0|app1>`.
 - The EMS-ESP Console/API command `show system` will show the current partition and the partition that will be booted after a restart.
 - With all the board/chip types, the `boot_app0.bin` and `partitions.bin` are the same file for each board. Only the `bootloader.bin` is different. But we keep local copies to keep things tidy in a single folder.
-

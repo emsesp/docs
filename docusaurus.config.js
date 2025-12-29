@@ -164,9 +164,9 @@ const config = {
         appId: '2T19VXVM2E',
 
         // Public API key: it is safe to commit it
-        apiKey: '18b4ae91c672dbe604c24e24e546aed1',
+        apiKey: '1beedae258b6f86b6d0905e319cb41ab',
 
-        indexName: 'EMS-ESP',
+        indexName: 'ems-esp doc',
 
         // Optional: see doc section below
         contextualSearch: true,
@@ -207,37 +207,37 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: 'Getting-Started'
+                to: 'Getting-Started',
               },
               {
                 label: 'Installing',
-                to: 'Installing'
+                to: 'Installing',
               },
               {
                 label: 'Configuring',
-                to: 'Configuring'
+                to: 'Configuring',
               },
               {
                 label: 'WebUI',
-                to: 'WebUI'
+                to: 'WebUI',
               },
               {
                 label: 'MQTT',
-                to: 'MQTT'
+                to: 'MQTT',
               },
               {
                 label: 'Commands',
-                to: 'Commands'
+                to: 'Commands',
               },
               {
                 label: 'Console',
-                to: 'Console'
+                to: 'Console',
               },
               {
                 label: 'Special Functions',
-                to: 'Special-Functions'
+                to: 'Special-Functions',
               },
-            ]
+            ],
           },
           {
             type: 'dropdown',
@@ -246,51 +246,51 @@ const config = {
             items: [
               {
                 label: 'All Devices and Entities',
-                to: 'All-Entities'
+                to: 'All-Entities',
               },
               {
                 label: 'Boilers',
-                to: 'Boilers'
+                to: 'Boilers',
               },
               {
                 label: 'Thermostats',
-                to: 'Thermostats'
+                to: 'Thermostats',
               },
               {
                 label: 'Controllers',
-                to: 'Controllers'
+                to: 'Controllers',
               },
               {
                 label: 'Heat Pumps',
-                to: 'Heat-Pumps'
+                to: 'Heat-Pumps',
               },
               {
                 label: 'Alert',
-                to: 'Alert'
+                to: 'Alert',
               },
               {
                 label: 'Connect',
-                to: 'Connect'
+                to: 'Connect',
               },
               {
                 label: 'Extension',
-                to: 'Extension'
+                to: 'Extension',
               },
               {
                 label: 'Gateways',
-                to: 'Gateways'
+                to: 'Gateways',
               },
               {
                 label: 'Mixer Modules',
-                to: 'Mixer-Modules'
+                to: 'Mixer-Modules',
               },
               {
                 label: 'Solar Modules',
-                to: 'Solar-Modules'
+                to: 'Solar-Modules',
               },
               {
                 label: 'Switches',
-                to: 'Switches'
+                to: 'Switches',
               },
             ],
           },
@@ -301,36 +301,36 @@ const config = {
             items: [
               {
                 label: 'Home Assistant',
-                to: 'Home-Assistant'
+                to: 'Home-Assistant',
               },
               {
                 label: 'IOBroker',
-                to: 'IOBroker'
+                to: 'IOBroker',
               },
               {
                 label: 'Domoticz',
-                to: 'Domoticz'
+                to: 'Domoticz',
               },
               {
                 label: 'openHAB',
-                to: 'openHAB'
+                to: 'openHAB',
               },
               {
                 label: 'Loxone',
-                to: 'Loxone'
+                to: 'Loxone',
               },
               {
                 label: 'Grafana',
-                to: 'Grafana'
+                to: 'Grafana',
               },
               {
                 label: 'Prometheus',
-                to: 'Prometheus'
+                to: 'Prometheus',
               },
               {
                 label: 'Modbus',
-                to: 'Modbus'
-              }
+                to: 'Modbus',
+              },
             ],
           },
           {
@@ -340,24 +340,24 @@ const config = {
             items: [
               {
                 label: 'Getting Support',
-                to: 'Support'
+                to: 'Support',
               },
               {
                 label: 'Troubleshooting',
-                to: 'Troubleshooting'
+                to: 'Troubleshooting',
               },
               {
                 label: 'FAQ',
-                to: 'FAQ'
+                to: 'FAQ',
               },
               {
                 label: 'Tips and Tricks',
-                to: 'tips-and-tricks'
+                to: 'tips-and-tricks',
               },
               {
                 label: 'About EMS-ESP',
-                to: 'About'
-              }
+                to: 'About',
+              },
             ],
           },
           {
@@ -367,36 +367,36 @@ const config = {
             items: [
               {
                 label: 'Building the firmware',
-                to: 'Building'
+                to: 'Building',
               },
               {
                 label: 'Adding Languages',
-                to: 'Adding-Languages'
+                to: 'Adding-Languages',
               },
               {
                 label: 'EMS Telegrams',
-                to: 'EMS-Telegrams'
+                to: 'EMS-Telegrams',
               },
               {
                 label: 'The EMS Bus explained',
-                to: 'EMS-bus'
+                to: 'EMS-bus',
               },
               {
                 label: 'The community EMS library',
-                to: 'ems-library'
+                to: 'ems-library',
               },
               {
                 label: 'A prototype hardware design',
-                to: 'EMS-Circuit'
+                to: 'EMS-Circuit',
               },
               {
                 label: 'Contributing',
-                to: 'Contributing'
+                to: 'Contributing',
               },
               {
                 label: 'Release History',
-                to: 'Version-Release-History'
-              }
+                to: 'Version-Release-History',
+              },
             ],
           },
           {
@@ -414,19 +414,19 @@ const config = {
             position: 'right',
             className: 'header-discord-link',
             'aria-label': 'Discord server',
-          }
+          },
         ],
       },
       announcementBar: {
         id: 'support_us',
-        content: `<span class="announcement">⭐️ If you like EMS-ESP, 
+        content: `<span class="announcement">⭐️ If you like EMS-ESP, please give us a
         <a
           href="https://github.com/emsesp/EMS-ESP32"
           target="_blank">
-          star it on GitHub!
-        </a> ⭐️</span>`,
+          star on GitHub
+        </a>  to show your support! ⭐️</span>`,
         backgroundColor: 'rgba(var(--ifm-color-primary-rgb), 0.05)',
-        textColor: '#fff'
+        textColor: '#fff',
       },
       footer: {
         style: 'dark',

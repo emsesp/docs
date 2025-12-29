@@ -132,7 +132,7 @@ The Users page allows you to create additional users for the captive portal and 
 
 Each user has an unique Access Token (viewable by clicking on the key icon) which is used for RESTful write commands via HTTP POST. This is for security reasons to prevent anyone changing device settings.
 
-![Web](/_media/screenshot/web_users.png)
+![Web](/media/screenshot/web_users.png)
 
 ## Adding Analog and Temperature Sensors
 
@@ -140,7 +140,7 @@ External sensors, like temperature and analog sensors can be attached to a range
 
 To add analog sensors click on `Add` and choose between a normal Digital in/out, a Counter (counting on/off pulses), ADC for measuring voltages, Timer, Rate and PWM 0-2. Note, the counter value is persisted and not reset on reboot.
 
-![Web](/_media/screenshot/web_sensor.png)
+![Web](/media/screenshot/web_sensor.png)
 
 :::warning
 Be careful when picking a GPIO so it doesn't clash with the other used GPIOs (you can select CUSTOM board profile to view your current configuration).
@@ -182,7 +182,7 @@ The professional way is to use a separate relay board with opto-isolation and a 
 
 The Customization page shows all registered entities and allows to exclude commands and values from publishing via MQTT/API or remove them from WebUI pages. The Devices and Dashboard only show entities with value while the Customization module will show all of them. If an entity has no value then it is supported by EMS-ESP, but not by your boiler/thermostat/etc and will not be published or visible to any integrations like Home Assistant.
 
-![Web](/_media/screenshot/web_customizations.png)
+![Web](/media/screenshot/web_customizations.png)
 
 ## Scheduling Actions
 
@@ -201,12 +201,12 @@ HTTPS is only supported on the ESP32 and ESP32-S3 variants with PSRAM when using
 
 When creating a scheduler entry, the `name` is optional but it's useful to assign a name and then you can control it via a command (enable/disable) and see the status in the MQTT topic `scheduler_data`.
 
-![Web](/_media/screenshot/web_scheduler.png)
+![Web](/media/screenshot/web_scheduler.png)
 
 The scheduler can also be used to periodically set values based on another entity value, or even a user-defined custom entity (variable). For example to set the flow temperature of the boiler every minute based on a user managed entity which is controlled externally (e.g. in Home Assistant) it would look like:
 
-![Web](/_media/screenshot/web_scheduler_custom.png)
-![Web](/_media/screenshot/web_scheduler_flowtemp.png)
+![Web](/media/screenshot/web_scheduler_custom.png)
+![Web](/media/screenshot/web_scheduler_flowtemp.png)
 
 ### Conditions
 
@@ -239,9 +239,9 @@ Pay attention to the following rules:
 An On Change trigger is a list of entities using the format `<device>/<entity>`, for example `boiler/outdoortemp custom/setpoint`.
 As entities never change at the same time using logical operations here like `&&` aren't useful. Note, using `system` as the `<device>` is not supported.
 
-![Web](/_media/screenshot/web_conditions_1.png)
+![Web](/media/screenshot/web_conditions_1.png)
 
-![Web](/_media/screenshot/web_conditions_2.png)
+![Web](/media/screenshot/web_conditions_2.png)
 
 ### Web Commands
 
@@ -278,4 +278,4 @@ Custom Entities is an advanced and powerful way to extend EMS-ESP by adding your
 
 For example, a modern Heat Pump may have new features that are not included in EMS-ESP. Here you would use the `watch` command to view the incoming EMS traffic in combination with manual adjusting specific parameters and when you have located the specific telegram and the offset, create a Custom Entity to fine-tune the type and verify the the value. Then request it to be included in the next EMS-ESP release update.
 
-![Web](/_media/screenshot/web_customentities.png)
+![Web](/media/screenshot/web_customentities.png)

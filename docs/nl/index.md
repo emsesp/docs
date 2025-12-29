@@ -17,13 +17,13 @@ keywords:
   - IoT heating
 hide_table_of_contents: true
 hide_title: true
-image: /_media/screenshot/main-screen.png
+image: /media/screenshot/main-screen.png
 ---
 
 <div style={{display: 'flex', alignItems: 'center', gap: '2rem', marginBottom: '2rem', flexWrap: 'wrap'}}>
 
 <div style={{flex: '0 0 auto'}}>
-<img src="/_media/logo/boiler.svg" alt="EMS-ESP Logo" width="200" />
+<img src="/media/logo/boiler.svg" alt="EMS-ESP Logo" width="200" />
 </div>
 
 <div style={{flex: '1 1 400px'}}>
@@ -87,7 +87,7 @@ Notification service for alerts and warnings
 </div>
 
 <div style={{flex: '0 0 auto'}}>
-<img src="/_media/screenshot/main-screen.png" alt="EMS-ESP Main Screen" width="700" />
+<img src="/media/screenshot/main-screen.png" alt="EMS-ESP Main Screen" width="700" />
 </div>
 
 ## 📦 Latest Releases

@@ -1,5 +1,5 @@
-import React from 'react';
-import Head from '@docusaurus/Head';
+import React from 'react'
+import Head from '@docusaurus/Head'
 
 export default function StructuredData() {
   const structuredData = {
@@ -76,7 +76,7 @@ export default function StructuredData() {
           'Notification service',
         ],
         license: 'https://opensource.org/licenses/MIT',
-        screenshot: 'https://emsesp.org/_media/screenshot/main-screen.png',
+        screenshot: 'https://emsesp.org/media/screenshot/main-screen.png',
       },
       {
         '@type': 'BreadcrumbList',
@@ -91,7 +91,7 @@ export default function StructuredData() {
         ],
       },
     ],
-  };
+  }
 
   return (
     <Head>
@@ -99,6 +99,5 @@ export default function StructuredData() {
         {JSON.stringify(structuredData)}
       </script>
     </Head>
-  );
+  )
 }
-
