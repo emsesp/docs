@@ -1,4 +1,4 @@
-# List of Heat Pumps, Heat sources, Ventilation modules
+# Heat Pumps
 
 This is the current list of supported heat pumps. Heat sources and ventilation modules are also included in this list:
 

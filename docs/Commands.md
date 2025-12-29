@@ -1,3 +1,5 @@
+# Commands
+
 EMS-ESP has a command API which can be used to read and write values to EMS device and call specific commands.
 
 There are 3 methods commands can be invoked:
@@ -8,9 +10,7 @@ There are 3 methods commands can be invoked:
 
 ## Definitions
 
-<!-- prettier-ignore -->
-!!! important "Important Definitions"
-    - `<device>` is the short-name. It can be either:
+:::important Important Definitions - `<device>` is the short-name. It can be either:
 
         * a EMS Device and supported devices include: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
         * the EMS-ESP system itself identified as `system`
@@ -33,6 +33,8 @@ There are 3 methods commands can be invoked:
         * as a False value, "FALSE", "no", false, "false", "off", 0
 
     - The bearer Access Token (JWT) is used to authenticate HTTP requests and can be obtained from the WebUI's `Settings->Security->Manage Users` page and then clicking on the key icon for the user that has admin privileges (`is Admin` set). The token is generated using a combination of the username and a secret key which is the super user (su) password found in the WebUI's `Settings->Security->Security Settings` page. This 152 character long string must be included in the HTTP header as `"Authorization: Bearer {ACCESS_TOKEN}"`. Note the token has no expiry date.
+
+:::
 
 ## Console
 
@@ -61,104 +63,98 @@ Things to note:
 
 The URL path is `http://<hostname>/api/<device>/`
 
-<!-- prettier-ignore -->
-| endpoint | HTTP method | action | authentication required? | post body |
-| - | - | - | - | - |
-| `info` | GET | outputs current EMS device information in verbose | no | |
-| `values` | GET | outputs current EMS device information in short format | no | |
-| _(empty)_ | GET | same as `values` above | no | |
-| `commands` | GET | lists the available command entities to call | no | |
-| `entities` | GET | lists all enabled entities | no | |
-| `{entity}` | GET | outputs details of a specific entity, for reading | no | |
-| `{entity}/{hc}` | GET | same as the read command above but for a specific heating circuit | no | |
-| `{entity}` | POST | updates a entity value, for writing | yes | `<data>` |
-| `{entity}/{hc}` | POST | same as the write command above but for a specific heating circuit | yes | `<data>` |
+| endpoint        | HTTP method | action                                                             | authentication required? | post body |
+| --------------- | ----------- | ------------------------------------------------------------------ | ------------------------ | --------- |
+| `info`          | GET         | outputs current EMS device information in verbose                  | no                       |           |
+| `values`        | GET         | outputs current EMS device information in short format             | no                       |           |
+| _(empty)_       | GET         | same as `values` above                                             | no                       |           |
+| `commands`      | GET         | lists the available command entities to call                       | no                       |           |
+| `entities`      | GET         | lists all enabled entities                                         | no                       |           |
+| `{entity}`      | GET         | outputs details of a specific entity, for reading                  | no                       |           |
+| `{entity}/{hc}` | GET         | same as the read command above but for a specific heating circuit  | no                       |           |
+| `{entity}`      | POST        | updates a entity value, for writing                                | yes                      | `<data>`  |
+| `{entity}/{hc}` | POST        | same as the write command above but for a specific heating circuit | yes                      | `<data>`  |
 
 Examples:
 
-<!-- prettier-ignore -->
-| URL | post body | action |
-| - | - | - |
-| `http://ems-esp.local/api/thermostat/seltemp` | `22` | sets the selected room temperature of the master thermostat on heating circuit 1 |
-| `http://ems-esp.local/api/thermostat/hc2/seltemp` | `{"data":22}` | sets the selected room temperature of the master thermostat on heating circuit 2 |
-| `http://ems-esp.local/api/thermostat/mode` | `'auto'` | sets the thermostat mode to auto for heating circuit 1 |
-| `http://ems-esp.local/api/thermostat` | `{"cmd":"mode", "data":"auto"}` | sets the thermostat mode to auto for heating circuit 1 |
-| `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | sets the selected room temperature to 23 degrees for for heating circuit 3 |
-| `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | sets the selected room temperature to 20.5 degrees for for heating circuit 2 |
-| `http://ems-esp.local/api` | `{"device":"thermostat", cmd":"seltemp", "data":23, "hc":3}` | sets the selected room temperature of the master thermostat on heating circuit 3 |
+| URL                                               | post body                                                    | action                                                                           |
+| ------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| `http://ems-esp.local/api/thermostat/seltemp`     | `22`                                                         | sets the selected room temperature of the master thermostat on heating circuit 1 |
+| `http://ems-esp.local/api/thermostat/hc2/seltemp` | `{"data":22}`                                                | sets the selected room temperature of the master thermostat on heating circuit 2 |
+| `http://ems-esp.local/api/thermostat/mode`        | `'auto'`                                                     | sets the thermostat mode to auto for heating circuit 1                           |
+| `http://ems-esp.local/api/thermostat`             | `{"cmd":"mode", "data":"auto"}`                              | sets the thermostat mode to auto for heating circuit 1                           |
+| `http://ems-esp.local/api/thermostat`             | `{"cmd":"seltemp", "data":23, "hc":3}`                       | sets the selected room temperature to 23 degrees for for heating circuit 3       |
+| `http://ems-esp.local/api/thermostat/hc2`         | `{"cmd":"seltemp", "data":20.5}`                             | sets the selected room temperature to 20.5 degrees for for heating circuit 2     |
+| `http://ems-esp.local/api`                        | `{"device":"thermostat", cmd":"seltemp", "data":23, "hc":3}` | sets the selected room temperature of the master thermostat on heating circuit 3 |
 
 ### Fetching and writing to custom entities
 
 The URL path is `http://<hostname>/api/custom/`
 
-<!-- prettier-ignore -->
-| endpoint | HTTP method | action | authentication required? | post body |
-| - | - | - | - | - |
-| blank or `info`| GET | outputs all custom entities and their values | no | |
-| `commands` | GET | lists the available custom entity commands | no | |
-| `<name>` | GET | outputs all characteristics for a specific custom entity | no | |
-| `<name>/<attribute>` | GET | outputs for a attribute of a specific custom entity | no | |
-| `<name>` | POST | updates a custom entity value, for writing | yes | `<data>` |
+| endpoint             | HTTP method | action                                                   | authentication required? | post body |
+| -------------------- | ----------- | -------------------------------------------------------- | ------------------------ | --------- |
+| blank or `info`      | GET         | outputs all custom entities and their values             | no                       |           |
+| `commands`           | GET         | lists the available custom entity commands               | no                       |           |
+| `<name>`             | GET         | outputs all characteristics for a specific custom entity | no                       |           |
+| `<name>/<attribute>` | GET         | outputs for a attribute of a specific custom entity      | no                       |           |
+| `<name>`             | POST        | updates a custom entity value, for writing               | yes                      | `<data>`  |
 
 ### Fetching Temperature Sensor information
 
 The URL path is `http://<hostname>/api/temperaturesensor/`
 
-<!-- prettier-ignore -->
-| endpoint | HTTP method | action | authentication required? | post body |
-| - | - | - | - | - |
-| blank | GET | outputs connected Dallas temperature sensor names and readings | no | |
-| `info` | GET | outputs all details on the connected Dallas temperature sensors | no | |
-| `<name>` | GET | outputs all characteristics for a specific temperature sensors | no | |
-| `<name>/value` | GET | outputs the value of a specific temperature sensor | no | |
+| endpoint       | HTTP method | action                                                          | authentication required? | post body |
+| -------------- | ----------- | --------------------------------------------------------------- | ------------------------ | --------- |
+| blank          | GET         | outputs connected Dallas temperature sensor names and readings  | no                       |           |
+| `info`         | GET         | outputs all details on the connected Dallas temperature sensors | no                       |           |
+| `<name>`       | GET         | outputs all characteristics for a specific temperature sensors  | no                       |           |
+| `<name>/value` | GET         | outputs the value of a specific temperature sensor              | no                       |           |
 
 ### Controlling the Analog Sensors
 
 The URL path is `http://<hostname>/api/analogsensor/`
 
-<!-- prettier-ignore -->
-| endpoint   | HTTP method | action | authentication required? | post body |
-| - | - | - | - | - |
-| blank | GET | outputs analog sensors and their readings | no | |
-| `info` | GET | outputs all details on the connected analog sensors | no | |
-| `<name>` | GET | outputs all characteristics for a specific analog sensors | no | |
-| `commands` | GET | lists the available system commands | no | |
-| `setvalue` | POST | set value/offset of counter or output pin, +/- sign corrects value | yes | `{"value":<val>, "id":<gpio>}` |
-| `<name>` | POST | set value/offset of counter or output pin, +/- sign corrects value | yes | `{"value":<val>}` |
+| endpoint   | HTTP method | action                                                             | authentication required? | post body                      |
+| ---------- | ----------- | ------------------------------------------------------------------ | ------------------------ | ------------------------------ |
+| blank      | GET         | outputs analog sensors and their readings                          | no                       |                                |
+| `info`     | GET         | outputs all details on the connected analog sensors                | no                       |                                |
+| `<name>`   | GET         | outputs all characteristics for a specific analog sensors          | no                       |                                |
+| `commands` | GET         | lists the available system commands                                | no                       |                                |
+| `setvalue` | POST        | set value/offset of counter or output pin, +/- sign corrects value | yes                      | `{"value":<val>, "id":<gpio>}` |
+| `<name>`   | POST        | set value/offset of counter or output pin, +/- sign corrects value | yes                      | `{"value":<val>}`              |
 
 ### System Commands
 
 The URL path is `http://<hostname>/api/system/<endpoint>`
 
-<!-- prettier-ignore -->
-| endpoint | HTTP method | action | authentication required? | post body |
-| - | - | - | - | - |
-| `info` or blank | GET | outputs current system information | no | |
-| `fetch` | GET | forces at refresh of all device values | no | |
-| `restart` | GET | restarts EMS-ESP | yes | |
-| `format` | GET | factory reset's EMS-ESP | yes | |
-| `commands` | GET | lists the available system commands | no | |
-| `send` | POST | send telegram to the EMS bus | yes | `"XX XX...XX"` |
-| `message` | POST | send a message to the log and MQTT. The message can also a logic command as used in the Scheduler | yes | `".."` or `'{"value":"system/settings/locale"}'` |
-| `publish` | POST | MQTT publish all values, and optional HA-configuration or specific for a device | no | `[ha] \| [device]` |
-| `watch` | POST | watch incoming telegrams | no | `<on \|off \| raw \| <type-id(hex)>` |
-| `values` | GET | outputs all values in short format | no | |
-| `read` | GET | queries a specific EMS device and a typeID | yes | `<deviceID> <type ID> [offset] [length]` |
-| `response` | GET | outputs the last response from EMS-ESP | no | |
-| `entities` | GET | lists all enabled entities | no | |
-| `mqtt/enabled` | GET | enable/disable MQTT | yes | `<bool>` |
-| `ap/enabled` | GET | enable/disable Access Point | yes | `<bool>` |
-| `settings/analogenabled` | GET | enable/disable analog sensor | yes | `<bool>` |
-| `settings/hideled` | GET | enable/disable LED | yes | `<bool>` |
-| `settings/showeralert` | GET |  enable/disable shower alert | yes | `<bool>` |
-| `settings/showertimer` | GET | enable/disable shower timer | yes | `<bool>` |
-| `syslog/enabled` | GET | enable/disable syslog | yes | `<bool>` |
+| endpoint                 | HTTP method | action                                                                                            | authentication required? | post body                                        |
+| ------------------------ | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------ |
+| `info` or blank          | GET         | outputs current system information                                                                | no                       |                                                  |
+| `fetch`                  | GET         | forces at refresh of all device values                                                            | no                       |                                                  |
+| `restart`                | GET         | restarts EMS-ESP                                                                                  | yes                      |                                                  |
+| `format`                 | GET         | factory reset's EMS-ESP                                                                           | yes                      |                                                  |
+| `commands`               | GET         | lists the available system commands                                                               | no                       |                                                  |
+| `send`                   | POST        | send telegram to the EMS bus                                                                      | yes                      | `"XX XX...XX"`                                   |
+| `message`                | POST        | send a message to the log and MQTT. The message can also a logic command as used in the Scheduler | yes                      | `".."` or `'{"value":"system/settings/locale"}'` |
+| `publish`                | POST        | MQTT publish all values, and optional HA-configuration or specific for a device                   | no                       | `[ha] \| [device]`                               |
+| `watch`                  | POST        | watch incoming telegrams                                                                          | no                       | `<on \|off \| raw \| <type-id(hex)>`             |
+| `values`                 | GET         | outputs all values in short format                                                                | no                       |                                                  |
+| `read`                   | GET         | queries a specific EMS device and a typeID                                                        | yes                      | `<deviceID> <type ID> [offset] [length]`         |
+| `response`               | GET         | outputs the last response from EMS-ESP                                                            | no                       |                                                  |
+| `entities`               | GET         | lists all enabled entities                                                                        | no                       |                                                  |
+| `mqtt/enabled`           | GET         | enable/disable MQTT                                                                               | yes                      | `<bool>`                                         |
+| `ap/enabled`             | GET         | enable/disable Access Point                                                                       | yes                      | `<bool>`                                         |
+| `settings/analogenabled` | GET         | enable/disable analog sensor                                                                      | yes                      | `<bool>`                                         |
+| `settings/hideled`       | GET         | enable/disable LED                                                                                | yes                      | `<bool>`                                         |
+| `settings/showeralert`   | GET         | enable/disable shower alert                                                                       | yes                      | `<bool>`                                         |
+| `settings/showertimer`   | GET         | enable/disable shower timer                                                                       | yes                      | `<bool>`                                         |
+| `syslog/enabled`         | GET         | enable/disable syslog                                                                             | yes                      | `<bool>`                                         |
 
 ### Examples
 
-!!! tip "Note"
-
-    In these examples the URL is `http://ems-esp.local/api/` but adjust to your actual hostname. Also the change the bearer access token to your own as described in the [Definitions](#definitions) section.
+:::tip Note
+In these examples the URL is `http://ems-esp.local/api/` but adjust to your actual hostname. Also the change the bearer access token to your own as described in the [Definitions](#definitions) section.
+:::
 
 #### ...via the command line
 
@@ -221,15 +217,14 @@ The MQTT **payload** is the same as the `<data>` as described above and used in 
 
 Examples:
 
-<!-- prettier-ignore -->
-| topic | payload | action |
-| - | - | - |
-| `ems-esp/system/send` | `XX XX...XX` | send raw ems-command |
-| `ems-esp/thermostat/seltemp` | | fetches the seltemp entity values and publishes it in the topic `ems-esp/response` |
-| `ems-esp/thermostat/seltemp` | `23` | change the selected setpoint temperature to 23 degrees on the master thermostat on hc1 |
-| `ems-esp/thermostat/mode` | `auto` | sets the thermostat mode to auto for hc1 |
-| `ems-esp/thermostat` | `{"cmd":"mode","value":"heat","id":1}` | sets the thermostat mode to heat for hc1 |
-| `ems-esp/custom/myCustomEntity` | `7` | sets the value of the EMS-ESP Custom Entity named `myCustomEntity` to 7 |
+| topic                           | payload                                | action                                                                                 |
+| ------------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ems-esp/system/send`           | `XX XX...XX`                           | send raw ems-command                                                                   |
+| `ems-esp/thermostat/seltemp`    |                                        | fetches the seltemp entity values and publishes it in the topic `ems-esp/response`     |
+| `ems-esp/thermostat/seltemp`    | `23`                                   | change the selected setpoint temperature to 23 degrees on the master thermostat on hc1 |
+| `ems-esp/thermostat/mode`       | `auto`                                 | sets the thermostat mode to auto for hc1                                               |
+| `ems-esp/thermostat`            | `{"cmd":"mode","value":"heat","id":1}` | sets the thermostat mode to heat for hc1                                               |
+| `ems-esp/custom/myCustomEntity` | `7`                                    | sets the value of the EMS-ESP Custom Entity named `myCustomEntity` to 7                |
 
 ### Publishing Commands
 
@@ -249,12 +244,11 @@ where
 
 Some more examples:
 
-<!-- prettier-ignore -->
-| topic | payload | action |
-| - | - | - |
-| `ems-esp/boiler` | `{"cmd":"heatingactivated", "data":"on"}` | turn on heatingactivated in boiler |
-| `ems-esp/boiler/heatingactivated` | `{"data":"on"}` | turn on DHW disinfecting in boiler (equivalent to command above) |
-| `ems-esp/boiler` | `{"cmd":"dhw.disinfecting", "data":"on"}` | turn on DHW disinfecting in boiler |
+| topic                             | payload                                   | action                                                           |
+| --------------------------------- | ----------------------------------------- | ---------------------------------------------------------------- |
+| `ems-esp/boiler`                  | `{"cmd":"heatingactivated", "data":"on"}` | turn on heatingactivated in boiler                               |
+| `ems-esp/boiler/heatingactivated` | `{"data":"on"}`                           | turn on DHW disinfecting in boiler (equivalent to command above) |
+| `ems-esp/boiler`                  | `{"cmd":"dhw.disinfecting", "data":"on"}` | turn on DHW disinfecting in boiler                               |
 
 You can check the log in Status - System Log if the command was accepted by EMS-ESP.
 
@@ -273,7 +267,8 @@ Topic:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"5000
 [mqtt] MQTT command failed with error no values in boiler (Error)
 ```
 
-!!! note "You can easily test the MQTT commands with [MQTT Explorer](https://www.mqtt-explorer.com). Just connect to the MQTT broker and publish the payload to the topic."
+:::note You can easily test the MQTT commands with [MQTT Explorer](https://www.mqtt-explorer.com). Just connect to the MQTT broker and publish the payload to the topic.
+:::
 
 With Home Assistant, Thermostat commands can also be sent to control individual heating circuits via sending a mode string or temperature number to a topic `thermostat_hc<n>`.
 

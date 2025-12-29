@@ -1,0 +1,244 @@
+.container {
+  margin: 2rem 0;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  flex: 2;
+  min-width: 200px;
+  padding: 0.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+}
+
+.filterSelect {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+.stats {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.table thead {
+  background-color: var(--ifm-color-emphasis-100);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table th {
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  vertical-align: top;
+}
+
+.table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.table tbody tr:hover {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.expandedRow {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.table code {
+  background-color: var(--ifm-code-background);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
+.deviceCell {
+  min-width: 200px;
+}
+
+.deviceName {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.productId {
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.typeCell {
+  max-width: 250px;
+  word-break: break-word;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.8em;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--ifm-color-primary-light);
+  color: var(--ifm-color-primary-darkest);
+  border-radius: 3px;
+  font-size: 0.8em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.writeable {
+  color: var(--ifm-color-warning-dark);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.readonly {
+  color: var(--ifm-color-info-dark);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.expandIcon {
+  width: 30px;
+  text-align: center;
+  color: var(--ifm-color-emphasis-600);
+  user-select: none;
+}
+
+.detailsRow {
+  background-color: var(--ifm-color-emphasis-50);
+}
+
+.detailsRow td {
+  padding: 0;
+}
+
+.details {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.detailSection h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-800);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  padding-bottom: 0.5rem;
+}
+
+.detailItem {
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.detailItem strong {
+  display: inline-block;
+  min-width: 120px;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.detailItem code {
+  font-size: 0.85em;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+.loading,
+.error {
+  padding: 2rem;
+  text-align: center;
+  font-style: italic;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.error {
+  color: var(--ifm-color-danger);
+}
+
+.noResults {
+  padding: 2rem;
+  text-align: center;
+  color: var(--ifm-color-emphasis-700);
+  font-style: italic;
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .searchInput,
+html[data-theme='dark'] .filterSelect {
+  border-color: var(--ifm-color-emphasis-300);
+  background-color: var(--ifm-background-surface-color);
+}
+
+html[data-theme='dark'] .badge {
+  background-color: var(--ifm-color-primary-darker);
+  color: var(--ifm-color-primary-lightest);
+}
+
+html[data-theme='dark'] .detailsRow {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .table {
+    font-size: 0.75rem;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .deviceCell {
+    min-width: 150px;
+  }
+  
+  .typeCell {
+    max-width: 150px;
+  }
+}
+

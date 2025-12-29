@@ -1,4 +1,4 @@
-# Modbus settings
+# Modbus Settings
 
 Enable the Modbus feature in `Settings` -> `Application` -> `Modbus`. This requires a reboot.
 

@@ -1,0 +1,54 @@
+{
+  "name": "emsesp-docs",
+  "version": "3.0.0",
+  "private": true,
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "fast": "docusaurus start --locale en --no-minify",
+    "build": "docusaurus build",
+    "build:fast": "docusaurus build --locale en",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "translate": "node scripts/translate.js",
+    "translate-ui": "node scripts/translate-ui.js"
+  },
+  "dependencies": {
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/faster": "^3.9.2",
+    "@docusaurus/plugin-google-gtag": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
+    "@docusaurus/theme-mermaid": "^3.9.2",
+    "@docusaurus/theme-search-algolia": "^3.9.2",
+    "@mdx-js/react": "^3.1.1",
+    "clsx": "^2.1.1",
+    "copy-text-to-clipboard": "^3.2.2",
+    "prism-react-renderer": "^2.4.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "^3.9.2",
+    "@docusaurus/types": "^3.9.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0"
+  },
+  "packageManager": "pnpm@10.26.2+sha512.0e308ff2005fc7410366f154f625f6631ab2b16b1d2e70238444dd6ae9d630a8482d92a451144debc492416896ed16f7b114a86ec68b8404b2443869e68ffda6"
+}

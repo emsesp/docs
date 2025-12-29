@@ -1,3 +1,5 @@
+# The EMS Bus explained
+
 Packages are streamed to the EMS "bus" from any other compatible connected device via serial TTL transmission using protocol 9600 baud, 8N1 (8 bytes, no parity, 1 stop bit). Each package is terminated with a break signal `<BRK>`, a 11-bit long low signal of zeros.
 
 A package can be a single byte (see Polling below) or a string of 6 or more bytes making up an actual data telegram. A telegram for the EMS 1.0 is always in the format:
@@ -59,7 +61,7 @@ The tables below shows which types are broadcasted regularly by the boiler (in t
 
 Telegrams can only be sent after the Master (boiler) sends a poll to the receiving device. The response can be a read command to request data or a write command to send data. At the end of the transmission a poll response is sent from the client (`<ID> <BRK>`) to say we're all done and free up the bus for other clients.
 
-When executing a request to read data the `[src]` is our device `(0x0B)` and the `[dest]` must have has it's MSB (8th bit) set. Say we were requesting data from the thermostat we would use `[dest] = 0x97` since RC20 has an ID of 0x17. In emsesp-logs this request is shown with `R`` between `[src]`and`[dst]`: _"Me(0x0B) R Thermostat(0x17)..."_.
+When executing a request to read data the `[src]` is our device `(0x0B)` and the `[dest]` must have has it's MSB (8th bit) set. Say we were requesting data from the thermostat we would use `[dest] = 0x97` since RC20 has an ID of 0x17. In emsesp-logs this request is shown with `R`` between`[src]`and`[dst]`: _"Me(0x0B) R Thermostat(0x17)..."_.
 
 Following a write request, the `[dest]` doesn't have the 8th bit set and after this write request the destination device will send either a single byte 0x01 for success or 0x04 for failure. In emsesp-logs this write is shown with with `W` between `[src]` and `[dst]`: _"Me(0x0B) W Thermostat(0x17)..."_.
 

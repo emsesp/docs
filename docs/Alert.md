@@ -1,3 +1,3 @@
-# List of supported Alert Modules
+# Alert Modules
 
 - EM10

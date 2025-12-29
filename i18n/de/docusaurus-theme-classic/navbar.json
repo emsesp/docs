@@ -1,0 +1,42 @@
+{
+  "title": {
+    "message": "EMS-ESP",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "EMS-ESP-Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Home": {
+    "message": "Startseite",
+    "description": "Navbar item with label Home"
+  },
+  "item.label.Devices": {
+    "message": "Geräte",
+    "description": "Navbar item with label Devices"
+  },
+  "item.label.Integrations": {
+    "message": "Integrationen",
+    "description": "Navbar item with label Integrations"
+  },
+  "item.label.Modbus": {
+    "message": "Modbus",
+    "description": "Navbar item with label Modbus"
+  },
+  "item.label.Help": {
+    "message": "Hilfe",
+    "description": "Navbar item with label Help"
+  },
+  "item.label.Developers": {
+    "message": "Entwickler",
+    "description": "Navbar item with label Developers"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "item.label.Discord": {
+    "message": "Diskord",
+    "description": "Navbar item with label Discord"
+  }
+}

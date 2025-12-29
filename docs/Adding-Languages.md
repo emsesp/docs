@@ -1,3 +1,5 @@
+# Adding Languages
+
 ### How to add language XY to the WebUI
 
 - Download the SVG flag from [here](https://gitlab.com/catamphetamine/country-flag-icons/-/tree/master/3x2) and place in `interface/src/i18n`

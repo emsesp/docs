@@ -7,15 +7,13 @@ tags:
   - reference
 ---
 
-# EMS Library
+# The community EMS library
 
-!!! info "Community Documentation"
+:::info Community Documentation
 This page is a comprehensive summary of collected EMS knowledge from the community, including entity names, telegram protocols, and how they work.
 
-!!! tip "Contributing"
 Please contribute! Content is in [Markdown](https://www.markdownguide.org/cheat-sheet/) format.
-
----
+:::
 
 ## Table of Contents
 
@@ -35,14 +33,13 @@ Telegrams 0x0001 through 0x0013 contain basic system information and identificat
 
 ### Telegram: 0x0001
 
-!!! info "Product Data Electronics Hardware"
+:::info Product Data Electronics Hardware
 **Used in:** Various controllers, thermostats and boilers  
- **Description:** Holds ASCII coded device information  
- **Class:** Constant  
- **EMS category:** EMS1.0 & EMS2.0  
- **Distribution:** unicast-on-request
-
-#### Offset Variables
+**Description:** Holds ASCII coded device information  
+**Class:** Constant  
+**EMS category:** EMS1.0 & EMS2.0  
+**Distribution:** unicast-on-request
+:::
 
 | Offset | Variable name            | Min | Max | Resolution | Unit  | Comment                                                                                                                         |
 | ------ | ------------------------ | --- | --- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -52,12 +49,13 @@ Telegrams 0x0001 through 0x0013 contain basic system information and identificat
 
 ### Telegram: 0x0002
 
-!!! info "Module Identification Data"
+:::info Module Identification Data
 **Used in:** Various controllers, thermostats and boilers  
  **Description:** Holds device information  
  **Class:** Constant  
  **EMS category:** EMS1.0 & EMS2.0  
  **Distribution:** unicast-on-request, broadcast-on-powerup
+:::
 
 | Offset | Variable name                   | Min | Max | Resolution | Unit | Comment                                                                                                                                                                                                                                                                                                                                                 |
 | ------ | ------------------------------- | --- | --- | ---------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -72,12 +70,13 @@ Telegrams 0x0001 through 0x0013 contain basic system information and identificat
 
 ### Telegram: 0x0003
 
-!!! info "Product Data Appliance"
+:::info Product Data Appliance
 **Used in:** Various controllers, thermostats and boilers  
  **Description:** Holds ASCII coded device information  
  **Class:** Constant  
  **EMS category:** EMS1.0 & EMS2.0  
  **Distribution:** unicast-on-request
+:::
 
 | Offset | Variable name       | Min | Max | Resolution | Unit  | Comment                                     |
 | ------ | ------------------- | --- | --- | ---------- | ----- | ------------------------------------------- |
@@ -86,15 +85,16 @@ Telegrams 0x0001 through 0x0013 contain basic system information and identificat
 
 ### Telegram: 0x0005
 
-!!! warning "Special Commands"
+:::warning Special Commands
 **Used in:** Various controllers, thermostats and boilers  
  **Description:** Collection of different special functions/commands  
  **Class:** Command  
  **EMS category:** EMS1.0  
  **Distribution:** unicast-write-request
 
-!!! danger "Use with Caution"
+:::danger Use with Caution
 These commands can affect device operation and should be used carefully.
+:::
 
 | Offset | Variable name                 | Min | Max | Resolution | Unit | Comment                                                                                                     |
 | ------ | ----------------------------- | --- | --- | ---------- | ---- | ----------------------------------------------------------------------------------------------------------- |
@@ -114,14 +114,17 @@ These commands can affect device operation and should be used carefully.
 | 68     | Standby mode                  | 0   | 255 | 1          | enum | 85=activate if standby can be selected in the menu, 170=deactivate, status is visible in 0x00E4 offset 12.0 |
 | 70     | DHW ECO                       | 0   | 255 | 1          | enum | 85=activate, 170=deactivate                                                                                 |
 
+:::
+
 ### Telegram: 0x0010
 
-!!! info "Locking Error History"
+:::info Locking Error History
 **Used in:** Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7  
  **Description:** Holds the history of locking errors.  
  **Class:** monitor  
  **EMS category:** EMS1.0 and EMS2.0  
  **Distribution:** unicast-on-request, broadcast-on-change
+:::
 
 | Offset | Variable name        | Min | Max   | Resolution | Unit  | Comment                                                                                                                                                           |
 | ------ | -------------------- | --- | ----- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -144,12 +147,13 @@ These commands can affect device operation and should be used carefully.
 
 ### Telegram: 0x0011
 
-!!! info "Blocking Error History"
+:::info Blocking Error History
 **Used in:** Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7  
  **Description:** Holds the history of blocking errors.  
  **Class:** monitor  
  **EMS category:** EMS1.0  
  **Distribution:** unicast-on-request, broadcast-on-change
+:::
 
 | Offset  | Variable name        | Min | Max   | Resolution | Unit  | Comment                                                                                                                                                           |
 | ------- | -------------------- | --- | ----- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -172,14 +176,15 @@ These commands can affect device operation and should be used carefully.
 
 ### Telegram: 0x0012
 
-!!! danger "Blocking actual system error history"
-**Used in:** Older systems hold this error list while newer systems use 0x00C0 and 0x00C1
-**Description:** Holds the history of blocking errors of the system.
-**Class:** monitor
-**EMS category:** EMS1.0
+:::info Blocking actual system error history
+**Used in:** Older systems hold this error list while newer systems use 0x00C0 and 0x00C1  
+**Description:** Holds the history of blocking errors of the system  
+**Class:** monitor  
+**EMS category:** EMS1.0  
 **Distribution:** unicast-on-request, broadcast-on-change
+:::
 
-| Offset  | Variable name        | min | max   | resolution | unit  | comment                                                                                                                                                           |
+| Offset  | Variable name        | Min | max   | Resolution | Unit  | Comment                                                                                                                                                           |
 | ------- | -------------------- | --- | ----- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0-1     | Error 1 display code | 0   | 255   | 1          | ASCII | displayed error code                                                                                                                                              |
 | 2-3     | Error 1 cause code   | 0   | 65535 | 1          |       | numbers >= 200, list used in Nefit and Buderus                                                                                                                    |
@@ -196,14 +201,15 @@ These commands can affect device operation and should be used carefully.
 
 ### Telegram: 0x0013
 
-!!! danger "System error history"
+:::danger System error history
 **Used in:** Older systems hold this error list while newer systems use 0x00C0 and 0x00C1
 **Description:** Holds the history of system errors.
 **Class:** monitor
 **EMS category:** EMS1.0
 **Distribution:** unicast-on-request, broadcast-on-change
+:::
 
-| Offset  | Variable name        | min | max   | resolution | unit  | comment                                                                                                                                                           |
+| Offset  | Variable name        | Min | max   | Resolution | Unit  | Comment                                                                                                                                                           |
 | ------- | -------------------- | --- | ----- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0-1     | Error 1 display code | 0   | 255   | 1          | ASCII | displayed error code                                                                                                                                              |
 | 2-3     | Error 1 cause code   | 0   | 65535 | 1          |       | numbers >= 200, list used in Nefit and Buderus                                                                                                                    |
@@ -226,14 +232,15 @@ Telegrams 0x0026 and 0x0027 contain system-level configuration and status inform
 
 ### Telegram: 0x0026
 
-!!! info "EMS service tool heating parameters"
-**Used in:** HT3 Junkers systems
-**Description:** This telegrams contains HT3 configuration parameters for Netcom service tools
-**Class:** parameter
-**EMS category:** EMS1.0
+:::info EMS service tool heating parameters
+**Used in:** HT3 Junkers systems  
+**Description:** This telegrams contains HT3 configuration parameters for Netcom service tools  
+**Class:** parameter  
+**EMS category:** EMS1.0  
 **Distribution:** unicast-on-request, broadcast-on-change, broadcast-on-power-up, unicast-write-request
+:::
 
-| Offset | Variable name                      | min | max | resolution | unit    | comment                                                                                                                                                                                                                                                                                                                                                                     |
+| Offset | Variable name                      | Min | Max | Resolution | Unit    | Comment                                                                                                                                                                                                                                                                                                                                                                     |
 | ------ | ---------------------------------- | --- | --- | ---------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0      | CH pump speed                      | 1   | 10  | 1          | enum    | 1 = No predefined settings. Minimum pump speed telegram 0x16,offset 10 and maximum pump speed telegram 0x16 offset 9 manually adjustable; 2-7 = Constant speeds (minimum pump speed telegram 0x16 offset 10 and maximum pump speed telegram 0x16 offset 9 are the same). 8-10 = Predefined minimum pump speed 0x16 offset 10 and maximum pump speed 0x16 offset 9 settings. |
 | 1      | pump switch mode                   | 0   | 5   | 1          | enum    | auto = 0, according burner = 1, acc room temp control = 2, acc outdoor temp control = 3, acc outdoor temp control optimized = 4, energy saving = 4, acc CH heat request = 5                                                                                                                                                                                                 |
@@ -246,29 +253,30 @@ Telegrams 0x0026 and 0x0027 contain system-level configuration and status inform
 
 ### Telegram: 0x0027
 
-!!! info "EMS service tool dhw parameters"
-**Used in:** HT3 Junkers systems
-**Description:** This telegrams contains HT3 configuration parameters for Netcom service tools
-**Class:** parameter
-**EMS category:** EMS1.0
+:::info EMS service tool dhw parameters
+**Used in:** HT3 Junkers systems  
+**Description:** This telegrams contains HT3 configuration parameters for Netcom service tools  
+**Class:** parameter  
+**EMS category:** EMS1.0  
 **Distribution:** unicast-on-request, broadcast-on-change, broadcast-on-power-up, unicast-write-request
+:::
 
-| Offset | Variable name                                         | min   | max | resolution | unit                               | comment                                                  |
-| ------ | ----------------------------------------------------- | ----- | --- | ---------- | ---------------------------------- | -------------------------------------------------------- |
-| 0      | thermal desinfection                                  | -1    | 0   | 1          | bool                               | 0 = no, FF = yes                                         |
-| 1      | anti cycle time for dhw                               | 20    | 60  | 1          | min                                | time delay between switching the boiler off and on again |
-| 2      | dhw standby time after tapping                        | 0     | 30  | 1          | min                                |                                                          |
-| 3      | max pre heat temp                                     | 40    | 65  | 1          | °C                                 |                                                          |
-| 4      | water flow threshold for dhw demand                   | 25    | 50  | 1          | 0.1 l/min                          |                                                          |
-| 5      | turbine signal delay time                             | 2     | 16  | 1          | 0.25 sec                           |                                                          |
-| 6      | hot water on demand active                            | -1    | 0   | 1          | bool                               | 0 = off, FF = on                                         |
-| 7      | activate stratifying tank pump for circulation        | -1    | 0   | 1          | bool                               | 0 = off, FF = on                                         |
-| 8      | pump off in case of dhw demand                        | -1    | 0   | 1          | bool                               | 0 = off, FF = on                                         |
-| 9      | solar mode min activation time                        | 0     | 50  | 1          | min                                |                                                          |
-| 10     | max appliance power in dhw mode                       | 0     | 100 | 1          | percent                            |                                                          |
-| 11     | min dhw temperature                                   | 10 80 | 1   | °C         | user interface knob left position  |                                                          |
-| 12     | max dhw temperature                                   | 10 80 | 1   | °C         | user interface knob right position |                                                          |
-| 13     | maximum of the max of the appliance power in dhw mode | 0     | 100 | 1          | percent                            |                                                          |
+| Offset | Variable name                                         | min | Max | Resolution | unit      | Comment                                                  |
+| ------ | ----------------------------------------------------- | --- | --- | ---------- | --------- | -------------------------------------------------------- |
+| 0      | thermal desinfection                                  | -1  | 0   | 1          | bool      | 0 = no, FF = yes                                         |
+| 1      | anti cycle time for dhw                               | 20  | 60  | 1          | min       | time delay between switching the boiler off and on again |
+| 2      | dhw standby time after tapping                        | 0   | 30  | 1          | min       |                                                          |
+| 3      | max pre heat temp                                     | 40  | 65  | 1          | °C        |                                                          |
+| 4      | water flow threshold for dhw demand                   | 25  | 50  | 1          | 0.1 l/min |                                                          |
+| 5      | turbine signal delay time                             | 2   | 16  | 1          | 0.25 sec  |                                                          |
+| 6      | hot water on demand active                            | -1  | 0   | 1          | bool      | 0 = off, FF = on                                         |
+| 7      | activate stratifying tank pump for circulation        | -1  | 0   | 1          | bool      | 0 = off, FF = on                                         |
+| 8      | pump off in case of dhw demand                        | -1  | 0   | 1          | bool      | 0 = off, FF = on                                         |
+| 9      | solar mode min activation time                        | 0   | 50  | 1          | min       |                                                          |
+| 10     | max appliance power in dhw mode                       | 0   | 100 | 1          | percent   |                                                          |
+| 11     | min dhw temperature                                   | 10  | 80  | 1          | °C        | user interface knob left position                        |
+| 12     | max dhw temperature                                   | 10  | 80  | 1          | °C        | user interface knob right position                       |
+| 13     | maximum of the max of the appliance power in dhw mode | 0   | 100 | 1          | percent   |                                                          |
 
 ---
 
@@ -278,14 +286,15 @@ Telegrams 0x00BF through 0x00FB contain error reporting, status information, and
 
 ### Telegram: 0x00BF
 
-!!! danger "Local error list"
-**Used in:** Used in systems that use the 0x00C2/0x00C6/0x00C7 error history lists
-**Description:** The lists holds up to three active errors, sorted by critically
-**Class:** monitor
-**EMS category:** EMS2.0
+:::info Local error list
+**Used in:** Used in systems that use the 0x00C2/0x00C6/0x00C7 error history lists  
+**Description:** The lists holds up to three active errors, sorted by critically  
+**Class:** monitor  
+**EMS category:** EMS2.0  
 **Distribution:** unicast-on-request, broadcast-on-change, broadcast-periodically
+:::
 
-| Offset  | Variable name          | min | max   | resolution | unit  | comment                                                                                |
+| Offset  | Variable name          | Min | max   | Resolution | Unit  | Comment                                                                                |
 | ------- | ---------------------- | --- | ----- | ---------- | ----- | -------------------------------------------------------------------------------------- |
 | 0       | Source address         | 0   | 127   | 1          |       | 0=invalid                                                                              |
 | 1       | module ID              | 0   | 255   | 1          |       | 0=invalid                                                                              |
@@ -301,14 +310,15 @@ Telegrams 0x00BF through 0x00FB contain error reporting, status information, and
 
 ### Telegram: 0x00C0
 
-!!! danger "System error history"
-**Used in:** Various controllers, thermostats and boilers
-**Description:** Hold the history of errors. 0x00C0 holds the first 10 error messages and 0x00C1 the next 10. Error #1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0012 and 0x0013.
-**Class:** monitor
-**EMS category:** EMS2.0
+:::info System error history
+**Used in:** Various controllers, thermostats and boilers  
+**Description:** Hold the history of errors. 0x00C0 holds the first 10 error messages and 0x00C1 the next 10. Error #1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0012 and 0x0013  
+**Class:** monitor  
+**EMS category:** EMS2.0  
 **Distribution:** unicast-on-request
+:::
 
-| Offset    | Variable name                | min | max   | resolution | unit  | comment                                                                                                                                                                                                                     |
+| Offset    | Variable name                | Min | max   | Resolution | Unit  | Comment                                                                                                                                                                                                                     |
 | --------- | ---------------------------- | --- | ----- | ---------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0         | Error 1 source address       | 0   | 127   | 1          |       | if 0x00, then no error                                                                                                                                                                                                      |
 | 1         | Error 1 module ID            | 0   | 255   | 1          |       | same as in telegram 0x02 offset 0                                                                                                                                                                                           |
@@ -340,14 +350,15 @@ Telegrams 0x00BF through 0x00FB contain error reporting, status information, and
 
 ### Telegram: 0x00C2
 
-!!! danger "Local device error history"
-**Used in:** Various controllers, thermostats and boilers
-**Description:** Hold the history of errors. Each device has it´s own list of own errors. Error 1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0010 and 0x0011.
-**Class:** monitor
-**EMS category:** EMS2.0
+:::info Local device error history
+**Used in:** Various controllers, thermostats and boilers  
+**Description:** Hold the history of errors. Each device has it´s own list of own errors. Error 1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0010 and 0x0011.  
+**Class:** monitor  
+**EMS category:** EMS2.0  
 **Distribution:** unicast-on-request
+:::
 
-| Offset    | Variable name                | min | max   | resolution | unit  | comment                                                                                                                                                                                                                     |
+| Offset    | Variable name                | Min | max   | Resolution | Unit  | Comment                                                                                                                                                                                                                     |
 | --------- | ---------------------------- | --- | ----- | ---------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0         | Error 1 source address       | 0   | 127   | 1          |       | if 0x00, then no error                                                                                                                                                                                                      |
 | 1         | Error 1 module ID            | 0   | 255   | 1          |       | same as in telegram 0x02 offset 0                                                                                                                                                                                           |
@@ -379,14 +390,15 @@ Telegrams 0x00BF through 0x00FB contain error reporting, status information, and
 
 ### Telegram: 0x00C6
 
-!!! danger "Local heat pump error history"
-**Used in:** heat pump (boiler)
-**Description:** Hold the history of errors. Error 1 is the most recent one. Going down the list the errors get older. This list is the same as 0x00C2, but has a unique identified at the beginning of each error. This list has 10 entries and is continued in 0x00C7. Older systems use telegrams 0x0010 and 0x0011.
-**Class:** monitor
-**EMS category:** EMS2.0
+:::info Local heat pump error history
+**Used in:** heat pump (boiler)  
+**Description:** Hold the history of errors. Error 1 is the most recent one. Going down the list the errors get older. This list is the same as 0x00C2, but has a unique identified at the beginning of each error. This list has 10 entries and is continued in 0x00C7. Older systems use telegrams 0x0010 and 0x0011.  
+**Class:** monitor  
+**EMS category:** EMS2.0  
 **Distribution:** unicast-on-request
+:::
 
-| Offset    | Variable name                | min | max   | resolution | unit  | comment                                                                                                                                                                                                                     |
+| Offset    | Variable name                | Min | max   | Resolution | Unit  | Comment                                                                                                                                                                                                                     |
 | --------- | ---------------------------- | --- | ----- | ---------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0         | Error UID                    | 0   | 254   | 1          |       | ID of error 1                                                                                                                                                                                                               |
 | 1         | Error 1 source address       | 0   | 127   | 1          |       | if 0x00, then no error                                                                                                                                                                                                      |
@@ -419,14 +431,15 @@ Telegrams 0x00BF through 0x00FB contain error reporting, status information, and
 
 ### Telegram: 0x00C7
 
-!!! danger "Local heat pump error history"
-**Used in:** heat pump (boiler)
-**Description:** This list is the continuation of 0x00C6. Here are the errors 11 ... 20 stored. Older systems use telegrams 0x0010 and 0x0011.
-**Class:** monitor
-**EMS category:** EMS2.0
+:::info Local heat pump error history  
+**Used in:** heat pump (boiler)  
+**Description:** This list is the continuation of 0x00C6. Here are the errors 11 ... 20 stored. Older systems use telegrams 0x0010 and 0x0011.  
+**Class:** monitor  
+**EMS category:** EMS2.0  
 **Distribution:** unicast-on-request
+:::
 
-| Offset    | Variable name                 | min | max   | resolution | unit  | comment                                                                                                                                                                                                                     |
+| Offset    | Variable name                 | Min | max   | Resolution | Unit  | Comment                                                                                                                                                                                                                     |
 | --------- | ----------------------------- | --- | ----- | ---------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0         | Error UID                     | 0   | 254   | 1          |       | ID of error 11                                                                                                                                                                                                              |
 | 1         | Error 11 source address       | 0   | 127   | 1          |       | if 0x00, then no error                                                                                                                                                                                                      |
@@ -459,13 +472,12 @@ Telegrams 0x00BF through 0x00FB contain error reporting, status information, and
 
 ### Telegram: 0x00FB
 
-!!! warning "Write data than be read with telegrams 0x0001 or 0x0003"
-**Used in:** Various controllers, thermostats and boilers?
-**Description:** Found by accident. **I would be careful with this, no idea what it can cause**
-**Class:** Command
+:::warning Write data than be read with telegrams 0x0001 or 0x0003  
+**Used in:** Various controllers, thermostats and boilers?  
+**Description:** Found by accident **I would be careful with this, no idea what it can cause**
+**Class:** Command  
 **EMS category:** EMS2.0
-
----
+:::
 
 ## Thermostat Telegrams
 
@@ -473,14 +485,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x0165
 
-!!! info "HMI800 holiday mode parameters"
-**Used in:** Buderus/Bosch RC300, HMC310 and similar, newer Junkers controllers "Cxyz" (MY>2019)
-**Description:** Up to 8 holiday periods can be defined with the above telegrams
-**Class:** Parameter
-**EMS category:** EMS2.0
+:::info HMI800 holiday mode parameters
+**Used in:** Buderus/Bosch RC300, HMC310 and similar, newer Junkers controllers "Cxyz" (MY>2019)  
+**Description:** Up to 8 holiday periods can be defined with the above telegrams  
+**Class:** Parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-write-request, unicast-on-request
+:::
 
-| Offset | Variable name                      | min | max | resolution | unit   | comment                                                                      |
+| Offset | Variable name                      | Min | Max | Resolution | Unit   | Comment                                                                      |
 | ------ | ---------------------------------- | --- | --- | ---------- | ------ | ---------------------------------------------------------------------------- |
 | 0      | holiday start year                 | 0   | 99  | 1          | year   | 0=invalid, offset 0-7 to be sent together                                    |
 | 1      | holiday start month                | 0   | 12  | 1          | month  | 0=invalid, offset 0-7 to be sent together                                    |
@@ -508,14 +521,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x0165
 
-!!! info "Older Junkers heating circuit control"
-**Used in:** older Junkers controllers "Fxyz" (MY<2019)
-**Description:** Up to 10 heating circuits can be controller with these telegrams. 0x0165=HC1, 0x0166=HC2, ...
-**Class:** Parameter
-**EMS category:** EMS1.0
+:::info Older Junkers heating circuit control
+**Used in:** older Junkers controllers "Fxyz" (MY&lt;2019)  
+**Description:** Up to 10 heating circuits can be controller with these telegrams. 0x0165=HC1, 0x0166=HC2, ...  
+**Class:** Parameter  
+**EMS category:** EMS1.0  
 **Distribution:** broadcast-on-change, unicast-write-request, unicast-on-request
+:::
 
-| Offset | Variable name                    | min | max | resolution | unit | comment                                                                                |
+| Offset | Variable name                    | Min | Max | Resolution | Unit | Comment                                                                                |
 | ------ | -------------------------------- | --- | --- | ---------- | ---- | -------------------------------------------------------------------------------------- |
 | 0      | type of HC                       | 0   | 3   | 1          | enum | 0=not available, 1=unmixed HC without IPM, 2=unmixed HC with IPM, 3=mixed HC           |
 | 1      | Remote controller                | 0   | 2   | 1          | enum | 0=not available, 1=FB10, 2=FB100                                                       |
@@ -541,14 +555,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x016F
 
-!!! info "FX100 Monitor heating circuit values"
-**Used in:** Junkers FB100/FW120 controllers
-**Description:** Junkers monitor values of heating circuit. 10 heating circuits can be monitored
-**Class:** Monitor
-**EMS category:** EMS1.0
+:::info FX100 Monitor heating circuit values
+**Used in:** Junkers FB100/FW120 controllers  
+**Description:** Junkers monitor values of heating circuit. 10 heating circuits can be monitored  
+**Class:** Monitor  
+**EMS category:** EMS1.0  
 **Distribution:** broadcast-on-change, broadcast-periodically, unicast-on-request
+:::
 
-| Offset | Variable name                       | min    | max   | resolution | unit | comment                                                                                     |
+| Offset | Variable name                       | min    | max   | Resolution | Unit | Comment                                                                                     |
 | ------ | ----------------------------------- | ------ | ----- | ---------- | ---- | ------------------------------------------------------------------------------------------- |
 | 0      | Heating level                       | 0      | 3     | 1          | enum | 0=undefined, 1=frost, 2=low, 3=high                                                         |
 | 1      | Operating mode                      | 0      | 5     | 1          | enum | 0=undefined, 1=permanent, 2=auto, 3=holiday, 4=floor drying waiting, 5=floor drying running |
@@ -559,14 +574,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x02A5
 
-!!! info "NSC controller CH monitor for HCx"
-**Used in:** CR50
-**Description:** Monitor values for HC1, HC2, ... HC8
-**Class:** monitor
-**EMS category:** EMS2.0
+:::info NSC controller CH monitor for HCx
+**Used in:** CR50  
+**Description:** Monitor values for HC1, HC2, ... HC8  
+**Class:** monitor  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, broadcast-periodically
+:::
 
-| Offset | Variable name                                                                                                           | min  | max  | resolution | unit | comment                                      |
+| Offset | Variable name                                                                                                           | min  | Max  | Resolution | Unit | Comment                                      |
 | ------ | ----------------------------------------------------------------------------------------------------------------------- | ---- | ---- | ---------- | ---- | -------------------------------------------- |
 | 0-1    | current room temp for this HC                                                                                           | 0    | 40   | 0.1        | °C   | -32768=open, 32767=short                     |
 | 2.0    | heating possible                                                                                                        | 0    | 1    | 1          | bool | false=0, true=1                              |
@@ -602,14 +618,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x02B9
 
-!!! info "Thermostat settings"
-**Used in:** ems+ thermostats
-**Description:** hc settings
-**Class:** parameter
-**EMS category:** EMS2.0
+:::info Thermostat settings
+**Used in:** ems+ thermostats  
+**Description:** hc settings  
+**Class:** parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, writable
+:::
 
-| Offset | Variable name                                         | min | max | resolution | unit  | comment                                                                              |
+| Offset | Variable name                                         | Min | Max | Resolution | Unit  | Comment                                                                              |
 | ------ | ----------------------------------------------------- | --- | --- | ---------- | ----- | ------------------------------------------------------------------------------------ |
 | 0      | Operation Mode                                        | -1  | 0   | 1          | enum  | auto=-1, manual=0                                                                    |
 | 1      | Setpoint Comfort 3                                    | 10  | 60  | 0,5        | °C    | 5°C ... 30°C                                                                         |
@@ -639,14 +656,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x02C3
 
-!!! info "NSC Clock Program **1** for HCx"
-**Used in:** CR50, RC310
-**Description:** Sets heating level switch points for HC1, HC2, ... HC8
-**Class:** parameter
-**EMS category:** EMS2.0
+:::info NSC Clock Program **1** for HCx
+**Used in:** CR50, RC310  
+**Description:** Sets heating level switch points for HC1, HC2, ... HC8  
+**Class:** parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, unicast-write-request
+:::
 
-| Offset | Variable name                    | min | max | resolution | unit  | comment                                   |
+| Offset | Variable name                    | Min | Max | Resolution | Unit  | Comment                                   |
 | ------ | -------------------------------- | --- | --- | ---------- | ----- | ----------------------------------------- |
 | 0      | 1st switch point Monday level    | -1  | 30  | 1          |       | 1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3 |
 | 1      | 1st switch point Monday time     | -1  | 95  | 1          | 15min | -1=na, 15min increments from midnight     |
@@ -736,14 +754,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x02CC
 
-!!! info "DHW priority for unmixed heating circuit"
-**Used in:** HMC310
-**Description:** Enables/disables dhw priority in unmixed circuits where HC1 is directly connected to the heat source
-**Class:** parameter
-**EMS category:** EMS2.0
+:::info DHW priority for unmixed heating circuit
+**Used in:** HMC310  
+**Description:** Enables/disables dhw priority in unmixed circuits where HC1 is directly connected to the heat source  
+**Class:** parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, unicast-write-request
+:::
 
-| Offset | Variable name | min | max | resolution | unit | comment     |
+| Offset | Variable name | Min | Max | Resolution | Unit | Comment     |
 | ------ | ------------- | --- | --- | ---------- | ---- | ----------- |
 | ...    |               |     |     |            |      |             |
 | 3      | DHW priority  | 0   | 1   | 1          | bool | 0=no, 1=yes |
@@ -751,14 +770,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x02CD
 
-!!! info "DHW priority for mixed heating circuit HC1, ..., HC8"
-**Used in:** RC310
-**Description:** Enables/disables dhw priority in unmixed circuits where HC1 is directly connected to the heat source
-**Class:** parameter
-**EMS category:** EMS2.0
+:::info DHW priority for mixed heating circuit HC1, ..., HC8
+**Used in:** RC310  
+**Description:** Enables/disables dhw priority in unmixed circuits where HC1 is directly connected to the heat source  
+**Class:** parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, unicast-write-request
+:::
 
-| Offset | Variable name                        | min | max | resolution | unit  | comment      |
+| Offset | Variable name                        | Min | Max | Resolution | Unit  | Comment      |
 | ------ | ------------------------------------ | --- | --- | ---------- | ----- | ------------ |
 | 0      | HC mixed circuit                     | -1  | 0   | 1          | bool  | -1=yes, 0=no |
 | 1      | Valve runtime time                   | 1   | 60  | 1          | 10sec |              |
@@ -770,14 +790,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x02F5
 
-!!! info "Configuration of DHWx"
-**Used in:** CR50
-**Description:** Configuration of DHW1, DHW2
-**Class:** parameter
-**EMS category:** EMS2.0
+:::info Configuration of DHWx
+**Used in:** CR50  
+**Description:** Configuration of DHW1, DHW2  
+**Class:** parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, unicast-write-request
+:::
 
-| Offset | Variable name                      | min | max | resolution | unit   | comment                                                           |
+| Offset | Variable name                      | Min | Max | Resolution | Unit   | Comment                                                           |
 | ------ | ---------------------------------- | --- | --- | ---------- | ------ | ----------------------------------------------------------------- |
 | 0      | DHW configuration                  | 0   | 3   | 1          | enum   | 0=none, 1=appliance, 2=module, 3=fresh water station              |
 | 1      | Circulation pump installed         | -1  | 0   | 1          | bool   | -1(0xFF)=yes, 0=no                                                |
@@ -806,14 +827,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x02FF
 
-!!! info "NSC Clock Program for dhw"
-**Used in:** RC310
-**Description:** Sets dhw switch points for DHW1 and DHW2
-**Class:** parameter
-**EMS category:** EMS2.0
+:::info NSC Clock Program for dhw
+**Used in:** RC310  
+**Description:** Sets dhw switch points for DHW1 and DHW2  
+**Class:** parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, unicast-write-request
+:::
 
-| Offset | Variable name                          | min | max | resolution | unit  | comment                                      |
+| Offset | Variable name                          | Min | Max | Resolution | Unit  | Comment                                      |
 | ------ | -------------------------------------- | --- | --- | ---------- | ----- | -------------------------------------------- |
 | 0      | 1st switch point Monday temperature    | 0   | 3   | 1          | enum  | OFF = 0, ON_LOW = 1, ON_HIGH = 2, ON_ECO = 3 |
 | 1      | 1st switch point Monday time           | -1  | 95  | 1          | 15min | -1=na, 15min increments from midnight        |
@@ -902,14 +924,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x0309
 
-!!! info "NSC Clock Program for circulation pump for dhwx"
-**Used in:** RC310
-**Description:** Sets dhw circulation pump switch points for DHW1 and DHW2
-**Class:** parameter
-**EMS category:** EMS2.0
+:::info NSC Clock Program for circulation pump for dhwx
+**Used in:** RC310  
+**Description:** Sets dhw circulation pump switch points for DHW1 and DHW2  
+**Class:** parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, unicast-write-request
+:::
 
-| Offset | Variable name                     | min | max | resolution | unit  | comment                               |
+| Offset | Variable name                     | Min | Max | Resolution | Unit  | Comment                               |
 | ------ | --------------------------------- | --- | --- | ---------- | ----- | ------------------------------------- |
 | 0      | 1st switch point Monday on/off    | -1  | 0   | 1          | bool  | -1(0xFF)=on, 0=off                    |
 | 1      | 1st switch point Monday time      | -1  | 95  | 1          | 15min | -1=na, 15min increments from midnight |
@@ -998,14 +1021,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x031D
 
-!!! info "Monitoring DHWx"
-**Used in:** CR50
-**Description:** Monitors the values of DHW1, DHW2
-**Class:** monitor
-**EMS category:** EMS2.0
+:::info Monitoring DHWx
+**Used in:** CR50  
+**Description:** Monitors the values of DHW1, DHW2  
+**Class:** monitor  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, broadcast-periodically
+:::
 
-| Offset | Variable name                            | min | max  | resolution | unit | comment                                                                                                             |
+| Offset | Variable name                            | Min | Max  | Resolution | Unit | Comment                                                                                                             |
 | ------ | ---------------------------------------- | --- | ---- | ---------- | ---- | ------------------------------------------------------------------------------------------------------------------- |
 | 0      | DHW extra active                         | 0   | 1    | 1          | bool | 0=false, 1=true                                                                                                     |
 | 1      | Holiday mode                             | 0   | 3    | 1          | enum | 0=none, 1=auto, 2=off, 3=thermal desinfection off                                                                   |
@@ -1018,14 +1042,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x043F
 
-!!! info "NSC HolidayMode for HCx"
-**Used in:** CR50
-**Description:** Sets start and end date for holiday mode for HC1, HC2, ... HC8
-**Class:** parameter
-**EMS category:** EMS2.0
+:::info NSC HolidayMode for HCx
+**Used in:** CR50  
+**Description:** Sets start and end date for holiday mode for HC1, HC2, ... HC8  
+**Class:** parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, unicast-write-request
+:::
 
-| Offset | Variable name       | min | max | resolution | unit | comment  |
+| Offset | Variable name       | Min | Max | Resolution | Unit | Comment  |
 | ------ | ------------------- | --- | --- | ---------- | ---- | -------- |
 | 0      | holiday start year  | 9   | 99  | 1          |      | add 2000 |
 | 1      | holiday start month | 1   | 12  | 1          |      |          |
@@ -1036,14 +1061,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x0449
 
-!!! info "NSC Clock Program **2** for HCx"
-**Used in:** RC310
-**Description:** Sets heating level switch points for HC1, HC2, ... HC8
-**Class:** parameter
-**EMS category:** EMS2.0
+:::info NSC Clock Program **2** for HCx
+**Used in:** RC310  
+**Description:** Sets heating level switch points for HC1, HC2, ... HC8  
+**Class:** parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, unicast-write-request
+:::
 
-| Offset | Variable name                    | min | max | resolution | unit  | comment                                   |
+| Offset | Variable name                    | Min | Max | Resolution | Unit  | Comment                                   |
 | ------ | -------------------------------- | --- | --- | ---------- | ----- | ----------------------------------------- |
 | 0      | 1st switch point Monday level    | -1  | 30  | 1          |       | 1=ECO, 2=Comfort1, 3=comfort2, 4=comfort3 |
 | 1      | 1st switch point Monday time     | -1  | 95  | 1          | 15min | -1=na, 15min increments from midnight     |
@@ -1133,14 +1159,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x048D
 
-!!! info "Heat pump monitor values"
-**Used in:** HMI800.2/Rego 3000, UI800, Logamatic BC400
-**Description:** Shows various values of the heat pump
-**Class:** monitor
-**EMS category:** EMS2.0
+:::info Heat pump monitor values
+**Used in:** HMI800.2/Rego 3000, UI800, Logamatic BC400  
+**Description:** Shows various values of the heat pump  
+**Class:** monitor  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request
+:::
 
-| Offset | Variable name            | min | max | resolution | unit    | comment                                                                                                     |
+| Offset | Variable name            | Min | Max | Resolution | Unit    | Comment                                                                                                     |
 | ------ | ------------------------ | --- | --- | ---------- | ------- | ----------------------------------------------------------------------------------------------------------- |
 | 0.0    | Heating circulation pump | 0   | 1   | 1          | bool    | from source code                                                                                            |
 | ...    |                          |     |     |            |         |                                                                                                             |
@@ -1173,42 +1200,44 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x04A2
 
-!!! info "Information from the heat pump to the HMI"
-**Used in:** HMC310
-**Description:** Sends the status of several information from the heat source to the HMI
-**Class:** monitor
-**EMS category:** EMS2.0
+:::info Information from the heat pump to the HMI
+**Used in:** HMC310  
+**Description:** Sends the status of several information from the heat source to the HMI  
+**Class:** monitor  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, broadcast-periodically
+:::
 
-| Offset | Variable name                         | min | max | resolution | unit  | comment                               |
-| ------ | ------------------------------------- | --- | --- | ---------- | ----- | ------------------------------------- |
-| 0.0 | HMI EVU active | 0 | 1 | 1 | bool | On if any EVU function is active; FALSE = 0,TRUE = 1 |
-| 0.1 | HMI remote active | 0 | 1 | 1 | bool | On if any external input is active; FALSE = 0,TRUE = 1 |
-| 0.2 | HMI additional electric active | 0 | 1 | 1 | bool | On if any electrical heater is active; FALSE = 0,TRUE = 1 |
-| 0.3 | HMI additional mixed active | 0 | 1 | 1 | bool | On if the mixed additional heater is active; FALSE = 0,TRUE = 1 |
-| 0.4 | HMI compressor active | 0 | 1 | 1 | bool | On if any compressor is running; FALSE = 0,TRUE = 1 |
-| 0.5 | HMI mixed additional start | 0 | 1 | 1 | bool | Value says whether output of additional mixed heater is activated or not; FALSE = 0,TRUE = 1 |
-| 0.6 | HMI powerguard active | 0 | 1 | 1 | bool | Value says whether the electrical power usage is capped due to low power availability; FALSE = 0,TRUE = 1 |
-| 0.7 | HMI heating active | 0 | 1 | 1 | bool | Value says whether heating is being produced; FALSE = 0,TRUE = 1 |
-| 1 | HMI ODU type | 0 | 11 | 1 | enum | _3p_17kW = 0,_3p_13kW = 1,_1p_13kW = 2,_1p_9kW = 3,_1p_7kW = 4,_1p_5kW = 5,_1p_3kW = 6,_1p_5_9kW = 7,_3p_12_16kW = 8,_1p_12_16kW = 9,_3p_3_12kW = 10,_1p_6kW = 11 |
-| 2 | HMI IDU type | 0 | 7 | 1 | enum | Tower9_5To9 = 1,Tower9_13To17 = 2,Tower15_13To17 = 3,Comfort_5To9 = 4,Comfort_13To17 = 5,Light_5To9 = 6,Light_13To17 = 7 |
-| 3 | Smart Grid Mode | 0 | 4 | 1 | enum | Not_used = 0,EVU_block_active = 1,Normal_operation = 2,Smart_grid = 3,Force_smart_grid = 4 |
-| 4.0 | Electric solar sollector active | 0 | 1 | 1 | bool | True if the photo voltaic system supplying power; FALSE = 0,TRUE = 1 |
-| 4.1 | HMI buzzer active | 0 | 1 | 1 | bool | True if the buzzer of the HMI shall be active; FALSE = 0,TRUE = 1 |
-| 5 | HMI heat pump type | 0 | 2 | 1 | enum | A_W = 0,L_W = 1,EXHAUST_AIR = 2 |
-| 6 | HMI error symbol | 0 | 2 | 1 | enum | Indication for error icon color; NO_ERROR = 0,NON_SEVERE = 1,SEVERE = 2 |
-| 7 | HMI error LED | 0 | 2 | 1 | enum | Indication for error LED color; NO_ERROR = 0,NON_SEVERE = 1,SEVERE = 2|
+| Offset | Variable name                   | Min | Max | Resolution | Unit | Comment                                                                                                                                                                       |
+| ------ | ------------------------------- | --- | --- | ---------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0.0    | HMI EVU active                  | 0   | 1   | 1          | bool | On if any EVU function is active; FALSE = 0,TRUE = 1                                                                                                                          |
+| 0.1    | HMI remote active               | 0   | 1   | 1          | bool | On if any external input is active; FALSE = 0,TRUE = 1                                                                                                                        |
+| 0.2    | HMI additional electric active  | 0   | 1   | 1          | bool | On if any electrical heater is active; FALSE = 0,TRUE = 1                                                                                                                     |
+| 0.3    | HMI additional mixed active     | 0   | 1   | 1          | bool | On if the mixed additional heater is active; FALSE = 0,TRUE = 1                                                                                                               |
+| 0.4    | HMI compressor active           | 0   | 1   | 1          | bool | On if any compressor is running; FALSE = 0,TRUE = 1                                                                                                                           |
+| 0.5    | HMI mixed additional start      | 0   | 1   | 1          | bool | Value says whether output of additional mixed heater is activated or not; FALSE = 0,TRUE = 1                                                                                  |
+| 0.6    | HMI powerguard active           | 0   | 1   | 1          | bool | Value says whether the electrical power usage is capped due to low power availability; FALSE = 0,TRUE = 1                                                                     |
+| 0.7    | HMI heating active              | 0   | 1   | 1          | bool | Value says whether heating is being produced; FALSE = 0,TRUE = 1                                                                                                              |
+| 1      | HMI ODU type                    | 0   | 11  | 1          | enum | \_3p_17kW = 0,\_3p_13kW = 1,\_1p_13kW = 2,\_1p_9kW = 3,\_1p_7kW = 4,\_1p_5kW = 5,\_1p_3kW = 6,\_1p_5_9kW = 7,\_3p_12_16kW = 8,\_1p_12_16kW = 9,\_3p_3_12kW = 10,\_1p_6kW = 11 |
+| 2      | HMI IDU type                    | 0   | 7   | 1          | enum | Tower9_5To9 = 1,Tower9_13To17 = 2,Tower15_13To17 = 3,Comfort_5To9 = 4,Comfort_13To17 = 5,Light_5To9 = 6,Light_13To17 = 7                                                      |
+| 3      | Smart Grid Mode                 | 0   | 4   | 1          | enum | Not_used = 0,EVU_block_active = 1,Normal_operation = 2,Smart_grid = 3,Force_smart_grid = 4                                                                                    |
+| 4.0    | Electric solar collector active | 0   | 1   | 1          | bool | True if the photo voltaic system supplying power; FALSE = 0,TRUE = 1                                                                                                          |
+| 4.1    | HMI buzzer active               | 0   | 1   | 1          | bool | True if the buzzer of the HMI shall be active; FALSE = 0,TRUE = 1                                                                                                             |
+| 5      | HMI heat pump type              | 0   | 2   | 1          | enum | A_W = 0,L_W = 1,EXHAUST_AIR = 2                                                                                                                                               |
+| 6      | HMI error symbol                | 0   | 2   | 1          | enum | Indication for error icon color; NO_ERROR = 0,NON_SEVERE = 1,SEVERE = 2                                                                                                       |
+| 7      | HMI error LED                   | 0   | 2   | 1          | enum | Indication for error LED color; NO_ERROR = 0,NON_SEVERE = 1,SEVERE = 2                                                                                                        |
 
 ### Telegram: 0x0683
 
-!!! info "NSC Clock Program **3** for HCx"
-**Used in:** RC310
-**Description:** Sets heating level switch points for HC1, HC2, ... HC8
-**Class:** parameter
-**EMS category:** EMS2.0
+:::info NSC Clock Program **3** for HCx
+**Used in:** RC310  
+**Description:** Sets heating level switch points for HC1, HC2, ... HC8  
+**Class:** parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, unicast-write-request
+:::
 
-| Offset | Variable name                         | min | max | resolution | unit  | comment                               |
+| Offset | Variable name                         | Min | Max | Resolution | Unit  | Comment                               |
 | ------ | ------------------------------------- | --- | --- | ---------- | ----- | ------------------------------------- |
 | 0      | 1st switch point Monday temp value    | 0   | 60  | 0.5        | °C    | 0=off                                 |
 | 1      | 1st switch point Monday time          | -1  | 95  | 1          | 15min | -1=na, 15min increments from midnight |
@@ -1298,14 +1327,15 @@ Telegrams 0x0165 through 0x0178 contain thermostat configuration, programming, a
 
 ### Telegram: 0x068D
 
-!!! info "NSC Clock Program **4** for HCx"
-**Used in:** RC310
-**Description:** Sets heating level switch points for HC1, HC2, ... HC8
-**Class:** parameter
-**EMS category:** EMS2.0
+:::info NSC Clock Program **4** for HCx
+**Used in:** RC310  
+**Description:** Sets heating level switch points for HC1, HC2, ... HC8  
+**Class:** parameter  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, unicast-write-request
+:::
 
-| Offset | Variable name                         | min | max | resolution | unit  | comment                               |
+| Offset | Variable name                         | Min | Max | Resolution | Unit  | Comment                               |
 | ------ | ------------------------------------- | --- | --- | ---------- | ----- | ------------------------------------- |
 | 0      | 1st switch point Monday temp value    | 0   | 60  | 0.5        | °C    | 0=off                                 |
 | 1      | 1st switch point Monday time          | -1  | 95  | 1          | 15min | -1=na, 15min increments from midnight |
@@ -1401,14 +1431,15 @@ Telegrams 0x099A contain hybrid module monitoring and control data.
 
 ### Telegram: 0x099A
 
-!!! info "Hybrid module monitor"
+:::info Hybrid module monitor
 **Used in:** CT210b
-**Description:** Monitor data of the hybrid module
-**Class:** monitor
-**EMS category:** EMS2.0
+**Description:** Monitor data of the hybrid module  
+**Class:** monitor  
+**EMS category:** EMS2.0  
 **Distribution:** broadcast-on-change, unicast-on-request, broadcast periodically
+:::
 
-| Offset | Variable name             | min | max      | resolution | unit | comment                                                                                                                                                                                                                             |
+| Offset | Variable name             | Min | max      | Resolution | Unit | Comment                                                                                                                                                                                                                             |
 | ------ | ------------------------- | --- | -------- | ---------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ...    |                           |     |          |            |      |                                                                                                                                                                                                                                     |
 | 2      | HP activity               | 0   | 4        | 1          | enum | 0=off, 1=heating, 2=DHW, 3=defrost,4=alarm                                                                                                                                                                                          |

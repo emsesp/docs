@@ -1,4 +1,6 @@
-![logo](_media/logo/grafana-logo.png)
+# Grafana
+
+![logo](/_media/logo/grafana-logo.png)
 
 This page features all EMS-ESP Community Grafana dashboards:
 
@@ -7,8 +9,8 @@ This page features all EMS-ESP Community Grafana dashboards:
 | [EMS-ESP](https://grafana.com/grafana/dashboards/15940-ems-esp) | [@samvdb](https://github.com/samvdb) | MQTT, Telegraf, Influx |
 
 
-<br> 
+<br /> 
 
 # Screenshots
 
-![dashboard](_media/screenshot/grafana-dashboard.png)
+![dashboard](/_media/screenshot/grafana-dashboard.png)

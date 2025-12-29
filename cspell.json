@@ -12,11 +12,18 @@
   "ignorePaths": [
     "**/_media/**",
     "**/*.yml",
+    "**/*.json",
+    "**/*.yaml",
     "**/*.txt",
     "**/*.css",
+    "**/*.js",
     "**/venv/**",
     "**/*.csv",
     "/project-words.txt",
-    "docs/Modbus-Entity-Registers.md"
+    "docs/Modbus-Entity-Registers.md",
+    "docs/nl/**",
+    "docs/de/**",
+    "**/*.svg",
+    "**/*.html"
   ]
 }

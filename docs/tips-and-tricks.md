@@ -1,3 +1,5 @@
+# Tips and Tricks
+
 **Below are a collection of useful tips, tricks and code submitted by the community:**
 
 ## Controlling the boiler heating
@@ -36,11 +38,10 @@ curl_close($ch);
 
 _(by @IanC)_
 
-<!-- prettier-ignore -->
-!!! quote "From the Discord post IanC said:"
+:::quote From the Discord post IanC said:
     "With a ~2012 Worcester Bosch boiler, house heating is managed by an EvoHome system that knows which parts of house need how much heat, but it can only use an on/off relay to control the boiler for space and water heating. This means it cannot directly control flow temperature, and historically this has been set at continuous 65C via dial on front of boiler to allow water heating when needed. Very pleased to have added EMS-ESP to my system to help manage flow temperatures. I wrote a simple C program to run on my OpenWrt internet router which eavesdrops on EvoHome messages to capture useful information on what amount of heat is needed for space and water into simple txt files in /tmp. I then schedule a shell script every 4 minutes which uses a few steps to select a flow temperature: start with a weather compensated value based on exterior temperature from online service; adjust this up or down by up to 25% based on EvoHome space heat demand; if necessary override this to heat hot water. The selected flow temperature and a max burner level are then sent via curl to a @BBQKees device running EMS-ESP which in turn controls boiler. So far it seems to be working as intended without loss of house comfort but with much lower flow temperatures observed to try and encourage boiler operating in condensing zone.  Very hard to tell if it is affecting gas consumption - which I would like it to :). Main challenge I still see is how to stop EvoHome causing frequent on/off cycles of boiler while it still tries to use TPI flow control management."
 
-![1.5.0](_media/examples/ian_setflowtemp.png)
+![1.5.0](/_media/examples/ian_setflowtemp.png)
 
 The temperature compensation algorithms are in the shell script:
 
@@ -145,7 +146,7 @@ set_flowtemp $flowtemp
 
 ## Home Assistant sensor template for all status numbers on a GB192 Boiler
 
-(by @tefracky from <https://github.com/emsesp/EMS-ESP32/issues/938#issuecomment-1417592878>)
+(by @tefracky from [this comment](https://github.com/emsesp/EMS-ESP32/issues/938#issuecomment-1417592878)
 
 Here is the sensor in the new Home-Assistant template format for all status numbers for the Buderus GB192i-19 in German:
 
@@ -299,11 +300,11 @@ Here is the sensor in the new Home-Assistant template format for all status numb
 
 ## Using a custom Climate component in Home Assistant
 
-_(by @elRadix)_ from <https://github.com/emsesp/EMS-ESP32/discussions/790#discussioncomment-4895520>
+_(by @elRadix)_ from [this comment](https://github.com/emsesp/EMS-ESP32/discussions/790#discussioncomment-4895520)
 
-This example sets up 2 climate entities for dhw with their mode and heating climate using a custom HACS card in HA <https://github.com/nervetattoo/simple-thermostat> like:
+This example sets up 2 climate entities for dhw with their mode and heating climate using a custom HACS card in HA called [simple thermostat](https://github.com/nervetattoo/simple-thermostat) like:
 
-![customha](_media/examples/ha_custom_climate.jpg)
+![customha](/_media/examples/ha_custom_climate.jpg)
 
 ```yaml title="configuration.yaml"
 mqtt:
@@ -416,7 +417,7 @@ view_layout:
 
 ## Automating the on/off of the heat pump in Home Assistant
 
-`waengr` on our Discord channel posted an [message](https://discord.com/channels/816637840644505620/816958041345884180/1287897271148609566) on how to automate a simple switch to turn on and off the heat pump. He references GitHub issues <https://github.com/emsesp/EMS-ESP32/discussions/1600> and <https://github.com/emsesp/EMS-ESP32/issues/1717>.
+`waengr` on our Discord channel posted an [message](https://discord.com/channels/816637840644505620/816958041345884180/1287897271148609566) on how to automate a simple switch to turn on and off the heat pump. He references GitHub issues [1600](https://github.com/emsesp/EMS-ESP32/discussions/1600) and [1717](https://github.com/emsesp/EMS-ESP32/issues/1717).
 
 In his own words, this is what he did:
 
@@ -466,7 +467,7 @@ automation heating:
 
 Here is my work-in-progress dashboard in Home Assistant:
 
-![Dashboard](_media/screenshot/PV_HA_dash.png)
+![Dashboard](/_media/screenshot/PV_HA_dash.png)
 
 - left: `text.boiler_hpin1opt` and the above automations to change it to "on" and "off".
 - top right: a hand drawn schema where I try to map some of the 200+ values from EMS-ESP.
@@ -497,7 +498,7 @@ This low load optimisation can reduce gas usage by 15-20% with little change in 
 ### Pre-requisites
 
 - A high resolution, high frequency updating thermometer [^thermometers].
-- Setting up this thermometer as a [Remote Thermostat](https://docs.emsesp.org/Special-Functions/#remote-thermostats).
+- Setting up this thermometer as a [Remote Thermostat](https://emsesp.org/Special-Functions/#remote-thermostats).
 - A boiler where setting `Heating Activated` to `off` actually disables heating. This seems to be true for gas boilers, but will most
   likely not work for heatpumps. Make use of the `forceheatingoff` entity in that case.
 
@@ -614,4 +615,4 @@ deviation is roughly +-0.1K with long periods of the heating system being off (a
 
 ## Optimizing for heatpumps
 
-Matthias documented his setup Bosch/Buderus Heatpump on <https://bosch-buderus-wp.github.io/xps/matthias> and even goes to showing how you can use AI to setup a MCP/LLM to control the heatpump. See [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) for more details.
+Matthias documented his setup Bosch/Buderus Heatpump on [his blog](https://bosch-buderus-wp.github.io/xps/matthias) and even goes to showing how you can use AI to setup a MCP/LLM to control the heatpump. See [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) for more details.
