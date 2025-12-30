@@ -1,6 +1,6 @@
 import React from 'react';
-import {useLocation} from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {useAlternatePageUtils} from '@docusaurus/theme-common/internal';
 import {translate} from '@docusaurus/Translate';
 import DropdownNavbarItem from '@theme/NavbarItem/DropdownNavbarItem';
 import IconLanguage from '@theme/Icon/Language';
@@ -12,52 +12,16 @@ export default function LocaleDropdownNavbarItem({
   ...props
 }) {
   const {
-    i18n: {currentLocale, locales, localeConfigs, defaultLocale},
+    i18n: {currentLocale, locales, localeConfigs},
   } = useDocusaurusContext();
   
-  const {pathname, search, hash} = useLocation();
-
-  // Detect current locale from the URL path
-  const pathSegments = pathname.split('/').filter(Boolean);
-  const firstSegment = pathSegments[0];
-  const detectedLocale = locales.includes(firstSegment) ? firstSegment : defaultLocale;
+  const alternatePageUtils = useAlternatePageUtils();
 
   const localeItems = locales.map((locale) => {
-    // Get the path without any locale prefix
-    let cleanPath = pathname;
-    
-    // Check if the current path starts with a locale prefix
-    const currentLocalePrefix = locales.find(loc => 
-      pathname === `/${loc}` || pathname.startsWith(`/${loc}/`)
-    );
-    
-    if (currentLocalePrefix) {
-      // Remove the locale prefix (e.g., /nl/page -> /page)
-      cleanPath = pathname.substring(currentLocalePrefix.length + 1) || '/';
-      // Ensure it starts with /
-      if (!cleanPath.startsWith('/')) {
-        cleanPath = '/' + cleanPath;
-      }
-    }
-    
-    // Build new URL with target locale
-    let to;
-    if (locale === defaultLocale) {
-      // For default locale, use path without locale prefix
-      to = cleanPath;
-    } else {
-      // For other locales, add locale prefix
-      to = `/${locale}${cleanPath}`;
-    }
-    
-    // Remove double slashes
-    to = to.replace(/\/+/g, '/');
-    
-    // Add search and hash
-    to = `${to}${search}${hash}`;
-    
-    // Use detected locale from URL instead of currentLocale
-    const isActive = detectedLocale === locale;
+    const to = `pathname://${alternatePageUtils.createUrl({
+      locale,
+      fullyQualified: false,
+    })}`;
     
     return {
       label: localeConfigs[locale].label,
@@ -65,9 +29,7 @@ export default function LocaleDropdownNavbarItem({
       to,
       target: '_self',
       autoAddBaseUrl: false,
-      className: isActive ? 'dropdown__link--active' : '',
-      // Prevent default active detection by using a custom activeClassName
-      activeClassName: 'custom-active-disabled',
+      className: currentLocale === locale ? 'dropdown__link--active' : '',
     };
   });
 
@@ -83,7 +45,7 @@ export default function LocaleDropdownNavbarItem({
         id: 'theme.navbar.mobileLanguageDropdown.label',
         description: 'The label for the mobile language switcher dropdown',
       })
-    : localeConfigs[detectedLocale]?.label ?? detectedLocale;
+    : localeConfigs[currentLocale].label;
 
   return (
     <DropdownNavbarItem
@@ -99,4 +61,3 @@ export default function LocaleDropdownNavbarItem({
     />
   );
 }
-

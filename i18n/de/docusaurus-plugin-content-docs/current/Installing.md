@@ -1,7 +1,8 @@
 ---
-title: Installation Guide
+title: Installationsanleitung
 id: Installing
-description: Getting started with EMS-ESP. What you need, how to install and do initial configuration.
+sidebar_label: Installation
+description: Erste Schritte mit EMS-ESP. Was Sie benötigen, wie Sie die Firmware installieren und die Erstkonfiguration durchführen.
 ---
 
 # 📦 Installieren

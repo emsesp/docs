@@ -1,7 +1,8 @@
 ---
 title: Installatiehandleiding
 id: Installing
-description: Getting started with EMS-ESP. What you need, how to install and do initial configuration.
+sidebar_label: Installatie
+description: Aan de slag met EMS-ESP. Wat u nodig heeft, hoe u de firmware installeert en de initiële configuratie uitvoert.
 ---
 
 # 📦 Installeren

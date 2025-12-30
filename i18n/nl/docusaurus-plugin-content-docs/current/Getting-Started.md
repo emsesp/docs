@@ -1,7 +1,9 @@
 ---
 title: Aan de slag
 id: Getting-Started
-description: Getting started with EMS-ESP. What you need, how to install and do initial configuration.
+sidebar_label: Aan de slag
+sidebar_position: 1
+description: Aan de slag met EMS-ESP. Wat u nodig heeft, hoe u installeert en de initiële configuratie uitvoert.
 hide_table_of_contents: true
 ---
 
