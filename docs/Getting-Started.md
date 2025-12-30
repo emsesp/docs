@@ -21,7 +21,7 @@ See the post [here](https://github.com/emsesp/EMS-ESP32/discussions/839#discussi
 
 ### 🔗 EMS Interface Board
 
-EMS-ESP also requires a separate circuit to read and write to the EMS bus. You can either [build your own](../EMS-Circuit) or purchase a EMS Gateway board directly from BBQKees Electronics.
+EMS-ESP also requires a separate circuit to read and write to the EMS bus. You can either [build your own](EMS-Circuit) or purchase a EMS Gateway board directly from BBQKees Electronics.
 
 ![EMS Gateway S3](/media/images/EMS-Gateway-S3.png)
 ![EMS Gateway E32 V2](/media/images/EMS-Gateway-E32-V2.png)

@@ -19,7 +19,7 @@ Zie de post [here](https://github.com/emsesp/EMS-ESP32/discussions/839#discussio
 
 ### 🔗 EMS-interfacekaart
 
-EMS-ESP vereist ook een apart circuit om te lezen en te schrijven naar de EMS-bus. Je kunt [build your own](../EMS-Circuit) of een EMS Gateway board rechtstreeks bij BBQKees Electronics kopen.
+EMS-ESP vereist ook een apart circuit om te lezen en te schrijven naar de EMS-bus. Je kunt [build your own](EMS-Circuit) of een EMS Gateway board rechtstreeks bij BBQKees Electronics kopen.
 
 ![EMS Gateway S3](/media/images/EMS-Gateway-S3.png)
 ![EMS Gateway E32 V2](/media/images/EMS-Gateway-E32-V2.png)
