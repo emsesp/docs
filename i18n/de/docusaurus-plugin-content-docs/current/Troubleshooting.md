@@ -169,7 +169,7 @@ Wenn Sie ungewöhnliche Messwerte des Dallas-Sensors feststellen (verrückte Min
 
 Wenn Sie feststellen, dass MQTT-Nachrichten nicht beim MQTT broker/server-Versuch ankommen:
 
-- Prüfen Sie die EMS-ESP-Protokolle auf Fehler. Wenn Sie Fehler mit "wenig Speicher" sehen, lesen Sie [It may be memory related](Troubleshooting.md?id=general#it-may-be-memory-related), um zu erfahren, wie Sie die Speichernutzung reduzieren können
+- Prüfen Sie die EMS-ESP-Protokolle auf Fehler. Wenn Sie Fehler mit "wenig Speicher" sehen, lesen Sie [It may be memory related](#möglicherweise-liegt-es-am-speicher), um zu erfahren, wie Sie die Speichernutzung reduzieren können
 - Überprüfen Sie den MQTT-Broker auf Fehler. Möglicherweise haben Sie falsche Anmeldeinformationen oder doppelte Client-IDs, die einen Verbindungskonflikt verursachen
 - Setzen Sie den EMS-ESP System Log Level auf ALL (über Web oder Konsole) und überwachen Sie den Datenverkehr
 - Verwenden Sie die Telnet-Konsole, um eine Veröffentlichung zu erzwingen und zu sehen, was passiert. (`log debug`, `su` und `publish`)

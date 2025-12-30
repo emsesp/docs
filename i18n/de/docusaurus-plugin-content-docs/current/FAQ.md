@@ -56,7 +56,7 @@ Weitere Informationen finden Sie in diesen Diskussionen:
 
 - [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/discussions/965)
 - [Thermostat emulation](https://github.com/emsesp/EMS-ESP32/issues/151)
-- [Changing the boiler heating directly](tips-and-tricks#controlling-the-boiler-heating)
+- [Changing the boiler heating directly](tips-and-tricks#steuerung-der-kesselheizung)
 - [Implementing a smart thermostat (using SAT)](https://github.com/emsesp/EMS-ESP32/issues/2103)
 
 ## Was sind Busprotokolle und Sendemodi?
