@@ -52,7 +52,7 @@
     "description": "Navbar item with label Getting Started"
   },
   "item.label.Installing": {
-    "message": "Installation",
+    "message": "Einrichtung",
     "description": "Navbar item with label Installing"
   },
   "item.label.Configuring": {
@@ -88,7 +88,7 @@
     "description": "Navbar item with label Boilers"
   },
   "item.label.Thermostats": {
-    "message": "Thermostate",
+    "message": "Thermostat",
     "description": "Navbar item with label Thermostats"
   },
   "item.label.Controllers": {
@@ -116,11 +116,11 @@
     "description": "Navbar item with label Gateways"
   },
   "item.label.Mixer Modules": {
-    "message": "Mischermodule",
+    "message": "Mischermodul",
     "description": "Navbar item with label Mixer Modules"
   },
   "item.label.Solar Modules": {
-    "message": "Solarmodule",
+    "message": "Solarmodul",
     "description": "Navbar item with label Solar Modules"
   },
   "item.label.Switches": {
@@ -128,7 +128,7 @@
     "description": "Navbar item with label Switches"
   },
   "item.label.Home Assistant": {
-    "message": "Home Assistant",
+    "message": "Assistentin zu Hause",
     "description": "Navbar item with label Home Assistant"
   },
   "item.label.IOBroker": {
@@ -144,7 +144,7 @@
     "description": "Navbar item with label openHAB"
   },
   "item.label.Loxone": {
-    "message": "Loxone",
+    "message": "Loxon",
     "description": "Navbar item with label Loxone"
   },
   "item.label.Grafana": {
@@ -192,7 +192,7 @@
     "description": "Navbar item with label The EMS Bus explained"
   },
   "item.label.The community EMS library": {
-    "message": "Die Community EMS-Bibliothek",
+    "message": "Die EMS-Bibliothek der Gemeinschaft",
     "description": "Navbar item with label The community EMS library"
   },
   "item.label.A prototype hardware design": {
@@ -200,7 +200,7 @@
     "description": "Navbar item with label A prototype hardware design"
   },
   "item.label.Contributing": {
-    "message": "Beitragen",
+    "message": "Beiträge",
     "description": "Navbar item with label Contributing"
   },
   "item.label.Release History": {

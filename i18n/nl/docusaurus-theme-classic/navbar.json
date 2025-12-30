@@ -92,7 +92,7 @@
     "description": "Navbar item with label Thermostats"
   },
   "item.label.Controllers": {
-    "message": "Controllers",
+    "message": "Regelaars",
     "description": "Navbar item with label Controllers"
   },
   "item.label.Heat Pumps": {
@@ -112,7 +112,7 @@
     "description": "Navbar item with label Extension"
   },
   "item.label.Gateways": {
-    "message": "Gateways",
+    "message": "Poorten",
     "description": "Navbar item with label Gateways"
   },
   "item.label.Mixer Modules": {
@@ -128,7 +128,7 @@
     "description": "Navbar item with label Switches"
   },
   "item.label.Home Assistant": {
-    "message": "Home Assistant",
+    "message": "Home Assistent",
     "description": "Navbar item with label Home Assistant"
   },
   "item.label.IOBroker": {
@@ -144,7 +144,7 @@
     "description": "Navbar item with label openHAB"
   },
   "item.label.Loxone": {
-    "message": "Loxone",
+    "message": "Loxon",
     "description": "Navbar item with label Loxone"
   },
   "item.label.Grafana": {
@@ -192,7 +192,7 @@
     "description": "Navbar item with label The EMS Bus explained"
   },
   "item.label.The community EMS library": {
-    "message": "De community EMS-bibliotheek",
+    "message": "De EMS-bibliotheek",
     "description": "Navbar item with label The community EMS library"
   },
   "item.label.A prototype hardware design": {
