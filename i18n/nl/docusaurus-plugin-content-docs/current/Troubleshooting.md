@@ -101,7 +101,7 @@ ems-esp:# scan
 ems-esp:#
 ```
 
-Als je de EMS-gegevens wilt zien binnenstromen, gebruik dan het `watch` commando. Zie [Console](Console.md?id=monitoring-the-ems-traffic).
+Als je de EMS-gegevens wilt zien binnenstromen, gebruik dan het `watch` commando. Zie [Console](Console#het-ems-verkeer-bewaken).
 
 ### Ik mis bepaalde gegevens van een EMS-apparaat
 
@@ -111,7 +111,7 @@ Als je het telegram hebt gelokaliseerd, zoek dan de offset en gebruik de `Custom
 
 Merk op dat niet alle EMS-apparaten toestaan dat hun gegevens worden gepubliceerd op de EMS-bus, bijvoorbeeld de slimme thermostaten zoals de Nefit Easy en Buderus Easy Control CT200 die alleen de huidige kamer- en setpointtemperaturen verzenden als alleen-lezen attributen.
 
-Zie dit artikel op [Decoding EMS Telegrams](FAQ.md?id=decoding-ems-telegrams) voor meer informatie.
+Zie dit artikel op [Decoding EMS Telegrams](FAQ#wat-is-een-ems-telegram) voor meer informatie.
 
 ### Veel Rx-fouten
 
@@ -168,7 +168,7 @@ Als je ongebruikelijke metingen van de Dallas-sensor ziet (gekke negatieve tempe
 
 Als je merkt dat MQTT-berichten niet aankomen bij de MQTT broker/server probeer het dan:
 
-- Controleer de logboeken van EMS-ESP op fouten. Als u "laag geheugen" fouten ziet, lees dan [It may be memory related](Troubleshooting.md?id=general#het-kan-met-het-geheugen-te-maken-hebben) om te zien hoe u het geheugengebruik kunt verminderen
+- Controleer de logboeken van EMS-ESP op fouten. Als u "laag geheugen" fouten ziet, lees dan [It may be memory related](#het-kan-met-het-geheugen-te-maken-hebben) om te zien hoe u het geheugengebruik kunt verminderen
 - Controleer de MQTT broker op fouten. Mogelijk heb je onjuiste referenties of dubbele Client ID's die een verbindingsconflict veroorzaken
 - Stel het EMS-ESP-systeemlogniveau in op ALL (via web of console) en controleer het verkeer
 - Gebruik de Telnet Console om een publicatie te forceren om te zien wat er gebeurt. (`log debug`, `su` en `publish`)

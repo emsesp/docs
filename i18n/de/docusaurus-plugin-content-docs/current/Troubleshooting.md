@@ -102,7 +102,7 @@ ems-esp:# scan
 ems-esp:#
 ```
 
-Wenn Sie die einströmenden EMS-Daten sehen wollen, verwenden Sie den Befehl `watch`. Siehe [Console](Console.md?id=monitoring-the-ems-traffic).
+Wenn Sie die einströmenden EMS-Daten sehen wollen, verwenden Sie den Befehl `watch`. Siehe [Console](Console#überwachung-des-ems-verkehrs).
 
 ### Ich vermisse bestimmte Daten von einem EMS-Gerät
 
@@ -112,7 +112,7 @@ Wenn Sie das Telegramm gefunden haben, suchen Sie den Offset und verwenden Sie d
 
 Beachten Sie, dass nicht alle EMS-Geräte die Veröffentlichung ihrer Daten auf dem EMS-Bus zulassen, z. B. die intelligenten Thermostate wie Nefit Easy und Buderus Easy Control CT200, die nur die aktuelle Raum- und Solltemperatur als schreibgeschützte Attribute übermitteln.
 
-Weitere Informationen finden Sie in diesem Artikel über [Decoding EMS Telegrams](FAQ.md?id=decoding-ems-telegrams).
+Weitere Informationen finden Sie in diesem Artikel über [Decoding EMS Telegrams](FAQ#was-ist-ein-ems-telegramm).
 
 ### Viele Rx-Fehler
 
