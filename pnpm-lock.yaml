@@ -2108,8 +2108,8 @@ packages:
   ajv@8.17.1:
     resolution: {integrity: sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==}
 
-  algoliasearch-helper@3.26.1:
-    resolution: {integrity: sha512-CAlCxm4fYBXtvc5MamDzP6Svu8rW4z9me4DCBY1rQ2UDJ0u0flWmusQ8M3nOExZsLLRcUwUPoRAPMrhzOG3erw==}
+  algoliasearch-helper@3.27.0:
+    resolution: {integrity: sha512-eNYchRerbsvk2doHOMfdS1/B6Tm70oGtu8mzQlrNzbCeQ8p1MjCW8t/BL6iZ5PD+cL5NNMgTMyMnmiXZ1sgmNw==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 6'
 
@@ -7667,7 +7667,7 @@ snapshots:
       '@docusaurus/utils': 3.9.2(@swc/core@1.15.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@docusaurus/utils-validation': 3.9.2(@swc/core@1.15.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       algoliasearch: 5.46.2
-      algoliasearch-helper: 3.26.1(algoliasearch@5.46.2)
+      algoliasearch-helper: 3.27.0(algoliasearch@5.46.2)
       clsx: 2.1.1
       eta: 2.2.0
       fs-extra: 11.3.3
@@ -8717,7 +8717,7 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  algoliasearch-helper@3.26.1(algoliasearch@5.46.2):
+  algoliasearch-helper@3.27.0(algoliasearch@5.46.2):
     dependencies:
       '@algolia/events': 4.0.1
       algoliasearch: 5.46.2
