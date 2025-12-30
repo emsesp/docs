@@ -1,5 +1,8 @@
 ---
 title: Getting Started
+id: Getting-Started
+sidebar_label: Getting Started
+sidebar_position: 1
 description: Getting started with EMS-ESP. What you need, how to install and do initial configuration.
 hide_table_of_contents: true
 ---

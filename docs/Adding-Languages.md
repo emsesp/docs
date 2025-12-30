@@ -1,3 +1,6 @@
+---
+id: Adding-Languages
+---
 # Adding Languages
 
 ### How to add language XY to the WebUI

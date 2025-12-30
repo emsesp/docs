@@ -1,3 +1,6 @@
+---
+id: Home-Assistant
+---
 # Home Assistant
 
 ![logo](/media/logo/home-assistant.png)
@@ -124,16 +127,24 @@ Add to `template.yaml`:
     - default_entity_id: sensor.last_shower_duration
       name: Last shower duration
       state:
-        "{% if has_value('sensor.ems_esp_shower_duration') %}\n  {{ int(states('sensor.ems_esp_shower_duration'))
-        | timestamp_custom('%-M min %-S sec', false)}}\n{% else %}\n  unknown\n{% endif
+        "{% if has_value('sensor.ems_esp_shower_duration') %}
+  {{ int(states('sensor.ems_esp_shower_duration'))
+        | timestamp_custom('%-M min %-S sec', false)}}
+{% else %}
+  unknown
+{% endif
         %}"
 
 - sensor:
     - default_entity_id: sensor.last_shower_time
       name: Last shower timestamp
       state:
-        "{% if has_value('sensor.ems_esp_shower_duration') %}\n  {{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated)
-        | int | timestamp_custom(\"%-I:%M %p on %a %-d %b\") }}\n{% else %}\n  unknown\n{%
+        "{% if has_value('sensor.ems_esp_shower_duration') %}
+  {{ as_timestamp(states.sensor.ems_esp_shower_duration.last_updated)
+        | int | timestamp_custom(\"%-I:%M %p on %a %-d %b\") }}
+{% else %}
+  unknown
+{%
         endif %}"
 ```
 
@@ -344,7 +355,7 @@ Check if it's working by going to `http://ems-esp/api/boiler/wwseltemp`
 
 ### LoveLace Section View, Tiles and setting values via EMS-ESP
 
-_(by @oliof)_
+_(by oliof)_
 
 Since HA2024.12, lovelace defaults to Sections views and auto generates Tiles for most entities.
 While Tiles appear to be just simple display helpers, their functionality can be extensively modified by adding Features. Here is a graphical guide to create a similar control as above from within lovelace with no changes to `configuration.yaml`
@@ -379,7 +390,7 @@ Do note that the Tile component that comes with HA does not allow you to set min
 
 ### Showing the Boiler status based on the service code
 
-(by @glitterball)
+(by glitterball)
 
 Use a template to translate the boiler service code into a string.
 

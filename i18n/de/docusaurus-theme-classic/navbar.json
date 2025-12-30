@@ -11,6 +11,10 @@
     "message": "Startseite",
     "description": "Navbar item with label Home"
   },
+  "item.label.Docs": {
+    "message": "Dokumentation",
+    "description": "Navbar item with label Docs"
+  },
   "item.label.Devices": {
     "message": "Geräte",
     "description": "Navbar item with label Devices"
@@ -27,6 +31,10 @@
     "message": "Hilfe",
     "description": "Navbar item with label Help"
   },
+  "item.label.Support": {
+    "message": "Unterstützung",
+    "description": "Navbar item with label Support"
+  },
   "item.label.Developers": {
     "message": "Entwickler",
     "description": "Navbar item with label Developers"
@@ -38,5 +46,165 @@
   "item.label.Discord": {
     "message": "Diskord",
     "description": "Navbar item with label Discord"
+  },
+  "item.label.Getting Started": {
+    "message": "Erste Schritte",
+    "description": "Navbar item with label Getting Started"
+  },
+  "item.label.Installing": {
+    "message": "Installation",
+    "description": "Navbar item with label Installing"
+  },
+  "item.label.Configuring": {
+    "message": "Konfiguration",
+    "description": "Navbar item with label Configuring"
+  },
+  "item.label.WebUI": {
+    "message": "WebUI",
+    "description": "Navbar item with label WebUI"
+  },
+  "item.label.MQTT": {
+    "message": "MQTT",
+    "description": "Navbar item with label MQTT"
+  },
+  "item.label.Commands": {
+    "message": "Befehle",
+    "description": "Navbar item with label Commands"
+  },
+  "item.label.Console": {
+    "message": "Konsole",
+    "description": "Navbar item with label Console"
+  },
+  "item.label.Special Functions": {
+    "message": "Spezielle Funktionen",
+    "description": "Navbar item with label Special Functions"
+  },
+  "item.label.All Devices and Entities": {
+    "message": "Alle Geräte und Entitäten",
+    "description": "Navbar item with label All Devices and Entities"
+  },
+  "item.label.Boilers": {
+    "message": "Heizkessel",
+    "description": "Navbar item with label Boilers"
+  },
+  "item.label.Thermostats": {
+    "message": "Thermostate",
+    "description": "Navbar item with label Thermostats"
+  },
+  "item.label.Controllers": {
+    "message": "Steuergeräte",
+    "description": "Navbar item with label Controllers"
+  },
+  "item.label.Heat Pumps": {
+    "message": "Wärmepumpen",
+    "description": "Navbar item with label Heat Pumps"
+  },
+  "item.label.Alert": {
+    "message": "Alarm",
+    "description": "Navbar item with label Alert"
+  },
+  "item.label.Connect": {
+    "message": "Verbinden",
+    "description": "Navbar item with label Connect"
+  },
+  "item.label.Extension": {
+    "message": "Erweiterung",
+    "description": "Navbar item with label Extension"
+  },
+  "item.label.Gateways": {
+    "message": "Gateways",
+    "description": "Navbar item with label Gateways"
+  },
+  "item.label.Mixer Modules": {
+    "message": "Mischermodule",
+    "description": "Navbar item with label Mixer Modules"
+  },
+  "item.label.Solar Modules": {
+    "message": "Solarmodule",
+    "description": "Navbar item with label Solar Modules"
+  },
+  "item.label.Switches": {
+    "message": "Schalter",
+    "description": "Navbar item with label Switches"
+  },
+  "item.label.Home Assistant": {
+    "message": "Home Assistant",
+    "description": "Navbar item with label Home Assistant"
+  },
+  "item.label.IOBroker": {
+    "message": "IOBroker",
+    "description": "Navbar item with label IOBroker"
+  },
+  "item.label.Domoticz": {
+    "message": "Domoticz",
+    "description": "Navbar item with label Domoticz"
+  },
+  "item.label.openHAB": {
+    "message": "openHAB",
+    "description": "Navbar item with label openHAB"
+  },
+  "item.label.Loxone": {
+    "message": "Loxone",
+    "description": "Navbar item with label Loxone"
+  },
+  "item.label.Grafana": {
+    "message": "Grafana",
+    "description": "Navbar item with label Grafana"
+  },
+  "item.label.Prometheus": {
+    "message": "Prometheus",
+    "description": "Navbar item with label Prometheus"
+  },
+  "item.label.Getting Support": {
+    "message": "Unterstützung erhalten",
+    "description": "Navbar item with label Getting Support"
+  },
+  "item.label.Troubleshooting": {
+    "message": "Fehlerbehebung",
+    "description": "Navbar item with label Troubleshooting"
+  },
+  "item.label.FAQ": {
+    "message": "FAQ",
+    "description": "Navbar item with label FAQ"
+  },
+  "item.label.Tips and Tricks": {
+    "message": "Tipps und Tricks",
+    "description": "Navbar item with label Tips and Tricks"
+  },
+  "item.label.About EMS-ESP": {
+    "message": "Über EMS-ESP",
+    "description": "Navbar item with label About EMS-ESP"
+  },
+  "item.label.Building the firmware": {
+    "message": "Firmware erstellen",
+    "description": "Navbar item with label Building the firmware"
+  },
+  "item.label.Adding Languages": {
+    "message": "Sprachen hinzufügen",
+    "description": "Navbar item with label Adding Languages"
+  },
+  "item.label.EMS Telegrams": {
+    "message": "EMS-Telegramme",
+    "description": "Navbar item with label EMS Telegrams"
+  },
+  "item.label.The EMS Bus explained": {
+    "message": "Der EMS-Bus erklärt",
+    "description": "Navbar item with label The EMS Bus explained"
+  },
+  "item.label.The community EMS library": {
+    "message": "Die Community EMS-Bibliothek",
+    "description": "Navbar item with label The community EMS library"
+  },
+  "item.label.A prototype hardware design": {
+    "message": "Ein Prototyp-Hardware-Design",
+    "description": "Navbar item with label A prototype hardware design"
+  },
+  "item.label.Contributing": {
+    "message": "Beitragen",
+    "description": "Navbar item with label Contributing"
+  },
+  "item.label.Release History": {
+    "message": "Versionshistorie",
+    "description": "Navbar item with label Release History"
   }
 }

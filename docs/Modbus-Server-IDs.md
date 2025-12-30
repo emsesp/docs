@@ -1,3 +1,6 @@
+---
+id: Modbus-Server-IDs
+---
 # Modbus Server IDs
 
 This table shows how device types are mapped to server unit identifiers.

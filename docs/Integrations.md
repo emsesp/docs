@@ -1,3 +1,6 @@
+---
+id: Integrations
+---
 # Integrations
 
 EMS-ESP integrates with a few home automation systems to report status and sensor data and sometimes allowing complete control. If there are more integrations then please reach out and we'll include them.

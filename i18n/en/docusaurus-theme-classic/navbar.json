@@ -11,6 +11,10 @@
     "message": "Home",
     "description": "Navbar item with label Home"
   },
+  "item.label.Docs": {
+    "message": "Docs",
+    "description": "Navbar item with label Docs"
+  },
   "item.label.Devices": {
     "message": "Devices",
     "description": "Navbar item with label Devices"
@@ -26,6 +30,10 @@
   "item.label.Help": {
     "message": "Help",
     "description": "Navbar item with label Help"
+  },
+  "item.label.Support": {
+    "message": "Support",
+    "description": "Navbar item with label Support"
   },
   "item.label.Developers": {
     "message": "Developers",

@@ -136,7 +136,12 @@ const config = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           // SEO: Add edit URLs for better credibility
-          editUrl: 'https://github.com/emsesp/docs/edit/main/',
+          editUrl: ({locale, docPath}) => {
+            if (locale === 'en') {
+              return `https://github.com/emsesp/docs/edit/main/docs/${docPath}`;
+            }
+            return `https://github.com/emsesp/docs/edit/main/i18n/${locale}/docusaurus-plugin-content-docs/current/${docPath}`;
+          },
           // SEO: Breadcrumbs for better navigation
           breadcrumbs: true,
         },

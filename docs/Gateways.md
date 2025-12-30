@@ -1,3 +1,6 @@
+---
+id: Gateways
+---
 # Gateway Modules
 
 - Buderus Web Gateway KM200, MB LAN 2

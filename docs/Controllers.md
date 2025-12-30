@@ -1,3 +1,6 @@
+---
+id: Controllers
+---
 # Controller Modules
 
 This is the current list of supported controller modules:

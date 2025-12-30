@@ -1,3 +1,6 @@
+---
+id: Boilers
+---
 # Boilers
 
 This is the current list of supported boilers from brands like Buderus, Nefit, Sieger, Junkers and Bosch:
@@ -38,8 +41,9 @@ The boiler commands below will vary depending on boiler type/brand and system co
 :::
 
 :::warning this list is not complete and subject to change between versions
+:::
 
-| command            | data                                        | id  | comments                                                                           |
+| `command`            | `data`                                        | `id`  | `comments`                                                                           |
 | ------------------ | ------------------------------------------- | --- | ---------------------------------------------------------------------------------- |
 | `comfort`          | `<hot \|eco \| intelligent>`                |     |                                                                                    |
 | `flowtemp`         | `<degrees>`                                 |     | Limited to heatingtemp, set by thermostat if present                               |

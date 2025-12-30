@@ -284,47 +284,28 @@
   vertical-align: middle;
 }
 
-/* Style the active locale in dropdown */
-.dropdown__menu .dropdown__link--active {
-  background-color: var(--ifm-color-primary);
-  color: white !important;
-  font-weight: 600;
-}
-
-.dropdown__menu .dropdown__link--active:hover {
-  background-color: var(--ifm-color-primary-dark);
-  color: white !important;
-}
-
-/* Make dropdown menu more visible */
-.navbar__item.dropdown .dropdown__menu {
-  min-width: 150px;
-}
-
-.navbar__item.dropdown .dropdown__link {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-}
-
-/* Add checkmark to active locale */
-.dropdown__menu .dropdown__link--active::before {
-  content: '✓ ';
-  margin-right: 0.5rem;
-  font-weight: bold;
-}
-
-/* Improve locale dropdown button appearance */
-.navbar__link[href*='/en/'],
-.navbar__link[href*='/de/'],
-.navbar__link[href*='/nl/'] {
-  font-weight: 500;
-}
 
 /* Style the locale dropdown toggle */
 .navbar__item.dropdown button.navbar__link {
   font-weight: 500;
   padding: 0.5rem 1rem;
+}
+
+/* Active locale in dropdown menu */
+.dropdown__menu .dropdown__link--active {
+  background-color: var(--ifm-color-primary) !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+/* Ensure non-active items don't get highlighted */
+.dropdown__menu .dropdown__link:not(.dropdown__link--active) {
+  background-color: transparent;
+  color: var(--ifm-dropdown-link-color);
+}
+
+.dropdown__menu .dropdown__link:not(.dropdown__link--active):hover {
+  background-color: var(--ifm-menu-color-background-hover);
 }
 
 /* GitHub icon in navbar */
@@ -388,4 +369,24 @@
 
 .footer__copyright {
   margin: 0;
+}
+
+/* Remove uppercase transformation from admonition titles */
+[class*='admonitionHeading'] {
+  text-transform: none !important;
+}
+
+/* Hide sidebar item with class hidden in the menu */
+.theme-doc-sidebar-item-link.hidden {
+  display: none !important;
+}
+
+/* Hide sidebar on the index page only */
+.docs-doc-id-index .theme-doc-sidebar-container {
+  display: none !important;
+}
+
+/* Make content full width on index page */
+.docs-doc-id-index .docMainContainer {
+  max-width: 100% !important;
 }

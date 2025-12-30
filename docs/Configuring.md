@@ -1,3 +1,6 @@
+---
+id: Configuring
+---
 # Configuring
 
 ## First time setup
@@ -44,7 +47,7 @@ This next section describes some of key settings that can be adjusted via the We
 
 - **Board Profile**. Board Profiles are pre-configured GPIO settings for a set of common ESP32 development boards and EMS Gateway circuits. The following profiles are available:
 
-| profile name | based on board         | led | dallas | rx  | tx  | button | phy_type | eth_power | eth_phy_addr | eth_clock_mode               |
+| `profile name` | `based on board`         | `led` | `dallas` | `rx`  | `tx`  | `button` | `phy_type` | `eth_power` | `eth_phy_addr` | `eth_clock_mode`               |
 | ------------ | ---------------------- | --- | ------ | --- | --- | ------ | -------- | --------- | ------------ | ---------------------------- |
 | S32          | BBQKees Gateway S32    | 2   | 18     | 23  | 5   | 0      |          |           |              |                              |
 | E32          | BBQKees Gateway E32    | 2   | 4      | 5   | 17  | 33     | LAN8720  | 16        | 1            | input to GPIO0               |
@@ -61,14 +64,14 @@ This next section describes some of key settings that can be adjusted via the We
 
 Choosing `Custom` will show the following additional settings to manually configure the GPIOs to match your own board. You can also select `Custom` at any time to display the current board profile settings, without saving.
 
-> **Custom board Settings:**
->
-> - **Rx GPIO**. This is the GPIO pin the Rx signal is assigned to. By default this is GPIO 23 but it can be almost any free pin. Connect this GPIO pin to the RX port on the EMS interface board.
-> - **Tx GPIO**. This is the GPIO pin the Tx signal is assigned to. By default this is GPIO 5 but it can be almost any free pin. Connect this GPIO pin to the TX port on the EMS interface board.
-> - **Button GPIO**. This is the GPIO pin the button is assigned to. It's a pull-up. The button is used for different functions. A single-click does nothing, a double-click will do a WiFi reset and reconnect to the AP, a long-press for 10 seconds and release will perform a factory reset and a very long press for at least 20 seconds without a release will reboot the EMS-ESP to the initial boot partition.
-> - **Temperature GPIO**. This is the pin where any external temperature sensors are attached. The Dallas chips DS1822, DS18S20, DS18B20, DS1825 are supported including their parasite varieties and can also be daisy-chained onto a single line, up to 100 sensors.
-> - **LED GPIO**. This is the pin for the LED, defaulted to the onboard LED on the ESP dev board.
-> - **Eth PHY Type**. This is type of Ethernet chip used.
+*Custom board Settings:*
+
+- **Rx GPIO**. This is the GPIO pin the Rx signal is assigned to. By default this is GPIO 23 but it can be almost any free pin. Connect this GPIO pin to the RX port on the EMS interface board.
+- **Tx GPIO**. This is the GPIO pin the Tx signal is assigned to. By default this is GPIO 5 but it can be almost any free pin. Connect this GPIO pin to the TX port on the EMS interface board.
+- **Button GPIO**. This is the GPIO pin the button is assigned to. It's a pull-up. The button is used for different functions. A single-click does nothing, a double-click will do a WiFi reset and reconnect to the AP, a long-press for 10 seconds and release will perform a factory reset and a very long press for at least 20 seconds without a release will reboot the EMS-ESP to the initial boot partition.
+- **Temperature GPIO**. This is the pin where any external temperature sensors are attached. The Dallas chips DS1822, DS18S20, DS18B20, DS1825 are supported including their parasite varieties and can also be daisy-chained onto a single line, up to 100 sensors.
+- **LED GPIO**. This is the pin for the LED, defaulted to the onboard LED on the ESP dev board.
+- **Eth PHY Type**. This is type of Ethernet chip used.
 
 :::note On ESP32 development boards there are often also pins marked RX and TX. However, these are usually connected to the USB chip and cannot be used for the EMS interface circuit.
 :::
@@ -116,7 +119,7 @@ Enable this function when running in VPNs or you have other servers (like Grafan
 - **Publish single value topics on change**. This option will immediately publish the topic and payload for each operation and only available when MQTT Discovery is disabled.
 - **Enable MQTT Discovery** enables the integration using MQTT Discovery, fully supported with Home Assistant and partially with Domoticz.
   - **Discovery type**. Choose between "Home Assistant" and two protocols for "Domoticz". `Domoticz (latest)` will use Numbers, Switches, Select and other modern types, while `Domoticz` will just use Sensors for everything and also remove any templating conditions.
-  - **Entity ID format**: There are 3 options. The first `single instance, long names` uses the older < v3.5 format. The default and recommended setting for all new installs is the 2nd option called `Single instance, short name` which uses the EMS-ESP device entity name, which is fixed and can be seen in the `Settings->Customization` page. The last option must be used when running more than one version of the EMS-ESP firmware as it makes each unique by prefixing all MQTT topics with the base name.
+  - **Entity ID format**: There are 3 options. The first `single instance, long names` uses the older `< v3.5` format. The default and recommended setting for all new installs is the 2nd option called `Single instance, short name` which uses the EMS-ESP device entity name, which is fixed and can be seen in the `Settings->Customization` page. The last option must be used when running more than one version of the EMS-ESP firmware as it makes each unique by prefixing all MQTT topics with the base name.
 - **Publish Intervals**. This section is per device and sets how frequent an MQTT message is sent. When set to 0 EMS-ESP will send data automatically when there is a noticeable change, which could be within a few seconds.
 
 ## NTP Setup

@@ -1,3 +1,6 @@
+---
+id: FAQ
+---
 # FAQ
 
 ## How to Factory Reset EMS-ESP?
@@ -6,7 +9,7 @@ If you have a GPIO Button configured (enabled by default on all BBQKees boards) 
 
 ## What is an EMS Telegrams?
 
-_Written by @MichaelDvP in [this article](https://github.com/emsesp/EMS-ESP32/discussions/1612#discussioncomment-8408868):_
+Written by MichaelDvP in [this article](https://github.com/emsesp/EMS-ESP32/discussions/1612#discussioncomment-8408868):
 
 Best overview of known telegrams is from [Norberts1](https://github.com/norberts1/hometop_HT3/blob/master/HT3/docu/HT_EMS_Bus_messages.pdf) and the [EMS-Wiki](https://emswiki.thefischer.net/doku.php). In general we can say:
 
@@ -29,7 +32,7 @@ If you search a setting, log the telegrams for the device (log all or watch &lt;
 
 Partially. As the folks over at [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) nicely put it:
 
-:::quote Why use a Thermostat?
+:::tip Why use a Thermostat?
 
     - The thermostat manufacturers have spent years of research to work out the heating characteristics for the most efficient and comfortable way to heat a house.
     - The thermostat provides a control interface that people are familiar with, so other members of the household are still able to adjust the setpoint.

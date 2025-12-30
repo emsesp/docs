@@ -1,3 +1,6 @@
+---
+id: Connect
+---
 # Connect Modules
 
 - Nefit Moduline Easy Connect

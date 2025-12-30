@@ -1,3 +1,6 @@
+---
+id: Troubleshooting
+---
 # Troubleshooting
 
 Below are responses to some common problems.
@@ -211,7 +214,7 @@ persistence_location /mosquitto/data/
 log_dest file /mosquitto/log/mosquitto.log
 ```
 
-To read up more on this visit https://pagefault.blog/2020/02/05/how-to-set-up-persistent-storage-for-mosquitto-mqtt-broker.
+To read up more on this visit [this article](https://pagefault.blog/2020/02/05/how-to-set-up-persistent-storage-for-mosquitto-mqtt-broker).
 
 An alternative option without using persistance on the MQTT server is to tell EMS-ESP to republish all the Home Assistant MQTT topics. You can do this via the EMS-ESP WebUI from version 3.4 and higher.
 
@@ -223,7 +226,7 @@ This could happen when either upgrading from an earlier EMS-ESP version and some
 
 ### HA has duplicate entities, prefixed with \_2
 
-See @swa72's fix [here](https://github.com/swa72/home-assistant/blob/main/README-mqtt.md).
+See swa72's fix [here](https://github.com/swa72/home-assistant/blob/main/README-mqtt.md).
 
 ### HA has messed up the names of my entities
 

@@ -50,7 +50,7 @@ const localeNames = {
 async function translateWithDeepL(text, targetLang) {
   const langCode = targetLang === 'de' ? 'DE' : 'NL';
   
-  const response = await fetch('https://api-free.deepl.com/v2/translate', {
+  const response = await fetch('https://api.deepl.com/v2/translate', {
     method: 'POST',
     headers: {
       'Authorization': `DeepL-Auth-Key ${DEEPL_API_KEY}`,

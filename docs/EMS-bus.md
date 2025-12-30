@@ -1,3 +1,6 @@
+---
+id: EMS-bus
+---
 # The EMS Bus explained
 
 Packages are streamed to the EMS "bus" from any other compatible connected device via serial TTL transmission using protocol 9600 baud, 8N1 (8 bytes, no parity, 1 stop bit). Each package is terminated with a break signal `<BRK>`, a 11-bit long low signal of zeros.
@@ -42,7 +45,7 @@ When a device is broadcasting to everyone there is no specific destination neede
 
 The tables below shows which types are broadcasted regularly by the boiler (in this case ID 0x08) and thermostat (ID 0x17). The **data length** is excluding the 4 byte header and CRC and the **Name** references those in the German [EMS wiki](https://emswiki.thefischer.net/doku.php?id="wiki:ems:telegramme").
 
-| Source (ID)   | Type ID | Name                | Description                            | Data length | Frequency  |
+| `Source (ID)`   | `Type ID` | `Name`                | `Description`                            | `Data length` | `Frequency`  |
 | ------------- | ------- | ------------------- | -------------------------------------- | ----------- | ---------- |
 | Boiler (0x08) | 0x34    | UBAMonitorWWMessage | warm water temperature                 | 19 bytes    | 10 seconds |
 | Boiler (0x08) | 0x18    | UBAMonitorFast      | boiler temps, power, gas/pump switches | 25 bytes    | 10 seconds |

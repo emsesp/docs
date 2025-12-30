@@ -1,10 +1,13 @@
+---
+id: tips-and-tricks
+---
 # Tips and Tricks
 
 **Below are a collection of useful tips, tricks and code submitted by the community:**
 
 ## Controlling the boiler heating
 
-_(by @Oderik)_
+_(by Oderik)_
 
 In a very simple setup a boiler provides heat to one heating circuit. If `heating activated` is `on`, the boiler maintains the `selected flow temperature` by regulating the burner and the heat pump.
 
@@ -24,7 +27,7 @@ The boiler onetime has a special logic. It's not recharging on call as most peop
 
 ## Retrieve data via REST using PHP
 
-_(by @flohse123)_
+_(by flohse123)_
 
 ```php
 <?php
@@ -36,10 +39,11 @@ curl_close($ch);
 
 ## Adjusting the flow temperature based on whether CH or DHW is being heated
 
-_(by @IanC)_
+_(by IanC)_
 
-:::quote From the Discord post IanC said:
-    "With a ~2012 Worcester Bosch boiler, house heating is managed by an EvoHome system that knows which parts of house need how much heat, but it can only use an on/off relay to control the boiler for space and water heating. This means it cannot directly control flow temperature, and historically this has been set at continuous 65C via dial on front of boiler to allow water heating when needed. Very pleased to have added EMS-ESP to my system to help manage flow temperatures. I wrote a simple C program to run on my OpenWrt internet router which eavesdrops on EvoHome messages to capture useful information on what amount of heat is needed for space and water into simple txt files in /tmp. I then schedule a shell script every 4 minutes which uses a few steps to select a flow temperature: start with a weather compensated value based on exterior temperature from online service; adjust this up or down by up to 25% based on EvoHome space heat demand; if necessary override this to heat hot water. The selected flow temperature and a max burner level are then sent via curl to a @BBQKees device running EMS-ESP which in turn controls boiler. So far it seems to be working as intended without loss of house comfort but with much lower flow temperatures observed to try and encourage boiler operating in condensing zone.  Very hard to tell if it is affecting gas consumption - which I would like it to :). Main challenge I still see is how to stop EvoHome causing frequent on/off cycles of boiler while it still tries to use TPI flow control management."
+From the Discord post IanC said:
+
+_"With a ~2012 Worcester Bosch boiler, house heating is managed by an EvoHome system that knows which parts of house need how much heat, but it can only use an on/off relay to control the boiler for space and water heating. This means it cannot directly control flow temperature, and historically this has been set at continuous 65C via dial on front of boiler to allow water heating when needed. Very pleased to have added EMS-ESP to my system to help manage flow temperatures. I wrote a simple C program to run on my OpenWrt internet router which eavesdrops on EvoHome messages to capture useful information on what amount of heat is needed for space and water into simple txt files in /tmp. I then schedule a shell script every 4 minutes which uses a few steps to select a flow temperature: start with a weather compensated value based on exterior temperature from online service; adjust this up or down by up to 25% based on EvoHome space heat demand; if necessary override this to heat hot water. The selected flow temperature and a max burner level are then sent via curl to a BBQKees device running EMS-ESP which in turn controls boiler. So far it seems to be working as intended without loss of house comfort but with much lower flow temperatures observed to try and encourage boiler operating in condensing zone.  Very hard to tell if it is affecting gas consumption - which I would like it to :-). Main challenge I still see is how to stop EvoHome causing frequent on/off cycles of boiler while it still tries to use TPI flow control management."_
 
 ![1.5.0](/media/examples/ian_setflowtemp.png)
 
@@ -146,7 +150,7 @@ set_flowtemp $flowtemp
 
 ## Home Assistant sensor template for all status numbers on a GB192 Boiler
 
-(by @tefracky from [this comment](https://github.com/emsesp/EMS-ESP32/issues/938#issuecomment-1417592878)
+(by tefracky from [this comment](https://github.com/emsesp/EMS-ESP32/issues/938#issuecomment-1417592878)
 
 Here is the sensor in the new Home-Assistant template format for all status numbers for the Buderus GB192i-19 in German:
 
@@ -300,7 +304,7 @@ Here is the sensor in the new Home-Assistant template format for all status numb
 
 ## Using a custom Climate component in Home Assistant
 
-_(by @elRadix)_ from [this comment](https://github.com/emsesp/EMS-ESP32/discussions/790#discussioncomment-4895520)
+_(by elRadix)_ from [this comment](https://github.com/emsesp/EMS-ESP32/discussions/790#discussioncomment-4895520)
 
 This example sets up 2 climate entities for dhw with their mode and heating climate using a custom HACS card in HA called [simple thermostat](https://github.com/nervetattoo/simple-thermostat) like:
 
@@ -477,7 +481,7 @@ The next thing he is investigating is how to obtain a clear power reading (in W)
 
 ## Simple extra hot water charge trigger in Home Assistant
 
-_(by @oliof)_
+_(by oliof)_
 
 Here is a simple automation that toggles extra hot water by double clicking a Zigbee based button[^button]. This trigger could easily be swapped with a voice command or scanned QR code if desired.
 
@@ -485,7 +489,7 @@ Here is a simple automation that toggles extra hot water by double clicking a Zi
 
 ## Low load optimisation of a Buderus GB172 gas boiler
 
-_(by @oliof with additional input by @tz)_
+_(by oliof with additional input by tz)_
 
 When you start tuning your boiler, you will most likely end up with situations where the boiler will produce too much heat
 even at it's lowest modulation setting. In those cases it may be worthwhile to consider an additional control scheme that

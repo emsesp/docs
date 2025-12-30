@@ -1,3 +1,6 @@
+---
+id: Grafana
+---
 # Grafana
 
 ![logo](/media/logo/grafana-logo.png)

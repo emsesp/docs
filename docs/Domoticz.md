@@ -1,3 +1,6 @@
+---
+id: Domoticz
+---
 # Domoticz
 
 ![logo](/media/logo/domoticz.png)

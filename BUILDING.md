@@ -174,6 +174,11 @@ node scripts/translate-ui.js
 node scripts/translate-ui.js --locale de
 ```
 
+```bash
+# Testing - it won't work with pnpm start or pnpm fast
+pnpm build && pnpm serve
+```
+
 ## 📊 What Gets Translated
 
 ### Documentation Files (translate.js)

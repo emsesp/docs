@@ -30,6 +30,7 @@ module.exports = {
     // Add more files here as needed
     'Modbus-Entity-Registers.md',
     'ems-library.md',
+    'Version-Release-History.md'
   ],
 
   // Skip entire directories
@@ -93,17 +94,6 @@ module.exports = {
     'DHCP',
     'DNS',
 
-    // documentation terms
-    ':::note',
-    ':::warning',
-    ':::info',
-    ':::danger',
-    ':::success',
-    ':::error',
-    ':::tip',
-    ':::caution',
-    ':::important',
-
     // Add your own terms here
   ],
 
@@ -147,10 +137,10 @@ module.exports = {
   // - <div class="highlight">text</div>  → tag stays, "text" gets translated
   // - <img src="photo.jpg" alt="text" /> → entire tag preserved
   // - <!-- TODO: translate -->           → entire comment preserved
-  // - [Guide](Configuring.md)            → Configuring.md preserved, "Guide" translated
+  // - [Guide](Configuring.md)             → Configuring.md preserved, "Guide" translated
   // - docs/About.md                      → entire path preserved
   // - src/components/                    → folder name preserved
-  // - /usr/local/bin/emsesp               → entire path preserved
+  // - /usr/local/bin/emsesp              → entire path preserved
 
   // ======================================
   // AUTOMATIC PATTERN PRESERVATION
@@ -164,9 +154,21 @@ module.exports = {
   //
   // Note: Links and inline code are handled separately
   preservePatterns: [
+    // JavaScript/MDX import/export statements - NEVER TRANSLATE
+    // Matches: import X from 'Y', export { X } from 'Y', etc.
+    /^import\s+.*?from\s+['"][^'"]+['"];?\s*$/gm,
+    /^export\s+.*?from\s+['"][^'"]+['"];?\s*$/gm,
+    /^import\s+['"][^'"]+['"];?\s*$/gm,
+    /^export\s+.*?;?\s*$/gm,
+
     // Markdown file names - NEVER TRANSLATE THESE
     // Matches: Configuring.md, About.md, Heat-Pumps.md, FAQ.md, etc.
     /[A-Z][a-zA-Z0-9\-_]*\.md\b/g,
+
+    // Terms with slashes - NEVER TRANSLATE
+    // Matches: Linux/Ubuntu, USB/Serial, ESP32/ESP32-S3, etc.
+    // IMPORTANT: Must come BEFORE folder pattern to match full terms first
+    /\b[A-Za-z0-9]+(?:\/[A-Za-z0-9\-]+)+\b/g,
 
     // Folder names with trailing slash - NEVER TRANSLATE
     // Matches: docs/, src/, components/, i18n/, node_modules/, etc.

@@ -11,6 +11,17 @@
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
+  // Docs sidebar
+  docsSidebar: [
+    'Getting-Started',
+    'Installing',
+    'Configuring',
+    'WebUI',
+    'Commands',
+    'Console',
+    'Special-Functions',
+  ],
+
   // Devices sidebar
   devicesSidebar: [
     {

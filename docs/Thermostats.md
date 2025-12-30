@@ -1,3 +1,6 @@
+---
+id: Thermostats
+---
 # Thermostats
 
 This is the current list of supported thermostats from brands like Buderus, Nefit, Sieger, Junkers and Bosch:
@@ -31,12 +34,14 @@ This is the current list of supported thermostats from brands like Buderus, Nefi
     - Buderus Logamatic TC100, Bosch EasyControl CT200, Junkers CT100, Moduline Easy. See [here](https://community.home-assistant.io/t/buderus-tc100-junkers-ct100-thermostat/67992)
     - Junkers FW/FR build before 9/2008 (FD889). See [here](https://github.com/emsesp/EMS-ESP32/issues/105#issuecomment-915874482)
     - Tado Thermostats
+:::
 
 ## Device Entities
 
 :::warning
     The actual thermostat commands below will vary depending on which Thermostat brand and model you have.
     This list is also not complete and subject to change between versions.
+:::
 
 | command | data | id | comments |
 | - | - | - | - |

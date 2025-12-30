@@ -1,10 +1,9 @@
 import React from 'react';
-import {useLocation, useHistory} from '@docusaurus/router';
+import {useLocation} from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {translate} from '@docusaurus/Translate';
 import DropdownNavbarItem from '@theme/NavbarItem/DropdownNavbarItem';
 import IconLanguage from '@theme/Icon/Language';
-import styles from './styles.module.css';
 
 export default function LocaleDropdownNavbarItem({
   mobile,
@@ -13,64 +12,62 @@ export default function LocaleDropdownNavbarItem({
   ...props
 }) {
   const {
-    i18n: {defaultLocale, locales, localeConfigs},
+    i18n: {currentLocale, locales, localeConfigs, defaultLocale},
   } = useDocusaurusContext();
   
-  const {search, hash, pathname} = useLocation();
-  const history = useHistory();
+  const {pathname, search, hash} = useLocation();
 
-  // Extract current locale from URL pathname
-  const getCurrentLocaleFromPath = () => {
-    const pathSegments = pathname.split('/').filter(Boolean);
-    const firstSegment = pathSegments[0];
-    
-    if (locales.includes(firstSegment)) {
-      return firstSegment;
-    }
-    
-    return defaultLocale;
-  };
-
-  const currentLocale = getCurrentLocaleFromPath();
+  // Detect current locale from the URL path
+  const pathSegments = pathname.split('/').filter(Boolean);
+  const firstSegment = pathSegments[0];
+  const detectedLocale = locales.includes(firstSegment) ? firstSegment : defaultLocale;
 
   const localeItems = locales.map((locale) => {
-    // Remove current locale from pathname to get the base path
+    // Get the path without any locale prefix
     let cleanPath = pathname;
     
-    // Strip existing locale prefix if present
-    for (const loc of locales) {
-      if (cleanPath.startsWith(`/${loc}/`)) {
-        cleanPath = cleanPath.substring(loc.length + 1);
-        break;
-      } else if (cleanPath === `/${loc}`) {
-        cleanPath = '/';
-        break;
+    // Check if the current path starts with a locale prefix
+    const currentLocalePrefix = locales.find(loc => 
+      pathname === `/${loc}` || pathname.startsWith(`/${loc}/`)
+    );
+    
+    if (currentLocalePrefix) {
+      // Remove the locale prefix (e.g., /nl/page -> /page)
+      cleanPath = pathname.substring(currentLocalePrefix.length + 1) || '/';
+      // Ensure it starts with /
+      if (!cleanPath.startsWith('/')) {
+        cleanPath = '/' + cleanPath;
       }
     }
     
-    // Construct new path with target locale
-    let newPath;
+    // Build new URL with target locale
+    let to;
     if (locale === defaultLocale) {
-      newPath = cleanPath === '/' ? '/' : cleanPath;
+      // For default locale, use path without locale prefix
+      to = cleanPath;
     } else {
-      newPath = `/${locale}${cleanPath}`;
+      // For other locales, add locale prefix
+      to = `/${locale}${cleanPath}`;
     }
     
-    const fullPath = `${newPath}${search}${hash}`;
-    const isActive = locale === currentLocale;
+    // Remove double slashes
+    to = to.replace(/\/+/g, '/');
+    
+    // Add search and hash
+    to = `${to}${search}${hash}`;
+    
+    // Use detected locale from URL instead of currentLocale
+    const isActive = detectedLocale === locale;
     
     return {
       label: localeConfigs[locale].label,
       lang: localeConfigs[locale].htmlLang,
-      to: fullPath,
+      to,
       target: '_self',
       autoAddBaseUrl: false,
       className: isActive ? 'dropdown__link--active' : '',
-      activeBaseRegex: 'NEVER_MATCH_ANYTHING_12345', // Disable auto-active detection
-      onClick: !isActive ? (e) => {
-        e.preventDefault();
-        history.push(fullPath);
-      } : undefined,
+      // Prevent default active detection by using a custom activeClassName
+      activeClassName: 'custom-active-disabled',
     };
   });
 
@@ -80,24 +77,21 @@ export default function LocaleDropdownNavbarItem({
     ...(dropdownItemsAfter ?? []),
   ];
 
-  const currentLabel = localeConfigs[currentLocale]?.label || currentLocale;
-
   const dropdownLabel = mobile
     ? translate({
         message: 'Languages',
         id: 'theme.navbar.mobileLanguageDropdown.label',
         description: 'The label for the mobile language switcher dropdown',
       })
-    : currentLabel;
+    : localeConfigs[detectedLocale]?.label ?? detectedLocale;
 
   return (
     <DropdownNavbarItem
       {...props}
       mobile={mobile}
-      key={currentLocale} // Force re-render when locale changes
       label={
         <>
-          <IconLanguage className={styles.iconLanguage} />
+          <IconLanguage className="iconLanguage" />
           {dropdownLabel}
         </>
       }

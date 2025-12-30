@@ -1,0 +1,9 @@
+---
+id: Switches
+---
+
+# Schaltermodule
+
+Dies ist die aktuelle Liste der unterstützten Schaltmodule:
+
+- Buderus WM10

@@ -1,3 +1,6 @@
+---
+id: Building
+---
 # Building the firmware
 
 ### Prerequisites

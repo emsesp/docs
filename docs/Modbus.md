@@ -1,3 +1,6 @@
+---
+id: Modbus
+---
 # Modbus
 
 The Modbus connector allows to read and write entities using the Modbus/TCP protocol. See [Settings](Modbus-Settings.md)
@@ -86,3 +89,4 @@ After the adjusted `modbus_entity_parameters.hpp` file is updated as well as the
 
     The size of string entities is not known to EMS-ESP at runtime. So in case you add a new string entity you must
     also add the size of the string field to variable `string_sizes` in `scripts/update_modbus_registers.py` which maps entity short names to string sizes.
+:::
