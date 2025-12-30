@@ -1,3 +1,6 @@
+---
+id: Console
+---
 # Console
 
 EMS-ESP has a telnet server that enables clients to connect using a telnet client such as [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) or natively via the OS like this example with [Windows](https://www.technipages.com/windows-10-enable-telnet). The port is 23.

@@ -17,6 +17,7 @@ keywords:
   - IoT heating
 hide_table_of_contents: true
 hide_title: true
+sidebar_class_name: hidden
 image: /media/screenshot/main-screen.png
 ---
 

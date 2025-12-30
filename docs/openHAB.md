@@ -1,3 +1,6 @@
+---
+id: openHAB
+---
 # openHAB
 
 ![logo](/media/logo/openhab-logo.png)
@@ -12,7 +15,7 @@ EMS-ESP can be integrated into openHab through different ways:
   <figcaption>Example Dashboard (items depend on heating system)</figcaption>
 </figure>
 
-:::note It depends on the entity and the device if it is writable or just readable. Have a look into the list of entities [**Entities**](All-Devices) for all available entities and related attributes.
+:::note It depends on the entity and the device if it is writable or just readable. Have a look into the list of entities [Entities](All-Entities) for all available entities and related attributes.
 :::
 
 :::note Documentation has been created for openHab version 3.x
@@ -73,7 +76,7 @@ It is possible to create for each device a separate `Generic MQTT Thing` or all 
 
 ```python title="things/mqtt.things"
 Bridge mqtt:broker:broker "MQTT Bridge" [ host="127.0.0.1", secure=false ]{
-    Thing topic ems-esp "Buderus Heating Pump" @ "gBoilerRoom" [availabilityTopic="ems-esp/status", payloadAvailable="online", payloadNotAvailable="offline"]{
+    Thing topic ems-esp "Buderus Heating Pump" "gBoilerRoom" [availabilityTopic="ems-esp/status", payloadAvailable="online", payloadNotAvailable="offline"]{
     Channels:
        Type switch : EMS_s_pvcooling "Cooling only with PV" [stateTopic="ems-esp/boiler_data", commandTopic="ems-esp/boiler/pvcooling", ON="ON", OFF="OFF", transformationPattern="JSONPATH:$.pvcooling"]
        Type number : EMS_n_pvraiseheat "Raise Hot Water with PV by" [stateTopic="ems-esp/thermostat_data", commandTopic="ems-esp/thermostat/pvraiseheat", transformationPattern="JSONPATH:$.pvraiseheat"]

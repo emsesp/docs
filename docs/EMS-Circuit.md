@@ -1,3 +1,6 @@
+---
+id: EMS-Circuit
+---
 # A prototype hardware design
 
 :::note For questions or suggestions please post these directly on the _board-design_ channel in [Discord](https://discord.com/invite/3J3GgnzpyT)

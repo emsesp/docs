@@ -1,5 +1,6 @@
 ---
 title: WebUI
+id: WebUI
 description: Access and navigate the EMS-ESP web interface
 ---
 

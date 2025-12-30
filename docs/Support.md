@@ -1,3 +1,6 @@
+---
+id: Support
+---
 # Getting Support
 
 If you are looking for EMS-ESP support, have a question or suggestion here are the options:
@@ -19,3 +22,4 @@ If you are looking for EMS-ESP support, have a question or suggestion here are t
     7. you include the steps to reproduce the problem.
     8. you include the expected behavior.
     9. you include the actual behavior.
+:::

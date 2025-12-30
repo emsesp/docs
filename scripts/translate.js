@@ -79,7 +79,7 @@ async function translateWithDeepL(text, targetLang) {
 
   const langCode = targetLang === 'de' ? 'DE' : 'NL';
   
-  const response = await fetch('https://api-free.deepl.com/v2/translate', {
+  const response = await fetch('https://api.deepl.com/v2/translate', {
     method: 'POST',
     headers: {
       'Authorization': `DeepL-Auth-Key ${DEEPL_API_KEY}`,
@@ -89,9 +89,9 @@ async function translateWithDeepL(text, targetLang) {
       text: text,
       target_lang: langCode,
       source_lang: 'EN',
-      preserve_formatting: CONFIG.deepl.preserveFormatting !== false ? '1' : '0',
+      preserve_formatting: '1',
       formality: CONFIG.deepl.formality || 'default',
-      split_sentences: CONFIG.deepl.splitSentences || 'nonewlines',
+      split_sentences: 'nonewlines',
     }),
   });
 
@@ -206,40 +206,66 @@ function protectPatterns(text) {
   const protectedItems = [];
   let protectedText = text;
 
+  // Protect inline code (backticks) FIRST - this is critical to preserve code
+  // Use XML-like tags that translation APIs preserve
+  protectedText = protectedText.replace(/`[^`]+`/g, (match) => {
+    const placeholder = `<XCODE${protectedItems.length}X>`;
+    protectedItems.push({ original: match, type: 'code' });
+    return placeholder;
+  });
+
+  // Protect markdown images ![alt](url)
+  protectedText = protectedText.replace(/!\[([^\]]*)\]\(([^\)]+)\)/g, (match) => {
+    const placeholder = `<XIMAGE${protectedItems.length}X>`;
+    protectedItems.push({ original: match, type: 'image' });
+    return placeholder;
+  });
+
+  // Protect Docusaurus admonitions - opening tags only (not the title)
+  // Example: ":::warning Important Disclaimer" -> "<XADMO0X> Important Disclaimer"
+  // After translation: "<XADMO0X> Wichtiger Haftungsausschluss" 
+  // After restoration: ":::warning Wichtiger Haftungsausschluss" ✓
+  // This allows titles to be translated while keeping the syntax intact
+  protectedText = protectedText.replace(/^:::(note|warning|tip|info|caution|danger)(?=\s|$)/gmi, (match) => {
+    const placeholder = `<XADMO${protectedItems.length}X>`;
+    protectedItems.push({ original: match, type: 'admonition_open' });
+    return placeholder;
+  });
+
+  // Protect Docusaurus admonitions - closing tags (standalone ::: on a line)
+  protectedText = protectedText.replace(/^:::$/gm, (match) => {
+    const placeholder = `<XADMC${protectedItems.length}X>`;
+    protectedItems.push({ original: match, type: 'admonition_close' });
+    return placeholder;
+  });
+
   // Protect HTML comments (<!-- comment -->)
   protectedText = protectedText.replace(/<!--[\s\S]*?-->/g, (match) => {
-    const placeholder = `__HTML_COMMENT_${protectedItems.length}__`;
-    protectedItems.push({ original: match });
+    const placeholder = `<XCOMMENT${protectedItems.length}X>`;
+    protectedItems.push({ original: match, type: 'comment' });
     return placeholder;
   });
 
   // Protect HTML tags (including self-closing and with attributes)
   // This handles: <tag>, </tag>, <tag attr="value">, <tag attr="value" />
   protectedText = protectedText.replace(/<\/?[a-zA-Z][^>]*\/?>/g, (match) => {
-    const placeholder = `__HTML_TAG_${protectedItems.length}__`;
-    protectedItems.push({ original: match });
+    const placeholder = `<XHTML${protectedItems.length}X>`;
+    protectedItems.push({ original: match, type: 'html' });
     return placeholder;
   });
 
-  // Protect markdown links - preserve the entire link structure
+  // Protect markdown links - preserve the entire link structure  
   protectedText = protectedText.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, (match, linkText, url) => {
-    const placeholder = `__LINK_${protectedItems.length}__`;
-    protectedItems.push({ original: match, linkText, url, isLink: true });
-    return placeholder;
-  });
-
-  // Protect inline code (backticks)
-  protectedText = protectedText.replace(/`[^`]+`/g, (match) => {
-    const placeholder = `__CODE_${protectedItems.length}__`;
-    protectedItems.push({ original: match });
+    const placeholder = `<XLINK${protectedItems.length}X>`;
+    protectedItems.push({ original: match, linkText, url, type: 'link' });
     return placeholder;
   });
 
   // Protect custom patterns from config
   CONFIG.preservePatterns.forEach((pattern, patternIndex) => {
     protectedText = protectedText.replace(pattern, (match) => {
-      const placeholder = `__PATTERN_${patternIndex}_${protectedItems.length}__`;
-      protectedItems.push({ original: match });
+      const placeholder = `<XPATTERN${patternIndex}N${protectedItems.length}X>`;
+      protectedItems.push({ original: match, type: 'pattern', patternIndex });
       return placeholder;
     });
   });
@@ -253,88 +279,149 @@ function protectPatterns(text) {
 function restorePatterns(translatedText, protectedItems) {
   let restoredText = translatedText;
 
-  // Restore links with translated link text but preserved URLs
-  protectedItems.forEach((item, index) => {
-    if (item.isLink) {
-      const placeholder = `__LINK_${index}__`;
-      // The link text might have been partially in the placeholder
-      // We need to find if the translated text has any translation around the placeholder
-      const regex = new RegExp(`([^\\[]*)?${placeholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'g');
-      restoredText = restoredText.replace(regex, (match, before) => {
-        // Try to extract translated link text if the AI translated around the placeholder
-        if (before && before.trim()) {
-          return `[${before.trim()}](${item.url})`;
-        }
-        // Otherwise use original
-        return item.original;
-      });
+  // Restore all placeholders - using XML-like tags
+  // Go in reverse order to avoid conflicts with indices
+  for (let index = protectedItems.length - 1; index >= 0; index--) {
+    const item = protectedItems[index];
+    const escapePlaceholder = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    
+    // Create placeholders based on type
+    let placeholder;
+    if (item.type === 'code') {
+      placeholder = `<XCODE${index}X>`;
+    } else if (item.type === 'image') {
+      placeholder = `<XIMAGE${index}X>`;
+    } else if (item.type === 'admonition_open') {
+      placeholder = `<XADMO${index}X>`;
+    } else if (item.type === 'admonition_close') {
+      placeholder = `<XADMC${index}X>`;
+    } else if (item.type === 'comment') {
+      placeholder = `<XCOMMENT${index}X>`;
+    } else if (item.type === 'html') {
+      placeholder = `<XHTML${index}X>`;
+    } else if (item.type === 'link') {
+      placeholder = `<XLINK${index}X>`;
+    } else if (item.type === 'pattern' && item.patternIndex !== undefined) {
+      placeholder = `<XPATTERN${item.patternIndex}N${index}X>`;
     }
-  });
-
-  // Restore all placeholders with original content
-  protectedItems.forEach((item, index) => {
-    const htmlCommentPlaceholder = `__HTML_COMMENT_${index}__`;
-    const htmlTagPlaceholder = `__HTML_TAG_${index}__`;
-    const linkPlaceholder = `__LINK_${index}__`;
-    const codePlaceholder = `__CODE_${index}__`;
     
-    restoredText = restoredText.replace(htmlCommentPlaceholder, item.original);
-    restoredText = restoredText.replace(htmlTagPlaceholder, item.original);
-    restoredText = restoredText.replace(linkPlaceholder, item.original);
-    restoredText = restoredText.replace(codePlaceholder, item.original);
-    
-    // Restore pattern placeholders
-    CONFIG.preservePatterns.forEach((pattern, patternIndex) => {
-      const patternPlaceholder = `__PATTERN_${patternIndex}_${index}__`;
-      restoredText = restoredText.replace(patternPlaceholder, item.original);
-    });
-  });
+    if (placeholder) {
+      // Try multiple restoration strategies to handle translation API modifications
+      
+      // 1. Exact match (case-insensitive)
+      const regexExact = new RegExp(escapePlaceholder(placeholder), 'gi');
+      restoredText = restoredText.replace(regexExact, item.original);
+      
+      // 2. Match with possible whitespace around placeholder
+      const regexWithSpaces = new RegExp(`\\s*${escapePlaceholder(placeholder)}\\s*`, 'gi');
+      if (restoredText.includes(`<X`)) {
+        restoredText = restoredText.replace(regexWithSpaces, item.original);
+      }
+      
+      // 3. Handle cases where translation API added spaces within placeholder
+      // e.g., "< XADMO0X >" or "<XADMO 0X>"
+      const placeholderWithSpaces = placeholder.replace(/([A-Z]+)(\d+)([A-Z])/g, '< ?$1 ?$2 ?$3');
+      const regexFlexible = new RegExp(placeholderWithSpaces, 'gi');
+      restoredText = restoredText.replace(regexFlexible, item.original);
+    }
+  }
+  
+  // Final safety check: if any placeholders remain, log a warning
+  const remainingPlaceholders = restoredText.match(/<X[A-Z]+\d+X>/gi);
+  if (remainingPlaceholders) {
+    console.warn(`  ⚠️  Warning: Some placeholders were not restored: ${remainingPlaceholders.join(', ')}`);
+    console.warn(`  This may cause formatting issues. Please review the output.`);
+  }
 
   return restoredText;
 }
 
 /**
- * Split content into translatable chunks (avoiding code blocks)
+ * Split content into translatable chunks (line-by-line for lists, paragraph for prose)
+ * Each list item, blank line, or paragraph creates a chunk, code blocks are kept separate
  */
 function splitIntoChunks(content) {
+  const lines = content.split('\n');
   const chunks = [];
-  const codeBlockRegex = /```[\s\S]*?```/g;
-  let lastIndex = 0;
-  let match;
+  let inCodeBlock = false;
+  let codeBlockContent = [];
+  let currentParagraph = [];
+  let inList = false;
 
-  // Find all code blocks
-  const codeBlocks = [];
-  while ((match = codeBlockRegex.exec(content)) !== null) {
-    codeBlocks.push({
-      start: match.index,
-      end: match.index + match[0].length,
-      content: match[0],
-    });
-  }
-
-  // Split content around code blocks
-  codeBlocks.forEach((block, index) => {
-    // Add text before code block
-    if (lastIndex < block.start) {
-      const text = content.substring(lastIndex, block.start).trim();
-      if (text) {
-        chunks.push({ type: 'text', content: text });
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmedLine = line.trim();
+    
+    // Check for code block delimiters
+    if (trimmedLine.startsWith('```')) {
+      if (inCodeBlock) {
+        // End of code block
+        codeBlockContent.push(line);
+        chunks.push({ type: 'code', content: codeBlockContent.join('\n') });
+        codeBlockContent = [];
+        inCodeBlock = false;
+      } else {
+        // Start of code block - flush any accumulated paragraph first
+        if (currentParagraph.length > 0) {
+          chunks.push({ type: 'text', content: currentParagraph.join('\n') });
+          currentParagraph = [];
+        }
+        codeBlockContent.push(line);
+        inCodeBlock = true;
+        inList = false;
       }
-    }
-    // Add code block (don't translate)
-    chunks.push({ type: 'code', content: block.content });
-    lastIndex = block.end;
-  });
-
-  // Add remaining text
-  if (lastIndex < content.length) {
-    const text = content.substring(lastIndex).trim();
-    if (text) {
-      chunks.push({ type: 'text', content: text });
+    } else if (inCodeBlock) {
+      // Inside code block
+      codeBlockContent.push(line);
+    } else if (trimmedLine === ':::') {
+      // Standalone closing ::: - flush paragraph and add as separate line
+      if (currentParagraph.length > 0) {
+        chunks.push({ type: 'text', content: currentParagraph.join('\n') });
+        currentParagraph = [];
+      }
+      chunks.push({ type: 'text', content: line });
+      inList = false;
+    } else if (trimmedLine === '') {
+      // Empty line - marks end of paragraph or list
+      if (currentParagraph.length > 0) {
+        chunks.push({ type: 'text', content: currentParagraph.join('\n') });
+        currentParagraph = [];
+      }
+      // Add empty line as separate chunk to preserve spacing
+      chunks.push({ type: 'empty', content: '' });
+      inList = false;
+    } else if (trimmedLine.startsWith('- ') || trimmedLine.match(/^\d+\. /) || trimmedLine.startsWith('| ')) {
+      // List item or table row - treat each one as a separate chunk
+      if (currentParagraph.length > 0) {
+        chunks.push({ type: 'text', content: currentParagraph.join('\n') });
+        currentParagraph = [];
+      }
+      chunks.push({ type: 'text', content: line });
+      inList = trimmedLine.startsWith('| ') ? false : true;
+    } else if (inList && (line.startsWith('  ') || line.startsWith('\t'))) {
+      // Continuation of list item (indented)
+      // Append to the last chunk if it's text
+      if (chunks.length > 0 && chunks[chunks.length - 1].type === 'text') {
+        chunks[chunks.length - 1].content += '\n' + line;
+      } else {
+        currentParagraph.push(line);
+      }
+    } else {
+      // Regular paragraph line
+      currentParagraph.push(line);
+      inList = false;
     }
   }
 
-  // If no code blocks, return entire content as one chunk
+  // Flush any remaining content
+  if (currentParagraph.length > 0) {
+    chunks.push({ type: 'text', content: currentParagraph.join('\n') });
+  }
+  if (codeBlockContent.length > 0) {
+    chunks.push({ type: 'code', content: codeBlockContent.join('\n') });
+  }
+
+  // If no chunks, return entire content as one chunk
   if (chunks.length === 0) {
     chunks.push({ type: 'text', content: content });
   }
@@ -358,8 +445,12 @@ async function translateFile(filePath, targetLang) {
   const translatedChunks = [];
   for (const chunk of chunks) {
     if (chunk.type === 'code') {
+      // Keep code blocks as-is
       translatedChunks.push(chunk.content);
-    } else {
+    } else if (chunk.type === 'empty') {
+      // Keep empty lines as-is to preserve spacing
+      translatedChunks.push('');
+    } else if (chunk.type === 'text') {
       try {
         // Protect patterns before translation
         const { protectedText, protectedItems } = protectPatterns(chunk.content);
@@ -371,6 +462,9 @@ async function translateFile(filePath, targetLang) {
         const restoredTranslation = restorePatterns(translated, protectedItems);
         
         translatedChunks.push(restoredTranslation);
+        
+        // Small delay between translations to avoid rate limiting
+        await new Promise(resolve => setTimeout(resolve, 100));
       } catch (error) {
         console.error(`    Error translating chunk: ${error.message}`);
         throw error;
@@ -378,8 +472,8 @@ async function translateFile(filePath, targetLang) {
     }
   }
 
-  // Reconstruct the file
-  let translatedContent = translatedChunks.join('\n\n');
+  // Reconstruct the file - join chunks with newline
+  let translatedContent = translatedChunks.join('\n');
 
   // Add frontmatter back if it existed
   if (frontmatter) {
@@ -470,7 +564,8 @@ async function main() {
     const sourcePath = path.join(CONFIG.sourceDir, file);
 
     for (const locale of targetLocales) {
-      const targetPath = path.join(CONFIG.sourceDir, locale, file);
+      // Put translated files in the correct Docusaurus i18n folder structure
+      const targetPath = path.join(__dirname, '..', 'i18n', locale, 'docusaurus-plugin-content-docs', 'current', file);
       const targetDir = path.dirname(targetPath);
 
       // Check if translation already exists

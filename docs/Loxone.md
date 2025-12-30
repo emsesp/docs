@@ -1,3 +1,6 @@
+---
+id: Loxone
+---
 # Loxone
 
 ![logo](/media/logo/loxone-logo.png)

@@ -1,3 +1,6 @@
+---
+id: Troubleshooting
+---
 # Troubleshooting
 
 Below are responses to some common problems.
@@ -98,7 +101,7 @@ ems-esp:# scan
 ems-esp:#
 ```
 
-If you want to see the EMS data streaming in, use the `watch` command. See [Console](Console.md?id=monitoring-the-ems-traffic).
+If you want to see the EMS data streaming in, use the `watch` command. See [Console](Console#monitoring-the-ems-traffic).
 
 ### I'm missing certain data from an EMS device
 
@@ -108,7 +111,7 @@ When you have located the telegram, find the offset and use the `Custom Entities
 
 Note that not all EMS devices allow their data to be published on the EMS bus, for example the smart thermostats like the Nefit Easy and Buderus Easy Control CT200 which only transmits the current room and setpoint temperatures as read-only attributes.
 
-See this article on [Decoding EMS Telegrams](FAQ.md?id=decoding-ems-telegrams) for more information.
+See this article on [Decoding EMS Telegrams](FAQ#what-is-an-ems-telegrams) for more information.
 
 ### Many Rx errors
 
@@ -165,7 +168,7 @@ If you're seeing unusual Dallas sensor readings (crazy negative temperatures, su
 
 If you're noticing that MQTT messages are failing to arrive at the MQTT broker/server try:
 
-- Check the EMS-ESP logs for errors. If you see "low memory" errors then read [It may be memory related](Troubleshooting.md?id=general#it-may-be-memory-related) to see how you reduce memory usage
+- Check the EMS-ESP logs for errors. If you see "low memory" errors then read [It may be memory related](#it-may-be-memory-related) to see how you reduce memory usage
 - Check the MQTT broker for errors. You may have incorrect credentials or duplicate Client IDs causing a connection conflict
 - Set the EMS-ESP System log level to ALL (via Web or Console) and monitor the traffic
 - Use the Telnet Console to force a publish to see what happens. (`log debug`, `su` and `publish`)
@@ -211,7 +214,7 @@ persistence_location /mosquitto/data/
 log_dest file /mosquitto/log/mosquitto.log
 ```
 
-To read up more on this visit https://pagefault.blog/2020/02/05/how-to-set-up-persistent-storage-for-mosquitto-mqtt-broker.
+To read up more on this visit [this article](https://pagefault.blog/2020/02/05/how-to-set-up-persistent-storage-for-mosquitto-mqtt-broker).
 
 An alternative option without using persistance on the MQTT server is to tell EMS-ESP to republish all the Home Assistant MQTT topics. You can do this via the EMS-ESP WebUI from version 3.4 and higher.
 
@@ -223,7 +226,7 @@ This could happen when either upgrading from an earlier EMS-ESP version and some
 
 ### HA has duplicate entities, prefixed with \_2
 
-See @swa72's fix [here](https://github.com/swa72/home-assistant/blob/main/README-mqtt.md).
+See swa72's fix [here](https://github.com/swa72/home-assistant/blob/main/README-mqtt.md).
 
 ### HA has messed up the names of my entities
 

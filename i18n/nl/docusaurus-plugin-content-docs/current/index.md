@@ -17,80 +17,81 @@ keywords:
   - IoT heating
 hide_table_of_contents: true
 hide_title: true
+sidebar_class_name: hidden
 image: /media/screenshot/main-screen.png
 ---
 
 <div style={{display: 'flex', alignItems: 'center', gap: '2rem', marginBottom: '2rem', flexWrap: 'wrap'}}>
 
-<div style={{flex: '0 0 auto'}}>
-<img src="/media/logo/boiler.svg" alt="EMS-ESP Logo" width="200" />
-</div>
+<div style={{flex: '0 0 auto'}}> <img src="/media/logo/boiler.svg" alt="EMS-ESP Logo" width="200" /> </div>
 
 <div style={{flex: '1 1 400px'}}>
 
-EMS-ESP is an open-source firmware for the Espressif ESP32 microcontroller to communicate with EMS (Energy Management System) compatible equipment from manufacturers such as Bosch, Buderus, Nefit, Junkers, Worcester, Sieger, elm.leblanc and iVT.
+EMS-ESP is een open-source firmware voor de Espressif ESP32 microcontroller om te communiceren met EMS (Energy Management System) compatibele apparatuur van fabrikanten zoals Bosch, Buderus, Nefit, Junkers, Worcester, Sieger, elm.leblanc en iVT.
 
-EMS-ESP requires a small additional circuit to interface between the EMS bus line an the microcontroller. This circuit is available as a pre-built module from BBQKees Electronics, or can be built from a schematic provided in the documentation.
-
-</div>
+Voor EMS-ESP is een klein extra circuit nodig voor de interface tussen de EMS-buslijn en de microcontroller. Deze schakeling is verkrijgbaar als kant-en-klare module van BBQKees Electronics, of kan worden gebouwd aan de hand van het schema in de documentatie.
 
 </div>
 
-## 🚀 Key Features
+</div>
+
+## Belangrijkste kenmerken
 
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', margin: '2rem 0'}}>
 
 <div style={{padding: '1.5rem', borderRadius: '8px', background: 'var(--ifm-background-surface-color)', border: '1px solid var(--ifm-color-emphasis-300)'}}>
 
-### 🔌 Device Compatibility
+### Compatibiliteit van apparaten
 
-Compatible with EMS, EMS+, EMS2, EMS Plus, Logamatic EMS, Junkers 2-wire, Heatronic 3 and 4
+Compatibel met EMS, EMS+, EMS2, EMS Plus, Logamatic EMS, Junkers 2-draads en Heatronic 3 en 4.
 
-Supporting 130 different EMS compatible devices such as thermostats, boilers, heat pumps, mixing units, solar modules, connect modules, ventilation units, switches and more
+Ondersteunt meer dan 130 EMS-compatibele apparaten van thermostaten, boilers, warmtepompen, mengeenheden, zonnemodules, connect modules, ventilatie-units, schakelaars van merken zoals Buderus, Nefit, Sieger, Junkers, Bosch, Worcester, elm.leblanc en iVT.
 
-</div>
-
-<div style={{padding: '1.5rem', borderRadius: '8px', background: 'var(--ifm-background-surface-color)', border: '1px solid var(--ifm-color-emphasis-300)'}}>
-
-### 🌐 User Interface
-
-A versatile multi-user, multi-language web interface to change settings and monitor incoming data. Translated into 10 different languages.
-
-A simple to use console, accessible via Serial/USB or Telnet for advanced operations and detailed monitoring
+Sluit temperatuursensoren of elk type analoge sensor aan en beheer deze binnen EMS-ESP.
 
 </div>
 
 <div style={{padding: '1.5rem', borderRadius: '8px', background: 'var(--ifm-background-surface-color)', border: '1px solid var(--ifm-color-emphasis-300)'}}>
 
-### 🔧 Integrations
+### Gebruikersinterface
 
-Native integration with home automation systems such as Home Assistant, Domoticz and  openHAB, as well as Modbus and Prometheus.
+Een veelzijdige webinterface om je EMS-apparaten te configureren en beheren, met vertalingen naar 10 talen.
 
-MQTT and RESTful API for automation and integration with other systems.
+Een eenvoudig te gebruiken console, toegankelijk via Serial/USB of Telnet voor geavanceerde bewerkingen en gedetailleerde monitoring.
 
 </div>
 
 <div style={{padding: '1.5rem', borderRadius: '8px', background: 'var(--ifm-background-surface-color)', border: '1px solid var(--ifm-color-emphasis-300)'}}>
 
-### ⚡ Advanced Features
+### Integraties
 
-Simulation of remote thermostats for RC100H, RC200 and FB10
+Native integratie met populaire domoticasystemen zoals Home Assistant, Domoticz, IOBroker, Loxone en openHAB.
 
-Custom EMS entities for any device or sensor
+Ondersteuning voor Modbus en Prometheus.
 
-Powerful scheduler for automatic control of devices and sensors
+MQTT en RESTful API's voor diepere integraties met andere systemen.
 
-Notification service for alerts and warnings
+</div>
+
+<div style={{padding: '1.5rem', borderRadius: '8px', background: 'var(--ifm-background-surface-color)', border: '1px solid var(--ifm-color-emphasis-300)'}}>
+
+### Geavanceerde functies
+
+Simulatie van thermostaten op afstand voor RC100H, RC200 en FB10 apparaten.
+
+Maak je eigen aangepaste EMS-entiteiten voor elk apparaat of sensor.
+
+Gebruik de krachtige planner om acties te automatiseren.
+
+Gebruik de notificatieservice om waarschuwingen en meldingen te versturen.
 
 </div>
 
 </div>
 
-<div style={{flex: '0 0 auto'}}>
-<img src="/media/screenshot/main-screen.png" alt="EMS-ESP Main Screen" width="700" />
-</div>
+<div style={{flex: '0 0 auto'}}> <img src="/media/screenshot/main-screen.png" alt="EMS-ESP Main Screen" width="700" /> </div>
 
-## 📦 Latest Releases
+## Nieuwste releases
 
 [![version](https://img.shields.io/github/release/emsesp/EMS-ESP32.svg?label=Latest%20Release)](https://github.com/emsesp/EMS-ESP32/blob/main/CHANGELOG.md)
 [![release-date](https://img.shields.io/github/release-date/emsesp/EMS-ESP32.svg?label=Released)](https://github.com/emsesp/EMS-ESP32/commits/main)
@@ -102,23 +103,23 @@ Notification service for alerts and warnings
 
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 
-- **Stable:** [v3.8.0](https://github.com/emsesp/EMS-ESP32/releases/tag/v3.8.0)
-- **Development:** [v3.8.1](https://github.com/emsesp/EMS-ESP32/releases/tag/latest)
+- **Stabiel:** [v3.8.0](https://github.com/emsesp/EMS-ESP32/releases/tag/v3.8.0)
+- **Ontwikkeling:** [v3.8.1](https://github.com/emsesp/EMS-ESP32/releases/tag/latest)
 
-## 📱 Live Demo
+## Live demo
 
-Try out the live demo at [demo.emsesp.org](https://demo.emsesp.org). (_select your language on the sign-on page and log in with any username and password_)
+Probeer de live demo uit op [demo.emsesp.org](https://demo.emsesp.org). (_selecteer je taal op de aanmeldpagina en log in met een gebruikersnaam en wachtwoord_)
 
-## 📦 Get Started
+## Aan de slag
 
-Ready to install EMS-ESP? Check out our [Get Started guide](Getting-Started).
+Klaar om EMS-ESP te installeren? Bekijk onze [Get Started guide](Getting-Started).
 
-## 🆘 Need Help?
+## Hulp nodig?
 
-Having issues or need support? Check out our [Support page](Support).
+Problemen of ondersteuning nodig? Bekijk onze [Support page](Support).
 
-## 💬 Join our Community
+## Word lid van onze community
 
-Connect with other users, get help, and share your experiences.
+Maak contact met andere gebruikers, krijg hulp en deel je ervaringen.
 
 [![Discord Server](https://discordapp.com/api/guilds/816637840644505620/widget.png?style=banner2)](https://discord.gg/3J3GgnzpyT)

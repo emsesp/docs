@@ -1,5 +1,6 @@
 ---
 title: Installation Guide
+id: Installing
 description: Getting started with EMS-ESP. What you need, how to install and do initial configuration.
 ---
 
@@ -33,7 +34,7 @@ where `<chipset>` is `ESP32` or `ESP32S3` and `<flashsize>` either `4MB` or `16M
 
 Determine the correct type of your ESP32 device and download the latest stable version of the firmware using the table below. If you're not sure which firmware to use contact us.
 
-| chipset  | flashsize | PSRAM | Firmware file                                                                                                                   |
+| `chipset`  | `flashsize` | `PSRAM` | `Firmware file`                                                                                                                   |
 | -------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
 | ESP32    | 16MB      | 8MB   | [EMS-ESP-3_8_0-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-16MB+.bin)     |
 | ESP32-S3 | 16MB      | 8MB   | [EMS-ESP-3_8_0-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32S3-16MB+.bin) |
@@ -42,7 +43,7 @@ Determine the correct type of your ESP32 device and download the latest stable v
 
 If using a [BBQKees Electronics Gateway](https://bbqkees-electronics.nl) board, follow this guide to ensure you are select the correct firmware:
 
-| Model                 | Release Year  | Has PSRAM? | Firmware file                                                                                                                  |
+| `Model`                 | `Release Year`  | `Has PSRAM?` | `Firmware file`                                                                                                                  |
 | --------------------- | ------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | Gateway E32 V2        | >01-2024      | Yes        | [EMS-ESP-3_8_0-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-16MB+.bin)          |
 | Gateway S3(-LR)       | >09-2023      | Yes        | [EMS-ESP-3_8_0-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32S3-16MB+.bin)      |

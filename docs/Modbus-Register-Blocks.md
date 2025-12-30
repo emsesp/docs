@@ -1,8 +1,11 @@
+---
+id: Modbus-Register-Blocks
+---
 # Modbus Register Blocks
 
 This table shows how entity tags are mapped to Modbus register block offsets.
 
-| Tag         | Register Offset |
+| `Tag`         | `Register Offset` |
 | ----------- | --------------- |
 | DEVICE_DATA | 0               |
 | HC1         | 1000            |
