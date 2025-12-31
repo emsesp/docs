@@ -44,7 +44,7 @@
     "description": "Navbar item with label GitHub"
   },
   "item.label.Discord": {
-    "message": "Diskord",
+    "message": "Discord",
     "description": "Navbar item with label Discord"
   },
   "item.label.Getting Started": {
@@ -84,15 +84,15 @@
     "description": "Navbar item with label All Devices and Entities"
   },
   "item.label.Boilers": {
-    "message": "Heizkessel",
+    "message": "Kessel",
     "description": "Navbar item with label Boilers"
   },
   "item.label.Thermostats": {
-    "message": "Thermostat",
+    "message": "Thermostate",
     "description": "Navbar item with label Thermostats"
   },
   "item.label.Controllers": {
-    "message": "Steuergeräte",
+    "message": "Controller-Module",
     "description": "Navbar item with label Controllers"
   },
   "item.label.Heat Pumps": {
@@ -100,31 +100,31 @@
     "description": "Navbar item with label Heat Pumps"
   },
   "item.label.Alert": {
-    "message": "Alarm",
+    "message": "Alert-Module",
     "description": "Navbar item with label Alert"
   },
   "item.label.Connect": {
-    "message": "Verbinden",
+    "message": "Connect-Module",
     "description": "Navbar item with label Connect"
   },
   "item.label.Extension": {
-    "message": "Erweiterung",
+    "message": "Erweiterungs-Module",
     "description": "Navbar item with label Extension"
   },
   "item.label.Gateways": {
-    "message": "Gateways",
+    "message": "Gateway-Module",
     "description": "Navbar item with label Gateways"
   },
   "item.label.Mixer Modules": {
-    "message": "Mischermodul",
+    "message": "Mixer-Module",
     "description": "Navbar item with label Mixer Modules"
   },
   "item.label.Solar Modules": {
-    "message": "Solarmodul",
+    "message": "Solar-Module",
     "description": "Navbar item with label Solar Modules"
   },
   "item.label.Switches": {
-    "message": "Schalter",
+    "message": "Schalter-Module",
     "description": "Navbar item with label Switches"
   },
   "item.label.Home Assistant": {

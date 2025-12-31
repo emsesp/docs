@@ -44,7 +44,8 @@ Der entfernte Thermostat bleibt im EMS-ESP-Geräte-Dashboard, hat aber keine Ent
 
 Hinweis: Wenn die Steuerung auf `roomthermostat` eingestellt ist und der erste Temperaturwert für `remotetemp` nicht innerhalb einer Minute gesendet wird, zeigt der Master-Thermostat wahrscheinlich eine Fehlermeldung an.
 
-:::warning Haftungsausschluss Mit der Ferneinstellung der Luftfeuchtigkeit können Sie eine Wärmepumpe so einstellen, dass sie auch dann zu kühlen beginnt, wenn der tatsächliche Taupunkt unterschritten ist, was zu Kondenswasserbildung an Rohren und auf dem Fußboden führen und das System beschädigen kann. Verwendung auf eigene Gefahr!
+:::warning
+Haftungsausschluss Mit der Ferneinstellung der Luftfeuchtigkeit können Sie eine Wärmepumpe so einstellen, dass sie auch dann zu kühlen beginnt, wenn der tatsächliche Taupunkt unterschritten ist, was zu Kondenswasserbildung an Rohren und auf dem Fußboden führen und das System beschädigen kann. Verwendung auf eigene Gefahr!
 :::
 
 ### Terminierung der Temperatureinstellungen

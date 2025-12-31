@@ -11,10 +11,6 @@
     "message": "Introduction",
     "description": "The label for the doc item 'Introduction' in sidebar 'devicesSidebar', linking to the doc All-Devices"
   },
-  "sidebar.integrationsSidebar.doc.Introduction": {
-    "message": "Introduction",
-    "description": "The label for the doc item '3rd party integrations' in sidebar 'integrationsSidebar', linking to the doc Integrations"
-  },
   "sidebar.modbusSidebar.doc.Introduction": {
     "message": "Introduction",
     "description": "The label for the doc item 'Introduction' in sidebar 'modbusSidebar', linking to the doc Modbus"

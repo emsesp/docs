@@ -43,7 +43,8 @@ De thermostaat op afstand blijft in het EMS-ESP apparaatdashboard, maar heeft ge
 
 Let op, als de regeling is ingesteld op `roomthermostat` en de eerste temperatuurwaarde voor `remotetemp` niet binnen een minuut wordt verzonden, zal de hoofdthermostaat waarschijnlijk een foutmelding geven.
 
-:::warning Disclaimer Met het op afstand instellen van de luchtvochtigheid kunt u een warmtepomp instellen om te gaan koelen, zelfs als het onder het werkelijke dauwpunt is, wat condensatie op leidingen en de vloer kan veroorzaken en vervolgens het systeem kan beschadigen. Gebruik op eigen risico!
+:::warning
+Disclaimer: Met het op afstand instellen van de luchtvochtigheid kunt u een warmtepomp instellen om te gaan koelen, zelfs als het onder het werkelijke dauwpunt is, wat condensatie op leidingen en de vloer kan veroorzaken en vervolgens het systeem kan beschadigen. Gebruik op eigen risico!
 :::
 
 ### Temperatuurinstellingen plannen

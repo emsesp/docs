@@ -25,11 +25,7 @@ const sidebars = {
 
   // Devices sidebar
   devicesSidebar: [
-    {
-      type: 'doc',
-      id: 'All-Entities',
-      label: 'All Devices and Entities',
-    },
+    'All-Entities',
     'Boilers',
     'Thermostats',
     'Controllers',
@@ -45,11 +41,6 @@ const sidebars = {
 
   // Integrations sidebar
   integrationsSidebar: [
-    {
-      type: 'doc',
-      id: 'Integrations',
-      label: 'Introduction',
-    },
     'Home-Assistant',
     'IOBroker',
     'Domoticz',
@@ -62,11 +53,7 @@ const sidebars = {
 
   // Modbus sidebar
   modbusSidebar: [
-    {
-      type: 'doc',
-      id: 'Modbus',
-      label: 'Introduction',
-    },
+    'Modbus',
     'Modbus-Settings',
     'Modbus-Entity-Registers',
     'Modbus-Register-Blocks',
@@ -75,7 +62,13 @@ const sidebars = {
   ],
 
   // Help sidebar
-  helpSidebar: ['Support', 'Troubleshooting', 'FAQ', 'tips-and-tricks', 'About'],
+  helpSidebar: [
+    'Support',
+    'Troubleshooting',
+    'FAQ',
+    'tips-and-tricks',
+    'About',
+  ],
 
   // Developers sidebar
   developersSidebar: [
@@ -86,7 +79,7 @@ const sidebars = {
     'ems-library',
     'EMS-Circuit',
     'Contributing',
-    'Version-Release-History'
+    'Version-Release-History',
   ],
 }
 

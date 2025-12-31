@@ -36,10 +36,12 @@ Dit is de huidige lijst met ondersteunde boilers van merken als Buderus, Nefit, 
 
 ## Apparaatentiteiten met opdrachten
 
-:::info De onderstaande ketelcommando's variëren afhankelijk van ketel type/brand en systeemconfiguratie Sommige commando's zullen niet werken omdat ze worden overschreven door regelaar of thermostaat. In dit geval zijn er thermostaatcommando's voor deze instelling.
+:::info
+De onderstaande ketelcommando's variëren afhankelijk van ketel type/brand en systeemconfiguratie Sommige commando's zullen niet werken omdat ze worden overschreven door regelaar of thermostaat. In dit geval zijn er thermostaatcommando's voor deze instelling.
 :::
 
-:::warning deze lijst is niet volledig en kan tussen versies veranderen
+:::warning
+deze lijst is niet volledig en kan tussen versies veranderen
 :::
 
 | `command` | `data` | `id` | `comments` |

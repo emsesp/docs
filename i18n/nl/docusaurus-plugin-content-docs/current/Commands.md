@@ -13,14 +13,15 @@ Er zijn 3 methoden waarop commando's kunnen worden aangeroepen:
 
 ## Definities
 
-:::info Belangrijke definities - `<device>` is de korte naam. Deze kan zijn:
-
+:::info
+Belangrijke definities
+    - `<device>` is de korte naam. Deze kan zijn:
     - een EMS-apparaat en ondersteunde apparaten zijn onder andere: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
-        * de EMS-ESP-systeem zelf geïdentificeerd als `system`
+        *de EMS-ESP-systeem zelf geïdentificeerd als `system`
         * de Dallas-temperatuursensoren als `temperaturesensor`
-        * eventuele aangepaste analoge sensoren als `analogsensor`
+        *eventuele aangepaste analoge sensoren als `analogsensor`
         * eventuele aangepaste EMS-telegramentiteiten als `custom`
-    - `<command>` is de naam van * een algemene opdracht of * een EMS-apparaatentiteit waarnaar ook wordt verwezen als een `<entity>`. Zie de pagina [Supported Devices](All-Entities) voor de volledige lijst
+    - `<command>` is de naam van *een algemene opdracht of* een EMS-apparaatentiteit waarnaar ook wordt verwezen als een `<entity>`. Zie de pagina [Supported Devices](All-Entities) voor de volledige lijst
     - `<id>` is een optionele identificatie en heeft verschillende betekenissen afhankelijk van de context
     - `<data>` wordt gebruikt om de te lezen of te schrijven waarde weer te geven. Het kan een enkele waarde zijn van elk type (geheel getal, zweven, tekenreeks of booleaans) of een JSON-object {} tekenreeks die meerdere key/values paren bevat zoals:
 
@@ -65,7 +66,7 @@ Het URL-pad is `http://<hostname>/api/<device>/`
 | --------------- | ----------- | ------------------------------------------------------------------ | ------------------------ | --------- |
 | Voer de huidige informatie over het EMS-apparaat uit in verbose
 | `values` | `GET` | voert huidige EMS-apparaatinformatie in kort formaat uit | no | |
-| _(leeg)_ | `GET` | hetzelfde als `values` hierboven | no | |
+| *(leeg)* | `GET` | hetzelfde als `values` hierboven | no | |
 | `commands` | `GET` | somt de beschikbare commando-entiteiten op om op te roepen | no | |
 | `entities` | `GET` | somt alle ingeschakelde entiteiten op | no | |
 | `{entity}` | `GET` | voert details van een specifieke entiteit uit, om te lezen | no | |
@@ -150,7 +151,8 @@ Het URL-pad is `http://<hostname>/api/system/<endpoint>`
 
 ### Voorbeelden
 
-:::tip Opmerking In deze voorbeelden is de URL `http://ems-esp.local/api/`, maar pas deze aan naar je eigen hostnaam. Wijzig ook het toegangstoken voor de drager in je eigen token zoals beschreven in de sectie [Definities](#definities).
+:::tip
+Opmerking In deze voorbeelden is de URL `http://ems-esp.local/api/`, maar pas deze aan naar je eigen hostnaam. Wijzig ook het toegangstoken voor de drager in je eigen token zoals beschreven in de sectie [Definities](#definities).
 :::
 
 #### ...via de opdrachtregel
@@ -235,7 +237,7 @@ Commando's kunnen naar EMS-ESP gestuurd worden via deze MQTT topics door gebruik
 
 waarbij
 
-- `cmd` is een van de commando's die in de [Commands](Commands) staan en **_moet_** tussen aanhalingstekens staan als een String. De sleutel `entity` mag ook worden gebruikt in plaats van `cmd`.
+- `cmd` is een van de commando's die in de [Commands](Commands) staan en ***moet*** tussen aanhalingstekens staan als een String. De sleutel `entity` mag ook worden gebruikt in plaats van `cmd`.
 - `data` (of `value`) bevat de waarde voor het commando en kan een String of numerieke waarde zijn.
 - `id` wordt gebruikt als algemene indicator. `hc`, `wwc`, `ahs` en `hs` zijn andere ondersteunde aliassen. Bijvoorbeeld met `hc` wordt een specifiek verwarmingscircuit aangegeven. Er kan zowel een numerieke waarde als een tekenreeks worden gebruikt.
 
@@ -262,7 +264,8 @@ En het volgende valse commando wordt niet geaccepteerd:`ems-esp/boiler` Command/
 [mqtt] MQTT command failed with error no values in boiler (Error)
 ```
 
-:::note Je kunt de MQTT-commando's eenvoudig testen met [MQTT Explorer](https://www.mqtt-explorer.com). Maak gewoon verbinding met de MQTT broker en publiceer de payload naar het onderwerp.
+:::note
+Je kunt de MQTT-commando's eenvoudig testen met [MQTT Explorer](https://www.mqtt-explorer.com). Maak gewoon verbinding met de MQTT broker en publiceer de payload naar het onderwerp.
 :::
 
 Met Home Assistant kunnen thermostaatcommando's ook worden verzonden om individuele verwarmingscircuits te regelen via het verzenden van een modustring of temperatuurnummer naar een onderwerp `thermostat_hc<n>`.

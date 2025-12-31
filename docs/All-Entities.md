@@ -8,7 +8,7 @@ import EntitiesTable from '@site/src/components/EntitiesTable';
 
 # All Devices and Entities
 
-:::warning please read
+:::warning
 Make sure you have read and understood the [Disclaimer](About) before sending ambiguous messages to your EMS bus as you could cause serious damage to your equipment.
 :::
 
