@@ -17,6 +17,7 @@ const sidebars = {
     'Installing',
     'Configuring',
     'WebUI',
+    'MQTT',
     'Commands',
     'Console',
     'Special-Functions',
@@ -74,7 +75,7 @@ const sidebars = {
   ],
 
   // Help sidebar
-  helpSidebar: ['Support', 'Troubleshooting', 'FAQ', 'tips-and-tricks'],
+  helpSidebar: ['Support', 'Troubleshooting', 'FAQ', 'tips-and-tricks', 'About'],
 
   // Developers sidebar
   developersSidebar: [
@@ -83,7 +84,9 @@ const sidebars = {
     'EMS-Telegrams',
     'EMS-bus',
     'ems-library',
-    'EMS-Circuit'
+    'EMS-Circuit',
+    'Contributing',
+    'Version-Release-History'
   ],
 }
 

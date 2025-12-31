@@ -1,7 +1,7 @@
 ---
 id: EMS-bus
 ---
-# The EMS Bus explained
+# The EMS bus explained
 
 Packages are streamed to the EMS "bus" from any other compatible connected device via serial TTL transmission using protocol 9600 baud, 8N1 (8 bytes, no parity, 1 stop bit). Each package is terminated with a break signal `<BRK>`, a 11-bit long low signal of zeros.
 
