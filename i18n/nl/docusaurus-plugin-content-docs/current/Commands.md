@@ -1,7 +1,7 @@
 ---
 id: Commands
 ---
-# Opdrachten
+# Commands
 
 EMS-ESP heeft een commando-API die gebruikt kan worden om waarden te lezen en te schrijven naar het EMS-apparaat en om specifieke commando's op te roepen.
 

@@ -56,7 +56,7 @@
     "description": "Navbar item with label Installing"
   },
   "item.label.Configuring": {
-    "message": "Configuratie",
+    "message": "Configureren",
     "description": "Navbar item with label Configuring"
   },
   "item.label.WebUI": {
@@ -68,7 +68,7 @@
     "description": "Navbar item with label MQTT"
   },
   "item.label.Commands": {
-    "message": "Commando's",
+    "message": "Commands",
     "description": "Navbar item with label Commands"
   },
   "item.label.Console": {
@@ -184,7 +184,7 @@
     "description": "Navbar item with label Adding Languages"
   },
   "item.label.EMS Telegrams": {
-    "message": "EMS-telegrammen",
+    "message": "EMS Telegrammen",
     "description": "Navbar item with label EMS Telegrams"
   },
   "item.label.The EMS bus explained": {
@@ -192,7 +192,7 @@
     "description": "Navbar item with label The EMS bus explained"
   },
   "item.label.EMS library": {
-    "message": "De EMS-bibliotheek",
+    "message": "EMS Library",
     "description": "Navbar item with label EMS library"
   },
   "item.label.A prototype hardware design": {
@@ -204,7 +204,7 @@
     "description": "Navbar item with label Contributing"
   },
   "item.label.Release History": {
-    "message": "Versiegeschiedenis",
+    "message": "Release History",
     "description": "Navbar item with label Release History"
   }
 }

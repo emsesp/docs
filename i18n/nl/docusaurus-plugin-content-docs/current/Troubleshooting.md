@@ -1,7 +1,7 @@
 ---
 id: Troubleshooting
 ---
-# Problemen oplossen
+# Probleemoplossing
 
 Hieronder vind je antwoorden op enkele veelvoorkomende problemen.
 

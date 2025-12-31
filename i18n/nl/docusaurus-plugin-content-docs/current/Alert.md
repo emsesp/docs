@@ -1,6 +1,6 @@
 ---
 id: Alert
 ---
-# Waarschuwingsmodules
+# Alert Modules
 
 - EM10
