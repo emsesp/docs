@@ -31,6 +31,45 @@
   background-color: #416777;
 }
 
+/* Ensure navbar text is white on dark background */
+.navbar__link,
+.navbar__item,
+.navbar__title,
+html[data-theme='light'] .navbar__link,
+html[data-theme='light'] .navbar__item,
+html[data-theme='light'] .navbar__title {
+  color: white !important;
+}
+
+/* Navbar links hover state */
+.navbar__link:hover,
+html[data-theme='light'] .navbar__link:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Announcement bar text color based on theme */
+html[data-theme='light'] .announcement,
+html[data-theme='light'] [class*='announcementBar'] {
+  color: #000 !important;
+}
+
+html[data-theme='light'] .announcement a,
+html[data-theme='light'] [class*='announcementBar'] a {
+  color: #000 !important;
+  text-decoration: underline;
+}
+
+html[data-theme='dark'] .announcement,
+html[data-theme='dark'] [class*='announcementBar'] {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .announcement a,
+html[data-theme='dark'] [class*='announcementBar'] a {
+  color: #fff !important;
+  text-decoration: underline;
+}
+
 /* Anchor fix for fixed header */
 .cmnd:target {
   display: block;

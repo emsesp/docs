@@ -431,7 +431,6 @@ const config = {
           star on GitHub
         </a>  to show your support! ⭐️</span>`,
         backgroundColor: 'rgba(var(--ifm-color-primary-rgb), 0.05)',
-        textColor: '#fff',
       },
       footer: {
         style: 'dark',
