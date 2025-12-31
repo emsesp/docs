@@ -1,7 +1,7 @@
 ---
 id: Controllers
 ---
-# Regelaarmodules
+# Controller Modules
 
 Dit is de huidige lijst met ondersteunde besturingsmodules:
 

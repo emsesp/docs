@@ -47,6 +47,17 @@ html[data-theme='light'] .navbar__link:hover {
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
+/* Ensure all navbar items are vertically centered */
+.navbar__items {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__item {
+  display: flex;
+  align-items: center;
+}
+
 /* Announcement bar text color based on theme */
 html[data-theme='light'] .announcement,
 html[data-theme='light'] [class*='announcementBar'] {
@@ -323,11 +334,25 @@ html[data-theme='dark'] [class*='announcementBar'] a {
   vertical-align: middle;
 }
 
+/* Fix language dropdown alignment */
+.navbar__item--right .navbar__link--locale {
+  display: flex !important;
+  align-items: center !important;
+  height: 100%;
+}
 
 /* Style the locale dropdown toggle */
 .navbar__item.dropdown button.navbar__link {
   font-weight: 500;
   padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Ensure locale dropdown icon/text is centered */
+.navbar__link--locale::after {
+  margin-top: 0 !important;
+  align-self: center;
 }
 
 /* Active locale in dropdown menu */

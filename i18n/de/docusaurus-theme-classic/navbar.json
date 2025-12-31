@@ -204,7 +204,7 @@
     "description": "Navbar item with label Contributing"
   },
   "item.label.Release History": {
-    "message": "Versionshistorie",
+    "message": "Release History",
     "description": "Navbar item with label Release History"
   }
 }

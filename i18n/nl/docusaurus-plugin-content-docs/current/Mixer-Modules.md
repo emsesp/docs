@@ -1,7 +1,7 @@
 ---
 id: Mixer-Modules
 ---
-# Mixermodules
+# Mengmodules
 
 Dit is de huidige lijst van ondersteunde mixermodules:
 
