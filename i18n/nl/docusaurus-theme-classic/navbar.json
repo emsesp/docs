@@ -187,13 +187,13 @@
     "message": "EMS-telegrammen",
     "description": "Navbar item with label EMS Telegrams"
   },
-  "item.label.The EMS Bus explained": {
+  "item.label.The EMS bus explained": {
     "message": "De EMS-bus uitgelegd",
-    "description": "Navbar item with label The EMS Bus explained"
+    "description": "Navbar item with label The EMS bus explained"
   },
-  "item.label.The community EMS library": {
+  "item.label.EMS library": {
     "message": "De EMS-bibliotheek",
-    "description": "Navbar item with label The community EMS library"
+    "description": "Navbar item with label EMS library"
   },
   "item.label.A prototype hardware design": {
     "message": "Een prototype hardware-ontwerp",

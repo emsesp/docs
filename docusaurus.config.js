@@ -262,7 +262,7 @@ const config = {
                 to: 'Thermostats',
               },
               {
-                label: 'Controllers',
+                label: 'Controller Modules',
                 to: 'Controllers',
               },
               {
@@ -270,19 +270,19 @@ const config = {
                 to: 'Heat-Pumps',
               },
               {
-                label: 'Alert',
+                label: 'Alert Modules',
                 to: 'Alert',
               },
               {
-                label: 'Connect',
+                label: 'Connect Modules',
                 to: 'Connect',
               },
               {
-                label: 'Extension',
+                label: 'Extension Modules',
                 to: 'Extension',
               },
               {
-                label: 'Gateways',
+                label: 'Gateway Modules',
                 to: 'Gateways',
               },
               {
@@ -294,7 +294,7 @@ const config = {
                 to: 'Solar-Modules',
               },
               {
-                label: 'Switches',
+                label: 'Switch Modules',
                 to: 'Switches',
               },
             ],
@@ -383,11 +383,11 @@ const config = {
                 to: 'EMS-Telegrams',
               },
               {
-                label: 'The EMS Bus explained',
+                label: 'The EMS bus explained',
                 to: 'EMS-bus',
               },
               {
-                label: 'The community EMS library',
+                label: 'EMS library',
                 to: 'ems-library',
               },
               {

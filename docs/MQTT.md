@@ -1,10 +1,10 @@
 ---
-title: MQTT Integration
+title: MQTT
 id: MQTT
 description: Complete guide to MQTT integration with EMS-ESP for home automation systems
 ---
 
-# 📡 MQTT Integration
+# 📡 MQTT
 
 Connect EMS-ESP to your home automation system via MQTT.
 

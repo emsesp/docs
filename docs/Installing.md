@@ -1,5 +1,5 @@
 ---
-title: Installation Guide
+title: Installing
 id: Installing
 description: Getting started with EMS-ESP. What you need, how to install and do initial configuration.
 ---

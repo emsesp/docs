@@ -8,7 +8,7 @@ tags:
   - reference
 ---
 
-# The community EMS library
+# EMS library
 
 :::info Community Documentation
 This page is a comprehensive summary of collected EMS knowledge from the community, including entity names, telegram protocols, and how they work.
