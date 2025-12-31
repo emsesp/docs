@@ -1,6 +1,6 @@
 ---
 id: All-Entities
-title: All Devices and Entities
+title: Alle Geräte und Entitäten
 hide_table_of_contents: true
 ---
 
@@ -8,7 +8,8 @@ import EntitiesTable from '@site/src/components/EntitiesTable';
 
 # Alle Geräte und Entitäten
 
-:::warning bitte lesen Vergewissern Sie sich, dass Sie die [Disclaimer](About) gelesen und verstanden haben, bevor Sie zweideutige Nachrichten an Ihren EMS-Bus senden, da Sie Ihre Geräte ernsthaft beschädigen könnten.
+:::warning
+Vergewissern Sie sich, dass Sie die [Disclaimer](About) gelesen und verstanden haben, bevor Sie zweideutige Nachrichten an Ihren EMS-Bus senden, da Sie Ihre Geräte ernsthaft beschädigen könnten.
 :::
 
 Die meisten Heizkessel der Marke Bosch, die die Logamatic EMS-Busprotokolle unterstützen, funktionieren mit diesem Design. Dazu gehören Nefit, Buderus, Worcester, Junkers und Sieger (alle urheberrechtlich geschützt).
@@ -40,7 +41,8 @@ Die folgende Tabelle wird dynamisch generiert. Sie können nach Gerätename, Ent
 
 <EntitiesTable />
 
-:::tip Verstehen der Daten
+:::tip
+Verstehen der Daten
 
 - **Gerät**: Der EMS-Gerätename und die Produkt-ID
 - **Typ**: Gerätekategorie (Kessel, Thermostat, Mischer, usw.)

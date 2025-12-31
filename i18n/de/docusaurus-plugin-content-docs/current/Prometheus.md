@@ -6,7 +6,8 @@ id: Prometheus
 
 ![logo](/media/logo/prometheus-logo.png)
 
-:::info Experimentelle Funktion Diese Funktion wird derzeit noch getestet. Die Prometheus API ist ab EMS-ESP32 Version 3.7.3-dev_36 verfügbar.
+:::info
+Experimentelle Funktion Diese Funktion wird derzeit noch getestet. Die Prometheus API ist ab EMS-ESP32 Version 3.7.3-dev_36 verfügbar.
 :::
 
 EMS-ESP stellt die `/api/<device>/metrics` & `/api/system/metrics` Endpunkte für die Integration mit Prometheus zur Verfügung. Alle EMS-ESP-Metriken sind mit dem Präfix `emsesp_` versehen.

@@ -14,8 +14,9 @@ Es gibt 3 Methoden, mit denen Befehle aufgerufen werden können:
 
 ## Definitionen
 
-:::info Wichtige Definitionen - `<device>` ist der Kurzname. Er kann entweder sein:
-
+:::info
+Wichtige Definitionen
+    - `<device>` ist der Kurzname. Er kann entweder sein:
     - ein EMS-Gerät und folgende Geräte werden unterstützt: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation` * das EMS-ESP-System selbst als `system` * die Dallas-Temperatursensoren als `temperaturesensor` * alle benutzerdefinierten Analogsensoren als `analogsensor` * alle benutzerdefinierten EMS-Telegramm-Entitäten als `custom`
     - `<command>` ist der Name entweder * eines generischen Befehls oder * einer EMS-Geräteeinheit, die auch als `<entity>` bezeichnet wird. Siehe die Seite [Supported Devices](All-Entities) für die vollständige Liste
     - `<id>` ist ein optionaler Bezeichner und hat je nach Kontext unterschiedliche Bedeutungen
@@ -147,7 +148,8 @@ Der URL-Pfad lautet `http://<hostname>/api/system/<endpoint>`
 
 ### Beispiele
 
-:::tip Anmerkung: In diesen Beispielen ist die URL `http://ems-esp.local/api/`, aber passen Sie sie an Ihren tatsächlichen Hostnamen an. Ändern Sie auch das Zugriffstoken des Trägers in Ihr eigenes, wie im Abschnitt [Definitions](#definitionen) beschrieben.
+:::tip
+In diesen Beispielen ist die URL `http://ems-esp.local/api/`, aber passen Sie sie an Ihren tatsächlichen Hostnamen an. Ändern Sie auch das Zugriffstoken des Trägers in Ihr eigenes, wie im Abschnitt [Definitions](#definitionen) beschrieben.
 :::
 
 #### ...über die Befehlszeile
@@ -259,7 +261,8 @@ Und der folgende gefälschte Befehl wird nicht akzeptiert:\ Thema:`ems-esp/boile
 [mqtt] MQTT command failed with error no values in boiler (Error)
 ```
 
-:::note Sie können die MQTT-Befehle einfach mit [MQTT Explorer](https://www.mqtt-explorer.com) testen. Verbinden Sie sich einfach mit dem MQTT-Broker und veröffentlichen Sie die Nutzlast im Thema.
+:::note
+Sie können die MQTT-Befehle einfach mit [MQTT Explorer](https://www.mqtt-explorer.com) testen. Verbinden Sie sich einfach mit dem MQTT-Broker und veröffentlichen Sie die Nutzlast im Thema.
 :::
 
 Mit Home Assistant können Thermostatbefehle auch zur Steuerung einzelner Heizkreise gesendet werden, indem ein Modus-String oder eine Temperaturnummer an ein Thema `thermostat_hc<n>` gesendet wird.

@@ -1,6 +1,6 @@
 ---
 id: All-Entities
-title: All Devices and Entities
+title: Alle apparaten en entiteiten
 hide_table_of_contents: true
 ---
 
@@ -8,7 +8,8 @@ import EntitiesTable from '@site/src/components/EntitiesTable';
 
 # Alle apparaten en entiteiten
 
-:::warning please read Zorg ervoor dat u de [Disclaimer](About) hebt gelezen en begrepen voordat u dubbelzinnige berichten naar uw EMS-bus stuurt, want u kunt uw apparatuur ernstig beschadigen.
+:::warning
+Zorg ervoor dat u de [Disclaimer](About) hebt gelezen en begrepen voordat u dubbelzinnige berichten naar uw EMS-bus stuurt, want u kunt uw apparatuur ernstig beschadigen.
 :::
 
 De meeste boilers van het merk Bosch die de Logamatic EMS-busprotocollen ondersteunen, werken met dit ontwerp. Hieronder vallen Nefit, Buderus, Worcester, Junkers en Sieger (allemaal auteursrechtelijk beschermd).
@@ -40,7 +41,9 @@ De onderstaande tabel wordt dynamisch gegenereerd. Je kunt zoeken op apparaatnaa
 
 <EntitiesTable />
 
-:::tip De gegevens begrijpen
+:::tip
+
+De gegevens begrijpen
 
 - **Apparaat**: De naam en product-ID van het EMS-apparaat
 - **Type**: Categorie apparaat (ketel, thermostaat, mengkraan, enz.)

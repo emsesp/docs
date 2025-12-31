@@ -4,10 +4,12 @@ id: EMS-Circuit
 
 # Ein Prototyp für die Hardware
 
-:::note Bei Fragen oder Vorschlägen posten Sie diese bitte direkt im _board-design_ channel in [Discord](https://discord.com/invite/3J3GgnzpyT)
+:::note
+Bei Fragen oder Vorschlägen posten Sie diese bitte direkt im _board-design_ channel in [Discord](https://discord.com/invite/3J3GgnzpyT)
 :::
 
-:::warning Ich würde sehr empfehlen, einen von [BBQKees's gateways](https://bbqkees-electronics.nl/) zu kaufen. Seine Schaltungen sind sehr professionell und haben viele Iterationen durchlaufen und wurden gründlich getestet. Die unten gezeigten Entwürfe sind nur zu Versuchszwecken und aus nostalgischen Gründen hinzugefügt, da hier alles begann. Sie werden funktionieren, aber es kann zu Qualitätsverlusten und Übertragungsfehlern kommen.
+:::warning
+Ich würde sehr empfehlen, einen von [BBQKees's gateways](https://bbqkees-electronics.nl/) zu kaufen. Seine Schaltungen sind sehr professionell und haben viele Iterationen durchlaufen und wurden gründlich getestet. Die unten gezeigten Entwürfe sind nur zu Versuchszwecken und aus nostalgischen Gründen hinzugefügt, da hier alles begann. Sie werden funktionieren, aber es kann zu Qualitätsverlusten und Übertragungsfehlern kommen.
 :::
 
 ### Ein Prototyp auf dem Breadboard

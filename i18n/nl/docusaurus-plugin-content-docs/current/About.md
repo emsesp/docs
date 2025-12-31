@@ -9,7 +9,9 @@ id: About
 
 **EMS-ESP** is een open source firmware voor [Espressif](https://www.espressif.com/en/products/socs) ESP32-gebaseerde chipsets oorspronkelijk ontwikkeld door [@Proddy](https://github.com/proddy) in 2018 en nu exclusief eigendom van en onderhouden door **Proddy** en [@MichaelDvP](https://github.com/MichaelDvP).
 
-:::warning Belangrijke Disclaimer
+:::warning
+Belangrijke Disclaimer
+
 Deze code is ontwikkeld op basis van informatie die is verzameld op internet en vele uren van reverse engineering van de communicatie tussen de EMS-bus en echte apparaten. Het is niet gebaseerd op officiële documentatie of ondersteunde bibliotheken van Bosch/Buderus/Junkers/Nefit (en aanverwante bedrijven) en daarom zijn er geen garanties met betrekking tot de veiligheid van uw apparaten and/or hun instellingen, of de juistheid van de verstrekte informatie.
 :::
 

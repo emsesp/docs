@@ -1,7 +1,7 @@
 ---
 title: Installationsanleitung
 id: Installing
-sidebar_label: Installation
+sidebar_label: Installieren
 description: Erste Schritte mit EMS-ESP. Was Sie benötigen, wie Sie die Firmware installieren und die Erstkonfiguration durchführen.
 ---
 

@@ -11,7 +11,8 @@ Nu ben je klaar om de instellingen verder te configureren. Als je niet verbonden
 
 Als je waarschuwingen ziet dat het niet gelukt is om verbinding te maken met de EMS-bus of als er Tx- of Rx-fouten zijn, volg dan de [troubleshooting](Troubleshooting) gids.
 
-:::note Als u 'Rx incomplete telegrammen' in het logboek ziet, raak dan niet in paniek. Sommige telegrammen kunnen gemist worden en dit wordt meestal veroorzaakt door ruis op de lijn.
+:::note
+Als u 'Rx incomplete telegrammen' in het logboek ziet, raak dan niet in paniek. Sommige telegrammen kunnen gemist worden en dit wordt meestal veroorzaakt door ruis op de lijn.
 :::
 
 In de volgende sectie worden enkele belangrijke instellingen beschreven die kunnen worden aangepast via de WebUI, te vinden onder de sectie Instellingen. De meeste spreken voor zich, dus alleen de belangrijke worden hier beschreven.
@@ -73,7 +74,8 @@ Als u `Custom` kiest, ziet u de volgende extra instellingen om de GPIO's handmat
 - **LED GPIO**. Dit is de pin voor de LED, standaard ingesteld op de onboard LED op het ESP dev board.
 - **Eth PHY Type**. Dit is het type Ethernet-chip dat wordt gebruikt.
 
-:::note Op ESP32-ontwikkelboards zijn er vaak ook pinnen gemarkeerd met RX en TX. Deze zijn echter meestal verbonden met de USB-chip en kunnen niet worden gebruikt voor het EMS-interfacecircuit.
+:::note
+Op ESP32-ontwikkelboards zijn er vaak ook pinnen gemarkeerd met RX en TX. Deze zijn echter meestal verbonden met de USB-chip en kunnen niet worden gebruikt voor het EMS-interfacecircuit.
 :::
 
 - **EMS Tx-modus**. Tx Mode is de modus waarin EMS-ESP telegrammen verstuurt over de EMS-bus. Kies de modus die het beste werkt voor uw systeem en let op Tx-fouten in het Web Dashboard en `show ems` in de Console. Het wijzigen van de waarde heeft onmiddellijk effect.
@@ -145,7 +147,8 @@ Om analoge sensoren toe te voegen klikt u op `Add` en kiest u tussen een normale
 
 ![Web](/media/screenshot/web_sensor.png)
 
-:::warning Wees voorzichtig bij het kiezen van een GPIO zodat deze niet conflicteert met de andere gebruikte GPIO's (u kunt CUSTOM bordprofiel selecteren om uw huidige configuratie te bekijken).
+:::warning
+Wees voorzichtig bij het kiezen van een GPIO zodat deze niet conflicteert met de andere gebruikte GPIO's (u kunt CUSTOM bordprofiel selecteren om uw huidige configuratie te bekijken).
 
     EMS-ESP is aangesloten op de laagspanningsbus van uw verwarming en elke overspanning kan het EMS-ESP-bord en mogelijk uw verwarmingsapparaten beschadigen. Sluit nooit externe apparatuur rechtstreeks aan op het EMS-ESP-bord.
 
@@ -197,7 +200,8 @@ Gebruik de planner om commando's op specifieke intervallen aan te roepen. Een pa
 - gegevens verzenden naar een externe API, via een RESTful HTTP POST-commando, bijvoorbeeld `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - gebruiken om een Home Assistant-script of -service op te roepen wanneer een voorwaarde wordt geactiveerd, bijv. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
-:::warning HTTPS gebruiken in scheduleropdrachten HTTPS wordt alleen ondersteund op de ESP32- en ESP32-S3-varianten met PSRAM bij gebruik met `url` naar een extern eindpunt. De https zal terugvallen op het gebruik van http en kan een fout melden.
+:::warning
+HTTPS gebruiken in scheduleropdrachten HTTPS wordt alleen ondersteund op de ESP32- en ESP32-S3-varianten met PSRAM bij gebruik met `url` naar een extern eindpunt. De https zal terugvallen op het gebruik van http en kan een fout melden.
 :::
 
 Bij het maken van een scheduler entry is de `name` optioneel, maar het is handig om een naam toe te kennen en dan kun je het besturen via een commando (enable/disable) en de status zien in het MQTT topic `scheduler_data`.

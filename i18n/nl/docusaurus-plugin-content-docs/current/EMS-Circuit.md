@@ -3,10 +3,12 @@ id: EMS-Circuit
 ---
 # Een prototype hardwareontwerp
 
-:::note Vragen of suggesties kunt u rechtstreeks posten op het _board-design_ kanaal in [Discord](https://discord.com/invite/3J3GgnzpyT)
+:::note
+Vragen of suggesties kunt u rechtstreeks posten op het _board-design_ kanaal in [Discord](https://discord.com/invite/3J3GgnzpyT)
 :::
 
-:::warning Ik zou de aankoop van een van [BBQKees's gateways](https://bbqkees-electronics.nl/) ten zeerste aanbevelen. Zijn circuits zijn zeer professioneel en hebben vele iteraties ondergaan en zijn grondig getest. De hieronder getoonde ontwerpen zijn slechts voor experimentele doeleinden en toegevoegd om nostalgische redenen, aangezien het hier allemaal begonnen is. Ze zullen werken maar je kan kwaliteitsverlies en transmissiefouten ervaren.
+:::warning
+Ik zou de aankoop van een van [BBQKees's gateways](https://bbqkees-electronics.nl/) ten zeerste aanbevelen. Zijn circuits zijn zeer professioneel en hebben vele iteraties ondergaan en zijn grondig getest. De hieronder getoonde ontwerpen zijn slechts voor experimentele doeleinden en toegevoegd om nostalgische redenen, aangezien het hier allemaal begonnen is. Ze zullen werken maar je kan kwaliteitsverlies en transmissiefouten ervaren.
 :::
 
 ### Een prototype op een Breadboard

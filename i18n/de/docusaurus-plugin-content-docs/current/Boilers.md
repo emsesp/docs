@@ -37,10 +37,12 @@ Dies ist die aktuelle Liste der unterstützten Heizkessel von Marken wie Buderus
 
 ## Geräte-Entitäten mit Befehlen
 
-:::info Die nachstehenden Kesselbefehle variieren je nach Kessel type/brand und Systemkonfiguration. Einige Befehle funktionieren nicht, weil sie vom Regler oder Thermostat überschrieben werden. In diesem Fall gibt es Thermostatbefehle für diese Einstellung.
+:::info
+Die nachstehenden Kesselbefehle variieren je nach Kessel type/brand und Systemkonfiguration. Einige Befehle funktionieren nicht, weil sie vom Regler oder Thermostat überschrieben werden. In diesem Fall gibt es Thermostatbefehle für diese Einstellung.
 :::
 
-:::warning diese Liste ist nicht vollständig und kann sich von Version zu Version ändern
+:::warning
+diese Liste ist nicht vollständig und kann sich von Version zu Version ändern
 :::
 
 | `command` | `data` | `id` | `comments` |

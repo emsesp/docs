@@ -122,7 +122,7 @@ Add a secret key to your CI/CD or local environment called `DEEPL_API_KEY` with 
 
 ### Translate All Files
 
-```
+```sh
 # Test with one file first (dry run)
 pnpm translate -- --file About.md --dry-run
 

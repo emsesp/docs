@@ -2,7 +2,7 @@
 id: Extension
 ---
 
-# Erweiterungsmodule
+# Erweiterungs-Module
 
 Dies ist die aktuelle Liste der unterstützten Erweiterungsmodule:
 

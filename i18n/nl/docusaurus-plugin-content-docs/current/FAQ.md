@@ -32,7 +32,8 @@ Als je een instelling zoekt, log dan de telegrammen voor het apparaat (log all o
 
 Gedeeltelijk. Zoals de mensen van [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) het mooi zeggen:
 
-:::tip Waarom een thermostaat gebruiken?
+:::tip
+Waarom een thermostaat gebruiken?
 
     - De fabrikanten van thermostaten hebben jarenlang onderzoek gedaan naar de verwarmingskenmerken voor de meest efficiënte en comfortabele manier om een huis te verwarmen.
     - De thermostaat biedt een bedieningsinterface waarmee mensen vertrouwd zijn, zodat andere leden van het huishouden nog steeds de instelwaarde kunnen aanpassen.

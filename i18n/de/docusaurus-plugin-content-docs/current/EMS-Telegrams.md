@@ -5,7 +5,7 @@ title: EMS Telegrams
 
 import TelegramsTable from '@site/src/components/TelegramsTable';
 
-# EMS-Telegramme
+# EMS Telegrams
 
 Diese Seite enthält eine vollständige Liste aller EMS-Telegramme, die von EMS-ESP unterstützt werden.
 

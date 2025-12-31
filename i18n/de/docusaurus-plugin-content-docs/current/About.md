@@ -9,7 +9,8 @@ id: About
 
 **EMS-ESP** ist eine Open-Source-Firmware für [Espressif](https://www.espressif.com/en/products/socs) ESP32-basierte Chipsätze, die ursprünglich von [@Proddy](https://github.com/proddy) im Jahr 2018 entwickelt wurde und nun exklusiv von **Proddy** und [@MichaelDvP](https://github.com/MichaelDvP) gepflegt wird.
 
-:::warning Wichtiger Haftungsausschluss Dieser Code wurde auf der Grundlage von im Internet gesammelten Informationen und vielen Stunden Reverse Engineering der Kommunikation zwischen dem EMS-Bus und realen Geräten entwickelt. Er basiert nicht auf offizieller Dokumentation oder unterstützten Bibliotheken von Bosch/Buderus/Junkers/Nefit (und zugehörigen Unternehmen) und daher gibt es keinerlei Garantien hinsichtlich der Sicherheit Ihrer Geräte and/or, ihrer Einstellungen oder der Genauigkeit der bereitgestellten Informationen.
+:::warning
+Wichtiger Haftungsausschluss Dieser Code wurde auf der Grundlage von im Internet gesammelten Informationen und vielen Stunden Reverse Engineering der Kommunikation zwischen dem EMS-Bus und realen Geräten entwickelt. Er basiert nicht auf offizieller Dokumentation oder unterstützten Bibliotheken von Bosch/Buderus/Junkers/Nefit (und zugehörigen Unternehmen) und daher gibt es keinerlei Garantien hinsichtlich der Sicherheit Ihrer Geräte and/or, ihrer Einstellungen oder der Genauigkeit der bereitgestellten Informationen.
 :::
 
 ## 📄 Lizenz

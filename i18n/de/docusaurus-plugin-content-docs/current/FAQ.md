@@ -33,7 +33,8 @@ Wenn Sie eine Einstellung suchen, loggen Sie die Telegramme für das Gerät (log
 
 Teilweise. Wie die Leute von [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) es so schön formulieren:
 
-:::tip Warum einen Thermostat verwenden?
+:::tip
+Warum einen Thermostat verwenden?
 
     - Die Hersteller von Thermostaten haben jahrelang geforscht, um die Heizungseigenschaften für die effizienteste und komfortabelste Art der Beheizung eines Hauses zu ermitteln.
     - Der Thermostat bietet eine den Menschen vertraute Steuerungsschnittstelle, so dass auch andere Haushaltsmitglieder den Sollwert einstellen können.

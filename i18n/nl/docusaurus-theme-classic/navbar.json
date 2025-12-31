@@ -123,9 +123,9 @@
     "message": "Zonnepaneelmodules",
     "description": "Navbar item with label Solar Modules"
   },
-  "item.label.Switches": {
-    "message": "Schakelaars",
-    "description": "Navbar item with label Switches"
+  "item.label.Switch Modules": {
+    "message": "Switch Modules",
+    "description": "Navbar item with label Switch Modules"
   },
   "item.label.Home Assistant": {
     "message": "Home Assistent",

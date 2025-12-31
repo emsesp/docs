@@ -1,8 +1,10 @@
 ---
 id: Configuring
+sidebar_label: Konfiguration
+description: Konfiguration von EMS-ESP. Einstellungen für die WebUI, MQTT, NTP, Benutzer und Rollen.
 ---
 
-# Bestätigen
+# Konfiguration
 
 ## Erstmalige Einrichtung
 
@@ -12,7 +14,8 @@ Jetzt können Sie die Einstellungen weiter konfigurieren. Wenn Sie nicht mit Ihr
 
 Wenn Sie Warnungen erhalten, dass die Verbindung zum EMS-Bus fehlgeschlagen ist oder Tx- oder Rx-Fehler vorliegen, folgen Sie der Anleitung [troubleshooting](Troubleshooting).
 
-:::note Wenn Sie im Protokoll die Meldung "Rx unvollständige Telegramme" sehen, geraten Sie nicht in Panik. Einige Telegramme können verpasst werden, und dies wird in der Regel durch Rauschstörungen auf der Leitung verursacht.
+:::note
+Wenn Sie im Protokoll die Meldung "Rx unvollständige Telegramme" sehen, geraten Sie nicht in Panik. Einige Telegramme können verpasst werden, und dies wird in der Regel durch Rauschstörungen auf der Leitung verursacht.
 :::
 
 Im folgenden Abschnitt werden einige der wichtigsten Einstellungen beschrieben, die über die WebUI im Abschnitt Einstellungen vorgenommen werden können. Die meisten sind selbsterklärend, daher werden hier nur die wichtigsten beschrieben.
@@ -74,7 +77,8 @@ Wenn Sie `Custom` wählen, werden die folgenden zusätzlichen Einstellungen ange
 - **LED GPIO**. Dies ist der Pin für die LED, standardmäßig für die Onboard-LED auf dem ESP-Devboard.
 - **Eth PHY Typ**. Dies ist der Typ des verwendeten Ethernet-Chips.
 
-:::note Auf ESP32-Entwicklungsplatinen gibt es oft auch Pins mit der Bezeichnung RX und TX. Diese sind jedoch normalerweise mit dem USB-Chip verbunden und können nicht für die EMS-Schnittstellenschaltung verwendet werden.
+:::note
+Auf ESP32-Entwicklungsplatinen gibt es oft auch Pins mit der Bezeichnung RX und TX. Diese sind jedoch normalerweise mit dem USB-Chip verbunden und können nicht für die EMS-Schnittstellenschaltung verwendet werden.
 :::
 
 - **EMS Tx-Modus**. Der Tx-Modus ist der Modus, in dem EMS-ESP Telegramme auf dem EMS-Bus sendet. Wählen Sie den Modus, der für Ihr System am besten geeignet ist, und achten Sie auf Tx-Fehler im Web Dashboard und `show ems` in der Konsole. Das Ändern des Wertes hat sofortige Auswirkungen.
@@ -146,7 +150,8 @@ Um analoge Sensoren hinzuzufügen, klicken Sie auf `Add` und wählen Sie zwische
 
 ![Web](/media/screenshot/web_sensor.png)
 
-:::warning Seien Sie vorsichtig, wenn Sie einen GPIO auswählen, damit er nicht mit den anderen verwendeten GPIOs kollidiert (Sie können CUSTOM board profile wählen, um Ihre aktuelle Konfiguration zu sehen).
+:::warning
+Seien Sie vorsichtig, wenn Sie einen GPIO auswählen, damit er nicht mit den anderen verwendeten GPIOs kollidiert (Sie können CUSTOM board profile wählen, um Ihre aktuelle Konfiguration zu sehen).
 
     EMS-ESP ist an den Niederspannungsbus Ihrer Heizung angeschlossen und jede Überspannung kann die EMS-ESP-Platine und möglicherweise Ihre Heizgeräte beschädigen. Versorgen Sie externe Geräte niemals direkt über die EMS-ESP-Platine.
 
@@ -198,7 +203,8 @@ Verwenden Sie den Scheduler, um Befehle in bestimmten Abständen aufzurufen. Ein
 - daten über einen RESTful HTTP POST-Befehl an eine externe API senden, z. B. `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - zum Aufrufen eines Home Assistant-Skripts oder -Dienstes, wenn eine Bedingung erfüllt ist, z. B. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
-:::warning Verwendung von HTTPS in Scheduler-Befehlen HTTPS wird nur auf den ESP32- und ESP32-S3-Varianten mit PSRAM unterstützt, wenn es mit `url` zu einem externen Endpunkt verwendet wird. Das https fällt auf http zurück und kann einen Fehler melden.
+:::warning
+Verwendung von HTTPS in Scheduler-Befehlen HTTPS wird nur auf den ESP32- und ESP32-S3-Varianten mit PSRAM unterstützt, wenn es mit `url` zu einem externen Endpunkt verwendet wird. Das https fällt auf http zurück und kann einen Fehler melden.
 :::
 
 Bei der Erstellung eines Scheduler-Eintrags ist das `name` optional, aber es ist nützlich, einen Namen zu vergeben. Dann kann man ihn über einen Befehl (enable/disable) steuern und den Status im MQTT-Topic `scheduler_data` sehen.
