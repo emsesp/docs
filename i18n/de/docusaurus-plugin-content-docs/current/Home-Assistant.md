@@ -2,7 +2,7 @@
 id: Home-Assistant
 ---
 
-# Haushaltshilfe
+# Home Assistant
 
 ![logo](/media/logo/home-assistant.png)
 

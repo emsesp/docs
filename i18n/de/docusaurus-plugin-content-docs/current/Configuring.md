@@ -1,8 +1,10 @@
 ---
 id: Configuring
+sidebar_label: Konfiguration
+description: Konfiguration von EMS-ESP. Einstellungen für die WebUI, MQTT, NTP, Benutzer und Rollen.
 ---
 
-# Bestätigen
+# Konfiguration
 
 ## Erstmalige Einrichtung
 

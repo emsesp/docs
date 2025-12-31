@@ -52,7 +52,7 @@
     "description": "Navbar item with label Getting Started"
   },
   "item.label.Installing": {
-    "message": "Einrichtung",
+    "message": "Installieren",
     "description": "Navbar item with label Installing"
   },
   "item.label.Configuring": {
@@ -128,7 +128,7 @@
     "description": "Navbar item with label Switches"
   },
   "item.label.Home Assistant": {
-    "message": "Assistentin zu Hause",
+    "message": "Home Assistant",
     "description": "Navbar item with label Home Assistant"
   },
   "item.label.IOBroker": {
@@ -160,7 +160,7 @@
     "description": "Navbar item with label Getting Support"
   },
   "item.label.Troubleshooting": {
-    "message": "Fehlerbehebung",
+    "message": "Fehlersuche",
     "description": "Navbar item with label Troubleshooting"
   },
   "item.label.FAQ": {
@@ -176,7 +176,7 @@
     "description": "Navbar item with label About EMS-ESP"
   },
   "item.label.Building the firmware": {
-    "message": "Firmware erstellen",
+    "message": "Erstellen der Firmware",
     "description": "Navbar item with label Building the firmware"
   },
   "item.label.Adding Languages": {
@@ -184,7 +184,7 @@
     "description": "Navbar item with label Adding Languages"
   },
   "item.label.EMS Telegrams": {
-    "message": "EMS-Telegramme",
+    "message": "EMS Telegrams",
     "description": "Navbar item with label EMS Telegrams"
   },
   "item.label.The EMS bus explained": {
@@ -192,7 +192,7 @@
     "description": "Navbar item with label The EMS bus explained"
   },
   "item.label.EMS library": {
-    "message": "Die EMS-Bibliothek der Gemeinschaft",
+    "message": "EMS Library",
     "description": "Navbar item with label EMS library"
   },
   "item.label.A prototype hardware design": {
@@ -200,7 +200,7 @@
     "description": "Navbar item with label A prototype hardware design"
   },
   "item.label.Contributing": {
-    "message": "Beiträge",
+    "message": "Beitragend",
     "description": "Navbar item with label Contributing"
   },
   "item.label.Release History": {

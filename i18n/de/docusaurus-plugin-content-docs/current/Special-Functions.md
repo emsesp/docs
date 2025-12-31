@@ -2,7 +2,7 @@
 id: Special-Functions
 ---
 
-# Besondere Funktionen
+# Spezielle Funktionen
 
 Einige in MQTT abgebildete Entitäten werden von EMS-ESP generiert und nicht vom EMS-Bus gelesen.
 
