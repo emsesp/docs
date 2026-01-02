@@ -13,13 +13,13 @@ If you are looking for EMS-ESP support, have a question or suggestion here are t
 
 :::tip important!
 
-    When creating a new GitHub issue make sure:
+    When creating a new GitHub issue make sure that you provide the following information:
 
-    1. you attach the EMS-ESP support information. You can fetch this from the URL [http://&lt;hostname&gt;/api/system/info](http://ems-esp.local/api/system/info) or by clicking on the `Support Info` button from the Help page in the WebUI.
-    2. you include the firmware version you are using. You can find this in the `Support Info` or in the WebUI under the `About` page. It is strongly recommended you switch to the latest development firmware version before creating an issue as the problem may already have been fixed.
-    3. you include the hardware or gateway board you are using. You can find this in the `Support Info` or in the WebUI under the `About` page.
-    6. you include the problem you are experiencing.
-    7. you include the steps to reproduce the problem.
-    8. you include the expected behavior.
-    9. you include the actual behavior.
+    1. Attach the EMS-ESP Support Information. This will show us which EMS devices you have attached. You can fetch the information from the URL [http://&lt;hostname&gt;/api/system/info](http://ems-esp.local/api/system/info) or by downloading by clicking the `Support Information` button from the Help page in the WebUI.
+    2. Mention which firmware version you are using in the issue's title. It is strongly recommended you switch to the latest development firmware version before creating an issue as the problem may already have been fixed.
+    3. Mention the hardware or gateway board you are using.
+    4. State the problem you are experiencing.
+    5. State the steps to reproduce the problem.
+    6. State the expected behavior.
+    7. State the actual behavior.
 :::
