@@ -73,7 +73,7 @@ If the EMS-ESP becomes unresponsive and you cannot access the WebUI, follow thes
 - If you're using the Ethernet port, do you see the LED on the port flashing showing traffic in and out?
 - If EMS-ESP has restarted itself check the system logs for the Reset Reason. It will be one of the first messages. See above.
 - Attach the board to a computer via USB, without restarting on powering down EMS-ESP and access the Serial console to see if there are any errors.
-- Lastly, log a GitHub issue with the Support Info and details of your setup.
+- Lastly, log a GitHub issue with the [Support Information](Support#getting-support) and details of your setup.
 
 ### You forgot the admin password
 

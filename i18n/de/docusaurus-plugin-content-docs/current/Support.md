@@ -16,9 +16,9 @@ Wenn Sie auf der Suche nach EMS-ESP-Unterstützung sind, eine Frage haben oder e
 
     Stellen Sie beim Erstellen eines neuen GitHub-Themas sicher:
 
-    1. fügen Sie die EMS-ESP-Supportinformationen bei. Sie können diese über die URL [http://&lt;hostname&gt;/api/system/info](http://ems-esp.local/api/system/info) oder durch Klicken auf die Schaltfläche `Support Info` auf der Hilfeseite in der WebUI abrufen.
-    2. geben Sie die von Ihnen verwendete Firmware-Version an. Sie finden diese in der `Support Info` oder in der WebUI unter der `About` Seite. Es wird dringend empfohlen, dass Sie auf die neueste Entwicklungs-Firmware-Version wechseln, bevor Sie ein Problem erstellen, da das Problem möglicherweise bereits behoben wurde.
-    3. geben Sie die von Ihnen verwendete Hardware oder Gateway-Karte an. Sie finden diese in der `Support Info` oder in der WebUI unter der `About` Seite.
+    1. fügen Sie die EMS-ESP-Supportinformationen bei. Sie können diese über die URL [http://&lt;hostname&gt;/api/system/info](http://ems-esp.local/api/system/info) oder durch Klicken auf die Schaltfläche `Support Information` auf der Hilfeseite in der WebUI abrufen.
+    2. geben Sie die von Ihnen verwendete Firmware-Version an. Sie finden diese in der `Support Information` oder in der WebUI unter der `About` Seite. Es wird dringend empfohlen, dass Sie auf die neueste Entwicklungs-Firmware-Version wechseln, bevor Sie ein Problem erstellen, da das Problem möglicherweise bereits behoben wurde.
+    3. geben Sie die von Ihnen verwendete Hardware oder Gateway-Karte an. Sie finden diese in der `Support Information` oder in der WebUI unter der `About` Seite.
     6. geben Sie das Problem an, das bei Ihnen auftritt.
     7. sie die Schritte zur Reproduktion des Problems angeben.
     8. schließen Sie das erwartete Verhalten ein.

@@ -4213,8 +4213,8 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
 
-  normalize-url@8.1.0:
-    resolution: {integrity: sha512-X06Mfd/5aKsRHc0O0J5CUedwnPmnDtLF2+nq+KN9KSDlJHkPuh0JUviWjEWMe0SW/9TDdSLVPuk7L5gGTIA1/w==}
+  normalize-url@8.1.1:
+    resolution: {integrity: sha512-JYc0DPlpGWB40kH5g07gGTrYuMqV653k3uBKY6uITPWds3M0ov3GaWGp9lbE3Bzngx8+XkfzgvASb9vk9JDFXQ==}
     engines: {node: '>=14.16'}
 
   npm-run-path@4.0.1:
@@ -8919,7 +8919,7 @@ snapshots:
       http-cache-semantics: 4.2.0
       keyv: 4.5.4
       mimic-response: 4.0.0
-      normalize-url: 8.1.0
+      normalize-url: 8.1.1
       responselike: 3.0.0
 
   call-bind-apply-helpers@1.0.2:
@@ -11217,7 +11217,7 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
-  normalize-url@8.1.0: {}
+  normalize-url@8.1.1: {}
 
   npm-run-path@4.0.1:
     dependencies:

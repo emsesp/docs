@@ -17,9 +17,9 @@ belangrijk!
 
     Als je een nieuw GitHub issue aanmaakt, zorg er dan voor dat:
 
-    1. voegt u de EMS-ESP-ondersteuningsinformatie toe. U kunt deze ophalen via de URL [http://&lt;hostname&gt;/api/system/info](http://ems-esp.local/api/system/info) of door te klikken op de knop `Support Info` op de Help-pagina in de WebUI.
-    2. de firmwareversie die u gebruikt. U kunt deze vinden in de `Support Info` of in de WebUI onder de `About` pagina. Het wordt sterk aangeraden om over te schakelen op de nieuwste firmwareversie voordat u een probleem aanmaakt, omdat het probleem mogelijk al is opgelost.
-    3. de hardware of gatewaykaart die u gebruikt. U kunt dit vinden in de `Support Info` of in de WebUI onder de `About` pagina.
+    1. voegt u de EMS-ESP-ondersteuningsinformatie toe. U kunt deze ophalen via de URL [http://&lt;hostname&gt;/api/system/info](http://ems-esp.local/api/system/info) of door te klikken op de knop `Support Information` op de Help-pagina in de WebUI.
+    2. de firmwareversie die u gebruikt. U kunt deze vinden in de `Support Information` of in de WebUI onder de `About` pagina. Het wordt sterk aangeraden om over te schakelen op de nieuwste firmwareversie voordat u een probleem aanmaakt, omdat het probleem mogelijk al is opgelost.
+    3. de hardware of gatewaykaart die u gebruikt. U kunt dit vinden in de `Support Information` of in de WebUI onder de `About` pagina.
     6. vermeld het probleem dat u ondervindt.
     7. de stappen om het probleem te reproduceren.
     8. je het verwachte gedrag op.
