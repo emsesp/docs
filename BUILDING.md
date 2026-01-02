@@ -86,7 +86,7 @@ This starts a local development server and opens up a browser window. Most chang
 
 Visit [http://localhost:3000](http://localhost:3000)
 
-### Building
+## Building
 
 To create a production build:
 
@@ -104,7 +104,7 @@ To test the production build locally:
 pnpm serve
 ```
 
-## Production
+### Production
 
 Fix spellings:
 
@@ -162,7 +162,7 @@ node scripts/translate.js --dry-run
 node scripts/translate.js --force
 ```
 
-## 🎨 Translate UI Elements
+### 🎨 Translate UI Elements
 
 Translate navbar, footer, and sidebar labels:
 
@@ -179,9 +179,9 @@ node scripts/translate-ui.js --locale de
 pnpm build && pnpm serve
 ```
 
-## 📊 What Gets Translated
+### 📊 What Gets Translated
 
-### Documentation Files (translate.js)
+#### Documentation Files (translate.js)
 
 - ✅ All markdown content
 - ✅ Headers and paragraphs
@@ -191,9 +191,25 @@ pnpm build && pnpm serve
 - ❌ Frontmatter (preserved as-is)
 - ❌ Technical terms (preserved: EMS-ESP, MQTT, etc.)
 
-### UI Elements (translate-ui.js)
+#### UI Elements (translate-ui.js)
 
 - ✅ Navbar labels (Home, Devices, etc.)
 - ✅ Footer text
 - ✅ Sidebar labels
 - ✅ Button labels
+
+## Searching
+
+### Algolia
+
+Algolia is used for searching the documentation.
+
+### Algolia Configuration
+
+The Algolia configuration is in the `docusaurus.config.js` file.
+
+### Algolia API Key
+
+The Algolia API key is in the `ALGOLIA_API_KEY` environment variable. You can get one from [Algolia](https://www.algolia.com/).
+
+The search is updated automatically every week on a Sunday.
