@@ -1,0 +1,163 @@
+Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
+0x0165,0,holiday start year,0,99,1,year,"0=invalid, offset 0-7 to be sent together"
+0x0165,1,holiday start month,0,12,1,month,"0=invalid, offset 0-7 to be sent together"
+0x0165,2,holiday start day,0,31,1,day,"0=invalid, offset 0-7 to be sent together"
+0x0165,3,holiday start time,0,95,1,15 min,"0=invalid, 15 minute steps starting midnight, offset 0-7 to be sent together"
+0x0165,4,holiday end year,0,99,1,year,"0=invalid, offset 0-7 to be sent together"
+0x0165,5,holiday end month,0,12,1,month,"0=invalid, offset 0-7 to be sent together"
+0x0165,6,holiday end day,0,31,1,day,"0=invalid, offset 0-7 to be sent together"
+0x0165,7,holiday end time,0,95,1,15 min,"0=invalid, 15 minute steps starting midnight, offset 0-7 to be sent together"
+0x0165,8,Holiday heating operation mode,1,4,1,enum,"1=auto, 2=fixed temp, 3=off, 4=eco"
+0x0165,9,Holiday fixed heating temp,5,30,1,°C,
+0x0165,10,Holiday DHW operation mode,1,5,1,enum,"1=auto, 2=off, 3=eco, 4=low, 5=high"
+0x0165,11,Holiday auto thermal desinfection,-1,1,1,bool,"-1=yes, 1=no"
+0x0165,12,Holiday ventilation operation mode,-1,5,1,enum,"-1=time, 0=off, 1=min, 2=reduced, 3=normal, 4=max, 5=demand"
+0x0165,13,valid for HC1,-1,1,1,bool,"-1=yes, 1=no"
+0x0165,14,valid for HC2,-1,1,1,bool,"-1=yes, 1=no"
+0x0165,15,valid for HC3,-1,1,1,bool,"-1=yes, 1=no"
+0x0165,16,valid for HC4,-1,1,1,bool,"-1=yes, 1=no"
+0x0165,17,valid for DHW1,-1,1,1,bool,"-1=yes, 1=no"
+0x0165,18,valid for DHW2,-1,1,1,bool,"-1=yes, 1=no"
+0x0165,19,valid for vent1,-1,1,1,bool,"-1=yes, 1=no"
+0x0165,20,valid for vent2,-1,1,1,bool,"-1=yes, 1=no"
+0x0165,21,valid for vent3,-1,1,1,bool,"-1=yes, 1=no"
+0x0165,22,valid for vent4,-1,1,1,bool,"-1=yes, 1=no"
+0x016F,0,Heating level,0,3,1,enum,"0=undefined, 1=frost, 2=low, 3=high"
+0x016F,1,Operating mode,0,5,1,enum,"0=undefined, 1=permanent, 2=auto, 3=holiday, 4=floor drying waiting, 5=floor drying running"
+0x016F,2-3,Requested room temperature setpoint,0,300,0.1,°C,
+0x016F,4-5,Current internal temperature,-32768,32767,0.1,°C,2 byte signed int
+0x016F,6-7,Current external temperature,-32768,32767,0.1,°C,2 byte signed int
+0x016F,8,Solar influence value,0,50,0.1,°C,
+0x02A5,0-1,current room temp for this HC,0,40,0.1,°C,"-32768=open, 32767=short"
+0x02A5,2.0,heating possible,0,1,1,bool,"false=0, true=1"
+0x02A5,2.1,frost danger outdoor,0,1,1,bool,"false=0, true=1"
+0x02A5,2.2,frost danger room,0,1,1,bool,"false=0, true=1"
+0x02A5,2.3,open window detected in this HC,0,1,1,bool,"false=0, true=1"
+0x02A5,2.4,Weather Depended Control summer mode,0,1,1,bool,"false=0, true=1"
+0x02A5,2.5,Room temp valid,0,1,1,bool,"false=0, true=1"
+0x02A5,2.6,Local season optimizer summer mode,0,1,1,bool,"false=0, true=1"
+0x02A5,3,Optimized room temp setpoint,0,60,0.5,°C,off=0
+0x02A5,4,Room temp flow setpoint,0,90,1,°C,"off_heat=0, off_cool=90"
+0x02A5,5,Room temp power setpoint,0,100,1,%,na=255
+0x02A5,6,Current room temp setpoint,0,60,0.5,°C,off=0
+0x02A5,7,Next room temp setpoint,0,60,0.5,°C,off=0
+0x02A5,8-9,Room Temperature Setpoint Determination: time to next setpoint,1,1440,1,min,
+0x02A5,10.0,Room temp setpoint set automatically,0,1,1,bool,"false=0, true=1"
+0x02A5,10.1,RTSD: Comfort Active,0,1,1,bool,"false=0, true=1"
+0x02A5,10.2,RTSD: Temporary increase of setpoint active,0,1,1,bool,"false=0, true=1"
+0x02A5,10.3,RTSD: Prevention of eco mode active,0,1,1,bool,"false=0, true=1"
+0x02A5,10.4,RTSD: Advance mode is active,0,1,1,,"false=0, true=1"
+0x02A5,11,Room Temp Setpoint: Heating Level,1,4,1,,"ECO=1, COMFORT1=2, COMFORT2=3, COMFORT3=4"
+0x02A5,12,RTSD: Next Heating Level,1,4,1,,"ECO = 1, COMFORT1=2, COMFORT2=3, COMFORT3=4"
+0x02A5,13-14,RTSD: Time To Next Heating Level,1,1440,1,min,
+0x02A5,15-16,RTSD: Time Since Last Heating Level,1,1440,1,min,
+0x02A5,17,Floordrying active,0,1,1,bool,"false=0, true=1"
+0x02A5,18,HolidayMode activated for this heating circuit,0,4,1,enum,"none=0, AUTO_SAT=1, FIX_TEMP=2, OFF=3, ECO=4"
+0x02A5,20,Local Season Optimizer mode,1,3,1,enum,"heating=1, idle=2, cooling=3"
+0x02A5,27-28,Offset on room temperature setpoint due to room temperature influence,-100,300,0.1,K,
+0x02A5,32,Room temp sensor value controller extsensor,0,100,1,%,Value defines the requested relative heating power for the heating circuit
+0x02B9,0,Operation Mode,-1,0,1,enum,"auto=-1, manual=0"
+0x02B9,1,Setpoint Comfort 3,10,60,0.5,°C,5°C ... 30°C
+0x02B9,2,Setpoint Comfort 2,10,60,0.5,°C,5°C ... 30°C
+0x02B9,3,Setpoint Comfort 1,10,60,0.5,°C,5°C ... 30°C
+0x02B9,4,Setpoint Eco,10,60,0.5,°C,5°C ... 30°C
+0x02B9,5,Eco Mode,0,3,1,enum,"off=0, outdoor=1, room=2,reduced=3"
+0x02B9,6,Time Limit for manual operation mode: time,0,95,1,15min,15 minutes steps from midnight
+0x02B9,7,Time Limit for manual operation mode: weekday,-1,6,1,enum,"OFF=-1, MONDAY=0, TUESDAY=1, WEDNESDAY=2, THURSDAY=3, FRIDAY=4, SATURDAY=5, SUNDAY=6"
+0x02B9,8,Temporary Room Temp Setpoint,-1,60,0.5,°C,"NA=-1, OFF = 0"
+0x02B9,9,Outdoor Temp Threshold,-20,10,1,°C,
+0x02B9,10,Manual Setpoint,10,60,0.5,°C,OFF = 0
+0x02B9,11,Active Clock Program,1,2,1,enum,clock program 1 or 2
+0x02B9,12,Outdoor temp threshold for prevention of reduced temp,-30,10,1,°C,OFF = -31
+0x02B9,17,Room temperature setpoint for cooling,5,30,0.5,°C,OFF=0
+0x02B9,19,Switch Clock Value Mode,1,2,1,enum,"LEVELS=1, ABS_TEMP = 2"
+0x02B9,20,Comfort Eco Temp Threshold,24,44,0.5,°C,
+0x02B9,21,Heating Mode New,0,2,1,enum,"OFF=0, ON=1, AUTO=2"
+0x02B9,22,Setpoint manual temp,10,60,0.5,°C,5°C ... 30°C
+0x02B9,23,Boost mode,-1,0,1,bool,"YES=-1, NO=0"
+0x02B9,24,Boost mode duration,1,8,1,h,
+0x02B9,28,Cooling Operation Mode,0,1,1,enum,"OFF=0, ON=1"
+0x02B9,29,Room temperature setpoint for cooling (new),10,60,0.5,°C,5°C ... 30°C
+0x02CC,3,DHW priority,0,1,1,bool,"0=no, 1=yes"
+0x02CD,0,HC mixed circuit,-1,0,1,bool,"-1=yes, 0=no"
+0x02CD,1,Valve runtime time,1,60,1,10sec,
+0x02CD,2,Supply temp offset,0,20,1,K,
+0x02CD,3,DHW priority,-1,0,1,bool,"-1=yes, 0=no"
+0x02CD,4,Mixer pos for condesation protection,0,100,1,%,
+0x02CD,5,Constant heating hc,-1,0,1,bool,"-1=yes, 0=no"
+0x02CD,6,Detection of low flow volume,-1,0,1,bool,"-1=yes, 0=no"
+0x02F5,0,DHW configuration,0,3,1,enum,"0=none, 1=appliance, 2=module, 3=fresh water station"
+0x02F5,1,Circulation pump installed,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,2,Operation mode,0,5,1,enum,"0=off, 1=on low, 2=on high, 3=HC program, 4=own program, 5=on eco"
+0x02F5,3,Circulation pump operation mode,0,3,1,enum,"0=off, 1=on, 2=like DHW program, 3=own program"
+0x02F5,4,according HC program,0,8,1,enum,according HC program x
+0x02F5,5,Automatic thermal desinfection,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,6,Thermal desinfection time,0,95,1,15 min,
+0x02F5,7,Weekday for thermal desinfection,0,7,1,enum,"0=Mo, 1=Tu, 2=We, 3=Th, 4=Fr, 5=Sa, 6=So, 7=every day"
+0x02F5,8,Daily heat up,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,9,Daily heat up time,0,95,1,15 min,
+0x02F5,10,Extra heat heat up duration,0,95,1,15 min,
+0x02F5,11,Extra heat up from main controller,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,12,Extra heat up from HC1 controller,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,13,Extra heat up from HC2 controller,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,14,Extra heat up from HC3 controller,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,15,Extra heat up from HC4 controller,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,16,Extra heat up from HC5 controller,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,17,Extra heat up from HC6 controller,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,18,Extra heat up from HC7 controller,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,19,Extra heat up from HC8 controller,-1,0,1,bool,"-1(0xFF)=yes, 0=no"
+0x02F5,20,Fresh water system,1,2,1,enum,"1=appliance, 2=module"
+0x02F5,21,Solar start time,-1,95,1,15 min,-1=na
+0x02F5,22,Solar stop time,-1,95,1,15 min,-1=na
+0x02F5,23,All operation modes allowed,-1,0,1,bool,"-1=yes, 0=no"
+0x031D,0,DHW extra active,0,1,1,bool,"0=false, 1=true"
+0x031D,1,Holiday mode,0,3,1,enum,"0=none, 1=auto, 2=off, 3=thermal desinfection off"
+0x031D,2,Status DHW setpoint,1,10,1,enum,"1=?, 2=extra hot water, 3=off, 4=low, 5=high, 6=holiday off, 7=holiday low, 8=clock off, 9=clock low, 10=clock high"
+0x031D,3,Status DHW circulation pump,1,7,1,enum,"1=?, 2=extra, 3=off, 4=on, 5=holiday off, 6=clock off, 7=clock on"
+0x031D,4-5,Remaining time in extra mode,0,2880,1,min,
+0x031D,6,Holiday mode 2,0,5,1,enum,"0=none, 1=auto, 2=off, 3=exo, 4=low, 5=high"
+0x031D,7,Auto thermal desinfection during holiday,0,1,1,bool,"0=no, 1=yes"
+0x031D,8,Current DHW status,0,3,1,enum,"0=off, 1=low, 2=high, 3=eco"
+0x043F,0,holiday start year,9,99,1,,add 2000
+0x043F,1,holiday start month,1,12,1,,
+0x043F,2,holiday start day,1,31,1,,
+0x043F,3,holiday end year,9,99,1,,add 2000
+0x043F,4,holiday end month,1,12,1,,
+0x043F,5,holiday end day,1,31,1,,
+0x048D,0.0,Heating circulation pump,0,1,1,bool,from source code
+0x048D,0.4,Switch valve?,0,1,1,bool,hpSwitchValve from source code
+0x048D,0.6,3way valve,0,1,1,bool,hp3wayValve from source code
+0x048D,0.7,VC0 valve,0,1,1,bool,VC0valve from source code
+0x048D,1.4,External input 1,0,1,1,bool,hpInput[0] from source code
+0x048D,1.5,External input 2,0,1,1,bool,hpInput[1] from source code
+0x048D,1.6,External input 3,0,1,1,bool,hpInput[2] from source code
+0x048D,1.7,External input 4,0,1,1,bool,hpInput[3] from source code
+0x048D,3.0,Eletrical heater step 1,0,1,1,bool,"0=off, 1=on"
+0x048D,3.1,Eletrical heater step 2,0,1,1,bool,"0=off, 1=on"
+0x048D,3.2,Eletrical heater step 3,0,1,1,bool,"0=off, 1=on"
+0x048D,3.4,Compressor on,0,1,1,bool,"0=off, 1=on"
+0x048D,3.6,hpEA0,0,1,1,bool,"0=off, 1=on, hpEA0 from source code"
+0x048D,4,Circulation pump speed,0,100,1,percent,hpCircSpd from source code
+0x048D,5,Brine pump speed,0,100,1,percent,hpBrinePumpSpd from source code
+0x048D,6,Aux heater level,0,100,1,percent,auxHeaterLevel from source code
+0x048D,7,Compressor activity,0,7,1,enum,"hpActivity from source code; 0=OFF, 1=HEATING, 2=COOLING, 3=DHW, 4=POOL, 5=POOL_HEATING, 6=DEFROST, 7=ALARM"
+0x048D,8,Aux heater status,0,7,1,enum,"0=OFF, 1=HEATING, 3=DHW, 4=POOL, 5=POOL_HEATING, 7=ALARM"
+0x048D,10-11,Compressor power,0,?,0.1,kW,hpPower from source code
+0x048D,17,Compressor speed,0,100,1,percent,hpCompSpd from source code
+0x04A2,0.0,HMI EVU active,0,1,1,bool,"On if any EVU function is active; FALSE = 0,TRUE = 1"
+0x04A2,0.1,HMI remote active,0,1,1,bool,"On if any external input is active; FALSE = 0,TRUE = 1"
+0x04A2,0.2,HMI additional electric active,0,1,1,bool,"On if any electrical heater is active; FALSE = 0,TRUE = 1"
+0x04A2,0.3,HMI additional mixed active,0,1,1,bool,"On if the mixed additional heater is active; FALSE = 0,TRUE = 1"
+0x04A2,0.4,HMI compressor active,0,1,1,bool,"On if any compressor is running; FALSE = 0,TRUE = 1"
+0x04A2,0.5,HMI mixed additional start,0,1,1,bool,"Value says whether output of additional mixed heater is activated or not; FALSE = 0,TRUE = 1"
+0x04A2,0.6,HMI powerguard active,0,1,1,bool,"Value says whether the electrical power usage is capped due to low power availability; FALSE = 0,TRUE = 1"
+0x04A2,0.7,HMI heating active,0,1,1,bool,"Value says whether heating is being produced; FALSE = 0,TRUE = 1"
+0x04A2,1,HMI ODU type,0,11,1,enum,"_3p_17kW = 0,_3p_13kW = 1,_1p_13kW = 2,_1p_9kW = 3,_1p_7kW = 4,_1p_5kW = 5,_1p_3kW = 6,_1p_5_9kW = 7,_3p_12_16kW = 8,_1p_12_16kW = 9,_3p_3_12kW = 10,_1p_6kW = 11"
+0x04A2,2,HMI IDU type,0,7,1,enum,"Tower9_5To9 = 1,Tower9_13To17 = 2,Tower15_13To17 = 3,Comfort_5To9 = 4,Comfort_13To17 = 5,Light_5To9 = 6,Light_13To17 = 7"
+0x04A2,3,Smart Grid Mode,0,4,1,enum,"Not_used = 0,EVU_block_active = 1,Normal_operation = 2,Smart_grid = 3,Force_smart_grid = 4"
+0x04A2,4.0,Electric solar collector active,0,1,1,bool,"True if the photo voltaic system supplying power; FALSE = 0,TRUE = 1"
+0x04A2,4.1,HMI buzzer active,0,1,1,bool,"True if the buzzer of the HMI shall be active; FALSE = 0,TRUE = 1"
+0x04A2,5,HMI heat pump type,0,2,1,enum,"A_W = 0,L_W = 1,EXHAUST_AIR = 2"
+0x04A2,6,HMI error symbol,0,2,1,enum,"Indication for error icon color; NO_ERROR = 0,NON_SEVERE = 1,SEVERE = 2"
+0x04A2,7,HMI error LED,0,2,1,enum,"Indication for error LED color; NO_ERROR = 0,NON_SEVERE = 1,SEVERE = 2"
+

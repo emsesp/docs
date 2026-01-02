@@ -1,0 +1,81 @@
+Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
+0x0001,0-26,ASCII coded numbers,0,255,1,ASCII,"Sequence of numbers. Examples: HMC310 25303763146288737718903, RC100.2 H 05704801002367738112973, MX300 25303394051798738806124"
+0x0001,27-42,Product name ASCII coded,0,255,1,ASCII,"Should be \0 terminated, but is not always. i.e. Heat Pump responds with 43 55 48 50 = ""CUHP"", but \0 is missing"
+0x0001,43-69,More data,0,255,1,-,Some devices send more data after offset 43. Either a series of 00 or FF
+0x0002,0,Product ID,0,255,1,-,"0=invalid?; 64=UBA3; ... ; 68=BC10; 69=MM10; ...; 72=GB125; 73=SM10; ...; 77=M300; 78=M400; ...; 86=RC35; ...; 95=HT3; 109=JunkersFW100; ...; 123=CBS ; ...; 125=MX25; 157=CW100; 158=HMC310/CW400/RC310; 160=MM100; ...; 172=CUHP;...; 190=BC10; ...; 195=GB172i; ...; 200=Sensor w/humidity; 219=WS170 234=ACU; 248=HM200; 252=KF30; 253=HMI800; ...."
+0x0002,1,Major version,0,255,1,-,Major software version
+0x0002,2,Minor version,0,255,1,-,Minor software version
+0x0002,3,2nd product ID,0,255,1,-,
+0x0002,4,Major version of 2nd product ID,0,255,1,-,
+0x0002,5,Minor version of 2nd product ID,0,255,1,-,
+0x0002,9,Brand ID,0,255,1,-,"1=Bosch; 2= Junkers; 3=Buderus; 4=Nefit; ...; 13=IVT;"
+0x0003,0-26,ASCII coded numbers,0,255,1,ASCII,Example heat pump 26003750000018738212162
+0x0003,27-54,More data,0,255,1,-,Some appliances return a series of 00 or FF
+0x0005,0,Reset Error,0,255,1,enum,"90=error reset, also 153 and 245 do a reset (maybe on a different level)"
+0x0005,2,Reset burner timer and starts,0,255,1,enum,165=reset burner timer and restarts
+0x0005,4,Chimney sweeper mode,0,255,1,enum,"100=activate, 0=off"
+0x0005,6,Reset to factory setting,0,255,1,enum,154=do a reset
+0x0005,8,Reset maintenance message,0,255,1,enum,255=resets maintenance request
+0x0005,12,Erase error history,0,255,1,enum,169=erase error history
+0x0005,42,Clear error history,0,255,1,enum,"1=local history, 2=global history, 3=both"
+0x0005,44,Thermal desinfection,0,255,1,enum,"255=start, 254=stop"
+0x0005,52,Force manual defrost,0,255,1,enum,1=start
+0x0005,68,Standby mode,0,255,1,enum,"85=activate if standby can be selected in the menu, 170=deactivate, status is visible in 0x00E4 offset 12.0"
+0x0005,70,DHW ECO,0,255,1,enum,"85=activate, 170=deactivate"
+0x0010,0-1,Error 1 display code,0,255,1,ASCII,displayed error code
+0x0010,2-3,Error 1 cause code,0,65535,1,-,"numbers >= 200, list used in Nefit and Buderus"
+0x0010,4,Error 1 Start year,0,255,1,-,"Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused"
+0x0010,5,Error 1 Start month,1,12,1,-,"Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0010,6,Error 1 Start hour,1,31,1,-,"Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0010,7,Error 1 Start day,1,31,1,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0010,8,Error 1 Start minute,1,59,1,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty"
+0x0010,9-10,Error 1 duration,1,65535,1,min,
+0x0010,11,Error 1 source,1,127,1,-,device ID of the error source
+0x0010,12-23,Error 2,,,,,,same as offset 0 ff. for error 1
+0x0010,24-35,Error 3,,,,,,same as offset 0 ff. for error 1
+0x0010,36-47,Error 4,,,,,,same as offset 0 ff. for error 1
+0x0010,48-59,Error 5,,,,,,same as offset 0 ff. for error 1
+0x0010,60-71,Error 6,,,,,,same as offset 0 ff. for error 1
+0x0010,72-83,Error 7,,,,,,same as offset 0 ff. for error 1
+0x0010,84-95,Error 8,,,,,,same as offset 0 ff. for error 1
+0x0011,0-1,Error 1 display code,0,255,1,ASCII,displayed error code
+0x0011,2-3,Error 1 cause code,0,65535,1,-,"numbers >= 200, list used in Nefit and Buderus"
+0x0011,4,Error 1 Start year,0,255,1,,-,"Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused"
+0x0011,5,Error 1 Start month,1,12,1,,-,"Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0011,6,Error 1 Start hour,1,31,1,,-,"Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0011,7,Error 1 Start day,1,31,1,,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0011,8,Error 1 Start minute,1,59,1,,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty"
+0x0011,9-10,Error 1 duration,1,65535,1,min,
+0x0011,11,Error 1 source,1,127,1,,device ID of the error source
+0x0011,12-23,Error 2,,,,,,same as offset 0 ff. for error 1
+0x0011,24-35,Error 3,,,,,,same as offset 0 ff. for error 1
+0x0011,36-47,Error 4,,,,,,same as offset 0 ff. for error 1
+0x0011,48-59,Error 5,,,,,,same as offset 0 ff. for error 1
+0x0011,60-71,Error 6,,,,,,same as offset 0 ff. for error 1
+0x0011,72-83,Error 7,,,,,,same as offset 0 ff. for error 1
+0x0011,84-95,Error 8,,,,,,same as offset 0 ff. for error 1
+0x0012,0-1,Error 1 display code,0,255,1,ASCII,displayed error code
+0x0012,2-3,Error 1 cause code,0,65535,1,,"numbers >= 200, list used in Nefit and Buderus"
+0x0012,4,Error 1 Start year,0,255,1,,"Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused"
+0x0012,5,Error 1 Start month,1,12,1,,"Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0012,6,Error 1 Start hour,1,31,1,,"Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0012,7,Error 1 Start day,1,31,1,,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0012,8,Error 1 Start minute,1,59,1,,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty"
+0x0012,9-10,Error 1 duration,1,65535,1,min,
+0x0012,11,Error 1 source,1,127,1,,device ID of the error source
+0x0012,12-23,Error 2,,,,,,same as offset 0 ff. for error 1
+0x0012,24-35,Error 3,,,,,,same as offset 0 ff. for error 1
+0x0012,36-47,Error 4,,,,,,same as offset 0 ff. for error 1
+0x0013,0-1,Error 1 display code,0,255,1,ASCII,displayed error code
+0x0013,2-3,Error 1 cause code,0,65535,1,,"numbers >= 200, list used in Nefit and Buderus"
+0x0013,4,Error 1 Start year,0,255,1,,"Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused"
+0x0013,5,Error 1 Start month,1,12,1,,"Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0013,6,Error 1 Start hour,1,31,1,,"Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0013,7,Error 1 Start day,1,31,1,,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0013,8,Error 1 Start minute,1,59,1,,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty"
+0x0013,9-10,Error 1 duration,1,65535,1,min,
+0x0013,11,Error 1 source,1,127,1,,device ID of the error source
+0x0013,12-23,Error 2,,,,,,same as offset 0 ff. for error 1
+0x0013,24-35,Error 3,,,,,,same as offset 0 ff. for error 1
+0x0013,36-47,Error 4,,,,,,same as offset 0 ff. for error 1
+
