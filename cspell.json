@@ -21,9 +21,9 @@
     "**/*.csv",
     "/project-words.txt",
     "docs/Modbus-Entity-Registers.md",
-    "docs/nl/**",
-    "docs/de/**",
+    "i18n/**",
     "**/*.svg",
-    "**/*.html"
+    "**/*.html",
+    "BUILDING.md"
   ]
 }
