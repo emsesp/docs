@@ -484,7 +484,7 @@ Als Nächstes untersucht er, wie man eine klare Leistungsanzeige (in W) für den
 
 _(von oliof)_
 
-Hier ist eine einfache Automatisierung, die zusätzliches heißes Wasser durch einen Doppelklick auf eine Zigbee-basierte Taste [^button] auslöst. Dieser Auslöser kann leicht mit einem Sprachbefehl oder einem gescannten QR-Code ausgetauscht werden, falls gewünscht.
+Hier ist eine einfache Automatisierung, die zusätzliches heißes Wasser durch einen Doppelklick auf eine Zigbee-basierte Taste auslöst. Dieser Auslöser kann leicht mit einem Sprachbefehl oder einem gescannten QR-Code ausgetauscht werden, falls gewünscht.
 
 ![image](https://github.com/user-attachments/assets/da3795fd-5bba-411c-a533-49fe5efc70c3)
 
@@ -498,7 +498,7 @@ Diese Schwachlastoptimierung kann den Gasverbrauch um 15-20 % senken, ohne dass 
 
 ### Vorraussetzungen
 
-- Ein hochauflösendes, hochfrequentes, aktualisierendes Thermometer [^thermometers].
+- Ein hochauflösendes, hochfrequentes, aktualisierendes Thermometer.
 - Einrichten dieses Thermometers als [Remote Thermostat](https://emsesp.org/Special-Functions/#remote-thermostats).
 - Ein Heizkessel, bei dem die Einstellung `Heating Activated` auf `off` tatsächlich die Heizung deaktiviert. Dies scheint für Gaskessel zu gelten, wird aber wahrscheinlich nicht für Wärmepumpen funktionieren. In diesem Fall sollten Sie die Entität `forceheatingoff` verwenden.
 
@@ -598,11 +598,13 @@ Hier ein Beispieldiagramm, das die `Heating activated`-Entität und die Temperat
 
 ![image](https://github.com/user-attachments/assets/76cdbdcd-2010-493b-85f8-4253220888d9)
 
-[^button]: Dies ist eine einfache Aqara-Zigbee-Taste.
+Dies ist eine einfache Aqara-Zigbee-Taste.
 
-[^Thermometer]: Ich verwende ein [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) mit dem [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), da es eine zweistellige Genauigkeit bietet und etwa ein- bis zweimal pro Minute aktualisiert wird).  
-    Bitte beachten Sie, dass Thermometer mit niedriger Auflösung und geringer Aktualisierungsfrequenz Ihre Fähigkeit, schnell auf Temperaturänderungen zu reagieren, beeinträchtigen.  
-    Wenn Sie möchten, können Sie mit tasmota und einem DS18B20- oder BME820-Sensor ein hochauflösendes Thermometer bauen, das häufig aktualisiert wird.
+::info
+Ich verwende ein [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) mit dem [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), da es eine zweistellige Genauigkeit bietet und etwa ein- bis zweimal pro Minute aktualisiert wird.  
+Bitte beachten Sie, dass Thermometer mit niedriger Auflösung und geringer Aktualisierungsfrequenz Ihre Fähigkeit, schnell auf Temperaturänderungen zu reagieren, beeinträchtigen.  
+Wenn Sie möchten, können Sie mit tasmota und einem DS18B20- oder BME820-Sensor ein hochauflösendes Thermometer bauen, das häufig aktualisiert wird.
+:::
 
 ## Optimierung für Wärmepumpen
 

@@ -483,7 +483,7 @@ The next thing he is investigating is how to obtain a clear power reading (in W)
 
 _(by oliof)_
 
-Here is a simple automation that toggles extra hot water by double clicking a Zigbee based button[^button]. This trigger could easily be swapped with a voice command or scanned QR code if desired.
+Here is a simple automation that toggles extra hot water by double clicking a Zigbee based button. This trigger could easily be swapped with a voice command or scanned QR code if desired.
 
 ![image](https://github.com/user-attachments/assets/da3795fd-5bba-411c-a533-49fe5efc70c3)
 
@@ -501,7 +501,7 @@ This low load optimisation can reduce gas usage by 15-20% with little change in 
 
 ### Pre-requisites
 
-- A high resolution, high frequency updating thermometer [^thermometers].
+- A high resolution, high frequency updating thermometer.
 - Setting up this thermometer as a [Remote Thermostat](https://emsesp.org/Special-Functions/#remote-thermostats).
 - A boiler where setting `Heating Activated` to `off` actually disables heating. This seems to be true for gas boilers, but will most
   likely not work for heatpumps. Make use of the `forceheatingoff` entity in that case.
@@ -610,12 +610,13 @@ deviation is roughly +-0.1K with long periods of the heating system being off (a
 
 ![image](https://github.com/user-attachments/assets/76cdbdcd-2010-493b-85f8-4253220888d9)
 
-[^button]: This is a simple Aqara zigbee button.
+The button used in the automation is a simple Aqara zigbee button.
 
-[^thermometers]:
+:::info
     I am using an [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) with the [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), as it provides two digits of precision and updates roughly once to twice per minute).  
     Please note that low resolution thermometers with low update frequency will affect your ability to quickly react to temperature changes.  
     If you are so inclined, you can build a high resolution, frequently updating thermometer with tasmota and a DS18B20 or BME820 sensor.
+:::
 
 ## Optimizing for heatpumps
 
