@@ -1,0 +1,363 @@
+{
+  "0x0001": {
+    "name": "Product Data Electronics Hardware",
+    "usedIn": "Various controllers, thermostats and boilers",
+    "description": "Holds ASCII coded device information",
+    "class": "Constant",
+    "emsCategory": "EMS1.0 & EMS2.0",
+    "distribution": "unicast-on-request",
+    "type": "info"
+  },
+  "0x0002": {
+    "name": "Module Identification Data",
+    "usedIn": "Various controllers, thermostats and boilers",
+    "description": "Holds device information",
+    "class": "Constant",
+    "emsCategory": "EMS1.0 & EMS2.0",
+    "distribution": "unicast-on-request, broadcast-on-powerup",
+    "type": "info"
+  },
+  "0x0003": {
+    "name": "Product Data Appliance",
+    "usedIn": "Various controllers, thermostats and boilers",
+    "description": "Holds ASCII coded device information",
+    "class": "Constant",
+    "emsCategory": "EMS1.0 & EMS2.0",
+    "distribution": "unicast-on-request",
+    "type": "info"
+  },
+  "0x0005": {
+    "name": "Special Commands",
+    "usedIn": "Various controllers, thermostats and boilers",
+    "description": "Collection of different special functions/commands",
+    "class": "Command",
+    "emsCategory": "EMS1.0",
+    "distribution": "unicast-write-request",
+    "type": "warning",
+    "extraWarning": "These commands can affect device operation and should be used carefully."
+  },
+  "0x0010": {
+    "name": "Locking Error History",
+    "usedIn": "Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7",
+    "description": "Holds the history of locking errors.",
+    "class": "monitor",
+    "emsCategory": "EMS1.0 and EMS2.0",
+    "distribution": "unicast-on-request, broadcast-on-change",
+    "type": "info"
+  },
+  "0x0011": {
+    "name": "Blocking Error History",
+    "usedIn": "Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7",
+    "description": "Holds the history of blocking errors.",
+    "class": "monitor",
+    "emsCategory": "EMS1.0",
+    "distribution": "unicast-on-request, broadcast-on-change",
+    "type": "info"
+  },
+  "0x0012": {
+    "name": "Blocking actual system error history",
+    "usedIn": "Older systems hold this error list while newer systems use 0x00C0 and 0x00C1",
+    "description": "Holds the history of blocking errors of the system",
+    "class": "monitor",
+    "emsCategory": "EMS1.0",
+    "distribution": "unicast-on-request, broadcast-on-change",
+    "type": "info"
+  },
+  "0x0013": {
+    "name": "System error history",
+    "usedIn": "Older systems hold this error list while newer systems use 0x00C0 and 0x00C1",
+    "description": "Holds the history of system errors.",
+    "class": "monitor",
+    "emsCategory": "EMS1.0",
+    "distribution": "unicast-on-request, broadcast-on-change",
+    "type": "info"
+  },
+  "0x0026": {
+    "name": "EMS service tool heating parameters",
+    "usedIn": "HT3 Junkers systems",
+    "description": "This telegrams contains HT3 configuration parameters for Netcom service tools",
+    "class": "parameter",
+    "emsCategory": "EMS1.0",
+    "distribution": "unicast-on-request, broadcast-on-change, broadcast-on-power-up, unicast-write-request",
+    "type": "info"
+  },
+  "0x0027": {
+    "name": "EMS service tool dhw parameters",
+    "usedIn": "HT3 Junkers systems",
+    "description": "This telegrams contains HT3 configuration parameters for Netcom service tools",
+    "class": "parameter",
+    "emsCategory": "EMS1.0",
+    "distribution": "unicast-on-request, broadcast-on-change, broadcast-on-power-up, unicast-write-request",
+    "type": "info"
+  },
+  "0x00BF": {
+    "name": "Local error list",
+    "usedIn": "Used in systems that use the 0x00C2/0x00C6/0x00C7 error history lists",
+    "description": "The lists holds up to three active errors, sorted by critically",
+    "class": "monitor",
+    "emsCategory": "EMS2.0",
+    "distribution": "unicast-on-request, broadcast-on-change, broadcast-periodically",
+    "type": "info"
+  },
+  "0x00C0": {
+    "name": "System error history",
+    "usedIn": "Various controllers, thermostats and boilers",
+    "description": "Hold the history of errors. 0x00C0 holds the first 10 error messages and 0x00C1 the next 10. Error #1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0012 and 0x0013",
+    "class": "monitor",
+    "emsCategory": "EMS2.0",
+    "distribution": "unicast-on-request",
+    "type": "info"
+  },
+  "0x00C2": {
+    "name": "Local device error history",
+    "usedIn": "Various controllers, thermostats and boilers",
+    "description": "Hold the history of errors. Each device has it´s own list of own errors. Error 1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0010 and 0x0011.",
+    "class": "monitor",
+    "emsCategory": "EMS2.0",
+    "distribution": "unicast-on-request",
+    "type": "info"
+  },
+  "0x00C6": {
+    "name": "Local heat pump error history",
+    "usedIn": "heat pump (boiler)",
+    "description": "Hold the history of errors. Error 1 is the most recent one. Going down the list the errors get older. This list is the same as 0x00C2, but has a unique identified at the beginning of each error. This list has 10 entries and is continued in 0x00C7. Older systems use telegrams 0x0010 and 0x0011.",
+    "class": "monitor",
+    "emsCategory": "EMS2.0",
+    "distribution": "unicast-on-request",
+    "type": "info"
+  },
+  "0x00C7": {
+    "name": "Local heat pump error history",
+    "usedIn": "heat pump (boiler)",
+    "description": "This list is the continuation of 0x00C6. Here are the errors 11 ... 20 stored. Older systems use telegrams 0x0010 and 0x0011.",
+    "class": "monitor",
+    "emsCategory": "EMS2.0",
+    "distribution": "unicast-on-request",
+    "type": "info"
+  },
+  "0x0165": {
+    "name": "HMI800 holiday mode parameters / Older Junkers heating circuit control",
+    "usedIn": "Buderus/Bosch RC300, HMC310 and similar, newer Junkers controllers \"Cxyz\" (MY>2019) / older Junkers controllers \"Fxyz\" (MY<2019)",
+    "description": "Up to 8 holiday periods can be defined with the above telegrams / Up to 10 heating circuits can be controller with these telegrams. 0x0165=HC1, 0x0166=HC2, ...",
+    "class": "Parameter",
+    "emsCategory": "EMS2.0 / EMS1.0",
+    "distribution": "broadcast-on-change, unicast-write-request, unicast-on-request",
+    "type": "info"
+  },
+  "0x016F": {
+    "name": "FX100 Monitor heating circuit values",
+    "usedIn": "Junkers FB100/FW120 controllers",
+    "description": "Junkers monitor values of heating circuit. 10 heating circuits can be monitored",
+    "class": "Monitor",
+    "emsCategory": "EMS1.0",
+    "distribution": "broadcast-on-change, broadcast-periodically, unicast-on-request",
+    "type": "info"
+  },
+  "0x02A5": {
+    "name": "NSC controller CH monitor for HCx",
+    "usedIn": "CR50",
+    "description": "Monitor values for HC1, HC2, ... HC8",
+    "class": "monitor",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, broadcast-periodically",
+    "type": "info"
+  },
+  "0x02B9": {
+    "name": "Thermostat settings",
+    "usedIn": "ems+ thermostats",
+    "description": "hc settings",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, writable",
+    "type": "info"
+  },
+  "0x02C3": {
+    "name": "NSC Clock Program 1 for HCx",
+    "usedIn": "CR50, RC310",
+    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x02C3": {
+    "name": "NSC Clock Program 1 for HCx",
+    "usedIn": "CR50, RC310",
+    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x02FF": {
+    "name": "NSC Clock Program for dhw",
+    "usedIn": "RC310",
+    "description": "Sets dhw switch points for DHW1 and DHW2",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x0309": {
+    "name": "NSC Clock Program for circulation pump for dhwx",
+    "usedIn": "RC310",
+    "description": "Sets dhw circulation pump switch points for DHW1 and DHW2",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x0449": {
+    "name": "NSC Clock Program 2 for HCx",
+    "usedIn": "RC310",
+    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x0683": {
+    "name": "NSC Clock Program 3 for HCx",
+    "usedIn": "RC310",
+    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x068D": {
+    "name": "NSC Clock Program 4 for HCx",
+    "usedIn": "RC310",
+    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x02CC": {
+    "name": "DHW priority for unmixed heating circuit",
+    "usedIn": "HMC310",
+    "description": "Enables/disables dhw priority in unmixed circuits where HC1 is directly connected to the heat source",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x02CD": {
+    "name": "DHW priority for mixed heating circuit HC1, ..., HC8",
+    "usedIn": "RC310",
+    "description": "Enables/disables dhw priority in unmixed circuits where HC1 is directly connected to the heat source",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x02F5": {
+    "name": "Configuration of DHWx",
+    "usedIn": "CR50",
+    "description": "Configuration of DHW1, DHW2",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x02FF": {
+    "name": "NSC Clock Program for dhw",
+    "usedIn": "RC310",
+    "description": "Sets dhw switch points for DHW1 and DHW2",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x0309": {
+    "name": "NSC Clock Program for circulation pump for dhwx",
+    "usedIn": "RC310",
+    "description": "Sets dhw circulation pump switch points for DHW1 and DHW2",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x031D": {
+    "name": "Monitoring DHWx",
+    "usedIn": "CR50",
+    "description": "Monitors the values of DHW1, DHW2",
+    "class": "monitor",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, broadcast-periodically",
+    "type": "info"
+  },
+  "0x043F": {
+    "name": "NSC HolidayMode for HCx",
+    "usedIn": "CR50",
+    "description": "Sets start and end date for holiday mode for HC1, HC2, ... HC8",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x0449": {
+    "name": "NSC Clock Program 2 for HCx",
+    "usedIn": "RC310",
+    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x048D": {
+    "name": "Heat pump monitor values",
+    "usedIn": "HMI800.2/Rego 3000, UI800, Logamatic BC400",
+    "description": "Shows various values of the heat pump",
+    "class": "monitor",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request",
+    "type": "info"
+  },
+  "0x04A2": {
+    "name": "Information from the heat pump to the HMI",
+    "usedIn": "HMC310",
+    "description": "Sends the status of several information from the heat source to the HMI",
+    "class": "monitor",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, broadcast-periodically",
+    "type": "info"
+  },
+  "0x0683": {
+    "name": "NSC Clock Program 3 for HCx",
+    "usedIn": "RC310",
+    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x068D": {
+    "name": "NSC Clock Program 4 for HCx",
+    "usedIn": "RC310",
+    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
+    "class": "parameter",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "type": "info"
+  },
+  "0x099A": {
+    "name": "Hybrid module monitor",
+    "usedIn": "CT210b",
+    "description": "Monitor data of the hybrid module",
+    "class": "monitor",
+    "emsCategory": "EMS2.0",
+    "distribution": "broadcast-on-change, unicast-on-request, broadcast periodically",
+    "type": "info"
+  },
+  "0x00FB": {
+    "name": "Write data than be read with telegrams 0x0001 or 0x0003",
+    "usedIn": "Various controllers, thermostats and boilers?",
+    "description": "Found by accident. I would be careful with this, no idea what it can cause",
+    "class": "Command",
+    "emsCategory": "EMS2.0",
+    "distribution": "",
+    "type": "warning"
+  }
+}

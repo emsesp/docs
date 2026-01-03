@@ -10,8 +10,8 @@ tags:
 
 # EMS library
 
-:::info Community Documentation
-This page is a comprehensive summary of collected EMS knowledge from the community, including entity names, telegram protocols and how they work. It is dynamically generated from the CSV files in the `data` folder.
+:::info
+This page is a comprehensive summary of EMS telegram details collected by the EMS-ESP community. This page is dynamically built using the CSV files in the `data` folder and the `telegram_metadata.json` file that describes the telegram's purpose and where it is typically used.
 
 Please contribute!
 :::
@@ -23,6 +23,10 @@ Please contribute!
 - [Error and Status Telegrams](#error-and-status-telegrams) `(0x00BF - 0x00FB)`
 - [Thermostat Telegrams](#thermostat-telegrams) `(0x0165 - 0x0178)`
 - [Hybrid Module Telegrams](#hybrid-module-telegrams) `(0x099A)`
+
+import TelegramSearchAll from '@site/src/components/TelegramSearchAll';
+
+<TelegramSearchAll />
 
 ---
 

@@ -120,4 +120,5 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x00C7,147-167,Error 18,,,,,,same as offset 0 ff. for error 11
 0x00C7,168-188,Error 19,,,,,,same as offset 0 ff. for error 11
 0x00C7,189-209,Error 20,,,,,,same as offset 0 ff. for error 11
+0x00FB,,,,,,,No data fields documented - metadata only (see metadata file)
 
