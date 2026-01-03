@@ -620,3 +620,74 @@ deviation is roughly +-0.1K with long periods of the heating system being off (a
 ## Optimizing for heatpumps
 
 Matthias documented his setup Bosch/Buderus Heatpump on [his blog](https://bosch-buderus-wp.github.io/xps/matthias) and even goes to showing how you can use AI to setup a MCP/LLM to control the heatpump. See [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) for more details.
+
+
+## Using `txpause` to temporarily disable the bus traffic
+
+_(by DiZil1)_ from https://github.com/emsesp/EMS-ESP32/discussions/1953#discussioncomment-15387910
+
+"To give you some context on why this is so important for me and not just nice to have. I need to monitor this closely because, in my setup, A31 errors tend to escalate into critical blocking errors over time, eventually causing the heating system to shut down."
+
+```yaml
+# =========================
+# EMS-ESP Package
+# Datei: /config/packages/ems-esp.yaml
+# =========================
+
+rest_command:
+  ems_tx_on:
+    url: "http://192.168.178.XX/api/system/txpause"
+    method: POST
+    headers:
+      Authorization: !secret ems_esp_token
+      Content-Type: application/json
+    payload: >
+        {
+          "value": "on"
+        }
+
+  ems_tx_off:
+    url: "http://192.168.178.XX/api/system/txpause"
+    method: POST
+    headers:
+      Authorization: !secret ems_esp_token
+      Content-Type: application/json
+    payload: >
+        {
+          "value": "off"
+        }
+
+sensor:
+  - platform: rest
+    name: "EMS-ESP TXPause Raw"
+    unique_id: ems_esp_txpause_raw
+    resource: "http://192.168.178.XX/api/system/system/txpause"
+    method: GET
+    headers:
+      Authorization: !secret ems_esp_token
+    scan_interval: 30
+    timeout: 5
+    value_template: >
+      {{ value_json.value }}
+
+template:
+  - switch:
+      - name: "EMS-ESP TXPause"
+        unique_id: ems_esp_txpause_switch
+        icon: mdi:swap-horizontal
+        state: >
+          {% set v = states('sensor.ems_esp_txpause_raw') | lower %}
+          {{ v in ['true', 'on', '1', 'yes'] }}
+        turn_on:
+          - service: rest_command.ems_tx_on
+          - delay: "00:00:01"
+          - service: homeassistant.update_entity
+            target:
+              entity_id: sensor.ems_esp_txpause_raw
+        turn_off:
+          - service: rest_command.ems_tx_off
+          - delay: "00:00:01"
+          - service: homeassistant.update_entity
+            target:
+              entity_id: sensor.ems_esp_txpause_raw
+```
