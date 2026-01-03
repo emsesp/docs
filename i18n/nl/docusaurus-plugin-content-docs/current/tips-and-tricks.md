@@ -483,7 +483,7 @@ Het volgende dat hij onderzoekt is hoe hij een duidelijke vermogensmeting (in W)
 
 _(door oliof)_
 
-Hier is een eenvoudige automatisering die extra warm water inschakelt door dubbel te klikken op een Zigbee-gebaseerde knop[^button]. Deze trigger kan desgewenst eenvoudig worden vervangen door een spraakcommando of een gescande QR-code.
+Hier is een eenvoudige automatisering die extra warm water inschakelt door dubbel te klikken op een Zigbee-gebaseerde knop. Deze trigger kan desgewenst eenvoudig worden vervangen door een spraakcommando of een gescande QR-code.
 
 ![image](https://github.com/user-attachments/assets/da3795fd-5bba-411c-a533-49fe5efc70c3)
 
@@ -497,7 +497,7 @@ Deze optimalisatie bij lage belasting kan het gasverbruik met 15-20% verminderen
 
 ### Vereisten
 
-- Een hoge resolutie, hoge frequentie updating thermometer [^thermometers].
+- Een hoge resolutie, hoge frequentie updating thermometer.
 - Deze thermometer instellen als een [Remote Thermostat](https://emsesp.org/Special-Functions/#remote-thermostats).
 - Een ketel waarbij het instellen van `Heating Activated` op `off` in feite de verwarming uitschakelt. Dit lijkt te gelden voor gasketels, maar zal waarschijnlijk niet werken voor warmtepompen. Maak in dat geval gebruik van de entiteit `forceheatingoff`.
 
@@ -597,11 +597,13 @@ Dit is een voorbeeldgrafiek met de entiteit `Heating activated` en de temperatuu
 
 ![image](https://github.com/user-attachments/assets/76cdbdcd-2010-493b-85f8-4253220888d9)
 
-[^knop]: Dit is een eenvoudige Aqara zigbee-knop.
+Dit is een eenvoudige Aqara zigbee-knop.
 
-[^thermometers]: Ik gebruik een [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) met de [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), omdat deze twee cijfers nauwkeurigheid biedt en ruwweg één tot twee keer per minuut wordt bijgewerkt).  
-    Houd er rekening mee dat thermometers met een lage resolutie en een lage updatefrequentie je vermogen om snel te reageren op temperatuurveranderingen zullen beïnvloeden.  
-    Als je wilt, kun je met tasmota en een DS18B20 of BME820 sensor een hoge resolutie thermometer bouwen die regelmatig wordt geüpdatet.
+:::info
+  Ik gebruik een [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) met de [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), omdat deze twee cijfers nauwkeurigheid biedt en ruwweg één tot twee keer per minuut wordt bijgewerkt).  
+  Houd er rekening mee dat thermometers met een lage resolutie en een lage updatefrequentie je vermogen om snel te reageren op temperatuurveranderingen zullen beïnvloeden.  
+  Als je wilt, kun je met tasmota en een DS18B20 of BME820 sensor een hoge resolutie thermometer bouwen die regelmatig wordt geüpdatet.
+:::
 
 ## Optimaliseren voor warmtepompen
 
