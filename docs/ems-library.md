@@ -2,6 +2,7 @@
 title: EMS Library
 id: ems-library
 description: Comprehensive reference for EMS telegram protocols and entity definitions
+hide_table_of_contents: true
 tags:
   - devices
   - protocol

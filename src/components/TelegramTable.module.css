@@ -25,15 +25,15 @@
 }
 
 .telegramSection {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
 .telegramHeader {
   background: var(--ifm-color-emphasis-100);
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -48,7 +48,7 @@
 
 .telegramHeader h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--ifm-color-primary);
 }
 
@@ -58,7 +58,7 @@
 }
 
 .metadataBox {
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 0;
   border-bottom: 1px solid var(--ifm-color-emphasis-300);
 }
@@ -79,9 +79,9 @@
 }
 
 .metadataTitle {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: var(--ifm-font-color-base);
 }
 
