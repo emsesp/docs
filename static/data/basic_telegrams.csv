@@ -40,11 +40,11 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x0010,84-95,Error 8,,,,,same as offset 0 ff. for error 1
 0x0011,0-1,Error 1 display code,0,255,1,ASCII,displayed error code
 0x0011,2-3,Error 1 cause code,0,65535,1,-,"numbers >= 200, list used in Nefit and Buderus"
-0x0011,4,Error 1 Start year,0,255,1,,-,"Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused"
-0x0011,5,Error 1 Start month,1,12,1,,-,"Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
-0x0011,6,Error 1 Start hour,1,31,1,,-,"Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
-0x0011,7,Error 1 Start day,1,31,1,,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
-0x0011,8,Error 1 Start minute,1,59,1,,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty"
+0x0011,4,Error 1 Start year,0,255,1,-,"Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused"
+0x0011,5,Error 1 Start month,1,12,1,-,"Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0011,6,Error 1 Start hour,1,31,1,-,"Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0011,7,Error 1 Start day,1,31,1,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0011,8,Error 1 Start minute,1,59,1,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty"
 0x0011,9-10,Error 1 duration,1,65535,1,min,
 0x0011,11,Error 1 source,1,127,1,,device ID of the error source
 0x0011,12-23,Error 2,,,,,same as offset 0 ff. for error 1
