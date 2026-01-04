@@ -8,8 +8,8 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x00BF,4.5,Error 1 local overrule,0,1,1,bool,
 0x00BF,5-7,Error 1 display code,0,255,1,ASCII,"see 0x00C0/0x00C2 offset 5-7 and 0x00C6 offset 6-8; displayed error"
 0x00BF,8-9,Error 1 code numeric,0,65535,1,enum,"see 0x00C0/0x00C2 offset 8-9 and 0x00C6 offset 9-10; numerical part of displayed error"
-0x00BF,10-16,Error 2,,,,,,"next lower prio error; offsets see 3-9"
-0x00BF,17-23,Error 3,,,,,,"next lower prio error; offsets see 3-9"
+0x00BF,10-16,Error 2,,,,,"next lower prio error; offsets see 3-9"
+0x00BF,17-23,Error 3,,,,,"next lower prio error; offsets see 3-9"
 0x00C0,0,Error 1 source address,0,127,1,,"if 0x00, then no error"
 0x00C0,1,Error 1 module ID,0,255,1,,same as in telegram 0x02 offset 0
 0x00C0,2,Error 1 module ID extension?,0,255,1,,"is always 0, but maybe used if offset 1 is more than 255"
@@ -28,15 +28,15 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x00C0,17,Error 1 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
 0x00C0,18,Error 1 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
 0x00C0,19,Error 1 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
-0x00C0,20-39,Error 2,,,,,,same as offset 0 ff. for error 1
-0x00C0,40-59,Error 3,,,,,,same as offset 0 ff. for error 1
-0x00C0,60-79,Error 4,,,,,,same as offset 0 ff. for error 1
-0x00C0,80-99,Error 5,,,,,,same as offset 0 ff. for error 1
-0x00C0,100-119,Error 6,,,,,,same as offset 0 ff. for error 1
-0x00C0,120-139,Error 7,,,,,,same as offset 0 ff. for error 1
-0x00C0,140-159,Error 8,,,,,,same as offset 0 ff. for error 1
-0x00C0,160-179,Error 9,,,,,,same as offset 0 ff. for error 1
-0x00C0,180-199,Error 10,,,,,,same as offset 0 ff. for error 1
+0x00C0,20-39,Error 2,,,,,same as offset 0 ff. for error 1
+0x00C0,40-59,Error 3,,,,,same as offset 0 ff. for error 1
+0x00C0,60-79,Error 4,,,,,same as offset 0 ff. for error 1
+0x00C0,80-99,Error 5,,,,,same as offset 0 ff. for error 1
+0x00C0,100-119,Error 6,,,,,same as offset 0 ff. for error 1
+0x00C0,120-139,Error 7,,,,,same as offset 0 ff. for error 1
+0x00C0,140-159,Error 8,,,,,same as offset 0 ff. for error 1
+0x00C0,160-179,Error 9,,,,,same as offset 0 ff. for error 1
+0x00C0,180-199,Error 10,,,,,same as offset 0 ff. for error 1
 0x00C2,0,Error 1 source address,0,127,1,,"if 0x00, then no error"
 0x00C2,1,Error 1 module ID,0,255,1,,same as in telegram 0x02 offset 0
 0x00C2,2,Error 1 module ID extension?,0,255,1,,"is always 0, but maybe used if offset 1 is more than 255"
@@ -55,15 +55,15 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x00C2,17,Error 1 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
 0x00C2,18,Error 1 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
 0x00C2,19,Error 1 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
-0x00C2,20-39,Error 2,,,,,,same as offset 0 ff. for error 1
-0x00C2,40-59,Error 3,,,,,,same as offset 0 ff. for error 1
-0x00C2,60-79,Error 4,,,,,,same as offset 0 ff. for error 1
-0x00C2,80-99,Error 5,,,,,,same as offset 0 ff. for error 1
-0x00C2,100-119,Error 6,,,,,,same as offset 0 ff. for error 1
-0x00C2,120-139,Error 7,,,,,,same as offset 0 ff. for error 1
-0x00C2,140-159,Error 8,,,,,,same as offset 0 ff. for error 1
-0x00C2,160-179,Error 9,,,,,,same as offset 0 ff. for error 1
-0x00C2,180-199,Error 10,,,,,,same as offset 0 ff. for error 1
+0x00C2,20-39,Error 2,,,,,same as offset 0 ff. for error 1
+0x00C2,40-59,Error 3,,,,,same as offset 0 ff. for error 1
+0x00C2,60-79,Error 4,,,,,same as offset 0 ff. for error 1
+0x00C2,80-99,Error 5,,,,,same as offset 0 ff. for error 1
+0x00C2,100-119,Error 6,,,,,same as offset 0 ff. for error 1
+0x00C2,120-139,Error 7,,,,,same as offset 0 ff. for error 1
+0x00C2,140-159,Error 8,,,,,same as offset 0 ff. for error 1
+0x00C2,160-179,Error 9,,,,,same as offset 0 ff. for error 1
+0x00C2,180-199,Error 10,,,,,same as offset 0 ff. for error 1
 0x00C6,0,Error UID,0,254,1,,ID of error 1
 0x00C6,1,Error 1 source address,0,127,1,,"if 0x00, then no error"
 0x00C6,2,Error 1 module ID,0,255,1,,same as in telegram 0x02 offset 0
@@ -83,15 +83,15 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x00C6,18,Error 1 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
 0x00C6,19,Error 1 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
 0x00C6,20,Error 1 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
-0x00C6,21-41,Error 2,,,,,,same as offset 0 ff. for error 1
-0x00C6,42-62,Error 3,,,,,,same as offset 0 ff. for error 1
-0x00C6,63-83,Error 4,,,,,,same as offset 0 ff. for error 1
-0x00C6,84-104,Error 5,,,,,,same as offset 0 ff. for error 1
-0x00C6,105-125,Error 6,,,,,,same as offset 0 ff. for error 1
-0x00C6,126-146,Error 7,,,,,,same as offset 0 ff. for error 1
-0x00C6,147-167,Error 8,,,,,,same as offset 0 ff. for error 1
-0x00C6,168-188,Error 9,,,,,,same as offset 0 ff. for error 1
-0x00C6,189-209,Error 10,,,,,,same as offset 0 ff. for error 1
+0x00C6,21-41,Error 2,,,,,same as offset 0 ff. for error 1
+0x00C6,42-62,Error 3,,,,,same as offset 0 ff. for error 1
+0x00C6,63-83,Error 4,,,,,same as offset 0 ff. for error 1
+0x00C6,84-104,Error 5,,,,,same as offset 0 ff. for error 1
+0x00C6,105-125,Error 6,,,,,same as offset 0 ff. for error 1
+0x00C6,126-146,Error 7,,,,,same as offset 0 ff. for error 1
+0x00C6,147-167,Error 8,,,,,same as offset 0 ff. for error 1
+0x00C6,168-188,Error 9,,,,,same as offset 0 ff. for error 1
+0x00C6,189-209,Error 10,,,,,same as offset 0 ff. for error 1
 0x00C7,0,Error UID,0,254,1,,ID of error 11
 0x00C7,1,Error 11 source address,0,127,1,,"if 0x00, then no error"
 0x00C7,2,Error 11 module ID,0,255,1,,same as in telegram 0x02 offset 0
@@ -111,14 +111,14 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x00C7,18,Error 11 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
 0x00C7,19,Error 11 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
 0x00C7,20,Error 11 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
-0x00C7,21-41,Error 12,,,,,,same as offset 0 ff. for error 11
-0x00C7,42-62,Error 13,,,,,,same as offset 0 ff. for error 11
-0x00C7,63-83,Error 14,,,,,,same as offset 0 ff. for error 11
-0x00C7,84-104,Error 15,,,,,,same as offset 0 ff. for error 11
-0x00C7,105-125,Error 16,,,,,,same as offset 0 ff. for error 11
-0x00C7,126-146,Error 17,,,,,,same as offset 0 ff. for error 11
-0x00C7,147-167,Error 18,,,,,,same as offset 0 ff. for error 11
-0x00C7,168-188,Error 19,,,,,,same as offset 0 ff. for error 11
-0x00C7,189-209,Error 20,,,,,,same as offset 0 ff. for error 11
+0x00C7,21-41,Error 12,,,,,same as offset 0 ff. for error 11
+0x00C7,42-62,Error 13,,,,,same as offset 0 ff. for error 11
+0x00C7,63-83,Error 14,,,,,same as offset 0 ff. for error 11
+0x00C7,84-104,Error 15,,,,,same as offset 0 ff. for error 11
+0x00C7,105-125,Error 16,,,,,same as offset 0 ff. for error 11
+0x00C7,126-146,Error 17,,,,,same as offset 0 ff. for error 11
+0x00C7,147-167,Error 18,,,,,same as offset 0 ff. for error 11
+0x00C7,168-188,Error 19,,,,,same as offset 0 ff. for error 11
+0x00C7,189-209,Error 20,,,,,same as offset 0 ff. for error 11
 0x00FB,,,,,,,No data fields documented - metadata only (see metadata file)
 
