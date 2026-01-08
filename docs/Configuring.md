@@ -62,7 +62,7 @@ This next section describes some of key settings that can be adjusted via the We
 | S2MINI       | Lolin S2 Mini          | 15  | 7      | 11  | 12  | 0      |          |           |              |                              |
 | S3MINI       | Liligo S3              | 17  | 18     | 8   | 5   | 0      |          |           |              |                              |
 
-Choosing `Custom` will show the following additional settings to manually configure the GPIOs to match your own board. You can also select `Custom` at any time to display the current board profile settings, without saving.
+For configuring a custom board, enable `Developer mode` first. Choosing `Custom` will show the following additional settings to manually configure the GPIOs to match your own board. You can also select `Custom` at any time to display the current board profile settings, without saving.
 
 *Custom board Settings:*
 
@@ -88,7 +88,7 @@ Choosing `Custom` will show the following additional settings to manually config
 
 ### Special Functions
 
-- **Developer Mode** will enable advanced features in the WebUI, like the Read command from the System Log.
+- **Developer Mode** will enable advanced features in the WebUI, like the Read command from the System Log and configuring a custom board.
 - **Start boiler with forced heating off**.
 - **Disable remote on missing room temperature**. This is a safety feature to prevent the boiler from starting when the simulated room temperature sensor is missing or not working.
 - **Enable Shower Timer**. Enable to time how long the hot water runs for and it will send out an MQTT message with the duration. The timer starts after a minimal of 2 minutes running time.
@@ -120,6 +120,7 @@ Enable this function when running in VPNs or you have other servers (like Grafan
 - **Enable MQTT Discovery** enables the integration using MQTT Discovery, fully supported with Home Assistant and partially with Domoticz.
   - **Discovery type**. Choose between "Home Assistant" and two protocols for "Domoticz". `Domoticz (latest)` will use Numbers, Switches, Select and other modern types, while `Domoticz` will just use Sensors for everything and also remove any templating conditions.
   - **Entity ID format**: There are 3 options. The first `single instance, long names` uses the older `< v3.5` format. The default and recommended setting for all new installs is the 2nd option called `Single instance, short name` which uses the EMS-ESP device entity name, which is fixed and can be seen in the `Settings->Customization` page. The last option must be used when running more than one version of the EMS-ESP firmware as it makes each unique by prefixing all MQTT topics with the base name.
+  -  **Number format**: Select box or slider mode. Sliders will only be used for number entities with a range <= 100.
 - **Publish Intervals**. This section is per device and sets how frequent an MQTT message is sent. When set to 0 EMS-ESP will send data automatically when there is a noticeable change, which could be within a few seconds.
 
 ## NTP Setup
@@ -139,7 +140,7 @@ Each user has an unique Access Token (viewable by clicking on the key icon) whic
 
 ## Adding Analog and Temperature Sensors
 
-External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees Gateway board it already has an external plug for Dallas temperature sensors which will be visible in the WebUI without any additional configuration.
+External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees Gateway board it already has an external plug for Dallas temperature sensors which will be visible in the WebUI without any additional configuration. BBQKees boards are CE certified and adding sensors to gpios will break EMC compilance. For adding analog sensors on own risk, choose a different board profile or use developer mode to configure a custom board.
 
 To add analog sensors click on `Add` and choose between a normal Digital in/out, a Counter (counting on/off pulses), ADC for measuring voltages, Timer, Rate and PWM 0-2. Note, the counter value is persisted and not reset on reboot.
 
