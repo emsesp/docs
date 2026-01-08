@@ -53,7 +53,7 @@
 }
 
 .telegramName {
-  color: white;
+  color: black;
 }
 
 .expandIcon {
@@ -83,7 +83,7 @@
 }
 
 .metadataTitle {
-  font-size: 1rem;
+  font-size: rem;
   font-weight: bold;
   margin-bottom: 0.75rem;
   color: var(--ifm-font-color-base);
@@ -245,6 +245,10 @@
 }
 
 /* Dark mode adjustments */
+[data-theme='dark'] .telegramName {
+  color: var(--ifm-color-emphasis-600);
+}
+
 [data-theme='dark'] .searchInput,
 [data-theme='dark'] .filterSelect {
   border-color: var(--ifm-color-emphasis-400);
