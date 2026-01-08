@@ -1,4 +1,355 @@
 Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
+0x0001,0-26,ASCII coded numbers,0,255,1,ASCII,"Sequence of numbers. Examples: HMC310 25303763146288737718903, RC100.2 H 05704801002367738112973, MX300 25303394051798738806124"
+0x0001,27-42,Product name ASCII coded,0,255,1,ASCII,"Should be \0 terminated, but is not always. i.e. Heat Pump responds with 43 55 48 50 = ""CUHP"", but \0 is missing"
+0x0001,43-69,More data,0,255,1,-,Some devices send more data after offset 43. Either a series of 00 or FF
+0x0002,0,Product ID,0,255,1,-,"0=invalid?; 64=UBA3; ... ; 68=BC10; 69=MM10; ...; 72=GB125; 73=SM10; ...; 77=M300; 78=M400; ...; 86=RC35; ...; 95=HT3; 109=JunkersFW100; ...; 123=CBS ; ...; 125=MX25; 157=CW100; 158=HMC310/CW400/RC310; 160=MM100; ...; 172=CUHP;...; 190=BC10; ...; 195=GB172i; ...; 200=Sensor w/humidity; 219=WS170 234=ACU; 248=HM200; 252=KF30; 253=HMI800; ...."
+0x0002,1,Major version,0,255,1,-,Major software version
+0x0002,2,Minor version,0,255,1,-,Minor software version
+0x0002,3,2nd product ID,0,255,1,-,
+0x0002,4,Major version of 2nd product ID,0,255,1,-,
+0x0002,5,Minor version of 2nd product ID,0,255,1,-,
+0x0002,9,Brand ID,0,255,1,-,"1=Bosch; 2= Junkers; 3=Buderus; 4=Nefit; ...; 13=IVT;"
+0x0003,0-26,ASCII coded numbers,0,255,1,ASCII,Example heat pump 26003750000018738212162
+0x0003,27-54,More data,0,255,1,-,Some appliances return a series of 00 or FF
+0x0005,0,Reset Error,0,255,1,enum,"90=error reset, also 153 and 245 do a reset (maybe on a different level)"
+0x0005,2,Reset burner timer and starts,0,255,1,enum,165=reset burner timer and restarts
+0x0005,4,Chimney sweeper mode,0,255,1,enum,"100=activate, 0=off"
+0x0005,6,Reset to factory setting,0,255,1,enum,154=do a reset
+0x0005,8,Reset maintenance message,0,255,1,enum,255=resets maintenance request
+0x0005,12,Erase error history,0,255,1,enum,169=erase error history
+0x0005,42,Clear error history,0,255,1,enum,"1=local history, 2=global history, 3=both"
+0x0005,44,Thermal desinfection,0,255,1,enum,"255=start, 254=stop"
+0x0005,52,Force manual defrost,0,255,1,enum,1=start
+0x0005,68,Standby mode,0,255,1,enum,"85=activate if standby can be selected in the menu, 170=deactivate, status is visible in 0x00E4 offset 12.0"
+0x0005,70,DHW ECO,0,255,1,enum,"85=activate, 170=deactivate"
+0x0010,0-1,Error 1 display code,0,255,1,ASCII,displayed error code
+0x0010,2-3,Error 1 cause code,0,65535,1,-,"numbers >= 200, list used in Nefit and Buderus"
+0x0010,4,Error 1 Start year,0,255,1,-,"Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused"
+0x0010,5,Error 1 Start month,1,12,1,-,"Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0010,6,Error 1 Start hour,1,31,1,-,"Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0010,7,Error 1 Start day,1,31,1,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0010,8,Error 1 Start minute,1,59,1,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty"
+0x0010,9-10,Error 1 duration,1,65535,1,min,
+0x0010,11,Error 1 source,1,127,1,-,device ID of the error source
+0x0010,12-23,Error 2,,,,,same as offset 0 ff. for error 1
+0x0010,24-35,Error 3,,,,,same as offset 0 ff. for error 1
+0x0010,36-47,Error 4,,,,,same as offset 0 ff. for error 1
+0x0010,48-59,Error 5,,,,,same as offset 0 ff. for error 1
+0x0010,60-71,Error 6,,,,,same as offset 0 ff. for error 1
+0x0010,72-83,Error 7,,,,,same as offset 0 ff. for error 1
+0x0010,84-95,Error 8,,,,,same as offset 0 ff. for error 1
+0x0011,0-1,Error 1 display code,0,255,1,ASCII,displayed error code
+0x0011,2-3,Error 1 cause code,0,65535,1,-,"numbers >= 200, list used in Nefit and Buderus"
+0x0011,4,Error 1 Start year,0,255,1,-,"Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused"
+0x0011,5,Error 1 Start month,1,12,1,-,"Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0011,6,Error 1 Start hour,1,31,1,-,"Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0011,7,Error 1 Start day,1,31,1,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0011,8,Error 1 Start minute,1,59,1,-,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty"
+0x0011,9-10,Error 1 duration,1,65535,1,min,
+0x0011,11,Error 1 source,1,127,1,,device ID of the error source
+0x0011,12-23,Error 2,,,,,same as offset 0 ff. for error 1
+0x0011,24-35,Error 3,,,,,same as offset 0 ff. for error 1
+0x0011,36-47,Error 4,,,,,same as offset 0 ff. for error 1
+0x0011,48-59,Error 5,,,,,same as offset 0 ff. for error 1
+0x0011,60-71,Error 6,,,,,same as offset 0 ff. for error 1
+0x0011,72-83,Error 7,,,,,same as offset 0 ff. for error 1
+0x0011,84-95,Error 8,,,,,same as offset 0 ff. for error 1
+0x0012,0-1,Error 1 display code,0,255,1,ASCII,displayed error code
+0x0012,2-3,Error 1 cause code,0,65535,1,,"numbers >= 200, list used in Nefit and Buderus"
+0x0012,4,Error 1 Start year,0,255,1,,"Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused"
+0x0012,5,Error 1 Start month,1,12,1,,"Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0012,6,Error 1 Start hour,1,31,1,,"Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0012,7,Error 1 Start day,1,31,1,,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0012,8,Error 1 Start minute,1,59,1,,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty"
+0x0012,9-10,Error 1 duration,1,65535,1,min,
+0x0012,11,Error 1 source,1,127,1,,device ID of the error source
+0x0012,12-23,Error 2,,,,,same as offset 0 ff. for error 1
+0x0012,24-35,Error 3,,,,,same as offset 0 ff. for error 1
+0x0012,36-47,Error 4,,,,,same as offset 0 ff. for error 1
+0x0013,0-1,Error 1 display code,0,255,1,ASCII,displayed error code
+0x0013,2-3,Error 1 cause code,0,65535,1,,"numbers >= 200, list used in Nefit and Buderus"
+0x0013,4,Error 1 Start year,0,255,1,,"Bit 7 (=1) of this number indicates if the year is absolute. Bit 7=0 indicates relative time, then is offset 4 is unused"
+0x0013,5,Error 1 Start month,1,12,1,,"Offset 4 Bit 7=1 indicates that this offset 5 is the absolute month. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0013,6,Error 1 Start hour,1,31,1,,"Offset 4 Bit 7=1 indicates that this offset 6 is the absolute hour. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0013,7,Error 1 Start day,1,31,1,,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute day. Offset 4 Bit 7=0 indicates relative time. Then the uptime in minutes is stored in offset 5-7"
+0x0013,8,Error 1 Start minute,1,59,1,,"Offset 4 Bit 7=1 indicates that this offset 7 is the absolute minute. Offset 4 Bit 7=0 indicates relative time. Then the offset 8 is empty"
+0x0013,9-10,Error 1 duration,1,65535,1,min,
+0x0013,11,Error 1 source,1,127,1,,device ID of the error source
+0x0013,12-23,Error 2,,,,,same as offset 0 ff. for error 1
+0x0013,24-35,Error 3,,,,,same as offset 0 ff. for error 1
+0x0013,36-47,Error 4,,,,,same as offset 0 ff. for error 1
+0x00BF,0,Source address,0,127,1,,0=invalid
+0x00BF,1,module ID,0,255,1,,0=invalid
+0x00BF,2,module ID,0,255,1,,if offset 1 > 255
+0x00BF,3,Error 1,0,255,1,enum,"error with highest prio; enums see 0x00C0/0x00C2 offset 3 and 0x00C6 offset 4"
+0x00BF,4.0,Error 1 logging,0,1,1,bool,"Log this error, see also 0x00C0/0x00C2 offset 4.0 and 0x00C6 offset 5.0"
+0x00BF,4.1-4.4,Error 1 display level,0,15,1,enum,see 0x00C0/0x00C2 offset 4.1-4.4 and 0x00C6 offset 5.1-5.4
+0x00BF,4.5,Error 1 local overrule,0,1,1,bool,
+0x00BF,5-7,Error 1 display code,0,255,1,ASCII,"see 0x00C0/0x00C2 offset 5-7 and 0x00C6 offset 6-8; displayed error"
+0x00BF,8-9,Error 1 code numeric,0,65535,1,enum,"see 0x00C0/0x00C2 offset 8-9 and 0x00C6 offset 9-10; numerical part of displayed error"
+0x00BF,10-16,Error 2,,,,,"next lower prio error; offsets see 3-9"
+0x00BF,17-23,Error 3,,,,,"next lower prio error; offsets see 3-9"
+0x00C0,0,Error 1 source address,0,127,1,,"if 0x00, then no error"
+0x00C0,1,Error 1 module ID,0,255,1,,same as in telegram 0x02 offset 0
+0x00C0,2,Error 1 module ID extension?,0,255,1,,"is always 0, but maybe used if offset 1 is more than 255"
+0x00C0,3,Error 1 reason,0,255,1,enum,"found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance"
+0x00C0,4.0,Error 1 Log error,0,1,1,bool,"1=yes, 0=no"
+0x00C0,4.1-4.4,Error 1 display level,0,15,1,enum,"0=no display, 2=expert, 4=installer, 8=user"
+0x00C0,5-7,Error 1 code,0,255,1,ASCII,displayed error code
+0x00C0,8-9,Error 1 code numeric,0,65535,1,enum,numerical part of displayed error
+0x00C0,10,Error 1 start year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C0,11,Error 1 start month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,12,Error 1 start hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,13,Error 1 start day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,14,Error 1 start minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C0,15,Error 1 end year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C0,16,Error 1 end month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,17,Error 1 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,18,Error 1 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,19,Error 1 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C0,20-39,Error 2,,,,,same as offset 0 ff. for error 1
+0x00C0,40-59,Error 3,,,,,same as offset 0 ff. for error 1
+0x00C0,60-79,Error 4,,,,,same as offset 0 ff. for error 1
+0x00C0,80-99,Error 5,,,,,same as offset 0 ff. for error 1
+0x00C0,100-119,Error 6,,,,,same as offset 0 ff. for error 1
+0x00C0,120-139,Error 7,,,,,same as offset 0 ff. for error 1
+0x00C0,140-159,Error 8,,,,,same as offset 0 ff. for error 1
+0x00C0,160-179,Error 9,,,,,same as offset 0 ff. for error 1
+0x00C0,180-199,Error 10,,,,,same as offset 0 ff. for error 1
+0x00C2,0,Error 1 source address,0,127,1,,"if 0x00, then no error"
+0x00C2,1,Error 1 module ID,0,255,1,,same as in telegram 0x02 offset 0
+0x00C2,2,Error 1 module ID extension?,0,255,1,,"is always 0, but maybe used if offset 1 is more than 255"
+0x00C2,3,Error 1 reason,0,255,1,enum,"found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance"
+0x00C2,4.0,Error 1 Log error,0,1,1,bool,"1=yes, 0=no"
+0x00C2,4.1-4.4,Error 1 display level,0,?,1,enum,"0=no display, 2=expert, 4=installer, 8=user"
+0x00C2,5-7,Error 1 code,0,255,1,ASCII,displayed error code
+0x00C2,8-9,Error 1 code numeric,0,65535,1,enum,numerical part of displayed error
+0x00C2,10,Error 1 start year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C2,11,Error 1 start month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,12,Error 1 start hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,13,Error 1 start day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,14,Error 1 start minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C2,15,Error 1 end year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C2,16,Error 1 end month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,17,Error 1 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,18,Error 1 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,19,Error 1 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C2,20-39,Error 2,,,,,same as offset 0 ff. for error 1
+0x00C2,40-59,Error 3,,,,,same as offset 0 ff. for error 1
+0x00C2,60-79,Error 4,,,,,same as offset 0 ff. for error 1
+0x00C2,80-99,Error 5,,,,,same as offset 0 ff. for error 1
+0x00C2,100-119,Error 6,,,,,same as offset 0 ff. for error 1
+0x00C2,120-139,Error 7,,,,,same as offset 0 ff. for error 1
+0x00C2,140-159,Error 8,,,,,same as offset 0 ff. for error 1
+0x00C2,160-179,Error 9,,,,,same as offset 0 ff. for error 1
+0x00C2,180-199,Error 10,,,,,same as offset 0 ff. for error 1
+0x00C6,0,Error UID,0,254,1,,ID of error 1
+0x00C6,1,Error 1 source address,0,127,1,,"if 0x00, then no error"
+0x00C6,2,Error 1 module ID,0,255,1,,same as in telegram 0x02 offset 0
+0x00C6,3,Error 1 module ID extension?,0,255,1,,"is always 0, but maybe used if offset 1 is more than 255"
+0x00C6,4,Error 1 reason,0,255,1,enum,"found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance"
+0x00C6,5.0,Error 1 Log error,0,1,1,bool,"1=yes, 0=no"
+0x00C6,5.1-5.4,Error 1 display level,0,?,1,enum,"0=no display, 2=expert, 4=installer, 8=user"
+0x00C6,6-8,Error 1 code,0,255,1,ASCII,displayed error code
+0x00C6,9-10,Error 1 code numeric,0,65535,1,enum,numerical part of displayed error
+0x00C6,11,Error 1 start year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C6,12,Error 1 start month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,13,Error 1 start hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,14,Error 1 start day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,15,Error 1 start minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C6,16,Error 1 end year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C6,17,Error 1 end month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,18,Error 1 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,19,Error 1 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,20,Error 1 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C6,21-41,Error 2,,,,,same as offset 0 ff. for error 1
+0x00C6,42-62,Error 3,,,,,same as offset 0 ff. for error 1
+0x00C6,63-83,Error 4,,,,,same as offset 0 ff. for error 1
+0x00C6,84-104,Error 5,,,,,same as offset 0 ff. for error 1
+0x00C6,105-125,Error 6,,,,,same as offset 0 ff. for error 1
+0x00C6,126-146,Error 7,,,,,same as offset 0 ff. for error 1
+0x00C6,147-167,Error 8,,,,,same as offset 0 ff. for error 1
+0x00C6,168-188,Error 9,,,,,same as offset 0 ff. for error 1
+0x00C6,189-209,Error 10,,,,,same as offset 0 ff. for error 1
+0x00C7,0,Error UID,0,254,1,,ID of error 11
+0x00C7,1,Error 11 source address,0,127,1,,"if 0x00, then no error"
+0x00C7,2,Error 11 module ID,0,255,1,,same as in telegram 0x02 offset 0
+0x00C7,3,Error 11 module ID extension?,0,255,1,,"is always 0, but maybe used if offset 1 is more than 255"
+0x00C7,4,Error 11 reason,0,255,1,enum,"found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance"
+0x00C7,5.0,Error 11 Log error,0,1,1,bool,"1=yes, 0=no"
+0x00C7,5.1-5.4,Error 11 display level,0,?,1,enum,"0=no display, 2=expert, 4=installer, 8=user"
+0x00C7,6-8,Error 11 code,0,255,1,ASCII,displayed error code
+0x00C7,9-10,Error 11 code numeric,0,65535,1,enum,numerical part of displayed error
+0x00C7,11,Error 11 start year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C7,12,Error 11 start month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,13,Error 11 start hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,14,Error 11 start day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,15,Error 11 start minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C7,16,Error 11 end year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C7,17,Error 11 end month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,18,Error 11 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,19,Error 11 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,20,Error 11 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C7,21-41,Error 12,,,,,same as offset 0 ff. for error 11
+0x00C7,42-62,Error 13,,,,,same as offset 0 ff. for error 11
+0x00C7,63-83,Error 14,,,,,same as offset 0 ff. for error 11
+0x00C7,84-104,Error 15,,,,,same as offset 0 ff. for error 11
+0x00C7,105-125,Error 16,,,,,same as offset 0 ff. for error 11
+0x00C7,126-146,Error 17,,,,,same as offset 0 ff. for error 11
+0x00C7,147-167,Error 18,,,,,same as offset 0 ff. for error 11
+0x00C7,168-188,Error 19,,,,,same as offset 0 ff. for error 11
+0x00C7,189-209,Error 20,,,,,same as offset 0 ff. for error 11
+0x00FB,,,,,,,No data fields documented - metadata only (see metadata file)
+0x00BF,0,Source address,0,127,1,,0=invalid
+0x00BF,1,module ID,0,255,1,,0=invalid
+0x00BF,2,module ID,0,255,1,,if offset 1 > 255
+0x00BF,3,Error 1,0,255,1,enum,"error with highest prio; enums see 0x00C0/0x00C2 offset 3 and 0x00C6 offset 4"
+0x00BF,4.0,Error 1 logging,0,1,1,bool,"Log this error, see also 0x00C0/0x00C2 offset 4.0 and 0x00C6 offset 5.0"
+0x00BF,4.1-4.4,Error 1 display level,0,15,1,enum,see 0x00C0/0x00C2 offset 4.1-4.4 and 0x00C6 offset 5.1-5.4
+0x00BF,4.5,Error 1 local overrule,0,1,1,bool,
+0x00BF,5-7,Error 1 display code,0,255,1,ASCII,"see 0x00C0/0x00C2 offset 5-7 and 0x00C6 offset 6-8; displayed error"
+0x00BF,8-9,Error 1 code numeric,0,65535,1,enum,"see 0x00C0/0x00C2 offset 8-9 and 0x00C6 offset 9-10; numerical part of displayed error"
+0x00BF,10-16,Error 2,,,,,"next lower prio error; offsets see 3-9"
+0x00BF,17-23,Error 3,,,,,"next lower prio error; offsets see 3-9"
+0x00C0,0,Error 1 source address,0,127,1,,"if 0x00, then no error"
+0x00C0,1,Error 1 module ID,0,255,1,,same as in telegram 0x02 offset 0
+0x00C0,2,Error 1 module ID extension?,0,255,1,,"is always 0, but maybe used if offset 1 is more than 255"
+0x00C0,3,Error 1 reason,0,255,1,enum,"found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance"
+0x00C0,4.0,Error 1 Log error,0,1,1,bool,"1=yes, 0=no"
+0x00C0,4.1-4.4,Error 1 display level,0,15,1,enum,"0=no display, 2=expert, 4=installer, 8=user"
+0x00C0,5-7,Error 1 code,0,255,1,ASCII,displayed error code
+0x00C0,8-9,Error 1 code numeric,0,65535,1,enum,numerical part of displayed error
+0x00C0,10,Error 1 start year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C0,11,Error 1 start month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,12,Error 1 start hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,13,Error 1 start day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,14,Error 1 start minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C0,15,Error 1 end year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C0,16,Error 1 end month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,17,Error 1 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,18,Error 1 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C0,19,Error 1 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C0,20-39,Error 2,,,,,same as offset 0 ff. for error 1
+0x00C0,40-59,Error 3,,,,,same as offset 0 ff. for error 1
+0x00C0,60-79,Error 4,,,,,same as offset 0 ff. for error 1
+0x00C0,80-99,Error 5,,,,,same as offset 0 ff. for error 1
+0x00C0,100-119,Error 6,,,,,same as offset 0 ff. for error 1
+0x00C0,120-139,Error 7,,,,,same as offset 0 ff. for error 1
+0x00C0,140-159,Error 8,,,,,same as offset 0 ff. for error 1
+0x00C0,160-179,Error 9,,,,,same as offset 0 ff. for error 1
+0x00C0,180-199,Error 10,,,,,same as offset 0 ff. for error 1
+0x00C2,0,Error 1 source address,0,127,1,,"if 0x00, then no error"
+0x00C2,1,Error 1 module ID,0,255,1,,same as in telegram 0x02 offset 0
+0x00C2,2,Error 1 module ID extension?,0,255,1,,"is always 0, but maybe used if offset 1 is more than 255"
+0x00C2,3,Error 1 reason,0,255,1,enum,"found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance"
+0x00C2,4.0,Error 1 Log error,0,1,1,bool,"1=yes, 0=no"
+0x00C2,4.1-4.4,Error 1 display level,0,?,1,enum,"0=no display, 2=expert, 4=installer, 8=user"
+0x00C2,5-7,Error 1 code,0,255,1,ASCII,displayed error code
+0x00C2,8-9,Error 1 code numeric,0,65535,1,enum,numerical part of displayed error
+0x00C2,10,Error 1 start year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C2,11,Error 1 start month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,12,Error 1 start hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,13,Error 1 start day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,14,Error 1 start minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C2,15,Error 1 end year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C2,16,Error 1 end month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,17,Error 1 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,18,Error 1 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C2,19,Error 1 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C2,20-39,Error 2,,,,,same as offset 0 ff. for error 1
+0x00C2,40-59,Error 3,,,,,same as offset 0 ff. for error 1
+0x00C2,60-79,Error 4,,,,,same as offset 0 ff. for error 1
+0x00C2,80-99,Error 5,,,,,same as offset 0 ff. for error 1
+0x00C2,100-119,Error 6,,,,,same as offset 0 ff. for error 1
+0x00C2,120-139,Error 7,,,,,same as offset 0 ff. for error 1
+0x00C2,140-159,Error 8,,,,,same as offset 0 ff. for error 1
+0x00C2,160-179,Error 9,,,,,same as offset 0 ff. for error 1
+0x00C2,180-199,Error 10,,,,,same as offset 0 ff. for error 1
+0x00C6,0,Error UID,0,254,1,,ID of error 1
+0x00C6,1,Error 1 source address,0,127,1,,"if 0x00, then no error"
+0x00C6,2,Error 1 module ID,0,255,1,,same as in telegram 0x02 offset 0
+0x00C6,3,Error 1 module ID extension?,0,255,1,,"is always 0, but maybe used if offset 1 is more than 255"
+0x00C6,4,Error 1 reason,0,255,1,enum,"found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance"
+0x00C6,5.0,Error 1 Log error,0,1,1,bool,"1=yes, 0=no"
+0x00C6,5.1-5.4,Error 1 display level,0,?,1,enum,"0=no display, 2=expert, 4=installer, 8=user"
+0x00C6,6-8,Error 1 code,0,255,1,ASCII,displayed error code
+0x00C6,9-10,Error 1 code numeric,0,65535,1,enum,numerical part of displayed error
+0x00C6,11,Error 1 start year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C6,12,Error 1 start month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,13,Error 1 start hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,14,Error 1 start day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,15,Error 1 start minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C6,16,Error 1 end year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C6,17,Error 1 end month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,18,Error 1 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,19,Error 1 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C6,20,Error 1 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C6,21-41,Error 2,,,,,same as offset 0 ff. for error 1
+0x00C6,42-62,Error 3,,,,,same as offset 0 ff. for error 1
+0x00C6,63-83,Error 4,,,,,same as offset 0 ff. for error 1
+0x00C6,84-104,Error 5,,,,,same as offset 0 ff. for error 1
+0x00C6,105-125,Error 6,,,,,same as offset 0 ff. for error 1
+0x00C6,126-146,Error 7,,,,,same as offset 0 ff. for error 1
+0x00C6,147-167,Error 8,,,,,same as offset 0 ff. for error 1
+0x00C6,168-188,Error 9,,,,,same as offset 0 ff. for error 1
+0x00C6,189-209,Error 10,,,,,same as offset 0 ff. for error 1
+0x00C7,0,Error UID,0,254,1,,ID of error 11
+0x00C7,1,Error 11 source address,0,127,1,,"if 0x00, then no error"
+0x00C7,2,Error 11 module ID,0,255,1,,same as in telegram 0x02 offset 0
+0x00C7,3,Error 11 module ID extension?,0,255,1,,"is always 0, but maybe used if offset 1 is more than 255"
+0x00C7,4,Error 11 reason,0,255,1,enum,"found so far: 0x00=fatal, 0x02/0x04/0x06=locked, 0x08=safety shutdown with restart, 0x0A=safety shutdown blocking, 0x0C=controlled shutdown, 0x0E=standard, 0x10=minor, 0x12/0x13=reset after maintenance, 0x14=maintenance"
+0x00C7,5.0,Error 11 Log error,0,1,1,bool,"1=yes, 0=no"
+0x00C7,5.1-5.4,Error 11 display level,0,?,1,enum,"0=no display, 2=expert, 4=installer, 8=user"
+0x00C7,6-8,Error 11 code,0,255,1,ASCII,displayed error code
+0x00C7,9-10,Error 11 code numeric,0,65535,1,enum,numerical part of displayed error
+0x00C7,11,Error 11 start year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C7,12,Error 11 start month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,13,Error 11 start hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,14,Error 11 start day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,15,Error 11 start minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C7,16,Error 11 end year,0,255,1,,"Ignore bit 7, bit 0-6 give the year + 2000. If year is 0, it looks like a relative time from power on of the device and minutes are stored in offset 11-13"
+0x00C7,17,Error 11 end month,0,12,1,,"may be bigger than 12 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,18,Error 11 end hour,0,23,1,,"may be bigger than 23 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,19,Error 11 end day,0,31,1,,"may be bigger than 31 if minutes since power on are stored here, see comment on offset 10"
+0x00C7,20,Error 11 end minute,0,59,1,,"Is 0 if offset 10 is 0 and a relative time is stored in offset 11-13"
+0x00C7,21-41,Error 12,,,,,same as offset 0 ff. for error 11
+0x00C7,42-62,Error 13,,,,,same as offset 0 ff. for error 11
+0x00C7,63-83,Error 14,,,,,same as offset 0 ff. for error 11
+0x00C7,84-104,Error 15,,,,,same as offset 0 ff. for error 11
+0x00C7,105-125,Error 16,,,,,same as offset 0 ff. for error 11
+0x00C7,126-146,Error 17,,,,,same as offset 0 ff. for error 11
+0x00C7,147-167,Error 18,,,,,same as offset 0 ff. for error 11
+0x00C7,168-188,Error 19,,,,,same as offset 0 ff. for error 11
+0x00C7,189-209,Error 20,,,,,same as offset 0 ff. for error 11
+0x00FB,,,,,,,No data fields documented - metadata only (see metadata file)
+0x099A,2,HP activity,0,4,1,enum,"0=off, 1=heating, 2=DHW, 3=defrost,4=alarm"
+0x099A,5-7,HP operation time heating,0,16777215,1,h,3 byte unsigned int
+0x099A,8-10,HP operation time dhw,0,16777215,1,h,3 byte unsigned int
+0x099A,11-13,HP starts heating,0,16777215,1,,3 byte unsigned int
+0x099A,14-16,HP starts dhw,0,16777215,1,,3 byte unsigned int
+0x099A,17,Smart grid mode,0,3,1,enum,"0=Mode1 (I1 closed, I4 open = Heat pump blocked by energy supplier); 1=Mode2 (I1 open, I4 open = Normal operation); 2=Mode3 (I1 open, I4 closed = Heatpump prefered); 3=Mode4 (I1 closed, I4 closed = Forced operation of heatpump)"
+0x0026,0,CH pump speed,1,10,1,enum,"1 = No predefined settings. Minimum pump speed telegram 0x16,offset 10 and maximum pump speed telegram 0x16 offset 9 manually adjustable; 2-7 = Constant speeds (minimum pump speed telegram 0x16 offset 10 and maximum pump speed telegram 0x16 offset 9 are the same). 8-10 = Predefined minimum pump speed 0x16 offset 10 and maximum pump speed 0x16 offset 9 settings."
+0x0026,1,pump switch mode,0,5,1,enum,"auto = 0, according burner = 1, acc room temp control = 2, acc outdoor temp control = 3, acc outdoor temp control optimized = 4, energy saving = 4, acc CH heat request = 5"
+0x0026,2,automatic anti cycle mode,-1,0,1,bool,"time delay between switching the boiler off and on again, 0 = off, FF = on"
+0x0026,3,Min appliance power for CH and dhw,0,100,1,percent,
+0x0026,4,Fan overrun time,1,18,1,10 sec,
+0x0026,5,min flow temp setpoint,30,90,1,°C,
+0x0026,6,max flow temp setpoint,30,90,1,°C,
+0x0026,7,max appliance power in CH mode,0,100,1,percent,
+0x0027,0,thermal desinfection,-1,0,1,bool,"0 = no, FF = yes"
+0x0027,1,anti cycle time for dhw,20,60,1,min,time delay between switching the boiler off and on again
+0x0027,2,dhw standby time after tapping,0,30,1,min,
+0x0027,3,max pre heat temp,40,65,1,°C,
+0x0027,4,water flow threshold for dhw demand,25,50,1,0.1 l/min,
+0x0027,5,turbine signal delay time,2,16,1,0.25 sec,
+0x0027,6,hot water on demand active,-1,0,1,bool,"0 = off, FF = on"
+0x0027,7,activate stratifying tank pump for circulation,-1,0,1,bool,"0 = off, FF = on"
+0x0027,8,pump off in case of dhw demand,-1,0,1,bool,"0 = off, FF = on"
+0x0027,9,solar mode min activation time,0,50,1,min,
+0x0027,10,max appliance power in dhw mode,0,100,1,percent,
+0x0027,11,min dhw temperature,10,80,1,°C,user interface knob left position
+0x0027,12,max dhw temperature,10,80,1,°C,user interface knob right position
+0x0027,13,maximum of the max of the appliance power in dhw mode,0,100,1,percent,
 0x0165,0,holiday start year,0,99,1,year,"0=invalid, offset 0-7 to be sent together"
 0x0165,1,holiday start month,0,12,1,month,"0=invalid, offset 0-7 to be sent together"
 0x0165,2,holiday start day,0,31,1,day,"0=invalid, offset 0-7 to be sent together"
@@ -668,4 +1019,4 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x04A2,5,HMI heat pump type,0,2,1,enum,"A_W = 0,L_W = 1,EXHAUST_AIR = 2"
 0x04A2,6,HMI error symbol,0,2,1,enum,"Indication for error icon color; NO_ERROR = 0,NON_SEVERE = 1,SEVERE = 2"
 0x04A2,7,HMI error LED,0,2,1,enum,"Indication for error LED color; NO_ERROR = 0,NON_SEVERE = 1,SEVERE = 2"
-
+0x0001,0-26,ASCII coded numbers,0,255,1,ASCII,"Sequence of numbers. Examples: HMC310 25303763146288737718903, RC100.2 H 05704801002367738112973, MX300 25303394051798738806124"

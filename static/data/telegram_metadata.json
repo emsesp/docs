@@ -39,7 +39,7 @@
   "0x0010": {
     "name": "Locking Error History",
     "usedIn": "Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7",
-    "description": "Holds the history of locking errors.",
+    "description": "Holds the history of locking errors",
     "class": "monitor",
     "emsCategory": "EMS1.0 and EMS2.0",
     "distribution": "unicast-on-request, broadcast-on-change",
@@ -48,7 +48,7 @@
   "0x0011": {
     "name": "Blocking Error History",
     "usedIn": "Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7",
-    "description": "Holds the history of blocking errors.",
+    "description": "Holds the history of blocking errors",
     "class": "monitor",
     "emsCategory": "EMS1.0",
     "distribution": "unicast-on-request, broadcast-on-change",
@@ -60,13 +60,13 @@
     "description": "Holds the history of blocking errors of the system",
     "class": "monitor",
     "emsCategory": "EMS1.0",
-    "distribution": "unicast-on-request, broadcast-on-change",
+    "distribution": "unicast-on-request, broadcast-on-change",  
     "type": "info"
   },
   "0x0013": {
     "name": "System error history",
     "usedIn": "Older systems hold this error list while newer systems use 0x00C0 and 0x00C1",
-    "description": "Holds the history of system errors.",
+    "description": "Holds the history of system errors",
     "class": "monitor",
     "emsCategory": "EMS1.0",
     "distribution": "unicast-on-request, broadcast-on-change",
