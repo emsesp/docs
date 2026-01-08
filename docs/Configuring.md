@@ -120,7 +120,7 @@ Enable this function when running in VPNs or you have other servers (like Grafan
 - **Enable MQTT Discovery** enables the integration using MQTT Discovery, fully supported with Home Assistant and partially with Domoticz.
   - **Discovery type**. Choose between "Home Assistant" and two protocols for "Domoticz". `Domoticz (latest)` will use Numbers, Switches, Select and other modern types, while `Domoticz` will just use Sensors for everything and also remove any templating conditions.
   - **Entity ID format**: There are 3 options. The first `single instance, long names` uses the older `< v3.5` format. The default and recommended setting for all new installs is the 2nd option called `Single instance, short name` which uses the EMS-ESP device entity name, which is fixed and can be seen in the `Settings->Customization` page. The last option must be used when running more than one version of the EMS-ESP firmware as it makes each unique by prefixing all MQTT topics with the base name.
-  -  **Number format**: Select box or slider mode. Sliders will only be used for number entities with a range <= 100.
+  - **Number format**: Select box or slider mode. Sliders will only be used for number entities with a range less than 100.
 - **Publish Intervals**. This section is per device and sets how frequent an MQTT message is sent. When set to 0 EMS-ESP will send data automatically when there is a noticeable change, which could be within a few seconds.
 
 ## NTP Setup
