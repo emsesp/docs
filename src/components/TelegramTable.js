@@ -119,7 +119,7 @@ export default function TelegramTable({ csvFile, title }) {
       </div>
 
       <div className={styles.stats}>
-        Showing {filteredTelegrams.length} of {telegrams.length} entries across {Object.keys(groupedTelegrams).length} telegram(s)
+        Showing {Object.keys(groupedTelegrams).length} telegram(s)
       </div>
 
       {Object.keys(groupedTelegrams).sort().map(telegramId => {
@@ -130,7 +130,7 @@ export default function TelegramTable({ csvFile, title }) {
         return (
           <div key={telegramId} className={styles.telegramSection}>
             <div className={styles.telegramHeader} onClick={() => toggleTelegram(telegramId)}>
-              <h3>Telegram: {telegramId}</h3>
+              <h3>{telegramId} <span className={styles.telegramName}>{meta?.name}</span></h3>
               <span className={styles.expandIcon}>{isExpanded ? '▼' : '▶'}</span>
             </div>
 

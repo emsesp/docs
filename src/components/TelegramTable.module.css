@@ -52,6 +52,10 @@
   color: var(--ifm-color-primary);
 }
 
+.telegramName {
+  color: white;
+}
+
 .expandIcon {
   font-size: 0.8rem;
   color: var(--ifm-color-emphasis-600);
@@ -80,7 +84,7 @@
 
 .metadataTitle {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: bold;
   margin-bottom: 0.75rem;
   color: var(--ifm-font-color-base);
 }
@@ -211,7 +215,7 @@
 
 .unit {
   white-space: nowrap;
-  font-style: italic;
+  /* font-style: italic; */
   color: var(--ifm-color-emphasis-700);
 }
 
