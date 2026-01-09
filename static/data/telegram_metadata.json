@@ -323,5 +323,23 @@
     "emsCategory" : "EMS2.0",
     "distribution" : "BROADCAST-ON-CHANGE; distribution duration = 60s, BROADCAST-PERIODICALLY, UNICAST-ON-REQUEST",
     "type" : "info"
+  },
+  "0x0115" : {
+    "name" : "DHW IMMEDIATELY CONTROL VALUES BETWEEN FX CONTROLLERS.",
+    "usedIn" : "tbd",
+    "description" : "",
+    "class" : "Control",
+    "emsCategory" : "EMS1.0",
+    "distribution" : "UNICAST-WRITE-REQUEST; distribution duration = 120s; timeout = 240s, UNICAST-PERIODICALLY",
+    "type" : "info"
+  },
+    "0x01D3" : {
+    "name" : "FX MONITOR VALUES FOR DOMESTIC HOT WATER",
+    "usedIn" : "tbd",
+    "description" : "",
+    "class" : "Monitor",
+    "emsCategory" : "EMS1.0",
+    "distribution" : "BROADCAST-ON-CHANGE; distribution duration = 600s, BROADCAST-PERIODICALLY, UNICAST-ON-REQUEST",
+    "type" : "info"
   }
 }
