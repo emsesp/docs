@@ -305,5 +305,41 @@
     "emsCategory": "EMS2.0",
     "distribution": "",
     "type": "warning"
+  },
+  "0x099C" : {
+    "name" : "Hybrid-Module Monitor signals for CAN bus",
+    "usedIn" : "tbd",
+    "description" : "",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE; distribution duration = 60s; timeout = 240s, UNICAST-ON-REQUEST, BROADCAST-PERIODICALLY",
+    "type" : "info"
+  },
+  "0x04AA" : {
+    "name" : "HP_ENERGYMANAGEMENT_COMPRESSOR_STATUS_MONITORS",
+    "usedIn" : "tbd",
+    "description" : "Monitors for Energy Manager (EM) related to compressor. Dynamic information.",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE; distribution duration = 60s, BROADCAST-PERIODICALLY, UNICAST-ON-REQUEST",
+    "type" : "info"
+  },
+  "0x0115" : {
+    "name" : "DHW IMMEDIATELY CONTROL VALUES BETWEEN FX CONTROLLERS.",
+    "usedIn" : "tbd",
+    "description" : "",
+    "class" : "Control",
+    "emsCategory" : "EMS1.0",
+    "distribution" : "UNICAST-WRITE-REQUEST; distribution duration = 120s; timeout = 240s, UNICAST-PERIODICALLY",
+    "type" : "info"
+  },
+    "0x01D3" : {
+    "name" : "FX MONITOR VALUES FOR DOMESTIC HOT WATER",
+    "usedIn" : "tbd",
+    "description" : "",
+    "class" : "Monitor",
+    "emsCategory" : "EMS1.0",
+    "distribution" : "BROADCAST-ON-CHANGE; distribution duration = 600s, BROADCAST-PERIODICALLY, UNICAST-ON-REQUEST",
+    "type" : "info"
   }
 }
