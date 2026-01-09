@@ -180,16 +180,7 @@
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
     "type": "info"
   },
-  "0x02C3": {
-    "name": "NSC Clock Program 1 for HCx",
-    "usedIn": "CR50, RC310",
-    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
-    "class": "parameter",
-    "emsCategory": "EMS2.0",
-    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
-    "type": "info"
-  },
-  "0x02FF": {
+    "0x02FF": {
     "name": "NSC Clock Program for dhw",
     "usedIn": "RC310",
     "description": "Sets dhw switch points for DHW1 and DHW2",
@@ -261,24 +252,6 @@
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
     "type": "info"
   },
-  "0x02FF": {
-    "name": "NSC Clock Program for dhw",
-    "usedIn": "RC310",
-    "description": "Sets dhw switch points for DHW1 and DHW2",
-    "class": "parameter",
-    "emsCategory": "EMS2.0",
-    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
-    "type": "info"
-  },
-  "0x0309": {
-    "name": "NSC Clock Program for circulation pump for dhwx",
-    "usedIn": "RC310",
-    "description": "Sets dhw circulation pump switch points for DHW1 and DHW2",
-    "class": "parameter",
-    "emsCategory": "EMS2.0",
-    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
-    "type": "info"
-  },
   "0x031D": {
     "name": "Monitoring DHWx",
     "usedIn": "CR50",
@@ -292,15 +265,6 @@
     "name": "NSC HolidayMode for HCx",
     "usedIn": "CR50",
     "description": "Sets start and end date for holiday mode for HC1, HC2, ... HC8",
-    "class": "parameter",
-    "emsCategory": "EMS2.0",
-    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
-    "type": "info"
-  },
-  "0x0449": {
-    "name": "NSC Clock Program 2 for HCx",
-    "usedIn": "RC310",
-    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
@@ -322,24 +286,6 @@
     "class": "monitor",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, broadcast-periodically",
-    "type": "info"
-  },
-  "0x0683": {
-    "name": "NSC Clock Program 3 for HCx",
-    "usedIn": "RC310",
-    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
-    "class": "parameter",
-    "emsCategory": "EMS2.0",
-    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
-    "type": "info"
-  },
-  "0x068D": {
-    "name": "NSC Clock Program 4 for HCx",
-    "usedIn": "RC310",
-    "description": "Sets heating level switch points for HC1, HC2, ... HC8",
-    "class": "parameter",
-    "emsCategory": "EMS2.0",
-    "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
     "type": "info"
   },
   "0x099A": {
