@@ -305,5 +305,23 @@
     "emsCategory": "EMS2.0",
     "distribution": "",
     "type": "warning"
+  },
+  "0x099C" : {
+    "name" : "Hybrid-Module Monitor signals for CAN bus",
+    "usedIn" : "tbd",
+    "description" : "",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE; distribution duration = 60s; timeout = 240s, UNICAST-ON-REQUEST, BROADCAST-PERIODICALLY",
+    "type" : "info"
+  },
+  "0x04AA" : {
+    "name" : "HP_ENERGYMANAGEMENT_COMPRESSOR_STATUS_MONITORS",
+    "usedIn" : "tbd",
+    "description" : "Monitors for Energy Manager (EM) related to compressor. Dynamic information.",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE; distribution duration = 60s, BROADCAST-PERIODICALLY, UNICAST-ON-REQUEST",
+    "type" : "info"
   }
 }
