@@ -341,5 +341,15 @@
     "emsCategory" : "EMS1.0",
     "distribution" : "BROADCAST-ON-CHANGE; distribution duration = 600s, BROADCAST-PERIODICALLY, UNICAST-ON-REQUEST",
     "type" : "info"
+  },
+  "0x001A" : {
+    "name" : "EMS CH CONTROL VALUES",
+    "usedIn" : "tbd",
+    "description" : "This block is used to send a CH-request to the EMS. Heat requests can be given as a power or supply setpoint.  This block must be repeated at least every 4 minutes. When the transmission of this block stops, the values will fall back to default.",
+    "class" : "Control",
+    "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution" : "UNICAST-PERIODICALLY; distribution duration = 120s,60s; timeout = 240s, UNICAST-WRITE-REQUEST, UNICAST-ON-CHANGE, UNICAST-ON-REQUEST",
+    "type" : "info"
   }
+
 }
