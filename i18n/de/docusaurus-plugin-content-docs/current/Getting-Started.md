@@ -21,7 +21,7 @@ Siehe den Beitrag [here](https://github.com/emsesp/EMS-ESP32/discussions/839#dis
 
 ### 🔗 EMS-Schnittstellenkarte
 
-EMS-ESP erfordert auch eine separate Schaltung zum Lesen und Schreiben auf dem EMS-Bus. Sie können entweder [build your own](EMS-Circuit) oder ein EMS-Gateway-Board direkt von BBQKees Electronics kaufen.
+EMS-ESP erfordert auch eine separate Schaltung zum Lesen und Schreiben auf dem EMS-Bus. Sie können ein EMS-Gateway-Board direkt von BBQKees Electronics kaufen.
 
 ![EMS Gateway S3](/media/images/EMS-Gateway-S3.png) ![EMS Gateway E32 V2](/media/images/EMS-Gateway-E32-V2.png)
 

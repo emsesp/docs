@@ -29,7 +29,7 @@ image: /media/screenshot/main-screen.png
 
 EMS-ESP ist eine Open-Source-Firmware für den Espressif-ESP32-Mikrocontroller zur Kommunikation mit EMS-kompatiblen Geräten (Energy Management System) von Herstellern wie Bosch, Buderus, Nefit, Junkers, Worcester, Sieger, elm.leblanc und iVT.
 
-EMS-ESP benötigt eine kleine zusätzliche Schaltung als Schnittstelle zwischen der EMS-Busleitung und dem Mikrocontroller. Diese Schaltung ist als vorgefertigtes Modul von BBQKees Electronics erhältlich oder kann nach einem in der Dokumentation enthaltenen Schaltplan gebaut werden.
+EMS-ESP benötigt eine kleine zusätzliche Schaltung als Schnittstelle zwischen der EMS-Busleitung und dem Mikrocontroller. Diese Schaltung ist als vorgefertigtes Modul von BBQKees Electronics erhältlich.
 
 </div>
 
@@ -97,7 +97,7 @@ Verwenden Sie den Benachrichtigungsdienst, um Alarme und Warnungen zu versenden.
 
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 
-- **Stabil:** [v3.8.0](https://github.com/emsesp/EMS-ESP32/releases/tag/v3.8.0)
+- **Stabil:** [v3.8.1](https://github.com/emsesp/EMS-ESP32/releases/tag/v3.8.1)
 - **Entwicklung:** [v3.8.1](https://github.com/emsesp/EMS-ESP32/releases/tag/latest)
 
 ## 📱 Live-Demo
