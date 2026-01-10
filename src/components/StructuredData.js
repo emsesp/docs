@@ -57,7 +57,7 @@ export default function StructuredData() {
         description:
           'Open-source firmware for the Espressif ESP32 microcontroller that communicates with EMS (Energy Management System) based heating equipment from Bosch, Buderus, Nefit, Junkers, Worcester, Sieger, and iVT.',
         downloadUrl: 'https://github.com/emsesp/EMS-ESP32/releases',
-        softwareVersion: 'v3.8.0',
+        softwareVersion: 'v3.8.1',
         author: {
           '@id': 'https://emsesp.org/#organization',
         },
