@@ -37,8 +37,8 @@ Bepaal het juiste type van je ESP32-apparaat en download de nieuwste stabiele ve
 
 | `chipset` | `flashsize` | `PSRAM` | `Firmware file` |
 | -------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
-| ESP32 16MB 8MB [EMS-ESP-3_8_0-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-16MB+.bin)
-| ESP32-S3 16MB 8MB [EMS-ESP-3_8_0-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32S3-16MB+.bin)
+| ESP32 16MB 8MB [EMS-ESP-3_8_1-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB+.bin)
+| ESP32-S3 16MB 8MB [EMS-ESP-3_8_1-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32S3-16MB+.bin)
 | ESP32 4MB
 | ESP32 16MB
 
@@ -46,12 +46,12 @@ Als u een [BBQKees Electronics Gateway](https://bbqkees-electronics.nl) bord geb
 
 | `Model` | `Release Year` | `Has PSRAM?` | `Firmware file` |
 | --------------------- | ------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Gateway E32 V2 | >01-2024 | Ja | [EMS-ESP-3_8_0-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-16MB+.bin) |
-| Gateway S3(-LR) | >09-2023 | Ja | [EMS-ESP-3_8_0-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32S3-16MB+.bin) |
-| Gateway E32 V1.5 | >12-21 &lt;06-23 | Nee | [EMS-ESP-3_8_0-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-4MB.bin) |
-| Gateway E32 V1.0/V1.4 | >04-21 &lt;12-21 | Nee | [EMS-ESP-3_8_0-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-4MB.bin) |
-| Gateway S32 V2 | >02-22 &lt;01-23 | Nee | [EMS-ESP-3_8_0-ESP32-16MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-16MB.bin) |
-| Gateway S32 V1 | >02-21 &lt;02-22 | Nee | [EMS-ESP-3_8_0-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.0/EMS-ESP-3_8_0-ESP32-4MB.bin) |
+| Gateway E32 V2 | >01-2024 | Ja | [EMS-ESP-3_8_1-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB+.bin) |
+| Gateway S3(-LR) | >09-2023 | Ja | [EMS-ESP-3_8_1-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32S3-16MB+.bin) |
+| Gateway E32 V1.5 | >12-21 &lt;06-23 | Nee | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin) |
+| Gateway E32 V1.0/V1.4 | >04-21 &lt;12-21 | Nee | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin) |
+| Gateway S32 V2 | >02-22 &lt;01-23 | Nee | [EMS-ESP-3_8_1-ESP32-16MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB.bin) |
+| Gateway S32 V1 | >02-21 &lt;02-22 | Nee | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin) |
 
 ## Hulp nodig?
 

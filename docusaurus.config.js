@@ -391,10 +391,6 @@ const config = {
                 to: 'ems-library',
               },
               {
-                label: 'A prototype hardware design',
-                to: 'EMS-Circuit',
-              },
-              {
                 label: 'Contributing',
                 to: 'Contributing',
               },

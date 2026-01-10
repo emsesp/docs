@@ -77,7 +77,6 @@ const sidebars = {
     'EMS-Telegrams',
     'EMS-bus',
     'ems-library',
-    'EMS-Circuit',
     'Contributing',
     'Version-Release-History',
   ],
