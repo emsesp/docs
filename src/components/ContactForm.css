@@ -1,0 +1,108 @@
+.contact-form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--ifm-card-background-color, #ffffff);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+.form-input,
+.form-textarea {
+  padding: 0.75rem;
+  border: 2px solid var(--ifm-color-emphasis-300, #e0e0e0);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  background: var(--ifm-background-color, #ffffff);
+  color: var(--ifm-font-color-base);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px var(--ifm-color-primary-lightest, rgba(37, 99, 235, 0.1));
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--ifm-color-emphasis-600);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.validation-error {
+  color: var(--ifm-color-danger, #dc3545);
+  font-size: 0.875rem;
+  margin-top: -0.5rem;
+}
+
+.submit-button {
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.submit-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.success-message {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--ifm-color-success-lightest, #d4edda) 0%, var(--ifm-color-success-lighter, #c3e6cb) 100%);
+  border-radius: 12px;
+  border: 2px solid var(--ifm-color-success, #28a745);
+}
+
+.success-message-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.success-message-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ifm-color-success-dark, #1e7e34);
+  margin-bottom: 0.5rem;
+}
+
+.success-message-text {
+  font-size: 1rem;
+  color: var(--ifm-color-success-darker, #155724);
+  margin: 0;
+}
