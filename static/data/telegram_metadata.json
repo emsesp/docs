@@ -350,6 +350,15 @@
     "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
     "distribution" : "UNICAST-PERIODICALLY; distribution duration = 120s,60s; timeout = 240s, UNICAST-WRITE-REQUEST, UNICAST-ON-CHANGE, UNICAST-ON-REQUEST",
     "type" : "info"
+  },
+  "0x0004" : {
+    "name" : "BOILER IDENTIFICATION BLOCK",
+    "usedIn" : "tbd",
+    "description" : "In this block a definition of the boiler is given. The information is used for external devices which need information about the possibilities of the boiler.  **Important**: Values in this block cannot be changed via the bus!  **Note: EMSType** - ``EMS1.0-AND-EMS2.0``: I0-1, I2, I3.0-3.2, I3.5, I3.6, I3.7, I4, I5, I7, I8, I9, I10, I12, I18-19, I22, I23, I24, I25-26, I27, I28, I29, I30, I31, I32 - ``EMS1.0``: all other indexes",
+    "class" : "Const",
+    "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution" : "BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST",
+    "type" : "info"
   }
 
 }
