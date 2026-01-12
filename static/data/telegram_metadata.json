@@ -368,6 +368,24 @@
     "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
     "distribution" : "BROADCAST-ON-POWER-UP; distribution duration = 10s; timeout = 240s, UNICAST-ON-CHANGE, BROADCAST-PERIODICALLY, UNICAST-ON-REQUEST",
     "type" : "info"
+  },
+  "0x0016" : {
+    "name" : "EMS CENTRAL HEATING PARAMETERS",
+    "usedIn" : "tbd",
+    "description" : "This block contains variables to configure the central heating system of the boiler.",
+    "class" : "Parameter",
+    "emsCategory" : "EMS1.0",
+    "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "type" : "info"
+  },
+  "0x0014" : {
+    "name" : "EMS SIMULATED SYSTEM TIME",
+    "usedIn" : "tbd",
+    "description" : "This block contains the simulated system time of the EMS. The simulated system time is a relative time, which starts counting after the first power up and is incremented each minute as long as the power is available. This timer is stored in EEPROM once an hour.  This timer is to be used as a reference for the relative time, if this is stored in the locking and blocking error register and in the maintenance request register, i.e. if no absolute time from DT6 is available.  **Note: Distribution** Legacy products (EMS1.0) only implemented ``UNICAST-ON-REQUEST``. For backwards compatibility, in this case an HMI needs to request DT20 to reflect the runtime of the system. New products shall support distribution ``BROADCAST-PERIODICALLY`` with a periodicity of *one hour*.",
+    "class" : "Monitor",
+    "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution" : "BROADCAST-ON-CHANGE; distribution duration = 3600s, UNICAST-ON-REQUEST, BROADCAST-PERIODICALLY",
+    "type" : "info"
   }
 
 }
