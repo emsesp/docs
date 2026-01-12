@@ -6,6 +6,7 @@
     "class": "Constant",
     "emsCategory": "EMS1.0 & EMS2.0",
     "distribution": "unicast-on-request",
+    "notes": "",
     "type": "info"
   },
   "0x0002": {
@@ -15,6 +16,7 @@
     "class": "Constant",
     "emsCategory": "EMS1.0 & EMS2.0",
     "distribution": "unicast-on-request, broadcast-on-powerup",
+    "notes": "",
     "type": "info"
   },
   "0x0003": {
@@ -24,6 +26,7 @@
     "class": "Constant",
     "emsCategory": "EMS1.0 & EMS2.0",
     "distribution": "unicast-on-request",
+    "notes": "",
     "type": "info"
   },
   "0x0005": {
@@ -33,6 +36,7 @@
     "class": "Command",
     "emsCategory": "EMS1.0",
     "distribution": "unicast-write-request",
+    "notes": "",
     "type": "warning",
     "extraWarning": "These commands can affect device operation and should be used carefully."
   },
@@ -43,6 +47,7 @@
     "class": "monitor",
     "emsCategory": "EMS1.0 and EMS2.0",
     "distribution": "unicast-on-request, broadcast-on-change",
+    "notes": "",
     "type": "info"
   },
   "0x0011": {
@@ -52,6 +57,7 @@
     "class": "monitor",
     "emsCategory": "EMS1.0",
     "distribution": "unicast-on-request, broadcast-on-change",
+    "notes": "",
     "type": "info"
   },
   "0x0012": {
@@ -61,6 +67,7 @@
     "class": "monitor",
     "emsCategory": "EMS1.0",
     "distribution": "unicast-on-request, broadcast-on-change",  
+    "notes": "",
     "type": "info"
   },
   "0x0013": {
@@ -70,6 +77,7 @@
     "class": "monitor",
     "emsCategory": "EMS1.0",
     "distribution": "unicast-on-request, broadcast-on-change",
+    "notes": "",
     "type": "info"
   },
   "0x0026": {
@@ -79,6 +87,7 @@
     "class": "parameter",
     "emsCategory": "EMS1.0",
     "distribution": "unicast-on-request, broadcast-on-change, broadcast-on-power-up, unicast-write-request",
+    "notes": "",
     "type": "info"
   },
   "0x0027": {
@@ -88,6 +97,7 @@
     "class": "parameter",
     "emsCategory": "EMS1.0",
     "distribution": "unicast-on-request, broadcast-on-change, broadcast-on-power-up, unicast-write-request",
+    "notes": "",
     "type": "info"
   },
   "0x00BF": {
@@ -97,6 +107,7 @@
     "class": "monitor",
     "emsCategory": "EMS2.0",
     "distribution": "unicast-on-request, broadcast-on-change, broadcast-periodically",
+    "notes": "",
     "type": "info"
   },
   "0x00C0": {
@@ -106,15 +117,17 @@
     "class": "monitor",
     "emsCategory": "EMS2.0",
     "distribution": "unicast-on-request",
+    "notes": "",
     "type": "info"
   },
   "0x00C2": {
     "name": "Local device error history",
     "usedIn": "Various controllers, thermostats and boilers",
-    "description": "Hold the history of errors. Each device has it´s own list of own errors. Error 1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0010 and 0x0011.",
+    "description": "Hold the history of errors. Each device has it's own list of own errors. Error 1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0010 and 0x0011.",
     "class": "monitor",
     "emsCategory": "EMS2.0",
     "distribution": "unicast-on-request",
+    "notes": "",
     "type": "info"
   },
   "0x00C6": {
@@ -124,6 +137,7 @@
     "class": "monitor",
     "emsCategory": "EMS2.0",
     "distribution": "unicast-on-request",
+    "notes": "",
     "type": "info"
   },
   "0x00C7": {
@@ -133,6 +147,7 @@
     "class": "monitor",
     "emsCategory": "EMS2.0",
     "distribution": "unicast-on-request",
+    "notes": "",
     "type": "info"
   },
   "0x0165": {
@@ -142,6 +157,7 @@
     "class": "Parameter",
     "emsCategory": "EMS2.0 / EMS1.0",
     "distribution": "broadcast-on-change, unicast-write-request, unicast-on-request",
+    "notes": "",
     "type": "info"
   },
   "0x016F": {
@@ -151,6 +167,7 @@
     "class": "Monitor",
     "emsCategory": "EMS1.0",
     "distribution": "broadcast-on-change, broadcast-periodically, unicast-on-request",
+    "notes": "",
     "type": "info"
   },
   "0x02A5": {
@@ -160,6 +177,7 @@
     "class": "monitor",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, broadcast-periodically",
+    "notes": "",
     "type": "info"
   },
   "0x02B9": {
@@ -169,6 +187,7 @@
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, writable",
+    "notes": "",
     "type": "info"
   },
   "0x02C3": {
@@ -178,6 +197,7 @@
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "notes": "",
     "type": "info"
   },
     "0x02FF": {
@@ -187,6 +207,7 @@
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "notes": "",
     "type": "info"
   },
   "0x0309": {
@@ -196,6 +217,7 @@
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "notes": "",
     "type": "info"
   },
   "0x0449": {
@@ -205,6 +227,7 @@
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "notes": "",
     "type": "info"
   },
   "0x0683": {
@@ -214,6 +237,7 @@
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "notes": "",
     "type": "info"
   },
   "0x068D": {
@@ -223,6 +247,7 @@
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "notes": "",
     "type": "info"
   },
   "0x02CC": {
@@ -232,6 +257,7 @@
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "notes": "",
     "type": "info"
   },
   "0x02CD": {
@@ -241,6 +267,7 @@
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "notes": "",
     "type": "info"
   },
   "0x02F5": {
@@ -250,6 +277,7 @@
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "notes": "",
     "type": "info"
   },
   "0x031D": {
@@ -259,6 +287,7 @@
     "class": "monitor",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, broadcast-periodically",
+    "notes": "",
     "type": "info"
   },
   "0x043F": {
@@ -268,6 +297,7 @@
     "class": "parameter",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, unicast-write-request",
+    "notes": "Default values, meaning OFF are: 0B 01 01 0B 01 01 in HEX which is 11 01 01 11 01 01 in decimal, meaning 01.01.2011 - 01.01.2011. In fact, any pair of dates in the past will switch holiday mode to OFF.",
     "type": "info"
   },
   "0x048D": {
@@ -277,6 +307,7 @@
     "class": "monitor",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request",
+    "notes": "",
     "type": "info"
   },
   "0x04A2": {
@@ -286,6 +317,7 @@
     "class": "monitor",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, broadcast-periodically",
+    "notes": "",
     "type": "info"
   },
   "0x099A": {
@@ -295,6 +327,7 @@
     "class": "monitor",
     "emsCategory": "EMS2.0",
     "distribution": "broadcast-on-change, unicast-on-request, broadcast periodically",
+    "notes": "",
     "type": "info"
   },
   "0x00FB": {
@@ -304,6 +337,7 @@
     "class": "Command",
     "emsCategory": "EMS2.0",
     "distribution": "",
+    "notes": "",
     "type": "warning"
   },
   "0x099C" : {
@@ -316,7 +350,7 @@
     "type" : "info"
   },
   "0x04AA" : {
-    "name" : "HP_ENERGYMANAGEMENT_COMPRESSOR_STATUS_MONITORS",
+    "name" : "HP Energy Manager Compressor Status Monitors",
     "usedIn" : "tbd",
     "description" : "Monitors for Energy Manager (EM) related to compressor. Dynamic information.",
     "class" : "Monitor",
@@ -325,7 +359,7 @@
     "type" : "info"
   },
   "0x0115" : {
-    "name" : "DHW IMMEDIATELY CONTROL VALUES BETWEEN FX CONTROLLERS.",
+    "name" : "DHW Immediately Control Values Between FX Controllers",
     "usedIn" : "tbd",
     "description" : "",
     "class" : "Control",
@@ -334,7 +368,7 @@
     "type" : "info"
   },
     "0x01D3" : {
-    "name" : "FX MONITOR VALUES FOR DOMESTIC HOT WATER",
+    "name" : "FX Monitor Values For Domestic Hot Water",
     "usedIn" : "tbd",
     "description" : "",
     "class" : "Monitor",
@@ -343,7 +377,7 @@
     "type" : "info"
   },
   "0x001A" : {
-    "name" : "EMS CH CONTROL VALUES",
+    "name" : "EMS CH Control Values",
     "usedIn" : "tbd",
     "description" : "This block is used to send a CH-request to the EMS. Heat requests can be given as a power or supply setpoint.  This block must be repeated at least every 4 minutes. When the transmission of this block stops, the values will fall back to default.",
     "class" : "Control",
@@ -352,7 +386,7 @@
     "type" : "info"
   },
   "0x0004" : {
-    "name" : "BOILER IDENTIFICATION BLOCK",
+    "name" : "Boiler Identification Block",
     "usedIn" : "tbd",
     "description" : "In this block a definition of the boiler is given. The information is used for external devices which need information about the possibilities of the boiler.  **Important**: Values in this block cannot be changed via the bus!  **Note: EMSType** - ``EMS1.0-AND-EMS2.0``: I0-1, I2, I3.0-3.2, I3.5, I3.6, I3.7, I4, I5, I7, I8, I9, I10, I12, I18-19, I22, I23, I24, I25-26, I27, I28, I29, I30, I31, I32 - ``EMS1.0``: all other indexes",
     "class" : "Const",
@@ -361,7 +395,7 @@
     "type" : "info"
   },
   "0x0018" : {
-    "name" : "EMS FAST MONITOR VALUES",
+    "name" : "EMS Fast Monitor Values",
     "usedIn" : "tbd",
     "description" : "This block will be transmitted each 10 seconds (no changes) and each second if some variables have been changed. These variables are, the operating status flags, relay status flags, supply temperature and the system pressure.",
     "class" : "Monitor",
@@ -370,7 +404,7 @@
     "type" : "info"
   },
   "0x0016" : {
-    "name" : "EMS CENTRAL HEATING PARAMETERS",
+    "name" : "EMS Central Heating Parameters",
     "usedIn" : "tbd",
     "description" : "This block contains variables to configure the central heating system of the boiler.",
     "class" : "Parameter",
@@ -379,7 +413,7 @@
     "type" : "info"
   },
   "0x0014" : {
-    "name" : "EMS SIMULATED SYSTEM TIME",
+    "name" : "EMS Simulated System Time",
     "usedIn" : "tbd",
     "description" : "This block contains the simulated system time of the EMS. The simulated system time is a relative time, which starts counting after the first power up and is incremented each minute as long as the power is available. This timer is stored in EEPROM once an hour.  This timer is to be used as a reference for the relative time, if this is stored in the locking and blocking error register and in the maintenance request register, i.e. if no absolute time from DT6 is available.  **Note: Distribution** Legacy products (EMS1.0) only implemented ``UNICAST-ON-REQUEST``. For backwards compatibility, in this case an HMI needs to request DT20 to reflect the runtime of the system. New products shall support distribution ``BROADCAST-PERIODICALLY`` with a periodicity of *one hour*.",
     "class" : "Monitor",

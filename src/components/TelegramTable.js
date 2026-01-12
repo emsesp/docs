@@ -63,7 +63,8 @@ export default function TelegramTable({ csvFile, title }) {
         meta.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         meta.class?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         meta.emsCategory?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        meta.distribution?.toLowerCase().includes(searchTerm.toLowerCase())
+        meta.distribution?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        meta.notes?.toLowerCase().includes(searchTerm.toLowerCase())
       ));
     
     const matchesTelegram = 
@@ -138,12 +139,13 @@ export default function TelegramTable({ csvFile, title }) {
               <>
                 {meta && (
                   <div className={`${styles.metadataBox} ${styles[meta.type]}`}>
-                    <div className={styles.metadataTitle}>{meta.name}</div>
+                    {/* <div className={styles.metadataTitle}>{meta.name}</div> */}
                     <div className={styles.metadataContent}>
                       <p><strong>Used in:</strong> {meta.usedIn}</p>
                       <p><strong>Description:</strong> {meta.description}</p>
                       <p><strong>Class:</strong> {meta.class}</p>
                       <p><strong>EMS category:</strong> {meta.emsCategory}</p>
+                      {meta.notes && <p><strong>Notes:</strong> {meta.notes}</p>}
                       {meta.distribution && <p><strong>Distribution:</strong> {meta.distribution}</p>}
                       {meta.extraWarning && (
                         <div className={styles.extraWarning}>⚠️ {meta.extraWarning}</div>
