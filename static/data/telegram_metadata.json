@@ -359,6 +359,15 @@
     "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
     "distribution" : "BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST",
     "type" : "info"
+  },
+  "0x0018" : {
+    "name" : "EMS FAST MONITOR VALUES",
+    "usedIn" : "tbd",
+    "description" : "This block will be transmitted each 10 seconds (no changes) and each second if some variables have been changed. These variables are, the operating status flags, relay status flags, supply temperature and the system pressure.",
+    "class" : "Monitor",
+    "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution" : "BROADCAST-ON-POWER-UP; distribution duration = 10s; timeout = 240s, UNICAST-ON-CHANGE, BROADCAST-PERIODICALLY, UNICAST-ON-REQUEST",
+    "type" : "info"
   }
 
 }
