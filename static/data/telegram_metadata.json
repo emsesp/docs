@@ -1,11 +1,11 @@
 {
   "0x0001": {
-    "name": "Product Data Electronics Hardware",
+    "name": "ELECTRONICS-MODULE PRODUCTION INFORMATION BLOCK",
     "usedIn": "Various controllers, thermostats and boilers",
-    "description": "Holds ASCII coded device information",
-    "class": "Constant",
-    "emsCategory": "EMS1.0 & EMS2.0",
-    "distribution": "unicast-on-request",
+    "description": "This block contains production information of the *electronics module* hardware (e.g. ACU-LO, ACU-MH, HRV_CU, ...).",
+    "class": "Const",
+    "emsCategory": "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution": "UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
