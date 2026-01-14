@@ -10,12 +10,12 @@
     "type": "info"
   },
   "0x0002": {
-    "name": "Module Identification Data",
+    "name": "MODULE IDENTIFICATION BLOCK",
     "usedIn": "Various controllers, thermostats and boilers",
-    "description": "Holds device information",
-    "class": "Constant",
-    "emsCategory": "EMS1.0 & EMS2.0",
-    "distribution": "unicast-on-request, broadcast-on-powerup",
+    "description": "This block is used to universally identify the module on the bus when a bus data logger is connected.  **Note: Distribution**: ``BROADCAST-ON-POWER-UP``: Only valid for bus members, which could change the content of the constants during the runtime of the EMS system and do not require a reset of the system (e.g. iCom).",
+    "class": "Const",
+    "emsCategory": "EMS1.0 and EMS2.0: detail in bus variable description.",
+    "distribution": "UNICAST-ON-REQUEST, BROADCAST-ON-POWER-UP",
     "notes": "",
     "type": "info"
   },
