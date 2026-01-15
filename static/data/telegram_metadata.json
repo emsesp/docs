@@ -84,9 +84,9 @@
     "name": "EMS service tool heating parameters",
     "usedIn": "HT3 Junkers systems",
     "description": "This telegrams contains HT3 configuration parameters for Netcom service tools",
-    "class": "parameter",
+    "class": "Parameter",
     "emsCategory": "EMS1.0",
-    "distribution": "unicast-on-request, broadcast-on-change, broadcast-on-power-up, unicast-write-request",
+    "distribution": "BROADCAST-ON-CHANGE, BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
     "notes": "",
     "type": "info"
   },
@@ -422,6 +422,15 @@
     "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
     "distribution" : "BROADCAST-ON-CHANGE; distribution duration = 3600s, UNICAST-ON-REQUEST, BROADCAST-PERIODICALLY",
     "type" : "info"
+  },
+  "0x0033" : {
+    "name" : "DHW 1 Parameters backward heating appliance + IHM(@8)",
+    "usedIn" : "tbd",
+    "description" : "This block contains variables to configure the first hot water system of the DHW-controller",
+    "class" : "Parameter",
+    "emsCategory" : "EMS1.0",
+    "distribution" : "BROADCAST-ON-CHANGE, BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
-
 }
