@@ -1,6 +1,6 @@
 {
   "0x0001": {
-    "name": "ELECTRONICS-MODULE PRODUCTION INFORMATION BLOCK",
+    "name": "Electronics-Module Production Information Block",
     "usedIn": "Various controllers, thermostats and boilers",
     "description": "This block contains production information of the *electronics module* hardware (e.g. ACU-LO, ACU-MH, HRV_CU, ...).",
     "class": "Const",
@@ -10,7 +10,7 @@
     "type": "info"
   },
   "0x0002": {
-    "name": "MODULE IDENTIFICATION BLOCK",
+    "name": "Module Identification Block",
     "usedIn": "Various controllers, thermostats and boilers",
     "description": "This block is used to universally identify the module on the bus when a bus data logger is connected.  **Note: Distribution**: ``BROADCAST-ON-POWER-UP``: Only valid for bus members, which could change the content of the constants during the runtime of the EMS system and do not require a reset of the system (e.g. iCom).",
     "class": "Const",
@@ -20,22 +20,22 @@
     "type": "info"
   },
   "0x0003": {
-    "name": "Product Data Appliance",
+    "name": "Appliance Production Information Block",
     "usedIn": "Various controllers, thermostats and boilers",
-    "description": "Holds ASCII coded device information",
-    "class": "Constant",
-    "emsCategory": "EMS1.0 & EMS2.0",
-    "distribution": "unicast-on-request",
+    "description": "Holds ASCII coded device information. This block contains production information data of the *appliance* (e.g. gas/oil boiler, heat pump, pump station, etc.).",
+    "class": "Const",
+    "emsCategory": "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution": "UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
   "0x0005": {
     "name": "Special Commands",
     "usedIn": "Various controllers, thermostats and boilers",
-    "description": "Collection of different special functions/commands",
+    "description": "Collection of different special functions/commands. In this block special commands are given. The commands are coded with a special value. Wrong codes will be neglected.  **Note**: Only one command at a time may be sent, therefore there is always an offset of 2 between the variables!",
     "class": "Command",
-    "emsCategory": "EMS1.0",
-    "distribution": "unicast-write-request",
+    "emsCategory": "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution": "UNICAST-WRITE-REQUEST",
     "notes": "",
     "type": "warning",
     "extraWarning": "These commands can affect device operation and should be used carefully."
@@ -84,9 +84,9 @@
     "name": "EMS service tool heating parameters",
     "usedIn": "HT3 Junkers systems",
     "description": "This telegrams contains HT3 configuration parameters for Netcom service tools",
-    "class": "parameter",
+    "class": "Parameter",
     "emsCategory": "EMS1.0",
-    "distribution": "unicast-on-request, broadcast-on-change, broadcast-on-power-up, unicast-write-request",
+    "distribution": "BROADCAST-ON-CHANGE, BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
     "notes": "",
     "type": "info"
   },
@@ -388,10 +388,11 @@
   "0x0004" : {
     "name" : "Boiler Identification Block",
     "usedIn" : "tbd",
-    "description" : "In this block a definition of the boiler is given. The information is used for external devices which need information about the possibilities of the boiler.  **Important**: Values in this block cannot be changed via the bus!  **Note: EMSType** - ``EMS1.0-AND-EMS2.0``: I0-1, I2, I3.0-3.2, I3.5, I3.6, I3.7, I4, I5, I7, I8, I9, I10, I12, I18-19, I22, I23, I24, I25-26, I27, I28, I29, I30, I31, I32 - ``EMS1.0``: all other indexes",
+    "description" : "In this block a definition of the boiler is given. The information is used for external devices which need information about the possibilities of the boiler.  **Important**: Values in this block cannot be changed via the bus!  **Note: EMSType** - ``EMS1.0-AND-EMS2.0``: offset 0-1, offset 2, offset 3.0-3.2, offset 3.5, offset 3.6, offset 3.7, offset 4, offset 5, offset 7, offset 8, offset 9, offset 10, offset 12, offset 18-19, offset 22, offset 23, offset 24, offset 25-26, offset 27, offset 28, offset 29, offset 30, offset 31, offset 32 - ``EMS1.0``: all other indexes",
     "class" : "Const",
     "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
     "distribution" : "BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST",
+    "notes" : "",
     "type" : "info"
   },
   "0x0018" : {
@@ -401,6 +402,7 @@
     "class" : "Monitor",
     "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
     "distribution" : "BROADCAST-ON-POWER-UP; distribution duration = 10s; timeout = 240s, UNICAST-ON-CHANGE, BROADCAST-PERIODICALLY, UNICAST-ON-REQUEST",
+    "notes" : "",
     "type" : "info"
   },
   "0x0016" : {
@@ -415,11 +417,20 @@
   "0x0014" : {
     "name" : "EMS Simulated System Time",
     "usedIn" : "tbd",
-    "description" : "This block contains the simulated system time of the EMS. The simulated system time is a relative time, which starts counting after the first power up and is incremented each minute as long as the power is available. This timer is stored in EEPROM once an hour.  This timer is to be used as a reference for the relative time, if this is stored in the locking and blocking error register and in the maintenance request register, i.e. if no absolute time from DT6 is available.  **Note: Distribution** Legacy products (EMS1.0) only implemented ``UNICAST-ON-REQUEST``. For backwards compatibility, in this case an HMI needs to request DT20 to reflect the runtime of the system. New products shall support distribution ``BROADCAST-PERIODICALLY`` with a periodicity of *one hour*.",
+    "description" : "This block contains the simulated system time of the EMS. The simulated system time is a relative time, which starts counting after the first power up and is incremented each minute as long as the power is available. This timer is stored in EEPROM once an hour.  This timer is to be used as a reference for the relative time, if this is stored in the locking and blocking error register and in the maintenance request register, i.e. if no absolute time from telegram 0x0006 is available.  **Note: Distribution** Legacy products (EMS1.0) only implemented ``UNICAST-ON-REQUEST``. For backwards compatibility, in this case an HMI needs to request telegram 0x0014 to reflect the runtime of the system. New products shall support distribution ``BROADCAST-PERIODICALLY`` with a periodicity of *one hour*.",
     "class" : "Monitor",
     "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
     "distribution" : "BROADCAST-ON-CHANGE; distribution duration = 3600s, UNICAST-ON-REQUEST, BROADCAST-PERIODICALLY",
     "type" : "info"
+  },
+  "0x0033" : {
+    "name" : "DHW 1 Parameters backward heating appliance + IHM(@8)",
+    "usedIn" : "tbd",
+    "description" : "This block contains variables to configure the first hot water system of the DHW-controller",
+    "class" : "Parameter",
+    "emsCategory" : "EMS1.0",
+    "distribution" : "BROADCAST-ON-CHANGE, BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
-
 }
