@@ -20,22 +20,22 @@
     "type": "info"
   },
   "0x0003": {
-    "name": "Product Data Appliance",
+    "name": "Appliance Production Information Block",
     "usedIn": "Various controllers, thermostats and boilers",
-    "description": "Holds ASCII coded device information",
-    "class": "Constant",
-    "emsCategory": "EMS1.0 & EMS2.0",
-    "distribution": "unicast-on-request",
+    "description": "Holds ASCII coded device information. This block contains production information data of the *appliance* (e.g. gas/oil boiler, heat pump, pump station, etc.).",
+    "class": "Const",
+    "emsCategory": "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution": "UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
   "0x0005": {
     "name": "Special Commands",
     "usedIn": "Various controllers, thermostats and boilers",
-    "description": "Collection of different special functions/commands",
+    "description": "Collection of different special functions/commands. In this block special commands are given. The commands are coded with a special value. Wrong codes will be neglected.  **Note**: Only one command at a time may be sent, therefore there is always an offset of 2 between the variables!",
     "class": "Command",
-    "emsCategory": "EMS1.0",
-    "distribution": "unicast-write-request",
+    "emsCategory": "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution": "UNICAST-WRITE-REQUEST",
     "notes": "",
     "type": "warning",
     "extraWarning": "These commands can affect device operation and should be used carefully."
