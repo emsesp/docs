@@ -44,9 +44,9 @@
     "name": "Locking Error History",
     "usedIn": "Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7",
     "description": "Holds the history of locking errors",
-    "class": "monitor",
-    "emsCategory": "EMS1.0 and EMS2.0",
-    "distribution": "unicast-on-request, broadcast-on-change",
+    "class": "Monitor",
+    "emsCategory": "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution": "UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
@@ -54,9 +54,9 @@
     "name": "Blocking Error History",
     "usedIn": "Older systems hold this error list while newer systems use 0x00C2 and/or 0x00C6 and 0x00C7",
     "description": "Holds the history of blocking errors",
-    "class": "monitor",
+    "class": "Monitor",
     "emsCategory": "EMS1.0",
-    "distribution": "unicast-on-request, broadcast-on-change",
+    "distribution": "UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
@@ -64,9 +64,9 @@
     "name": "Blocking actual system error history",
     "usedIn": "Older systems hold this error list while newer systems use 0x00C0 and 0x00C1",
     "description": "Holds the history of blocking errors of the system",
-    "class": "monitor",
+    "class": "Monitor",
     "emsCategory": "EMS1.0",
-    "distribution": "unicast-on-request, broadcast-on-change",  
+    "distribution": "UNICAST-ON-REQUEST",  
     "notes": "",
     "type": "info"
   },
@@ -74,9 +74,9 @@
     "name": "System error history",
     "usedIn": "Older systems hold this error list while newer systems use 0x00C0 and 0x00C1",
     "description": "Holds the history of system errors",
-    "class": "monitor",
+    "class": "Monitor",
     "emsCategory": "EMS1.0",
-    "distribution": "unicast-on-request, broadcast-on-change",
+    "distribution": "UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
@@ -430,6 +430,26 @@
     "class" : "Parameter",
     "emsCategory" : "EMS1.0",
     "distribution" : "BROADCAST-ON-CHANGE, BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x0034" : {
+    "name" : "DHW 1 Monitor Values",
+    "usedIn" : "tbd",
+    "description" : "This block contains the monitor values of the DHW1 controller",
+    "class" : "Monitor",
+    "emsCategory" : "EMS1.0",
+    "distribution" : "BROADCAST-ON-POWER-UP; distribution duration = 10s; timeout = 240s, BROADCAST-PERIODICALLY, UNICAST-ON-REQUEST, UNICAST-PERIODICALLY",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x00E4" : {
+    "name" : "Source->Sink Interface HMI FAST",
+    "usedIn" : "tbd",
+    "description" : "The source to HMI interface informs the HMI about the operating status of the heat source. It contains:      - Status from the appliance     - Temperature values     - Outputs     - ...  **Note: Distribution** This data type is sent with broadcast periodically every 10 seconds and if some of the variables have been changed. These variables are the *operating status flags*, *virtual relay status flags*, *supply flow temperature*, the *system pressure* and the *chimney sweeper power setpoint*.",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 10s; timeout = 240s, BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
     "notes" : "",
     "type" : "info"
   }
