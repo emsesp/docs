@@ -94,19 +94,19 @@
     "name": "EMS service tool dhw parameters",
     "usedIn": "HT3 Junkers systems",
     "description": "This telegrams contains HT3 configuration parameters for Netcom service tools",
-    "class": "parameter",
+    "class": "Parameter",
     "emsCategory": "EMS1.0",
-    "distribution": "unicast-on-request, broadcast-on-change, broadcast-on-power-up, unicast-write-request",
+    "distribution": "BROADCAST-ON-CHANGE, BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
     "notes": "",
     "type": "info"
   },
   "0x00BF": {
     "name": "Local error list",
     "usedIn": "Used in systems that use the 0x00C2/0x00C6/0x00C7 error history lists",
-    "description": "The lists holds up to three active errors, sorted by critically",
-    "class": "monitor",
+    "description": "The lists holds up to three active errors, sorted by critically. The introduction of telegram 0x00BF allows great flexibility in terms of HMI display, error logging and reaction of the system components for specific errors. This EMS service is to be used to communicate LEL (Local Error List) which has a capacity of 3 active errors. The source address and the module ID are valid for the following three errors, with the advantage that up to three errors can be send with one message.  The active errors need to be sorted such, that the error with highest priority is always reported in the first error item, see also chapter *Sorting rules* in the *NSC-CU-InterfaceSpecification*.  *Note 1*: Each token on the EMS bus is considered a system component. Multiple integrated EMS bus tokens in a single device/product are therefore considered to be *multiple* system components. For each token a separate LEL must be maintained! *Note 2*: The support of an LEL is not required if the component doesn’t have own errors specified/defined. *Note 3*: see *CombinedErrorCodeDB* for the list of error codes  **Important**: telegram 0x00BF must be sent always with the complete payload.  **Note: Distribution Methods** The broadcast is scheduled every 10 minutes and after a change in the content of the LEL.",
+    "class": "Monitor",
     "emsCategory": "EMS2.0",
-    "distribution": "unicast-on-request, broadcast-on-change, broadcast-periodically",
+    "distribution": "BROADCAST-PERIODICALLY; distribution duration = 600s; timeout = 1320s, BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
@@ -450,6 +450,26 @@
     "class" : "Monitor",
     "emsCategory" : "EMS2.0",
     "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 10s; timeout = 240s, BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x0019" : {
+    "name" : "EMS Slow Monitor Values",
+    "usedIn" : "tbd",
+    "description" : "This block contains EMS data",
+    "class" : "Monitor",
+    "emsCategory" : "EMS1.0",
+    "distribution" : "BROADCAST-ON-POWER-UP; distribution duration = 60s; timeout = 240s, BROADCAST-PERIODICALLY, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x00E3" : {
+    "name" : "Source->Sink Interface OPMode",
+    "usedIn" : "tbd",
+    "description" : "The source to sink interface informs the sinks about the operating status of the source and enables the source to influence the behaviour of the sinks. It contains:      - requests served by the source     - source requests to the sinks It is not expected for the source to know the details about the sinks in the system. The sinks must react to this message according to chapter *Operating status (heat source)* of the NSC-CU-InterfaceSpecification (IFS), where the *heat source view* and the *heat sink view* behaviour of the sinks is specified. The source in turn has to set the monitor values in compliance with chapter *Rules for source operating state* of the IFS (see table *Critical Use Cases telegram 0x00E3*).",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 10s; timeout = 240s, UNICAST-ON-REQUEST",
     "notes" : "",
     "type" : "info"
   }
