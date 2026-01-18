@@ -81,13 +81,13 @@ rest_command:
 and make sure you include the yaml files in your `configuration.yaml` file like this:
 
 ```yaml
-template: !include template.yaml
-automation: !include automation.yaml
-script: !include script.yaml
-scene: !include scene.yaml
+template: !include templates.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
 ```
 
-Add to `script.yaml`:
+Add to `scripts.yaml`:
 
 ```yaml
 coldshot:
@@ -101,7 +101,7 @@ coldshot:
         value: 'on'
 ```
 
-Add to `automation.yaml`:
+Add to `automations.yaml`:
 
 ```yaml
 - id: shower_alert
@@ -397,10 +397,10 @@ Use a template to translate the boiler service code into a string.
 in `configuration.yaml`:
 
 ```yaml
-template: !include template.yaml
+template: !include templates.yaml
 ```
 
-and `template.yaml` contains:
+and `templates.yaml` contains:
 
 ```yaml
 sensor:
