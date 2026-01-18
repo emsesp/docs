@@ -140,7 +140,7 @@ Each user has an unique Access Token (viewable by clicking on the key icon) whic
 
 ## Adding Analog and Temperature Sensors
 
-External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees Gateway board it already has an external plug for Dallas temperature sensors which will be visible in the WebUI without any additional configuration. BBQKees boards are CE certified and adding sensors to gpios will break EMC compilance. For adding analog sensors on own risk, choose a different board profile or use developer mode to configure a custom board.
+External sensors, like temperature and analog sensors can be attached to a range of GPIO pins on the ESP32 chip. If using a BBQKees Gateway board it already has an external plug for Dallas temperature sensors which will be visible in the WebUI without any additional configuration. BBQKees boards are CE certified and adding sensors to gpios will break EMC compliance. For adding analog sensors on own risk, choose a different board profile or use developer mode to configure a custom board.
 
 To add analog sensors click on `Add` and choose between a normal Digital in/out, a Counter (counting on/off pulses), ADC for measuring voltages, Timer, Rate and PWM 0-2. Note, the counter value is persisted and not reset on reboot.
 

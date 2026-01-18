@@ -632,7 +632,7 @@ _(by DiZil1)_ from https://github.com/emsesp/EMS-ESP32/discussions/1953#discussi
 ```yaml
 # =========================
 # EMS-ESP Package
-# Datei: /config/packages/ems-esp.yaml
+# File: /config/packages/ems-esp.yaml
 # =========================
 
 rest_command:
