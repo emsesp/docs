@@ -2,7 +2,7 @@
 id: Home-Assistant
 ---
 
-# Home Assistant
+# Haushaltshilfe
 
 ![logo](/media/logo/home-assistant.png)
 
@@ -82,13 +82,13 @@ rest_command:
 und stellen Sie sicher, dass Sie die yaml-Dateien wie folgt in Ihre `configuration.yaml`-Datei einfügen:
 
 ```yaml
-template: !include template.yaml
-automation: !include automation.yaml
-script: !include script.yaml
-scene: !include scene.yaml
+template: !include templates.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
 ```
 
-Zu `script.yaml` hinzufügen:
+Zu `scripts.yaml` hinzufügen:
 
 ```yaml
 coldshot:
@@ -102,7 +102,7 @@ coldshot:
         value: 'on'
 ```
 
-Zu `automation.yaml` hinzufügen:
+Zu `automations.yaml` hinzufügen:
 
 ```yaml
 - id: shower_alert
@@ -397,10 +397,10 @@ Verwenden Sie eine Vorlage, um den Kesselservice-Code in eine Zeichenkette zu ü
 in `configuration.yaml`:
 
 ```yaml
-template: !include template.yaml
+template: !include templates.yaml
 ```
 
-und `template.yaml` enthält:
+und `templates.yaml` enthält:
 
 ```yaml
 sensor:
