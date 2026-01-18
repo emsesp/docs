@@ -5,21 +5,24 @@ id: Support
 
 If you are looking for EMS-ESP support, have a question or suggestion here are the options:
 
-- If the request is **hardware** related go to [BBQKees' EMS Gateway Documentation](https://bbqkees-electronics.nl/wiki/).
-- Reaching out to the **Support Community** on [Discord](https://discord.gg/3J3GgnzpyT) is a good place for asking general questions and chatting with other users. You have better chances to getting fast responses here.
-- **Search** in existing open and closed [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) as your issue may already be resolved.
+- If you're using a BBQKees gateway board and having trouble connecting it, go first to [BBQKees' EMS Gateway Documentation](https://bbqkees-electronics.nl/wiki/).
+- Look through the [Troubleshooting](Troubleshooting.md) section for solutions to common problems.
+- Try reaching out to the **EMS-ESP Community** on [Discord](https://discord.gg/3J3GgnzpyT). This is a good place for asking general questions and chatting with other users. You have better chances to getting fast responses here.
+- Search through existing **[GitHub issues](https://github.com/emsesp/EMS-ESP32/issues)**, both open and closed, as your issue may already be resolved.
 - **Search** the [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) as you might find an answer to your question.
-- As a last resort, create a [Problem Report](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) on GitHub. See below for the required information.
+- As a last resort, **create** a [Problem Report](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) on GitHub following the guidelines below.
 
 :::tip important!
 
+    Before creating a new GitHub issue, please make sure you have are using either the latest Stable or Development firmware version. Versions older than these are no longer supported as we simply don't have the resources to support every version.
+
+    Users running BBQKees certified gateway boards get priority support. This is because they have a warranty and we want to make sure they get the best support possible. Users that have built their own EMS gateway boards or are using an unsolicited clone circuit will get limited support as it most cases we've found it's hardware related issues.
+
     When creating a new GitHub issue make sure that you provide the following information:
 
-    1. Attach the EMS-ESP Support Information. This will show us which EMS devices you have attached. You can fetch the information from the URL [http://&lt;hostname&gt;/api/system/info](http://ems-esp.local/api/system/info) or by downloading by clicking the `Support Information` button from the Help page in the WebUI.
-    2. Mention which firmware version you are using in the issue's title. It is strongly recommended you switch to the latest development firmware version before creating an issue as the problem may already have been fixed.
-    3. Mention the hardware or gateway board you are using.
-    4. State the problem you are experiencing.
-    5. State the steps to reproduce the problem.
-    6. State the expected behavior.
-    7. State the actual behavior.
+    1. Attach the EMS-ESP Support Information. This will show us which EMS devices you have attached and the firmware version you are using. You can fetch the information from the URL [http://&lt;hostname&gt;/api/system/info](http://ems-esp.local/api/system/info) or by downloading by clicking the `Support Information` button from the Help page in the WebUI. Issues that are missing this information will be closed without investigation.
+    2. State the problem you are experiencing.
+    3. State the steps to reproduce the problem.
+    4. State the expected behavior.
+    5. State the actual behavior.
 :::
