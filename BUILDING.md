@@ -118,16 +118,20 @@ After checking in your changes, Cloudflare Pages will automatically build and de
 
 We now have automated translation scripts that use AI (DeepL) to translate.
 
-Add a secret key to your CI/CD or local environment called `DEEPL_API_KEY` with the value of your DeepL API key.
+Add a secret key to your local environment called `DEEPL_API_KEY` with the value of your DeepL API key. You can get one from [DeepL](https://www.deepl.com/pro-api).
+
+```bash
+export DEEPL_API_KEY=your-deepl-api-key
+```
 
 ### Translate All Files
 
 ```sh
 # Test with one file first (dry run)
-pnpm translate -- --file About.md --dry-run
+pnpm translate -- --force --file About.md --dry-run
 
 # If it looks good, translate for real
-pnpm translate -- --file About.md
+pnpm translate -- --force --file About.md
 
 # Translate all documentation files
 pnpm translate
