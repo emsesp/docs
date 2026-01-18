@@ -84,3 +84,9 @@ Yes you can. Keep in mind the following settings:
 ## Why do EMS telegram's in `raw watch` mode have a type 0x100 higher then in `raw` mode?
 
 See [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/2025)
+
+## Should I raise the minBurnPower to between 10-20% in cold winters, so there's always a baseline thermal supply?
+
+(answer from [MichaelDvP](https://github.com/MichaelDvP))
+
+That will not work. The Boiler works with `selflowtemp` as target and modulates the burner to hold the `flowtemp`. If `flowtemp` is higher than selected on min burn power, the boiler shut off, waits the min period and `flowtemp` is down to `selflowtemp` -   hysteresis and starts again. Raising the `burnminpower` will only result in more on/off cycles in mild conditions.
