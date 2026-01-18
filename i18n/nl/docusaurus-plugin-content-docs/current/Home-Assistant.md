@@ -1,13 +1,14 @@
 ---
 id: Home-Assistant
 ---
+
 # Home Assistent
 
 ![logo](/media/logo/home-assistant.png)
 
-EMS-ESP heeft automatische integratie met Home Assistant via het [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/) protocol. Om deze functie te gebruiken schakel je gewoon de optie Ontdekken in op de pagina MQTT-instellingen.
+EMS-ESP heeft automatische integratie met Home Assistant via het [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/) protocol. Om deze functie te gebruiken, schakel je gewoon de optie Ontdekken in op de pagina MQTT-instellingen.
 
-EMS-ESP zal behouden MQTT-berichten aanmaken met als prefix `homeassistant/` voor elk apparaat en hun waarden (entiteiten genoemd). Bijvoorbeeld "`EMS-ESP Thermostat`". Je kunt zien welke zijn aangemaakt door naar de `Configuration->Integrations` van Home Assistant te gaan en de apparaten onder `MQTT` te selecteren.
+EMS-ESP maakt behouden MQTT-berichten aan met als prefix `homeassistant/` voor elk apparaat en hun waarden (entiteiten genoemd). Bijvoorbeeld "`EMS-ESP Thermostat`". Je kunt zien welke zijn aangemaakt door naar `Configuration->Integrations` in de Home Assistant te gaan en de apparaten onder `MQTT` te selecteren.
 
 Om dit apparaat en zijn waarden toe te voegen aan een Home Assistant UI klik je op de knop "ADD TO LOVELACE".
 
@@ -59,13 +60,13 @@ mode: single
 
 Hieronder staan de toevoegingen aan de HA-bestanden om de toestand van de douche weer te geven als de instelling `Shower Timer` is ingeschakeld in EMS-ESP.
 
-De koudeschotfunctie is beschikbaar in EMS-ESP-versies 3.7.0 en hoger.
+De functie koude opname is beschikbaar in EMS-ESP-versies 3.7.0 en hoger.
 
 ![Home Assistant Shower](/media/screenshot/ha_shower.jpg)
 
 ![Home Assistant iPhone notify](/media/screenshot/ha_notify.jpg)
 
-Voeg toe aan `configuration.yaml` (zorg ervoor dat je het token verandert):
+Voeg toe aan `configuration.yaml` (zorg ervoor dat je het token wijzigt):
 
 ```yaml
 rest_command:
@@ -78,16 +79,16 @@ rest_command:
     payload: '{"entity":"{{entity}}","value":"{{value}}"}'
 ```
 
-en zorg ervoor dat je de yaml-bestanden op deze manier opneemt in je `configuration.yaml` bestand:
+en zorg ervoor dat je de yaml-bestanden als volgt opneemt in je `configuration.yaml`-bestand:
 
 ```yaml
-template: !include template.yaml
-automation: !include automation.yaml
-script: !include script.yaml
-scene: !include scene.yaml
+template: !include templates.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
 ```
 
-Toevoegen aan `script.yaml`:
+Toevoegen aan `scripts.yaml`:
 
 ```yaml
 coldshot:
@@ -101,7 +102,7 @@ coldshot:
         value: 'on'
 ```
 
-Toevoegen aan `automation.yaml`:
+Toevoegen aan `automations.yaml`:
 
 ```yaml
 - id: shower_alert
@@ -148,7 +149,7 @@ Toevoegen aan `template.yaml`:
         endif %}"
 ```
 
-Opmerking: u kunt de `timestamp_custom()` configureren in uw eigen voorkeursindeling.
+Je kunt de `timestamp_custom()` configureren in je eigen voorkeursindeling.
 
 Een nieuwe kaart toevoegen aan een bestaand Dashboard. Ik gebruik aangepaste kaarten met de naam 'mushroom' die kunnen worden geïnstalleerd via de HACS-plugin. Zo'n kaart zou er als volgt uitzien
 
@@ -345,7 +346,7 @@ in de automatiseringen:
       value: "{{ states('sensor.boiler_ww_selected_temperature') | int }}"
 ```
 
-Voeg dan in de lovelace UI van je HA een entiteit toe met de naam `input_number.wwselected_temp`.
+Voeg dan in de lovelace UI van je HA de entiteit `input_number.wwselected_temp` toe.
 
 Nu kun je in HA de waarden dynamisch aanpassen. Zoals:
 
@@ -367,7 +368,7 @@ Sinds HA2024.12 maakt lovelace standaard Sections views en genereert automatisch
 
 ![image](https://github.com/user-attachments/assets/58da9622-9a5b-4df0-aeec-daabb0ba8f80)
 
-1. Druk op Aan dashboard toevoegen. Dit voegt de Tegel toe aan het dashboard in de standaardinstelling, die alleen de waarde van de entiteit weergeeft:
+1. Druk op Aan dashboard toevoegen. Hierdoor wordt de Tegel toegevoegd aan het dashboard in de standaardinstelling, die alleen de waarde van de entiteit weergeeft:
 
 ![image](https://github.com/user-attachments/assets/1be160cb-4527-4db4-bd12-04599eed84af)
 
@@ -377,11 +378,11 @@ Sinds HA2024.12 maakt lovelace standaard Sections views en genereert automatisch
 
 ![image](https://github.com/user-attachments/assets/efb00a7b-4b92-4eaf-8aa4-6dcbc1b38a66)
 
-Als u de voorkeur geeft aan een schuifregelaar boven de knoppen, druk dan op `SHOW CODE EDITOR` en verwijder `style: buttons` uit de functiedefinitie:
+Als je de voorkeur geeft aan een schuifregelaar boven de knoppen, kun je `SHOW CODE EDITOR` gebruiken en `style: buttons` verwijderen uit de definitie van de functie:
 
 ![image](https://github.com/user-attachments/assets/a47dfd30-d5b9-4387-b7a6-67e115ecf170)
 
-Houd er rekening mee dat je met de Tegel-component van HA geen minimum- en maximumwaarden kunt instellen. Gebruik `numeric_input` zoals beschreven in de vorige sectie, of bekijk [Service Call Tiles on HACS](https://github.com/Nerwyn/service-call-tile-feature).
+Houd er rekening mee dat je met het Tegelcomponent van HA geen minimum- en maximumwaarden kunt instellen. Gebruik `numeric_input` zoals beschreven in het vorige gedeelte, of bekijk [Service Call Tiles on HACS](https://github.com/Nerwyn/service-call-tile-feature).
 
 1. Klik op Opslaan en geniet van uw door de UI gegenereerde EMS-ESP controletegel:
 
@@ -396,10 +397,10 @@ Gebruik een sjabloon om de servicecode van de ketel te vertalen naar een string.
 in `configuration.yaml`:
 
 ```yaml
-template: !include template.yaml
+template: !include templates.yaml
 ```
 
-en `template.yaml` bevat:
+en `templates.yaml` bevat:
 
 ```yaml
 sensor:
