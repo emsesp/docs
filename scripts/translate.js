@@ -261,6 +261,14 @@ function protectPatterns(text) {
     return placeholder;
   });
 
+  // Protect markdown emphasis with underscores - preserve _(text)_ patterns
+  // This prevents translation APIs from converting underscores to curly brackets
+  protectedText = protectedText.replace(/_\s*\(([^)]+)\)\s*_/g, (match, text) => {
+    const placeholder = `<XEMPH${protectedItems.length}X>`;
+    protectedItems.push({ original: match, text, type: 'emphasis' });
+    return placeholder;
+  });
+
   // Protect custom patterns from config
   CONFIG.preservePatterns.forEach((pattern, patternIndex) => {
     protectedText = protectedText.replace(pattern, (match) => {
@@ -301,6 +309,8 @@ function restorePatterns(translatedText, protectedItems) {
       placeholder = `<XHTML${index}X>`;
     } else if (item.type === 'link') {
       placeholder = `<XLINK${index}X>`;
+    } else if (item.type === 'emphasis') {
+      placeholder = `<XEMPH${index}X>`;
     } else if (item.type === 'pattern' && item.patternIndex !== undefined) {
       placeholder = `<XPATTERN${item.patternIndex}N${index}X>`;
     }
@@ -332,6 +342,10 @@ function restorePatterns(translatedText, protectedItems) {
     console.warn(`  ⚠️  Warning: Some placeholders were not restored: ${remainingPlaceholders.join(', ')}`);
     console.warn(`  This may cause formatting issues. Please review the output.`);
   }
+
+  // Fix any curly brackets that were incorrectly used instead of underscores
+  // This handles cases where translation APIs converted _(text)_ to {(text)}
+  restoredText = restoredText.replace(/\{\s*\(([^)]+)\)\s*\}/g, '_($1)_');
 
   return restoredText;
 }

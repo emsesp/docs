@@ -8,7 +8,7 @@ id: tips-and-tricks
 
 ## Steuerung der Kesselheizung
 
-{(von Oderik)}
+_(by Oderik)_
 
 In einem sehr einfachen Fall versorgt ein Heizkessel einen Heizkreis mit Wärme. Wenn `heating activated` `on` ist, hält der Heizkessel `selected flow temperature` aufrecht, indem er den Brenner und die Wärmepumpe reguliert.
 
@@ -28,7 +28,7 @@ Die einmalige Aufladung des Heizkessels hat eine besondere Logik. Er lädt nicht
 
 ## Abrufen von Daten über REST mit PHP
 
-_(von flohse123)_
+_(by flohse123)_
 
 ```php
 <?php
@@ -40,11 +40,11 @@ curl_close($ch);
 
 ## Anpassung der Vorlauftemperatur in Abhängigkeit davon, ob CH oder DHW geheizt wird
 
-{(von IanC)}
+_(by IanC)_
 
 Aus dem Discord-Posting von IanC:
 
-bei einem ~2012 Worcester Bosch-Kessel wird die Heizung des Hauses von einem EvoHome-System gesteuert, das weiß, welche Teile des Hauses wie viel Wärme benötigen, aber es kann nur ein on/off-Relais verwenden, um den Kessel für die Raum- und Wasserheizung zu steuern. Das bedeutet, dass es die Vorlauftemperatur nicht direkt regeln kann. Bisher wurde diese über den Regler an der Vorderseite des Kessels kontinuierlich auf 65 °C eingestellt, um bei Bedarf eine Wassererwärmung zu ermöglichen. Ich bin sehr froh, dass ich EMS-ESP in mein System eingebaut habe, um die Vorlauftemperaturen zu steuern. Ich habe ein einfaches C-Programm geschrieben, das auf meinem OpenWrt-Internet-Router läuft und EvoHome-Nachrichten abhört, um nützliche Informationen über die für Raum und Wasser benötigte Wärmemenge in einfachen txt-Dateien unter /tmp. zu erfassen. Ich plane dann alle 4 Minuten ein Shell-Skript, das in mehreren Schritten eine Vorlauftemperatur auswählt: Ich beginne mit einem witterungsbereinigten Wert, der auf der Außentemperatur des Online-Dienstes basiert; ich passe diesen Wert um bis zu 25 % an, je nach dem Wärmebedarf von EvoHome; falls erforderlich, setze ich ihn außer Kraft, um Warmwasser zu erwärmen. Die gewählte Vorlauftemperatur und die maximale Brennerstufe werden dann über Curl an ein BBQKees-Gerät mit EMS-ESP gesendet, das wiederum den Kessel steuert. Bislang scheint das System wie vorgesehen zu funktionieren, ohne dass der Komfort im Haus beeinträchtigt wird, wobei jedoch viel niedrigere Vorlauftemperaturen beobachtet werden, um den Betrieb des Kessels in der Brennwertzone zu fördern.  Es ist sehr schwer zu sagen, ob sich das auf den Gasverbrauch auswirkt - was ich mir wünschen würde :-). Die größte Herausforderung, die ich immer noch sehe, ist, wie ich verhindern kann, dass EvoHome häufige on/off-Zyklen des Kessels verursacht, während es immer noch versucht, die TPI-Durchflussregelung zu verwenden
+bei einem ~2012 Worcester Bosch-Kessel wird die Heizung des Hauses von einem EvoHome-System gesteuert, das weiß, welche Teile des Hauses wie viel Wärme benötigen, aber es kann nur ein on/off-Relais verwenden, um den Kessel für die Raum- und Wasserheizung zu steuern. Das bedeutet, dass es die Vorlauftemperatur nicht direkt regeln kann. Bisher wurde diese über den Drehregler an der Vorderseite des Kessels kontinuierlich auf 65 °C eingestellt, um bei Bedarf eine Warmwasserbereitung zu ermöglichen. Ich bin sehr froh, dass ich EMS-ESP in mein System eingebaut habe, um die Vorlauftemperaturen zu steuern. Ich habe ein einfaches C-Programm geschrieben, das auf meinem OpenWrt-Internet-Router läuft und EvoHome-Nachrichten abhört, um nützliche Informationen über die für Raum und Wasser benötigte Wärmemenge in einfachen txt-Dateien unter /tmp. zu erfassen. Ich plane dann alle 4 Minuten ein Shell-Skript, das in mehreren Schritten eine Vorlauftemperatur auswählt: Ich beginne mit einem witterungsbereinigten Wert, der auf der Außentemperatur des Online-Dienstes basiert; ich passe diesen Wert um bis zu 25 % an, je nach dem Wärmebedarf von EvoHome; falls erforderlich, setze ich ihn außer Kraft, um Warmwasser zu erwärmen. Die gewählte Vorlauftemperatur und die maximale Brennerstufe werden dann über Curl an ein BBQKees-Gerät mit EMS-ESP gesendet, das wiederum den Kessel steuert. Bislang scheint das System wie vorgesehen zu funktionieren, ohne dass der Komfort im Haus beeinträchtigt wird, wobei jedoch viel niedrigere Vorlauftemperaturen beobachtet werden, um den Betrieb des Kessels in der Brennwertzone zu fördern.  Es ist sehr schwer zu sagen, ob sich das auf den Gasverbrauch auswirkt - was ich mir wünschen würde :-). Die größte Herausforderung, die ich immer noch sehe, ist, wie ich verhindern kann, dass EvoHome häufige on/off-Zyklen des Kessels verursacht, während es immer noch versucht, die TPI-Durchflussregelung zu verwenden
 
 ![1.5.0](/media/examples/ian_setflowtemp.png)
 
@@ -305,7 +305,7 @@ Hier ist der Sensor im neuen Home-Assistant-Vorlagenformat für alle Statusnumme
 
 ## Verwendung einer benutzerdefinierten Klimakomponente im Home Assistant
 
-(von elRadix)_ von [this comment](https://github.com/emsesp/EMS-ESP32/discussions/790#discussioncomment-4895520)
+_(by elRadix)_ von [this comment](https://github.com/emsesp/EMS-ESP32/discussions/790#discussioncomment-4895520)
 
 Dieses Beispiel richtet 2 Klimaeinheiten für dhw mit ihrem Modus und Heizungsklima unter Verwendung einer benutzerdefinierten HACS-Karte in HA mit dem Namen [simple thermostat](https://github.com/nervetattoo/simple-thermostat) ein:
 
@@ -482,7 +482,7 @@ Als Nächstes untersucht er, wie man eine klare Leistungsanzeige (in W) für den
 
 ## Einfaches Auslösen einer zusätzlichen Warmwasserladung im Home Assistant
 
-_(von oliof)_
+_(by oliof)_
 
 Hier ist eine einfache Automatisierung, die zusätzliches heißes Wasser durch einen Doppelklick auf eine Zigbee-basierte Taste auslöst. Dieser Auslöser kann leicht mit einem Sprachbefehl oder einem gescannten QR-Code ausgetauscht werden, falls gewünscht.
 
@@ -490,9 +490,9 @@ Hier ist eine einfache Automatisierung, die zusätzliches heißes Wasser durch e
 
 ## Schwachlastoptimierung eines Buderus GB172 Gaskessels
 
-_(von oliof mit zusätzlichem Input von tz)_
+_(by oliof with additional input by tz)_
 
-Wenn Sie mit der Einstellung Ihres Heizkessels beginnen, werden Sie höchstwahrscheinlich auf Situationen stoßen, in denen der Heizkessel selbst bei der niedrigsten Modulationseinstellung zu viel Wärme produziert. In solchen Fällen kann es sich lohnen, eine zusätzliche Regelung in Betracht zu ziehen, die den Heizkessel für eine gewisse Zeit abschaltet, wenn die Zieltemperatur erreicht ist. Hier ist eine mögliche Implementierung, die im Grunde ein Zweipunktregler ist. Aufgrund der thermischen Trägheit liegen die Schaltvorgänge bei den meisten Heizungsanlagen ohne zusätzliche Verzögerung oder Zeitbegrenzung relativ weit auseinander, doch lassen sich diese leicht hinzufügen, wenn man die Anzahl der Einschaltvorgänge verringern möchte.
+Wenn Sie mit der Einstellung Ihres Heizkessels beginnen, werden Sie höchstwahrscheinlich auf Situationen stoßen, in denen der Heizkessel selbst bei der niedrigsten Modulationseinstellung zu viel Wärme produziert. In solchen Fällen kann es sich lohnen, eine zusätzliche Regelung in Betracht zu ziehen, die den Heizkessel für eine gewisse Zeit abschaltet, wenn die Zieltemperatur erreicht ist. Hier ist eine mögliche Implementierung, die im Grunde ein Zweipunktregler ist. Aufgrund der thermischen Trägheit liegen die Schaltvorgänge bei den meisten Heizungssystemen ohne zusätzliche Verzögerung oder Zeitbegrenzung relativ weit auseinander, doch lassen sich diese leicht hinzufügen, wenn man die Anzahl der Einschaltvorgänge reduzieren möchte.
 
 Diese Schwachlastoptimierung kann den Gasverbrauch um 15-20 % senken, ohne dass sich der Temperaturkomfort ändert.
 
@@ -612,9 +612,9 @@ Matthias hat sein Setup der Bosch/Buderus Wärmepumpe auf [his blog](https://bos
 
 ## Verwendung von `txpause` zur vorübergehenden Abschaltung des Busverkehrs
 
-(von DiZil1)_ von https://github.com/emsesp/EMS-ESP32/discussions/1953#diskussionskommentar-15387910
+_(by DiZil1)_ von https://github.com/emsesp/EMS-ESP32/discussions/1953#diskussionskommentar-15387910
 
-"Um Ihnen zu verdeutlichen, warum dies für mich so wichtig ist und nicht nur eine nette Sache. Ich muss dies genau überwachen, denn in meinem System neigen A31-Fehler dazu, sich mit der Zeit zu kritischen Blockierfehlern auszuweiten, was schließlich zum Abschalten der Heizungsanlage führt."
+"Um Ihnen zu verdeutlichen, warum dies für mich so wichtig ist und nicht nur eine nette Sache. Ich muss dies genau überwachen, denn in meinem System neigen A31-Fehler dazu, sich mit der Zeit zu kritischen Blockierfehlern auszuweiten, die schließlich zum Abschalten der Heizungsanlage führen."
 
 ```yaml
 # =========================

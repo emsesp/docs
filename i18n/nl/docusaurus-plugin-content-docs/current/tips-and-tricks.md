@@ -8,7 +8,7 @@ id: tips-and-tricks
 
 ## Verwarming van de ketel regelen
 
-_(door Oderik)_
+_(by Oderik)_
 
 In een heel eenvoudige opstelling levert een ketel warmte aan één verwarmingscircuit. Als `heating activated` `on` is, handhaaft de ketel de `selected flow temperature` door de brander en de warmtepomp te regelen.
 
@@ -28,7 +28,7 @@ De boiler heeft een speciale logica. Hij laadt niet bij op afroep zoals de meest
 
 ## Gegevens ophalen via REST met PHP
 
-_(door flohse123)_
+_(by flohse123)_
 
 ```php
 <?php
@@ -40,11 +40,11 @@ curl_close($ch);
 
 ## De aanvoertemperatuur aanpassen op basis van het feit of CH of DHW wordt verwarmd
 
-_(door IanC)_
+_(by IanC)_
 
 Uit de Discord post die IanC zei:
 
-met een Worcester Bosch ketel uit ~2012 wordt de verwarming van het huis geregeld door een EvoHome systeem dat weet welke delen van het huis hoeveel warmte nodig hebben, maar het kan alleen een on/off relais gebruiken om de ketel te regelen voor ruimte- en waterverwarming. Dit betekent dat het de aanvoertemperatuur niet rechtstreeks kan regelen en deze is in het verleden ingesteld op continu 65C via de draaiknop aan de voorkant van de ketel om waterverwarming mogelijk te maken wanneer dat nodig is. Ik ben erg blij dat ik EMS-ESP aan mijn systeem heb toegevoegd om de aanvoertemperatuur te regelen. Ik heb een eenvoudig C-programma geschreven dat op mijn OpenWrt internetrouter draait en dat EvoHome-berichten afluistert om nuttige informatie over de benodigde hoeveelheid warmte voor ruimte en water op te slaan in eenvoudige txt-bestanden in /tmp.. Vervolgens plan ik elke 4 minuten een shellscript dat een aantal stappen gebruikt om een aanvoertemperatuur te selecteren: begin met een voor het weer gecompenseerde waarde op basis van de buitentemperatuur van de online service; pas deze aan met maximaal 25% naar boven of beneden op basis van de vraag naar ruimteverwarming van EvoHome; indien nodig overschrijf ik deze waarde om warm water te verwarmen. De geselecteerde aanvoertemperatuur en een maximaal branderniveau worden vervolgens via krul naar een BBQKees-apparaat gestuurd waarop EMS-ESP draait, dat op zijn beurt de ketel regelt. Tot nu toe lijkt het te werken zoals bedoeld zonder verlies van comfort in huis, maar met veel lagere aanvoertemperaturen die worden waargenomen om te proberen de ketel te laten werken in de condensatiezone.  Het is erg moeilijk om te zeggen of het invloed heeft op het gasverbruik - wat ik graag zou willen :-). De grootste uitdaging die ik nog steeds zie, is hoe ik kan voorkomen dat EvoHome frequente on/off cycli van de ketel veroorzaakt terwijl het nog steeds probeert om TPI debietregeling te gebruiken
+met een Worcester Bosch ketel uit ~2012 wordt de verwarming van het huis geregeld door een EvoHome systeem dat weet welke delen van het huis hoeveel warmte nodig hebben, maar het kan alleen een on/off relais gebruiken om de ketel te regelen voor ruimte- en waterverwarming. Dit betekent dat het de aanvoertemperatuur niet rechtstreeks kan regelen en deze is in het verleden ingesteld op continu 65C via de draaiknop aan de voorkant van de ketel om waterverwarming mogelijk te maken wanneer dat nodig is. Ik ben erg blij dat ik EMS-ESP aan mijn systeem heb toegevoegd om de aanvoertemperatuur te regelen. Ik heb een eenvoudig C-programma geschreven dat op mijn OpenWrt internetrouter draait en dat EvoHome-berichten afluistert om nuttige informatie over de benodigde hoeveelheid warmte voor ruimte en water op te slaan in eenvoudige txt-bestanden in /tmp.. Vervolgens plan ik elke 4 minuten een shellscript dat een aantal stappen gebruikt om een aanvoertemperatuur te selecteren: begin met een voor het weer gecompenseerde waarde op basis van de buitentemperatuur van de online service; pas deze aan met maximaal 25% naar boven of beneden op basis van de vraag naar ruimteverwarming van EvoHome; indien nodig overschrijf ik deze waarde om warm water te verwarmen. De geselecteerde aanvoertemperatuur en een maximaal branderniveau worden vervolgens via krul naar een BBQKees-apparaat gestuurd waarop EMS-ESP draait, dat op zijn beurt de ketel regelt. Tot nu toe lijkt het te werken zoals bedoeld zonder verlies van comfort in huis, maar met veel lagere aanvoertemperaturen die worden waargenomen om te proberen de ketel te laten werken in de condensatiezone.  Het is erg moeilijk om te zeggen of het het gasverbruik beïnvloedt - wat ik wel zou willen :-). De grootste uitdaging die ik nog steeds zie, is hoe ik kan voorkomen dat EvoHome frequente on/off cycli van de ketel veroorzaakt terwijl het nog steeds probeert om TPI debietregeling te gebruiken
 
 ![1.5.0](/media/examples/ian_setflowtemp.png)
 
@@ -303,9 +303,9 @@ Hier is de sensor in het nieuwe Home-Assistant sjabloonformaat voor alle statusn
     {{ message }}
 ```
 
-## Een aangepast klimaatcomponent gebruiken in Home Assistant
+## Een aangepast klimaatonderdeel gebruiken in Home Assistant
 
-_(door elRadix)_ van [this comment](https://github.com/emsesp/EMS-ESP32/discussions/790#discussioncomment-4895520)
+_(by elRadix)_ van [this comment](https://github.com/emsesp/EMS-ESP32/discussions/790#discussioncomment-4895520)
 
 Dit voorbeeld stelt 2 klimaatentiteiten in voor dhw met hun modus en verwarmingsklimaat met behulp van een aangepaste HACS-kaart in HA genaamd [simple thermostat](https://github.com/nervetattoo/simple-thermostat) zoals:
 
@@ -432,7 +432,7 @@ Ik heb nog niet alle opties geprobeerd, maar hier zijn een paar opmerkingen:
 
 - Ik dacht dat ik slim was door vooruit te denken, dus bij het selecteren van "Kompressorbetr. sperren" (compressorwerking blokkeren) heb ik ook "Zuheizerbetr. sperren" (hulpverwarming blokkeren) geselecteerd. Maar - ik maak geen grapje - ALLEEN de bijverwarming ging aan en verspilde een hoop stroom (in ieder geval voor een paar minuten).
 - "Heizbetrieb sperren" (blokverwarming) schakelt ook de circulatiepomp uit, wat ik niet wil omdat ik een buffervat van 500 liter heb.
-- "EVU-Sperrzeit 1" (bloktijd 1 van het energiebedrijf) werkt tot nu toe goed (waar zijn de andere EVU-Sperrzeit voor?)
+- "EVU-Sperrzeit 1" (bloktijd 1 van het energiebedrijf) werkt tot nu toe prima (waar zijn de andere EVU-Sperrzeit voor?)
 
 De volgende stap was het veranderen van de string met automatiseringen.
 
@@ -482,7 +482,7 @@ Het volgende dat hij onderzoekt is hoe hij een duidelijke vermogensmeting (in W)
 
 ## Eenvoudige trigger voor extra warm water in Home Assistant
 
-_(door oliof)_
+_(by oliof)_
 
 Hier is een eenvoudige automatisering die extra warm water inschakelt door te dubbelklikken op een knop op basis van Zigbee. Deze trigger kan desgewenst eenvoudig worden vervangen door een spraakcommando of een gescande QR-code.
 
@@ -490,7 +490,7 @@ Hier is een eenvoudige automatisering die extra warm water inschakelt door te du
 
 ## Laaglastoptimalisatie van een Buderus GB172 gasketel
 
-_(door oliof met extra input van tz)_
+_(by oliof with additional input by tz)_
 
 Als je begint met het afstellen van je ketel, zul je waarschijnlijk situaties krijgen waarbij de ketel zelfs bij de laagste modulatiestand te veel warmte produceert. In die gevallen kan het de moeite waard zijn om een extra regeling te overwegen die de ketel enige tijd uitschakelt als de gewenste temperatuur is bereikt. Hier is een mogelijke implementatie die in principe een tweepuntsregeling is. Thermische traagheid zal de schakelingen redelijk ver uit elkaar houden zonder extra vertraging of tijdslimieten op de meeste verwarmingssystemen, maar het is eenvoudig om deze toe te voegen als u het aantal inschakelingen wilt verminderen.
 
@@ -612,7 +612,7 @@ Matthias heeft zijn Bosch/Buderus warmtepomp op [his blog](https://bosch-buderus
 
 `txpause` gebruiken om het busverkeer tijdelijk uit te schakelen
 
-_(door DiZil1)_ van https://github.com/emsesp/EMS-ESP32/discussions/1953#discussiecommentaar-15387910
+_(by DiZil1)_ van https://github.com/emsesp/EMS-ESP32/discussions/1953#discussiegesprek-15387910
 
 "Om je wat context te geven waarom dit zo belangrijk voor me is en niet alleen leuk om te hebben. Ik moet dit nauwlettend in de gaten houden omdat, in mijn opstelling, A31 fouten de neiging hebben om na verloop van tijd te escaleren tot kritieke blokkeringsfouten, waardoor uiteindelijk het verwarmingssysteem wordt uitgeschakeld."
 
