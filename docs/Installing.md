@@ -52,10 +52,15 @@ If using a [BBQKees Electronics Gateway](https://bbqkees-electronics.nl) board, 
 | Gateway S32 V2        | >02-22 &lt;01-23 | No         | [EMS-ESP-3_8_1-ESP32-16MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB.bin)            |
 | Gateway S32 V1        | >02-21 &lt;02-22 | No         | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin)              |
 
+MD5-Checksums are also available for every release. They have the same filename as the image-file, but ends with `.md5`. 
+They can be found at the [GitHub-Release-Page](https://github.com/emsesp/EMS-ESP32/releases).
+You can optionally upload them **before** the bin-image-file using the EMS-ESP-web-installer so they will be evaluated before the installation.
+
 ## Help needed?
 
 - If you run into issues during the installation process, please refer to the [Troubleshooting](Troubleshooting.md).
 - If you're using a BBQKees Electronics EMS gateway board and have connectivity questions, refer to the [EMS Gateway Wiki](https://bbqkees-electronics.nl/wiki/).
+- Maybe your problem is already listed in the [FAQ](FAQ.md).
 - Get in touch with the EMS-ESP community via our [Discord](https://discord.gg/3J3GgnzpyT) channel. This is a good place for asking general questions and chatting with other users. You have better chances to getting fast responses here.
 - Search in existing open and closed [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) and [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) as your issue may already be addressed, perhaps in a later version.
 - Create a [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) on the EMS-ESP project. Do make sure you include the required Support Information so the issue can be addressed as quickly as possible.
