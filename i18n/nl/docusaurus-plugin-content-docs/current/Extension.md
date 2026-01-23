@@ -1,7 +1,8 @@
 ---
 id: Extension
 ---
-# Extension Modules
+
+# Uitbreidingsmodules
 
 Dit is de huidige lijst met ondersteunde uitbreidingsmodules:
 

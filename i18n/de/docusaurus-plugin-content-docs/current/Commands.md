@@ -9,14 +9,13 @@ EMS-ESP verfügt über eine Befehls-API, die zum Lesen und Schreiben von Werten 
 Es gibt 3 Methoden, mit denen Befehle aufgerufen werden können:
 
 - über den [**Console**](#konsole) mittels Telnet oder seriell
-- über [**HTTP**](#http) mit RESTful-API-Aufrufen
+- über [**HTTP**](#http) mit RESTful API-Aufrufen
 - über [**MQTT**](#mqtt) über Themen und ihre Nutzlasten
 
 ## Definitionen
 
-:::info
-Wichtige Definitionen
-    - `<device>` ist der Kurzname. Er kann entweder sein:
+:::info Wichtige Definitionen - `<device>` ist der Kurzname. Er kann entweder sein:
+
     - ein EMS-Gerät und folgende Geräte werden unterstützt: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation` * das EMS-ESP-System selbst als `system` * die Dallas-Temperatursensoren als `temperaturesensor` * alle benutzerdefinierten Analogsensoren als `analogsensor` * alle benutzerdefinierten EMS-Telegramm-Entitäten als `custom`
     - `<command>` ist der Name entweder * eines generischen Befehls oder * einer EMS-Geräteeinheit, die auch als `<entity>` bezeichnet wird. Siehe die Seite [Supported Devices](All-Entities) für die vollständige Liste
     - `<id>` ist ein optionaler Bezeichner und hat je nach Kontext unterschiedliche Bedeutungen
@@ -34,7 +33,7 @@ Wichtige Definitionen
 
 ## Konsole
 
-- Die Befehle können mit dem Befehl `call` ausgeführt werden
+- Befehle können mit dem Befehl `call` ausgeführt werden
 - Sie müssen Administrator sein, um den Befehl `call` zu verwenden. Zuerst `su` und geben Sie das Passwort ein
 - Für eine Liste aller verfügbaren Befehle können Sie `show commands` verwenden
 - Die Syntax lautet `call <device> <command> [data] [id]`
@@ -63,7 +62,7 @@ Der URL-Pfad lautet `http://<hostname>/api/<device>/`
 | --------------- | ----------- | ------------------------------------------------------------------ | ------------------------ | --------- |
 | `info` | `GET` | gibt aktuelle EMS-Geräteinformationen in ausführlicher Form aus | no | |
 | `values` | `GET` | gibt aktuelle EMS-Geräteinformationen im Kurzformat aus | nein | |
-| _(leer)_ | `GET` | wie `values` oben | nein | |
+| _(empty)_ | `GET` | wie bei `values` oben | nein | |
 | `commands` | `GET` | listet die verfügbaren Befehlsentitäten zum Aufrufen auf | no | |
 | `entities` | `GET` | listet alle aktivierten Entitäten auf | nein | |
 | `{entity}` | `GET` | gibt Details zu einer bestimmten Einheit aus, zum Lesen | nein | |
@@ -148,8 +147,7 @@ Der URL-Pfad lautet `http://<hostname>/api/system/<endpoint>`
 
 ### Beispiele
 
-:::tip
-In diesen Beispielen ist die URL `http://ems-esp.local/api/`, aber passen Sie sie an Ihren tatsächlichen Hostnamen an. Ändern Sie auch das Zugriffstoken des Trägers in Ihr eigenes, wie im Abschnitt [Definitions](#definitionen) beschrieben.
+:::tip Anmerkung: In diesen Beispielen ist die URL `http://ems-esp.local/api/`, aber passen Sie sie an Ihren tatsächlichen Hostnamen an. Ändern Sie auch das Zugriffstoken des Trägers in Ihr eigenes, wie im Abschnitt [Definitions](#definitionen) beschrieben.
 :::
 
 #### ...über die Befehlszeile
@@ -261,8 +259,7 @@ Und der folgende gefälschte Befehl wird nicht akzeptiert:\ Thema:`ems-esp/boile
 [mqtt] MQTT command failed with error no values in boiler (Error)
 ```
 
-:::note
-Sie können die MQTT-Befehle einfach mit [MQTT Explorer](https://www.mqtt-explorer.com) testen. Verbinden Sie sich einfach mit dem MQTT-Broker und veröffentlichen Sie die Nutzlast im Thema.
+:::note Sie können die MQTT-Befehle einfach mit [MQTT Explorer](https://www.mqtt-explorer.com) testen. Verbinden Sie sich einfach mit dem MQTT-Broker und veröffentlichen Sie die Nutzlast im Thema.
 :::
 
 Mit Home Assistant können Thermostatbefehle auch zur Steuerung einzelner Heizkreise gesendet werden, indem ein Modus-String oder eine Temperaturnummer an ein Thema `thermostat_hc<n>` gesendet wird.

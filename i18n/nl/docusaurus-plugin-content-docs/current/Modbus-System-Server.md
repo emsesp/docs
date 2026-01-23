@@ -1,9 +1,10 @@
 ---
 id: Modbus-System-Server
 ---
+
 # Modbus systeemserver
 
-EMS-ESP biedt een server met algemene alleen-lezen informatie met eenheid ID `1`. Het biedt de volgende gegevens:
+EMS-ESP biedt een server met algemene alleen-lezen informatie met unit ID `1`. Het biedt de volgende gegevens:
 
 | `Name` | `Description` | `Register offset` | `Register count` |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | -------------- |

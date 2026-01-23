@@ -1,9 +1,9 @@
 ---
-title: Erste Schritte
+title: Getting Started
 id: Getting-Started
-sidebar_label: Erste Schritte
+sidebar_label: Getting Started
 sidebar_position: 1
-description: Erste Schritte mit EMS-ESP. Was Sie benötigen, wie Sie installieren und die Erstkonfiguration durchführen.
+description: Getting started with EMS-ESP. What you need, how to install and do initial configuration.
 hide_table_of_contents: true
 ---
 
@@ -21,7 +21,7 @@ Siehe den Beitrag [here](https://github.com/emsesp/EMS-ESP32/discussions/839#dis
 
 ### 🔗 EMS-Schnittstellenkarte
 
-EMS-ESP erfordert auch eine separate Schaltung zum Lesen und Schreiben auf dem EMS-Bus. Sie können ein EMS-Gateway-Board direkt von BBQKees Electronics kaufen.
+EMS-ESP erfordert auch eine separate Schaltung zum Lesen und Schreiben auf dem EMS-Bus. Sie erwerben eine EMS-Gateway-Karte direkt bei BBQKees Electronics.
 
 ![EMS Gateway S3](/media/images/EMS-Gateway-S3.png) ![EMS Gateway E32 V2](/media/images/EMS-Gateway-E32-V2.png)
 
@@ -39,7 +39,7 @@ Der EMS-Bus ist noch nicht angeschlossen. Wenn dies mehr als ein paar Sekunden d
 
 **2 Blinkt (rot)**
 
-Das Netzwerk (WiFi oder Ethernet) verbindet sich. Wenn das Problem weiterhin besteht, überprüfen Sie die EMS-ESP-Netzwerkeinstellungen. EMS-ESP verwendet nur 2.4GHz/WPA2.
+Das Netzwerk (WiFi oder Ethernet) verbindet sich. Wenn dieses Problem weiterhin besteht, überprüfen Sie die EMS-ESP-Netzwerkeinstellungen. EMS-ESP verwendet nur 2.4GHz/WPA2.
 
 **3 Blinksignale (rot, rot, blau)**
 

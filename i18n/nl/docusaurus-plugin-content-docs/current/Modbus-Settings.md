@@ -1,6 +1,7 @@
 ---
 id: Modbus-Settings
 ---
+
 # Modbus-instellingen
 
 Schakel de Modbus-functie in `Settings` -> `Application` -> `Modbus` in. Dit vereist een herstart.

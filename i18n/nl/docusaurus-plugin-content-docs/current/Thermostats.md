@@ -1,6 +1,7 @@
 ---
 id: Thermostats
 ---
+
 # Thermostaten
 
 Dit is de huidige lijst met ondersteunde thermostaten van merken zoals Buderus, Nefit, Sieger, Junkers en Bosch:
@@ -28,8 +29,7 @@ Dit is de huidige lijst met ondersteunde thermostaten van merken zoals Buderus, 
 - RT800
 - TR120RF
 
-:::note
-Deze thermostaten hieronder ondersteunen helaas geen directe EMS schrijfopdrachten en zullen dus in EMS-ESP verschijnen als alleen-lezen apparaten:
+:::note Deze onderstaande thermostaten ondersteunen helaas geen directe EMS-schrijfopdrachten en zullen daarom in EMS-ESP verschijnen als apparaten die alleen lezen:
 
     - Buderus Logamatic TC100, Bosch EasyControl CT200, Junkers CT100, Moduline Easy. Zie [here](https://community.home-assistant.io/t/buderus-tc100-junkers-ct100-thermostat/67992)
     - Junkers FW/FR gebouwd vóór 9/2008 (FD889). Zie [here](https://github.com/emsesp/EMS-ESP32/issues/105#issuecomment-915874482)
@@ -38,13 +38,12 @@ Deze thermostaten hieronder ondersteunen helaas geen directe EMS schrijfopdracht
 
 ## Apparaat entiteiten
 
-:::warning
-De werkelijke thermostaatcommando's hieronder zijn afhankelijk van het merk en model thermostaat dat je hebt. Deze lijst is ook niet volledig en kan tussen versies veranderen.
+:::warning De werkelijke thermostaatcommando's hieronder zijn afhankelijk van het merk en model thermostaat dat je hebt. Deze lijst is ook niet volledig en kan tussen versies veranderen.
 :::
 
 | commando | gegevens | id | commentaar |
 | - | - | - | - |
-| RC35, RC100, RC300, `dw`:dag van de week: 0-mo,. `dst`:zomertijd 0/1 |
+| `datetime` | `<ntp \| dd.mm.yyyy-hh:mm:ss-dw-dst>` | RC35, RC100, RC300, `dw`:dag van de week: 0-mo,. `dst`:zomertijd 0/1 |
 | `wwmode` | `<off \| on \| auto>` | | RC100, RC300, RC30, RC35 |
 | `wwsettemp` | `<degrees>` | | RC100, RC300 |
 | `wwsettemplow` | `<degrees>` | | RC100, RC300 |
@@ -56,7 +55,7 @@ De werkelijke thermostaatcommando's hieronder zijn afhankelijk van het merk en m
 | `minexttemp` | `<degrees>` | | RC30, RC35, RC100, RC300 |
 | `calinttemp` | `<degrees>` | | RC30, RC35 |
 | `building` | `<light \| medium \| heavy>` | | RC30, RC35, RC100, RC300 |
-| `temp` | `<degrees>` | verwarmingscircuit | werkelijke instelwaarde afhankelijk van modus |
+| `temp` | `<degrees>` | verwarmingscircuit | werkelijke instelpunt afhankelijk van modus |
 | `mode` | `<auto \| night \| day \| nofrost \| heat \| eco>` | verwarmingscircuit | |
 | `manualtemp` | `<degrees>` | verwarmingscircuit | RC100, RC300 |
 | `ecotemp` | `<degrees>` | verwarmingscircuit | RC100, RC300, Junkers |
@@ -74,7 +73,7 @@ De werkelijke thermostaatcommando's hieronder zijn afhankelijk van het merk en m
 | `control` | `<off \| RC20 \| RC3x>` | verwarmingscircuit | RC30, RC35 (ruimteregeling voor hc) |
 | `pause` | `<hours>` | verwarmingscircuit | RC30, RC35 |
 | `party` | `<hours>` | verwarmingscircuit | RC30, RC35 |
-| `holiday` | `<dd.mm.yyyy-dd.mm.yyyy \| dd.mm.yyyy+dd.mm.yyyy>` | verwarmingscircuit | RC30, RC35, gebruik `-` voor 'niet thuis', `+` voor 'thuis' |
+| `holiday` | `<dd.mm.yyyy-dd.mm.yyyy \| dd.mm.yyyy+dd.mm.yyyy>` | verwarmingscircuit | RC30, RC35, gebruik `-` voor 'buitenshuis', `+` voor 'thuis' |
 | `designtemp` | `<degrees>` | verwarmingscircuit | RC30, RC35, RC100, RC300 |
 | `offsettemp` | `<degrees>` | verwarmingscircuit | RC30, RC35, RC100, RC300 |
 | `holidaytemp` | `<degrees>` | verwarmingscircuit | RC30, RC35 |
@@ -85,5 +84,5 @@ De werkelijke thermostaatcommando's hieronder zijn afhankelijk van het merk en m
 | `program` | `<0 - 10 \| 1 - 9 \| 1 - 2>` | verwarmingscircuit | RC30, RC35, RC20, RC100, RC300 |
 | `controlmode` | `<room \| outdoor>` | verwarmingscircuit | RC30, RC35, RC100, RC300 |
 | `reducemode` | `<nofrost \| reduce \| room \| outdoor>` | verwarmingscircuit | RC30, RC35 |
-| `roomtemp` | `<degrees>` | verwarmingscircuit | alleen v2.2: vervalste HA-thermostaat kamertemperatuur, gebruik `-1` om te wissen |
-| `switchtime` | `<nn.d.o.hh:mm>` | verwarmingscircuit | alleen v3: stel een van de schakeltijden van de programma's in, nn=aantal(00-42), d=dag(0-6), o=aan(0,1), uu:mm=tijd, d=7 of o=7 wist |
+| `roomtemp` | `<degrees>` | verwarmingscircuit | alleen v2.2: valse HA-thermostaat kamertemperatuur, gebruik `-1` om te wissen |
+| `switchtime` | `<nn.d.o.hh:mm>` | verwarmingscircuit | alleen v3: stel een van de schakeltijden van de programma's in, nn=aantal(00-42), d=dag(0-6), o=on(0,1), hh:mm=tijd, d=7 of o=7 wist |

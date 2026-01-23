@@ -1,23 +1,23 @@
 ---
 id: Prometheus
 ---
+
 # Prometheus
 
 ![logo](/media/logo/prometheus-logo.png)
 
-:::info
-Experimentele functie. Deze functie wordt momenteel nog getest. De Prometheus API is beschikbaar vanaf EMS-ESP32 versie 3.7.3-dev_36.
+:::info Experimentele functie Deze functie wordt momenteel nog getest. De Prometheus API is beschikbaar vanaf EMS-ESP32 versie 3.7.3-dev_36.
 :::
 
-EMS-ESP stelt de `/api/<device>/metrics` & `/api/system/metrics` eindpunten beschikbaar voor integratie met Prometheus. Alle EMS-ESP statistieken hebben als prefix `emsesp_`.
+EMS-ESP stelt de eindpunten `/api/<device>/metrics` en `/api/system/metrics` beschikbaar voor integratie met Prometheus. Alle EMS-ESP metrics hebben als prefix `emsesp_`.
 
 ## Apparaatgegevens
 
-Apparaatmetriek is toegankelijk op het eindpunt `/api/<device>/metrics`. De volgende typen waarden worden uitgevoerd:
+Apparaatmetriek is toegankelijk via het eindpunt `/api/<device>/metrics`. De volgende waarden worden uitgevoerd:
 
 - `number`
-- `boolean` (weergegeven als 0 & 1)
-- `enum` (weergegeven als nummers)
+- `boolean` (toegewezen als 0 & 1)
+- `enum` (weergegeven als getallen)
 
 Details over de metrieken en enum-mappings kunnen worden bekeken in de Help-directive, zoals in het volgende voorbeeld:
 
@@ -29,7 +29,7 @@ emsesp_circmode{circuit="dhw"} 1
 
 ## Systeem statistieken
 
-Systeemgegevens zijn toegankelijk via het eindpunt `/api/system/metrics`. De statistieken kunnen uit de volgende categorieën gelezen worden:
+Systeemgegevens zijn toegankelijk via het eindpunt `/api/system/metrics`. Metrieken kunnen uit de volgende categorieën gelezen worden:
 
 | Categorie | Metrisch voorvoegsel | Metrische labels |
 |------------------------------|-------------------|-------------------------------|
@@ -45,7 +45,7 @@ Systeemgegevens zijn toegankelijk via het eindpunt `/api/system/metrics`. De sta
 | Systeeminstellingen | emsesp_settings_* | |
 | EMS-apparaten | emsesp_device_* | type, naam, deviceid, versie |
 
-Daarnaast is er voor sommige categorieën ook een `*_info` metriek voorzien. Hier worden stringwaarden verzameld en uitgevoerd als labels. Bijvoorbeeld:
+Daarnaast wordt voor sommige categorieën ook een `*_info` metriek geleverd. Hier worden stringwaarden verzameld en uitgevoerd als labels. Bijvoorbeeld:
 
 ```
 # HELP emsesp_bus_info info

@@ -1,8 +1,7 @@
 ---
-title: Installationsanleitung
+title: Installing
 id: Installing
-sidebar_label: Installieren
-description: Erste Schritte mit EMS-ESP. Was Sie benötigen, wie Sie die Firmware installieren und die Erstkonfiguration durchführen.
+description: Getting started with EMS-ESP. What you need, how to install and do initial configuration.
 ---
 
 # 📦 Installieren
@@ -23,7 +22,7 @@ Sie können wählen, ob Sie die aktuelle _Stable_ oder die neueste _Development_
 
 ### Upgrade von Versionen vor v3.7
 
-Es wird empfohlen, immer auf die neueste Version der Firmware zu aktualisieren. Wenn Sie ein Upgrade von einer Version vor v3.7 (v3.6.4 oder v3.6.5) durchführen, sollten Sie vor dem Upgrade ein Backup Ihrer Konfigurationseinstellungen erstellen, für den Fall, dass der Flash-Vorgang fehlschlägt. Dies kann über die EMS-ESP-Webschnittstelle erfolgen. Wenn Sie Probleme mit einer der oben beschriebenen Flash-Methoden haben, löschen Sie das EMS-ESP und beginnen Sie mit einer Neuinstallation, und laden Sie dann Ihre gespeicherten Einstellungen hoch. Wenn Sie ein Upgrade von v3.7 oder später durchführen, können Sie das Upgrade ohne Sicherung Ihrer Konfigurationseinstellungen durchführen.
+Es wird empfohlen, immer auf die neueste Version der Firmware zu aktualisieren. Wenn Sie ein Upgrade von einer Version vor v3.7 (v3.6.4 oder v3.6.5) durchführen, sollten Sie vor dem Upgrade ein Backup Ihrer Konfigurationseinstellungen erstellen, für den Fall, dass der Flash-Vorgang fehlschlägt. Dies kann über die EMS-ESP-Webschnittstelle erfolgen. Wenn Sie Probleme mit einer der oben beschriebenen Flash-Methoden haben, löschen Sie das EMS-ESP und beginnen Sie mit einer Neuinstallation, und laden Sie dann Ihre gespeicherten Einstellungen hoch. Wenn Sie ein Upgrade von v3.7 oder höher durchführen, können Sie das Upgrade ohne Sicherung Ihrer Konfigurationseinstellungen durchführen.
 
 ### Wie die Firmware-Binärdateien benannt sind
 
@@ -53,11 +52,16 @@ Wenn Sie eine [BBQKees Electronics Gateway](https://bbqkees-electronics.nl)-Kart
 | Gateway S32 V2 | >02-22 &lt;01-23 | Nein | [EMS-ESP-3_8_1-ESP32-16MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB.bin) |
 | Gateway S32 V1 | >02-21 &lt;02-22 | Nein | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin) |
 
+MD5-Prüfsummen sind ebenfalls für jede Version verfügbar. Sie haben den gleichen Dateinamen wie die Image-Datei, enden aber mit `.md5`. 
+Sie können optional mit dem EMS-ESP-Web-Installer **vor** der bin-image-Datei hochgeladen werden, so dass sie vor der Installation ausgewertet werden.
+
 ## Hilfe benötigt?
 
 - Wenn Sie während der Installation auf Probleme stoßen, lesen Sie bitte den [Troubleshooting](Troubleshooting.md).
-- Wenn Sie eine BBQKees Electronics EMS-Gateway-Platine verwenden und Fragen zur Konnektivität haben, lesen Sie das [EMS Gateway Wiki](https://bbqkees-electronics.nl/wiki/).
+- Wenn Sie eine BBQKees Electronics EMS-Gateway-Platine verwenden und Fragen zur Konnektivität haben, lesen Sie den [EMS Gateway Wiki](https://bbqkees-electronics.nl/wiki/).
+- Vielleicht ist Ihr Problem bereits im [FAQ](FAQ.md) aufgeführt.
 - Treten Sie mit der EMS-ESP-Community über unseren [Discord](https://discord.gg/3J3GgnzpyT)-Kanal in Kontakt. Dies ist ein guter Ort, um allgemeine Fragen zu stellen und mit anderen Benutzern zu chatten. Hier haben Sie bessere Chancen, schnelle Antworten zu erhalten.
 - Suchen Sie in den bestehenden offenen und geschlossenen [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) und [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions), da Ihr Problem möglicherweise bereits behandelt wird, vielleicht in einer späteren Version.
-- Erstellen Sie ein [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) auf dem EMS-ESP-Projekt. Stellen Sie sicher, dass Sie die erforderlichen Support-Informationen angeben, damit das Problem so schnell wie möglich behoben werden kann.
+- Erstellen Sie ein [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) im EMS-ESP-Projekt. Stellen Sie sicher, dass Sie die erforderlichen Support-Informationen angeben, damit das Problem so schnell wie möglich behoben werden kann.
 - Weitere Informationen finden Sie auf der Seite [Getting Support](Support.md).
+

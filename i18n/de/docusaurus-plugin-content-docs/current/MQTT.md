@@ -53,7 +53,7 @@ Zur genauen Überwachung des MQTT-Verkehrs empfehle ich [MQTT Explorer](http://m
 
 ### 💻 Konsolenbefehle
 
-Verwenden Sie den Konsolenbefehl `show mqtt`, um den Status des MQTT-Dienstes, der Themenabonnements und der ausgehenden Veröffentlichungswarteschlange anzuzeigen.
+Verwenden Sie den Konsolenbefehl `show mqtt`, um den Status des MQTT-Dienstes, der Themenabonnements und der Warteschlange für ausgehende Veröffentlichungen anzuzeigen.
 
 ### 📈 WebUI Status
 

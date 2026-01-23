@@ -1,6 +1,7 @@
 ---
 id: openHAB
 ---
+
 # openHAB
 
 ![logo](/media/logo/openhab-logo.png)
@@ -10,33 +11,31 @@ EMS-ESP kan op verschillende manieren worden geïntegreerd in openHab:
 - HomeAssistant MQTT Components Binding (gebaseerd op Home Assistant ontdekkingsprotocol)
 - MQTT Binding (Generiek MQTT Ding)
 
-<figure> <img src="/media/screenshot/oh_dashboard.png" alt="Example Dashboard (items depend on heating system)" /> <figcaption>Voorbeeld dashboard (items zijn afhankelijk van verwarmingssysteem)</figcaption> </figure>
+<figure> <img src="/media/screenshot/oh_dashboard.png" alt="Example Dashboard (items depend on heating system)" /> <figcaption>Voorbeeld Dashboard (items zijn afhankelijk van verwarmingssysteem)</figcaption> </figure>
 
-:::note
-Het hangt van de entiteit en het apparaat af of deze schrijfbaar of alleen leesbaar is. Kijk in de entiteitenlijst [Entities](All-Entities) voor alle beschikbare entiteiten en gerelateerde attributen.
+:::note Het hangt van de entiteit en het apparaat af of deze schrijfbaar of alleen leesbaar is. Kijk in de entiteitenlijst [Entities](All-Entities) voor alle beschikbare entiteiten en gerelateerde attributen.
 :::
 
-:::note
-Documentatie is gemaakt voor openHab versie 3.x
+:::note Documentatie is gemaakt voor openHab versie 3.x
 :::
 
 ## HomeAssistant MQTT componenten binding
 
 ### Installatie
 
-EMS-ESP creëert behouden MQTT-berichten voorafgegaan door `homeassistant/` voor elk apparaat en hun waarden (entiteiten genoemd) op basis van het Home Assistant (HA) Discovery-protocol. Om autodetectie in openHAB mogelijk te maken moeten de [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/) en de [HomeAssistant MQTT Components Binding](https://www.openhab.org/addons/bindings/mqtt.homeassistant/) worden geïnstalleerd. Daarnaast zijn `JINJA` en `JSONPath` transformaties nodig om alle entiteiten en kenmerken in kaart te brengen. Schakel in EMS-ESP de optie Discovery in op de pagina MQTT Settings.
+EMS-ESP maakt behouden MQTT-berichten aan met als prefix `homeassistant/` voor elk apparaat en hun waarden (entiteiten genoemd) op basis van het Home Assistant (HA) Discovery-protocol. Om automatische detectie in openHAB mogelijk te maken, moeten [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/) en [HomeAssistant MQTT Components Binding](https://www.openhab.org/addons/bindings/mqtt.homeassistant/) worden geïnstalleerd. Daarnaast zijn `JINJA` en `JSONPath` transformaties nodig om alle entiteiten en functies in kaart te brengen. Schakel in EMS-ESP de optie Discovery in op de pagina MQTT Settings.
 
 Objecten in HA worden toegewezen aan `Things`, Component+Node aan `ChannelGroup` en Component Features aan `Channels`. Meer informatie is te vinden in de bindende specificatie.
 
 ### Ontdekking
 
-U zou op basis van uw verwarmingsinstellingen gerelateerde `Things` in uw Postvak IN moeten zien
+Je zou op basis van je verwarmingsinstellingen gerelateerde `Things` moeten zien in je Postvak IN
 
 <figure> <img src="/media/screenshot/oh_inbox.png" alt="Inbox with EMS-ESP discovered Things" /> <figcaption>Inbox met EMS-ESP ontdekte dingen</figcaption> </figure>
 
 Na het toevoegen van de `Things` kun je alle `Channels` zien die beschikbaar zijn voor het specifieke apparaat en die je hebt ingeschakeld in EMS-ESP voor MQTT.
 
-<figure> <img src="/media/screenshot/oh_ex_thermostat.png" alt="Channels of a thermostat Thing" /> <figcaption>Channels of a thermostat Thing</figcaption> </figure>
+<figure> <img src="/media/screenshot/oh_ex_thermostat.png" alt="Channels of a thermostat Thing" /> <figcaption>Kanalen van een thermostaatding</figcaption> </figure>
 
 ### Beperkingen
 
@@ -48,7 +47,7 @@ Het is mogelijk dat deze entiteiten in de toekomst worden ondersteund, afhankeli
 
 ## MQTT Binding
 
-EMS-ESP biedt alle informatie via het basis [**MQTT**](Commands#mqtt) pad `ems-esp/` met behulp van onderwerpen en payloads die kunnen worden toegewezen aan `Generic MQTT Things` en gerelateerde `Channels`.
+EMS-ESP biedt alle informatie via het basispad [**MQTT**](Commands#mqtt) `ems-esp/` met behulp van onderwerpen en payloads die kunnen worden toegewezen aan `Generic MQTT Things` en verwante `Channels`.
 
 openHAB biedt verschillende configuratiemodellen om nieuwe apparaten toe te voegen
 
@@ -59,13 +58,13 @@ openHAB biedt verschillende configuratiemodellen om nieuwe apparaten toe te voeg
 
 ### Installatie
 
-Je moet de [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/) installeren als client voor een MQTT broker en de [JSONPath Transformation Service](https://www.openhab.org/addons/transformations/jsonpath/) voor het selecteren van de specifieke kanalen in de meegeleverde JSON-structuur van EMS-ESP.
+Je moet de [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/) installeren als client voor een MQTT-broker en de [JSONPath Transformation Service](https://www.openhab.org/addons/transformations/jsonpath/) voor het selecteren van de specifieke kanalen in de meegeleverde JSON-structuur van EMS-ESP.
 
 ### Bestandsgebaseerde benadering
 
 #### Algemeen MQTT ding
 
-Het is mogelijk om voor elk apparaat een aparte `Generic MQTT Thing` te maken of alles in één. Hieronder wordt een voorbeeld gegeven dat kan worden aangepast aan uw overeenkomstige opstelling en wensen. Het is een gebruikelijke aanpak om een apart setonderwerp te hebben dat wordt gebruikt om gegevens terug te sturen naar de broker. stateTopic vertegenwoordigt de status van het ding en commandTopic wordt gebruikt om een waarde in te stellen. Je vindt alle relevante informatie over het onderwerp waarnaar je een commando moet sturen in de [**Commands**](Commands#mqtt).
+Het is mogelijk om voor elk apparaat een aparte `Generic MQTT Thing` te maken of alles in één. Hieronder wordt een voorbeeld gegeven dat kan worden aangepast aan je overeenkomstige opstelling en wensen. Het is gebruikelijk om een apart setonderwerp te hebben dat wordt gebruikt om gegevens terug te sturen naar de broker. stateTopic vertegenwoordigt de status van het ding en commandTopic wordt gebruikt om een waarde in te stellen. Je vindt alle relevante informatie over het onderwerp waarnaar je een commando moet sturen in de [**Commands**](Commands#mqtt).
 
 ```python title="things/mqtt.things"
 Bridge mqtt:broker:broker "MQTT Bridge" [ host="127.0.0.1", secure=false ]{
@@ -80,7 +79,7 @@ Bridge mqtt:broker:broker "MQTT Bridge" [ host="127.0.0.1", secure=false ]{
 
 #### Artikelen
 
-Het is zinvol om de `autoupdate` functie te gebruiken. In plaats van de verwachte waarde van het wijzigen van het item te gebruiken wacht OpenHAB op een update van EMS-ESP via MQTT.
+Het is zinvol om de `autoupdate` functie te gebruiken. In plaats van de verwachte waarde van het wijzigen van het item te gebruiken wacht openHAB op een update van EMS-ESP via MQTT.
 
 ```python title="items/ems-esp.items"
 Switch           EMS_s_pvcooling
@@ -145,7 +144,7 @@ configuration:
 ```
 
 1. Maak een `Generic MQTT Thing` (Dingen -> (+) Pictogram -> MQTT Binding -> Generiek MQTT Ding)
-2. Bewerk de aangemaakte `Generic MQTT Thing` en plak de onderstaande code. Wijzig de attributen waar nodig of pas ze aan in de UI. (Dingen -> -Uw aangemaakte generieke MQTT-ding- -> Code-tabblad)
+2. Bewerk de gemaakte `Generic MQTT Thing` en plak de onderstaande code. Wijzig de attributen waar nodig of pas ze aan in de UI. (Dingen -> -Uw aangemaakte generieke MQTT-ding- -> Code-tabblad)
 
 ```yaml title="Generic MQTT Thing"
 UID: mqtt:topic:broker:ems-esp
@@ -198,7 +197,7 @@ channels:
 
 #### Artikelen
 
-Selecteer in het overzicht Dingen je aangemaakte `Thing` en selecteer `Channels`. In de lijst met kanalen kunt u klikken op Gebruik de `Add Link to Item` en een item maken.
+Selecteer in het Things overzicht je aangemaakte `Thing` en selecteer `Channels`. In de lijst met kanalen kun je klikken op `Add Link to Item` gebruiken en een item maken.
 
 ## Fouten
 

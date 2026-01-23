@@ -6,7 +6,7 @@ description: Access and navigate the EMS-ESP web interface
 
 # 🌐 Webinterface
 
-Krijg toegang tot je EMS-ESP-apparaat via de moderne webinterface.
+Krijg toegang tot je EMS-ESP apparaat via de moderne webinterface.
 
 ## Toegang tot de WebUI
 
@@ -66,6 +66,6 @@ MQTT brokerverbinding en onderwerpen instellen
 
 ## Snel aan de slag
 
-1. **Connect** - Toegang via `http://ems-esp`
+1. **Verbinden** - Toegang via `http://ems-esp`
 2. **Configure** - Uw apparaten instellen
 3. **Monitor** - Bekijk real-time gegevens

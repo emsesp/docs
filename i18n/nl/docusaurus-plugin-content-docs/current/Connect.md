@@ -1,7 +1,8 @@
 ---
 id: Connect
 ---
-# Connect Modules
+
+# Modules aansluiten
 
 - Nefit Moduline Easy Connect
 - Bosch Easy Connect

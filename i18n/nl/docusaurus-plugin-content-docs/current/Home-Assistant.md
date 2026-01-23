@@ -356,7 +356,7 @@ Controleer of het werkt door naar `http://ems-esp/api/boiler/wwseltemp` te gaan
 
 ### LoveLace doorsnedeweergave, tegels en waarden instellen via EMS-ESP
 
-_(door oliof)_
+_(by oliof)_
 
 Sinds HA2024.12 maakt lovelace standaard Sections views en genereert automatisch Tiles voor de meeste entiteiten. Hoewel Tiles slechts simpele display helpers lijken te zijn, kan hun functionaliteit uitgebreid worden aangepast door Features toe te voegen. Hier is een grafische handleiding om een soortgelijk besturingselement als hierboven te maken vanuit lovelace, zonder wijzigingen in `configuration.yaml`
 

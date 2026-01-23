@@ -351,6 +351,253 @@ function restorePatterns(translatedText, protectedItems) {
 }
 
 /**
+ * Generate Docusaurus anchor ID from a heading text
+ * Docusaurus uses github-slugger which:
+ * - Converts to lowercase
+ * - Replaces spaces with hyphens
+ * - Preserves umlauts (ü, ö, ä, ß) - does NOT convert them
+ * - Removes special characters but keeps Unicode letters
+ * 
+ * Note: Docusaurus preserves umlauts in anchor IDs, so we must match that behavior
+ */
+function generateAnchorId(text) {
+  return text
+    .toLowerCase()
+    // Docusaurus preserves umlauts, so we don't convert them
+    // Only remove characters that aren't word characters, spaces, or hyphens
+    // This preserves ü, ö, ä, ß and other Unicode letters
+    .replace(/[^\p{L}\p{N}\s-]/gu, '') // Remove special chars but keep Unicode letters/numbers
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+}
+
+/**
+ * Extract all headings from markdown content
+ * Returns an array of { level, text, anchorId }
+ */
+function extractHeadings(content) {
+  const headings = [];
+  const headingRegex = /^(#{1,6})\s+(.+)$/gm;
+  let match;
+
+  while ((match = headingRegex.exec(content)) !== null) {
+    const level = match[1].length;
+    const text = match[2].trim();
+    const anchorId = generateAnchorId(text);
+    headings.push({ level, text, anchorId });
+  }
+
+  return headings;
+}
+
+/**
+ * Build a mapping of source anchor IDs to translated anchor IDs
+ * by matching headings by their position and level
+ */
+function buildAnchorMapping(sourceHeadings, translatedHeadings) {
+  const mapping = new Map();
+
+  // Match headings by position and level (assuming same structure)
+  const minLength = Math.min(sourceHeadings.length, translatedHeadings.length);
+  
+  for (let i = 0; i < minLength; i++) {
+    const source = sourceHeadings[i];
+    const translated = translatedHeadings[i];
+    
+    // Only map if levels match (same heading hierarchy)
+    if (source.level === translated.level) {
+      mapping.set(source.anchorId, translated.anchorId);
+    }
+  }
+
+  // Also try to match by text similarity for headings that might be out of order
+  // This is a fallback for cases where structure might differ slightly
+  for (const source of sourceHeadings) {
+    if (!mapping.has(source.anchorId)) {
+      // Try to find a translated heading with similar text
+      const similar = translatedHeadings.find(t => 
+        t.level === source.level && 
+        t.text.toLowerCase().includes(source.text.toLowerCase().substring(0, 10)) ||
+        source.text.toLowerCase().includes(t.text.toLowerCase().substring(0, 10))
+      );
+      if (similar) {
+        mapping.set(source.anchorId, similar.anchorId);
+      }
+    }
+  }
+
+  return mapping;
+}
+
+/**
+ * Detect external links (should never be anchor-rewritten)
+ */
+function isExternalLinkTarget(target) {
+  if (!target) return false;
+  const t = target.trim().toLowerCase();
+  return (
+    t.startsWith('http://') ||
+    t.startsWith('https://') ||
+    t.startsWith('mailto:') ||
+    t.startsWith('tel:') ||
+    t.startsWith('ftp://')
+  );
+}
+
+/**
+ * Get anchor mapping for a referenced page
+ * This is used for cross-page anchor links
+ */
+async function getPageAnchorMapping(pageRef, sourceDir, targetLang, rootDir) {
+  // External links should never be processed as doc refs
+  if (isExternalLinkTarget(pageRef)) {
+    return new Map();
+  }
+
+  // Try to find the referenced page in the source directory
+  // Page references in Docusaurus can be:
+  // - Just the document ID (e.g., "Console", "tips-and-tricks")
+  // - Filename without extension (e.g., "Console.md" -> "Console")
+  // - Relative path (e.g., "docs/Console")
+  
+  // Normalize page reference (remove .md extension, handle relative paths)
+  let normalizedRef = pageRef.replace(/\.md$/, '').trim();
+  
+  // Ensure sourceDir is absolute
+  const absSourceDir = path.isAbsolute(sourceDir) ? sourceDir : path.resolve(sourceDir);
+  
+  // Try different path combinations
+  const possiblePaths = [
+    path.join(absSourceDir, `${normalizedRef}.md`),
+    path.join(absSourceDir, normalizedRef, 'index.md'),
+    path.join(absSourceDir, normalizedRef),
+  ];
+
+  for (const sourcePath of possiblePaths) {
+    try {
+      if (existsSync(sourcePath)) {
+        const stat = await fs.stat(sourcePath);
+        if (stat.isFile()) {
+          const content = await fs.readFile(sourcePath, 'utf-8');
+          const { content: markdownContent } = parseMarkdown(content);
+          const sourceHeadings = extractHeadings(markdownContent);
+          
+          if (sourceHeadings.length === 0) {
+            continue; // No headings found, try next path
+          }
+          
+          // Now get the translated version
+          const fileName = path.basename(sourcePath);
+          
+          // Build target path: rootDir/i18n/targetLang/docusaurus-plugin-content-docs/current/filename
+          // Ensure rootDir is absolute
+          const absRootDir = rootDir ? (path.isAbsolute(rootDir) ? rootDir : path.resolve(rootDir)) : path.dirname(absSourceDir);
+          const targetPath = path.join(
+            absRootDir,
+            'i18n',
+            targetLang,
+            'docusaurus-plugin-content-docs',
+            'current',
+            fileName
+          );
+          
+          if (existsSync(targetPath)) {
+            const translatedContent = await fs.readFile(targetPath, 'utf-8');
+            const { content: translatedMarkdown } = parseMarkdown(translatedContent);
+            const translatedHeadings = extractHeadings(translatedMarkdown);
+            
+            if (translatedHeadings.length > 0) {
+              const mapping = buildAnchorMapping(sourceHeadings, translatedHeadings);
+              if (mapping.size > 0) {
+                console.log(`    🔗 Found cross-page anchor mapping for ${normalizedRef}: ${mapping.size} anchors`);
+                return mapping;
+              }
+            }
+          } else {
+            console.log(`    ⚠️  Translated file not found: ${targetPath}`);
+          }
+        }
+      }
+    } catch (error) {
+      // Continue to next possibility
+      continue;
+    }
+  }
+  
+  // No mapping found - the referenced page might not be translated yet
+  console.log(`    ⚠️  No anchor mapping found for page: ${normalizedRef}`);
+  return new Map();
+}
+
+/**
+ * Replace anchor links in translated content
+ * Handles both same-page anchors (#anchor) and cross-page anchors (Page#anchor)
+ */
+async function replaceAnchorLinks(content, anchorMapping, sourceFileName, sourceDir, targetLang, rootDir) {
+  let updatedContent = content;
+
+  // Pattern 1: Same-page anchors like [text](#anchor) or [text](#anchor-id)
+  // Pattern 2: Cross-page anchors like [text](Page#anchor) or [text](Page.md#anchor)
+  const anchorLinkRegex = /\[([^\]]+)\]\(([^#)]+)?#([^)]+)\)/g;
+
+  // Collect all matches first to avoid issues with async operations in replace
+  const matches = [];
+  let match;
+  while ((match = anchorLinkRegex.exec(content)) !== null) {
+    matches.push({
+      fullMatch: match[0],
+      linkText: match[1],
+      pageRef: match[2] || '',
+      anchorId: match[3],
+      index: match.index,
+    });
+  }
+
+  // Process matches in reverse order to maintain indices
+  for (let i = matches.length - 1; i >= 0; i--) {
+    const { fullMatch, linkText, pageRef, anchorId } = matches[i];
+    let newAnchorId = null;
+
+    if (!pageRef || pageRef.trim() === '') {
+      // Same-page anchor - use current page mapping
+      if (anchorMapping.has(anchorId)) {
+        newAnchorId = anchorMapping.get(anchorId);
+      }
+    } else {
+      // Never rewrite anchors for external URLs like https://example.com/page#section
+      if (isExternalLinkTarget(pageRef)) {
+        continue;
+      }
+
+      // Cross-page anchor - get mapping from referenced page
+      const cleanPageRef = pageRef.replace(/\.md$/, '').trim();
+      const pageMapping = await getPageAnchorMapping(cleanPageRef, sourceDir, targetLang, rootDir);
+      
+      if (pageMapping.has(anchorId)) {
+        newAnchorId = pageMapping.get(anchorId);
+      } else {
+        // Log for debugging
+        console.log(`    ⚠️  Cross-page anchor not found: ${cleanPageRef}#${anchorId}`);
+      }
+    }
+
+    if (newAnchorId && newAnchorId !== anchorId) {
+      const replacement = pageRef 
+        ? `[${linkText}](${pageRef.replace(/\.md$/, '')}#${newAnchorId})`
+        : `[${linkText}](#${newAnchorId})`;
+      
+      // Replace from the end to maintain correct indices
+      const beforeMatch = updatedContent.substring(0, matches[i].index);
+      const afterMatch = updatedContent.substring(matches[i].index + fullMatch.length);
+      updatedContent = beforeMatch + replacement + afterMatch;
+    }
+  }
+
+  return updatedContent;
+}
+
+/**
  * Split content into translatable chunks (line-by-line for lists, paragraph for prose)
  * Each list item, blank line, or paragraph creates a chunk, code blocks are kept separate
  */
@@ -452,6 +699,9 @@ async function translateFile(filePath, targetLang) {
 
   console.log(`  Translating to ${CONFIG.localeNames[targetLang]}...`);
 
+  // Extract headings from source content for anchor mapping
+  const sourceHeadings = extractHeadings(markdownContent);
+
   // Split content into chunks
   const chunks = splitIntoChunks(markdownContent);
 
@@ -488,6 +738,38 @@ async function translateFile(filePath, targetLang) {
 
   // Reconstruct the file - join chunks with newline
   let translatedContent = translatedChunks.join('\n');
+
+  // Extract headings from translated content
+  const translatedHeadings = extractHeadings(translatedContent);
+
+  // Build anchor mapping
+  const anchorMapping = buildAnchorMapping(sourceHeadings, translatedHeadings);
+
+  if (anchorMapping.size > 0 || sourceHeadings.length > 0) {
+    console.log(`  🔗 Found ${anchorMapping.size} same-page anchor mappings`);
+    
+    // Get source directory and root directory for cross-page anchor resolution
+    const sourceDir = path.dirname(filePath);
+    // CONFIG.sourceDir is already resolved to absolute path (docs/)
+    // Project root is parent of CONFIG.sourceDir
+    const projectRoot = path.dirname(CONFIG.sourceDir);
+    
+    // Replace anchor links in translated content
+    const beforeReplace = translatedContent;
+    translatedContent = await replaceAnchorLinks(
+      translatedContent, 
+      anchorMapping, 
+      path.basename(filePath, '.md'),
+      sourceDir,
+      targetLang,
+      projectRoot
+    );
+    
+    // Log if any changes were made
+    if (beforeReplace !== translatedContent) {
+      console.log(`  ✅ Updated anchor links in translated content`);
+    }
+  }
 
   // Add frontmatter back if it existed
   if (frontmatter) {
