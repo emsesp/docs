@@ -124,7 +124,7 @@ Add a secret key to your local environment called `DEEPL_API_KEY` with the value
 export DEEPL_API_KEY=your-deepl-api-key
 ```
 
-### Translate All Files
+Use `--force` to overwrite existing translations.
 
 ```sh
 # Test with one file first (dry run)
@@ -134,53 +134,25 @@ pnpm translate -- --force --file About.md --dry-run
 pnpm translate -- --force --file About.md
 
 # Translate all documentation files
-pnpm translate
+pnpm translate --force
 
-# Translate UI elements
-pnpm translate-ui
+# Translate UI elements - navbar, footer, sidebar and button labels only
+pnpm translate-ui --force
 
-# Test your translations
-pnpm start --locale de   # German
-pnpm start --locale nl   # Dutch
-```
-
-### Translate to One Language Only
-
-```bash
-# German only
-node scripts/translate.js --locale de
-
-# Dutch only
-node scripts/translate.js --locale nl
-```
-
-### Preview Without Saving (Dry Run)
-
-```bash
-node scripts/translate.js --dry-run
-```
-
-### Force Overwrite Existing Translations
-
-```bash
-node scripts/translate.js --force
-```
-
-### 🎨 Translate UI Elements
-
-Translate navbar, footer, and sidebar labels:
-
-```bash
-# Translate all UI elements
-node scripts/translate-ui.js
-
-# Specific locale
-node scripts/translate-ui.js --locale de
-```
-
-```bash
-# Testing - it won't work with pnpm start or pnpm fast
+# Test your translations with the specific language (not fast and start will not work for translations)
 pnpm build && pnpm serve
+```
+
+### Handling specific languages
+
+Use `--locale [de|nl]` to translate to a specific language only.
+
+```sh
+# Translate using node directly, example: translate Commands.md to German
+node scripts/translate.js --file docs/Commands.md --locale de
+
+# Test German translations only
+pnpm build && pnpm serve --locale de
 ```
 
 ### 📊 What Gets Translated
@@ -206,14 +178,6 @@ pnpm build && pnpm serve
 
 ### Algolia
 
-Algolia is used for searching the documentation.
-
-### Algolia Configuration
-
-The Algolia configuration is in the `docusaurus.config.js` file.
-
-### Algolia API Key
-
-The Algolia API key is in the `ALGOLIA_API_KEY` environment variable. You can get one from [Algolia](https://www.algolia.com/).
+Algolia is used for searching the documentation. The configuration is in the `docusaurus.config.js` file, the Algolia API key is in the `ALGOLIA_API_KEY` environment variable.
 
 The search is updated automatically every week on a Sunday.
