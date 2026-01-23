@@ -620,8 +620,11 @@ The button used in the automation is a simple Aqara zigbee button.
 
 ## Optimizing for heatpumps
 
-Matthias documented his setup Bosch/Buderus Heatpump on [his blog](https://bosch-buderus-wp.github.io/xps/matthias) and even goes to showing how you can use AI to setup a MCP/LLM to control the heatpump. See [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) for more details.
+Matthias documented his setup Bosch/Buderus Heatpump on [his blog](https://bosch-buderus-wp.github.io/xps/matthias) and even goes to showing how you can use AI to setup a MCP/LLM to control the heatpump. 
+See [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) for more details.
 
+There is also a [metrics-page](https://bosch-buderus-wp.github.io/metrics/) where heatpump values are stored and visualized. 
+If you like to [contribute, read this further information](https://bosch-buderus-wp.github.io/metrics/howto).
 
 ## Using `txpause` to temporarily disable the bus traffic
 
