@@ -1,7 +1,8 @@
 ---
 id: Controllers
 ---
-# Controller Modules
+
+# Regelaarmodules
 
 Dit is de huidige lijst met ondersteunde besturingsmodules:
 
@@ -18,7 +19,7 @@ Dit is de huidige lijst met ondersteunde besturingsmodules:
 - BC40
 - BC10
 - Ecomline
-- Zintuig II/CS200
+- Betekenis II/CS200
 - ErP
 - M200/RFM200
 - BC30

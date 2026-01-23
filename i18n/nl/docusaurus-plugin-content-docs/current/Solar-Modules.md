@@ -1,7 +1,8 @@
 ---
 id: Solar-Modules
 ---
-# Zonnenpaneelmodules
+
+# Zonnemodules
 
 Dit is de huidige lijst met ondersteunde zonnepanelen:
 

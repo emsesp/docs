@@ -1,6 +1,7 @@
 ---
 id: Grafana
 ---
+
 # Grafana
 
 ![logo](/media/logo/grafana-logo.png)
@@ -9,7 +10,7 @@ Deze pagina toont alle EMS-ESP Community Grafana dashboards:
 
 | Naam | Auteur | Databank |
 |-----------------------------------------------------------------|--------------------------------------|------------------------|
-| MQTT, Telegraf, Influx
+| [EMS-ESP](https://grafana.com/grafana/dashboards/15940-ems-esp) | [@samvdb](https://github.com/samvdb) | MQTT, Telegraf, Influx |
 
 <br />
 

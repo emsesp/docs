@@ -1,6 +1,7 @@
 ---
 id: FAQ
 ---
+
 # FAQ
 
 ## Hoe reset ik de EMS-ESP in de fabriek?
@@ -9,7 +10,7 @@ Als je een GPIO-knop hebt geconfigureerd (standaard ingeschakeld op alle BBQKees
 
 ## Wat is een EMS Telegram?
 
-_geschreven door MichaelDvP in [this article](https://github.com/emsesp/EMS-ESP32/discussions/1612#discussioncomment-8408868):_
+Geschreven door MichaelDvP in [this article](https://github.com/emsesp/EMS-ESP32/discussions/1612#discussioncomment-8408868):
 
 Het beste overzicht van bekende telegrammen is van [Norberts1](https://github.com/norberts1/hometop_HT3/blob/master/HT3/docu/HT_EMS_Bus_messages.pdf) en de [EMS-Wiki](https://emswiki.thefischer.net/doku.php). In het algemeen kunnen we zeggen:
 
@@ -19,21 +20,20 @@ Het beste overzicht van bekende telegrammen is van [Norberts1](https://github.co
 - sommige apparaten zenden snel veranderende waarden uit als enkele waarden
 - gemeten temperaturen zijn normaal 2 bytes (SHORT) met factor 0,1 (bijv. 01 23 -> 0x0123 -> dez 291 -> 29,1°C)
 - luchttemperatuurinstellingen zijn vaak factor 0,5 als enkele byte (INT) (bijv. 0x2D -> dez 45 -> 22,5°C)
-- watertemperatuurinstellingen zijn meestal single byte (UINT) (bijv. 0x3C -> 60°C), differentiële waarden (hysteresis in Kelvin) zijn signed (INT)
+- watertemperatuurinstellingen zijn meestal enkele bytes (UINT) (bijv. 0x3C -> 60°C), differentiële waarden (hysteresis in Kelvin) zijn getekend (INT)
 - procentuele instellingen zijn enkele bytes (UINT) (0x64 -> 100%)
 - on/off toestanden of instellingen kunnen een enkele byte zijn met on/off 0xFF/0x00, of 0x01/0x00 of een enkele bit in een byte samen met 7 andere toestanden
 - tijden en energie is meestal 3 of 4 bytes met of zonder factor
 
 Voor verschillende brands/devices gebruikt Bosch soms verschillende uitdrukkingen voor dezelfde waarde. Misschien wisselen ontwikkelaars of willen ze reverse engineering moeilijk maken!
 
-Als je een instelling zoekt, log dan de telegrammen voor het apparaat (log all of kijk naar &lt;device-id&gt;) en verander de instelling op de thermostaat in een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als u naar een meting zoekt, logt u het apparaat en bekijkt u de waarde op de thermostaat en wacht u op wijzigingen, noteert u de old/new waarden en de tijd. Controleer vervolgens het log voor deze tijdstempel (of 10 sec / 1 min later) en de waarde binnen een telegram. Het beste is om meer changes/values te hebben om zeker te zijn.
+Als je een instelling zoekt, log dan de telegrammen voor het apparaat (log all of kijk naar &lt;device-id&gt;) en verander de instelling op de thermostaat in een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je een meting zoekt, log het apparaat en bekijk de waarde op de thermostaat en wacht op veranderingen, noteer old/new waarden en tijd. Controleer vervolgens het log voor deze tijdstempel (of 10 sec / 1 min later) en de waarde binnen een telegram. Het beste is om meer changes/values te hebben om zeker te zijn.
 
 ## Kan EMS-ESP een thermostaat simuleren?
 
 Gedeeltelijk. Zoals de mensen van [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) het mooi zeggen:
 
-:::tip
-Waarom een thermostaat gebruiken?
+:::tip Waarom een thermostaat gebruiken?
 
     - De fabrikanten van thermostaten hebben jarenlang onderzoek gedaan naar de verwarmingskenmerken voor de meest efficiënte en comfortabele manier om een huis te verwarmen.
     - De thermostaat biedt een bedieningsinterface waarmee mensen vertrouwd zijn, zodat andere leden van het huishouden nog steeds de instelwaarde kunnen aanpassen.
@@ -43,7 +43,7 @@ Waarom een thermostaat gebruiken?
 
 Zoals **MichaelDvP** aangeeft _"is een thermostaat een slim elektronisch apparaat. Je kunt de gewenste kamertemperatuur invoeren en de thermostaat berekent aan de hand van een aantal parameters en metingen de benodigde flowtemp voor deze kamertemperatuur en stuurt deze naar de ketel. Dit gebeurt in een regelkring en wordt vaak bijgewerkt."_
 
-En **mtc716** zei _"Een thermostaat creëert een warmtecurve die constant wordt aangepast aan de omgevingstemperaturen en die wordt gebruikt om in te schatten welke watertemperatuur nodig is om de kamertemperatuur omhoog te brengen. Er zijn enkele goede artikelen op het net te vinden over hoe je de warmtecurve correct instelt. De belangrijkste parameters die je nodig hebt zijn de "ontwerptemp", dat is de temperatuur van het verwarmingswater bij een minimale buitentemperatuur. Verder heb je de "comforttemp" nodig zoals eerder uitgelegd en de "temp-offset" die een parallelle verschuiving in de verwarmingscurve veroorzaakt."_
+En **mtc716** zei _"Een thermostaat maakt een warmtecurve die constant wordt aangepast aan de omgevingstemperaturen en die wordt gebruikt om in te schatten welke watertemperatuur nodig is om de kamertemperatuur omhoog te brengen. Er zijn enkele goede artikelen op het net te vinden over hoe je de warmtecurve correct instelt. De belangrijkste parameters die je nodig hebt zijn de "ontwerptemp", dat is de temperatuur van het verwarmingswater bij een minimale buitentemperatuur. Verder heb je de "comforttemp" nodig zoals eerder uitgelegd en de "temp-offset" die een parallelle verschuiving in de verwarmingscurve veroorzaakt."_
 
 Bovendien, zoals **MichaelDvP** zegt "Als je een softwaregestuurde thermostaat wilt bouwen, kun je verschillende methoden gebruiken:"
 
@@ -56,7 +56,7 @@ Lees meer over deze discussies:
 
 - [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/discussions/965)
 - [Thermostat emulation](https://github.com/emsesp/EMS-ESP32/issues/151)
-- [Changing the boiler heating directly](tips-and-tricks#Verwarming van de ketel regelen)
+- [Changing the boiler heating directly](tips-and-tricks#verwarming-van-de-ketel-regelen)
 - [Implementing a smart thermostat (using SAT)](https://github.com/emsesp/EMS-ESP32/issues/2103)
 
 ## Wat zijn busprotocollen en Tx-modi?
@@ -77,6 +77,12 @@ Ja, dat kan. Houd rekening met de volgende instellingen:
 - (Instellingen->Netwerkinstellingen) `Hostname` is uniek, om netwerkconflicten te voorkomen
 - (Instellingen->Toepassingsinstellingen) `EMS BUS ID` zijn verschillend (niet beide 0x0B)
 
-## Waarom hebben EMS-telegrammen in de `raw watch` modus een type 0x100 hoger dan in de `raw` modus?
+## Waarom hebben EMS-telegrammen in de modus `raw watch` een hoger type 0x100 dan in de modus `raw`?
 
 Zie [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/2025)
+
+## Moet ik het minBurnPower verhogen naar 10-20% in koude winters, zodat er altijd een thermische basisvoorraad is?
+
+(antwoord van [MichaelDvP](https://github.com/MichaelDvP))
+
+Dat werkt niet. De ketel werkt met `selflowtemp` als doel en moduleert de brander om de `flowtemp` vast te houden. Als `flowtemp` hoger is dan het geselecteerde min. brandvermogen, schakelt de ketel uit, wacht de min. periode en `flowtemp` is gedaald tot `selflowtemp` - hysterese en begint opnieuw. Het verhogen van `burnminpower` zal alleen resulteren in meer on/off cycli in milde omstandigheden.

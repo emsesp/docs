@@ -1,6 +1,7 @@
 ---
 id: Modbus-Server-IDs
 ---
+
 # Modbus server-ID's
 
 Deze tabel laat zien hoe apparaattypes worden toegewezen aan identificaties van serverunits.

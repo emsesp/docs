@@ -1,7 +1,8 @@
 ---
 id: Switches
 ---
-# Switch Modules
+
+# Schakelmodules
 
 Dit is de huidige lijst van ondersteunde switchmodules:
 

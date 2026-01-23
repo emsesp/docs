@@ -1,9 +1,10 @@
 ---
 id: Heat-Pumps
 ---
+
 # Warmtepompen
 
-Dit is de huidige lijst met ondersteunde warmtepompen. Warmtebronnen en ventilatiemodules staan ook op deze lijst:
+Dit is de huidige lijst met ondersteunde warmtepompen. Warmtebronnen en ventilatiemodules zijn ook opgenomen in deze lijst:
 
 - Buderus Warmtepompmodule
 - HM200 (Hybride manager)

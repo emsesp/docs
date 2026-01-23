@@ -14,7 +14,7 @@ In einem sehr einfachen Fall versorgt ein Heizkessel einen Heizkreis mit Wärme.
 
 Sobald `current flow temperature` den Wert `selected flow temperature` + `temperature hysteresis off` übersteigt, wird die Erwärmung gestoppt, bis `current flow temperature` unter `selected flow temperature` + `temperature hysteresis on` fällt (was normalerweise ein negativer Wert ist).
 
-Um die Heizung zu aktivieren, müssen Sie also `heatingactivated` auf `on` setzen und ein entsprechendes `flowtemp` einstellen. Letztere sollte von der `heating temperature setting` abgeleitet werden, die über die physikalische dial/control am Kessel eingestellt werden kann. Sie sollte als maximale Vorlauftemperatur betrachtet werden. Sie können auch eine niedrigere Vorlauftemperatur verwenden, um eine konstante Raumtemperatur zu erhalten, sobald die erste Erwärmung erfolgt ist.
+Um die Heizung zu aktivieren, müssen Sie also `heatingactivated` auf `on` setzen und ein entsprechendes `flowtemp` einstellen. Letztere sollte von der `heating temperature setting` abgeleitet werden, die über die physikalische dial/control am Kessel eingestellt werden kann. Sie sollte als maximale Vorlauftemperatur betrachtet werden. Sie können auch eine niedrigere Vorlauftemperatur verwenden, um eine konstante Raumtemperatur zu erhalten, sobald die erste Aufheizung erfolgt ist.
 
 Zusätzliche Informationen von Michael:
 
@@ -24,7 +24,7 @@ Sie können die Vorlauftemperatur mit EMS-ESP direkt am Kessel einstellen, ohne 
 - sie müssen mindestens jede Minute einen Wert senden, um die Vorlauftemperatur aufrechtzuerhalten, da der Kessel sonst automatisch auf den höheren Sollwert vom Bedienfeld zurückfällt.
 - Es gibt eine spezielle EMS-ESP-Entität namens `forceheatingoff`, die den Flowtemp-Wert für den Kessel automatisch jede Minute auf 0 setzt. Andere Benutzer ziehen es vor, stattdessen ein on/off-Steuerelement zu verwenden.
 
-Die einmalige Aufladung des Heizkessels hat eine besondere Logik. Er lädt nicht auf Abruf nach, wie die meisten Leute erwarten. Er prüft die aktuelle Temperatur und lädt nur nach, wenn sie außerhalb des Sollwertbereichs liegt (Sollwert-Hysterese). Wenn dhw auf automatisches Nachladen eingestellt ist, wird es nie funktionieren, nur im dhw-Eco-Modus und bei niedriger dhw-Speichertemperatur. Zum Nachladen müssen Sie die Thermostat-Ladefunktion verwenden. Dadurch wird der dhw-Sollwert vorübergehend auf einen höheren Wert gesetzt, so dass der Kessel eine Nachladung auslöst, und dann wieder auf den alten Sollwert zurückgeht.
+Die einmalige Aufladung des Heizkessels hat eine besondere Logik. Er lädt nicht auf Abruf nach, wie die meisten Leute erwarten. Er prüft die aktuelle Temperatur und lädt nur nach, wenn sie außerhalb des Sollwertbereichs liegt (Sollwert-Hysterese). Wenn dhw auf automatisches Nachladen eingestellt ist, wird es nie funktionieren, nur im dhw-Eco-Modus und bei niedriger dhw-Speichertemperatur. Zum Nachladen müssen Sie die Thermostat-Ladefunktion verwenden. Dadurch wird der dhw-Sollwert vorübergehend auf einen höheren Wert gesetzt, so dass der Kessel eine Nachladung auslöst und dann wieder auf den alten Sollwert zurückgeht.
 
 ## Abrufen von Daten über REST mit PHP
 
@@ -307,7 +307,7 @@ Hier ist der Sensor im neuen Home-Assistant-Vorlagenformat für alle Statusnumme
 
 _(by elRadix)_ von [this comment](https://github.com/emsesp/EMS-ESP32/discussions/790#discussioncomment-4895520)
 
-Dieses Beispiel richtet 2 Klimaeinheiten für dhw mit ihrem Modus und Heizungsklima unter Verwendung einer benutzerdefinierten HACS-Karte in HA mit dem Namen [simple thermostat](https://github.com/nervetattoo/simple-thermostat) ein:
+Dieses Beispiel richtet 2 Klimaeinheiten für dhw mit ihrem Modus und Heizungsklima unter Verwendung einer benutzerdefinierten HACS-Karte in HA namens [simple thermostat](https://github.com/nervetattoo/simple-thermostat) ein:
 
 ![customha](/media/examples/ha_custom_climate.jpg)
 
@@ -431,7 +431,7 @@ Nach seinen eigenen Worten hat er dies getan:
 Ich habe noch nicht alle Optionen ausprobiert, aber hier sind ein paar Kommentare:
 
 - Ich dachte, ich wäre schlau, indem ich vorausschauend dachte, also habe ich bei der Auswahl "Kompressorbetr. sperren" auch "Zuheizerbetr. sperren" ausgewählt. ABER - ohne Scheiß - NUR der Zuheizer ging tatsächlich an und verschwendete eine Menge Strom (zumindest für ein paar Minuten).
-- "Heizbetrieb sperren" schaltet auch die Umwälzpumpe ab, was ich nicht will, da ich einen 500-Liter-Pufferspeicher habe.
+- "Heizbetrieb sperren" schaltet auch die Umwälzpumpe ab, was ich nicht möchte, da ich einen 500-Liter-Pufferspeicher habe.
 - "EVU-Sperrzeit 1" funktioniert soweit ganz gut (wofür sind die anderen EVU-Sperrzeiten?)
 
 Als Nächstes wurde die Zeichenkette mit Automatismen geändert.

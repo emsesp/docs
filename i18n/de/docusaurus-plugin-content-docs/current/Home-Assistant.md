@@ -2,7 +2,7 @@
 id: Home-Assistant
 ---
 
-# Haushaltshilfe
+# Home Assistant
 
 ![logo](/media/logo/home-assistant.png)
 
@@ -356,7 +356,7 @@ Prüfen Sie, ob es funktioniert, indem Sie zu `http://ems-esp/api/boiler/wwselte
 
 ### LoveLace Section View, Kacheln und Einstellwerte über EMS-ESP
 
-_(von oliof)_
+_(by oliof)_
 
 Seit HA2024.12 verwendet lovelace standardmäßig Abschnittsansichten und generiert automatisch Kacheln für die meisten Entitäten. Während Kacheln auf den ersten Blick nur einfache Anzeigehilfen sind, kann ihre Funktionalität durch Hinzufügen von Features umfassend modifiziert werden. Hier ist eine grafische Anleitung zur Erstellung eines ähnlichen Steuerelements wie oben aus lovelace heraus ohne Änderungen an `configuration.yaml`
 
@@ -368,7 +368,7 @@ Seit HA2024.12 verwendet lovelace standardmäßig Abschnittsansichten und generi
 
 ![image](https://github.com/user-attachments/assets/58da9622-9a5b-4df0-aeec-daabb0ba8f80)
 
-1. Klicken Sie auf Zum Dashboard hinzufügen. Dadurch wird die Kachel dem Dashboard in der Standardeinstellung hinzugefügt, in der nur der Wert der Entität angezeigt wird:
+1. Klicken Sie auf Zum Dashboard hinzufügen. Dadurch wird die Kachel dem Dashboard in der Standardeinstellung hinzugefügt, die nur den Wert der Entität anzeigt:
 
 ![image](https://github.com/user-attachments/assets/1be160cb-4527-4db4-bd12-04599eed84af)
 

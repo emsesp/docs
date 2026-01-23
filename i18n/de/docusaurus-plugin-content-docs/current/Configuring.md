@@ -1,10 +1,8 @@
 ---
 id: Configuring
-sidebar_label: Konfiguration
-description: Konfiguration von EMS-ESP. Einstellungen für die WebUI, MQTT, NTP, Benutzer und Rollen.
 ---
 
-# Konfiguration
+# Bestätigen
 
 ## Erstmalige Einrichtung
 
@@ -14,8 +12,7 @@ Jetzt können Sie die Einstellungen weiter konfigurieren. Wenn Sie nicht mit Ihr
 
 Wenn Sie Warnungen erhalten, dass die Verbindung zum EMS-Bus fehlgeschlagen ist oder Tx- oder Rx-Fehler vorliegen, folgen Sie der Anleitung [troubleshooting](Troubleshooting).
 
-:::note
-Wenn Sie im Protokoll die Meldung "Rx unvollständige Telegramme" sehen, geraten Sie nicht in Panik. Einige Telegramme können verpasst werden, und dies wird in der Regel durch Rauschstörungen auf der Leitung verursacht.
+:::note Wenn Sie im Protokoll die Meldung "Rx unvollständige Telegramme" sehen, geraten Sie nicht in Panik. Einige Telegramme können verpasst werden, und dies wird in der Regel durch Rauschstörungen auf der Leitung verursacht.
 :::
 
 Im folgenden Abschnitt werden einige der wichtigsten Einstellungen beschrieben, die über die WebUI im Abschnitt Einstellungen vorgenommen werden können. Die meisten sind selbsterklärend, daher werden hier nur die wichtigsten beschrieben.
@@ -66,7 +63,7 @@ Im folgenden Abschnitt werden einige der wichtigsten Einstellungen beschrieben, 
 s2MINI | Lolin S2 Mini | 15 | 7 | 11 | 12 | 0 | | | | | |
 | S3MINI | Liligo S3 | 17 | 18 | 8 | 5 | 0 | | | | | |
 
-Wenn Sie `Custom` wählen, werden die folgenden zusätzlichen Einstellungen angezeigt, mit denen Sie die GPIOs manuell konfigurieren können, um sie an Ihr eigenes Board anzupassen. Sie können auch jederzeit `Custom` wählen, um die aktuellen Board-Profileinstellungen anzuzeigen, ohne zu speichern.
+Um ein eigenes Board zu konfigurieren, aktivieren Sie zuerst `Developer mode`. Wenn Sie `Custom` wählen, werden die folgenden zusätzlichen Einstellungen angezeigt, mit denen Sie die GPIOs manuell konfigurieren können, um Ihr eigenes Board anzupassen. Sie können auch jederzeit `Custom` wählen, um die aktuellen Board-Profileinstellungen anzuzeigen, ohne zu speichern.
 
 *Benutzerdefinierte Bordeinstellungen:*
 
@@ -77,8 +74,7 @@ Wenn Sie `Custom` wählen, werden die folgenden zusätzlichen Einstellungen ange
 - **LED GPIO**. Dies ist der Pin für die LED, standardmäßig für die Onboard-LED auf dem ESP-Devboard.
 - **Eth PHY Typ**. Dies ist der Typ des verwendeten Ethernet-Chips.
 
-:::note
-Auf ESP32-Entwicklungsplatinen gibt es oft auch Pins mit der Bezeichnung RX und TX. Diese sind jedoch normalerweise mit dem USB-Chip verbunden und können nicht für die EMS-Schnittstellenschaltung verwendet werden.
+:::note Auf ESP32-Entwicklungsplatinen gibt es oft auch Pins mit der Bezeichnung RX und TX. Diese sind jedoch normalerweise mit dem USB-Chip verbunden und können nicht für die EMS-Schnittstellenschaltung verwendet werden.
 :::
 
 - **EMS Tx-Modus**. Der Tx-Modus ist der Modus, in dem EMS-ESP Telegramme auf dem EMS-Bus sendet. Wählen Sie den Modus, der für Ihr System am besten geeignet ist, und achten Sie auf Tx-Fehler im Web Dashboard und `show ems` in der Konsole. Das Ändern des Wertes hat sofortige Auswirkungen.
@@ -86,18 +82,18 @@ Auf ESP32-Entwicklungsplatinen gibt es oft auch Pins mit der Bezeichnung RX und 
   - `EMS+` ist so konzipiert, dass es besser für EMS2.0/EMS+ Systeme funktioniert.
   - `HT3` für Heatronics3, hauptsächlich von Junkers verwendet.
   - `Hardware` verwendet die interne ESP-Hardware, um das Telegramm auszusenden. Die Telegramme werden sofort gesendet. Dies ist die schnellste und effizienteste Methode, funktioniert aber nur auf einigen Systemen.
-- **EMS-Bus-ID**. Das EMS-ESP kann mehrere Geräte simulieren. Halten Sie sich an die Standardeinstellung `Service Key (0x0B)`, es sei denn, Sie verwenden mehr als eine EMS gateways/interface-Karte. Es ist wichtig zu beachten, dass der Serviceschlüssel auch von zertifizierten service/maintenance-Technikern bei der Wartung Ihrer Heizungsanlagen verwendet wird. Stellen Sie also sicher, dass Sie das EMS-ESP ausschalten, bevor sie eintreffen, da sie sonst keine Verbindung zum EMS-Bus herstellen können.
+- **EMS-Bus-ID**. Das EMS-ESP kann mehrere Geräte simulieren. Bleiben Sie bei der Standardeinstellung `Service Key (0x0B)`, es sei denn, Sie verwenden mehr als eine EMS gateways/interface-Karte. Es ist wichtig zu beachten, dass der Serviceschlüssel auch von zertifizierten service/maintenance-Technikern bei der Wartung Ihrer Heizungsanlagen verwendet wird. Stellen Sie daher sicher, dass Sie das EMS-ESP ausschalten, bevor sie eintreffen, da sie sonst keine Verbindung zum EMS-Bus herstellen können.
 - **Nur-Lesen-Modus aktivieren**. Dies deaktiviert alle ausgehenden Tx-Schreibbefehle an den EMS-Bus und versetzt EMS-ESP im Wesentlichen in den Hörmodus. Tx wird jedoch benötigt, um EMS-Geräte zu erkennen (da es einen Versionsbefehl aussendet). Wenn Sie EMS-ESP explizit in einen Lese-only/sniffer-Modus versetzen wollen, verwenden Sie `set tx_mode 0` von der Konsole aus.
 - **LED ausblenden**. Schaltet die LED im normalen Betriebsmodus aus. Die LED wird weiterhin beim Booten oder bei Verbindungsproblemen angezeigt.
 - **Untertaktete CPU-Geschwindigkeit**. Untertaktet den ESP auf 160Mhz, spart Strom und Wärme und verlängert die Lebensdauer des Chips auf Kosten der Leistung und Reaktionszeit. Ein Neustart des EMS-ESP ist erforderlich.
 
 ### Besondere Funktionen
 
-- der **Entwicklermodus** aktiviert erweiterte Funktionen in der WebUI, wie z. B. den Befehl Lesen aus dem Systemprotokoll.
+- der **Entwicklermodus** ermöglicht erweiterte Funktionen in der WebUI, wie den Befehl Lesen aus dem Systemprotokoll und die Konfiguration einer benutzerdefinierten Karte.
 - **Kessel bei ausgeschalteter Zwangsheizung starten**.
 - **Fernbedienung bei fehlender Raumtemperatur deaktivieren**. Dies ist eine Sicherheitsfunktion, die verhindert, dass der Heizkessel startet, wenn der simulierte Raumtemperatursensor fehlt oder nicht funktioniert.
 - **Dusch-Timer aktivieren**. Aktivieren Sie diese Option, um die Dauer des Warmwassers zu messen, und es wird eine MQTT-Nachricht mit der Dauer gesendet. Der Timer startet nach einer Mindestlaufzeit von 2 Minuten.
-- **Brausealarm aktivieren**. Diese Funktion ist etwas experimentell und funktioniert möglicherweise nicht bei allen Heizkesseln. Nach 7 Minuten (konfigurierbar), in denen das heiße Wasser läuft, sendet er eine Warnung aus, indem er 10 Sekunden lang kaltes Wasser ausgibt (ebenfalls konfigurierbar). Der Kessel geht in den Testmodus, um diesen Vorgang auszuführen, daher ist Vorsicht geboten!
+- **Duschalarm aktivieren**. Diese Funktion ist etwas experimentell und funktioniert möglicherweise nicht bei allen Heizkesseln. Nach 7 Minuten (konfigurierbar), in denen das heiße Wasser läuft, sendet er eine Warnung aus, indem er 10 Sekunden lang kaltes Wasser ausgibt (ebenfalls konfigurierbar). Der Kessel geht in den Testmodus, um diesen Vorgang auszuführen, daher ist Vorsicht geboten!
 
 ## Netzwerkeinrichtung
 
@@ -123,8 +119,9 @@ Aktivieren Sie diese Funktion, wenn Sie in VPNs arbeiten oder andere Server (z.B
 - **Befehlsausgabe in einem 'Antwort'-Thema veröffentlichen'**. Dies nimmt die Ausgabe eines API-Befehls und veröffentlicht das Ergebnis in einem Thema namens `response`.
 - **Einzelwertthemen bei Änderung veröffentlichen**. Diese Option veröffentlicht sofort das Topic und den Payload für jede Operation und ist nur verfügbar, wenn MQTT Discovery deaktiviert ist.
 - **MQTT Discovery aktivieren** aktiviert die Integration über MQTT Discovery, die vollständig von Home Assistant und teilweise von Domoticz unterstützt wird.
-- **Erkennungstyp**. Wählen Sie zwischen "Home Assistant" und zwei Protokollen für "Domoticz". `Domoticz (latest)` verwendet Zahlen, Schalter, Auswahl und andere moderne Typen, während `Domoticz` nur Sensoren für alles verwendet und auch alle Template-Bedingungen entfernt.
-- **Format der Entitäts-ID**: Es gibt 3 Optionen. Die erste `single instance, long names` verwendet das ältere `< v3.5` Format. Die Standardeinstellung und empfohlene Einstellung für alle neuen Installationen ist die zweite Option namens `Single instance, short name`, die den EMS-ESP-Gerätenamen verwendet, der festgelegt ist und auf der Seite `Settings->Customization` zu sehen ist. Die letzte Option muss verwendet werden, wenn mehr als eine Version der EMS-ESP-Firmware verwendet wird, da sie jede Version eindeutig macht, indem sie allen MQTT-Themen den Basisnamen vorangestellt wird.
+  - **Erkennungstyp**. Wählen Sie zwischen "Home Assistant" und zwei Protokollen für "Domoticz". `Domoticz (latest)` verwendet Zahlen, Schalter, Auswahl und andere moderne Typen, während `Domoticz` nur Sensoren für alles verwendet und auch alle Template-Bedingungen entfernt.
+  - **Format der Entitäts-ID**: Es gibt 3 Optionen. Die erste `single instance, long names` verwendet das ältere `< v3.5`-Format. Die Standardeinstellung und empfohlene Einstellung für alle neuen Installationen ist die zweite Option namens `Single instance, short name`, die den EMS-ESP-Gerätenamen verwendet, der festgelegt ist und auf der Seite `Settings->Customization` zu sehen ist. Die letzte Option muss verwendet werden, wenn mehr als eine Version der EMS-ESP-Firmware verwendet wird, da sie jede Version eindeutig macht, indem sie allen MQTT-Themen den Basisnamen vorangestellt wird.
+  - **Eingabezahlenformat**: (nur HA) Wählen Sie den Modus Box oder Schieberegler. Schieberegler werden nur für Zahleneinheiten mit einem Bereich von weniger als 100 verwendet.
 - **Veröffentlichungsintervalle**. Dieser Abschnitt gilt pro Gerät und legt fest, wie häufig eine MQTT-Nachricht gesendet wird. Wenn der Wert 0 eingestellt ist, sendet EMS-ESP automatisch Daten, wenn eine merkliche Änderung eintritt, was innerhalb weniger Sekunden der Fall sein kann.
 
 ## NTP-Einrichtung
@@ -144,14 +141,13 @@ Jeder Benutzer verfügt über ein eindeutiges Zugriffstoken (einsehbar durch Kli
 
 ## Hinzufügen von Analog- und Temperatursensoren
 
-Externe Sensoren, wie Temperatur- und Analogsensoren, können an eine Reihe von GPIO-Pins des ESP32-Chips angeschlossen werden. Wenn Sie ein BBQKees Gateway-Board verwenden, verfügt es bereits über einen externen Stecker für Dallas-Temperatursensoren, die in der WebUI ohne zusätzliche Konfiguration sichtbar sind.
+Externe Sensoren, wie Temperatur- und Analogsensoren, können an eine Reihe von GPIO-Pins des ESP32-Chips angeschlossen werden. Wenn Sie ein BBQKees-Gateway-Board verwenden, verfügt es bereits über einen externen Stecker für Dallas-Temperatursensoren, die in der WebUI ohne zusätzliche Konfiguration sichtbar sind. BBQKees Boards sind CE-zertifiziert und das Hinzufügen von Sensoren zu gpios würde die EMC-Konformität verletzen. Um analoge Sensoren auf eigenes Risiko hinzuzufügen, wählen Sie ein anderes Boardprofil oder verwenden Sie den Entwicklermodus, um ein benutzerdefiniertes Board zu konfigurieren.
 
 Um analoge Sensoren hinzuzufügen, klicken Sie auf `Add` und wählen Sie zwischen einem normalen digitalen in/out, einem Zähler (der on/off-Impulse zählt), einem ADC zur Spannungsmessung, einem Timer, einer Rate und PWM 0-2. Hinweis: Der Zählerwert bleibt erhalten und wird beim Neustart nicht zurückgesetzt.
 
 ![Web](/media/screenshot/web_sensor.png)
 
-:::warning
-Seien Sie vorsichtig, wenn Sie einen GPIO auswählen, damit er nicht mit den anderen verwendeten GPIOs kollidiert (Sie können CUSTOM board profile wählen, um Ihre aktuelle Konfiguration zu sehen).
+:::warning Seien Sie vorsichtig, wenn Sie einen GPIO auswählen, damit er nicht mit den anderen verwendeten GPIOs kollidiert (Sie können CUSTOM board profile wählen, um Ihre aktuelle Konfiguration zu sehen).
 
     EMS-ESP ist an den Niederspannungsbus Ihrer Heizung angeschlossen und jede Überspannung kann die EMS-ESP-Platine und möglicherweise Ihre Heizgeräte beschädigen. Versorgen Sie externe Geräte niemals direkt über die EMS-ESP-Platine.
 
@@ -169,12 +165,12 @@ Die folgenden GPIOs werden empfohlen:
 
 Grenzwerte:
 
-- ADC: max. Eingang 3,3V, Anzeige in MilliVolt
+- ADC: Eingang max. 3,3V, Anzeige in MilliVolt
 - DAC 8bit, Wertebereich 0..255 für 0V-3.3V Ausgang, Konfigurieren als `Digital out` auf gpio 25 oder 26 (ESP32), 17, 18 (ESP32S2), nicht verfügbar für ESP32S3, ESP32C3
 - PWM 0-2: maximale Frequenz 5000Hz, Auflösung 13bits. Jeder Kanal kann nur für einen Gpio verwendet werden.
 - Pulse ist ein digitaler Ausgang für einen einzelnen Impuls mit einstellbarer Länge. Bei der Einstellung auf `on` per Befehl geht der Sensor nach Beendigung des Impulses auf `off`.
 - Counter/timer/rate auslösen: `high->low edge with 15 ms debounce. Only for low pulse rates < 30Hz.`
-- Zähler 0-2, Frequ 0-2: Hochgeschwindigkeits-Eingänge für 1 Hz bis 100kHz Signale, keine Entprellung, RC-Filter für verrauschte Signale verwenden. Interruptgesteuert, jeder Kanal kann nur für einen Gpio verwendet werden.
+- Zähler 0-2, Frequ 0-2: Hochgeschwindigkeitseingänge für 1 Hz bis 100kHz Signale, keine Entprellung, RC-Filter für verrauschte Signale verwenden. Interruptgesteuert, jeder Kanal kann nur für einen Gpio verwendet werden.
 
 Die Zähler werden auf reboot/update gespeichert und jede Stunde an nvs. I Fall von Abstürzen, Stromausfällen, kann der Wert nach niedriger sein.
 
@@ -196,15 +192,14 @@ Die Seite "Anpassung" zeigt alle registrierten Entitäten und ermöglicht es, Be
 
 Verwenden Sie den Scheduler, um Befehle in bestimmten Abständen aufzurufen. Ein paar Beispiele:
 
-- stellen Sie die Warmwassertemperatur morgens und abends auf einen höheren Wert ein
+- die Warmwassertemperatur morgens und abends auf einen höheren Wert einstellen
 - jede Woche einen Neustart des Systems durchführen (obwohl das nicht nötig sein sollte!), indem Sie `system/restart` in das Feld Befehl eingeben
 - mit dem Befehl `system/message` eine Nachricht an das Protokoll und an mqtt senden
 - verwendung in Kombination mit einer benutzerdefinierten "ram"-Einheit zum Abrufen von Daten über eine andere API wie `{"url":"http://server.tld/path/file", "key":"nameofkey"}` und Verwendung dieser als Bedingung im Scheduler
 - daten über einen RESTful HTTP POST-Befehl an eine externe API senden, z. B. `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - zum Aufrufen eines Home Assistant-Skripts oder -Dienstes, wenn eine Bedingung erfüllt ist, z. B. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
-:::warning
-Verwendung von HTTPS in Scheduler-Befehlen HTTPS wird nur auf den ESP32- und ESP32-S3-Varianten mit PSRAM unterstützt, wenn es mit `url` zu einem externen Endpunkt verwendet wird. Das https fällt auf http zurück und kann einen Fehler melden.
+:::warning Verwendung von HTTPS in Scheduler-Befehlen HTTPS wird nur auf den ESP32- und ESP32-S3-Varianten mit PSRAM unterstützt, wenn es mit `url` zu einem externen Endpunkt verwendet wird. Das https fällt auf http zurück und kann einen Fehler melden.
 :::
 
 Bei der Erstellung eines Scheduler-Eintrags ist das `name` optional, aber es ist nützlich, einen Namen zu vergeben. Dann kann man ihn über einen Befehl (enable/disable) steuern und den Status im MQTT-Topic `scheduler_data` sehen.
@@ -270,7 +265,7 @@ Jetzt können Sie mit dem Befehl `custom/message` weitere Zeitpläne erstellen u
 
 ## Hinzufügen von benutzerdefinierten Entitäten
 
-Custom Entities ist eine fortschrittliche und leistungsfähige Möglichkeit, EMS-ESP um eigene EMS-Entitäten zu erweitern, die Daten aus einem bestimmten EMS-Telegramm extrahieren. Dies ist nützlich, wenn EMS-ESP eine bestimmte Entität noch nicht unterstützt, oder wenn Sie Daten aus einem Telegramm extrahieren möchten, das noch nicht unterstützt wird. Ein weiterer häufiger Anwendungsfall ist die Fehlersuche oder die Beobachtung eines bestimmten Verhaltens beim Ändern von Parametern in einem EMS-Gerät.
+Custom Entities ist eine fortschrittliche und leistungsfähige Möglichkeit, EMS-ESP um eigene EMS-Entitäten zu erweitern, die Daten aus einem bestimmten EMS-Telegramm extrahieren. Dies ist nützlich, wenn EMS-ESP eine bestimmte Entität noch nicht unterstützt, oder wenn Sie Daten aus einem Telegramm extrahieren möchten, das noch nicht unterstützt wird. Ein weiterer häufiger Anwendungsfall ist das Debugging oder die Beobachtung eines bestimmten Verhaltens bei der Änderung von Parametern auf einem EMS-Gerät.
 
 Eine moderne Wärmepumpe kann zum Beispiel neue Funktionen haben, die in EMS-ESP nicht enthalten sind. In diesem Fall würden Sie den `watch`-Befehl verwenden, um den eingehenden EMS-Verkehr in Kombination mit der manuellen Anpassung spezifischer Parameter einzusehen. Wenn Sie das spezifische Telegramm und den Offset gefunden haben, erstellen Sie eine benutzerdefinierte Entität, um den Typ fein abzustimmen und den Wert zu überprüfen. Beantragen Sie dann die Aufnahme in das nächste EMS-ESP-Release-Update.
 

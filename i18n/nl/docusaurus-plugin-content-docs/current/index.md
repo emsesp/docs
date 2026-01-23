@@ -29,7 +29,7 @@ image: /media/screenshot/main-screen.png
 
 EMS-ESP is een open-source firmware voor de Espressif ESP32 microcontroller om te communiceren met EMS (Energy Management System) compatibele apparatuur van fabrikanten zoals Bosch, Buderus, Nefit, Junkers, Worcester, Sieger, elm.leblanc en iVT.
 
-Voor EMS-ESP is een klein extra circuit nodig voor de interface tussen de EMS-buslijn en de microcontroller. Deze schakeling is verkrijgbaar als kant-en-klare module van BBQKees Electronics.
+Voor EMS-ESP is een klein extra circuit nodig voor de interface tussen de EMS-buslijn en de microcontroller. Deze schakeling is als kant-en-klare module verkrijgbaar bij BBQKees Electronics.
 
 </div>
 
@@ -93,18 +93,12 @@ Gebruik de notificatieservice om waarschuwingen en meldingen te versturen.
 
 ## Nieuwste releases
 
-[![version](https://img.shields.io/github/release/emsesp/EMS-ESP32.svg?label=Latest%20Release)](https://github.com/emsesp/EMS-ESP32/blob/main/CHANGELOG.md)
-[![release-date](https://img.shields.io/github/release-date/emsesp/EMS-ESP32.svg?label=Released)](https://github.com/emsesp/EMS-ESP32/commits/main)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=emsesp_EMS-ESP32&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=emsesp_EMS-ESP32)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/9441142f49424ef891e8f5251866ee6b)](https://www.codacy.com/gh/emsesp/EMS-ESP32/dashboard?utm_source=github.com&utm_medium=referral&utm_content=emsesp/EMS-ESP32&utm_campaign=Badge_Grade)
-[![downloads](https://img.shields.io/github/downloads/emsesp/EMS-ESP32/total.svg)](https://github.com/emsesp/EMS-ESP32/releases)
-[![chat](https://img.shields.io/discord/816637840644505620.svg?style=flat-square&color=blueviolet)](https://discord.gg/3J3GgnzpyT)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/emsesp/EMS-ESP32)
+[![version](https://img.shields.io/github/release/emsesp/EMS-ESP32.svg?label=Latest%20Release)](https://github.com/emsesp/EMS-ESP32/blob/main/CHANGELOG.md) [![release-date](https://img.shields.io/github/release-date/emsesp/EMS-ESP32.svg?label=Released)](https://github.com/emsesp/EMS-ESP32/commits/main) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=emsesp_EMS-ESP32&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=emsesp_EMS-ESP32) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/9441142f49424ef891e8f5251866ee6b)](https://www.codacy.com/gh/emsesp/EMS-ESP32/dashboard?utm_source=github.com&utm_medium=referral&utm_content=emsesp/EMS-ESP32&utm_campaign=Badge_Grade) [![downloads](https://img.shields.io/github/downloads/emsesp/EMS-ESP32/total.svg)](https://github.com/emsesp/EMS-ESP32/releases) [![chat](https://img.shields.io/discord/816637840644505620.svg?style=flat-square&color=blueviolet)](https://discord.gg/3J3GgnzpyT) [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/emsesp/EMS-ESP32)
 
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 
 - **Stabiel:** [v3.8.1](https://github.com/emsesp/EMS-ESP32/releases/tag/v3.8.1)
-- **Ontwikkeling:** [v3.8.1](https://github.com/emsesp/EMS-ESP32/releases/tag/latest)
+- **Ontwikkeling:** [v3.8.2](https://github.com/emsesp/EMS-ESP32/releases/tag/latest)
 
 ## Live demo
 

@@ -2,13 +2,13 @@
 id: Special-Functions
 ---
 
-# Spezielle Funktionen
+# Besondere Funktionen
 
 Einige in MQTT abgebildete Entitäten werden von EMS-ESP generiert und nicht vom EMS-Bus gelesen.
 
 `heating_active` und `tapwater_active` werden aus den Einstellungen von Brenner und valve/pump berechnet. Diese werden sowohl von der Duschzeituhr als auch von der Energiemessung verwendet.
 
-## Dusch-Timer
+## Duschzeitschaltuhr
 
 Misst die Zeit, in der das Warmwasser bei eingeschaltetem Brenner läuft. Dies funktioniert nur bei Durchflusssystemen; bei gepufferten Durchflusssystemen ist die Zeit immer die Ladezeit des Puffers. Als zusätzliche Funktion gibt es den Duschalarm, der nach einer konfigurierten Zeit einen Kaltwasserstoß auslöst. Der "Coldshot" wird von der Entität `boiler/tapactivated` verwaltet und verwendet eine benutzerdefinierte Funktion, die den Kessel in den "Testmodus" versetzt, den Leitungswasserfluss aktiviert und den Brenner deaktiviert.
 
@@ -44,8 +44,7 @@ Der entfernte Thermostat bleibt im EMS-ESP-Geräte-Dashboard, hat aber keine Ent
 
 Hinweis: Wenn die Steuerung auf `roomthermostat` eingestellt ist und der erste Temperaturwert für `remotetemp` nicht innerhalb einer Minute gesendet wird, zeigt der Master-Thermostat wahrscheinlich eine Fehlermeldung an.
 
-:::warning
-Haftungsausschluss Mit der Ferneinstellung der Luftfeuchtigkeit können Sie eine Wärmepumpe so einstellen, dass sie auch dann zu kühlen beginnt, wenn der tatsächliche Taupunkt unterschritten ist, was zu Kondenswasserbildung an Rohren und auf dem Fußboden führen und das System beschädigen kann. Verwendung auf eigene Gefahr!
+:::warning Haftungsausschluss Mit der Ferneinstellung der Luftfeuchtigkeit können Sie eine Wärmepumpe so einstellen, dass sie auch dann zu kühlen beginnt, wenn der tatsächliche Taupunkt unterschritten ist, was zu Kondenswasserbildung an Rohren und auf dem Boden führen und das System beschädigen kann. Verwendung auf eigene Gefahr!
 :::
 
 ### Terminierung der Temperatureinstellungen

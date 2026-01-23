@@ -2,7 +2,7 @@
 id: Solar-Modules
 ---
 
-# Solar-Module
+# Solarmodule
 
 Dies ist die aktuelle Liste der unterstützten Solarmodule:
 

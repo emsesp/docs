@@ -66,15 +66,15 @@ Der ESP32 hat einen sehr begrenzten Arbeitsspeicher, der zwischen dem Laufzeit-S
 
 ### Das EMS-ESP reagiert nicht mehr
 
-Wenn der EMS-ESP nicht mehr reagiert und Sie nicht auf die WebUI zugreifen können, führen Sie die folgenden Schritte aus:
+Wenn der EMS-ESP nicht mehr reagiert und Sie nicht auf die WebUI zugreifen können, gehen Sie wie folgt vor:
 
-- Überprüfen Sie Ihren Netzwerk-Router, um zu sehen, ob ems-esp noch aktiv ist. Wenn Sie ein Mesh von WiFi-Zugangspunkten betreiben, kann es sein, dass es zu einem neuen Standort gerootet wurde oder die WiFi-Kanäle gewechselt wurden. Um dies zu umgehen, können Sie eine BSSID in EMS-ESP (nur WiFI) einstellen.
+- Überprüfen Sie Ihren Netzwerk-Router, um zu sehen, ob ems-esp noch aktiv ist. Wenn Sie ein Mesh von WiFi-Zugangspunkten betreiben, kann es sein, dass es zu einem neuen Standort gerootet wurde oder die WiFi-Kanäle gewechselt wurden. Die Umgehung dieses Problems besteht darin, eine BSSID in EMS-ESP einzustellen (nur WiFI).
 - Schauen Sie sich die integrierte LED an, wenn Sie sie nicht deaktiviert haben. Wenn die LED blinkt oder leuchtet, bedeutet dies, dass EMS-ESP noch läuft.
 - Überprüfen Sie dann die EMS-ESP-Dienste. Können Sie über Telnet an Port 25 auf die Konsole zugreifen? Werden immer noch MQTT-Nachrichten gesendet, falls aktiviert?
 - Wenn Sie den Ethernet-Anschluss verwenden, sehen Sie dann die LED am Anschluss blinken, um den ein- und ausgehenden Datenverkehr anzuzeigen?
 - Wenn EMS-ESP sich selbst neu gestartet hat, suchen Sie in den Systemprotokollen nach dem Reset-Grund. Dies wird eine der ersten Meldungen sein. Siehe oben.
 - Schließen Sie die Karte über USB an einen Computer an, ohne sie nach dem Ausschalten des EMS-ESP neu zu starten, und rufen Sie die serielle Konsole auf, um zu sehen, ob Fehler vorliegen.
-- Abschließend melden Sie einen GitHub-Problemfall mit den Support-Informationen und Details zu Ihrer Einrichtung an.
+- Schließlich protokollieren Sie ein GitHub-Problem mit dem [Support Information](Support) und Details zu Ihrer Einrichtung.
 
 ### Sie haben das Admin-Passwort vergessen
 
@@ -89,7 +89,7 @@ ems-esp:# set admin password
 
 ### Nicht alle EMS-Geräte werden erkannt
 
-Versuchen Sie, den Wert für den Sendemodus auf der Seite Einstellungen zu ändern. Das Standard-EMS funktioniert für ältere EMS1.0-Systeme, EMS2 oder EMSPlus-Systeme und HT3 für Junkers/Worcester, die das Heatronics-Protokoll verwenden.
+Versuchen Sie, den Wert für den Sendemodus auf der Seite Einstellungen zu ändern. Das Standard-EMS funktioniert bei älteren EMS1.0-Systemen, EMS2 oder EMSPlus-Systemen und HT3 für Junkers/Worcester, die das Heatronics-Protokoll verwenden.
 
 Wenn Sie EMS-Geräte haben, die möglicherweise noch nicht von EMS-ESP unterstützt werden, dann verwenden Sie `scan` oder `scan deep` von der Konsole aus, um deren Details herauszufinden und dann einen Verbesserungsvorschlag auf GitHub zu posten. Denken Sie daran, dass das `su`-Passwort standardmäßig `ems-esp-neo` ist, sofern es nicht über die Konsole (`passwd`) oder in der WebUI (`Security->Security Settings`) geändert wurde. Zum Beispiel:
 
@@ -120,7 +120,7 @@ Es ist durchaus üblich, dass im Protokoll einige Warnungen über unvollständig
 
 - einen anderen Sendemodus, zum Beispiel zwischen EMS+ und EMS wechseln.
 - stromversorgung des EMS-ESP über USB oder Service-Buchse. Wir haben Beispiele gesehen, bei denen eine verrauschte oder ausgefallene Gleichstromversorgung zu RX-Fehlern oder unvollständigen Telegrammen führen kann. Ein Versuch mit USB-Stromversorgung (siehe [BBQKees wiki](https://bbqkees-electronics.nl/wiki/), wie man auf USB-Stromversorgung umschaltet) kann helfen, dieses Problem zu finden.
-- beseitigung von Störungen auf der Busleitung durch emc, Reflexionen, andere Geräte. Verbinden Sie das EMS-ESP mit einem anderen Gerät am Bus. Im Allgemeinen ist ein bisher nicht angeschlossener Bus-Ausgang an einem Gerät wie dem MM100 besser als eine geteilte Verbindung an einem bereits verwendeten Stecker.
+- beseitigung von Störungen auf der Busleitung durch emc, Reflexionen, andere Geräte. Schließen Sie das EMS-ESP an ein anderes Gerät am Bus an. Im Allgemeinen ist ein bisher nicht angeschlossener Bus-Ausgang an einem Gerät wie dem MM100 besser als eine geteilte Verbindung an einem bereits verwendeten Stecker.
 
 ### EMS-Bus stellt keine Verbindung her
 
@@ -134,7 +134,7 @@ Der häufigste Fehler bei der Verdrahtung besteht darin, dass die Interfaceplati
 
 Wenn Sie feststellen, dass setting/writing ein EMS-Gerätewert keine Wirkung hat, setzen Sie in der WebUI die Systemprotokollebene auf DEBUG und wiederholen Sie die Aktion, wobei Sie alle Fehler oder Warnungen im Systemprotokoll beachten. Für eine gründlichere Analyse verwenden Sie die Telnet-Konsole, `su`, dann `log debug` und wiederholen Sie die Aktion dann mit dem Befehl `call`. Posten Sie die Ausgabe in einem neuen GitHub-Problem, wie in [Support Section](Support) beschrieben.
 
-Beachten Sie, dass bei einigen Systemen, an denen z. B. ein Gateway oder ein Controller angeschlossen ist, jede Änderung zurückgesetzt oder überschrieben wird. Dies ist einfach das Verhalten der anderen Master-Controller und wir können nicht viel dagegen tun.
+Beachten Sie, dass bei einigen Systemen, an denen z. B. ein Gateway oder ein Controller angeschlossen ist, jede Änderung zurückgesetzt oder überschrieben wird. Dies ist nur das Verhalten der anderen Master-Controller und wir können nicht viel dagegen tun.
 
 ### Das Ändern eines Wertes funktioniert zunächst, wird dann aber auf den ursprünglichen Wert zurückgesetzt
 

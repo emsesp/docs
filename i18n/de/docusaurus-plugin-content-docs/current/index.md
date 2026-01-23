@@ -98,7 +98,7 @@ Verwenden Sie den Benachrichtigungsdienst, um Alarme und Warnungen zu versenden.
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/prderbyshire/2)
 
 - **Stabil:** [v3.8.1](https://github.com/emsesp/EMS-ESP32/releases/tag/v3.8.1)
-- **Entwicklung:** [v3.8.1](https://github.com/emsesp/EMS-ESP32/releases/tag/latest)
+- **Entwicklung:** [v3.8.2](https://github.com/emsesp/EMS-ESP32/releases/tag/latest)
 
 ## 📱 Live-Demo
 

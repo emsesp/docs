@@ -2,7 +2,7 @@
 id: Switches
 ---
 
-# Schalter-Module
+# Schaltermodule
 
 Dies ist die aktuelle Liste der unterstützten Schaltmodule:
 

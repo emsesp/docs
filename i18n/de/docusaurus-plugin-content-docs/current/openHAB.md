@@ -13,19 +13,17 @@ EMS-ESP kann auf verschiedene Weise in openHab integriert werden:
 
 <figure> <img src="/media/screenshot/oh_dashboard.png" alt="Example Dashboard (items depend on heating system)" /> <figcaption>Beispiel Dashboard (Elemente hängen vom Heizungssystem ab)</figcaption> </figure>
 
-:::note
-Es hängt von der Entität und dem Gerät ab, ob sie beschreibbar oder nur lesbar ist. Schauen Sie in die Liste der Entitäten [Entities](All-Entities) für alle verfügbaren Entitäten und zugehörigen Attribute.
+:::note Es hängt von der Entität und dem Gerät ab, ob sie beschreibbar oder nur lesbar ist. Schauen Sie in die Liste der Entitäten [Entities](All-Entities) für alle verfügbaren Entitäten und zugehörigen Attribute.
 :::
 
-:::note
-Die Dokumentation wurde für openHab Version 3.x erstellt
+:::note Die Dokumentation wurde für openHab Version 3.x erstellt
 :::
 
 ## HomeAssistant MQTT Komponenten Bindung
 
 ### Installation
 
-EMS-ESP erstellt MQTT-Nachrichten mit dem Präfix `homeassistant/` für jedes Gerät und seine Werte (sogenannte Entitäten) basierend auf dem Home Assistant (HA) Discovery-Protokoll. Um die automatische Erkennung in openHAB zu ermöglichen, müssen [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/) und [HomeAssistant MQTT Components Binding](https://www.openhab.org/addons/bindings/mqtt.homeassistant/) installiert sein. Zusätzlich werden `JINJA` und `JSONPath` Transformationen benötigt, um alle Entitäten und Features abzubilden. In EMS-ESP aktivieren Sie die Option Discovery auf der Seite MQTT Settings.
+EMS-ESP erstellt MQTT-Nachrichten mit dem Präfix `homeassistant/` für jedes Gerät und seine Werte (sogenannte Entitäten) auf der Grundlage des Home Assistant (HA) Discovery-Protokolls. Um die automatische Erkennung in openHAB zu ermöglichen, müssen [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/) und [HomeAssistant MQTT Components Binding](https://www.openhab.org/addons/bindings/mqtt.homeassistant/) installiert sein. Zusätzlich werden `JINJA` und `JSONPath` Transformationen benötigt, um alle Entitäten und Features abzubilden. In EMS-ESP aktivieren Sie die Option Discovery auf der Seite MQTT Settings.
 
 Objekte in HA werden auf `Things`, Component+Node auf `ChannelGroup` und Component Features auf `Channels` abgebildet. Weitere Informationen finden Sie in der Spezifikation der Bindung.
 

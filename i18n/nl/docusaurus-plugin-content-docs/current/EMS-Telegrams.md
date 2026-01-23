@@ -1,6 +1,6 @@
 ---
 id: EMS-Telegrams
-title: EMS Telegrammen
+title: EMS Telegrams
 ---
 
 import TelegramsTable from '@site/src/components/TelegramsTable';

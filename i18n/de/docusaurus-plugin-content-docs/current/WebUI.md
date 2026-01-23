@@ -1,10 +1,10 @@
 ---
 title: WebUI
 id: WebUI
-description: Zugang und Navigation zur EMS-ESP WebUI
+description: Access and navigate the EMS-ESP web interface
 ---
 
-# 🌐 WebUI
+# 🌐 Web-Schnittstelle
 
 Greifen Sie auf Ihr EMS-ESP-Gerät über die moderne Webschnittstelle zu.
 

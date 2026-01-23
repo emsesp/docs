@@ -1,6 +1,7 @@
 ---
 id: Contributing
 ---
+
 # Bijdragen
 
 elke bijdrage helpt om EMS-ESP beter te maken_. Dit project heeft hulp nodig met:
@@ -13,18 +14,18 @@ De volledige richtlijnen voor bijdragen zijn te vinden in [CONTRIBUTING.md](http
 
 ## Basisprincipes voor ontwerp
 
-- De kerndiensten zoals telnet, logging en shell zijn gebaseerd op de bibliotheken `@nomis`. Dit algemene ontwerpprincipe is erop gericht om alles zo asynchroon mogelijk te maken, zodat geen enkele bewerking een andere bewerking mag verhongeren om uit te voeren. Zie [this article](https://isocpp.org/wiki/faq/ctors#static-init-order) voor meer details.
-- Alle EMS-apparaten (bijv. boiler, thermostaat, zonnemodules, mixers enz.) zijn afgeleid van een fabrieksklasse en elke klasse registreert zijn eigen telegram- en mqtt-handlers. Hierdoor is de EMS apparaatcode eenvoudiger te beheren en kunnen we uitbreiden met nieuwe telegramtypen en functies.
+- De kerndiensten zoals telnet, logging en shell zijn gebaseerd op de bibliotheken `@nomis`. Dit algemene ontwerpprincipe richt zich op het zo asynchroon mogelijk maken van alles, zodat geen enkele bewerking een andere mag verhongeren om uit te voeren. Zie [this article](https://isocpp.org/wiki/faq/ctors#static-init-order) voor meer details.
+- Alle EMS-apparaten (bijv. boiler, thermostaat, zonnepanelen, mixers enz.) zijn afgeleid van een fabrieksklasse en elke klasse registreert zijn eigen telegram- en mqtt-handlers. Hierdoor is de EMS apparaatcode eenvoudiger te beheren en kunnen we uitbreiden met nieuwe telegramtypen en functies.
 
 ## De code netjes houden
 
-De webcode gebruikt `prettier`. Om automatisch te formatteren voert u `pnpm format` uit vanuit de map `interface`.
+De webcode gebruikt `prettier`. Om automatisch op te maken voer je `pnpm format` uit vanuit de map `interface`.
 
-De C++ code gebruikt `clang`. De eenvoudigste manier om de code automatisch op te maken is door de extensie VSCode [Format Files](https://marketplace.visualstudio.com/items?itemName=jbockle.jbockle-format-files) te gebruiken. Voer vervolgens de opdracht `Start Format Files: From Glob` uit en selecteer `src/**` als glob pattern.
+De C++ code gebruikt `clang`. De eenvoudigste manier om de code automatisch op te maken is door de VSCode [Format Files](https://marketplace.visualstudio.com/items?itemName=jbockle.jbockle-format-files)-extensie te gebruiken. Voer vervolgens de opdracht `Start Format Files: From Glob` uit en selecteer `src/**` als glob pattern.
 
 ## De webbibliotheken up-to-date houden
 
-Gebruik een updatecontroleprogramma zoals `ncu` om de webbibliotheken up-to-date te houden. U kunt uitvoeren met `npx npm-check-updates`. Zie [npm-check-updates](https://github.com/raineorshine/npm-check-updates).
+Gebruik een updatecontroleprogramma zoals `ncu` om de webbibliotheken up-to-date te houden. Je kunt `npx npm-check-updates` gebruiken. Zie [npm-check-updates](https://github.com/raineorshine/npm-check-updates).
 
 ## Pull Verzoeken
 
@@ -33,18 +34,18 @@ Een Pull Request (PR) is het proces waarbij codewijzigingen worden beheerd in Gi
 Het proces is eenvoudig.
 
 - De EMS-ESP-opslagplaats forken [git repository](https://github.com/emsesp/EMS-ESP32)
-- Schakel over naar de `dev` tak
+- Schakel over naar de `dev`-tak
 - Write/Change de code in je Fork voor een nieuwe functie, bugfix, optimalisatie...
 - Zorg ervoor dat de code is opgemaakt naar de EMS-ESP stijl (zoals gedefinieerd in clang)
-- Maak eventuele aanvullende tests in `tests.cpp` en gebruik de testsuite `make run` (alleen linux/osx) om er zeker van te zijn dat er geen brekende wijzigingen zijn
+- Maak eventuele aanvullende tests in `tests.cpp` en gebruik de testsuite `make run` (alleen linux/osx) om ervoor te zorgen dat er geen brekende wijzigingen zijn
 - Werk de `CHANGELOG_LATEST.md` bij met de wijziging en link naar de PR
 - Maak een Pull Request tegen de [**dev**](https://github.com/emsesp/EMS-ESP32/tree/dev) tak van EMS-ESP
 
 Zorg ervoor dat je je aan deze regels houdt:
 
 1. Alle pull requests moeten gedaan worden tegen de dev branch.
-2. Zorg ervoor dat de code wordt geformatteerd volgens de `.clang-format`. Gebruik in Visual Studio Code Alt-Shift-F om automatisch te formatteren.
-3. Zorg ervoor dat alle nieuwe code duidelijk wordt becommentarieerd en dat wordt uitgelegd wat de function/logic doet.
+2. Zorg ervoor dat de code wordt geformatteerd volgens `.clang-format`. Gebruik in Visual Studio Code Alt-Shift-F om automatisch te formatteren.
+3. Zorg ervoor dat alle nieuwe code duidelijk wordt becommentarieerd met uitleg over wat de function/logic doet.
 4. Alleen relevante bestanden mogen worden aangeraakt (pas ook op als je editor de functie voor automatisch formatteren heeft ingeschakeld).
 5. Per PR mag slechts één feature/fix worden toegevoegd.
 6. PR's die niet compileren (mislukken in CI-tests) of coderingsfouten veroorzaken, worden niet samengevoegd. Los het probleem alsjeblieft op. Hetzelfde geldt voor PR's die tegen een oudere commit in dev zijn opgeworpen - je moet misschien rebasen en conflicten oplossen.
@@ -64,7 +65,7 @@ Formaat: `<type>(<scope>): <subject>`
 - `feat`: (nieuwe functie voor de gebruiker, geen nieuwe functie voor het buildscript)
 - `fix`: (bugfix voor de gebruiker, geen fix voor een buildscript)
 - `docs`: (wijzigingen in de documentatie)
-- `style`: (opmaak, ontbrekende puntkomma's, enz.; geen wijziging in de productiecode)
-- `refactor`: (productiecode refactureren, bijvoorbeeld een variabele hernoemen)
-- `test`: (ontbrekende tests toevoegen, tests hertekenen; geen productiecode wijzigen)
+- `style`: (opmaak, ontbrekende puntkomma's, enzovoort; geen wijziging in de productiecode)
+- `refactor`: (productiecode refactoren, bijvoorbeeld een variabele hernoemen)
+- `test`: (ontbrekende tests toevoegen, tests hertekenen; geen wijziging in de productiecode)
 - `chore`: (grunt-taken bijwerken enzovoort; geen productiecode wijzigen)

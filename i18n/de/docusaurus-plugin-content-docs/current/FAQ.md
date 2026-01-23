@@ -6,11 +6,11 @@ id: FAQ
 
 ## Wie setzt man das EMS-ESP auf die Werkseinstellungen zurück?
 
-Wenn Sie eine GPIO-Taste konfiguriert haben (standardmäßig auf allen BBQKees-Platinen aktiviert), können Sie diese 10 Sekunden lang drücken und dann loslassen, um einen Factory Reset durchzuführen. Das EMS-ESP wird im Access Point Modus neu gestartet.
+Wenn Sie eine GPIO-Taste konfiguriert haben (standardmäßig auf allen BBQKees-Platinen aktiviert), können Sie diese 10 Sekunden lang drücken und dann loslassen, um einen Werksreset durchzuführen. Das EMS-ESP wird im Access Point Modus neu gestartet.
 
 ## Was ist ein EMS-Telegramm?
 
-MichaelDvP schreibt in [this article](https://github.com/emsesp/EMS-ESP32/discussions/1612#discussioncomment-8408868):
+Geschrieben von MichaelDvP in [this article](https://github.com/emsesp/EMS-ESP32/discussions/1612#discussioncomment-8408868):
 
 Die beste Übersicht über bekannte Telegramme ist die von [Norberts1](https://github.com/norberts1/hometop_HT3/blob/master/HT3/docu/HT_EMS_Bus_messages.pdf) und [EMS-Wiki](https://emswiki.thefischer.net/doku.php). Generell kann man sagen:
 
@@ -27,14 +27,13 @@ Die beste Übersicht über bekannte Telegramme ist die von [Norberts1](https://g
 
 Für verschiedene brands/devices verwendet Bosch manchmal unterschiedliche Ausdrücke für denselben Wert. Vielleicht wechselnde Entwickler oder sie wollen das Reverse Engineering erschweren!
 
-Wenn Sie eine Einstellung suchen, loggen Sie die Telegramme für das Gerät (log all oder watch &lt;device-id&gt;) und ändern Sie die Einstellung am Thermostat auf andere states/values. Suchen Sie dann im Protokoll nach diesen Werten. Wenn Sie nach einer Messung suchen, protokollieren Sie das Gerät und sehen Sie sich den Wert auf dem Thermostat an und warten Sie auf Änderungen, notieren Sie old/new-Werte und Zeit. Prüfen Sie dann das Protokoll auf diesen Zeitstempel (oder 10 sec / 1 min später) und den Wert innerhalb eines Telegramms. Am besten mehrere changes/values, um sicher zu sein.
+Wenn Sie eine Einstellung suchen, loggen Sie die Telegramme für das Gerät (log all oder watch &lt;device-id&gt;) und ändern Sie die Einstellung am Thermostat auf andere states/values. Suchen Sie dann im Protokoll nach diesen Werten. Wenn Sie nach einer Messung suchen, protokollieren Sie das Gerät und sehen Sie sich den Wert auf dem Thermostat an und warten Sie auf Änderungen, notieren Sie old/new-Werte und Zeit. Prüfen Sie dann das Log auf diesen Zeitstempel (oder 10 sec / 1 min später) und den Wert innerhalb eines Telegramms. Am besten mehrere changes/values, um sicher zu sein.
 
 ## Kann EMS-ESP einen Thermostat simulieren?
 
 Teilweise. Wie die Leute von [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) es so schön formulieren:
 
-:::tip
-Warum einen Thermostat verwenden?
+:::tip Warum einen Thermostat verwenden?
 
     - Die Hersteller von Thermostaten haben jahrelang geforscht, um die Heizungseigenschaften für die effizienteste und komfortabelste Art der Beheizung eines Hauses zu ermitteln.
     - Der Thermostat bietet eine den Menschen vertraute Steuerungsschnittstelle, so dass auch andere Haushaltsmitglieder den Sollwert einstellen können.
@@ -81,3 +80,9 @@ Ja, das können Sie. Beachten Sie die folgenden Einstellungen:
 ## Warum haben EMS-Telegramme im `raw watch`-Modus einen höheren Typ 0x100 als im `raw`-Modus?
 
 Siehe [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/2025)
+
+## Sollte ich die minBurnPower in kalten Wintern auf 10-20% erhöhen, damit immer eine Grundversorgung mit Wärme vorhanden ist?
+
+(Antwort von [MichaelDvP](https://github.com/MichaelDvP))
+
+Das wird nicht funktionieren. Der Kessel arbeitet mit `selflowtemp` als Ziel und moduliert den Brenner, um den `flowtemp` zu halten. Wenn `flowtemp` höher ist als die gewählte Mindestbrennleistung, schaltet der Kessel ab, wartet die Mindestzeit ab und `flowtemp` sinkt auf `selflowtemp` - Hysterese und startet erneut. Eine Erhöhung von `burnminpower` führt nur bei milden Bedingungen zu mehr on/off-Zyklen.

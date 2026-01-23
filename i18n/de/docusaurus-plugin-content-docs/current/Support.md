@@ -17,7 +17,7 @@ Wenn Sie auf der Suche nach EMS-ESP-Unterstützung sind, eine Frage haben oder e
 
     Bevor Sie ein neues GitHub-Problem erstellen, vergewissern Sie sich bitte, dass Sie entweder die neueste Stable- oder Development-Firmware-Version verwenden. Ältere Versionen werden nicht mehr unterstützt, da wir einfach nicht die Ressourcen haben, um jede Version zu unterstützen.
 
-    Benutzer, die BBQKees-zertifizierte Gateway-Karten verwenden, erhalten vorrangigen Support. Das liegt daran, dass sie eine Garantie haben und wir sicherstellen wollen, dass sie den bestmöglichen Support erhalten. Benutzer, die ihre eigenen EMS-Gateway-Boards gebaut haben oder einen unaufgeforderten Klon-Schaltkreis verwenden, erhalten nur eingeschränkten Support, da wir in den meisten Fällen festgestellt haben, dass es sich um hardwarebezogene Probleme handelt.
+    Benutzer, die BBQKees-zertifizierte Gateway-Karten verwenden, erhalten vorrangigen Support. Das liegt daran, dass sie eine Garantie haben und wir sicherstellen wollen, dass sie den bestmöglichen Support erhalten. Benutzer, die ihre eigenen EMS-Gateway-Boards gebaut haben oder einen unaufgeforderten Klon-Schaltkreis verwenden, erhalten nur begrenzten Support, da wir in den meisten Fällen festgestellt haben, dass es sich um Hardware-Probleme handelt.
 
     Wenn Sie ein neues GitHub-Problem erstellen, stellen Sie sicher, dass Sie die folgenden Informationen angeben:
 

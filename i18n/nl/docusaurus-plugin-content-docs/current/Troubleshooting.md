@@ -1,7 +1,8 @@
 ---
 id: Troubleshooting
 ---
-# Probleemoplossing
+
+# Problemen oplossen
 
 Hieronder vind je antwoorden op enkele veelvoorkomende problemen.
 
@@ -9,7 +10,7 @@ Hieronder vind je antwoorden op enkele veelvoorkomende problemen.
 
 ### Kan niet uploaden via de webinterface
 
-Als u de firmware uploadt via de webinterface en u ziet de foutmelding "Invalid file extension or incompatible bin file" (Ongeldige bestandsextensie of incompatibel bin-bestand), controleer dan of u het juiste binaire firmwarebestand gebruikt dat overeenkomt met uw bord en ESP32-chipset. Als dat correct is, kan het zijn dat de firmware te groot is voor de opstartpartitie, wat het geval kan zijn als je in bepaalde situaties van 3.6.5 naar 3.7.0 gaat. De oplossing is om een van de flashtools te gebruiken.
+Als u de firmware uploadt via de webinterface en u ziet de foutmelding "Invalid file extension or incompatible bin file" (Ongeldige bestandsextensie of incompatibel bin-bestand), controleer dan of u het juiste binaire firmwarebestand gebruikt dat overeenkomt met uw bord en ESP32-chipset. Als dat klopt, kan het zijn dat de firmware te groot is voor de opstartpartitie, wat het geval kan zijn als je in bepaalde situaties van 3.6.5 naar 3.7.0 gaat. De oplossing is om een van de flashtools te gebruiken.
 
 ### Web Interface toont oude gegevens of fouten in browser na een update
 
@@ -29,11 +30,11 @@ Op borden met Ethernet wordt Ethernet uitgeschakeld als er een WiFi-SSID bestaat
 
 ### De LED knippert constant
 
-Een snelle puls van de LED betekent dat het systeem aan het opstarten is of in de installatiemodus staat. Maak verbinding via WiFi met het Access Point (`ems-esp`) om de configuratie te voltooien.
+Een snelle puls van de LED betekent dat het systeem opstart of in de installatiemodus staat. Maak verbinding via WiFi met het Access Point (`ems-esp`) om de configuratie te voltooien.
 
 Een langzame puls betekent dat er geen WiFi-verbinding is of dat EMS-ESP niet kan lezen van de EMS-bus. Ga in dit geval naar de webinterface en probeer een andere Tx Mode-instelling.
 
-Zie meer informatie over wat de knipperende LED's betekenen in het gedeelte [Getting Started](Getting-Started.md).
+Zie voor meer informatie over wat de knipperende LED's betekenen het gedeelte [Getting Started](Getting-Started.md).
 
 ### EMS-ESP start vaak opnieuw op
 
@@ -46,21 +47,21 @@ Dingen die je moet controleren:
 #### Het kan stroomgerelateerd zijn
 
 - Schakel de gateway uit en controleer of de bedrading goed is aangesloten. Controleer of de ESP32, DC-DC converter en eventuele jumpers op de gateway goed op hun connectoren zitten.
-- Probeer de gateway te voeden via de USB-aansluiting van de ESP32 (controleer de [wiki](https://bbqkees-electronics.nl/wiki/) voor hoe je dit op jouw specifieke gateway-model doet). Als de herstarts stoppen, dan heb je een probleem met de externe voedingsbron (BUS of service jack) of de DC-DC converter in de gateway.
-- Als u WiFi gebruikt, probeer dan de WiFi Tx Power te verlagen naar 10 dBm op de `Network Settings` pagina en kijk of dat helpt.
+- Probeer de gateway te voeden via de USB-aansluiting van de ESP32 (kijk in de [wiki](https://bbqkees-electronics.nl/wiki/) hoe je dit op jouw specifieke gateway-model doet). Als de herstarts stoppen, dan is er een probleem met de externe voedingsbron (BUS of service jack) of de DC-DC converter in de gateway.
+- Als je WiFi gebruikt, probeer dan de WiFi Tx Power te verlagen naar 10 dBm op de `Network Settings` pagina en kijk of dat helpt.
 
 #### Het kan met het geheugen te maken hebben
 
-De ESP32 heeft zeer beperkt RAM, verdeeld tussen de run-time stack en de heap. De heap kan snel gefragmenteerd raken, waardoor de maximale grootte van een buffer afneemt, en we gebruiken HEEL VEEL buffers om al die mooie JSON-bestanden voor te bereiden voor verzending naar MQTT en het vullen van de webpagina's. Als de ESP32 niet meer beschikbaar is, start hij zichzelf gewoon opnieuw op. Dingen om te controleren:
+De ESP32 heeft zeer beperkt RAM, verdeeld tussen de run-time stack en de heap. De heap kan snel gefragmenteerd raken, waardoor de maximale grootte van een buffer afneemt, en we gebruiken HEEL VEEL buffers om al die mooie JSON-bestanden klaar te maken voor verzending naar MQTT en om de webpagina's te vullen. Als de ESP32 niet meer beschikbaar is, start hij zichzelf gewoon opnieuw op. Dingen om te controleren:
 
 - Als de WebUI toegankelijk is, ga dan naar `Status->Hardware` en kijk naar de Heap. Als het vrije geheugen lager is dan 90 KB of de maximale toewijzing lager dan 45 KB, dan kan dat een probleem zijn en moet u services uitschakelen, het opnieuw proberen en dit melden. Begin met het een voor een uitschakelen van mDNS en SysLog (indien actief) en kijk of dat helpt.
-- Zorg ervoor dat de maximale buffergrootte van het systeemlogboek op `Status->System Log` op zijn laagst (25) staat.
+- Zorg ervoor dat de Max. Buffergrootte van het systeemlogboek in `Status->System Log` op zijn laagst (25) staat.
 - Elk netwerkprotocol (Ethernet, Wifi, AP) verbruikt geheugen. Als je alleen Ethernet gebruikt (bijvoorbeeld een BBQKees E32 Gateway) schakel dan WiFi en het Access Point uit (gebruik een lege WiFI ssid).
 - Als u veel EMS-entiteiten hebt, gebruikt u de pagina Aanpassingen en stelt u alle ongebruikte entiteiten (weergegeven door een lege waarde) in op "verwijderen uit geheugen".
 
 #### Het kan codegerelateerd zijn
 
-- Ga naar `Status->System Log` en stel de `Log Level` in op `INFO`. Dit zorgt ervoor dat je bij de volgende herstart het logboek bovenaan ziet staan. Het laat iets zien dat lijkt op `2022-12-30 11:58:02.000    INFO 0:      [emsesp]     Last system reset reason Core0: Software reset CPU, Core1: Software reset CPU`.
+- Ga naar `Status->System Log` en stel `Log Level` in op `INFO`. Dit zorgt ervoor dat je bij de volgende herstart het logboek bovenaan ziet staan. Het zal iets laten zien dat lijkt op `2022-12-30 11:58:02.000    INFO 0:      [emsesp]     Last system reset reason Core0: Software reset CPU, Core1: Software reset CPU`.
 - En tenslotte, als geen van bovenstaande werkt, dan is het probleem de core die de inkomende telegrammen verwerkt. Probeer wat logs op te vangen vlak voordat het crasht (SysLog gebruiken is hier goed voor) en post de informatie in een nieuw GitHub probleem.
 
 ### EMS-ESP reageert niet meer
@@ -73,11 +74,11 @@ Als de EMS-ESP niet meer reageert en je geen toegang krijgt tot de WebUI, volg d
 - Als je de Ethernet-poort gebruikt, zie je dan de LED op de poort knipperen om verkeer in en uit te laten gaan?
 - Als EMS-ESP zichzelf opnieuw heeft opgestart, controleer dan de systeemlogboeken voor de Reset Reden. Dit zal een van de eerste berichten zijn. Zie hierboven.
 - Sluit het bord aan op een computer via USB, zonder opnieuw op te starten na het uitschakelen van EMS-ESP en ga naar de seriële console om te zien of er fouten zijn.
-- Log tot slot een GitHub probleem in met de ondersteuningsinfo en details van je installatie.
+- Log tenslotte een GitHub probleem in met de [Support Information](Support) en details van je opstelling.
 
 ### U bent het beheerderswachtwoord vergeten
 
-Als u het beheerderswachtwoord vergeten bent, kunt u het opnieuw instellen via de console met het commando `set admin password`.
+Als je het beheerderswachtwoord vergeten bent, kun je het opnieuw instellen via de console met het commando `set admin password`.
 
 ```sh
 ems-esp:$ su
@@ -101,24 +102,24 @@ ems-esp:# scan
 ems-esp:#
 ```
 
-Als je de EMS-gegevens wilt zien binnenstromen, gebruik dan het `watch` commando. Zie [Console](Console#het-ems-verkeer-bewaken).
+Als je de EMS-gegevens wilt zien binnenkomen, gebruik dan de opdracht `watch`. Zie [Console](Console#het-ems-verkeer-bewaken).
 
 ### Ik mis bepaalde gegevens van een EMS-apparaat
 
-Als er gegevens ontbreken, hebben we uw hulp nodig om onze database uit te breiden. Probeer te achterhalen welk telegram de gegevens zou kunnen bevatten door de wijziging door te voeren op het apparaat (bijv. ketel of thermostaat) terwijl EMS-ESP actief is en kijk naar het systeemlogboek in de traceermodus om te zien welke commando's worden verzonden en wat de nieuwe waarden zijn van inkomende telegrammen.
+Als er gegevens ontbreken, hebben we uw hulp nodig om onze database uit te breiden. Probeer te achterhalen welk telegram de gegevens zou kunnen bevatten door de wijziging door te voeren op het apparaat (bijv. ketel of thermostaat) terwijl EMS-ESP actief is en kijk naar het systeemlogboek in de traceermodus om te zien welke commando's worden verzonden en wat de nieuwe waarden zijn van binnenkomende telegrammen.
 
 Als je het telegram hebt gelokaliseerd, zoek dan de offset en gebruik de `Custom Entities` pagina in de WebUI om een nieuwe entiteit te maken die je vervolgens kunt testen. Let op de maateenheid. Maak dan een screenshot van dit scherm en post het in een nieuw GitHub issue, samen met een geschikte 'lange' naam en een 'korte' naam in het Engels en je moedertaal, zodat we het snel kunnen implementeren in de code.
 
 Merk op dat niet alle EMS-apparaten toestaan dat hun gegevens worden gepubliceerd op de EMS-bus, bijvoorbeeld de slimme thermostaten zoals de Nefit Easy en Buderus Easy Control CT200 die alleen de huidige kamer- en setpointtemperaturen verzenden als alleen-lezen attributen.
 
-Zie dit artikel op [Decoding EMS Telegrams](FAQ#wat-is-een-ems-telegram) voor meer informatie.
+Zie dit artikel over [Decoding EMS Telegrams](FAQ#wat-is-een-ems-telegram) voor meer informatie.
 
 ### Veel Rx-fouten
 
 Het is heel gebruikelijk om een paar waarschuwingen in het logboek te zien over onvolledige telegrammen. Dit kan het gevolg zijn van interferentie op de lijn, onvoldoende vermogen of een verkeerde Tx Mode. De waarschuwingen zijn meestal onschuldig omdat EMS-ESP zal wachten op de volgende uitzending of zal blijven proberen om het telegram op te halen. Als je een Rx-kwaliteit van minder dan 80% ziet, probeer het dan:
 
 - een andere Tx-modus, bijvoorbeeld schakelen tussen EMS+ en EMS.
-- voeding van de EMS-ESP via USB of service-jack. We hebben voorbeelden gezien waarbij een ruisende of falende gelijkstroomvoeding RX Fail of onvolledige telegrammen kan veroorzaken en het proberen van USB-voeding (controleer hoe om te schakelen naar USB-voeding in de [BBQKees wiki](https://bbqkees-electronics.nl/wiki/)) kan helpen om dit op te sporen.
+- voeding van de EMS-ESP via USB of service-jack. We hebben voorbeelden gezien waarbij een ruisende of falende DC-voeding RX Fail of onvolledige telegrammen kan veroorzaken en het proberen van USB-voeding (controleer hoe over te schakelen op USB-voeding in de [BBQKees wiki](https://bbqkees-electronics.nl/wiki/)) kan helpen om dit op te sporen.
 - storingen op de buslijn van emc, reflecties, andere apparaten verwijderen. Sluit de EMS-ESP aan op een ander apparaat op de bus. Over het algemeen is een niet eerder aangesloten bus-uitgang op een apparaat zoals MM100 beter dan een gesplitste aansluiting op een reeds gebruikte connector.
 
 ### EMS-bus maakt geen verbinding
@@ -131,15 +132,15 @@ De meest voorkomende bedradingsfout is echter dat wanneer mensen het interfacebo
 
 ### Een waarde wijzigen op een EMS-apparaat werkt niet
 
-Als u merkt dat setting/writing een EMS-apparaatwaarde geen effect heeft, stel dan in de WebUI het System Log-niveau in op DEBUG en herhaal de actie, waarbij u eventuele fouten of waarschuwingen in het System Log opmerkt. Voor een grondiger analyse gebruik je de Telnet Console, `su`, dan `log debug` en herhaal je de actie met het `call` commando. Post de uitvoer naar een nieuw GitHub probleem zoals beschreven in de [Support Section](Support).
+Als je merkt dat setting/writing een EMS-apparaatwaarde geen effect heeft, stel dan in de WebUI het System Log-niveau in op DEBUG en herhaal de actie, waarbij je eventuele fouten of waarschuwingen in het System Log opmerkt. Voor een grondigere analyse gebruik je de Telnet Console, `su`, dan `log debug` en herhaal je de actie met het `call` commando. Post de uitvoer naar een nieuw GitHub issue zoals beschreven in de [Support Section](Support).
 
 Merk op dat op sommige systemen met bijvoorbeeld een gateway of controller aangesloten, elke verandering zal worden gereset of overschreven. Dit is gewoon het gedrag van de andere mastercontrollers en we kunnen er niet veel aan doen.
 
 ### Een waarde wijzigen werkt eerst, maar wordt daarna teruggezet naar de oorspronkelijke waarde
 
-In sommige scenario's kan het voorkomen dat EMS-wijzigingen worden overschreven of genegeerd door een ander aangesloten EMS-apparaat. Bijvoorbeeld bij gebruik van `heatingactivated` om de verwarming uit te schakelen. Een oplossing hiervoor is om elke paar seconden 0 te sturen naar `boiler/selflowtemp`.
+In sommige scenario's kan het voorkomen dat EMS-wijzigingen worden overschreven of genegeerd door een ander aangesloten EMS-apparaat. Bijvoorbeeld wanneer `heatingactivated` wordt gebruikt om de verwarming uit te schakelen. Een oplossing hiervoor is om elke paar seconden een 0 naar `boiler/selflowtemp` te sturen.
 
-Bepaalde ketels met handmatige temperatuur knobs/dials zullen alle EMS-ESP-instellingen opheffen. Als u een temperatuurwaarde wilt wijzigen via EMS-ESP, zorg er dan voor dat de waarde die u verstuurt lager is dan de waarde waarop de ketel psychisch is ingesteld via de draaiknop. De ketel stelt zichzelf elke 2 minuten opnieuw in op de ingestelde waarde, dus gebruik de Scheduler van EMS-ESP om de temperatuurwaarde elke minuut automatisch opnieuw in te stellen.
+Bepaalde ketels met handmatige temperatuur knobs/dials zullen alle EMS-ESP-instellingen opheffen. Als u een temperatuurwaarde wilt wijzigen via EMS-ESP, zorg er dan voor dat de waarde die u verstuurt lager is dan de waarde waarop de ketel psychisch is ingesteld via de draaiknop. De ketel zal zichzelf elke 2 minuten resetten naar de ingestelde waarde, dus gebruik EMS-ESP's Scheduler om de temperatuurwaarde automatisch elke minuut te resetten.
 
 ### Er worden onjuiste waarden van een specifiek apparaat weergegeven
 
@@ -150,7 +151,7 @@ Als je merkt dat bepaalde waarden onjuist worden weergegeven, hetzij in de WebUI
 % log trace
 ```
 
-en dan ofwel een `read` of `watch`, bijvoorbeeld `read 21 2D8` om alle gegevens van HC2 op een mengend MM100 weer te geven.
+en dan een `read` of `watch`, bijvoorbeeld `read 21 2D8` om alle gegevens van HC2 op een MM100 Mix weer te geven.
 
 ## Temperatuursensoren
 
@@ -160,13 +161,13 @@ Als je ongebruikelijke metingen van de Dallas-sensor ziet (gekke negatieve tempe
 
 - Bedrading naar de JST-connector op de gateway.
 - Dat je de juiste voedingsmodus gebruikt voor je toepassing: parasitair of niet-parasitair
-- Of voeding via USB het probleem verhelpt (de [wiki](https://bbqkees-electronics.nl/wiki/) legt uit hoe u to/from USB-voeding voor uw model gateway kunt omschakelen). Als dit het geval is, kan dit duiden op een probleem met de voeding naar de gateway vanaf de BUS- of serviceconnector.
+- Of voeding via USB het probleem verhelpt (in de [wiki](https://bbqkees-electronics.nl/wiki/) wordt uitgelegd hoe u to/from USB-voeding voor uw model gateway kunt omschakelen). Als dit het geval is, kan dit duiden op een probleem met de voeding naar de gateway vanaf de BUS of service jack connectors.
 
 ## MQTT
 
 ### Berichten komen niet altijd binnen via MQTT
 
-Als je merkt dat MQTT-berichten niet aankomen bij de MQTT broker/server probeer het dan:
+Als je merkt dat MQTT-berichten niet aankomen bij de MQTT broker/server probeer:
 
 - Controleer de logboeken van EMS-ESP op fouten. Als u "laag geheugen" fouten ziet, lees dan [It may be memory related](#het-kan-met-het-geheugen-te-maken-hebben) om te zien hoe u het geheugengebruik kunt verminderen
 - Controleer de MQTT broker op fouten. Mogelijk heb je onjuiste referenties of dubbele Client ID's die een verbindingsconflict veroorzaken
@@ -175,7 +176,7 @@ Als je merkt dat MQTT-berichten niet aankomen bij de MQTT broker/server probeer 
 - Verhoog de publicatietijd. Misschien zijn er te veel berichten en wordt de wachtrij overspoeld
 - Als het nog steeds mislukt, voer dan een lokale kopie van de MQTT mosquitto broker uit en controleer de uitvoer zoals:
   - download de nieuwste versie van Mosquitto van `https://mosquitto.org/download/`
-  - een nieuw `mosquitto.conf` bestand maken of een bestaand bestand bijwerken met net:
+  - een nieuw `mosquitto.conf`-bestand maken of een bestaand bestand bijwerken met net:
 
   ```yaml
   listener 1883
@@ -188,7 +189,7 @@ Als je merkt dat MQTT-berichten niet aankomen bij de MQTT broker/server probeer 
   "C:\Program Files\mosquitto\mosquitto.exe" -v -c "C:\Program Files\mosquitto\mosquitto.conf"
   ```
 
-  Let op, draaien met allow_anonymous true wordt niet aangeraden voor productieomgevingen.
+  Let op, het uitvoeren met allow_anonymous true wordt niet aangeraden voor productieomgevingen.
 
 ### Commando's verzonden via MQTT werken niet
 
@@ -222,15 +223,15 @@ Een alternatieve optie zonder gebruik te maken van persistance op de MQTT server
 
 ### HA toont fouten zoals _"Bericht ontvangen over illegaal zoekonderwerp"_ of _"Waarschuwing sjabloonvariabele: 'dict object' heeft geen attribuut..."_
 
-Dit kan gebeuren wanneer je een upgrade uitvoert vanaf een eerdere EMS-ESP-versie en sommige namen van entiteiten kunnen zijn veranderd. Gebruik een tool zoals MQTTExplorer om alle `homeassistant/sensor/ems-esp/*` en `homeassistant/*/ems-esp/*` onderwerpen van je MQTT broker te verwijderen en herstart EMS-ESP.
+Dit kan gebeuren wanneer je een upgrade uitvoert vanaf een eerdere EMS-ESP-versie en sommige namen van entiteiten voor apparaten kunnen zijn veranderd. Gebruik een tool zoals MQTTExplorer om alle `homeassistant/sensor/ems-esp/*` en `homeassistant/*/ems-esp/*` topics van je MQTT broker te verwijderen en herstart EMS-ESP.
 
 ### HA heeft dubbele entiteiten, voorafgegaan door ##_2
 
-Zie de oplossing van swa72 [here](https://github.com/swa72/home-assistant/blob/main/README-mqtt.md).
+Zie swa72's fix [here](https://github.com/swa72/home-assistant/blob/main/README-mqtt.md).
 
 ### HA heeft de namen van mijn entiteiten verknoeid
 
-Dit gebeurt wanneer HA wijzigingen aanbrengt in MQTT Discovery. Er is een handige tool genaamd [homeassistant-entity-renamer](https://github.com/saladpanda/homeassistant-entity-renamer) die je kan helpen dit op te lossen.
+Dit gebeurt wanneer HA wijzigingen aanbrengt in MQTT Discovery. Er is een handig hulpprogramma genaamd [homeassistant-entity-renamer](https://github.com/saladpanda/homeassistant-entity-renamer) dat je kan helpen dit te herstellen.
 
 ## Specifieke EMS-instellingen
 
