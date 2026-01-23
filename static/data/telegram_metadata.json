@@ -114,9 +114,9 @@
     "name": "System error history",
     "usedIn": "Various controllers, thermostats and boilers",
     "description": "Hold the history of errors. 0x00C0 holds the first 10 error messages and 0x00C1 the next 10. Error #1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0012 and 0x0013",
-    "class": "monitor",
+    "class": "Monitor",
     "emsCategory": "EMS2.0",
-    "distribution": "unicast-on-request",
+    "distribution": "UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
@@ -124,9 +124,9 @@
     "name": "Local device error history",
     "usedIn": "Various controllers, thermostats and boilers",
     "description": "Hold the history of errors. Each device has it's own list of own errors. Error 1 is the most recent one. Going down the list the errors get older. Older systems use telegrams 0x0010 and 0x0011.",
-    "class": "monitor",
+    "class": "Monitor",
     "emsCategory": "EMS2.0",
-    "distribution": "unicast-on-request",
+    "distribution": "UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
@@ -470,6 +470,26 @@
     "class" : "Monitor",
     "emsCategory" : "EMS2.0",
     "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 10s; timeout = 240s, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x00E5" : {
+    "name" : "Source Sink Interface HMI SLOW",
+    "usedIn" : "tbd",
+    "description" : "The source to HMI interface informs the HMI about the status of the source that can be displayed on an HMI.  **Note: Distribution** This data type is sent with broadcast periodically every 1 minute and if some of the bus variables have been changed. These variables are offset 0-3 and offset 8-9 and offset 26.",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x00E6" : {
+    "name" : "NSC CU Interface CU Parameters",
+    "usedIn" : "tbd",
+    "description" : "This block contains parameters to configure the source. The default values of the single bus variables are appliance specific.",
+    "class" : "Parameter",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
     "notes" : "",
     "type" : "info"
   }
