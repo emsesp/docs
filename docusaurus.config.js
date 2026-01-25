@@ -79,13 +79,6 @@ const config = {
       },
     },
     {
-      tagName: 'link',
-      attributes: {
-        rel: 'canonical',
-        href: 'https://emsesp.org',
-      },
-    },
-    {
       tagName: 'meta',
       attributes: {
         name: 'google-site-verification',
