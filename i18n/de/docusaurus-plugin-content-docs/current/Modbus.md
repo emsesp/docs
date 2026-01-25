@@ -29,7 +29,7 @@ Siehe [Entity/Register Mapping](Modbus-Entity-Registers.md) für eine Liste alle
 
     - Die Tabelle [Server IDs](Modbus-Server-IDs.md) gibt an, dass die Gerätekennung eines *Thermostaten* `6` ist. Daher muss der Kunde in allen Anfragen die Gerätekennung `6` angeben.
     - Tabelle [Register Blocks](Modbus-Register-Blocks.md) zeigt, dass der Offset für HC2 2000 beträgt.
-    - Die Zeile *targetflowtemp* in der Tabelle [Entity/Register Mapping for thermostat RC310](http://localhost:8000/docs/Modbus-Entity-Registers/#rc300rc310moduline-30001010hcw400sense-iihpc410) enthält den Registeroffset 18, die Registeranzahl 1 und den Skalierungsfaktor 1. Tipp: Klicken Sie auf eine Spaltenüberschrift, um die Tabelle zu sortieren, z.B. nach Entitätskurznamen.
+    - Die Zeile *targetflowtemp* in Tabelle [Entity/Register Mapping for thermostat RC310](Modbus-Entity-Registers.md). Suchen Sie nach "RC3*0, Moduline 3000/1010H, CW400, Sense II, HPC410", wo Registeroffset 18, Registeranzahl 1 und Skalierungsfaktor 1 aufgeführt sind. Tipp: Klicken Sie auf eine Spaltenüberschrift, um die Tabelle zu sortieren, z. B. nach den Kurznamen der Entitäten.
 
     Der endgültige Register-Offset für die Soll-Vorlauftemperatur in hc2 ist also 2000 + 18 = 2018. Wir müssen ein Register mit dem Offset 2018 vom Server mit der Unit ID 6 lesen und das Ergebnis mit dem Skalierungsfaktor multiplizieren, der in diesem Fall 1 ist.
 
@@ -70,5 +70,6 @@ Nachdem die angepasste `modbus_entity_parameters.hpp`-Datei und die Dokumentatio
 
 :::note
 
-    Die Größe von String-Entities ist dem EMS-ESP zur Laufzeit nicht bekannt. Wenn Sie also eine neue String-Entität hinzufügen, müssen Sie auch die Größe des String-Feldes zur Variablen `string_sizes` in `scripts/update_modbus_registers.py` hinzufügen, die die Kurznamen der Entitäten auf die String-Größen abbildet.
+    Die Größe von String-Entities ist dem EMS-ESP zur Laufzeit nicht bekannt. Wenn Sie also eine neue String-Entität hinzufügen, müssen Sie auch die Größe des String-Feldes zur Variable `string_sizes` in `scripts/update_modbus_registers.py` hinzufügen, die die Kurznamen der Entitäten auf die String-Größen abbildet.
+
 :::

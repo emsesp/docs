@@ -29,7 +29,7 @@ Zie [Entity/Register Mapping](Modbus-Entity-Registers.md) voor een lijst van all
 
     - Tabel [Server IDs](Modbus-Server-IDs.md) geeft aan dat de unit identifier van een *thermostaat* apparaat `6` is. De client moet dus de unit identifier `6` opgeven in alle verzoeken.
     - Tabel [Register Blocks](Modbus-Register-Blocks.md) laat zien dat de offset voor HC2 2000 is.
-    - De rij *targetflowtemp* in tabel [Entity/Register Mapping for thermostat RC310](http://localhost:8000/docs/Modbus-Entity-Registers/#rc300rc310moduline-30001010hcw400sense-iihpc410) vermeldt register offset 18, register count 1 en schaalfactor 1. Tip: klik op een kolomkop om de tabel te sorteren, bijvoorbeeld op korte entiteitnamen.
+    - De rij *targetflowtemp* in tabel [Entity/Register Mapping for thermostat RC310](Modbus-Entity-Registers.md). Zoek naar "RC3*0, Moduline 3000/1010H, CW400, Sense II, HPC410" waar register offset 18, register count 1 en schaalfactor 1 staan. Tip: klik op een kolomkop om de tabel te sorteren, bijvoorbeeld op korte entiteitnamen.
 
     Dus de uiteindelijke registeroffset voor de gewenste aanvoertemperatuur in hc2 is 2000 + 18 = 2018. We moeten één register op offset 2018 uitlezen van het basisstation met unit ID 6 en het resultaat vermenigvuldigen met de schaalfactor die in dit geval 1 is.
 
@@ -71,4 +71,5 @@ Nadat het aangepaste `modbus_entity_parameters.hpp` bestand en de documentatie (
 :::note
 
     De grootte van string-entiteiten is niet bekend bij EMS-ESP tijdens runtime. Dus als je een nieuwe stringentiteit toevoegt, moet je ook de grootte van het stringveld toevoegen aan variabele `string_sizes` in `scripts/update_modbus_registers.py`, die korte entiteitnamen koppelt aan stringgroottes.
+
 :::
