@@ -1,6 +1,7 @@
 ---
 id: Modbus
 ---
+
 # Modbus
 
 The Modbus connector allows to read and write entities using the Modbus/TCP protocol. See [Settings](Modbus-Settings.md)
@@ -32,15 +33,13 @@ factors.
 
 :::tip
 
-    A Modbus client wants to read the target flow temperature of the second heating circuit (hc2) of a thermostat
-    of type RC310 connected to the EMS bus.
+    A Modbus client wants to read the target flow temperature of the second heating circuit (hc2) of a thermostat of type RC310 connected to the EMS bus.
 
     - Table [Server IDs](Modbus-Server-IDs.md) indicates that the unit identifier of a *thermostat* device
       is `6`. So the client needs to specify the unit identifier `6` in all requests.
     - Table [Register Blocks](Modbus-Register-Blocks.md) shows that the offset for HC2 is 2000.
-    - The row *targetflowtemp* in table [Entity/Register Mapping for thermostat RC310](http://localhost:8000/docs/Modbus-Entity-Registers/#rc300rc310moduline-30001010hcw400sense-iihpc410)
-      lists register offset 18, register count 1 and scale factor 1. Hint: click a column header to sort the table,
-      e.g. by entity shortnames.
+    - The row *targetflowtemp* in table [Entity/Register Mapping for thermostat RC310](Modbus-Entity-Registers.md). Look for "RC3*0, Moduline 3000/1010H, CW400, Sense II, HPC410"
+      where it lists register offset 18, register count 1 and scale factor 1. Hint: click a column header to sort the table, e.g. by entity shortnames.
 
     So the final register offset for the target flow temperature in hc2 is 2000 + 18 = 2018. We need to read one
     register at offset 2018 from the server with unit ID 6 and multiply the result by the scale factor which in this
@@ -89,4 +88,5 @@ After the adjusted `modbus_entity_parameters.hpp` file is updated as well as the
 
     The size of string entities is not known to EMS-ESP at runtime. So in case you add a new string entity you must
     also add the size of the string field to variable `string_sizes` in `scripts/update_modbus_registers.py` which maps entity short names to string sizes.
+
 :::
