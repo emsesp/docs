@@ -129,11 +129,11 @@ const config = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           // SEO: Add edit URLs for better credibility
-          editUrl: ({locale, docPath}) => {
+          editUrl: ({ locale, docPath }) => {
             if (locale === 'en') {
-              return `https://github.com/emsesp/docs/edit/main/docs/${docPath}`;
+              return `https://github.com/emsesp/docs/edit/main/docs/${docPath}`
             }
-            return `https://github.com/emsesp/docs/edit/main/i18n/${locale}/docusaurus-plugin-content-docs/current/${docPath}`;
+            return `https://github.com/emsesp/docs/edit/main/i18n/${locale}/docusaurus-plugin-content-docs/current/${docPath}`
           },
           // SEO: Breadcrumbs for better navigation
           breadcrumbs: true,
@@ -405,7 +405,7 @@ const config = {
             'aria-label': 'GitHub repository',
           },
           {
-            href: 'https://discord.gg/3J3GgnzpyT',
+            href: 'https://discord.gg/GP9DPSgeJq',
             position: 'right',
             className: 'header-discord-link',
             'aria-label': 'Discord server',
