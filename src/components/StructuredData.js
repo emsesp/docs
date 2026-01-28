@@ -18,7 +18,7 @@ export default function StructuredData() {
         },
         sameAs: [
           'https://github.com/emsesp/EMS-ESP32',
-          'https://discord.gg/3J3GgnzpyT',
+          'https://discord.gg/GP9DPSgeJq',
         ],
         description:
           'Open-source firmware for ESP32 to communicate with EMS heating appliances',

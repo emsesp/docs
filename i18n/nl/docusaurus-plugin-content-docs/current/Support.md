@@ -8,7 +8,7 @@ Als u op zoek bent naar EMS-ESP-ondersteuning, een vraag hebt of een suggestie d
 
 - Als je een BBQKees gatewaykaart gebruikt en problemen hebt met het aansluiten, ga dan eerst naar [BBQKees' EMS Gateway Documentation](https://bbqkees-electronics.nl/wiki/).
 - Kijk in het gedeelte [Troubleshooting](Troubleshooting.md) voor oplossingen voor veelvoorkomende problemen.
-- Probeer de **EMS-ESP Community** op [Discord](https://discord.gg/3J3GgnzpyT). Dit is een goede plek om algemene vragen te stellen en te chatten met andere gebruikers. Je hebt hier meer kans op snelle reacties.
+- Probeer de **EMS-ESP Community** op [Discord](https://discord.gg/GP9DPSgeJq). Dit is een goede plek om algemene vragen te stellen en te chatten met andere gebruikers. Je hebt hier meer kans op snelle reacties.
 - Doorzoek bestaande **[GitHub issues](https://github.com/emsesp/EMS-ESP32/issues)**, zowel open als gesloten, omdat uw probleem mogelijk al is opgelost.
 - **Zoek** in de [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) want misschien vind je een antwoord op je vraag.
 - Als laatste redmiddel, **maak** een [Problem Report](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) aan op GitHub volgens de onderstaande richtlijnen.

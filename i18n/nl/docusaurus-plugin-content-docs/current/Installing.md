@@ -60,7 +60,7 @@ Je kunt ze vinden in de [GitHub-Release-Page](https://github.com/emsesp/EMS-ESP3
 - Als je problemen ondervindt tijdens het installatieproces, raadpleeg dan de [Troubleshooting](Troubleshooting.md).
 - Als je een BBQKees Electronics EMS gateway board gebruikt en vragen hebt over de connectiviteit, raadpleeg dan de [EMS Gateway Wiki](https://bbqkees-electronics.nl/wiki/).
 - Misschien staat je probleem al vermeld in de [FAQ](FAQ.md).
-- Kom in contact met de EMS-ESP-community via ons kanaal [Discord](https://discord.gg/3J3GgnzpyT). Dit is een goede plek om algemene vragen te stellen en te chatten met andere gebruikers. Je hebt hier meer kans op snelle reacties.
+- Kom in contact met de EMS-ESP-community via ons kanaal [Discord](https://discord.gg/GP9DPSgeJq). Dit is een goede plek om algemene vragen te stellen en te chatten met andere gebruikers. Je hebt hier meer kans op snelle reacties.
 - Zoek in bestaande open en gesloten [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) en [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) omdat uw probleem mogelijk al is opgelost, misschien in een latere versie.
 - Maak een [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) aan op het EMS-ESP-project. Zorg ervoor dat u de vereiste ondersteuningsinformatie vermeldt, zodat het probleem zo snel mogelijk kan worden opgelost.
 - Ga naar de pagina [Getting Support](Support.md) voor meer informatie.

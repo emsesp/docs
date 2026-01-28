@@ -61,7 +61,7 @@ You can optionally upload them **before** the bin-image-file using the EMS-ESP-w
 - If you run into issues during the installation process, please refer to the [Troubleshooting](Troubleshooting.md).
 - If you're using a BBQKees Electronics EMS gateway board and have connectivity questions, refer to the [EMS Gateway Wiki](https://bbqkees-electronics.nl/wiki/).
 - Maybe your problem is already listed in the [FAQ](FAQ.md).
-- Get in touch with the EMS-ESP community via our [Discord](https://discord.gg/3J3GgnzpyT) channel. This is a good place for asking general questions and chatting with other users. You have better chances to getting fast responses here.
+- Get in touch with the EMS-ESP community via our [Discord](https://discord.gg/GP9DPSgeJq) channel. This is a good place for asking general questions and chatting with other users. You have better chances to getting fast responses here.
 - Search in existing open and closed [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) and [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) as your issue may already be addressed, perhaps in a later version.
 - Create a [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) on the EMS-ESP project. Do make sure you include the required Support Information so the issue can be addressed as quickly as possible.
 - Go to the [Getting Support](Support.md) page for further information.

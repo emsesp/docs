@@ -60,7 +60,7 @@ Sie können optional mit dem EMS-ESP-Web-Installer **vor** der bin-image-Datei h
 - Wenn Sie während der Installation auf Probleme stoßen, lesen Sie bitte den [Troubleshooting](Troubleshooting.md).
 - Wenn Sie eine BBQKees Electronics EMS-Gateway-Platine verwenden und Fragen zur Konnektivität haben, lesen Sie den [EMS Gateway Wiki](https://bbqkees-electronics.nl/wiki/).
 - Vielleicht ist Ihr Problem bereits im [FAQ](FAQ.md) aufgeführt.
-- Treten Sie mit der EMS-ESP-Community über unseren [Discord](https://discord.gg/3J3GgnzpyT)-Kanal in Kontakt. Dies ist ein guter Ort, um allgemeine Fragen zu stellen und mit anderen Benutzern zu chatten. Hier haben Sie bessere Chancen, schnelle Antworten zu erhalten.
+- Treten Sie mit der EMS-ESP-Community über unseren [Discord](https://discord.gg/GP9DPSgeJq)-Kanal in Kontakt. Dies ist ein guter Ort, um allgemeine Fragen zu stellen und mit anderen Benutzern zu chatten. Hier haben Sie bessere Chancen, schnelle Antworten zu erhalten.
 - Suchen Sie in den bestehenden offenen und geschlossenen [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) und [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions), da Ihr Problem möglicherweise bereits behandelt wird, vielleicht in einer späteren Version.
 - Erstellen Sie ein [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) im EMS-ESP-Projekt. Stellen Sie sicher, dass Sie die erforderlichen Support-Informationen angeben, damit das Problem so schnell wie möglich behoben werden kann.
 - Weitere Informationen finden Sie auf der Seite [Getting Support](Support.md).
