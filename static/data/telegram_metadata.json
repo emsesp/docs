@@ -502,5 +502,15 @@
     "distribution" : "BROADCAST-ON-CHANGE",
     "notes" : "",
     "type" : "info"
+  },
+  "0x02AF-0x02B6" : {
+    "name" : "NSC Controller Variables to configure Weather Depended Control function for HCn",
+    "usedIn" : "tbd",
+    "description" : "NSC Controller Variables to configure WDC function for HC1, HC2, ... HC8",
+    "class" : "Parameter",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }
