@@ -1520,3 +1520,4 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x00E6,36,Auto filling heating system type,0,2,1,enum,"Type of the heating system (in terms of water content) so that the control unit can derive the allowed number of re-fills., SMALL = 0, MEDIUM = 1, LARGE = 2"
 0x00E6,37,Filling valve present,0,1,1,enum,"Filling valve controlled by the heating appliance control unit present., NO = 0, YES = 1"
 0x00E6,38,Manual filling process,0,1,1,enum,"NO = 0, YES = 1"
+0x04B4,0,LEH changed notification,0,170,1,enum,"- 0 = idle, no change in LEH (telegram 0x00C6 or telegram 0x00C7)  - 170 = Local Error History has changed, Error Active"

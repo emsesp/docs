@@ -133,10 +133,10 @@
   "0x00C6": {
     "name": "Local heat pump error history",
     "usedIn": "heat pump (boiler)",
-    "description": "Hold the history of errors. Error 1 is the most recent one. Going down the list the errors get older. This list is the same as 0x00C2, but has a unique identified at the beginning of each error. This list has 10 entries and is continued in 0x00C7. Older systems use telegrams 0x0010 and 0x0011.",
-    "class": "monitor",
+    "description": "Hold the history of errors. Error 1 is the most recent one. Going down the list the errors get older. This list is the same as 0x00C2, but has a unique identified at the beginning of each error. This list has 10 entries and is continued in 0x00C7. Older systems use telegrams 0x0010 and 0x0011. Heat pumps support the telegram 0x04B4, where a change of the error history is annouced (e.g. new error occurred)",
+    "class": "Monitor",
     "emsCategory": "EMS2.0",
-    "distribution": "unicast-on-request",
+    "distribution": "UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
@@ -144,9 +144,9 @@
     "name": "Local heat pump error history",
     "usedIn": "heat pump (boiler)",
     "description": "This list is the continuation of 0x00C6. Here are the errors 11 ... 20 stored. Older systems use telegrams 0x0010 and 0x0011.",
-    "class": "monitor",
+    "class": "Monitor",
     "emsCategory": "EMS2.0",
-    "distribution": "unicast-on-request",
+    "distribution": "UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
@@ -490,6 +490,16 @@
     "class" : "Parameter",
     "emsCategory" : "EMS2.0",
     "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x04B4" : {
+    "name" : "CUHP LocalErrorHistory Change Notification",
+    "usedIn" : "tbd",
+    "description" : "When the local error history 0x00C6/C7 changes, the update will be annouced through this telegram. 0x00C6/C7 are only unicast-read-request, while this telegram is broadcasted",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE",
     "notes" : "",
     "type" : "info"
   }
