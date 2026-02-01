@@ -1,5 +1,7 @@
 ---
 id: IOBroker
+title: IOBroker Integration
+description: Connect EMS-ESP to IOBroker using the dedicated ioBroker.ems-esp adapter
 ---
 # IOBroker
 

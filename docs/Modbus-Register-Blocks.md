@@ -1,5 +1,7 @@
 ---
 id: Modbus-Register-Blocks
+title: Modbus Register Blocks
+description: Entity tag to Modbus register block offset mapping reference
 ---
 # Modbus Register Blocks
 

@@ -1,5 +1,7 @@
 ---
 id: Loxone
+title: Loxone Integration
+description: Integrate EMS-ESP with Loxone using REST API or MQTT via Loxberry
 ---
 # Loxone
 

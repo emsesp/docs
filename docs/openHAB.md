@@ -1,5 +1,7 @@
 ---
 id: openHAB
+title: openHAB Integration
+description: Integrate EMS-ESP with openHAB using MQTT Discovery or direct MQTT topics
 ---
 # openHAB
 

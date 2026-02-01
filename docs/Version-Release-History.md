@@ -1,5 +1,7 @@
 ---
 id: Version-Release-History
+title: Release History
+description: Complete changelog of EMS-ESP major version releases and feature updates
 ---
 # Release History
 

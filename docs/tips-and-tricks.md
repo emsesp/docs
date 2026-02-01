@@ -1,5 +1,7 @@
 ---
 id: tips-and-tricks
+title: Tips and Tricks
+description: Community-contributed tips, tricks, and code snippets for advanced EMS-ESP usage and automation
 ---
 # Tips and Tricks
 
