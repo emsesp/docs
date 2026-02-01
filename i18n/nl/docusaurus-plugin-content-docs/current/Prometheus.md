@@ -1,5 +1,7 @@
 ---
 id: Prometheus
+title: Prometheus Monitoring
+description: Export EMS-ESP metrics to Prometheus for monitoring and alerting
 ---
 
 # Prometheus

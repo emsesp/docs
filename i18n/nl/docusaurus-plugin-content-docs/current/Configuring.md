@@ -1,5 +1,7 @@
 ---
 id: Configuring
+title: Configuring EMS-ESP
+description: Complete guide to configuring EMS-ESP including first-time setup, WiFi, application settings, and customization options
 ---
 
 # Configureren

@@ -1,5 +1,7 @@
 ---
 id: Support
+title: Getting Support
+description: Find help and support for EMS-ESP through Discord, GitHub, and community resources
 ---
 
 # Unterstützung erhalten

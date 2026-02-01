@@ -1,5 +1,7 @@
 ---
 id: EMS-bus
+title: The EMS Bus Explained
+description: Technical documentation of the EMS bus protocol including telegram structure and communication details
 ---
 
 # Der EMS-Bus erklärt

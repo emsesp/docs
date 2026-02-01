@@ -1,5 +1,7 @@
 ---
 id: Contributing
+title: Contributing to EMS-ESP
+description: Learn how to contribute to EMS-ESP through documentation, testing, code, and device support
 ---
 
 # Bijdragen

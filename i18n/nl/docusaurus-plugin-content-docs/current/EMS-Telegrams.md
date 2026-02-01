@@ -1,6 +1,7 @@
 ---
 id: EMS-Telegrams
 title: EMS Telegrams
+description: Complete reference of all EMS telegram types supported by EMS-ESP with their type IDs and descriptions
 ---
 
 import TelegramsTable from '@site/src/components/TelegramsTable';

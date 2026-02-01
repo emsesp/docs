@@ -24,14 +24,6 @@ const config = {
     {
       tagName: 'meta',
       attributes: {
-        name: 'description',
-        content:
-          'EMS-ESP is an open-source firmware for ESP32 to communicate with EMS (Energy Management System) heating appliances from Bosch, Buderus, Nefit, Junkers, and Worcester.',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
         name: 'keywords',
         content:
           'EMS-ESP, ESP32, EMS bus, Bosch, Buderus, Nefit, Junkers, Worcester, heating control, home automation, MQTT, Home Assistant, IoT, thermostat, boiler',

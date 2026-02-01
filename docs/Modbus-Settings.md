@@ -1,5 +1,7 @@
 ---
 id: Modbus-Settings
+title: Modbus Settings
+description: Configuration options for enabling and customizing EMS-ESP Modbus/TCP functionality
 ---
 # Modbus Settings
 

@@ -1,5 +1,7 @@
 ---
 id: Controllers
+title: Supported Controller Modules
+description: List of supported EMS controller modules including BC10, CM10, and other control units
 ---
 # Controller Modules
 

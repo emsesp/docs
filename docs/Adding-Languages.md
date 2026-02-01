@@ -1,5 +1,7 @@
 ---
 id: Adding-Languages
+title: Adding Languages
+description: Guide to adding new language translations to EMS-ESP WebUI and documentation
 ---
 # Adding Languages
 

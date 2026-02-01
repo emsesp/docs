@@ -1,5 +1,7 @@
 ---
 id: Domoticz
+title: Domoticz Integration
+description: Connect EMS-ESP to Domoticz using MQTT Discovery protocol for automatic entity setup
 ---
 
 # Domoticz

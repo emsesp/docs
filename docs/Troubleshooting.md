@@ -1,5 +1,7 @@
 ---
 id: Troubleshooting
+title: Troubleshooting Guide
+description: Solutions to common EMS-ESP problems including installation, connection, and configuration issues
 ---
 # Troubleshooting
 

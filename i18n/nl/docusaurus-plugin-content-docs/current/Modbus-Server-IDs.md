@@ -1,5 +1,7 @@
 ---
 id: Modbus-Server-IDs
+title: Modbus Server IDs
+description: Reference table of Modbus unit identifiers for EMS device types
 ---
 
 # Modbus server-ID's

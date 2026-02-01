@@ -1,5 +1,7 @@
 ---
 id: Modbus-System-Server
+title: Modbus System Server
+description: EMS-ESP system information accessible via Modbus registers including device count and network status
 ---
 
 # Modbus System Server

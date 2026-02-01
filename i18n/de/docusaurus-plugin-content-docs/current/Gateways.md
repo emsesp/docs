@@ -1,5 +1,7 @@
 ---
 id: Gateways
+title: Supported Gateway Modules
+description: List of supported EMS gateway modules including Buderus KM200 and communication modules
 ---
 
 # Gateway-Module

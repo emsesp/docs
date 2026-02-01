@@ -1,5 +1,7 @@
 ---
 id: Console
+title: Console Access
+description: Access EMS-ESP console via Telnet or USB Serial for advanced monitoring and command execution
 ---
 # Console
 

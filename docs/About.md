@@ -1,6 +1,8 @@
 ---
 hide_table_of_contents: true
 id: About
+title: About EMS-ESP
+description: Learn about the EMS-ESP open-source project, its history, developers, and community
 ---
 
 # About EMS-ESP

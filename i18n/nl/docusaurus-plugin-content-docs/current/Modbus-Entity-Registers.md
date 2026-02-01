@@ -1,5 +1,7 @@
 ---
 id: Modbus-Entity-Registers
+title: Modbus Entity/Register Mapping
+description: Complete mapping reference of EMS entities to Modbus registers for all device types
 ---
 # Modbus Entity/Register Mapping
 

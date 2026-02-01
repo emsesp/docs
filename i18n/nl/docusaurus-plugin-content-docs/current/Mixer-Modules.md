@@ -1,5 +1,7 @@
 ---
 id: Mixer-Modules
+title: Supported Mixer Modules
+description: List of supported EMS mixer modules including MM10, MM50, MM100, MM200, and IPM
 ---
 
 # Mixermodules

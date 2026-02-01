@@ -1,5 +1,7 @@
 ---
 id: Heat-Pumps
+title: Supported Heat Pumps
+description: List of supported heat pump modules, heat sources, and ventilation modules from Bosch and Buderus
 ---
 # Heat Pumps
 

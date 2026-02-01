@@ -1,5 +1,7 @@
 ---
 id: Boilers
+title: Supported Boilers
+description: Complete list of supported boiler models from Bosch, Buderus, Nefit, Junkers, Sieger, and Worcester brands
 ---
 
 # Ketels

@@ -1,5 +1,7 @@
 ---
 id: Grafana
+title: Grafana Dashboards
+description: Community-created Grafana dashboards for visualizing EMS-ESP data with InfluxDB, MySQL, and other databases
 ---
 
 # Grafana
