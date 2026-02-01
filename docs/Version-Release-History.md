@@ -5,9 +5,35 @@ id: Version-Release-History
 
 This lists the Change Log for only the rolled-up major versions since v3's primary release in March 2021. For a list of all releases and their fixes, changes and new features see the [latest dev Change Log](https://github.com/emsesp/EMS-ESP32/blob/dev/CHANGELOG_LATEST.md).
 
-## 3.8.1 - 10 January 2026
+## 3.8.1 - January 11 2026
 
-## 3.8.0 - 31 December 2025
+**Added**
+
+- update time saved in nvs
+- heatpump entities [#2883](https://github.com/emsesp/EMS-ESP32/issues/2883)
+- HA input number format (mode) selectable box/slider (slider for max range 100) [#2900](https://github.com/emsesp/EMS-ESP32/discussions/2900)
+
+**Fixed**
+
+- fix EMS bus disconnected errors on some systems [#2881](https://github.com/emsesp/EMS-ESP32/issues/2881)
+- selflowtemp fix [#2876](https://github.com/emsesp/EMS-ESP32/issues/2876)
+- updated valid GPIOs for ESP32S2, ESP32S3 and ESP32 that caused custom systems to block gpios [#2887](https://github.com/emsesp/EMS-ESP32/issues/2887)
+- Junkers wwcharge offset [#2860](https://github.com/emsesp/EMS-ESP32/issues/2860)
+- fixed minflowtemp [#2890](https://github.com/emsesp/EMS-ESP32/issues/2890)
+- don't add HA uom/classes for bool values [#2885](https://github.com/emsesp/EMS-ESP32/issues/2885)
+- fixed missing progress bar on web firmware uploads
+
+**Changed**
+
+- snapshot gpios stored in temporary ram
+- GPIOs stored along with the name and reported in log if conflicting
+- free GPIOs depend on board profile [#2901](https://github.com/emsesp/EMS-ESP32/issues/2901)
+- prefer PSram for mqtt queue [#2889](https://github.com/emsesp/EMS-ESP32/issues/2889)
+- day schedule defult to all days, no day selected is not allowed
+- board profile `CUSTOM` can only be selected in developer mode
+- mqtt sends round values without decimals (`28` instead of `28.0`)
+
+## 3.8.0 - December 31 2025
 
 **Added**
 
@@ -87,7 +113,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - removed unused last topic/payload echo-check
 - added Home Assistant device details to MQTT Discovery for all devices
 
-## 3.7.2 - 22 March 2025
+## 3.7.2 - March 22 2025
 
 **Added**
 
@@ -129,7 +155,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - Version checker in WebUI improved
 - rename `remoteseltemp` to `cooltemp` [#2456](https://github.com/emsesp/EMS-ESP32/issues/2456)
 
-## 3.7.1 - 29 November 2024
+## 3.7.1 - November 29 2024
 
 **Added**
 
@@ -496,7 +522,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - HA duration class for time entities [[#822](https://github.com/emsesp/EMS-ESP32/issues/822)
 - AM200 alternative heatsource as class heatsource [[#857](https://github.com/emsesp/EMS-ESP32/issues/857)
 
-## 3.4.4 - Oct 29 2022
+## 3.4.4 - October 29 2022
 
 **Added**
 
@@ -614,7 +640,9 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - thermostat clock formate date-time: dd.mm.yyyy hh:mm
 - RC300 summermode as other thermostats `winter/summer` instead of `off/on`
 
-## 3.3.1 - Jan 20 2022
+![version340](/media/history/version340.png)
+
+## 3.3.1 - January 20 2022
 
 :::warning **BREAKING CHANGE**
 
@@ -682,7 +710,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - Layout changes in the WebUI, showing stripped table rows in Dashboard
 - Alternative font for log window [#219](https://github.com/emsesp/EMS-ESP32/issues/219)
 
-## 3.2.1 - Aug 8 2021
+## 3.2.1 - August 8 2021
 
 **Added**
 
@@ -726,7 +754,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - Updated AsyncMqttClient to 0.9.0 and ArduinoJson to 6.18.3
 - Download buttons for settings and info under the Help tab
 
-## 3.1.1 - Jun 26 2021
+## 3.1.1 - June 26 2021
 
 **Added**
 
@@ -761,7 +789,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - lowercased Flow temp in commands
 - system console commands to main
 
-## 3.0.1 - Mar 30 2021
+## 3.0.0 - March 2021
 
 **Added**
 
@@ -814,3 +842,61 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - renamed Scan Network to Scan WiFi Network
 - added version to cmd=settings
 - Allow both WiFi and Ethernet together, fall back to AP when Ethernet disconnects
+
+![version301](/media/history/version301.png)
+
+## 2.2.1 - March 2021
+
+The last version of v2 on the ESP8266
+
+## 2.0.0 - August 2020
+
+re-write of Telnet console and WebUI code
+
+## 1.9.5 - April 2020
+
+Added Solar and Mixer modules, support for HT3
+
+## 1.9.0 - September 2019
+
+New JS based WebUI
+
+![version190](/media/history/version190.png)
+
+## 1.8.0 - June 2019
+
+Heat pump support
+
+## 1.7.0 - May 2019
+
+Support for multiple thermostats
+
+## 1.6.0 - April 2019
+
+Added Solar
+
+## 1.5.0 - March 2019
+
+Added support for ESP32
+
+![version150](/media/history/version150.jpg)
+
+## 1.4.0 - February 2019
+
+Added dallas sensors. Project renamed from EMS-ESP-Boiler to EMS-ESP.
+
+## 1.3.0 - January 2019
+
+Support for EMS+
+
+## 1.1.0 - December 2018
+
+Add RC30 and RC35 thermostats
+
+## 1.0.0 - September 2018
+
+First stable release open sourced on GitHub. IT had only the MQTT and Telnet console.
+
+## 0.1.0 - August 2017
+
+First prototype based on ESP8266. The project was 5 .CPP files and only had the serial output and a basic Telnet console. The project was just called 'Boiler'.

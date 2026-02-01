@@ -13,6 +13,7 @@ const config = {
   url: 'https://emsesp.org',
   baseUrl: '/',
   onBrokenLinks: 'warn',
+  trailingSlash: false,
 
   // GitHub pages deployment config.
   organizationName: 'emsesp',
