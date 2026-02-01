@@ -1,5 +1,7 @@
 ---
 id: Commands
+title: Commands and API Reference
+description: Complete command reference for controlling EMS-ESP via Console, MQTT, and REST API
 ---
 
 # Befehle

@@ -1,5 +1,7 @@
 ---
 id: FAQ
+title: Frequently Asked Questions
+description: Common questions and answers about EMS-ESP including factory reset, EMS telegrams, and troubleshooting
 ---
 
 # FAQ

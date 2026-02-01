@@ -1,5 +1,7 @@
 ---
 id: Modbus
+title: Modbus Integration
+description: Access EMS-ESP entities using Modbus/TCP protocol for industrial automation systems
 ---
 
 # Modbus

@@ -1,5 +1,7 @@
 ---
 id: Thermostats
+title: Supported Thermostats
+description: Complete list of supported thermostat models from Bosch, Buderus, Nefit, Junkers, and Sieger brands
 ---
 
 # Thermostate

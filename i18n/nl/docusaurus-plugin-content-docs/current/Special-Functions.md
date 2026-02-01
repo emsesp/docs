@@ -1,5 +1,7 @@
 ---
 id: Special-Functions
+title: Special Functions
+description: Learn about EMS-ESP special features including shower timer, energy measurement, and calculated entities
 ---
 
 # Speciale functies

@@ -1,6 +1,7 @@
 ---
 id: All-Entities
 title: All Devices and Entities
+description: Complete database of all supported EMS devices and their entities including boilers, thermostats, heat pumps, and modules
 hide_table_of_contents: true
 ---
 

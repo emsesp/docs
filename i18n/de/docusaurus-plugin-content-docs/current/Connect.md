@@ -1,5 +1,7 @@
 ---
 id: Connect
+title: Supported Connect Modules
+description: List of supported EMS connect modules including Easy Connect and OpenTherm converters
 ---
 
 # Module verbinden

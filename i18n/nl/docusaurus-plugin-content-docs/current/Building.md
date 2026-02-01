@@ -1,5 +1,7 @@
 ---
 id: Building
+title: Building the Firmware
+description: Guide to building EMS-ESP firmware from source using PlatformIO and dev containers
 ---
 
 # De firmware bouwen

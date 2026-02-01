@@ -1,5 +1,7 @@
 ---
 id: Home-Assistant
+title: Home Assistant Integration
+description: Integrate EMS-ESP with Home Assistant using MQTT Discovery for automatic device setup and control
 ---
 
 # Home Assistent
