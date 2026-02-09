@@ -1003,8 +1003,12 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x043F,4,holiday end month,1,12,1,,
 0x043F,5,holiday end day,1,31,1,,
 0x048D,0.0,Heating circulation pump,0,1,1,bool,from source code
-0x048D,0.4,Switch valve?,0,1,1,bool,hpSwitchValve from source code
-0x048D,0.6,3way valve,0,1,1,bool,hp3wayValve from source code
+0x048D,0.1,Collector Pump / Fan,0,1,1,bool,"Says whether pump collector pump is on or off in case of a L/W heat pump or whether the fan is on or off in case of an A/W heat pump., OFF = 0, ON = 1"
+0x048D,0.2,Crankcase Heater,0,1,1,bool,"Crankcase heater on or off., OFF = 0, ON = 1"
+0x048D,0.3,Fourway Valve,0,1,1,bool,"Four-way valve is on or off., OFF = 0, ON = 1"
+0x048D,0.4,Heating Cable,0,1,1,bool,"Heating cable is on or off., OFF = 0, ON = 1"
+0x048D,0.5,Additional DHW heater,0,1,1,bool,"Additional electrical heater in DHW tank is activated or not., OFF = 0, ON = 1"
+0x048D,0.6,3way valve,0,1,1,bool,"Diverter valve is in heating or hot water position., HEATING = 0, DHW = 1"
 0x048D,0.7,VC0 valve,0,1,1,bool,VC0valve from source code
 0x048D,1.4,External input 1,0,1,1,bool,hpInput[0] from source code
 0x048D,1.5,External input 2,0,1,1,bool,hpInput[1] from source code
@@ -1020,7 +1024,10 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x048D,6,Aux heater level,0,100,1,percent,auxHeaterLevel from source code
 0x048D,7,Compressor activity,0,7,1,enum,"hpActivity from source code; 0=OFF, 1=HEATING, 2=COOLING, 3=DHW, 4=POOL, 5=POOL_HEATING, 6=DEFROST, 7=ALARM"
 0x048D,8,Aux heater status,0,7,1,enum,"0=OFF, 1=HEATING, 3=DHW, 4=POOL, 5=POOL_HEATING, 7=ALARM"
-0x048D,10-11,Compressor power,0,?,0.1,kW,hpPower from source code
+0x048D,10-11,Compressor power,0,500,0.1,kW,hpPower from source code
+0x048D,14,Compressor Injection Valve Actual,0,100,1,%,"Opening status of injection control valve at ODU"
+0x048D,15,Compressor Receiver Valve Actual,0,100,1,%,"Opening status of receiver valve"
+0x048D,16,Compressor Expansion Valve Actual,0,100,1,%,"Opening status of expansion valve"
 0x048D,17,Compressor speed,0,100,1,percent,hpCompSpd from source code
 0x04A2,0.0,HMI EVU active,0,1,1,bool,"On if any EVU function is active; FALSE = 0,TRUE = 1"
 0x04A2,0.1,HMI remote active,0,1,1,bool,"On if any external input is active; FALSE = 0,TRUE = 1"
@@ -1535,3 +1542,20 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x02AF-0x02B6,11,WDC IPFlow empOffset,0,20,1,K,""
 0x02AF-0x02B6,12,WDC IPOutdTemp,-35,20,1,°C,""
 0x02AF-0x02B6,13,WDC MinFlowTemp,20,75,1,°C,""
+0x0485,0,COOLING_HYDRAULIC_CONF,0,4,1,enum,"Value defines the hydraulic configuration for cooling., none = 0, passive_cooling_box = 1, active_cooling_box = 2, _4_way_valve = 3, active_and_passive_cooling_box = 4"
+0x0485,1,COOLING_USER_BLOCKED,0,1,1,enum,"Value says whether cooling will be completely disabled or not by the user, no = 0, yes = 1"
+0x0485,2,COOLING_FREEZE_PROTECTION_LIMIT,1,10,1,°C,"If temperature falls below this limit freeze protection starts."
+0x0485,3,ACTIVE_COOLING_FLOW_OFFSET,1,5,1,K,"Allowed offset of the flow temperture in cooling compared to set point."
+0x0485,4,COOLING_ACTIVE_COOLING_DELAY_TIME,1,12,1,h,"Delay before active cooling starts."
+0x0485,5,COOLING_FLOWSENSOR_TYPE,0,2,1,enum,"Value defines which sensor is used to measure the flow temperature in cooling operation for primary cooling., none = 0, E11_T1 = 1, E31_T1 = 2"
+0x0485,6,COOLING_SEASON_INDEPENDENT_SETPOINT,0,30,1,°C,"Allow cooling in heating season Operating range: 7-30, NO = 0"
+0x0485,7-8,COOLING_RUNNING_TIME,0,300,1,min,"Running time of cooling"
+0x0485,9-10,COOLING_PID_P,0,300,0.1,---,"P part of PID control of cooling"
+0x0485,11-12,COOLING_PID_I,5,600,1,---,"I part of PID control of cooling"
+0x0485,13,COOLING_PID_D,0,10,0.1,---,"D part of PID control of cooling"
+0x0485,14,PCS_VALVE_INVERT,0,1,1,bool,"Reverse running direction of PCS valve"
+0x0485,15-16,PCS_VALVE_PID_P,0,300,0.1,---,"P part of PID control of PCS"
+0x0485,17-18,PCS_VALVE_PID_I,5,600,1,---,"I part of PID control of PCS"
+0x0485,19,PCS_VALVE_PID_D,0,10,0.1,---,"D part of PID control of PCS"
+0x0485,20,PCS_VALVE_RUN_TIME,0,100,10,s,"Running time of PCS of valve"
+0x0485,21,COOLING_ONLY_WITH_PV,0,1,1,bool,"Allow cooling only when energy from PV is available, NO = 0, YES = 1"

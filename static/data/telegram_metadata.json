@@ -304,9 +304,9 @@
     "name": "Heat pump monitor values",
     "usedIn": "HMI800.2/Rego 3000, UI800, Logamatic BC400",
     "description": "Shows various values of the heat pump",
-    "class": "monitor",
+    "class": "Monitor",
     "emsCategory": "EMS2.0",
-    "distribution": "broadcast-on-change, unicast-on-request",
+    "distribution": "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
     "notes": "",
     "type": "info"
   },
@@ -510,6 +510,16 @@
     "class" : "Parameter",
     "emsCategory" : "EMS2.0",
     "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x0485" : {
+    "name" : "HP Cooling Configuration Parameters",
+    "usedIn" : "tbd",
+    "description" : "HP_Cooling_Configuration_Parameters",
+    "class" : "Parameter",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "UNICAST-WRITE-REQUEST, BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
     "notes" : "",
     "type" : "info"
   }
