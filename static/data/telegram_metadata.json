@@ -150,23 +150,23 @@
     "notes": "",
     "type": "info"
   },
-  "0x0165": {
+  "0x0165-0x016C": {
     "name": "HMI800 holiday mode parameters / Older Junkers heating circuit control",
     "usedIn": "Buderus/Bosch RC300, HMC310 and similar, newer Junkers controllers \"Cxyz\" (MY>2019) / older Junkers controllers \"Fxyz\" (MY<2019)",
     "description": "Up to 8 holiday periods can be defined with the above telegrams / Up to 10 heating circuits can be controller with these telegrams. 0x0165=HC1, 0x0166=HC2, ...",
     "class": "Parameter",
     "emsCategory": "EMS2.0 / EMS1.0",
-    "distribution": "broadcast-on-change, unicast-write-request, unicast-on-request",
+    "distribution": "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
     "notes": "",
     "type": "info"
   },
-  "0x016F": {
+  "0x016F-0x0178": {
     "name": "FX100 Monitor heating circuit values",
     "usedIn": "Junkers FB100/FW120 controllers",
     "description": "Junkers monitor values of heating circuit. 10 heating circuits can be monitored",
     "class": "Monitor",
     "emsCategory": "EMS1.0",
-    "distribution": "broadcast-on-change, broadcast-periodically, unicast-on-request",
+    "distribution": "BROADCAST-ON-CHANGE; distribution duration = 60s, UNICAST-ON-REQUEST, BROADCAST-PERIODICALLY",
     "notes": "",
     "type": "info"
   },
