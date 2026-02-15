@@ -526,10 +526,20 @@
   "0x00EA" : {
     "name" : "Parameters internal DHW controller",
     "usedIn" : "tbd",
-    "description" : "This data type contains the parameters related to the internal DHW controller.",
+    "description" : "This telegram contains the parameters related to the internal DHW controller.",
     "class" : "Parameter",
     "emsCategory" : "EMS2.0",
     "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x00E9" : {
+    "name" : "Internal DHW Monitor Values",
+    "usedIn" : "tbd",
+    "description" : "Status of the internal DHW controller.",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 10s; timeout = 240s, UNICAST-ON-REQUEST",
     "notes" : "",
     "type" : "info"
   }
