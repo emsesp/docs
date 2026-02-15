@@ -18,7 +18,6 @@ This is the current list of supported controller modules:
 - Controller
 - Hybrid Heatpump
 - BC40
-- BC10
 - Ecomline
 - Sense II/CS200
 - ErP
@@ -29,3 +28,4 @@ This is the current list of supported controller modules:
 - BC Base
 - Rego 3000 IVT
 - Condens 5000i
+- HMC310
