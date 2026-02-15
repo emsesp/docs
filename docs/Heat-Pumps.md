@@ -13,7 +13,7 @@ This is the current list of supported heat pumps. Heat sources and ventilation m
 - Logavent HRV176 (Ventilation module)
 - PM10 (pump)
 - CS5800i, CS6800i
-- WLW176i, WLW196i, WSW196i
+- WLWL166i, WLW176i, WLW196i, WSW196i
 - Enviline
 - Compress 6000AW
 - Hybrid 3000-7000iAW
