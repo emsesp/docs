@@ -542,5 +542,35 @@
     "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 10s; timeout = 240s, UNICAST-ON-REQUEST",
     "notes" : "",
     "type" : "info"
+  },
+  "0x00EB" : {
+    "name" : "Additional CU Parameters",
+    "usedIn" : "tbd",
+    "description" : "This block contains parameters to configure the source. This service is implemented only if required, e.g. in a heat pump.",
+    "class" : "Parameter",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x0495" : {
+    "name" : "HP Statistics Monitor",
+    "usedIn" : "tbd",
+    "description" : "Heat Pump Statistics Monitor",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x0494" : {
+    "name" : "HP Statistics Monitor",
+    "usedIn" : "tbd",
+    "description" : "Heat Pump Statistics Monitor",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }
