@@ -552,5 +552,15 @@
     "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
     "notes" : "",
     "type" : "info"
+  },
+  "0x0495" : {
+    "name" : "HP Statistics Monitor",
+    "usedIn" : "tbd",
+    "description" : "Heat Pump Statistics Monitor",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }
