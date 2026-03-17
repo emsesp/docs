@@ -29,7 +29,7 @@ Es gibt 3 Methoden, mit denen Befehle aufgerufen werden können:
 
         * als wahrer Wert, "TRUE", "ja", wahr, "wahr", "ein", 1 * als falscher Wert, "FALSE", "nein", falsch, "falsch", "aus", 0
 
-    - Das Bearer Access Token (JWT) wird zur Authentifizierung von HTTP-Anfragen verwendet und kann von der Seite `Settings->Security->Manage Users` der WebUI abgerufen werden, indem man auf das Schlüsselsymbol für den Benutzer klickt, der über Administratorrechte verfügt (`is Admin`-Set). Das Token wird aus einer Kombination des Benutzernamens und eines geheimen Schlüssels generiert, der dem Superuser-Passwort (su) entspricht, das auf der Seite `Settings->Security->Security Settings` der WebUI zu finden ist. Diese 152 Zeichen lange Zeichenkette muss als `"Authorization: Bearer {ACCESS_TOKEN}"` in den HTTP-Header aufgenommen werden. Beachten Sie, dass das Token kein Verfallsdatum hat.
+    - Das Bearer Access Token (JWT) wird zur Authentifizierung von HTTP-Anfragen verwendet und kann von der Seite `Settings->Security->Manage Users` der WebUI abgerufen werden, indem man auf das Schlüsselsymbol für den Benutzer klickt, der über Administratorrechte verfügt (`is Admin`-Set). Das Token wird aus einer Kombination des Benutzernamens und eines geheimen Schlüssels generiert, der dem Superuser-Passwort (su) entspricht, das auf der Seite `Settings->Security->Security Settings` der WebUI zu finden ist. Diese Zeichenkette muss als `"Authorization: Bearer {ACCESS_TOKEN}"` in den HTTP-Header aufgenommen werden. Beachten Sie, dass das Token kein Verfallsdatum hat.
 
 :::
 
@@ -50,7 +50,7 @@ Zu beachtende Punkte:
 - Die REST-API folgt dem [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
 - Der URL-Pfad beginnt immer mit `http://<hostname>/api/`
 - `<hostname>` ist entweder eine IP-Adresse oder der mDNS-Name, der standardmäßig `ems-esp.local` lautet
-- Für einige Befehle ist eine Sicherheitsauthentifizierung erforderlich, sofern sie nicht über eine EMS-ESP-Einstellung deaktiviert wurde. Die Authentifizierung erfolgt in Form eines Zugriffstokens, der über die WebUI unter Sicherheit->Benutzer verwalten und dann durch Anklicken der Schaltfläche "Schlüssel" für den Admin-Benutzer generiert wird. Die 152 Zeichen lange Zeichenfolge muss in den HTTP-Header wie `"Authorization: Bearer {ACCESS_TOKEN}"` aufgenommen werden. Die Token haben kein Verfallsdatum
+- Für einige Befehle ist eine Sicherheitsauthentifizierung erforderlich, sofern sie nicht über eine EMS-ESP-Einstellung deaktiviert wurde. Die Authentifizierung erfolgt in Form eines Zugriffstokens, der über die WebUI unter Sicherheit->Benutzer verwalten und dann durch Anklicken der Schaltfläche "Schlüssel" für den Admin-Benutzer generiert wird. Die Zeichenfolge muss in den HTTP-Header wie `"Authorization: Bearer {ACCESS_TOKEN}"` aufgenommen werden. Die Token haben kein Verfallsdatum
 - Bei HTTP-POST-Befehlen kann ein HTTP-Body erforderlich sein. Dieser kann entweder in Form von einfachem Text oder als JSON-Objekt `<data>` vorliegen, der Content-Type-Header muss in beiden Fällen auf `application/json` gesetzt werden.
 - HTTPS mit selbstsignierten Zertifikaten wird noch nicht unterstützt
 - Für eine vollständige Liste der Befehle verwenden Sie `http://<hostname>/api/<device>/commands`

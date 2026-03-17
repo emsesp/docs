@@ -131,7 +131,7 @@ Frame label="Heating" {
 
 ### UI based approach
 
-It is also possible to use the UI of openHab and the integrated Code-Editor to implement the integration of EMS-ESP. Therefor several steps have to be done in sequence.
+It is also possible to use the UI of openHab and the integrated Code-Editor to implement the integration of EMS-ESP. Therefore several steps have to be done in sequence.
 
 1. Create a MQTT Broker by (Things -> (+) Icon -> MQTT Binding -> MQTT Broker)
 2. Edit the created MQTT Broker and paste the code below. Change attributes where needed or change them in the UI. (Things -> -Your Created MQTT Broker- -> Code-Tab)

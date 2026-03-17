@@ -29,7 +29,7 @@ Er zijn 3 methoden waarop commando's kunnen worden aangeroepen:
 
         * als een True waarde, "TRUE", "ja", true, "true", "aan", 1 * als een False waarde, "FALSE", "nee", false, "false", "uit", 0
 
-    - Het bearer Access Token (JWT) wordt gebruikt om HTTP-verzoeken te verifiëren en kan worden verkregen via de `Settings->Security->Manage Users`-pagina van de WebUI en vervolgens te klikken op het sleutelpictogram voor de gebruiker die beheerdersrechten heeft (`is Admin` ingesteld). Het token wordt gegenereerd met een combinatie van de gebruikersnaam en een geheime sleutel die het supergebruikerswachtwoord (su) is dat te vinden is op de `Settings->Security->Security Settings`-pagina van de WebUI. Deze 152 tekens lange string moet worden opgenomen in de HTTP-header als `"Authorization: Bearer {ACCESS_TOKEN}"`. Het token heeft geen vervaldatum.
+    - Het bearer Access Token (JWT) wordt gebruikt om HTTP-verzoeken te verifiëren en kan worden verkregen via de `Settings->Security->Manage Users`-pagina van de WebUI en vervolgens te klikken op het sleutelpictogram voor de gebruiker die beheerdersrechten heeft (`is Admin` ingesteld). Het token wordt gegenereerd met een combinatie van de gebruikersnaam en een geheime sleutel die het supergebruikerswachtwoord (su) is dat te vinden is op de `Settings->Security->Security Settings`-pagina van de WebUI. Deze string moet worden opgenomen in de HTTP-header als `"Authorization: Bearer {ACCESS_TOKEN}"`. Het token heeft geen vervaldatum.
 
 :::
 
@@ -50,7 +50,7 @@ Dingen om op te merken:
 - De REST API volgt de [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
 - Het URL-pad begint altijd met `http://<hostname>/api/`
 - `<hostname>` is een IP-adres of de mDNS-naam, die standaard `ems-esp.local` is
-- Sommige commando's vereisen beveiligingsauthenticatie, tenzij deze is uitgeschakeld via een EMS-ESP-instelling. De authenticatie is in de vorm van een Access Token die wordt gegenereerd via de WebUI's Security->Manage Users en dan te klikken op de key knop voor de admin gebruiker. De 152 tekens lange string moet worden opgenomen in de HTTP-header zoals `"Authorization: Bearer {ACCESS_TOKEN}"`. De tokens hebben geen vervaldatum
+- Sommige commando's vereisen beveiligingsauthenticatie, tenzij deze is uitgeschakeld via een EMS-ESP-instelling. De authenticatie is in de vorm van een Access Token die wordt gegenereerd via de WebUI's Security->Manage Users en dan te klikken op de key knop voor de admin gebruiker. De string moet worden opgenomen in de HTTP-header zoals `"Authorization: Bearer {ACCESS_TOKEN}"`. De tokens hebben geen vervaldatum
 - Bij HTTP POST commando's kan een HTTP body nodig zijn. Dit kan in de vorm van platte tekst of als een JSON object `<data>`, de Content-Type-header moet in beide gevallen worden ingesteld op `application/json`.
 - HTTPS met zelfondertekende certificaten worden nog niet ondersteund
 - Gebruik `http://<hostname>/api/<device>/commands` voor een volledige lijst met opdrachten
