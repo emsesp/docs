@@ -31,7 +31,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - GPIOs stored along with the name and reported in log if conflicting
 - free GPIOs depend on board profile [#2901](https://github.com/emsesp/EMS-ESP32/issues/2901)
 - prefer PSram for mqtt queue [#2889](https://github.com/emsesp/EMS-ESP32/issues/2889)
-- day schedule defult to all days, no day selected is not allowed
+- day schedule default to all days, no day selected is not allowed
 - board profile `CUSTOM` can only be selected in developer mode
 - mqtt sends round values without decimals (`28` instead of `28.0`)
 
