@@ -42,28 +42,28 @@ Dies ist die aktuelle Liste der unterstützten Heizkessel von Marken wie Buderus
 :::info Die nachstehenden Kesselbefehle variieren je nach Kessel type/brand und Systemkonfiguration. Einige Befehle funktionieren nicht, weil sie vom Regler oder Thermostat überschrieben werden. In diesem Fall gibt es Thermostatbefehle für diese Einstellung.
 :::
 
-:::warning diese Liste ist nicht vollständig und kann sich von Version zu Version ändern
+:::warning Diese Liste ist nicht vollständig und kann sich von Version zu Version ändern.
 :::
 
 | `command` | `data` | `id` | `comments` |
-| ------------------ | ------------------------------------------- | --- | ---------------------------------------------------------------------------------- |
+| -------------------- | ------------------------------------------- | ---- | ---------------------------------------------------------------------------------- |
 | `comfort` | `<hot \|eco \| intelligent>` | | |
 | `flowtemp` | `<degrees>` | | Begrenzt auf Heiztemperatur, eingestellt durch Thermostat, falls vorhanden |
-| `wwsettemp` | `<degrees>` | Nur wenn der Thermostat es nicht schafft |
+| `dhw.settemp` | `<degrees>` | Nur wenn der Thermostat es nicht schafft |
 | `boilhyston` | `<degrees>` | | Brenner unterhalb der Vorlauftemperatur starten (negativer Wert), erlaubter Bereich hängt vom Kesseltyp ab |
 | `boilhystoff` | `<degrees>` | | Brenner oberhalb der Vorlauftemperatur stoppen (positiver Wert), erlaubter Bereich hängt vom Kesseltyp ab |
 | `burnperiod` | `<minutes>` | | |
 | `burnminpower` | `<%>` | | Nur für modulierte Brenner änderbar |
 | `burnmaxpower` | `<%>` | | Nur für modulierte Brenner änderbar |
 | `pumpdelay` | `<minutes>` | | |
-| `wwactivated` | `<off \| on>` | | |
-| `wwtapactivated` | `<off \| on>` | | Sonderfunktion im Kesseltestmodus |
-| `wwonetime` | `<off \| on>` | | Wird von einigen Thermostaten überschrieben, siehe Thermostatbefehle |
-| `wwcircpump` | `<off \| on>` | | |
-| `wwcirc` | `<off \| on>` | | Wird von einigen Thermostaten überschrieben, siehe Thermostatbefehle |
-| `wwcircmode` | `<n>` | | (1=1x3min, .. 6=6x3min, 7=ein) |
-| `wwflowtempoffset` | `<degrees>` | | Offset zur Kesseltemperatur bei der Warmwasserbereitung |
-| `wwmaxpower` | `<%>` | | Maximale Leistung für Warmwasserheizung |
+| `dhw.activated` | `<off \| on>` | | |
+| `dhw.tapactivated` | `<off \| on>` | | Sonderfunktion im Kesseltestmodus |
+| `dhw.onetime` | `<off \| on>` | | Wird von einigen Thermostaten überschrieben, siehe Thermostatbefehle |
+| `dhw.circpump` | `<off \| on>` | | |
+| `dhw.circ` | `<off \| on>` | | Wird von einigen Thermostaten überschrieben, siehe Thermostatbefehle |
+| `dhw.circmode` | `<n>` | | (1=1x3min, .. 6=6x3min, 7=ein) |
+| `dhw.flowtempoffset` | `<degrees>` | | Offset zur Kesseltemperatur bei der Warmwasserbereitung |
+| `dhw.maxpower` | `<%>` | | Maximale Leistung für Warmwasserheizung |
 | `heatingactivated` | `<off \| on>` | | Bei einigen Systemen nicht änderbar. z.B. Einstellung durch MC10-Drehschalter |
 | `heatingtemp` | `<degrees>` | | Obere Grenze für flowtemp, bei einigen Systemen nicht änderbar oder überschreibbar (MC10) |
 | `maintenance` | `<off \| <hours> \| <dd.mm.yyyy> \| reset>` | | Wartung auf Datum oder Uhrzeit einstellen oder Meldung zurücksetzen |

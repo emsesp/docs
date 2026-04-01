@@ -4,7 +4,7 @@ title: Home Assistant Integration
 description: Integrate EMS-ESP with Home Assistant using MQTT Discovery for automatic device setup and control
 ---
 
-# Home Assistant
+# Haushaltshilfe
 
 ![logo](/media/logo/home-assistant.png)
 
@@ -243,14 +243,14 @@ one_time_water_on:
     - service: mqtt.publish
       data:
         topic: 'ems-esp/boiler'
-        payload: '{"cmd":"wwonetime","data":1}'
+        payload: '{"cmd":"dhw/onetime","data":1}'
 
 one_time_water_off:
   sequence:
     - service: mqtt.publish
       data:
         topic: 'ems-esp/boiler'
-        payload: '{"cmd":"wwonetime","data":0}'
+        payload: '{"cmd":"dhw/onetime","data":0}'
 ```
 
 ### Berechnung der Werte
@@ -287,7 +287,7 @@ one_time_water_off:
 
 ### Lesen eines Wertes über die API
 
-Obwohl alle EMS-ESP-Daten im Home Assistant als verschiedene Sensortypen verfügbar sind, können Sie optional auch Befehle aufrufen und Daten über die REST-API-Schnittstelle lesen. Zum Beispiel im folgenden Skript, das den HA dazu veranlasst, die MAC-Adresse abzurufen, wenn der HA neu gestartet wird:
+Obwohl alle EMS-ESP-Daten im Home Assistant als verschiedene Sensortypen verfügbar sind, können Sie optional auch Befehle aufrufen und Daten über die REST-API-Schnittstelle lesen. Zum Beispiel im folgenden Skript, das den HA veranlasst, die MAC-Adresse abzurufen, wenn der HA neu gestartet wird:
 
 ```yaml
 sensor:
@@ -332,7 +332,7 @@ in den Automatisierungen:
     service: rest_command.emsesp
     data:
       device: 'boiler'
-      entity: 'wwseltemp'
+      entity: 'dhw.seltemp'
       value: "{{ states('input_number.wwselected_temp') | int }}"
 
 - id: 'set_ww_seltemp'
@@ -354,7 +354,7 @@ In HA können Sie nun die Werte dynamisch anpassen. Zum Beispiel:
 
 ![Screenshot 2021-08-08 143712](https://user-images.githubusercontent.com/1230712/128632199-7815d649-40a8-4f11-99e3-eacc16bf53a4.png)
 
-Prüfen Sie, ob es funktioniert, indem Sie zu `http://ems-esp/api/boiler/wwseltemp` gehen
+Prüfen Sie, ob es funktioniert, indem Sie zu `http://ems-esp/api/boiler/dhw.seltemp` gehen
 
 ### LoveLace Section View, Kacheln und Einstellwerte über EMS-ESP
 

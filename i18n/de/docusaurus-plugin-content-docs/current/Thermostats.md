@@ -36,6 +36,7 @@ Dies ist die aktuelle Liste der unterstützten Thermostate von Marken wie Buderu
     - Buderus Logamatic TC100, Bosch EasyControl CT200, Junkers CT100, Moduline Easy. Siehe [here](https://community.home-assistant.io/t/buderus-tc100-junkers-ct100-thermostat/67992)
     - Junkers FW/FR Baujahr vor 9/2008 (FD889). Siehe [here](https://github.com/emsesp/EMS-ESP32/issues/105#issuecomment-915874482)
     - Tado Thermostate
+
 :::
 
 ## Geräte-Entitäten
@@ -44,16 +45,16 @@ Dies ist die aktuelle Liste der unterstützten Thermostate von Marken wie Buderu
 :::
 
 | Befehl | Daten | ID | Kommentare |
-| - | - | - | - |
+| ---------------- | -------------------------------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `datetime` | `<ntp \| dd.mm.yyyy-hh:mm:ss-dw-dst>` | | RC35, RC100, RC300, `dw`:Tag der Woche: 0-mo,.. `dst`:Sommerzeit 0/1 |
-| `wwmode` | `<off \| on \| auto>` | | RC100, RC300, RC30, RC35 |
-| `wwsettemp` | `<degrees>` | | RC100, RC300 |
-| `wwsettemplow` | `<degrees>` | | RC100, RC300 |
-| `wwcircmode` | `<off \| on \| auto \| own>` | | RC30, RC35, RC100, RC300 |
-| `wwcharge` | `<off \| on>` | | RC100, RC300 |
+| `dhw.mode` | `<off \| on \| auto>` | | RC100, RC300, RC30, RC35 |
+| `dhw.settemp` | `<degrees>` | | RC100, RC300 |
+| `dhw.settemplow` | `<degrees>` | | RC100, RC300 |
+| `dhw.circmode` | `<off \| on \| auto \| own>` | | RC30, RC35, RC100, RC300 |
+| `dhw.charge` | `<off \| on>` | | RC100, RC300 |
 | `clockoffset` | `<seconds>` | | RC30 |
 | `language` | `<n>` | | RC30 (0=de, 1=nl, 2=fr, 3=it) |
-| `display` | `<n>` | | RC30 (0=int temp, 1= int set, 2=ext temp, 3=burner, 4=ww, 5=mode, 6=time, 7=date, 8=smoke) |
+| `display` | `<n>` | | RC30 (0=int temp, 1= int set, 2=ext temp, 3=burner, 4=dhw, 5=mode, 6=time, 7=date, 8=smoke) |
 | `minexttemp` | `<degrees>` | | RC30, RC35, RC100, RC300 |
 | `calinttemp` | `<degrees>` | | RC30, RC35 |
 | `building` | `<light \| medium \| heavy>` | | RC30, RC35, RC100, RC300 |

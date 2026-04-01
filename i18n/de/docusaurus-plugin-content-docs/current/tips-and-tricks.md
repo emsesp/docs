@@ -16,7 +16,7 @@ In einem sehr einfachen Fall versorgt ein Heizkessel einen Heizkreis mit Wärme.
 
 Sobald `current flow temperature` den Wert `selected flow temperature` + `temperature hysteresis off` übersteigt, wird die Erwärmung gestoppt, bis `current flow temperature` unter `selected flow temperature` + `temperature hysteresis on` fällt (was normalerweise ein negativer Wert ist).
 
-Um die Heizung zu aktivieren, müssen Sie also `heatingactivated` auf `on` setzen und ein entsprechendes `flowtemp` einstellen. Letztere sollte von der `heating temperature setting` abgeleitet werden, die über die physikalische dial/control am Kessel eingestellt werden kann. Sie sollte als maximale Vorlauftemperatur betrachtet werden. Sie können auch eine niedrigere Vorlauftemperatur verwenden, um eine konstante Raumtemperatur zu erhalten, sobald die erste Aufheizung erfolgt ist.
+Um die Heizung zu aktivieren, müssen Sie also `heatingactivated` auf `on` setzen und ein entsprechendes `flowtemp` einstellen. Letztere sollte von der `heating temperature setting` abgeleitet werden, die über die physikalische dial/control am Kessel eingestellt werden kann. Sie sollte als maximale Vorlauftemperatur betrachtet werden. Sie können auch eine niedrigere Vorlauftemperatur verwenden, um eine konstante Raumtemperatur zu erhalten, sobald die erste Erwärmung erfolgt ist.
 
 Zusätzliche Informationen von Michael:
 
@@ -46,7 +46,7 @@ _(by IanC)_
 
 Aus dem Discord-Posting von IanC:
 
-bei einem ~2012 Worcester Bosch-Kessel wird die Heizung des Hauses von einem EvoHome-System gesteuert, das weiß, welche Teile des Hauses wie viel Wärme benötigen, aber es kann nur ein on/off-Relais verwenden, um den Kessel für die Raum- und Wasserheizung zu steuern. Das bedeutet, dass es die Vorlauftemperatur nicht direkt regeln kann. Bisher wurde diese über den Drehregler an der Vorderseite des Kessels kontinuierlich auf 65 °C eingestellt, um bei Bedarf eine Warmwasserbereitung zu ermöglichen. Ich bin sehr froh, dass ich EMS-ESP in mein System eingebaut habe, um die Vorlauftemperaturen zu steuern. Ich habe ein einfaches C-Programm geschrieben, das auf meinem OpenWrt-Internet-Router läuft und EvoHome-Nachrichten abhört, um nützliche Informationen über die für Raum und Wasser benötigte Wärmemenge in einfachen txt-Dateien unter /tmp. zu erfassen. Ich plane dann alle 4 Minuten ein Shell-Skript, das in mehreren Schritten eine Vorlauftemperatur auswählt: Ich beginne mit einem witterungsbereinigten Wert, der auf der Außentemperatur des Online-Dienstes basiert; ich passe diesen Wert um bis zu 25 % an, je nach dem Wärmebedarf von EvoHome; falls erforderlich, setze ich ihn außer Kraft, um Warmwasser zu erwärmen. Die gewählte Vorlauftemperatur und die maximale Brennerstufe werden dann über Curl an ein BBQKees-Gerät mit EMS-ESP gesendet, das wiederum den Kessel steuert. Bislang scheint das System wie vorgesehen zu funktionieren, ohne dass der Komfort im Haus beeinträchtigt wird, wobei jedoch viel niedrigere Vorlauftemperaturen beobachtet werden, um den Betrieb des Kessels in der Brennwertzone zu fördern.  Es ist sehr schwer zu sagen, ob sich das auf den Gasverbrauch auswirkt - was ich mir wünschen würde :-). Die größte Herausforderung, die ich immer noch sehe, ist, wie ich verhindern kann, dass EvoHome häufige on/off-Zyklen des Kessels verursacht, während es immer noch versucht, die TPI-Durchflussregelung zu verwenden
+bei einem ~2012 Worcester Bosch-Kessel wird die Heizung des Hauses von einem EvoHome-System gesteuert, das weiß, welche Teile des Hauses wie viel Wärme benötigen, aber es kann nur ein on/off-Relais verwenden, um den Kessel für die Raum- und Wasserheizung zu steuern. Das bedeutet, dass es die Vorlauftemperatur nicht direkt regeln kann. Bisher wurde diese über den Drehregler an der Vorderseite des Kessels kontinuierlich auf 65 °C eingestellt, um bei Bedarf eine Warmwasserbereitung zu ermöglichen. Ich bin sehr froh, dass ich EMS-ESP in mein System eingebaut habe, um die Vorlauftemperaturen zu steuern. Ich habe ein einfaches C-Programm geschrieben, das auf meinem OpenWrt-Internet-Router läuft und EvoHome-Nachrichten abhört, um nützliche Informationen über die für Raum und Wasser benötigte Wärmemenge in einfachen txt-Dateien unter /tmp. zu erfassen. Ich plane dann alle 4 Minuten ein Shell-Skript, das in mehreren Schritten eine Vorlauftemperatur auswählt: Ich beginne mit einem witterungsbereinigten Wert, der auf der Außentemperatur des Online-Dienstes basiert; ich passe diesen Wert um bis zu 25 % an, je nach dem Wärmebedarf von EvoHome; falls erforderlich, setze ich ihn außer Kraft, um Warmwasser zu erwärmen. Die gewählte Vorlauftemperatur und die maximale Brennerstufe werden dann über Curl an ein BBQKees-Gerät mit EMS-ESP gesendet, das wiederum den Kessel steuert. Bislang scheint das System wie vorgesehen zu funktionieren, ohne dass der Komfort im Haus beeinträchtigt wird, wobei jedoch viel niedrigere Vorlauftemperaturen beobachtet werden, um den Betrieb des Kessels in der Brennwertzone zu fördern. Es ist sehr schwer zu sagen, ob sich das auf den Gasverbrauch auswirkt - was ich mir wünschen würde :-). Die größte Herausforderung, die ich immer noch sehe, ist, wie ich verhindern kann, dass EvoHome häufige on/off-Zyklen des Kessels verursacht, während es immer noch versucht, die TPI-Durchflussregelung zu verwenden
 
 ![1.5.0](/media/examples/ian_setflowtemp.png)
 
@@ -325,18 +325,18 @@ mqtt:
       temp_step: 5
       current_temperature_topic: 'ems-esp/boiler_data_ww'
       temperature_state_topic: 'ems-esp/boiler_data_ww'
-      temperature_command_topic: 'ems-esp/boiler/wwseltemp'
+      temperature_command_topic: 'ems-esp/boiler/dhw.seltemp'
       temperature_command_template: >
-        {{ '{"cmd":"wwseltemp ","data":'}}
+        {{ '{"cmd":"dhw.seltemp ","data":'}}
         {{ value }}
         {{ '}'}}
-      current_temperature_template: '{{ value_json.wwcurtemp }}'
-      temperature_state_template: '{{ value_json.wwseltemp }}'
-      mode_state_template: "{% if value_json.wwactivated == 'off' %} off {% else %} heat {% endif %}"
+      current_temperature_template: '{{ value_json.dhw.curtemp }}'
+      temperature_state_template: '{{ value_json.dhw.seltemp }}'
+      mode_state_template: "{% if value_json.dhw.activated == 'off' %} off {% else %} heat {% endif %}"
       mode_state_topic: 'ems-esp/boiler_data_ww'
-      mode_command_topic: 'ems-esp/boiler/wwactivated'
+      mode_command_topic: 'ems-esp/boiler/dhw.activated'
       mode_command_template: >
-        {{ '{"cmd":"wwactivated","data":"'}}
+        {{ '{"cmd":"dhw.activated","data":"'}}
         {%- if value == 'off' -%}off{% else %}on{%- endif -%}
         {{'"}'}}
       modes:
@@ -349,7 +349,7 @@ mqtt:
         {%- if value == 'eco' -%}eco{%-elif value == 'hot' -%}hot{%- else -%}intelligent{%- endif -%}
         {{'"}'}}
       fan_mode_state_topic: 'ems-esp/boiler_data_ww'
-      fan_mode_state_template: '{{ value_json.wwcomfort }}'
+      fan_mode_state_template: '{{ value_json.dhw.comfort }}'
       fan_modes:
         - 'eco'
         - 'hot'
@@ -433,7 +433,7 @@ Nach seinen eigenen Worten hat er dies getan:
 Ich habe noch nicht alle Optionen ausprobiert, aber hier sind ein paar Kommentare:
 
 - Ich dachte, ich wäre schlau, indem ich vorausschauend dachte, also habe ich bei der Auswahl "Kompressorbetr. sperren" auch "Zuheizerbetr. sperren" ausgewählt. ABER - ohne Scheiß - NUR der Zuheizer ging tatsächlich an und verschwendete eine Menge Strom (zumindest für ein paar Minuten).
-- "Heizbetrieb sperren" schaltet auch die Umwälzpumpe ab, was ich nicht möchte, da ich einen 500-Liter-Pufferspeicher habe.
+- "Heizbetrieb sperren" schaltet auch die Umwälzpumpe ab, was ich nicht will, da ich einen 500-Liter-Pufferspeicher habe.
 - "EVU-Sperrzeit 1" funktioniert soweit ganz gut (wofür sind die anderen EVU-Sperrzeiten?)
 
 Als Nächstes wurde die Zeichenkette mit Automatismen geändert.
@@ -494,7 +494,7 @@ Hier ist eine einfache Automatisierung, die zusätzliches heißes Wasser durch e
 
 _(by oliof with additional input by tz)_
 
-Wenn Sie mit der Einstellung Ihres Heizkessels beginnen, werden Sie höchstwahrscheinlich auf Situationen stoßen, in denen der Heizkessel selbst bei der niedrigsten Modulationseinstellung zu viel Wärme produziert. In solchen Fällen kann es sich lohnen, eine zusätzliche Regelung in Betracht zu ziehen, die den Heizkessel für eine gewisse Zeit abschaltet, wenn die Zieltemperatur erreicht ist. Hier ist eine mögliche Implementierung, die im Grunde ein Zweipunktregler ist. Aufgrund der thermischen Trägheit liegen die Schaltvorgänge bei den meisten Heizungssystemen ohne zusätzliche Verzögerung oder Zeitbegrenzung relativ weit auseinander, doch lassen sich diese leicht hinzufügen, wenn man die Anzahl der Einschaltvorgänge reduzieren möchte.
+Wenn Sie mit der Einstellung Ihres Heizkessels beginnen, werden Sie höchstwahrscheinlich auf Situationen stoßen, in denen der Heizkessel selbst bei der niedrigsten Modulationseinstellung zu viel Wärme produziert. In solchen Fällen kann es sich lohnen, eine zusätzliche Regelung in Betracht zu ziehen, die den Heizkessel für eine gewisse Zeit abschaltet, wenn die Zieltemperatur erreicht ist. Hier ist eine mögliche Implementierung, die im Grunde ein Zweipunktregler ist. Aufgrund der thermischen Trägheit liegen die Schaltvorgänge bei den meisten Heizungsanlagen ohne zusätzliche Verzögerung oder Zeitbegrenzung relativ weit auseinander, doch lassen sich diese leicht hinzufügen, wenn man die Anzahl der Einschaltvorgänge verringern möchte.
 
 Diese Schwachlastoptimierung kann den Gasverbrauch um 15-20 % senken, ohne dass sich der Temperaturkomfort ändert.
 
@@ -603,14 +603,15 @@ Hier ein Beispieldiagramm, das die `Heating activated`-Entität und die Temperat
 Die für die Automatisierung verwendete Taste ist eine einfache Aqara-Zigbee-Taste.
 
 :::info Ich verwende ein [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) mit dem [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), da es eine zweistellige Genauigkeit bietet und etwa ein- bis zweimal pro Minute aktualisiert wird).  
-    Bitte beachten Sie, dass Thermometer mit niedriger Auflösung und geringer Aktualisierungsfrequenz Ihre Fähigkeit, schnell auf Temperaturänderungen zu reagieren, beeinträchtigen.  
-    Wenn Sie möchten, können Sie mit tasmota und einem DS18B20- oder BME820-Sensor ein hochauflösendes, häufig aktualisiertes Thermometer bauen.
+ Bitte beachten Sie, dass Thermometer mit niedriger Auflösung und geringer Aktualisierungsfrequenz Ihre Fähigkeit beeinträchtigen, schnell auf Temperaturänderungen zu reagieren.  
+ Wenn Sie möchten, können Sie mit tasmota und einem DS18B20- oder BME820-Sensor ein hochauflösendes, häufig aktualisiertes Thermometer bauen.
 :::
 
 ## Optimierung für Wärmepumpen
 
-Matthias hat sein Setup der Bosch/Buderus Wärmepumpe auf [his blog](https://bosch-buderus-wp.github.io/xps/matthias) dokumentiert und zeigt sogar, wie man mit AI eine MCP/LLM Wärmepumpe steuern kann. Siehe [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) für weitere Einzelheiten.
+Matthias hat sein Setup der Bosch/Buderus Wärmepumpe auf [his blog](https://bosch-buderus-wp.github.io/xps/matthias) dokumentiert und zeigt sogar, wie man mit Hilfe von AI eine MCP/LLM Wärmepumpe steuern kann (siehe [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai)).
 
+Es gibt auch einen [metrics-page](https://bosch-buderus-wp.github.io/metrics/), in dem die Werte der Wärmepumpe gespeichert und visualisiert werden. Wenn Sie [contribute, read this further information](https://bosch-buderus-wp.github.io/metrics/howto).
 
 ## Verwendung von `txpause` zur vorübergehenden Abschaltung des Busverkehrs
 
@@ -626,32 +627,32 @@ _(by DiZil1)_ von https://github.com/emsesp/EMS-ESP32/discussions/1953#diskussio
 
 rest_command:
   ems_tx_on:
-    url: "http://192.168.178.XX/api/system/txpause"
+    url: 'http://192.168.178.XX/api/system/txpause'
     method: POST
     headers:
       Authorization: !secret ems_esp_token
       Content-Type: application/json
     payload: >
-        {
-          "value": "on"
-        }
+      {
+        "value": "on"
+      }
 
   ems_tx_off:
-    url: "http://192.168.178.XX/api/system/txpause"
+    url: 'http://192.168.178.XX/api/system/txpause'
     method: POST
     headers:
       Authorization: !secret ems_esp_token
       Content-Type: application/json
     payload: >
-        {
-          "value": "off"
-        }
+      {
+        "value": "off"
+      }
 
 sensor:
   - platform: rest
-    name: "EMS-ESP TXPause Raw"
+    name: 'EMS-ESP TXPause Raw'
     unique_id: ems_esp_txpause_raw
-    resource: "http://192.168.178.XX/api/system/system/txpause"
+    resource: 'http://192.168.178.XX/api/system/system/txpause'
     method: GET
     headers:
       Authorization: !secret ems_esp_token
@@ -662,7 +663,7 @@ sensor:
 
 template:
   - switch:
-      - name: "EMS-ESP TXPause"
+      - name: 'EMS-ESP TXPause'
         unique_id: ems_esp_txpause_switch
         icon: mdi:swap-horizontal
         state: >
@@ -670,13 +671,13 @@ template:
           {{ v in ['true', 'on', '1', 'yes'] }}
         turn_on:
           - service: rest_command.ems_tx_on
-          - delay: "00:00:01"
+          - delay: '00:00:01'
           - service: homeassistant.update_entity
             target:
               entity_id: sensor.ems_esp_txpause_raw
         turn_off:
           - service: rest_command.ems_tx_off
-          - delay: "00:00:01"
+          - delay: '00:00:01'
           - service: homeassistant.update_entity
             target:
               entity_id: sensor.ems_esp_txpause_raw

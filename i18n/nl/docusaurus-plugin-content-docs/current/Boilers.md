@@ -42,28 +42,28 @@ Dit is de huidige lijst met ondersteunde boilers van merken als Buderus, Nefit, 
 :::info De onderstaande ketelcommando's variëren afhankelijk van de ketel type/brand en systeemconfiguratie Sommige commando's zullen niet werken omdat ze worden overschreven door regelaar of thermostaat. In dit geval zijn er thermostaatcommando's voor deze instelling.
 :::
 
-:::warning deze lijst is niet volledig en kan tussen versies veranderen
+:::warning deze lijst is niet volledig en kan tussen versies veranderen.
 :::
 
 | `command` | `data` | `id` | `comments` |
-| ------------------ | ------------------------------------------- | --- | ---------------------------------------------------------------------------------- |
+| -------------------- | ------------------------------------------- | ---- | ---------------------------------------------------------------------------------- |
 | `comfort` | `<hot \|eco \| intelligent>` | | |
 | `flowtemp` | `<degrees>` | | Beperkt tot verwarmingstemperatuur, ingesteld door thermostaat indien aanwezig |
-| `wwsettemp` | `<degrees>` | | Alleen als thermostaat het niet beheert |
+| `dhw.settemp` | `<degrees>` | | Alleen als thermostaat het niet beheert |
 | `boilhyston` | `<degrees>` | Start brander onder flowtemp (negatieve waarde), toegestaan bereik hangt af van keteltype |
 | `boilhystoff` | `<degrees>` | Stop brander boven flowtemp (positieve waarde), toegestaan bereik hangt af van keteltype |
 | `burnperiod` | `<minutes>` | | |
 | `burnminpower` | `<%>` | | Alleen te wijzigen voor gemoduleerde branders |
 | `burnmaxpower` | `<%>` | | Alleen te wijzigen voor gemoduleerde branders |
 | `pumpdelay` | `<minutes>` | | |
-| `wwactivated` | `<off \| on>` | | |
-| `wwtapactivated` | `<off \| on>` | | Speciale functie die werkt in boilertestmodus |
-| `wwonetime` | `<off \| on>` | | Overschreven door sommige thermostaten, zie thermostaatopdrachten |
-| `wwcircpump` | `<off \| on>` | | |
-| `wwcirc` | `<off \| on>` | | Overschreven door sommige thermostaten, zie thermostaatopdrachten |
-| `wwcircmode` | `<n>` | | (1=1x3min, ... 6=6x3min, 7=on) |
-| `wwflowtempoffset` | `<degrees>` | Offset naar boilertemperatuur bij het bereiden van warm water |
-| `wwmaxpower` | `<%>` | Maximumvermogen voor verwarming van warm water |
+| `dhw.activated` | `<off \| on>` | | |
+| `dhw.tapactivated` | `<off \| on>` | | Speciale functie die werkt in boilertestmodus |
+| `dhw.onetime` | `<off \| on>` | | Overschreven door sommige thermostaten, zie thermostaatopdrachten |
+| `dhw.circpump` | `<off \| on>` | | |
+| `dhw.circ` | `<off \| on>` | | Overschreven door sommige thermostaten, zie thermostaatopdrachten |
+| `dhw.circmode` | `<n>` | | (1=1x3min, ... 6=6x3min, 7=on) |
+| `dhw.flowtempoffset` | `<degrees>` | Offset naar boilertemperatuur bij het bereiden van warm water |
+| `dhw.maxpower` | `<%>` | Maximumvermogen voor verwarming van warm water |
 | `heatingactivated` | `<off \| on>` | | Niet wijzigbaar voor sommige systemen. bijv. Ingesteld door MC10 draaiknop |
 | `heatingtemp` | `<degrees>` | Bovengrens voor flowtemp, niet wijzigbaar voor sommige systemen of overschrijfbaar (MC10) |
 | `maintenance` | `<off \| <hours> \| <dd.mm.yyyy> \| reset>` | Stel onderhoud in op datum of tijd of reset bericht |

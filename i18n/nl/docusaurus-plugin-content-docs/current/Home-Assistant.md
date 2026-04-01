@@ -58,7 +58,7 @@ actions:
 mode: single
 ```
 
-### Douche Integratie
+### Douche integratie
 
 Hieronder staan de toevoegingen aan de HA-bestanden om de toestand van de douche weer te geven als de instelling `Shower Timer` is ingeschakeld in EMS-ESP.
 
@@ -243,14 +243,14 @@ one_time_water_on:
     - service: mqtt.publish
       data:
         topic: 'ems-esp/boiler'
-        payload: '{"cmd":"wwonetime","data":1}'
+        payload: '{"cmd":"dhw/onetime","data":1}'
 
 one_time_water_off:
   sequence:
     - service: mqtt.publish
       data:
         topic: 'ems-esp/boiler'
-        payload: '{"cmd":"wwonetime","data":0}'
+        payload: '{"cmd":"dhw/onetime","data":0}'
 ```
 
 ### Waarden berekenen
@@ -332,7 +332,7 @@ in de automatiseringen:
     service: rest_command.emsesp
     data:
       device: 'boiler'
-      entity: 'wwseltemp'
+      entity: 'dhw.seltemp'
       value: "{{ states('input_number.wwselected_temp') | int }}"
 
 - id: 'set_ww_seltemp'
@@ -354,7 +354,7 @@ Nu kun je in HA de waarden dynamisch aanpassen. Zoals:
 
 ![Screenshot 2021-08-08 143712](https://user-images.githubusercontent.com/1230712/128632199-7815d649-40a8-4f11-99e3-eacc16bf53a4.png)
 
-Controleer of het werkt door naar `http://ems-esp/api/boiler/wwseltemp` te gaan
+Controleer of het werkt door naar `http://ems-esp/api/boiler/dhw.seltemp` te gaan
 
 ### LoveLace doorsnedeweergave, tegels en waarden instellen via EMS-ESP
 

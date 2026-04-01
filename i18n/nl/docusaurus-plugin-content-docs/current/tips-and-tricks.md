@@ -8,7 +8,7 @@ description: Community-contributed tips, tricks, and code snippets for advanced 
 
 **Hieronder vindt u een verzameling nuttige tips, trucs en code die door de community zijn ingezonden:**
 
-## Verwarming van de ketel regelen
+## De verwarming van de ketel regelen
 
 _(by Oderik)_
 
@@ -46,7 +46,7 @@ _(by IanC)_
 
 Uit de Discord post die IanC zei:
 
-met een Worcester Bosch ketel uit ~2012 wordt de verwarming van het huis geregeld door een EvoHome systeem dat weet welke delen van het huis hoeveel warmte nodig hebben, maar het kan alleen een on/off relais gebruiken om de ketel te regelen voor ruimte- en waterverwarming. Dit betekent dat het de aanvoertemperatuur niet rechtstreeks kan regelen en deze is in het verleden ingesteld op continu 65C via de draaiknop aan de voorkant van de ketel om waterverwarming mogelijk te maken wanneer dat nodig is. Ik ben erg blij dat ik EMS-ESP aan mijn systeem heb toegevoegd om de aanvoertemperatuur te regelen. Ik heb een eenvoudig C-programma geschreven dat op mijn OpenWrt internetrouter draait en dat EvoHome-berichten afluistert om nuttige informatie over de benodigde hoeveelheid warmte voor ruimte en water op te slaan in eenvoudige txt-bestanden in /tmp.. Vervolgens plan ik elke 4 minuten een shellscript dat een aantal stappen gebruikt om een aanvoertemperatuur te selecteren: begin met een voor het weer gecompenseerde waarde op basis van de buitentemperatuur van de online service; pas deze aan met maximaal 25% naar boven of beneden op basis van de vraag naar ruimteverwarming van EvoHome; indien nodig overschrijf ik deze waarde om warm water te verwarmen. De geselecteerde aanvoertemperatuur en een maximaal branderniveau worden vervolgens via krul naar een BBQKees-apparaat gestuurd waarop EMS-ESP draait, dat op zijn beurt de ketel regelt. Tot nu toe lijkt het te werken zoals bedoeld zonder verlies van comfort in huis, maar met veel lagere aanvoertemperaturen die worden waargenomen om te proberen de ketel te laten werken in de condensatiezone.  Het is erg moeilijk om te zeggen of het invloed heeft op het gasverbruik - wat ik graag zou willen :-). De grootste uitdaging die ik nog steeds zie, is hoe ik kan voorkomen dat EvoHome frequente on/off cycli van de ketel veroorzaakt terwijl het nog steeds probeert om TPI debietregeling te gebruiken
+met een Worcester Bosch ketel uit ~2012 wordt de verwarming van het huis geregeld door een EvoHome systeem dat weet welke delen van het huis hoeveel warmte nodig hebben, maar het kan alleen een on/off relais gebruiken om de ketel te regelen voor ruimte- en waterverwarming. Dit betekent dat het de aanvoertemperatuur niet rechtstreeks kan regelen en deze is in het verleden ingesteld op continu 65C via de draaiknop aan de voorkant van de ketel om waterverwarming mogelijk te maken wanneer dat nodig is. Ik ben erg blij dat ik EMS-ESP aan mijn systeem heb toegevoegd om de aanvoertemperatuur te regelen. Ik heb een eenvoudig C-programma geschreven dat op mijn OpenWrt internetrouter draait en dat EvoHome-berichten afluistert om nuttige informatie over de benodigde hoeveelheid warmte voor ruimte en water op te slaan in eenvoudige txt-bestanden in /tmp.. Vervolgens plan ik elke 4 minuten een shellscript dat een aantal stappen gebruikt om een aanvoertemperatuur te selecteren: begin met een voor het weer gecompenseerde waarde op basis van de buitentemperatuur van de online service; pas deze aan met maximaal 25% naar boven of beneden op basis van de vraag naar ruimteverwarming van EvoHome; indien nodig overschrijf ik deze waarde om warm water te verwarmen. De geselecteerde aanvoertemperatuur en een maximaal branderniveau worden vervolgens via krul naar een BBQKees-apparaat gestuurd waarop EMS-ESP draait, dat op zijn beurt de ketel regelt. Tot nu toe lijkt het te werken zoals bedoeld zonder verlies van comfort in huis, maar met veel lagere aanvoertemperaturen die worden waargenomen om te proberen de ketel te laten werken in de condensatiezone. Het is erg moeilijk om te zeggen of het invloed heeft op het gasverbruik - wat ik graag zou willen :-). De grootste uitdaging die ik nog steeds zie, is hoe ik kan voorkomen dat EvoHome frequente on/off cycli van de ketel veroorzaakt terwijl het nog steeds probeert om TPI debietregeling te gebruiken
 
 ![1.5.0](/media/examples/ian_setflowtemp.png)
 
@@ -325,18 +325,18 @@ mqtt:
       temp_step: 5
       current_temperature_topic: 'ems-esp/boiler_data_ww'
       temperature_state_topic: 'ems-esp/boiler_data_ww'
-      temperature_command_topic: 'ems-esp/boiler/wwseltemp'
+      temperature_command_topic: 'ems-esp/boiler/dhw.seltemp'
       temperature_command_template: >
-        {{ '{"cmd":"wwseltemp ","data":'}}
+        {{ '{"cmd":"dhw.seltemp ","data":'}}
         {{ value }}
         {{ '}'}}
-      current_temperature_template: '{{ value_json.wwcurtemp }}'
-      temperature_state_template: '{{ value_json.wwseltemp }}'
-      mode_state_template: "{% if value_json.wwactivated == 'off' %} off {% else %} heat {% endif %}"
+      current_temperature_template: '{{ value_json.dhw.curtemp }}'
+      temperature_state_template: '{{ value_json.dhw.seltemp }}'
+      mode_state_template: "{% if value_json.dhw.activated == 'off' %} off {% else %} heat {% endif %}"
       mode_state_topic: 'ems-esp/boiler_data_ww'
-      mode_command_topic: 'ems-esp/boiler/wwactivated'
+      mode_command_topic: 'ems-esp/boiler/dhw.activated'
       mode_command_template: >
-        {{ '{"cmd":"wwactivated","data":"'}}
+        {{ '{"cmd":"dhw.activated","data":"'}}
         {%- if value == 'off' -%}off{% else %}on{%- endif -%}
         {{'"}'}}
       modes:
@@ -349,7 +349,7 @@ mqtt:
         {%- if value == 'eco' -%}eco{%-elif value == 'hot' -%}hot{%- else -%}intelligent{%- endif -%}
         {{'"}'}}
       fan_mode_state_topic: 'ems-esp/boiler_data_ww'
-      fan_mode_state_template: '{{ value_json.wwcomfort }}'
+      fan_mode_state_template: '{{ value_json.dhw.comfort }}'
       fan_modes:
         - 'eco'
         - 'hot'
@@ -603,14 +603,15 @@ Dit is een voorbeeldgrafiek met de entiteit `Heating activated` en de temperatuu
 De knop die wordt gebruikt in de automatisering is een eenvoudige Aqara zigbee-knop.
 
 :::info Ik gebruik een [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) met de [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), omdat deze twee cijfers precisie biedt en ruwweg één tot twee keer per minuut wordt bijgewerkt.)  
-    Houd er rekening mee dat thermometers met een lage resolutie en een lage updatefrequentie invloed hebben op je vermogen om snel te reageren op temperatuurveranderingen.  
-    Als je wilt, kun je met tasmota en een DS18B20 of BME820 sensor een hoge resolutie thermometer bouwen die regelmatig wordt bijgewerkt.
+ Houd er rekening mee dat thermometers met een lage resolutie en een lage updatefrequentie invloed hebben op je vermogen om snel te reageren op temperatuurveranderingen.  
+ Als je wilt, kun je met tasmota en een DS18B20 of BME820 sensor een hoge resolutie thermometer bouwen die regelmatig wordt bijgewerkt.
 :::
 
 ## Optimaliseren voor warmtepompen
 
 Matthias heeft zijn Bosch/Buderus warmtepomp op [his blog](https://bosch-buderus-wp.github.io/xps/matthias) gedocumenteerd en laat zelfs zien hoe je AI kunt gebruiken om een MCP/LLM in te stellen om de warmtepomp te regelen. Zie [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) voor meer details.
 
+Er is ook een [metrics-page](https://bosch-buderus-wp.github.io/metrics/) waar warmtepompwaarden worden opgeslagen en gevisualiseerd. Als je [contribute, read this further information](https://bosch-buderus-wp.github.io/metrics/howto).
 
 `txpause` gebruiken om het busverkeer tijdelijk uit te schakelen
 
@@ -626,32 +627,32 @@ _(by DiZil1)_ van https://github.com/emsesp/EMS-ESP32/discussions/1953#discussie
 
 rest_command:
   ems_tx_on:
-    url: "http://192.168.178.XX/api/system/txpause"
+    url: 'http://192.168.178.XX/api/system/txpause'
     method: POST
     headers:
       Authorization: !secret ems_esp_token
       Content-Type: application/json
     payload: >
-        {
-          "value": "on"
-        }
+      {
+        "value": "on"
+      }
 
   ems_tx_off:
-    url: "http://192.168.178.XX/api/system/txpause"
+    url: 'http://192.168.178.XX/api/system/txpause'
     method: POST
     headers:
       Authorization: !secret ems_esp_token
       Content-Type: application/json
     payload: >
-        {
-          "value": "off"
-        }
+      {
+        "value": "off"
+      }
 
 sensor:
   - platform: rest
-    name: "EMS-ESP TXPause Raw"
+    name: 'EMS-ESP TXPause Raw'
     unique_id: ems_esp_txpause_raw
-    resource: "http://192.168.178.XX/api/system/system/txpause"
+    resource: 'http://192.168.178.XX/api/system/system/txpause'
     method: GET
     headers:
       Authorization: !secret ems_esp_token
@@ -662,7 +663,7 @@ sensor:
 
 template:
   - switch:
-      - name: "EMS-ESP TXPause"
+      - name: 'EMS-ESP TXPause'
         unique_id: ems_esp_txpause_switch
         icon: mdi:swap-horizontal
         state: >
@@ -670,13 +671,13 @@ template:
           {{ v in ['true', 'on', '1', 'yes'] }}
         turn_on:
           - service: rest_command.ems_tx_on
-          - delay: "00:00:01"
+          - delay: '00:00:01'
           - service: homeassistant.update_entity
             target:
               entity_id: sensor.ems_esp_txpause_raw
         turn_off:
           - service: rest_command.ems_tx_off
-          - delay: "00:00:01"
+          - delay: '00:00:01'
           - service: homeassistant.update_entity
             target:
               entity_id: sensor.ems_esp_txpause_raw
