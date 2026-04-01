@@ -42,31 +42,31 @@ Dit is de huidige lijst met ondersteunde boilers van merken als Buderus, Nefit, 
 :::info De onderstaande ketelcommando's variëren afhankelijk van de ketel type/brand en systeemconfiguratie Sommige commando's zullen niet werken omdat ze worden overschreven door regelaar of thermostaat. In dit geval zijn er thermostaatcommando's voor deze instelling.
 :::
 
-:::warning deze lijst is niet volledig en kan tussen versies veranderen
+:::warning deze lijst is niet volledig en kan tussen versies veranderen.
 :::
 
-| `command`            | `data`                                      | `id`                                                                                      | `comments`                                                                     |
-| -------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| `comfort`            | `<hot \|eco \| intelligent>`                |                                                                                           |                                                                                |
-| `flowtemp`           | `<degrees>`                                 |                                                                                           | Beperkt tot verwarmingstemperatuur, ingesteld door thermostaat indien aanwezig |
-| `dhw.settemp`        | `<degrees>`                                 |                                                                                           | Alleen als thermostaat het niet beheert                                        |
-| `boilhyston`         | `<degrees>`                                 | Start brander onder flowtemp (negatieve waarde), toegestaan bereik hangt af van keteltype |
-| `boilhystoff`        | `<degrees>`                                 | Stop brander boven flowtemp (positieve waarde), toegestaan bereik hangt af van keteltype  |
-| `burnperiod`         | `<minutes>`                                 |                                                                                           |                                                                                |
-| `burnminpower`       | `<%>`                                       |                                                                                           | Alleen te wijzigen voor gemoduleerde branders                                  |
-| `burnmaxpower`       | `<%>`                                       |                                                                                           | Alleen te wijzigen voor gemoduleerde branders                                  |
-| `pumpdelay`          | `<minutes>`                                 |                                                                                           |                                                                                |
-| `dhw.activated`      | `<off \| on>`                               |                                                                                           |                                                                                |
-| `dhw.tapactivated`   | `<off \| on>`                               |                                                                                           | Speciale functie die werkt in boilertestmodus                                  |
-| `dhw.onetime`        | `<off \| on>`                               |                                                                                           | Overschreven door sommige thermostaten, zie thermostaatopdrachten              |
-| `dhw.circpump`       | `<off \| on>`                               |                                                                                           |                                                                                |
-| `dhw.circ`           | `<off \| on>`                               |                                                                                           | Overschreven door sommige thermostaten, zie thermostaatopdrachten              |
-| `dhw.circmode`       | `<n>`                                       |                                                                                           | (1=1x3min, ... 6=6x3min, 7=on)                                                 |
-| `dhw.flowtempoffset` | `<degrees>`                                 | Offset naar boilertemperatuur bij het bereiden van warm water                             |
-| `dhw.maxpower`       | `<%>`                                       | Maximumvermogen voor verwarming van warm water                                            |
-| `heatingactivated`   | `<off \| on>`                               |                                                                                           | Niet wijzigbaar voor sommige systemen. bijv. Ingesteld door MC10 draaiknop     |
-| `heatingtemp`        | `<degrees>`                                 | Bovengrens voor flowtemp, niet wijzigbaar voor sommige systemen of overschrijfbaar (MC10) |
-| `maintenance`        | `<off \| <hours> \| <dd.mm.yyyy> \| reset>` | Stel onderhoud in op datum of tijd of reset bericht                                       |
-| `pumpmodmin`         | `<%>`                                       |                                                                                           | Alleen te wijzigen voor gemoduleerde pompen                                    |
-| `pumpmodmax`         | `<%>`                                       |                                                                                           | Alleen te wijzigen voor gemoduleerde pompen                                    |
-| `reset`              | `<error \| maintenance>`                    | Gebruik `reset error` alleen als er een actieve fout is!                                  |
+| `command` | `data` | `id` | `comments` |
+| -------------------- | ------------------------------------------- | ---- | ---------------------------------------------------------------------------------- |
+| `comfort` | `<hot \|eco \| intelligent>` | | |
+| `flowtemp` | `<degrees>` | | Beperkt tot verwarmingstemperatuur, ingesteld door thermostaat indien aanwezig |
+| `dhw.settemp` | `<degrees>` | | Alleen als thermostaat het niet beheert |
+| `boilhyston` | `<degrees>` | Start brander onder flowtemp (negatieve waarde), toegestaan bereik hangt af van keteltype |
+| `boilhystoff` | `<degrees>` | Stop brander boven flowtemp (positieve waarde), toegestaan bereik hangt af van keteltype |
+| `burnperiod` | `<minutes>` | | |
+| `burnminpower` | `<%>` | | Alleen te wijzigen voor gemoduleerde branders |
+| `burnmaxpower` | `<%>` | | Alleen te wijzigen voor gemoduleerde branders |
+| `pumpdelay` | `<minutes>` | | |
+| `dhw.activated` | `<off \| on>` | | |
+| `dhw.tapactivated` | `<off \| on>` | | Speciale functie die werkt in boilertestmodus |
+| `dhw.onetime` | `<off \| on>` | | Overschreven door sommige thermostaten, zie thermostaatopdrachten |
+| `dhw.circpump` | `<off \| on>` | | |
+| `dhw.circ` | `<off \| on>` | | Overschreven door sommige thermostaten, zie thermostaatopdrachten |
+| `dhw.circmode` | `<n>` | | (1=1x3min, ... 6=6x3min, 7=on) |
+| `dhw.flowtempoffset` | `<degrees>` | Offset naar boilertemperatuur bij het bereiden van warm water |
+| `dhw.maxpower` | `<%>` | Maximumvermogen voor verwarming van warm water |
+| `heatingactivated` | `<off \| on>` | | Niet wijzigbaar voor sommige systemen. bijv. Ingesteld door MC10 draaiknop |
+| `heatingtemp` | `<degrees>` | Bovengrens voor flowtemp, niet wijzigbaar voor sommige systemen of overschrijfbaar (MC10) |
+| `maintenance` | `<off \| <hours> \| <dd.mm.yyyy> \| reset>` | Stel onderhoud in op datum of tijd of reset bericht |
+| `pumpmodmin` | `<%>` | | Alleen te wijzigen voor gemoduleerde pompen |
+| `pumpmodmax` | `<%>` | | Alleen te wijzigen voor gemoduleerde pompen |
+| `reset` | `<error \| maintenance>` | Gebruik `reset error` alleen als er een actieve fout is!                                |

@@ -8,7 +8,7 @@ description: Community-contributed tips, tricks, and code snippets for advanced 
 
 **Hieronder vindt u een verzameling nuttige tips, trucs en code die door de community zijn ingezonden:**
 
-## Verwarming van de ketel regelen
+## De verwarming van de ketel regelen
 
 _(by Oderik)_
 
@@ -349,7 +349,7 @@ mqtt:
         {%- if value == 'eco' -%}eco{%-elif value == 'hot' -%}hot{%- else -%}intelligent{%- endif -%}
         {{'"}'}}
       fan_mode_state_topic: 'ems-esp/boiler_data_ww'
-      fan_mode_state_template: '{{ value_json.wwcomfort }}'
+      fan_mode_state_template: '{{ value_json.dhw.comfort }}'
       fan_modes:
         - 'eco'
         - 'hot'
@@ -610,6 +610,8 @@ De knop die wordt gebruikt in de automatisering is een eenvoudige Aqara zigbee-k
 ## Optimaliseren voor warmtepompen
 
 Matthias heeft zijn Bosch/Buderus warmtepomp op [his blog](https://bosch-buderus-wp.github.io/xps/matthias) gedocumenteerd en laat zelfs zien hoe je AI kunt gebruiken om een MCP/LLM in te stellen om de warmtepomp te regelen. Zie [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) voor meer details.
+
+Er is ook een [metrics-page](https://bosch-buderus-wp.github.io/metrics/) waar warmtepompwaarden worden opgeslagen en gevisualiseerd. Als je [contribute, read this further information](https://bosch-buderus-wp.github.io/metrics/howto).
 
 `txpause` gebruiken om het busverkeer tijdelijk uit te schakelen
 

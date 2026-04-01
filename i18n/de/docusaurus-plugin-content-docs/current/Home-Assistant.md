@@ -4,7 +4,7 @@ title: Home Assistant Integration
 description: Integrate EMS-ESP with Home Assistant using MQTT Discovery for automatic device setup and control
 ---
 
-# Home Assistant
+# Haushaltshilfe
 
 ![logo](/media/logo/home-assistant.png)
 
@@ -243,14 +243,14 @@ one_time_water_on:
     - service: mqtt.publish
       data:
         topic: 'ems-esp/boiler'
-        payload: '{"cmd":"dhw.onetime","data":1}'
+        payload: '{"cmd":"dhw/onetime","data":1}'
 
 one_time_water_off:
   sequence:
     - service: mqtt.publish
       data:
         topic: 'ems-esp/boiler'
-        payload: '{"cmd":"dhw.onetime","data":0}'
+        payload: '{"cmd":"dhw/onetime","data":0}'
 ```
 
 ### Berechnung der Werte
@@ -287,7 +287,7 @@ one_time_water_off:
 
 ### Lesen eines Wertes über die API
 
-Obwohl alle EMS-ESP-Daten im Home Assistant als verschiedene Sensortypen verfügbar sind, können Sie optional auch Befehle aufrufen und Daten über die REST-API-Schnittstelle lesen. Zum Beispiel im folgenden Skript, das den HA dazu veranlasst, die MAC-Adresse abzurufen, wenn der HA neu gestartet wird:
+Obwohl alle EMS-ESP-Daten im Home Assistant als verschiedene Sensortypen verfügbar sind, können Sie optional auch Befehle aufrufen und Daten über die REST-API-Schnittstelle lesen. Zum Beispiel im folgenden Skript, das den HA veranlasst, die MAC-Adresse abzurufen, wenn der HA neu gestartet wird:
 
 ```yaml
 sensor:

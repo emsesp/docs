@@ -16,7 +16,7 @@ In einem sehr einfachen Fall versorgt ein Heizkessel einen Heizkreis mit Wärme.
 
 Sobald `current flow temperature` den Wert `selected flow temperature` + `temperature hysteresis off` übersteigt, wird die Erwärmung gestoppt, bis `current flow temperature` unter `selected flow temperature` + `temperature hysteresis on` fällt (was normalerweise ein negativer Wert ist).
 
-Um die Heizung zu aktivieren, müssen Sie also `heatingactivated` auf `on` setzen und ein entsprechendes `flowtemp` einstellen. Letztere sollte von der `heating temperature setting` abgeleitet werden, die über die physikalische dial/control am Kessel eingestellt werden kann. Sie sollte als maximale Vorlauftemperatur betrachtet werden. Sie können auch eine niedrigere Vorlauftemperatur verwenden, um eine konstante Raumtemperatur zu erhalten, sobald die erste Aufheizung erfolgt ist.
+Um die Heizung zu aktivieren, müssen Sie also `heatingactivated` auf `on` setzen und ein entsprechendes `flowtemp` einstellen. Letztere sollte von der `heating temperature setting` abgeleitet werden, die über die physikalische dial/control am Kessel eingestellt werden kann. Sie sollte als maximale Vorlauftemperatur betrachtet werden. Sie können auch eine niedrigere Vorlauftemperatur verwenden, um eine konstante Raumtemperatur zu erhalten, sobald die erste Erwärmung erfolgt ist.
 
 Zusätzliche Informationen von Michael:
 
@@ -349,7 +349,7 @@ mqtt:
         {%- if value == 'eco' -%}eco{%-elif value == 'hot' -%}hot{%- else -%}intelligent{%- endif -%}
         {{'"}'}}
       fan_mode_state_topic: 'ems-esp/boiler_data_ww'
-      fan_mode_state_template: '{{ value_json.wwcomfort }}'
+      fan_mode_state_template: '{{ value_json.dhw.comfort }}'
       fan_modes:
         - 'eco'
         - 'hot'
@@ -433,7 +433,7 @@ Nach seinen eigenen Worten hat er dies getan:
 Ich habe noch nicht alle Optionen ausprobiert, aber hier sind ein paar Kommentare:
 
 - Ich dachte, ich wäre schlau, indem ich vorausschauend dachte, also habe ich bei der Auswahl "Kompressorbetr. sperren" auch "Zuheizerbetr. sperren" ausgewählt. ABER - ohne Scheiß - NUR der Zuheizer ging tatsächlich an und verschwendete eine Menge Strom (zumindest für ein paar Minuten).
-- "Heizbetrieb sperren" schaltet auch die Umwälzpumpe ab, was ich nicht möchte, da ich einen 500-Liter-Pufferspeicher habe.
+- "Heizbetrieb sperren" schaltet auch die Umwälzpumpe ab, was ich nicht will, da ich einen 500-Liter-Pufferspeicher habe.
 - "EVU-Sperrzeit 1" funktioniert soweit ganz gut (wofür sind die anderen EVU-Sperrzeiten?)
 
 Als Nächstes wurde die Zeichenkette mit Automatismen geändert.
@@ -494,7 +494,7 @@ Hier ist eine einfache Automatisierung, die zusätzliches heißes Wasser durch e
 
 _(by oliof with additional input by tz)_
 
-Wenn Sie mit der Einstellung Ihres Heizkessels beginnen, werden Sie höchstwahrscheinlich auf Situationen stoßen, in denen der Heizkessel selbst bei der niedrigsten Modulationseinstellung zu viel Wärme produziert. In solchen Fällen kann es sich lohnen, eine zusätzliche Regelung in Betracht zu ziehen, die den Heizkessel für eine gewisse Zeit abschaltet, wenn die Zieltemperatur erreicht ist. Hier ist eine mögliche Implementierung, die im Grunde ein Zweipunktregler ist. Aufgrund der thermischen Trägheit liegen die Schaltvorgänge bei den meisten Heizungssystemen ohne zusätzliche Verzögerung oder Zeitbegrenzung relativ weit auseinander, doch lassen sich diese leicht hinzufügen, wenn man die Anzahl der Einschaltvorgänge reduzieren möchte.
+Wenn Sie mit der Einstellung Ihres Heizkessels beginnen, werden Sie höchstwahrscheinlich auf Situationen stoßen, in denen der Heizkessel selbst bei der niedrigsten Modulationseinstellung zu viel Wärme produziert. In solchen Fällen kann es sich lohnen, eine zusätzliche Regelung in Betracht zu ziehen, die den Heizkessel für eine gewisse Zeit abschaltet, wenn die Zieltemperatur erreicht ist. Hier ist eine mögliche Implementierung, die im Grunde ein Zweipunktregler ist. Aufgrund der thermischen Trägheit liegen die Schaltvorgänge bei den meisten Heizungsanlagen ohne zusätzliche Verzögerung oder Zeitbegrenzung relativ weit auseinander, doch lassen sich diese leicht hinzufügen, wenn man die Anzahl der Einschaltvorgänge verringern möchte.
 
 Diese Schwachlastoptimierung kann den Gasverbrauch um 15-20 % senken, ohne dass sich der Temperaturkomfort ändert.
 
@@ -603,13 +603,15 @@ Hier ein Beispieldiagramm, das die `Heating activated`-Entität und die Temperat
 Die für die Automatisierung verwendete Taste ist eine einfache Aqara-Zigbee-Taste.
 
 :::info Ich verwende ein [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) mit dem [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), da es eine zweistellige Genauigkeit bietet und etwa ein- bis zweimal pro Minute aktualisiert wird).  
- Bitte beachten Sie, dass Thermometer mit niedriger Auflösung und geringer Aktualisierungsfrequenz Ihre Fähigkeit, schnell auf Temperaturänderungen zu reagieren, beeinträchtigen.  
+ Bitte beachten Sie, dass Thermometer mit niedriger Auflösung und geringer Aktualisierungsfrequenz Ihre Fähigkeit beeinträchtigen, schnell auf Temperaturänderungen zu reagieren.  
  Wenn Sie möchten, können Sie mit tasmota und einem DS18B20- oder BME820-Sensor ein hochauflösendes, häufig aktualisiertes Thermometer bauen.
 :::
 
 ## Optimierung für Wärmepumpen
 
-Matthias hat sein Setup der Bosch/Buderus Wärmepumpe auf [his blog](https://bosch-buderus-wp.github.io/xps/matthias) dokumentiert und zeigt sogar, wie man mit AI eine MCP/LLM Wärmepumpe steuern kann. Siehe [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) für weitere Einzelheiten.
+Matthias hat sein Setup der Bosch/Buderus Wärmepumpe auf [his blog](https://bosch-buderus-wp.github.io/xps/matthias) dokumentiert und zeigt sogar, wie man mit Hilfe von AI eine MCP/LLM Wärmepumpe steuern kann (siehe [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai)).
+
+Es gibt auch einen [metrics-page](https://bosch-buderus-wp.github.io/metrics/), in dem die Werte der Wärmepumpe gespeichert und visualisiert werden. Wenn Sie [contribute, read this further information](https://bosch-buderus-wp.github.io/metrics/howto).
 
 ## Verwendung von `txpause` zur vorübergehenden Abschaltung des Busverkehrs
 

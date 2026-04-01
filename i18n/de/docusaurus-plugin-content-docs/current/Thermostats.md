@@ -44,48 +44,48 @@ Dies ist die aktuelle Liste der unterstützten Thermostate von Marken wie Buderu
 :::warning Die tatsächlichen Thermostat-Befehle unten variieren je nach Thermostat-Marke und -Modell. Diese Liste ist auch nicht vollständig und kann sich von Version zu Version ändern.
 :::
 
-| Befehl           | Daten                                              | ID            | Kommentare                                                                                                                     |
-| ---------------- | -------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `datetime`       | `<ntp \| dd.mm.yyyy-hh:mm:ss-dw-dst>`              |               | RC35, RC100, RC300, `dw`:Tag der Woche: 0-mo,.. `dst`:Sommerzeit 0/1                                                           |
-| `dhw.mode`       | `<off \| on \| auto>`                              |               | RC100, RC300, RC30, RC35                                                                                                       |
-| `dhw.settemp`    | `<degrees>`                                        |               | RC100, RC300                                                                                                                   |
-| `dhw.settemplow` | `<degrees>`                                        |               | RC100, RC300                                                                                                                   |
-| `dhw.circmode`   | `<off \| on \| auto \| own>`                       |               | RC30, RC35, RC100, RC300                                                                                                       |
-| `dhw.charge`     | `<off \| on>`                                      |               | RC100, RC300                                                                                                                   |
-| `clockoffset`    | `<seconds>`                                        |               | RC30                                                                                                                           |
-| `language`       | `<n>`                                              |               | RC30 (0=de, 1=nl, 2=fr, 3=it)                                                                                                  |
-| `display`        | `<n>`                                              |               | RC30 (0=int temp, 1= int set, 2=ext temp, 3=burner, 4=ww, 5=mode, 6=time, 7=date, 8=smoke)                                     |
-| `minexttemp`     | `<degrees>`                                        |               | RC30, RC35, RC100, RC300                                                                                                       |
-| `calinttemp`     | `<degrees>`                                        |               | RC30, RC35                                                                                                                     |
-| `building`       | `<light \| medium \| heavy>`                       |               | RC30, RC35, RC100, RC300                                                                                                       |
-| `temp`           | `<degrees>`                                        | Heizkreis     | aktueller Sollwert je nach Modus                                                                                               |
-| `mode`           | `<auto \| night \| day \| nofrost \| heat \| eco>` | Heizkreislauf |                                                                                                                                |
-| `manualtemp`     | `<degrees>`                                        | Heizkreis     | RC100, RC300                                                                                                                   |
-| `ecotemp`        | `<degrees>`                                        | Heizkreislauf | RC100, RC300, Junkers                                                                                                          |
-| `heattemp`       | `<degrees>`                                        | Heizkreislauf | Junkers                                                                                                                        |
-| `comforttemp`    | `<degrees>`                                        | Heizkreis     | RC100, RC300                                                                                                                   |
-| `summermode`     | `<winter \| auto \| summer>`                       | Heizkreis     | RC100, RC300                                                                                                                   |
-| `summertemp`     | `<degrees>`                                        | Heizkreis     | RC30, RC35, RC100, RC300                                                                                                       |
-| `nighttemp`      | `<degrees>`                                        | Heizkreis     | RC20, RC30, RC35                                                                                                               |
-| `daytemp`        | `<degrees>`                                        | Heizkreis     | RC20, RC30, RC35                                                                                                               |
-| `daytemp2`       | `<degrees>`                                        | Heizkreis     | RC20                                                                                                                           |
-| `daytemp3`       | `<degrees>`                                        | Heizkreis     | RC20                                                                                                                           |
-| `daytemp4`       | `<degrees>`                                        | Heizkreis     | RC20                                                                                                                           |
-| `nofrosttemp`    | `<degrees>`                                        | Heizkreislauf | RC30, RC35, RC100, RC300, Junkers                                                                                              |
-| `remotetemp`     | `<degrees>`                                        | Heizkreis     | RC30, RC35                                                                                                                     |
-| `control`        | `<off \| RC20 \| RC3x>`                            | Heizkreis     | RC30, RC35 (Raumsteuerung für hc)                                                                                              |
-| `pause`          | `<hours>`                                          | Heizkreis     | RC30, RC35                                                                                                                     |
-| `party`          | `<hours>`                                          | Heizkreis     | RC30, RC35                                                                                                                     |
-| `holiday`        | `<dd.mm.yyyy-dd.mm.yyyy \| dd.mm.yyyy+dd.mm.yyyy>` | Heizkreislauf | RC30, RC35, verwenden Sie `-` für 'außer Haus', `+` für 'zu Hause'                                                             |
-| `designtemp`     | `<degrees>`                                        | Heizkreis     | RC30, RC35, RC100, RC300                                                                                                       |
-| `offsettemp`     | `<degrees>`                                        | Heizkreis     | RC30, RC35, RC100, RC300                                                                                                       |
-| `holidaytemp`    | `<degrees>`                                        | Heizkreis     | RC30, RC35                                                                                                                     |
-| `roominfluence`  | `<degrees>`                                        | Heizkreis     | RC30, RC35, RC100, RC300                                                                                                       |
-| `minflowtemp`    | `<degrees>`                                        | Heizkreis     | RC30, RC35, RC100, RC300                                                                                                       |
-| `maxflowtemp`    | `<degrees>`                                        | Heizkreis     | RC30, RC35, RC100, RC300                                                                                                       |
-| `flowtempoffset` | `<degrees>`                                        | Heizkreis     | RC30, RC35                                                                                                                     |
-| `program`        | `<0 - 10 \| 1 - 9 \| 1 - 2>`                       | Heizkreis     | RC30, RC35, RC20, RC100, RC300                                                                                                 |
-| `controlmode`    | `<room \| outdoor>`                                | Heizkreis     | RC30, RC35, RC100, RC300                                                                                                       |
-| `reducemode`     | `<nofrost \| reduce \| room \| outdoor>`           | Heizkreis     | RC30, RC35                                                                                                                     |
-| `roomtemp`       | `<degrees>`                                        | Heizkreis     | nur v2.2: HA-Thermostat Raumtemperatur fälschen, `-1` zum Löschen verwenden                                                    |
-| `switchtime`     | `<nn.d.o.hh:mm>`                                   | Heizkreis     | nur v3: eines der Programme Schaltzeiten einstellen, nn=Nummer(00-42), d=Tag(0-6), o=ein(0,1), hh:mm=Zeit, d=7 oder o=7 löscht |
+| Befehl | Daten | ID | Kommentare |
+| ---------------- | -------------------------------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `datetime` | `<ntp \| dd.mm.yyyy-hh:mm:ss-dw-dst>` | | RC35, RC100, RC300, `dw`:Tag der Woche: 0-mo,.. `dst`:Sommerzeit 0/1 |
+| `dhw.mode` | `<off \| on \| auto>` | | RC100, RC300, RC30, RC35 |
+| `dhw.settemp` | `<degrees>` | | RC100, RC300 |
+| `dhw.settemplow` | `<degrees>` | | RC100, RC300 |
+| `dhw.circmode` | `<off \| on \| auto \| own>` | | RC30, RC35, RC100, RC300 |
+| `dhw.charge` | `<off \| on>` | | RC100, RC300 |
+| `clockoffset` | `<seconds>` | | RC30 |
+| `language` | `<n>` | | RC30 (0=de, 1=nl, 2=fr, 3=it) |
+| `display` | `<n>` | | RC30 (0=int temp, 1= int set, 2=ext temp, 3=burner, 4=dhw, 5=mode, 6=time, 7=date, 8=smoke) |
+| `minexttemp` | `<degrees>` | | RC30, RC35, RC100, RC300 |
+| `calinttemp` | `<degrees>` | | RC30, RC35 |
+| `building` | `<light \| medium \| heavy>` | | RC30, RC35, RC100, RC300 |
+| `temp` | `<degrees>` | Heizkreis | aktueller Sollwert je nach Modus |
+| `mode` | `<auto \| night \| day \| nofrost \| heat \| eco>` | Heizkreislauf | |
+| `manualtemp` | `<degrees>` | Heizkreis | RC100, RC300 |
+| `ecotemp` | `<degrees>` | Heizkreislauf | RC100, RC300, Junkers |
+| `heattemp` | `<degrees>` | Heizkreislauf | Junkers |
+| `comforttemp` | `<degrees>` | Heizkreis | RC100, RC300 |
+| `summermode` | `<winter \| auto \| summer>` | Heizkreis | RC100, RC300 |
+| `summertemp` | `<degrees>` | Heizkreis | RC30, RC35, RC100, RC300 |
+| `nighttemp` | `<degrees>` | Heizkreis | RC20, RC30, RC35 |
+| `daytemp` | `<degrees>` | Heizkreis | RC20, RC30, RC35 |
+| `daytemp2` | `<degrees>` | Heizkreis | RC20 |
+| `daytemp3` | `<degrees>` | Heizkreis | RC20 |
+| `daytemp4` | `<degrees>` | Heizkreis | RC20 |
+| `nofrosttemp` | `<degrees>` | Heizkreislauf | RC30, RC35, RC100, RC300, Junkers |
+| `remotetemp` | `<degrees>` | Heizkreis | RC30, RC35 |
+| `control` | `<off \| RC20 \| RC3x>` | Heizkreis | RC30, RC35 (Raumsteuerung für hc) |
+| `pause` | `<hours>` | Heizkreis | RC30, RC35 |
+| `party` | `<hours>` | Heizkreis | RC30, RC35 |
+| `holiday` | `<dd.mm.yyyy-dd.mm.yyyy \| dd.mm.yyyy+dd.mm.yyyy>` | Heizkreislauf | RC30, RC35, verwenden Sie `-` für 'außer Haus', `+` für 'zu Hause' |
+| `designtemp` | `<degrees>` | Heizkreis | RC30, RC35, RC100, RC300 |
+| `offsettemp` | `<degrees>` | Heizkreis | RC30, RC35, RC100, RC300 |
+| `holidaytemp` | `<degrees>` | Heizkreis | RC30, RC35 |
+| `roominfluence` | `<degrees>` | Heizkreis | RC30, RC35, RC100, RC300 |
+| `minflowtemp` | `<degrees>` | Heizkreis | RC30, RC35, RC100, RC300 |
+| `maxflowtemp` | `<degrees>` | Heizkreis | RC30, RC35, RC100, RC300 |
+| `flowtempoffset` | `<degrees>` | Heizkreis | RC30, RC35 |
+| `program` | `<0 - 10 \| 1 - 9 \| 1 - 2>` | Heizkreis | RC30, RC35, RC20, RC100, RC300 |
+| `controlmode` | `<room \| outdoor>` | Heizkreis | RC30, RC35, RC100, RC300 |
+| `reducemode` | `<nofrost \| reduce \| room \| outdoor>` | Heizkreis | RC30, RC35 |
+| `roomtemp` | `<degrees>` | Heizkreis | nur v2.2: HA-Thermostat Raumtemperatur fälschen, `-1` zum Löschen verwenden |
+| `switchtime` | `<nn.d.o.hh:mm>` | Heizkreis | nur v3: eines der Programme Schaltzeiten einstellen, nn=Nummer(00-42), d=Tag(0-6), o=ein(0,1), hh:mm=Zeit, d=7 oder o=7 löscht |

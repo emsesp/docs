@@ -58,7 +58,7 @@ actions:
 mode: single
 ```
 
-### Douche Integratie
+### Douche integratie
 
 Hieronder staan de toevoegingen aan de HA-bestanden om de toestand van de douche weer te geven als de instelling `Shower Timer` is ingeschakeld in EMS-ESP.
 
@@ -243,14 +243,14 @@ one_time_water_on:
     - service: mqtt.publish
       data:
         topic: 'ems-esp/boiler'
-        payload: '{"cmd":"dhw.onetime","data":1}'
+        payload: '{"cmd":"dhw/onetime","data":1}'
 
 one_time_water_off:
   sequence:
     - service: mqtt.publish
       data:
         topic: 'ems-esp/boiler'
-        payload: '{"cmd":"dhw.onetime","data":0}'
+        payload: '{"cmd":"dhw/onetime","data":0}'
 ```
 
 ### Waarden berekenen
