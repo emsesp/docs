@@ -3,6 +3,7 @@ id: Home-Assistant
 title: Home Assistant Integration
 description: Integrate EMS-ESP with Home Assistant using MQTT Discovery for automatic device setup and control
 ---
+
 # Home Assistant
 
 ![logo](/media/logo/home-assistant.png)
@@ -242,14 +243,14 @@ one_time_water_on:
     - service: mqtt.publish
       data:
         topic: 'ems-esp/boiler'
-        payload: '{"cmd":"wwonetime","data":1}'
+        payload: '{"cmd":"dhw/onetime","data":1}'
 
 one_time_water_off:
   sequence:
     - service: mqtt.publish
       data:
         topic: 'ems-esp/boiler'
-        payload: '{"cmd":"wwonetime","data":0}'
+        payload: '{"cmd":"dhw/onetime","data":0}'
 ```
 
 ### Calculating values
@@ -331,7 +332,7 @@ in the automations:
     service: rest_command.emsesp
     data:
       device: 'boiler'
-      entity: 'wwseltemp'
+      entity: 'dhw.seltemp'
       value: "{{ states('input_number.wwselected_temp') | int }}"
 
 - id: 'set_ww_seltemp'
@@ -353,7 +354,7 @@ Now in HA you can dynamically adjust the values. Like:
 
 ![Screenshot 2021-08-08 143712](https://user-images.githubusercontent.com/1230712/128632199-7815d649-40a8-4f11-99e3-eacc16bf53a4.png)
 
-Check if it's working by going to `http://ems-esp/api/boiler/wwseltemp`
+Check if it's working by going to `http://ems-esp/api/boiler/dhw.seltemp`
 
 ### LoveLace Section View, Tiles and setting values via EMS-ESP
 

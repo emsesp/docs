@@ -36,6 +36,7 @@ Dit is de huidige lijst met ondersteunde thermostaten van merken zoals Buderus, 
     - Buderus Logamatic TC100, Bosch EasyControl CT200, Junkers CT100, Moduline Easy. Zie [here](https://community.home-assistant.io/t/buderus-tc100-junkers-ct100-thermostat/67992)
     - Junkers FW/FR gebouwd vóór 9/2008 (FD889). Zie [here](https://github.com/emsesp/EMS-ESP32/issues/105#issuecomment-915874482)
     - Tado thermostaten
+
 :::
 
 ## Apparaat entiteiten
@@ -43,48 +44,48 @@ Dit is de huidige lijst met ondersteunde thermostaten van merken zoals Buderus, 
 :::warning De werkelijke thermostaatcommando's hieronder zijn afhankelijk van het merk en model thermostaat dat je hebt. Deze lijst is ook niet volledig en kan tussen versies veranderen.
 :::
 
-| commando | gegevens | id | commentaar |
-| - | - | - | - |
-| `datetime` | `<ntp \| dd.mm.yyyy-hh:mm:ss-dw-dst>` | RC35, RC100, RC300, `dw`:dag van de week: 0-mo,. `dst`:zomertijd 0/1 |
-| `wwmode` | `<off \| on \| auto>` | | RC100, RC300, RC30, RC35 |
-| `wwsettemp` | `<degrees>` | | RC100, RC300 |
-| `wwsettemplow` | `<degrees>` | | RC100, RC300 |
-| `wwcircmode` | `<off \| on \| auto \| own>` | | RC30, RC35, RC100, RC300 |
-| `wwcharge` | `<off \| on>` | | RC100, RC300 |
-| `clockoffset` | `<seconds>` | | RC30 |
-| `language` | `<n>` | | RC30 (0=de, 1=nl, 2=fr, 3=it) |
-| `display` | `<n>` | | RC30 (0=int temp, 1= int set, 2=ext temp, 3=burner, 4=ww, 5=mode, 6=time, 7=date, 8=smoke) |
-| `minexttemp` | `<degrees>` | | RC30, RC35, RC100, RC300 |
-| `calinttemp` | `<degrees>` | | RC30, RC35 |
-| `building` | `<light \| medium \| heavy>` | | RC30, RC35, RC100, RC300 |
-| `temp` | `<degrees>` | verwarmingscircuit | werkelijke instelpunt afhankelijk van modus |
-| `mode` | `<auto \| night \| day \| nofrost \| heat \| eco>` | verwarmingscircuit | |
-| `manualtemp` | `<degrees>` | verwarmingscircuit | RC100, RC300 |
-| `ecotemp` | `<degrees>` | verwarmingscircuit | RC100, RC300, Junkers |
-| `heattemp` | `<degrees>` | verwarmingscircuit | Junkers |
-| `comforttemp` | `<degrees>` | verwarmingscircuit | RC100, RC300 |
-| `summermode` | `<winter \| auto \| summer>` | verwarmingscircuit | RC100, RC300 |
-| `summertemp` | `<degrees>` | verwarmingscircuit | RC30, RC35, RC100, RC300 |
-| `nighttemp` | `<degrees>` | verwarmingscircuit | RC20, RC30, RC35 |
-| `daytemp` | `<degrees>` | verwarmingscircuit | RC20, RC30, RC35 |
-| `daytemp2` | `<degrees>` | verwarmingscircuit | RC20 |
-| `daytemp3` | `<degrees>` | verwarmingscircuit | RC20 |
-| `daytemp4` | `<degrees>` | verwarmingscircuit | RC20 |
-| `nofrosttemp` | `<degrees>` | verwarmingscircuit | RC30, RC35, RC100, RC300, Junkers |
-| `remotetemp` | `<degrees>` | verwarmingscircuit | RC30, RC35 |
-| `control` | `<off \| RC20 \| RC3x>` | verwarmingscircuit | RC30, RC35 (ruimteregeling voor hc) |
-| `pause` | `<hours>` | verwarmingscircuit | RC30, RC35 |
-| `party` | `<hours>` | verwarmingscircuit | RC30, RC35 |
-| `holiday` | `<dd.mm.yyyy-dd.mm.yyyy \| dd.mm.yyyy+dd.mm.yyyy>` | verwarmingscircuit | RC30, RC35, gebruik `-` voor 'buitenshuis', `+` voor 'thuis' |
-| `designtemp` | `<degrees>` | verwarmingscircuit | RC30, RC35, RC100, RC300 |
-| `offsettemp` | `<degrees>` | verwarmingscircuit | RC30, RC35, RC100, RC300 |
-| `holidaytemp` | `<degrees>` | verwarmingscircuit | RC30, RC35 |
-| `roominfluence` | `<degrees>` | verwarmingscircuit | RC30, RC35, RC100, RC300 |
-| `minflowtemp` | `<degrees>` | verwarmingscircuit | RC30, RC35, RC100, RC300 |
-| `maxflowtemp` | `<degrees>` | verwarmingscircuit | RC30, RC35, RC100, RC300 |
-| `flowtempoffset` | `<degrees>` | verwarmingscircuit | RC30, RC35 |
-| `program` | `<0 - 10 \| 1 - 9 \| 1 - 2>` | verwarmingscircuit | RC30, RC35, RC20, RC100, RC300 |
-| `controlmode` | `<room \| outdoor>` | verwarmingscircuit | RC30, RC35, RC100, RC300 |
-| `reducemode` | `<nofrost \| reduce \| room \| outdoor>` | verwarmingscircuit | RC30, RC35 |
-| `roomtemp` | `<degrees>` | verwarmingscircuit | alleen v2.2: valse HA-thermostaat kamertemperatuur, gebruik `-1` om te wissen |
-| `switchtime` | `<nn.d.o.hh:mm>` | verwarmingscircuit | alleen v3: stel een van de schakeltijden van de programma's in, nn=aantal(00-42), d=dag(0-6), o=on(0,1), hh:mm=tijd, d=7 of o=7 wist |
+| commando         | gegevens                                           | id                                                                   | commentaar                                                                                                                           |
+| ---------------- | -------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `datetime`       | `<ntp \| dd.mm.yyyy-hh:mm:ss-dw-dst>`              | RC35, RC100, RC300, `dw`:dag van de week: 0-mo,. `dst`:zomertijd 0/1 |
+| `dhw.mode`       | `<off \| on \| auto>`                              |                                                                      | RC100, RC300, RC30, RC35                                                                                                             |
+| `dhw.settemp`    | `<degrees>`                                        |                                                                      | RC100, RC300                                                                                                                         |
+| `dhw.settemplow` | `<degrees>`                                        |                                                                      | RC100, RC300                                                                                                                         |
+| `dhw.circmode`   | `<off \| on \| auto \| own>`                       |                                                                      | RC30, RC35, RC100, RC300                                                                                                             |
+| `dhw.charge`     | `<off \| on>`                                      |                                                                      | RC100, RC300                                                                                                                         |
+| `clockoffset`    | `<seconds>`                                        |                                                                      | RC30                                                                                                                                 |
+| `language`       | `<n>`                                              |                                                                      | RC30 (0=de, 1=nl, 2=fr, 3=it)                                                                                                        |
+| `display`        | `<n>`                                              |                                                                      | RC30 (0=int temp, 1= int set, 2=ext temp, 3=burner, 4=ww, 5=mode, 6=time, 7=date, 8=smoke)                                           |
+| `minexttemp`     | `<degrees>`                                        |                                                                      | RC30, RC35, RC100, RC300                                                                                                             |
+| `calinttemp`     | `<degrees>`                                        |                                                                      | RC30, RC35                                                                                                                           |
+| `building`       | `<light \| medium \| heavy>`                       |                                                                      | RC30, RC35, RC100, RC300                                                                                                             |
+| `temp`           | `<degrees>`                                        | verwarmingscircuit                                                   | werkelijke instelpunt afhankelijk van modus                                                                                          |
+| `mode`           | `<auto \| night \| day \| nofrost \| heat \| eco>` | verwarmingscircuit                                                   |                                                                                                                                      |
+| `manualtemp`     | `<degrees>`                                        | verwarmingscircuit                                                   | RC100, RC300                                                                                                                         |
+| `ecotemp`        | `<degrees>`                                        | verwarmingscircuit                                                   | RC100, RC300, Junkers                                                                                                                |
+| `heattemp`       | `<degrees>`                                        | verwarmingscircuit                                                   | Junkers                                                                                                                              |
+| `comforttemp`    | `<degrees>`                                        | verwarmingscircuit                                                   | RC100, RC300                                                                                                                         |
+| `summermode`     | `<winter \| auto \| summer>`                       | verwarmingscircuit                                                   | RC100, RC300                                                                                                                         |
+| `summertemp`     | `<degrees>`                                        | verwarmingscircuit                                                   | RC30, RC35, RC100, RC300                                                                                                             |
+| `nighttemp`      | `<degrees>`                                        | verwarmingscircuit                                                   | RC20, RC30, RC35                                                                                                                     |
+| `daytemp`        | `<degrees>`                                        | verwarmingscircuit                                                   | RC20, RC30, RC35                                                                                                                     |
+| `daytemp2`       | `<degrees>`                                        | verwarmingscircuit                                                   | RC20                                                                                                                                 |
+| `daytemp3`       | `<degrees>`                                        | verwarmingscircuit                                                   | RC20                                                                                                                                 |
+| `daytemp4`       | `<degrees>`                                        | verwarmingscircuit                                                   | RC20                                                                                                                                 |
+| `nofrosttemp`    | `<degrees>`                                        | verwarmingscircuit                                                   | RC30, RC35, RC100, RC300, Junkers                                                                                                    |
+| `remotetemp`     | `<degrees>`                                        | verwarmingscircuit                                                   | RC30, RC35                                                                                                                           |
+| `control`        | `<off \| RC20 \| RC3x>`                            | verwarmingscircuit                                                   | RC30, RC35 (ruimteregeling voor hc)                                                                                                  |
+| `pause`          | `<hours>`                                          | verwarmingscircuit                                                   | RC30, RC35                                                                                                                           |
+| `party`          | `<hours>`                                          | verwarmingscircuit                                                   | RC30, RC35                                                                                                                           |
+| `holiday`        | `<dd.mm.yyyy-dd.mm.yyyy \| dd.mm.yyyy+dd.mm.yyyy>` | verwarmingscircuit                                                   | RC30, RC35, gebruik `-` voor 'buitenshuis', `+` voor 'thuis'                                                                         |
+| `designtemp`     | `<degrees>`                                        | verwarmingscircuit                                                   | RC30, RC35, RC100, RC300                                                                                                             |
+| `offsettemp`     | `<degrees>`                                        | verwarmingscircuit                                                   | RC30, RC35, RC100, RC300                                                                                                             |
+| `holidaytemp`    | `<degrees>`                                        | verwarmingscircuit                                                   | RC30, RC35                                                                                                                           |
+| `roominfluence`  | `<degrees>`                                        | verwarmingscircuit                                                   | RC30, RC35, RC100, RC300                                                                                                             |
+| `minflowtemp`    | `<degrees>`                                        | verwarmingscircuit                                                   | RC30, RC35, RC100, RC300                                                                                                             |
+| `maxflowtemp`    | `<degrees>`                                        | verwarmingscircuit                                                   | RC30, RC35, RC100, RC300                                                                                                             |
+| `flowtempoffset` | `<degrees>`                                        | verwarmingscircuit                                                   | RC30, RC35                                                                                                                           |
+| `program`        | `<0 - 10 \| 1 - 9 \| 1 - 2>`                       | verwarmingscircuit                                                   | RC30, RC35, RC20, RC100, RC300                                                                                                       |
+| `controlmode`    | `<room \| outdoor>`                                | verwarmingscircuit                                                   | RC30, RC35, RC100, RC300                                                                                                             |
+| `reducemode`     | `<nofrost \| reduce \| room \| outdoor>`           | verwarmingscircuit                                                   | RC30, RC35                                                                                                                           |
+| `roomtemp`       | `<degrees>`                                        | verwarmingscircuit                                                   | alleen v2.2: valse HA-thermostaat kamertemperatuur, gebruik `-1` om te wissen                                                        |
+| `switchtime`     | `<nn.d.o.hh:mm>`                                   | verwarmingscircuit                                                   | alleen v3: stel een van de schakeltijden van de programma's in, nn=aantal(00-42), d=dag(0-6), o=on(0,1), hh:mm=tijd, d=7 of o=7 wist |

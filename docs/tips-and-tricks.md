@@ -3,6 +3,7 @@ id: tips-and-tricks
 title: Tips and Tricks
 description: Community-contributed tips, tricks, and code snippets for advanced EMS-ESP usage and automation
 ---
+
 # Tips and Tricks
 
 **Below are a collection of useful tips, tricks and code submitted by the community:**
@@ -45,7 +46,7 @@ _(by IanC)_
 
 From the Discord post IanC said:
 
-_"With a ~2012 Worcester Bosch boiler, house heating is managed by an EvoHome system that knows which parts of house need how much heat, but it can only use an on/off relay to control the boiler for space and water heating. This means it cannot directly control flow temperature, and historically this has been set at continuous 65C via dial on front of boiler to allow water heating when needed. Very pleased to have added EMS-ESP to my system to help manage flow temperatures. I wrote a simple C program to run on my OpenWrt internet router which eavesdrops on EvoHome messages to capture useful information on what amount of heat is needed for space and water into simple txt files in /tmp. I then schedule a shell script every 4 minutes which uses a few steps to select a flow temperature: start with a weather compensated value based on exterior temperature from online service; adjust this up or down by up to 25% based on EvoHome space heat demand; if necessary override this to heat hot water. The selected flow temperature and a max burner level are then sent via curl to a BBQKees device running EMS-ESP which in turn controls boiler. So far it seems to be working as intended without loss of house comfort but with much lower flow temperatures observed to try and encourage boiler operating in condensing zone.  Very hard to tell if it is affecting gas consumption - which I would like it to :-). Main challenge I still see is how to stop EvoHome causing frequent on/off cycles of boiler while it still tries to use TPI flow control management."_
+_"With a ~2012 Worcester Bosch boiler, house heating is managed by an EvoHome system that knows which parts of house need how much heat, but it can only use an on/off relay to control the boiler for space and water heating. This means it cannot directly control flow temperature, and historically this has been set at continuous 65C via dial on front of boiler to allow water heating when needed. Very pleased to have added EMS-ESP to my system to help manage flow temperatures. I wrote a simple C program to run on my OpenWrt internet router which eavesdrops on EvoHome messages to capture useful information on what amount of heat is needed for space and water into simple txt files in /tmp. I then schedule a shell script every 4 minutes which uses a few steps to select a flow temperature: start with a weather compensated value based on exterior temperature from online service; adjust this up or down by up to 25% based on EvoHome space heat demand; if necessary override this to heat hot water. The selected flow temperature and a max burner level are then sent via curl to a BBQKees device running EMS-ESP which in turn controls boiler. So far it seems to be working as intended without loss of house comfort but with much lower flow temperatures observed to try and encourage boiler operating in condensing zone. Very hard to tell if it is affecting gas consumption - which I would like it to :-). Main challenge I still see is how to stop EvoHome causing frequent on/off cycles of boiler while it still tries to use TPI flow control management."_
 
 ![1.5.0](/media/examples/ian_setflowtemp.png)
 
@@ -324,18 +325,18 @@ mqtt:
       temp_step: 5
       current_temperature_topic: 'ems-esp/boiler_data_ww'
       temperature_state_topic: 'ems-esp/boiler_data_ww'
-      temperature_command_topic: 'ems-esp/boiler/wwseltemp'
+      temperature_command_topic: 'ems-esp/boiler/dhw.seltemp'
       temperature_command_template: >
-        {{ '{"cmd":"wwseltemp ","data":'}}
+        {{ '{"cmd":"dhw.seltemp ","data":'}}
         {{ value }}
         {{ '}'}}
-      current_temperature_template: '{{ value_json.wwcurtemp }}'
-      temperature_state_template: '{{ value_json.wwseltemp }}'
-      mode_state_template: "{% if value_json.wwactivated == 'off' %} off {% else %} heat {% endif %}"
+      current_temperature_template: '{{ value_json.dhw.curtemp }}'
+      temperature_state_template: '{{ value_json.dhw.seltemp }}'
+      mode_state_template: "{% if value_json.dhw.activated == 'off' %} off {% else %} heat {% endif %}"
       mode_state_topic: 'ems-esp/boiler_data_ww'
-      mode_command_topic: 'ems-esp/boiler/wwactivated'
+      mode_command_topic: 'ems-esp/boiler/dhw.activated'
       mode_command_template: >
-        {{ '{"cmd":"wwactivated","data":"'}}
+        {{ '{"cmd":"dhw.activated","data":"'}}
         {%- if value == 'off' -%}off{% else %}on{%- endif -%}
         {{'"}'}}
       modes:
@@ -348,7 +349,7 @@ mqtt:
         {%- if value == 'eco' -%}eco{%-elif value == 'hot' -%}hot{%- else -%}intelligent{%- endif -%}
         {{'"}'}}
       fan_mode_state_topic: 'ems-esp/boiler_data_ww'
-      fan_mode_state_template: '{{ value_json.wwcomfort }}'
+      fan_mode_state_template: '{{ value_json.dhw.comfort }}'
       fan_modes:
         - 'eco'
         - 'hot'
@@ -615,17 +616,17 @@ deviation is roughly +-0.1K with long periods of the heating system being off (a
 The button used in the automation is a simple Aqara zigbee button.
 
 :::info
-    I am using an [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) with the [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), as it provides two digits of precision and updates roughly once to twice per minute).  
-    Please note that low resolution thermometers with low update frequency will affect your ability to quickly react to temperature changes.  
-    If you are so inclined, you can build a high resolution, frequently updating thermometer with tasmota and a DS18B20 or BME820 sensor.
+I am using an [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) with the [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), as it provides two digits of precision and updates roughly once to twice per minute).  
+ Please note that low resolution thermometers with low update frequency will affect your ability to quickly react to temperature changes.  
+ If you are so inclined, you can build a high resolution, frequently updating thermometer with tasmota and a DS18B20 or BME820 sensor.
 :::
 
 ## Optimizing for heatpumps
 
-Matthias documented his setup Bosch/Buderus Heatpump on [his blog](https://bosch-buderus-wp.github.io/xps/matthias) and even goes to showing how you can use AI to setup a MCP/LLM to control the heatpump. 
+Matthias documented his setup Bosch/Buderus Heatpump on [his blog](https://bosch-buderus-wp.github.io/xps/matthias) and even goes to showing how you can use AI to setup a MCP/LLM to control the heatpump.
 See [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) for more details.
 
-There is also a [metrics-page](https://bosch-buderus-wp.github.io/metrics/) where heatpump values are stored and visualized. 
+There is also a [metrics-page](https://bosch-buderus-wp.github.io/metrics/) where heatpump values are stored and visualized.
 If you like to [contribute, read this further information](https://bosch-buderus-wp.github.io/metrics/howto).
 
 ## Using `txpause` to temporarily disable the bus traffic
@@ -642,32 +643,32 @@ _(by DiZil1)_ from https://github.com/emsesp/EMS-ESP32/discussions/1953#discussi
 
 rest_command:
   ems_tx_on:
-    url: "http://192.168.178.XX/api/system/txpause"
+    url: 'http://192.168.178.XX/api/system/txpause'
     method: POST
     headers:
       Authorization: !secret ems_esp_token
       Content-Type: application/json
     payload: >
-        {
-          "value": "on"
-        }
+      {
+        "value": "on"
+      }
 
   ems_tx_off:
-    url: "http://192.168.178.XX/api/system/txpause"
+    url: 'http://192.168.178.XX/api/system/txpause'
     method: POST
     headers:
       Authorization: !secret ems_esp_token
       Content-Type: application/json
     payload: >
-        {
-          "value": "off"
-        }
+      {
+        "value": "off"
+      }
 
 sensor:
   - platform: rest
-    name: "EMS-ESP TXPause Raw"
+    name: 'EMS-ESP TXPause Raw'
     unique_id: ems_esp_txpause_raw
-    resource: "http://192.168.178.XX/api/system/system/txpause"
+    resource: 'http://192.168.178.XX/api/system/system/txpause'
     method: GET
     headers:
       Authorization: !secret ems_esp_token
@@ -678,7 +679,7 @@ sensor:
 
 template:
   - switch:
-      - name: "EMS-ESP TXPause"
+      - name: 'EMS-ESP TXPause'
         unique_id: ems_esp_txpause_switch
         icon: mdi:swap-horizontal
         state: >
@@ -686,13 +687,13 @@ template:
           {{ v in ['true', 'on', '1', 'yes'] }}
         turn_on:
           - service: rest_command.ems_tx_on
-          - delay: "00:00:01"
+          - delay: '00:00:01'
           - service: homeassistant.update_entity
             target:
               entity_id: sensor.ems_esp_txpause_raw
         turn_off:
           - service: rest_command.ems_tx_off
-          - delay: "00:00:01"
+          - delay: '00:00:01'
           - service: homeassistant.update_entity
             target:
               entity_id: sensor.ems_esp_txpause_raw
