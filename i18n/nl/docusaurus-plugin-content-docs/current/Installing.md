@@ -10,8 +10,7 @@ Er zijn een aantal manieren om de firmware op je ESP32-apparaat te installeren:
 
 1. De [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases) gebruiken. Dit is een native toepassing voor Windows, MacOS en Linux/Ubuntu. Je ESP32-apparaat moet psychisch verbonden zijn met je computer via de USB- of seriële poort.
 2. Met [EMS-ESP Web Installer](https://install.emsesp.org/), een online installatieprogramma dat 16MB/PSRAM-varianten ondersteunt, moet het EMS-ESP-apparaat worden aangesloten via de USB/Serial-poort.
-3. EMS-ESP direct gebruiken vanaf de WebUI-instellingenpagina om automatisch de nieuwste versie te detecteren en installeren (vanaf v3.7).
-4. Gebruik een kopie van het commandoregelhulpmiddel [EMS-ESP CLI Installer](https://github.com/emsesp/EMS-ESP-Flasher-CLI). Dit is gebaseerd op Unix en ondersteunt dus geen Windows (tenzij WSL2 wordt gebruikt).
+3. Flash de firmware handmatig met de [guide](#handmatig-knipperen) hieronder.
 5. De firmware vanaf de broncode bouwen en direct uploaden met behulp van de handleiding op [Building](Building.md).
 
 ## De juiste firmwareversie kiezen
@@ -54,6 +53,60 @@ Als u een [BBQKees Electronics Gateway](https://bbqkees-electronics.nl)-kaart ge
 
 MD5-Checksums zijn ook beschikbaar voor elke release. Ze hebben dezelfde bestandsnaam als het afbeeldingsbestand, maar eindigen met `.md5`. 
 Je kunt ze vinden in de [GitHub-Release-Page](https://github.com/emsesp/EMS-ESP32/releases). Je kunt ze optioneel uploaden **vóór** het bin-image-bestand met de EMS-ESP-web-installer, zodat ze worden geëvalueerd vóór de installatie.
+
+
+## Handmatig knipperen
+
+Als je een aangepaste firmware gebruikt of de firmware handmatig wilt flashen, kun je de volgende handleiding gebruiken:
+
+1. Bepaal het ESP32-bordprofiel dat je gebruikt:
+   - `s_4M`: ESP met 4 MB flash - bijv. BBQKees oudere S32- en E32-modellen
+   - `s_16M`: ESP met 16 MB flash - bijvoorbeeld BBQKees latere S32 V2-modellen
+   - `s_16M_P`: ESP met 16 MB flash en PSRAM - bijvoorbeeld BBQKees E32V2-modellen
+   - `s3_16M_P`: ESP32-S3 met 16 MB flash en PSRAM - bijvoorbeeld BBQKees S3-modellen
+   - Voor alle andere borden is het aanbevolen om platformio rechtstreeks te gebruiken om de firmware te bouwen en te uploaden vanaf de broncode.
+2. Download het binaire bestand van de firmware via de bovenstaande koppelingen of gebruik de GitHub Releases pagina ([dev releases](https://github.com/emsesp/EMS-ESP32/releases) of [stable releases](https://github.com/emsesp/EMS-ESP32/releases)).
+3. Download deze 3 binaire bestanden die bij je boardprofiel horen:
+    - `s_4M`
+        - [bootloader.bin](/bin/s_4M/bootloader.bin)
+        - [partitions.bin](/bin/s_4M/partitions.bin)
+        - [boot_app0.bin](/bin/boot_app0.bin)
+    - `s_16M`
+        - [bootloader.bin](/bin/s_16M/bootloader.bin)
+        - [partitions.bin](/bin/s_16M/partitions.bin)
+        - [boot_app0.bin](/bin/boot_app0.bin)
+    - `s_16M_P`
+        - [bootloader.bin](/bin/s_16M_P/bootloader.bin)
+        - [partitions.bin](/bin/s_16M_P/partitions.bin)
+        - [boot_app0.bin](/bin/boot_app0.bin)
+    - `s3_16M_P`
+        - [bootloader.bin](/bin/s3_16M_P/bootloader.bin)
+        - [partitions.bin](/bin/s3_16M_P/partitions.bin)
+        - [boot_app0.bin](/bin/boot_app0.bin)
+2. Installeer [esptool](https://docs.espressif.com/projects/esptool/en/latest/esp32/). Je kunt OS-specifieke binairen downloaden van [here](https://github.com/espressif/esptool/releases) of Python gebruiken zoals `pip install esptool`.
+3. Sluit het ESP32/Gateway bord aan op uw computer via de USB-poort.
+4. Open een terminal en navigeer naar de map waar de .bin-bestanden zijn gedownload.
+5. Voer het volgende commando uit om de firmware te flashen, afhankelijk van het type bord:
+
+#### s_4M (ESP met 4MB flash) - bijv. BBQKees oudere S32- en E32-modellen
+
+`esptool --chip esp32 --port <COM PORT> --baud 460800 --before default-reset --after hard-reset write-flash -z --flash-mode dio --flash-freq 40m --flash-size detect 0x1000
+ bootloader.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 <FIRMWARE BIN FILE>`
+
+#### s_16M (ESP met 16 MB flash) - bijv. BBQKees latere S32 V2-modellen
+
+`esptool --chip esp32 --port <COM PORT> --baud 460800 --before default-reset --after hard-reset write-flash -z --flash-mode dio --flash-freq 40m --flash-size detect 0x1000
+ bootloader.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x490000 <FIRMWARE BIN FILE>`
+
+#### s_16M_P (ESP met 16 MB flash en PSRAM) - bijv. BBQKees E32V2-modellen
+
+`esptool --chip esp32 --port <COM PORT> --baud 460800 --before default-reset --after hard-reset write-flash -z --flash-mode dio --flash-freq 80m --flash-size detect 0x1000
+ bootloader.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x490000 <FIRMWARE BIN FILE>`
+
+#### s3_16M_P (ESP32-S3 met 16 MB flash en PSRAM) - bijv. BBQKees S3-modellen
+
+`esptool --chip esp32s3 --port <COM PORT> --baud 460800 --before default-reset --after hard-reset write-flash -z --flash-mode dio --flash-freq 80m --flash-size detect 0x0000
+ bootloader.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x490000  <FIRMWARE BIN FILE>`
 
 ## Hulp nodig?
 
