@@ -62,7 +62,7 @@ const example = 'code'
 
 ### Prerequisites
 
-- Node.js 22+ and pnpm
+- Node.js 24+ and pnpm
 
 ### Setup
 

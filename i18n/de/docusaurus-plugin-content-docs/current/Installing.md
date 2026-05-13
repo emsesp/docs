@@ -6,18 +6,19 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
 
 # 📦 Installieren
 
-Es gibt eine Reihe von Möglichkeiten, die Firmware auf Ihrem ESP32-Gerät zu installieren:
+Es gibt eine Reihe von Möglichkeiten, die Firmware auf Ihrem ESP32-Gerät zu installieren und zu aktualisieren:
 
-1. Verwendung des [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). Dies ist eine native Anwendung für Windows, MacOS und Linux/Ubuntu. Ihr ESP32-Gerät muss über den USB- oder seriellen Anschluss mit Ihrem Computer verbunden sein.
-2. Mit dem [EMS-ESP Web Installer](https://install.emsesp.org/), einem Online-Installationsprogramm, das 16MB/PSRAM-Varianten unterstützt, muss das EMS-ESP-Gerät über den USB/Serial-Port angeschlossen werden.
-3. Flashen Sie die Firmware manuell mit Hilfe des unten stehenden [guide](#manuelles-blinken).
-5. Erstellen der Firmware aus dem Quellcode und direktes Hochladen mit Hilfe der Anleitung unter [Building](Building.md).
+1. Wenn Sie EMS-ESP bereits laufen haben, gehen Sie auf die Seite Einstellungen->Version in der WebUI und Sie können entweder die neueste Firmware-Version herunterladen und manuell per Drag&Drop in das Upload-Feld installieren oder EMS-ESP die automatische Aktualisierung für Sie durchführen lassen. Dies ist für die meisten Benutzer die empfohlene Methode.
+2. Verwendung des [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). Dies ist eine native Anwendung für Windows, MacOS und Linux. Ihr ESP32-Gerät muss über den USB- oder seriellen Anschluss mit Ihrem Computer verbunden sein. Diese Methode ist nützlich, wenn Sie eine saubere Installation durchführen und alle Konfigurationseinstellungen zurücksetzen möchten.
+3. Mit dem [EMS-ESP Web Installer](https://install.emsesp.org/), einer Online-Installationsunterstützung, die den Anschluss des EMS-ESP-Geräts über den USB/Serial-Port erfordert.
+4. Flashen Sie die Firmware manuell mit Hilfe des unten stehenden [guide](#manuelles-blinken).
+5. Für Entwickler, die die Firmware aus dem Quellcode erstellen und direkt hochladen, indem sie der Anleitung unter [Building](Building.md) folgen.
 
 ## Auswahl der richtigen Firmware-Version
 
 Es gibt vorgefertigte Firmware-Binaries für die ESP32- und ESP32-S3-Chipsätze. Diese variieren je nach zugewiesener Flash-Größe (4MB, 16MB) und ob das Board über zusätzliches PSRAM verfügt. Für andere Chipsätze, wie z.B. den ESP32-C3, kann die Firmware manuell aus den Quellen mit PlatformIO erstellt werden.
 
-Sie können wählen, ob Sie die aktuelle _Stable_ oder die neueste _Development_ Version verwenden möchten. Die Stable-Versionen werden in der Regel innerhalb weniger Monate aktualisiert oder gepatcht, wenn ein kritisches Problem gefunden wird. Die Entwicklungsversionen (mit dem Wort `dev` im Dateinamen) werden häufiger aktualisiert, können aber noch Fehler enthalten. Diese Version wird für fortgeschrittene Benutzer empfohlen, die neue Funktionen testen möchten. Sie können jederzeit über die EMS-ESP-Webschnittstelle von Stable auf Development umschalten.
+Sie können wählen, ob Sie die aktuelle _Stable_ oder die neueste _Development_ Version verwenden möchten. Die Stable-Versionen werden in der Regel innerhalb weniger Monate aktualisiert oder gepatcht, wenn ein kritisches Problem gefunden wird. Die Entwicklungsversionen (mit dem Wort `dev` im Dateinamen) werden häufiger aktualisiert, können aber noch Fehler enthalten. Diese Version wird für fortgeschrittene Benutzer empfohlen, die neue Funktionen testen möchten. Sie können jederzeit über die EMS-ESP-Webschnittstelle von Stable zu Development wechseln.
 
 ### Upgrade von Versionen vor v3.7
 
@@ -34,7 +35,7 @@ wobei `<chipset>` `ESP32` oder `ESP32S3` und `<flashsize>` entweder `4MB` oder `
 Bestimmen Sie den korrekten Typ Ihres ESP32-Geräts und laden Sie die neueste stabile Version der Firmware anhand der unten stehenden Tabelle herunter. Wenn Sie sich nicht sicher sind, welche Firmware Sie verwenden sollen, kontaktieren Sie uns.
 
 | `chipset` | `flashsize` | `PSRAM` | `Firmware file` |
-| -------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
+| --------- | ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | ESP32 | 16MB | 8MB | [EMS-ESP-3_8_1-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB+.bin) |
 | ESP32-S3 | 16MB | 8MB | [EMS-ESP-3_8_1-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32S3-16MB+.bin) |
 | ESP32 | 4MB | | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin) |
@@ -43,7 +44,7 @@ Bestimmen Sie den korrekten Typ Ihres ESP32-Geräts und laden Sie die neueste st
 Wenn Sie eine [BBQKees Electronics Gateway](https://bbqkees-electronics.nl)-Karte verwenden, folgen Sie dieser Anleitung, um sicherzustellen, dass Sie die richtige Firmware auswählen:
 
 | `Model` | `Release Year` | `Has PSRAM?` | `Firmware file` |
-| --------------------- | ------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| --------------------- | ---------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | Gateway E32 V2 | >01-2024 | Ja | [EMS-ESP-3_8_1-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB+.bin) |
 | Gateway S3(-LR) | >09-2023 | Ja | [EMS-ESP-3_8_1-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32S3-16MB+.bin) |
 | Gateway E32 V1.5 | >12-21 &lt;06-23 | Nein | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin) |
@@ -51,9 +52,7 @@ Wenn Sie eine [BBQKees Electronics Gateway](https://bbqkees-electronics.nl)-Kart
 | Gateway S32 V2 | >02-22 &lt;01-23 | Nein | [EMS-ESP-3_8_1-ESP32-16MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB.bin) |
 | Gateway S32 V1 | >02-21 &lt;02-22 | Nein | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin) |
 
-MD5-Prüfsummen sind ebenfalls für jede Version verfügbar. Sie haben den gleichen Dateinamen wie die Image-Datei, enden aber mit `.md5`. 
-Sie können optional mit dem EMS-ESP-Web-Installer **vor** der bin-image-Datei hochgeladen werden, so dass sie vor der Installation ausgewertet werden.
-
+MD5-Prüfsummen sind ebenfalls für jede Version verfügbar. Sie haben den gleichen Dateinamen wie die Image-Datei, enden aber mit `.md5`. Sie finden sie unter [GitHub-Release-Page](https://github.com/emsesp/EMS-ESP32/releases). Sie können sie optional **vor** der bin-image-Datei mit dem EMS-ESP-web-installer hochladen, damit sie vor der Installation ausgewertet werden.
 
 ## Manuelles Blinken
 
@@ -67,26 +66,26 @@ Wenn Sie eine benutzerdefinierte Firmware verwenden oder die Firmware manuell fl
    - Für alle anderen Boards wird empfohlen, Platformio direkt zu verwenden, um die Firmware aus dem Quellcode zu erstellen und hochzuladen.
 2. Laden Sie die Firmware-Binärdatei über die obigen Links herunter oder verwenden Sie die GitHub-Releaseseite ([dev releases](https://github.com/emsesp/EMS-ESP32/releases) oder [stable releases](https://github.com/emsesp/EMS-ESP32/releases)).
 3. Laden Sie diese 3 Binärdateien herunter, die mit Ihrem Boardprofil verbunden sind:
-    - `s_4M`
-        - [bootloader.bin](/bin/s_4M/bootloader.bin)
-        - [partitions.bin](/bin/s_4M/partitions.bin)
-        - [boot_app0.bin](/bin/boot_app0.bin)
-    - `s_16M`
-        - [bootloader.bin](/bin/s_16M/bootloader.bin)
-        - [partitions.bin](/bin/s_16M/partitions.bin)
-        - [boot_app0.bin](/bin/boot_app0.bin)
-    - `s_16M_P`
-        - [bootloader.bin](/bin/s_16M_P/bootloader.bin)
-        - [partitions.bin](/bin/s_16M_P/partitions.bin)
-        - [boot_app0.bin](/bin/boot_app0.bin)
-    - `s3_16M_P`
-        - [bootloader.bin](/bin/s3_16M_P/bootloader.bin)
-        - [partitions.bin](/bin/s3_16M_P/partitions.bin)
-        - [boot_app0.bin](/bin/boot_app0.bin)
-2. Installieren Sie [esptool](https://docs.espressif.com/projects/esptool/en/latest/esp32/). Sie können betriebssystemspezifische Binärdateien von [here](https://github.com/espressif/esptool/releases) herunterladen oder Python wie `pip install esptool` verwenden.
-3. Schließen Sie die ESP32/Gateway-Karte über den USB-Anschluss an Ihren Computer an.
-4. Öffnen Sie ein Terminal und navigieren Sie zu dem Verzeichnis, in das die .bin-Dateien heruntergeladen wurden.
-5. Führen Sie den folgenden Befehl aus, um die Firmware je nach Boardtyp zu flashen:
+   - `s_4M`
+     - [bootloader.bin](/bin/s_4M/bootloader.bin)
+     - [partitions.bin](/bin/s_4M/partitions.bin)
+     - [boot_app0.bin](/bin/boot_app0.bin)
+   - `s_16M`
+     - [bootloader.bin](/bin/s_16M/bootloader.bin)
+     - [partitions.bin](/bin/s_16M/partitions.bin)
+     - [boot_app0.bin](/bin/boot_app0.bin)
+   - `s_16M_P`
+     - [bootloader.bin](/bin/s_16M_P/bootloader.bin)
+     - [partitions.bin](/bin/s_16M_P/partitions.bin)
+     - [boot_app0.bin](/bin/boot_app0.bin)
+   - `s3_16M_P`
+     - [bootloader.bin](/bin/s3_16M_P/bootloader.bin)
+     - [partitions.bin](/bin/s3_16M_P/partitions.bin)
+     - [boot_app0.bin](/bin/boot_app0.bin)
+4. Installieren Sie [esptool](https://docs.espressif.com/projects/esptool/en/latest/esp32/). Sie können betriebssystemspezifische Binärdateien von [here](https://github.com/espressif/esptool/releases) herunterladen oder Python wie `pip install esptool` verwenden.
+5. Schließen Sie die ESP32/Gateway-Karte über den USB-Anschluss an Ihren Computer an.
+6. Öffnen Sie ein Terminal und navigieren Sie zu dem Verzeichnis, in das die .bin-Dateien heruntergeladen wurden.
+7. Führen Sie den folgenden Befehl aus, um die Firmware je nach Boardtyp zu flashen:
 
 #### s_4M (ESP mit 4MB Flash) - z.B. BBQKees ältere S32 und E32 Modelle
 
@@ -117,4 +116,3 @@ Wenn Sie eine benutzerdefinierte Firmware verwenden oder die Firmware manuell fl
 - Suchen Sie in den bestehenden offenen und geschlossenen [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) und [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions), da Ihr Problem möglicherweise bereits behandelt wird, vielleicht in einer späteren Version.
 - Erstellen Sie ein [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) im EMS-ESP-Projekt. Stellen Sie sicher, dass Sie die erforderlichen Support-Informationen angeben, damit das Problem so schnell wie möglich behoben werden kann.
 - Weitere Informationen finden Sie auf der Seite [Getting Support](Support.md).
-

@@ -51,7 +51,7 @@ Im folgenden Abschnitt werden einige der wichtigsten Einstellungen beschrieben, 
 - **Board Profile**. Board-Profile sind vorkonfigurierte GPIO-Einstellungen für eine Reihe von gängigen ESP32-Entwicklungsboards und EMS-Gateway-Schaltungen. Die folgenden Profile sind verfügbar:
 
 | `profile name` | `based on board` | `led` | `dallas` | `rx` | `tx` | `button` | `phy_type` | `eth_power` | `eth_phy_addr` | `eth_clock_mode` |
-| ------------ | ---------------------- | --- | ------ | --- | --- | ------ | -------- | --------- | ------------ | ---------------------------- |
+| -------------- | ---------------------- | ----- | -------- | ---- | ---- | -------- | ---------- | ----------- | -------------- | ---------------------------- |
 | S32 | BBQKees Gateway S32 | 2 | 18 | 23 | 5 | 0 | | | | | |
 | E32 | BBQKees Gateway E32 | 2 | 4 | 5 | 17 | 33 | LAN8720 | 16 | 1 | Eingang zu GPIO0 |
 | E32V2 | BBQKees Gateway E32 V2 | 2 | 14 | 4 | 5 | 34 | LAN8720 | 15 | 0 | Ausgang von GPIO0 |
@@ -67,7 +67,7 @@ s2MINI | Lolin S2 Mini | 15 | 7 | 11 | 12 | 0 | | | | | |
 
 Um ein eigenes Board zu konfigurieren, aktivieren Sie zuerst `Developer mode`. Wenn Sie `Custom` wählen, werden die folgenden zusätzlichen Einstellungen angezeigt, mit denen Sie die GPIOs manuell konfigurieren können, um Ihr eigenes Board anzupassen. Sie können auch jederzeit `Custom` wählen, um die aktuellen Board-Profileinstellungen anzuzeigen, ohne zu speichern.
 
-*Benutzerdefinierte Bordeinstellungen:*
+benutzerdefinierte Bordeinstellungen:_
 
 - **Rx GPIO**. Dies ist der GPIO-Pin, dem das Rx-Signal zugewiesen ist. Standardmäßig ist dies GPIO 23, aber es kann fast jeder freie Pin sein. Verbinden Sie diesen GPIO-Pin mit dem RX-Anschluss auf der EMS-Schnittstellenkarte.
 - **Tx GPIO**. Dies ist der GPIO-Pin, dem das Tx-Signal zugewiesen ist. Standardmäßig ist dies GPIO 5, aber es kann fast jeder freie Pin sein. Verbinden Sie diesen GPIO-Pin mit dem TX-Anschluss auf der EMS-Schnittstellenkarte.
@@ -84,18 +84,19 @@ Um ein eigenes Board zu konfigurieren, aktivieren Sie zuerst `Developer mode`. W
   - `EMS+` ist so konzipiert, dass es besser für EMS2.0/EMS+ Systeme funktioniert.
   - `HT3` für Heatronics3, hauptsächlich von Junkers verwendet.
   - `Hardware` verwendet die interne ESP-Hardware, um das Telegramm auszusenden. Die Telegramme werden sofort gesendet. Dies ist die schnellste und effizienteste Methode, funktioniert aber nur auf einigen Systemen.
-- **EMS-Bus-ID**. Das EMS-ESP kann mehrere Geräte simulieren. Bleiben Sie bei der Standardeinstellung `Service Key (0x0B)`, es sei denn, Sie verwenden mehr als eine EMS gateways/interface-Karte. Es ist wichtig zu beachten, dass der Serviceschlüssel auch von zertifizierten service/maintenance-Technikern bei der Wartung Ihrer Heizungsanlagen verwendet wird. Stellen Sie daher sicher, dass Sie das EMS-ESP ausschalten, bevor sie eintreffen, da sie sonst keine Verbindung zum EMS-Bus herstellen können.
+  - `Auto` prüft die empfangenen Bustelegramme, um den besten Zeitpunkt für `EMS`, `EMS+` oder `HT3` zu finden.
+- **EMS-Bus-ID**. Der EMS-ESP kann mehrere Geräte simulieren. Halten Sie sich an die Standardeinstellung `Gateway 2 (0x49)`, es sei denn, Sie verwenden mehr als eine EMS gateways/interface-Karte oder haben Konflikte mit anderen EMS-Geräten. Es ist wichtig zu beachten, dass der Serviceschlüssel (0x0B), der bis zur EMS-ESP-Version 3.8.1 als Standard verwendet wird, auch von zertifizierten service/maintenance-Technikern bei der Wartung Ihrer Heizungsanlagen verwendet wird und Konflikte verursachen könnte. Vergewissern Sie sich, dass Sie das EMS-ESP vor jeder Wartung ausschalten oder die EMS-Bus-ID ändern, bevor der Techniker eintrifft, da er sonst nicht in der Lage ist, Ihre Heizungsanlage anzuschließen und zu warten.
 - **Nur-Lesen-Modus aktivieren**. Dies deaktiviert alle ausgehenden Tx-Schreibbefehle an den EMS-Bus und versetzt EMS-ESP im Wesentlichen in den Hörmodus. Tx wird jedoch benötigt, um EMS-Geräte zu erkennen (da es einen Versionsbefehl aussendet). Wenn Sie EMS-ESP explizit in einen Lese-only/sniffer-Modus versetzen wollen, verwenden Sie `set tx_mode 0` von der Konsole aus.
 - **LED ausblenden**. Schaltet die LED im normalen Betriebsmodus aus. Die LED wird weiterhin beim Booten oder bei Verbindungsproblemen angezeigt.
 - **Untertaktete CPU-Geschwindigkeit**. Untertaktet den ESP auf 160Mhz, spart Strom und Wärme und verlängert die Lebensdauer des Chips auf Kosten der Leistung und Reaktionszeit. Ein Neustart des EMS-ESP ist erforderlich.
 
 ### Besondere Funktionen
 
-- der **Entwicklermodus** ermöglicht erweiterte Funktionen in der WebUI, wie den Befehl Lesen aus dem Systemprotokoll und die Konfiguration einer benutzerdefinierten Karte.
+- der **Entwicklermodus** aktiviert erweiterte Funktionen in der WebUI, wie den Befehl Lesen aus dem Systemprotokoll und das Konfigurieren einer benutzerdefinierten Karte.
 - **Kessel bei ausgeschalteter Zwangsheizung starten**.
 - **Fernbedienung bei fehlender Raumtemperatur deaktivieren**. Dies ist eine Sicherheitsfunktion, die verhindert, dass der Heizkessel startet, wenn der simulierte Raumtemperatursensor fehlt oder nicht funktioniert.
 - **Dusch-Timer aktivieren**. Aktivieren Sie diese Option, um die Dauer des Warmwassers zu messen, und es wird eine MQTT-Nachricht mit der Dauer gesendet. Der Timer startet nach einer Mindestlaufzeit von 2 Minuten.
-- **Duschalarm aktivieren**. Diese Funktion ist etwas experimentell und funktioniert möglicherweise nicht bei allen Heizkesseln. Nach 7 Minuten (konfigurierbar), in denen das heiße Wasser läuft, sendet er eine Warnung aus, indem er 10 Sekunden lang kaltes Wasser ausgibt (ebenfalls konfigurierbar). Der Kessel geht in den Testmodus, um diesen Vorgang auszuführen, daher ist Vorsicht geboten!
+- **Brausealarm aktivieren**. Diese Funktion ist etwas experimentell und funktioniert möglicherweise nicht bei allen Heizkesseln. Nach 7 Minuten (konfigurierbar), in denen das heiße Wasser läuft, sendet der Kessel eine Warnung aus, indem er 10 Sekunden lang kaltes Wasser ausgibt (ebenfalls konfigurierbar). Der Kessel geht in den Testmodus, um diesen Vorgang auszuführen, daher ist Vorsicht geboten!
 
 ## Netzwerkeinrichtung
 
@@ -167,12 +168,12 @@ Die folgenden GPIOs werden empfohlen:
 
 Grenzwerte:
 
-- ADC: Eingang max. 3,3V, Anzeige in MilliVolt
+- ADC: max. Eingang 3,3V, Anzeige in MilliVolt
 - DAC 8bit, Wertebereich 0..255 für 0V-3.3V Ausgang, Konfigurieren als `Digital out` auf gpio 25 oder 26 (ESP32), 17, 18 (ESP32S2), nicht verfügbar für ESP32S3, ESP32C3
 - PWM 0-2: maximale Frequenz 5000Hz, Auflösung 13bits. Jeder Kanal kann nur für einen Gpio verwendet werden.
 - Pulse ist ein digitaler Ausgang für einen einzelnen Impuls mit einstellbarer Länge. Bei der Einstellung auf `on` per Befehl geht der Sensor nach Beendigung des Impulses auf `off`.
 - Counter/timer/rate auslösen: `high->low edge with 15 ms debounce. Only for low pulse rates < 30Hz.`
-- Zähler 0-2, Frequ 0-2: Hochgeschwindigkeitseingänge für 1 Hz bis 100kHz Signale, keine Entprellung, RC-Filter für verrauschte Signale verwenden. Interruptgesteuert, jeder Kanal kann nur für einen Gpio verwendet werden.
+- Zähler 0-2, Frequ 0-2: Hochgeschwindigkeits-Eingänge für 1 Hz bis 100kHz Signale, keine Entprellung, RC-Filter für verrauschte Signale verwenden. Interruptgesteuert, jeder Kanal kann nur für einen Gpio verwendet werden.
 
 Die Zähler werden auf reboot/update gespeichert und jede Stunde an nvs. I Fall von Abstürzen, Stromausfällen, kann der Wert nach niedriger sein.
 
@@ -194,7 +195,7 @@ Die Seite "Anpassung" zeigt alle registrierten Entitäten und ermöglicht es, Be
 
 Verwenden Sie den Scheduler, um Befehle in bestimmten Abständen aufzurufen. Ein paar Beispiele:
 
-- die Warmwassertemperatur morgens und abends auf einen höheren Wert einstellen
+- stellen Sie die Warmwassertemperatur morgens und abends auf einen höheren Wert ein
 - jede Woche einen Neustart des Systems durchführen (obwohl das nicht nötig sein sollte!), indem Sie `system/restart` in das Feld Befehl eingeben
 - mit dem Befehl `system/message` eine Nachricht an das Protokoll und an mqtt senden
 - verwendung in Kombination mit einer benutzerdefinierten "ram"-Einheit zum Abrufen von Daten über eine andere API wie `{"url":"http://server.tld/path/file", "key":"nameofkey"}` und Verwendung dieser als Bedingung im Scheduler
@@ -267,7 +268,7 @@ Jetzt können Sie mit dem Befehl `custom/message` weitere Zeitpläne erstellen u
 
 ## Hinzufügen von benutzerdefinierten Entitäten
 
-Custom Entities ist eine fortschrittliche und leistungsfähige Möglichkeit, EMS-ESP um eigene EMS-Entitäten zu erweitern, die Daten aus einem bestimmten EMS-Telegramm extrahieren. Dies ist nützlich, wenn EMS-ESP eine bestimmte Entität noch nicht unterstützt, oder wenn Sie Daten aus einem Telegramm extrahieren möchten, das noch nicht unterstützt wird. Ein weiterer häufiger Anwendungsfall ist das Debugging oder die Beobachtung eines bestimmten Verhaltens bei der Änderung von Parametern auf einem EMS-Gerät.
+Custom Entities ist eine fortschrittliche und leistungsfähige Möglichkeit, EMS-ESP um eigene EMS-Entitäten zu erweitern, die Daten aus einem bestimmten EMS-Telegramm extrahieren. Dies ist nützlich, wenn EMS-ESP eine bestimmte Entität noch nicht unterstützt, oder wenn Sie Daten aus einem Telegramm extrahieren möchten, das noch nicht unterstützt wird. Ein weiterer häufiger Anwendungsfall ist die Fehlersuche oder die Beobachtung eines bestimmten Verhaltens beim Ändern von Parametern in einem EMS-Gerät.
 
 Eine moderne Wärmepumpe kann zum Beispiel neue Funktionen haben, die in EMS-ESP nicht enthalten sind. In diesem Fall würden Sie den `watch`-Befehl verwenden, um den eingehenden EMS-Verkehr in Kombination mit der manuellen Anpassung spezifischer Parameter einzusehen. Wenn Sie das spezifische Telegramm und den Offset gefunden haben, erstellen Sie eine benutzerdefinierte Entität, um den Typ fein abzustimmen und den Wert zu überprüfen. Beantragen Sie dann die Aufnahme in das nächste EMS-ESP-Release-Update.
 

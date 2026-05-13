@@ -6,12 +6,13 @@ description: Getting started with EMS-ESP. What you need, how to install and do 
 
 # 📦 Installeren
 
-Er zijn een aantal manieren om de firmware op je ESP32-apparaat te installeren:
+Er zijn een aantal manieren om de firmware op je ESP32-apparaat te installeren en bij te werken:
 
-1. De [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases) gebruiken. Dit is een native toepassing voor Windows, MacOS en Linux/Ubuntu. Je ESP32-apparaat moet psychisch verbonden zijn met je computer via de USB- of seriële poort.
-2. Met [EMS-ESP Web Installer](https://install.emsesp.org/), een online installatieprogramma dat 16MB/PSRAM-varianten ondersteunt, moet het EMS-ESP-apparaat worden aangesloten via de USB/Serial-poort.
-3. Flash de firmware handmatig met de [guide](#handmatig-knipperen) hieronder.
-5. De firmware vanaf de broncode bouwen en direct uploaden met behulp van de handleiding op [Building](Building.md).
+1. Als je EMS-ESP al hebt draaien, ga dan naar de Instellingen->Versie pagina in de WebUI en je kunt ervoor kiezen om de laatste firmware versie te downloaden en handmatig te installeren door drag&dropping in het upload vak of laat EMS-ESP automatisch updaten. Dit is de aanbevolen methode voor de meeste gebruikers.
+2. De [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases) gebruiken. Dit is een native toepassing voor Windows, MacOS en Linux. Je ESP32-apparaat moet psychisch verbonden zijn met je computer via de USB- of seriële poort. Deze methode is handig als je een schone installatie wilt uitvoeren en alle configuratie-instellingen opnieuw wilt instellen.
+3. Met [EMS-ESP Web Installer](https://install.emsesp.org/), een online installatieprogramma dat ondersteuning biedt, moet het EMS-ESP-apparaat worden aangesloten via de poort USB/Serial.
+4. Flash de firmware handmatig met de [guide](#handmatig-knipperen) hieronder.
+5. Voor ontwikkelaars: bouw de firmware vanaf de broncode en upload deze direct door de handleiding op [Building](Building.md) te volgen.
 
 ## De juiste firmwareversie kiezen
 
@@ -34,7 +35,7 @@ waarbij `<chipset>` `ESP32` of `ESP32S3` is en `<flashsize>` ofwel `4MB` of `16M
 Bepaal het juiste type van je ESP32-apparaat en download de nieuwste stabiele versie van de firmware met behulp van de onderstaande tabel. Als je niet zeker weet welke firmware je moet gebruiken, neem dan contact met ons op.
 
 | `chipset` | `flashsize` | `PSRAM` | `Firmware file` |
-| -------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
+| --------- | ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | ESP32 16MB 8MB [EMS-ESP-3_8_1-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB+.bin) |
 | ESP32-S3 16MB 8MB [EMS-ESP-3_8_1-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32S3-16MB+.bin) |
 | ESP32 4MB
@@ -43,7 +44,7 @@ Bepaal het juiste type van je ESP32-apparaat en download de nieuwste stabiele ve
 Als u een [BBQKees Electronics Gateway](https://bbqkees-electronics.nl)-kaart gebruikt, volg dan deze handleiding om er zeker van te zijn dat u de juiste firmware selecteert:
 
 | `Model` | `Release Year` | `Has PSRAM?` | `Firmware file` |
-| --------------------- | ------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| --------------------- | ---------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | Gateway E32 V2 V2 >01-2024 | Ja | [EMS-ESP-3_8_1-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB+.bin) |
 | Gateway S3(-LR) | >09-2023 | Ja | [EMS-ESP-3_8_1-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32S3-16MB+.bin) |
 | Gateway E32 V1.5 | >12-21 &lt;06-23 | Nee | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin) |
@@ -51,9 +52,7 @@ Als u een [BBQKees Electronics Gateway](https://bbqkees-electronics.nl)-kaart ge
 | Gateway S32 V2 | >02-22 &lt;01-23 | Nee | [EMS-ESP-3_8_1-ESP32-16MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB.bin) |
 | Gateway S32 V1 | >02-21 &lt;02-22 | Nee | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin) |
 
-MD5-Checksums zijn ook beschikbaar voor elke release. Ze hebben dezelfde bestandsnaam als het afbeeldingsbestand, maar eindigen met `.md5`. 
-Je kunt ze vinden in de [GitHub-Release-Page](https://github.com/emsesp/EMS-ESP32/releases). Je kunt ze optioneel uploaden **vóór** het bin-image-bestand met de EMS-ESP-web-installer, zodat ze worden geëvalueerd vóór de installatie.
-
+MD5-Checksums zijn ook beschikbaar voor elke release. Ze hebben dezelfde bestandsnaam als het image-bestand, maar eindigt met `.md5`. Ze kunnen worden gevonden op de [GitHub-Release-Page](https://github.com/emsesp/EMS-ESP32/releases). Je kunt ze optioneel uploaden **vóór** het bin-image-bestand met behulp van de EMS-ESP-web-installer, zodat ze worden geëvalueerd vóór de installatie.
 
 ## Handmatig knipperen
 
@@ -67,26 +66,26 @@ Als je een aangepaste firmware gebruikt of de firmware handmatig wilt flashen, k
    - Voor alle andere borden is het aanbevolen om platformio rechtstreeks te gebruiken om de firmware te bouwen en te uploaden vanaf de broncode.
 2. Download het binaire bestand van de firmware via de bovenstaande koppelingen of gebruik de GitHub Releases pagina ([dev releases](https://github.com/emsesp/EMS-ESP32/releases) of [stable releases](https://github.com/emsesp/EMS-ESP32/releases)).
 3. Download deze 3 binaire bestanden die bij je boardprofiel horen:
-    - `s_4M`
-        - [bootloader.bin](/bin/s_4M/bootloader.bin)
-        - [partitions.bin](/bin/s_4M/partitions.bin)
-        - [boot_app0.bin](/bin/boot_app0.bin)
-    - `s_16M`
-        - [bootloader.bin](/bin/s_16M/bootloader.bin)
-        - [partitions.bin](/bin/s_16M/partitions.bin)
-        - [boot_app0.bin](/bin/boot_app0.bin)
-    - `s_16M_P`
-        - [bootloader.bin](/bin/s_16M_P/bootloader.bin)
-        - [partitions.bin](/bin/s_16M_P/partitions.bin)
-        - [boot_app0.bin](/bin/boot_app0.bin)
-    - `s3_16M_P`
-        - [bootloader.bin](/bin/s3_16M_P/bootloader.bin)
-        - [partitions.bin](/bin/s3_16M_P/partitions.bin)
-        - [boot_app0.bin](/bin/boot_app0.bin)
-2. Installeer [esptool](https://docs.espressif.com/projects/esptool/en/latest/esp32/). Je kunt OS-specifieke binairen downloaden van [here](https://github.com/espressif/esptool/releases) of Python gebruiken zoals `pip install esptool`.
-3. Sluit het ESP32/Gateway bord aan op uw computer via de USB-poort.
-4. Open een terminal en navigeer naar de map waar de .bin-bestanden zijn gedownload.
-5. Voer het volgende commando uit om de firmware te flashen, afhankelijk van het type bord:
+   - `s_4M`
+     - [bootloader.bin](/bin/s_4M/bootloader.bin)
+     - [partitions.bin](/bin/s_4M/partitions.bin)
+     - [boot_app0.bin](/bin/boot_app0.bin)
+   - `s_16M`
+     - [bootloader.bin](/bin/s_16M/bootloader.bin)
+     - [partitions.bin](/bin/s_16M/partitions.bin)
+     - [boot_app0.bin](/bin/boot_app0.bin)
+   - `s_16M_P`
+     - [bootloader.bin](/bin/s_16M_P/bootloader.bin)
+     - [partitions.bin](/bin/s_16M_P/partitions.bin)
+     - [boot_app0.bin](/bin/boot_app0.bin)
+   - `s3_16M_P`
+     - [bootloader.bin](/bin/s3_16M_P/bootloader.bin)
+     - [partitions.bin](/bin/s3_16M_P/partitions.bin)
+     - [boot_app0.bin](/bin/boot_app0.bin)
+4. Installeer [esptool](https://docs.espressif.com/projects/esptool/en/latest/esp32/). Je kunt OS-specifieke binairen downloaden van [here](https://github.com/espressif/esptool/releases) of Python gebruiken zoals `pip install esptool`.
+5. Sluit het ESP32/Gateway bord aan op uw computer via de USB-poort.
+6. Open een terminal en navigeer naar de map waar de .bin-bestanden zijn gedownload.
+7. Voer het volgende commando uit om de firmware te flashen, afhankelijk van het type bord:
 
 #### s_4M (ESP met 4MB flash) - bijv. BBQKees oudere S32- en E32-modellen
 
@@ -117,4 +116,3 @@ Als je een aangepaste firmware gebruikt of de firmware handmatig wilt flashen, k
 - Zoek in bestaande open en gesloten [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) en [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) omdat uw probleem mogelijk al is opgelost, misschien in een latere versie.
 - Maak een [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) aan op het EMS-ESP-project. Zorg ervoor dat u de vereiste ondersteuningsinformatie vermeldt, zodat het probleem zo snel mogelijk kan worden opgelost.
 - Ga naar de pagina [Getting Support](Support.md) voor meer informatie.
-
