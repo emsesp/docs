@@ -170,13 +170,13 @@
     "notes": "",
     "type": "info"
   },
-  "0x02A5": {
+  "0x02A5-0x02AC": {
     "name": "NSC controller CH monitor for HCx",
     "usedIn": "CR50",
     "description": "Monitor values for HC1, HC2, ... HC8",
     "class": "monitor",
     "emsCategory": "EMS2.0",
-    "distribution": "broadcast-on-change, unicast-on-request, broadcast-periodically",
+    "distribution": "BROADCAST-ON-CHANGE; distribution duration = 60s; timeout = 240s, UNICAST-ON-REQUEST, BROADCAST-PERIODICALLY",
     "notes": "",
     "type": "info"
   },
@@ -580,6 +580,26 @@
     "class" : "Parameter",
     "emsCategory" : "EMS2.0",
     "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x0470" : {
+    "name" : "NSC Local Season Optimization Parameters HC (special variant of 0x0471...0x0478)",
+    "usedIn" : "Buderus WSW 196i with BC400 thermostat",
+    "description" : "NSC Local Season Optimization Parameters. Special telegram for Buderus WSW196i with thermostat BC400 and passive cooling function, which has only one heating circuit",
+    "class" : "Parameter",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x048F" : {
+    "name" : "Heat Pump E21 Sensor Monitor values",
+    "usedIn" : "tbd",
+    "description" : "Heat Pump E21 Sensor Monitor values",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
     "notes" : "",
     "type" : "info"
   }
