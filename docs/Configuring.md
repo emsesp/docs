@@ -3,6 +3,7 @@ id: Configuring
 title: Configuring EMS-ESP
 description: Complete guide to configuring EMS-ESP including first-time setup, WiFi, application settings, and customization options
 ---
+
 # Configuring
 
 ## First time setup
@@ -49,24 +50,24 @@ This next section describes some of key settings that can be adjusted via the We
 
 - **Board Profile**. Board Profiles are pre-configured GPIO settings for a set of common ESP32 development boards and EMS Gateway circuits. The following profiles are available:
 
-| `profile name` | `based on board`         | `led` | `dallas` | `rx`  | `tx`  | `button` | `phy_type` | `eth_power` | `eth_phy_addr` | `eth_clock_mode`               |
-| ------------ | ---------------------- | --- | ------ | --- | --- | ------ | -------- | --------- | ------------ | ---------------------------- |
-| S32          | BBQKees Gateway S32    | 2   | 18     | 23  | 5   | 0      |          |           |              |                              |
-| E32          | BBQKees Gateway E32    | 2   | 4      | 5   | 17  | 33     | LAN8720  | 16        | 1            | input to GPIO0               |
-| E32V2        | BBQKees Gateway E32 V2 | 2   | 14     | 4   | 5   | 34     | LAN8720  | 15        | 0            | output from GPIO0            |
-| S32S3        | BBQKees Gateway S3     | 2   | 18     | 5   | 17  | 0      |          |           |              |                              |
-| MH-ET        | MH-ET Live D1 Mini     | 2   | 18     | 23  | 5   | 0      |          |           |              |                              |
-| NODEMCU      | NodeMCU 32S            | 2   | 18     | 23  | 5   | 0      |          |           |              |                              |
-| LOLIN        | Lolin D32              | 2   | 18     | 17  | 16  | 0      |          |           |              |                              |
-| OLIMEX       | Olimex ESP32-EVB       | 0   | 0      | 36  | 4   | 34     | LAN8720  | -1        | 0            | input to GPIO0               |
-| OLIMEXPOE    | Olimex ESP32-POE       | 0   | 0      | 36  | 4   | 34     | LAN8720  | 12        | 0            | output from GPIO17, inverted |
-| C3MINI       | Lolin C3 Mini          | 7   | 1      | 4   | 5   | 9      |          |           |              |                              |
-| S2MINI       | Lolin S2 Mini          | 15  | 7      | 11  | 12  | 0      |          |           |              |                              |
-| S3MINI       | Liligo S3              | 17  | 18     | 8   | 5   | 0      |          |           |              |                              |
+| `profile name` | `based on board`       | `led` | `dallas` | `rx` | `tx` | `button` | `phy_type` | `eth_power` | `eth_phy_addr` | `eth_clock_mode`             |
+| -------------- | ---------------------- | ----- | -------- | ---- | ---- | -------- | ---------- | ----------- | -------------- | ---------------------------- |
+| S32            | BBQKees Gateway S32    | 2     | 18       | 23   | 5    | 0        |            |             |                |                              |
+| E32            | BBQKees Gateway E32    | 2     | 4        | 5    | 17   | 33       | LAN8720    | 16          | 1              | input to GPIO0               |
+| E32V2          | BBQKees Gateway E32 V2 | 2     | 14       | 4    | 5    | 34       | LAN8720    | 15          | 0              | output from GPIO0            |
+| S32S3          | BBQKees Gateway S3     | 2     | 18       | 5    | 17   | 0        |            |             |                |                              |
+| MH-ET          | MH-ET Live D1 Mini     | 2     | 18       | 23   | 5    | 0        |            |             |                |                              |
+| NODEMCU        | NodeMCU 32S            | 2     | 18       | 23   | 5    | 0        |            |             |                |                              |
+| LOLIN          | Lolin D32              | 2     | 18       | 17   | 16   | 0        |            |             |                |                              |
+| OLIMEX         | Olimex ESP32-EVB       | 0     | 0        | 36   | 4    | 34       | LAN8720    | -1          | 0              | input to GPIO0               |
+| OLIMEXPOE      | Olimex ESP32-POE       | 0     | 0        | 36   | 4    | 34       | LAN8720    | 12          | 0              | output from GPIO17, inverted |
+| C3MINI         | Lolin C3 Mini          | 7     | 1        | 4    | 5    | 9        |            |             |                |                              |
+| S2MINI         | Lolin S2 Mini          | 15    | 7        | 11   | 12   | 0        |            |             |                |                              |
+| S3MINI         | Liligo S3              | 17    | 18       | 8    | 5    | 0        |            |             |                |                              |
 
 For configuring a custom board, enable `Developer mode` first. Choosing `Custom` will show the following additional settings to manually configure the GPIOs to match your own board. You can also select `Custom` at any time to display the current board profile settings, without saving.
 
-*Custom board Settings:*
+_Custom board Settings:_
 
 - **Rx GPIO**. This is the GPIO pin the Rx signal is assigned to. By default this is GPIO 23 but it can be almost any free pin. Connect this GPIO pin to the RX port on the EMS interface board.
 - **Tx GPIO**. This is the GPIO pin the Tx signal is assigned to. By default this is GPIO 5 but it can be almost any free pin. Connect this GPIO pin to the TX port on the EMS interface board.
@@ -83,7 +84,8 @@ For configuring a custom board, enable `Developer mode` first. Choosing `Custom`
   - `EMS+` is designed to work better for EMS2.0/EMS+ systems.
   - `HT3` for Heatronics3 used primarily by Junkers.
   - `Hardware` uses the internal ESP's hardware to send out the telegram. Telegrams are sent immediately. It is the fastest and most efficient method but works only on some systems.
-- **EMS Bus ID**. The EMS-ESP can simulate multiple devices. Keep to the default `Service Key (0x0B)` unless using more than one EMS gateways/interface board. It's important to note the Service Key will also be used by certified service/maintenance engineers when servicing your heating systems so make sure you power-down EMS-ESP before they arrive or they will not be able to connect to the EMS bus.
+  - `Auto` checks the received bus telegrams to find the best timing of `EMS`, `EMS+`, or `HT3`.
+- **EMS Bus ID**. The EMS-ESP can simulate multiple devices. Keep to the default `Gateway 2 (0x49)` unless using more than one EMS gateways/interface board or have conflicts with other EMS devices. It's important to note the Service Key (0x0B) that is used as the default up until EMS-ESP version 3.8.1 will also be used by certified service/maintenance engineers when servicing your heating systems and could cause conflicts. Make sure you power-down EMS-ESP before any maintenance or change the EMS bus ID before they arrive or they will not be able to connect and service your heating system.
 - **Enable Read only mode**. This disables any outgoing Tx write commands to the EMS bus, essentially putting EMS-ESP into listening mode. However Tx is needed to detect EMS devices (as it sends out a Version command). If you want to explicitly put EMS-ESP into a read-only/sniffer mode use `set tx_mode 0` from the console.
 - **Hide LED**. Turns off the LED when in normal operating mode. The LED is still shown when booting or when there are connection issues.
 - **Underclock CPU speed**. Under-clocks the ESP to 160Mhz, saving on power, heat and prolonging the lifespan of the chip at the cost of performance and response time. A reboot of EMS-ESP is required.

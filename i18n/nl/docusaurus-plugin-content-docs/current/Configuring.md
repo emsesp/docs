@@ -39,7 +39,7 @@ In de volgende sectie worden enkele belangrijke instellingen beschreven die kunn
 
 ### Opmaakopties
 
-- **Language**. Dit stelt de taal in die gebruikt moet worden voor de EMS apparaatnamen, zoals weergegeven in de WebUI Apparaten en Dashboard, en ook voor MQTT Discovery. De standaardtaal is Engels. Als je Home Assistant gebruikt en de taal wijzigt, kan het nodig zijn om de vorige EMS-ESP MQTT entries te verwijderen (van HA's Instellingen->Devices & Services->MQTT) en EMS-ESP voor de zekerheid te herstarten.
+- **Language**. Dit stelt de taal in die moet worden gebruikt voor de namen van EMS-apparaten, zoals weergegeven in de WebUI Apparaten en Dashboard, en ook voor MQTT Discovery. De standaardtaal is Engels. Als je Home Assistant gebruikt en de taal wijzigt, kan het nodig zijn om de vorige EMS-ESP MQTT entries te verwijderen (van HA's Instellingen->Devices & Services->MQTT) en EMS-ESP voor de zekerheid te herstarten.
 - **Boolean Format Dashboard**. Dit is hoe booleaanse waarden worden weergegeven in de WebUI en MQTT payloads.
 - **Boolean Formaat API/MQTT**. Dit is hoe booleaanse waarden worden geschreven in de MQTT payloads en API JSON uitvoer.
 - **Enum Formaat API/MQTT**. Dit is hoe lijstwaarden worden gepresenteerd in de MQTT payloads en API JSON, ofwel door de waarde of de indexpositie binnen de lijst. Als je Home Assitant gebruikt, zie je niet de waarden maar gehele getallen voor sommige entiteiten, bijvoorbeeld in plaats van `off, hot, cold` wordt `0, 1, 2` weergegeven.
@@ -51,7 +51,7 @@ In de volgende sectie worden enkele belangrijke instellingen beschreven die kunn
 - **Boardprofiel**. Board Profiles zijn vooraf geconfigureerde GPIO-instellingen voor een set veelgebruikte ESP32-ontwikkelborden en EMS Gateway-schakelingen. De volgende profielen zijn beschikbaar:
 
 | `profile name` | `based on board` | `led` | `dallas` | `rx` | `tx` | `button` | `phy_type` | `eth_power` | `eth_phy_addr` | `eth_clock_mode` |
-| ------------ | ---------------------- | --- | ------ | --- | --- | ------ | -------- | --------- | ------------ | ---------------------------- |
+| -------------- | ---------------------- | ----- | -------- | ---- | ---- | -------- | ---------- | ----------- | -------------- | ---------------------------- |
 | S32 | BBQKees Gateway S32 | 2 | 18 | 23 | 5 | 0 | | | | | | |
 | E32 | BBQKees Gateway E32 | 2 | 4 | 5 | 17 | 33 | LAN8720 | 16 | 1 | ingang naar GPIO0 |
 | E32V2 | BBQKees Gateway E32 V2 | 2 | 14 | 4 | 5 | 34 | LAN8720 | 15 | 0 | uitgang van GPIO0 |
@@ -67,7 +67,7 @@ In de volgende sectie worden enkele belangrijke instellingen beschreven die kunn
 
 Om een aangepast bord te configureren, moet je eerst `Developer mode` inschakelen. Als je `Custom` kiest, worden de volgende extra instellingen weergegeven om de GPIO's handmatig te configureren voor je eigen bord. Je kunt ook op elk moment `Custom` kiezen om de huidige instellingen van het bordprofiel weer te geven, zonder op te slaan.
 
-*Aangepaste bordinstellingen:*
+aangepaste bordinstellingen:_
 
 - **Rx GPIO**. Dit is de GPIO-pin waaraan het Rx-signaal is toegewezen. Standaard is dit GPIO 23, maar het kan bijna elke vrije pin zijn. Verbind deze GPIO-pin met de RX-poort op het EMS-interfacebord.
 - **Tx GPIO**. Dit is de GPIO-pin waaraan het Tx-signaal wordt toegewezen. Standaard is dit GPIO 5, maar het kan bijna elke vrije pin zijn. Verbind deze GPIO-pin met de TX-poort op het EMS interfacebord.
@@ -84,7 +84,8 @@ Om een aangepast bord te configureren, moet je eerst `Developer mode` inschakele
   - `EMS+` is ontworpen om beter te werken voor EMS2.0/EMS+ systemen.
   - `HT3` voor Heatronics3, voornamelijk gebruikt door Junkers.
   - `Hardware` gebruikt de interne hardware van de ESP om het telegram te verzenden. Telegrammen worden onmiddellijk verzonden. Dit is de snelste en meest efficiënte methode, maar werkt alleen op sommige systemen.
-- **EMS Bus ID**. De EMS-ESP kan meerdere apparaten simuleren. Houd de standaard `Service Key (0x0B)` aan, tenzij u meer dan één EMS gateways/interface-kaart gebruikt. Het is belangrijk om op te merken dat de Service Key ook wordt gebruikt door gecertificeerde service/maintenance technici bij het onderhoud van uw verwarmingssystemen, dus zorg ervoor dat u de EMS-ESP uitschakelt voordat ze arriveren, anders kunnen ze geen verbinding maken met de EMS-bus.
+  - `Auto` controleert de ontvangen bustelegrammen om de beste timing voor `EMS`, `EMS+` of `HT3` te vinden.
+- **EMS Bus ID**. De EMS-ESP kan meerdere apparaten simuleren. Houd de standaard `Gateway 2 (0x49)` aan tenzij u meer dan één EMS gateways/interface-kaart gebruikt of conflicten hebt met andere EMS-apparaten. Het is belangrijk om op te merken dat de Service Key (0x0B) die tot EMS-ESP versie 3.8.1 als standaard wordt gebruikt, ook wordt gebruikt door gecertificeerde service/maintenance technici bij het onderhoud van uw verwarmingssystemen en conflicten kan veroorzaken. Zorg ervoor dat u EMS-ESP uitschakelt voordat u onderhoud uitvoert of verander de EMS bus ID voordat ze arriveren, anders kunnen ze uw verwarmingssysteem niet aansluiten en onderhouden.
 - **Enable Read only mode**. Dit schakelt alle uitgaande Tx-schrijfopdrachten naar de EMS-bus uit, waardoor de EMS-ESP in feite in luistermodus wordt gezet. Tx is echter nodig om EMS-apparaten te detecteren (omdat het een Version-commando verstuurt). Als je EMS-ESP expliciet in een lees-only/sniffer modus wilt zetten, gebruik dan `set tx_mode 0` vanaf de console.
 - **Verberg LED**. Hiermee wordt de LED uitgeschakeld in de normale bedrijfsmodus. De LED wordt nog steeds weergegeven tijdens het opstarten of bij verbindingsproblemen.
 - **CPU-snelheid onderklokken**. Onderklokt de ESP naar 160Mhz, waardoor stroom en warmte worden bespaard en de levensduur van de chip wordt verlengd ten koste van de prestaties en responstijd. EMS-ESP moet opnieuw worden opgestart.
@@ -112,11 +113,11 @@ Schakel deze functie in als je in VPN's draait of als je andere servers hebt dra
 - **Brokeradres**. Gebruik het IP-adres, geen FQDN.
 - **Port**. De standaardinstelling is 1883 en 8883 voor SSL.
 - **Basis**. Alle onderwerpen worden voorafgegaan door `Base`, dus dit is belangrijk. Zorg ervoor dat dit uniek is als je meer dan één EMS-ESP met dezelfde broker gebruikt.
-- **Cliënt ID**. Dit wordt intern gebruikt om EMS-ESP te identificeren met de broker en is optioneel. Merk op dat MQTT topics worden gepostfixed met de hostnaam (standaard `ems-esp`) en niet met de client ID. Gebruik dit wanneer je meerdere apparaten hebt.
+- **Cliënt ID**. Dit wordt intern gebruikt om EMS-ESP te identificeren met de broker en is optioneel. Let op MQTT topics worden gepostfixed met de hostnaam (standaard `ems-esp`) en niet met de client ID. Gebruik dit wanneer je meerdere apparaten hebt.
 - **Gebruikersnaam** en **Wachtwoord** zijn optioneel maar aanbevolen voor de veiligheid. Standaard heeft de Mosquitto MQTT broker een username/password nodig, dus let op als je de Home Assistant Add-On hier gebruikt.
 - **Set Clean Session**. Creëert een niet-persistente sessie indien ingeschakeld. Standaard en aanbevolen instelling is uitgeschakeld om het uitgeschakeld te houden bij gebruik van domoticasystemen.
 - **QoS**. Quality of Service, 0, 1 of 2. 0 is de standaardwaarde en geschikt voor meer scenario's. Een waarde van 1 geeft de garantie dat het bericht is verzonden, maar zorgt voor iets meer netwerkverkeer en overhead.
-- **Altijd vlag behouden** instellen. Schakel deze optie in als je alle berichten op de MQTT broker wilt bewaren. De standaardinstelling is uitgeschakeld.
+- **Altijd vlag behouden instellen**. Schakel deze optie in als je alle berichten op de MQTT broker wilt bewaren. De standaardinstelling is uitgeschakeld.
 - **Opmaak**. De `Nested` optie groepeert alle apparaatgegevens in een enkel MQTT topic door ingesloten JSON objecten te gebruiken zoals `dhw` in `boiler_data`, `hc1` in `thermostat_data` enz. `As individual topics` splitst dit op in afzonderlijke MQTT-onderwerpen zonder groepering, dus MQTT-onderwerpen worden `boiler_data` en `boiler_data_dhw`, `thermostat_data` en `thermostat_data_hc1` enzovoort. Hetzelfde geldt voor de Analoge en Temperatuursensoren. De standaardinstelling is genest.
 - **Publiceer opdrachtuitvoer naar een 'antwoord'-onderwerp'**. Dit neemt de uitvoer van een API commando en publiceert het resultaat in een onderwerp genaamd `response`.
 - **Publiceer topics met één waarde bij verandering**. Deze optie publiceert onmiddellijk het onderwerp en de payload voor elke bewerking en is alleen beschikbaar wanneer MQTT Discovery is uitgeschakeld.
@@ -186,7 +187,7 @@ De professionele manier is om een aparte relaisprintplaat met opto-isolatie en e
 
 ## Entiteiten aanpassen
 
-De Customization-pagina toont alle geregistreerde entiteiten en biedt de mogelijkheid om commando's en waarden uit te sluiten van publicatie via MQTT/API of ze te verwijderen uit WebUI-pagina's. De Apparaten en het Dashboard tonen alleen entiteiten met een waarde, terwijl de module Aanpassingen ze allemaal toont. Als een entiteit geen waarde heeft, wordt deze ondersteund door EMS-ESP, maar niet door uw boiler/thermostat/etc en wordt deze niet gepubliceerd of zichtbaar voor integraties zoals Home Assistant.
+De Customization-pagina toont alle geregistreerde entiteiten en biedt de mogelijkheid om commando's en waarden uit te sluiten van publicatie via MQTT/API of te verwijderen uit WebUI-pagina's. De Apparaten en het Dashboard tonen alleen entiteiten met een waarde, terwijl de module Aanpassingen ze allemaal toont. Als een entiteit geen waarde heeft, wordt deze ondersteund door EMS-ESP, maar niet door uw boiler/thermostat/etc en wordt deze niet gepubliceerd of zichtbaar voor integraties zoals Home Assistant.
 
 ![Web](/media/screenshot/web_customizations.png)
 
@@ -198,7 +199,7 @@ Gebruik de planner om commando's op specifieke intervallen aan te roepen. Een pa
 - voer elke week een periodieke systeemherstart uit (hoewel dat niet nodig zou moeten zijn!) met `system/restart` in het opdrachtveld
 - stuur een bericht naar het logboek en mqtt met de opdracht `system/message`
 - gebruik in combinatie met een aangepaste 'ram'-entiteit om gegevens op te halen via een andere API zoals `{"url":"http://server.tld/path/file", "key":"nameofkey"}` en gebruik dit als voorwaarde in de planner
-- gegevens verzenden naar een externe API, via een RESTful HTTP POST-commando, bijvoorbeeld `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
+- gegevens verzenden naar een externe API, via een RESTful HTTP POST-opdracht, bijvoorbeeld `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - gebruiken om een Home Assistant-script of -service aan te roepen wanneer een voorwaarde wordt geactiveerd, bijv. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
 :::warning HTTPS gebruiken in scheduleropdrachten HTTPS wordt alleen ondersteund op de ESP32- en ESP32-S3-varianten met PSRAM bij gebruik met `url` naar een extern eindpunt. De https zal terugvallen op het gebruik van http en kan een fout melden.
