@@ -592,5 +592,15 @@
     "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
     "notes" : "",
     "type" : "info"
+  },
+  "0x048F" : {
+    "name" : "Heat Pump E21 Sensor Monitor values",
+    "usedIn" : "tbd",
+    "description" : "Heat Pump E21 Sensor Monitor values",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }
