@@ -13,19 +13,17 @@ hide_table_of_contents: true
 
 ### 🔌 ESP32 Ontwikkelbord
 
-De EMS-ESP-firmware draait op een ESP32-module van [Espressif](https://www.espressif.com/en/products/socs). De chipsets ESP32-S, ESP32-S2, ESP32-S3 en ESP32-C3 worden ondersteund.
+De EMS-ESP-firmware draait op een ESP32-module van [Espressif](https://www.espressif.com/en/products/socs). De chipsets ESP32 S, S2, S3, C3 en C6 worden ondersteund. Firmware binaries zijn beschikbaar voor de ESP32 S 4MB, 16MB, 16MB met PSRAM en de ESP32 S3 16MB met PSRAM. Voor andere versies kun je de firmware vanaf de broncode bouwen met PlatformIO.
 
 Zie het bericht [here](https://github.com/emsesp/EMS-ESP32/discussions/839#discussioncomment-4493156) over met welke ontwikkelborden we hebben getest.
-
-![ESP32 Development Boards](/media/images/esp32-dev-boards.jpg)
 
 ### 🔗 EMS-interfacekaart
 
 EMS-ESP heeft ook een apart circuit nodig om te lezen en te schrijven naar de EMS-bus. Je koopt een EMS Gateway board rechtstreeks bij BBQKees Electronics.
 
-![EMS Gateway S3](/media/images/EMS-Gateway-S3.png) ![EMS Gateway E32 V2](/media/images/EMS-Gateway-E32-V2.png)
+<div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'flex-start'}}> <img src="/media/images/EMS-Gateway-S3.png" alt="EMS Gateway S3" width="300" /> <img src="/media/images/EMS-Gateway-E32-V2.png" alt="EMS Gateway E32 V2" width="300" /> </div>
 
-[Visit BBQKees Electronics](https://bbqkees-electronics.nl)
+[visit BBQKees Electronics](https://bbqkees-electronics.nl)
 
 ## LED-statusindicatoren
 
@@ -55,7 +53,7 @@ Er is een goede verbinding en er stromen EMS-gegevens binnen.
 
 **Slow Pulse**
 
-Ofwel maakt de WiFi of de EMS-bus nog steeds verbinding.
+Ofwel de WiFi ofwel de EMS-bus maakt nog steeds verbinding.
 
 **Snelle pols**
 

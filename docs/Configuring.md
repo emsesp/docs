@@ -253,7 +253,7 @@ As entities never change at the same time using logical operations here like `&&
 
 ### Web Commands
 
-Sending or getting data via web request can be used in a json command:
+Sending or getting data via a web request can be used in a json command:
 
 - GET a value from webserver:
   `{"url":"http://server.tld/path/file"}`
@@ -263,9 +263,11 @@ Sending or getting data via web request can be used in a json command:
   Command: `{"url":"http://server.tld/path/file", "header":{"content-type":"text/plain", "token":"mytoken"}`
   Value: the post message, if it is a json the content-type header is set in header, no need to set it.
 
+Both HTTP and HTTPS are supported.
+
 Examples:
 
-- getting power state of a tasmota plug example:
+- getting power state of a Tasmota plug example:
   `{"url":"http://192.168.0.100/cm?cmnd=power", "key":"power"} == off`
   is identical to
   `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
@@ -275,8 +277,6 @@ Examples:
 ### Notification
 
 With web commands a service like [pushover](https://pushover.net) can be used to send a push-message on events. To send different message create a custom entity in RAM named `message`, or what ever you like. Create a schedule On Change triggering the change of this message and sending the pushover message.
-
-![grafik](https://github.com/user-attachments/assets/570576b5-b382-4ab2-bff3-4468291334a3)
 
 Now you can create other schedules with the command `custom/message` and use individual text as data.
 

@@ -12,7 +12,7 @@ De standaard 'fabrieksconfiguratie' start een WiFi Access Point met de naam `ems
 
 Nu ben je klaar om de instellingen verder te configureren. Als je niet verbonden bent met je WiFi-netwerk, doe dit dan eerst via de pagina Instellingen->Netwerk. Je kunt dit ook doen via de Console als je verbonden bent met een Serial/USB-poort en de commando's `set wifi ssid` en `set wifi password` gebruikt.
 
-Als je waarschuwingen ziet dat het niet gelukt is om verbinding te maken met de EMS-bus, of als er Tx- of Rx-fouten zijn, volg dan de [troubleshooting](Troubleshooting) handleiding.
+Als er waarschuwingen worden weergegeven dat het niet gelukt is om verbinding te maken met de EMS-bus, of als er Tx- of Rx-fouten zijn, volg dan de [troubleshooting](Troubleshooting) handleiding.
 
 :::note Als je 'Rx incomplete telegrammen' in het logboek ziet staan, raak dan niet in paniek. Sommige telegrammen kunnen gemist worden en dit wordt meestal veroorzaakt door ruis op de lijn.
 :::
@@ -100,7 +100,7 @@ aangepaste bordinstellingen:_
 
 ## Netwerk instellen
 
-Op de Netwerk pagina kun je de EMS-ESP verbinden met je thuisnetwerk. Je kunt kiezen tussen WiFi en Ethernet als de hardware dit ondersteunt. Let op WiFi moet 2.4GHz/WPA2 zijn. Het zal geen verbinding maken met een 5GHz Wifi-toegangspunt.
+Op de netwerkpagina kun je de EMS-ESP verbinden met je thuisnetwerk. Je kunt kiezen tussen WiFi en Ethernet als de hardware dit ondersteunt. Let op WiFi moet 2.4GHz/WPA2 zijn. Het zal geen verbinding maken met een 5GHz Wifi-toegangspunt.
 
 ### CORS (Cross-Origin Resource Sharing)
 
@@ -113,7 +113,7 @@ Schakel deze functie in als je in VPN's draait of als je andere servers hebt dra
 - **Brokeradres**. Gebruik het IP-adres, geen FQDN.
 - **Port**. De standaardinstelling is 1883 en 8883 voor SSL.
 - **Basis**. Alle onderwerpen worden voorafgegaan door `Base`, dus dit is belangrijk. Zorg ervoor dat dit uniek is als je meer dan één EMS-ESP met dezelfde broker gebruikt.
-- **Cliënt ID**. Dit wordt intern gebruikt om EMS-ESP te identificeren met de broker en is optioneel. Let op MQTT topics worden gepostfixed met de hostnaam (standaard `ems-esp`) en niet met de client ID. Gebruik dit wanneer je meerdere apparaten hebt.
+- **Cliënt ID**. Dit wordt intern gebruikt om EMS-ESP te identificeren met de broker en is optioneel. Merk op dat MQTT topics worden gepostfixed met de hostnaam (standaard `ems-esp`) en niet met de client ID. Gebruik dit wanneer je meerdere apparaten hebt.
 - **Gebruikersnaam** en **Wachtwoord** zijn optioneel maar aanbevolen voor de veiligheid. Standaard heeft de Mosquitto MQTT broker een username/password nodig, dus let op als je de Home Assistant Add-On hier gebruikt.
 - **Set Clean Session**. Creëert een niet-persistente sessie indien ingeschakeld. Standaard en aanbevolen instelling is uitgeschakeld om het uitgeschakeld te houden bij gebruik van domoticasystemen.
 - **QoS**. Quality of Service, 0, 1 of 2. 0 is de standaardwaarde en geschikt voor meer scenario's. Een waarde van 1 geeft de garantie dat het bericht is verzonden, maar zorgt voor iets meer netwerkverkeer en overhead.
@@ -247,22 +247,22 @@ Een On Change-trigger is een lijst met entiteiten in de indeling `<device>/<enti
 
 ### Webopdrachten
 
-Het verzenden of ophalen van gegevens via een webverzoek kan worden gebruikt in een json-commando:
+Het verzenden of ophalen van gegevens via een webverzoek kan worden gebruikt in een json commando:
 
 - GET een waarde van webserver: `{"url":"http://server.tld/path/file"}`
 - GET een json-waarde van de webserver en selecteer de sleutel: `{"url":"http://server.tld/path/file", "key":"nameofkey"}`
 - een waarde instellen met POST: Opdracht: `{"url":"http://server.tld/path/file", "header":{"content-type":"text/plain", "token":"mytoken"}` Waarde: het postbericht, als het een json is, is de content-type header ingesteld in de header, deze hoef je niet in te stellen.
 
+Zowel HTTP als HTTPS worden ondersteund.
+
 Voorbeelden:
 
-- energiestatus krijgen van een tasmota plug voorbeeld: `{"url":"http://192.168.0.100/cm?cmnd=power", "key":"power"} == off` is identiek aan `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
+- voedingstoestand van een Tasmota-stekker krijgen voorbeeld: `{"url":"http://192.168.0.100/cm?cmnd=power", "key":"power"} == off` is identiek aan `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - een tasmoto-stekker instellen: `{"url":"http://192.168.0.100/cm?cmnd=power%20on"}`
 
 ### Kennisgeving
 
 Met webcommando's kan een service als [pushover](https://pushover.net) worden gebruikt om een push-bericht over gebeurtenissen te versturen. Om een ander bericht te verzenden, maak je een aangepaste entiteit in RAM met de naam `message`, of wat je maar wilt. Maak een schema On Change dat de verandering van dit bericht triggert en het pushbericht verstuurt.
-
-![grafik](https://github.com/user-attachments/assets/570576b5-b382-4ab2-bff3-4468291334a3)
 
 Nu kun je andere schema's maken met de opdracht `custom/message` en afzonderlijke tekst als gegevens gebruiken.
 
