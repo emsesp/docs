@@ -16,7 +16,7 @@ function formatDate(dateStr) {
   })
 }
 
-export default function LatestReleases() {
+export function useLatestReleases() {
   const [versions, setVersions] = useState(FALLBACK)
   const [loaded, setLoaded] = useState(false)
 
@@ -44,10 +44,51 @@ export default function LatestReleases() {
 
   const stable = versions.stable || {}
   const dev = versions.dev || {}
-  const stableVersion = stable.version || FALLBACK.stable.version
-  const devVersion = dev.version || FALLBACK.dev.version
-  const stableDate = formatDate(stable.date)
-  const devDate = formatDate(dev.date)
+  return {
+    stableVersion: stable.version || FALLBACK.stable.version,
+    devVersion: dev.version || FALLBACK.dev.version,
+    stableDate: formatDate(stable.date),
+    devDate: formatDate(dev.date),
+    loaded,
+  }
+}
+
+export function StableVersion() {
+  const { stableVersion, loaded } = useLatestReleases()
+  return (
+    <strong style={{ opacity: loaded ? 1 : 0.7, transition: 'opacity 0.2s' }}>
+      v{stableVersion}
+    </strong>
+  )
+}
+
+export function DevVersion() {
+  const { devVersion, loaded } = useLatestReleases()
+  return (
+    <strong style={{ opacity: loaded ? 1 : 0.7, transition: 'opacity 0.2s' }}>
+      v{devVersion}
+    </strong>
+  )
+}
+
+export function FirmwareLink({ variant }) {
+  const { stableVersion, loaded } = useLatestReleases()
+  const underscored = stableVersion.replace(/\./g, '_')
+  const fileName = `EMS-ESP-${underscored}-${variant}.bin`
+  const url = `https://github.com/emsesp/EMS-ESP32/releases/download/v${stableVersion}/${fileName}`
+  return (
+    <a
+      href={url}
+      style={{ opacity: loaded ? 1 : 0.7, transition: 'opacity 0.2s' }}
+    >
+      {fileName}
+    </a>
+  )
+}
+
+export default function LatestReleases() {
+  const { stableVersion, devVersion, stableDate, devDate, loaded } =
+    useLatestReleases()
 
   return (
     <ul style={{ opacity: loaded ? 1 : 0.7, transition: 'opacity 0.2s' }}>
