@@ -83,7 +83,7 @@ benutzerdefinierte Bordeinstellungen:_
   - `EMS` ist der Standard für EMS1.0-Systeme, aber auch mit den meisten anderen Busprotokollen kompatibel.
   - `EMS+` ist so konzipiert, dass es besser für EMS2.0/EMS+ Systeme funktioniert.
   - `HT3` für Heatronics3, hauptsächlich von Junkers verwendet.
-  - `Hardware` verwendet die interne ESP-Hardware, um das Telegramm auszusenden. Die Telegramme werden sofort gesendet. Dies ist die schnellste und effizienteste Methode, funktioniert aber nur auf einigen Systemen.
+  - `Hardware` verwendet die interne ESP-Hardware, um das Telegramm zu senden. Die Telegramme werden sofort gesendet. Dies ist die schnellste und effizienteste Methode, funktioniert aber nur auf einigen Systemen.
   - `Auto` prüft die empfangenen Bustelegramme, um den besten Zeitpunkt für `EMS`, `EMS+` oder `HT3` zu finden.
 - **EMS-Bus-ID**. Der EMS-ESP kann mehrere Geräte simulieren. Halten Sie sich an die Standardeinstellung `Gateway 2 (0x49)`, es sei denn, Sie verwenden mehr als eine EMS gateways/interface-Karte oder haben Konflikte mit anderen EMS-Geräten. Es ist wichtig zu beachten, dass der Serviceschlüssel (0x0B), der bis zur EMS-ESP-Version 3.8.1 als Standard verwendet wird, auch von zertifizierten service/maintenance-Technikern bei der Wartung Ihrer Heizungsanlagen verwendet wird und Konflikte verursachen könnte. Vergewissern Sie sich, dass Sie das EMS-ESP vor jeder Wartung ausschalten oder die EMS-Bus-ID ändern, bevor der Techniker eintrifft, da er sonst nicht in der Lage ist, Ihre Heizungsanlage anzuschließen und zu warten.
 - **Nur-Lesen-Modus aktivieren**. Dies deaktiviert alle ausgehenden Tx-Schreibbefehle an den EMS-Bus und versetzt EMS-ESP im Wesentlichen in den Hörmodus. Tx wird jedoch benötigt, um EMS-Geräte zu erkennen (da es einen Versionsbefehl aussendet). Wenn Sie EMS-ESP explizit in einen Lese-only/sniffer-Modus versetzen wollen, verwenden Sie `set tx_mode 0` von der Konsole aus.
@@ -144,7 +144,7 @@ Jeder Benutzer verfügt über ein eindeutiges Zugriffstoken (einsehbar durch Kli
 
 ## Hinzufügen von Analog- und Temperatursensoren
 
-Externe Sensoren, wie Temperatur- und Analogsensoren, können an eine Reihe von GPIO-Pins des ESP32-Chips angeschlossen werden. Wenn Sie ein BBQKees-Gateway-Board verwenden, verfügt es bereits über einen externen Stecker für Dallas-Temperatursensoren, die in der WebUI ohne zusätzliche Konfiguration sichtbar sind. BBQKees Boards sind CE-zertifiziert und das Hinzufügen von Sensoren zu gpios würde die EMC-Konformität verletzen. Um analoge Sensoren auf eigenes Risiko hinzuzufügen, wählen Sie ein anderes Boardprofil oder verwenden Sie den Entwicklermodus, um ein benutzerdefiniertes Board zu konfigurieren.
+Externe Sensoren, wie Temperatur- und Analogsensoren, können an eine Reihe von GPIO-Pins des ESP32-Chips angeschlossen werden. Wenn Sie ein BBQKees-Gateway-Board verwenden, verfügt es bereits über einen externen Stecker für Dallas-Temperatursensoren, die in der WebUI ohne zusätzliche Konfiguration sichtbar sind. BBQKees-Boards sind CE-zertifiziert und das Hinzufügen von Sensoren zu gpios würde die EMC-Konformität verletzen. Um analoge Sensoren auf eigenes Risiko hinzuzufügen, wählen Sie ein anderes Boardprofil oder verwenden Sie den Entwicklermodus, um ein benutzerdefiniertes Board zu konfigurieren.
 
 Um analoge Sensoren hinzuzufügen, klicken Sie auf `Add` und wählen Sie zwischen einem normalen digitalen in/out, einem Zähler (der on/off-Impulse zählt), einem ADC zur Spannungsmessung, einem Timer, einer Rate und PWM 0-2. Hinweis: Der Zählerwert bleibt erhalten und wird beim Neustart nicht zurückgesetzt.
 
@@ -253,16 +253,16 @@ Das Senden oder Abrufen von Daten über eine Webanfrage kann in einem json-Befeh
 - GET einen json-Wert vom Webserver und wählen Sie den Schlüssel: `{"url":"http://server.tld/path/file", "key":"nameofkey"}`
 - einen Wert mit POST setzen: Befehl: `{"url":"http://server.tld/path/file", "header":{"content-type":"text/plain", "token":"mytoken"}` Wert: die Post-Nachricht, wenn es sich um einen Json handelt, ist der Content-Type-Header in der Kopfzeile gesetzt, er muss nicht gesetzt werden.
 
+Es werden sowohl HTTP als auch HTTPS unterstützt.
+
 Beispiele:
 
-- abfrage des Stromversorgungszustands eines Tasmanischen Steckers Beispiel: `{"url":"http://192.168.0.100/cm?cmnd=power", "key":"power"} == off` ist identisch mit `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
+- abrufen des Leistungsstatus eines Tasmota-Steckers Beispiel: `{"url":"http://192.168.0.100/cm?cmnd=power", "key":"power"} == off` ist identisch mit `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - einstellung eines Tasmoto-Steckers: `{"url":"http://192.168.0.100/cm?cmnd=power%20on"}`
 
 ### Benachrichtigung
 
 Mit Webbefehlen kann ein Dienst wie [pushover](https://pushover.net) verwendet werden, um eine Push-Nachricht bei Ereignissen zu senden. Um eine andere Nachricht zu senden, erstellen Sie eine benutzerdefinierte Entität in RAM mit dem Namen `message`, oder wie auch immer Sie wollen. Erstellen Sie einen Zeitplan On Change, der die Änderung dieser Nachricht auslöst und die Push-Nachricht sendet.
-
-![grafik](https://github.com/user-attachments/assets/570576b5-b382-4ab2-bff3-4468291334a3)
 
 Jetzt können Sie mit dem Befehl `custom/message` weitere Zeitpläne erstellen und individuelle Texte als Daten verwenden.
 

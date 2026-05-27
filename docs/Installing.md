@@ -4,6 +4,8 @@ id: Installing
 description: Getting started with EMS-ESP. What you need, how to install and do initial configuration.
 ---
 
+import { StableVersion, DevVersion, FirmwareLink } from '@site/src/components/LatestReleases';
+
 # 📦 Installing
 
 There are a number of ways to install and update the firmware on your ESP32 device:
@@ -16,15 +18,17 @@ There are a number of ways to install and update the firmware on your ESP32 devi
 
 ## Choosing the right firmware version
 
+The latest stable version of the firmware is <StableVersion /> and the latest development version is <DevVersion />.
+
 There are pre-built firmware binaries for the ESP32 and ESP32-S3 chips sets. There are variations of these based on the allocated flash size (4MB, 16MB) and whether the board has additional PSRAM present. For other chip sets, such as the ESP32-C3, the firmware can be manually built from the source using PlatformIO.
 
 You can choose either to use the current _Stable_ or latest _Development_ version. The Stable versions are typically updated within a few months, or patched when a critical issue is found. The Development versions (with the word `dev` in the filename) are updated more frequently, but may contain bugs. This is recommended for advanced users who want to test out new features. You can switch from Stable to Development at any time via the EMS-ESP Web interface.
 
-### Upgrading from versions prior to v3.7
+## Upgrading from versions prior to v3.7
 
 It is always recommended to upgrade to the latest version of the firmware. If you are upgrading from a version prior to v3.7 (v3.6.4 or v3.6.5) then make a backup of your configuration settings first before upgrading in case the flash process fails. This can be done via the EMS-ESP web interface. If you run into any issues using one of the Flashing methods described above then 'flash erase' the EMS-ESP and start over with a fresh install, and then upload your saved settings. If you are upgrading from v3.7 or later, then you can safely upgrade without needing to backup your configuration settings.
 
-### How the firmware binary files are named
+## How the firmware binary files are named
 
 The firmware filename format used is:
 
@@ -34,29 +38,29 @@ where `<chipset>` is `ESP32` or `ESP32S3` and `<flashsize>` either `4MB` or `16M
 
 Determine the correct type of your ESP32 device and download the latest stable version of the firmware using the table below. If you're not sure which firmware to use contact us.
 
-| `chipset` | `flashsize` | `PSRAM` | `Firmware file`                                                                                                                 |
-| --------- | ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| ESP32     | 16MB        | 8MB     | [EMS-ESP-3_8_1-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB+.bin)     |
-| ESP32-S3  | 16MB        | 8MB     | [EMS-ESP-3_8_1-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32S3-16MB+.bin) |
-| ESP32     | 4MB         |         | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin)         |
-| ESP32     | 16MB        |         | [EMS-ESP-3_8_1-ESP32-16MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB.bin)       |
+| `chipset` | `flashsize` | `PSRAM` | `Firmware file`                          |
+| --------- | ----------- | ------- | ---------------------------------------- |
+| ESP32     | 16MB        | 8MB     | <FirmwareLink variant="ESP32-16MB+" />   |
+| ESP32-S3  | 16MB        | 8MB     | <FirmwareLink variant="ESP32S3-16MB+" /> |
+| ESP32     | 4MB         |         | <FirmwareLink variant="ESP32-4MB" />     |
+| ESP32     | 16MB        |         | <FirmwareLink variant="ESP32-16MB" />    |
 
 If using a [BBQKees Electronics Gateway](https://bbqkees-electronics.nl) board, follow this guide to ensure you are select the correct firmware:
 
-| `Model`               | `Release Year`   | `Has PSRAM?` | `Firmware file`                                                                                                                 |
-| --------------------- | ---------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| Gateway E32 V2        | >01-2024         | Yes          | [EMS-ESP-3_8_1-ESP32-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB+.bin)     |
-| Gateway S3(-LR)       | >09-2023         | Yes          | [EMS-ESP-3_8_1-ESP32S3-16MB+.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32S3-16MB+.bin) |
-| Gateway E32 V1.5      | >12-21 &lt;06-23 | No           | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin)         |
-| Gateway E32 V1.0/V1.4 | >04-21 &lt;12-21 | No           | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin)         |
-| Gateway S32 V2        | >02-22 &lt;01-23 | No           | [EMS-ESP-3_8_1-ESP32-16MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-16MB.bin)       |
-| Gateway S32 V1        | >02-21 &lt;02-22 | No           | [EMS-ESP-3_8_1-ESP32-4MB.bin](https://github.com/emsesp/EMS-ESP32/releases/download/v3.8.1/EMS-ESP-3_8_1-ESP32-4MB.bin)         |
+| `Model`               | `Release Year`   | `Has PSRAM?` | `Firmware file`                          |
+| --------------------- | ---------------- | ------------ | ---------------------------------------- |
+| Gateway E32 V2        | >01-2024         | Yes          | <FirmwareLink variant="ESP32-16MB+" />   |
+| Gateway S3(-LR)       | >09-2023         | Yes          | <FirmwareLink variant="ESP32S3-16MB+" /> |
+| Gateway E32 V1.5      | >12-21 &lt;06-23 | No           | <FirmwareLink variant="ESP32-4MB" />     |
+| Gateway E32 V1.0/V1.4 | >04-21 &lt;12-21 | No           | <FirmwareLink variant="ESP32-4MB" />     |
+| Gateway S32 V2        | >02-22 &lt;01-23 | No           | <FirmwareLink variant="ESP32-16MB" />    |
+| Gateway S32 V1        | >02-21 &lt;02-22 | No           | <FirmwareLink variant="ESP32-4MB" />     |
 
 MD5-Checksums are also available for every release. They have the same filename as the image-file, but ends with `.md5`.
 They can be found at the [GitHub-Release-Page](https://github.com/emsesp/EMS-ESP32/releases).
 You can optionally upload them **before** the bin-image-file using the EMS-ESP-web-installer so they will be evaluated before the installation.
 
-## Manual flashing
+## Manual flashing the firmware
 
 If you are using a custom firmware or you want to manually flash the firmware, you can use the following guide:
 
