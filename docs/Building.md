@@ -3,24 +3,26 @@ id: Building
 title: Building the Firmware
 description: Guide to building EMS-ESP firmware from source using PlatformIO and dev containers
 ---
+
 # Building the firmware
 
 ## Prerequisites
 
-It is assumed you have a basic understanding of coding and building software for microcontrollers using git and using PlatformIO.
+It is assumed you have a basic understanding of coding and building software for microcontrollers using git, how node and package.json works and also some knowledge of the PlatformIO framework for building Espressif IDF and Arduino projects.
 
-You can either use the [dev container](https://containers.dev/) (see below) or setup up everything locally. When running locally it's strongly recommended to use a Linux environment (like WSL for Windows) as it's builds almost 3 times faster than on native Windows. You'll need to install the following software packages:
+You can either use the [dev container](https://containers.dev/) (see below) or setup up everything locally. When running on Windows it's strongly recommended to use a WSL Linux environment as it can compile much faster than on native Windows.
 
-- [PlatformIO](https://platformio.org/)
+Make sure you have the following software packages installed:
+
 - [Node.js](https://nodejs.org)
 - [pnpm](https://pnpm.io/installation)
-- [VSCode](https://code.visualstudio.com/) with git and the [pioarduino](https://github.com/pioarduino/pioarduino) extension. The installation of pioarduino is like PlatformIO IDE for VSCode. Search for pioarduino on the Visual Studio Code Marketplace and follow the documentation PlatformIO IDE for VSCode how to install.
+- [pioarduino](https://github.com/pioarduino/platform-espressif32)
 
 ## Building the firmware
 
 First create a local PlatformIO configuration file by copying the example file `pio_local.ini_example` to `pio_local.ini` and modify it to your needs, for example by setting the target board you want to build for with `default_envs` or adding debug information with `my_build_flags`.
 
-Before building the firmware you need to first create the WebUI distribution files by either running `pio run -e build_webUI` or `pnpm build` from the `interface` folder. This will create the file `src/ESP32React/WWWData.h` which is used by the firmware.
+Before building the firmware you need to first create the WebUI distribution files by either running `pio run -e build-webUI` from the root folder or `pnpm build-webUI ` from the `interface` folder. This will create the file `src/ESP32React/WWWData.h` which is used by the firmware.
 
 Then to build the firmware run `pio run -e <your_environment_name>` or just `pio run` if you have a default environment set in your `pio_local.ini` file.
 
@@ -32,7 +34,7 @@ To upload the firmware to your ESP32 device you can use the `pio run -e upload` 
 
 ### WebUI development
 
-The WebUI can be developed and tested in real-time using mock dummy data in the file `/mock-api/restServer.ts`. This is useful when making changes to the Web UI, testing translations or watching the behaviour when test data changes.
+The WebUI can be developed and tested in real-time using mock dummy data from the file `/mock-api/restServer.ts`. This is useful when making changes to the Web UI, testing translations or watching the behaviour when test data changes.
 
 You will need to install an additional software package, [bun](https://bun.com/docs/installation).
 
@@ -79,19 +81,19 @@ Click "Code" and the "Create codespace on dev" to start a codespace that you can
 
 ### The partition structure
 
-| Name       | Type       | SubType  | Offset        | Size               | Notes                           | File                            |
-|------------|------------|----------|---------------|--------------------|---------------------------------|---------------------------------|
-| bootloader |            |          | 0x0000/0x1000 | 0x8000   (32 KB)   | ESP32-S3=0x1000, ESP32=0x1000   | bootloader*.bin                 |
-| partitions |            |          | 0x8000        | 0x1000   (4 KB)    | same for each board             | partitions*.bin                 |
-| -          |            |          |               |                    |                                 |                                 |
-| nvs        | data       | nvs      | 0x9000        | 0x5000   (20 KB)   | reserved for ESP32              |                                 |
-| otadata    | data       | ota      | 0xE000        | 0x2000   (8 KB)    | same for each board             | boot_app0*.bin                  |
-| boot       | app        | factory  | 0x10000       | 0x480000 (4.5 MB)  | default boot partition          | EMS-ESP firmware *.bin/loader   |
-| app0       | app        | ota_0    | 0x290000      | 0x490000 (4.56 MB) | OTA cycle 1                     | EMS-ESP firmware *.bin          |
-| app1       | app        | ota_1    | 0x510000      | 0x490000 (4.56 MB) | OTA cycle 2                     | EMS-ESP firmware *.bin          |
-| nvs1       | data       | nvs      | 0xAA0000      | 0x040000 (256 KB)  | custom for EMS-ESP              | (generated by script)           |
-| spiffs     | data       | spiffs   | 0xAA0000      | 0x200000 (2 MB)    | for LittleFS/EMS-ESP filesystem | (not used)                      |
-| coredump   | data       | coredump | 0xCE0000      | 0x010000 (64 KB)   |                                 |                                 |
+| Name       | Type | SubType  | Offset        | Size               | Notes                           | File                           |
+| ---------- | ---- | -------- | ------------- | ------------------ | ------------------------------- | ------------------------------ |
+| bootloader |      |          | 0x0000/0x1000 | 0x8000 (32 KB)     | ESP32-S3=0x1000, ESP32=0x1000   | bootloader\*.bin               |
+| partitions |      |          | 0x8000        | 0x1000 (4 KB)      | same for each board             | partitions\*.bin               |
+| -          |      |          |               |                    |                                 |                                |
+| nvs        | data | nvs      | 0x9000        | 0x5000 (20 KB)     | reserved for ESP32              |                                |
+| otadata    | data | ota      | 0xE000        | 0x2000 (8 KB)      | same for each board             | boot_app0\*.bin                |
+| boot       | app  | factory  | 0x10000       | 0x480000 (4.5 MB)  | default boot partition          | EMS-ESP firmware \*.bin/loader |
+| app0       | app  | ota_0    | 0x290000      | 0x490000 (4.56 MB) | OTA cycle 1                     | EMS-ESP firmware \*.bin        |
+| app1       | app  | ota_1    | 0x510000      | 0x490000 (4.56 MB) | OTA cycle 2                     | EMS-ESP firmware \*.bin        |
+| nvs1       | data | nvs      | 0xAA0000      | 0x040000 (256 KB)  | custom for EMS-ESP              | (generated by script)          |
+| spiffs     | data | spiffs   | 0xAA0000      | 0x200000 (2 MB)    | for LittleFS/EMS-ESP filesystem | (not used)                     |
+| coredump   | data | coredump | 0xCE0000      | 0x010000 (64 KB)   |                                 |                                |
 
 - Reference: [ESP-IDF Partition Tables](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/partition-tables.html)
 - There are 3 places where the EMS-ESP firmware is stored:
