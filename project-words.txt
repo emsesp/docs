@@ -1095,3 +1095,5 @@ zündungsversuchs
 überschritten
 überwachungselektrode
 esptool
+cmnd
+relais

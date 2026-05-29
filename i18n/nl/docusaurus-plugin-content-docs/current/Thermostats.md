@@ -31,7 +31,8 @@ Dit is de huidige lijst met ondersteunde thermostaten van merken zoals Buderus, 
 - RT800
 - TR120RF
 
-:::note Deze onderstaande thermostaten ondersteunen helaas geen directe EMS-schrijfopdrachten en zullen daarom in EMS-ESP verschijnen als apparaten die alleen lezen:
+:::note
+Deze onderstaande thermostaten ondersteunen helaas geen directe EMS-schrijfopdrachten en zullen daarom in EMS-ESP verschijnen als apparaten die alleen lezen:
 
     - Buderus Logamatic TC100, Bosch EasyControl CT200, Junkers CT100, Moduline Easy. Zie [here](https://community.home-assistant.io/t/buderus-tc100-junkers-ct100-thermostat/67992)
     - Junkers FW/FR gebouwd vóór 9/2008 (FD889). Zie [here](https://github.com/emsesp/EMS-ESP32/issues/105#issuecomment-915874482)
@@ -41,7 +42,8 @@ Dit is de huidige lijst met ondersteunde thermostaten van merken zoals Buderus, 
 
 ## Apparaat entiteiten
 
-:::warning De werkelijke thermostaatcommando's hieronder zijn afhankelijk van het merk en model thermostaat dat je hebt. Deze lijst is ook niet volledig en kan tussen versies veranderen.
+:::warning
+De werkelijke thermostaatcommando's hieronder zijn afhankelijk van het merk en model thermostaat dat je hebt. Deze lijst is ook niet volledig en kan tussen versies veranderen.
 :::
 
 | commando | gegevens | id | commentaar |

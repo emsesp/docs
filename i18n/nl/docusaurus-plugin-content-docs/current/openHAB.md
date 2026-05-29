@@ -15,10 +15,12 @@ EMS-ESP kan op verschillende manieren worden geïntegreerd in openHab:
 
 <figure> <img src="/media/screenshot/oh_dashboard.png" alt="Example Dashboard (items depend on heating system)" /> <figcaption>Voorbeeld Dashboard (items zijn afhankelijk van verwarmingssysteem)</figcaption> </figure>
 
-:::note Het hangt van de entiteit en het apparaat af of deze schrijfbaar of alleen leesbaar is. Kijk in de entiteitenlijst [Entities](All-Entities) voor alle beschikbare entiteiten en gerelateerde attributen.
+:::note
+Het hangt van de entiteit en het apparaat af of deze schrijfbaar of alleen leesbaar is. Kijk in de entiteitenlijst [Entities](All-Entities) voor alle beschikbare entiteiten en gerelateerde attributen.
 :::
 
-:::note Documentatie is gemaakt voor openHab versie 3.x
+:::note
+Documentatie is gemaakt voor openHab versie 3.x
 :::
 
 ## HomeAssistant MQTT componenten binding

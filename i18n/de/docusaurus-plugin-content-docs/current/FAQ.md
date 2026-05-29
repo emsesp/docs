@@ -35,7 +35,7 @@ Wenn Sie eine Einstellung suchen, loggen Sie die Telegramme für das Gerät (log
 
 Teilweise. Wie die Leute von [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) es so schön formulieren:
 
-:::tip Warum einen Thermostat verwenden?
+:::tip[Warum einen Thermostat verwenden?]
 
     - Die Hersteller von Thermostaten haben jahrelang geforscht, um die Heizungseigenschaften für die effizienteste und komfortabelste Art der Beheizung eines Hauses zu ermitteln.
     - Der Thermostat bietet eine den Menschen vertraute Steuerungsschnittstelle, so dass auch andere Haushaltsmitglieder den Sollwert einstellen können.
@@ -95,7 +95,8 @@ Beim Upgrade oder Downgrade zwischen EMS-ESP-Versionen übernimmt EMS-ESP die Mi
 
 Lesen Sie immer die [ChangeLog](Version-Release-History.md) für die Versionshinweise und Hinweise auf alle Änderungen, bevor Sie ein Upgrade durchführen.
 
-:::warning ### Umstellung auf v3.9
+:::warning
+### Umstellung auf v3.9
 :::
 
 In Version 3.9 der EMS-ESP-Firmware haben wir den ESP32-Kern optimiert und ein effizienteres Dateisystem verwendet. Dies bedeutet leider, dass Sie die Einstellungen nach Abschluss der Installation manuell hochladen müssen. Es ist wichtig, dass Sie zuerst ein Backup Ihrer Einstellungen und Anpassungen herunterladen, bevor Sie das Upgrade starten. Dies kann über die Seite Download/Upload in der WebUI erfolgen und erstellt eine für Menschen lesbare JSON-Datei.

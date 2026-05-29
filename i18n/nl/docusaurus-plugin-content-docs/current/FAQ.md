@@ -35,7 +35,7 @@ Als je een instelling zoekt, log dan de telegrammen voor het apparaat (log all o
 
 Gedeeltelijk. Zoals de mensen van [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) het mooi zeggen:
 
-:::tip Waarom een thermostaat gebruiken?
+:::tip[Waarom een thermostaat gebruiken?]
 
     - De fabrikanten van thermostaten hebben jarenlang onderzoek gedaan naar de verwarmingskenmerken voor de meest efficiënte en comfortabele manier om een huis te verwarmen.
     - De thermostaat biedt een bedieningsinterface waarmee mensen vertrouwd zijn, zodat andere leden van het huishouden nog steeds de instelwaarde kunnen aanpassen.
@@ -95,7 +95,8 @@ Bij het upgraden of downgraden tussen EMS-ESP-versies, zal EMS-ESP eventuele mig
 
 Lees altijd de [ChangeLog](Version-Release-History.md) voor de release-opmerkingen en opmerkingen over eventuele wijzigingen voordat u een upgrade uitvoert.
 
-:::warning ### Migreren naar v3.9
+:::warning
+### Migreren naar v3.9
 :::
 
 In versie 3.9 van de EMS-ESP-firmware hebben we de ESP32-kern geoptimaliseerd en een efficiënter bestandssysteem gebruikt. Dit betekent helaas dat u de instellingen handmatig moet uploaden nadat de installatie is voltooid. Het is belangrijk dat je eerst een back-up van je instellingen en aanpassingen downloadt voordat je de upgrade start. Dit kan worden gedaan vanaf de pagina Download/Upload in de WebUI en er wordt een voor mensen leesbaar JSON-bestand aangemaakt.

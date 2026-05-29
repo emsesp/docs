@@ -602,7 +602,8 @@ Hier ein Beispieldiagramm, das die `Heating activated`-Entität und die Temperat
 
 Die für die Automatisierung verwendete Taste ist eine einfache Aqara-Zigbee-Taste.
 
-:::info Ich verwende ein [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) mit dem [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), da es eine zweistellige Genauigkeit bietet und etwa ein- bis zweimal pro Minute aktualisiert wird).  
+:::info
+Ich verwende ein [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) mit dem [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), da es eine zweistellige Genauigkeit bietet und etwa ein- bis zweimal pro Minute aktualisiert wird).  
  Bitte beachten Sie, dass Thermometer mit niedriger Auflösung und geringer Aktualisierungsfrequenz Ihre Fähigkeit beeinträchtigen, schnell auf Temperaturänderungen zu reagieren.  
  Wenn Sie möchten, können Sie mit tasmota und einem DS18B20- oder BME820-Sensor ein hochauflösendes, häufig aktualisiertes Thermometer bauen.
 :::

@@ -14,7 +14,8 @@ Now you're ready to further configure the settings. If not connected to your WiF
 
 If you're seeing warnings that it failed to connect to the EMS bus, or there are Tx or Rx errors then follow the [troubleshooting](Troubleshooting) guide.
 
-:::note If you see 'Rx incomplete telegrams' reported in the log, don't panic. Some telegrams can be missed and this is usually caused by noise interference on the line.
+:::note
+If you see 'Rx incomplete telegrams' reported in the log, don't panic. Some telegrams can be missed and this is usually caused by noise interference on the line.
 :::
 
 This next section describes some of key settings that can be adjusted via the WebUI, found under the Settings section. Most are self-explanatory so only the important ones are described here.
@@ -76,7 +77,8 @@ _Custom board Settings:_
 - **LED GPIO**. This is the pin for the LED, defaulted to the onboard LED on the ESP dev board.
 - **Eth PHY Type**. This is type of Ethernet chip used.
 
-:::note On ESP32 development boards there are often also pins marked RX and TX. However, these are usually connected to the USB chip and cannot be used for the EMS interface circuit.
+:::note
+On ESP32 development boards there are often also pins marked RX and TX. However, these are usually connected to the USB chip and cannot be used for the EMS interface circuit.
 :::
 
 - **EMS Tx Mode**. Tx Mode is the mode in which EMS-ESP sends telegrams on the EMS bus. Choose the mode that works best for your system and watch for Tx errors in the Web Dashboard and `show ems` in the Console. Changing the value has immediate effect.
@@ -203,7 +205,7 @@ Use the scheduler to call commands at specific intervals. A few examples:
 - send data to an external API, via a RESTful HTTP POST command, for example `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - use to call a Home Assistant script or service when a condition is triggered, e.g. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
-:::warning Using HTTPS in scheduler commands
+:::warning[Using HTTPS in scheduler commands]
 HTTPS is only supported on the ESP32 and ESP32-S3 variants with PSRAM when using with `url` to an external endpoint. The https will fall back to using http and may report an error.
 :::
 
@@ -251,34 +253,54 @@ As entities never change at the same time using logical operations here like `&&
 
 ![Web](/media/screenshot/web_conditions_2.png)
 
-### Web Commands
+### HTTP/HTTPS requests
 
-Sending or getting data via a web request can be used in a json command:
+POSTing or GETing data via HTTP/HTTPS requests can be used by sending a JSON object as the Scheduler Command or Value.
 
-- GET a value from webserver:
-  `{"url":"http://server.tld/path/file"}`
-- GET a json value from webserver and select the key:
-  `{"url":"http://server.tld/path/file", "key":"nameofkey"}`
-- set a value with POST:
-  Command: `{"url":"http://server.tld/path/file", "header":{"content-type":"text/plain", "token":"mytoken"}`
-  Value: the post message, if it is a json the content-type header is set in header, no need to set it.
+Use the notation `{"url":"<url>", ["header":"<header>"], ["method":"<method>"], ["key":"<key>"], ["keys":"<keys>"]}`,
 
-Both HTTP and HTTPS are supported.
+`url` is the URL of the endpoint to fetch or post to in the form `http://server.tld/path/file` and mandatory. Both HTTP and HTTPS are supported.
 
-Examples:
+`header` is by default `{"content-type":application/json"}` when the Scheduler `Value` is a JSON object, otherwise set to `{"content-type":"text/plain"}`. It can be overridden with a custom header or to include a token like `{"content-type":"application/json", "token":"mytoken"}` in the header.
 
-- getting power state of a Tasmota plug example:
-  `{"url":"http://192.168.0.100/cm?cmnd=power", "key":"power"} == off`
-  is identical to
-  `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
-- setting a tasmoto plug:
-  `{"url":"http://192.168.0.100/cm?cmnd=power%20on"}`
+`method` is by default `GET` but can be overridden with the `POST`, `PUT`, `DELETE` or `PATCH` method. If the Scheduler `Value` is a JSON object it will automatically be set to `POST` when sending the data.
 
-### Notification
+`key` and `keys` can be used to extract specific JSON objects from the returned payload when performing a GET request.
 
-With web commands a service like [pushover](https://pushover.net) can be used to send a push-message on events. To send different message create a custom entity in RAM named `message`, or what ever you like. Create a schedule On Change triggering the change of this message and sending the pushover message.
+#### Examples:
 
-Now you can create other schedules with the command `custom/message` and use individual text as data.
+#### Fetching the latest EMS-ESP versions and saving it in a Custom Entity field
+
+Command: `custom/latest_version`
+Value: `{"url":"https://emsesp.org/versions.json"}`
+
+`latest_version` is the name of the Custom Entity to save the latest EMS-ESP version to, as a RAM-value.
+
+#### Send the contents of a Custom Entity to the Pushover notification service
+
+Command: `{"url":"https://api.pushover.net/1/messages.json"}`
+Value: `{"user":"<user id>", "token":"<token>", "message":custom/<name>}`
+
+This uses the [Pushover](https://pushover.net) API to send a message to the Pushover notification service.
+
+`<name>` is the name of the Custom Entity of the message to send.
+
+#### Reading the state of a Tasmota plug (GET)
+
+Value: `{"url":"http://<tasmota IP>/cm?cmnd=Power", "key":"POWER"}`
+
+#### To see if a Tasmota plug is on or off (GET)
+
+Value: `{"url":"http://<tasmota IP>/cm?cmnd=power", "key":"power"} == off`
+or `{"url":"http://<tasmota IP>/cm?cmnd=power"} == {"power":"off"}`
+
+#### Setting the power state of a Tasmota plug (GET)
+
+Command: `{"url":"http://<tasmota IP>/cm?cmnd=power%20on"}`
+
+#### Setting a Shelly relay on (GET)
+
+Command: `{"url":"http://<shelly IP>/relais/0?turn=on"}`
 
 ## Adding Custom Entities
 

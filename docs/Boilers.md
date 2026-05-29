@@ -43,7 +43,8 @@ This is the current list of supported boilers from brands like Buderus, Nefit, S
 The boiler commands below will vary depending on boiler type/brand and system configuration Some commands will not work because they are overwritten by controller or thermostat. In this case there are thermostat commands for this setting.
 :::
 
-:::warning this list is not complete and subject to change between versions.
+:::warning
+This list is not complete and subject to change between versions.
 :::
 
 | `command`            | `data`                                      | `id` | `comments`                                                                         |

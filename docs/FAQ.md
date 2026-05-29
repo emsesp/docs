@@ -34,7 +34,7 @@ If you search a setting, log the telegrams for the device (log all or watch &lt;
 
 Partially. As the folks over at [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) nicely put it:
 
-:::tip Why use a Thermostat?
+:::tip[Why use a Thermostat?]
 
     - The thermostat manufacturers have spent years of research to work out the heating characteristics for the most efficient and comfortable way to heat a house.
     - The thermostat provides a control interface that people are familiar with, so other members of the household are still able to adjust the setpoint.
