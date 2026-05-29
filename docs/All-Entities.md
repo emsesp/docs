@@ -42,7 +42,7 @@ The table below is dynamically generated. You can search by device name, entity 
 
 <EntitiesTable />
 
-:::tip Understanding the Data
+:::tip[Understanding the Data]
 
 - **Device**: The EMS device name and product ID
 - **Type**: Device category (boiler, thermostat, mixer, etc.)

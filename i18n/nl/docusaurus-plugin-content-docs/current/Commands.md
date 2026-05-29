@@ -16,7 +16,9 @@ Er zijn 3 methoden waarop commando's kunnen worden aangeroepen:
 
 ## Definities
 
-:::info Belangrijke definities - `<device>` is de korte naam. Deze kan zijn:
+:::info[Belangrijke definities]
+
+- `<device>` is de korte naam. Deze kan zijn:
 
     - een EMS-apparaat en ondersteunde apparaten zijn onder andere: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation` * het EMS- en ESP-systeem zelf geïdentificeerd als `system` * de Dallas temperatuursensoren als `temperaturesensor` * aangepaste analoge sensoren als `analogsensor`ESP-systeem zelf geïdentificeerd als `system` * de Dallas-temperatuursensoren als `temperaturesensor` * alle aangepaste analoge sensoren als `analogsensor` * alle aangepaste entiteiten van het EMS-telegram als `custom`
     - `<command>` is de naam van * een algemene opdracht of * een EMS-apparaatentiteit die ook wel `<entity>` wordt genoemd. Zie de pagina [Supported Devices](All-Entities) voor de volledige lijst
@@ -149,7 +151,8 @@ Het URL-pad is `http://<hostname>/api/system/<endpoint>`
 
 ### Voorbeelden
 
-:::tip Opmerking In deze voorbeelden is de URL `http://ems-esp.local/api/`, maar pas deze aan naar je eigen hostnaam. Wijzig ook het toegangstoken voor de drager in je eigen token zoals beschreven in de sectie [Definitions](#definities).
+:::tip
+In deze voorbeelden is de URL `http://ems-esp.local/api/`, maar pas deze aan naar je eigen hostnaam. Wijzig ook het toegangstoken voor de drager in je eigen token zoals beschreven in de sectie [Definitions](#definities).
 :::
 
 #### ...via de opdrachtregel
@@ -261,7 +264,8 @@ En de volgende nepopdracht wordt niet geaccepteerd:\Onderwerp:`ems-esp/boiler` C
 [mqtt] MQTT command failed with error no values in boiler (Error)
 ```
 
-:::note Je kunt de MQTT-commando's eenvoudig testen met [MQTT Explorer](https://www.mqtt-explorer.com). Maak gewoon verbinding met de MQTT broker en publiceer de payload naar het onderwerp.
+:::note
+Je kunt de MQTT-commando's eenvoudig testen met [MQTT Explorer](https://www.mqtt-explorer.com). Maak gewoon verbinding met de MQTT broker en publiceer de payload naar het onderwerp.
 :::
 
 Met Home Assistant kunnen ook thermostaatcommando's worden verzonden om individuele verwarmingscircuits te regelen via het verzenden van een modustring of temperatuurnummer naar een onderwerp `thermostat_hc<n>`.

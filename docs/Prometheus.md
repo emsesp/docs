@@ -7,8 +7,8 @@ description: Export EMS-ESP metrics to Prometheus for monitoring and alerting
 
 ![logo](/media/logo/prometheus-logo.png)
 
-:::info Experimental Feature
-    This feature is currently still being tested. The Prometheus API is available starting with EMS-ESP32 version 3.7.3-dev_36.
+:::info[Experimental Feature]
+This feature is currently still being tested. The Prometheus API is available starting with EMS-ESP32 version 3.7.3-dev_36.
 :::
 
 EMS-ESP exposes the `/api/<device>/metrics` & `/api/system/metrics` endpoints for integration with Prometheus. All EMS-ESP metrics are prefixed with `emsesp_`.

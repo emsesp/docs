@@ -14,7 +14,7 @@ If you are looking for EMS-ESP support, have a question or suggestion here are t
 - **Search** the [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) as you might find an answer to your question.
 - As a last resort, **create** a [Problem Report](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) on GitHub following the guidelines below.
 
-:::tip important!
+:::tip[Important!]
 
     Before creating a new GitHub issue, please make sure you have are using either the latest Stable or Development firmware version. Versions older than these are no longer supported as we simply don't have the resources to support every version.
 

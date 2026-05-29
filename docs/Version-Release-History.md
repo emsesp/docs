@@ -395,7 +395,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 
 ## 3.6.0 - August 13 2023
 
-:::warning **BREAKING CHANGE**
+:::warning[**BREAKING CHANGE**]
 
     - The sensors have been renamed. `dallassensor` is now `temperaturesensor` in the MQTT topic and named `ts` in the Customizations file. Likewise `analogs` is now `analogsensor` in MQTT and called `as` in the Customizations file. If you have previous customizations you will need to manually update by downloading, changing the JSON file and uploading. It's also recommended cleaning up any old MQTT topics from your broker using an application like MQTTExplorer.
 :::
@@ -463,7 +463,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 
 ## 3.5.0 - February 6 2023
 
-:::warning **BREAKING CHANGE**
+:::warning[**BREAKING CHANGE**]
 
     - When upgrading to v3.5 for the first time from v3.4 on a BBQKees Gateway board you will need to use the [EMS-EPS Flasher](https://github.com/emsesp/EMS-ESP-Flasher/releases) to correctly re-partition the flash. Make sure you backup the settings and customizations from the WebUI (Settings->Download/Upload) and restore after the upgrade.
     - Support for multiple EMS-ESPs [#759] has been added as an optional setting for MQTT. When enabled, which is now the default, all MQTT Discovery Entity IDs will include the MQTT base name and the shortname of the EMS-ESP device entity. For example what was previously `sensor.boiler_actual_boiler_temperature` will now become `sensor.ems_esp_boiler_boiltemp`. If you still want to use the old format and retain the history and script compatibility in Home Assistant then set this back to the old format.
@@ -555,7 +555,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 
 ## 3.4.0 - May 23 2022
 
-:::warning **BREAKING CHANGE**
+:::warning[**BREAKING CHANGE**]
 
     - In Settings, the order of Boolean Format has changed in Application Settings - check your settings
     - Dallas Format setting removed. Now customize name of each Dallas sensor via the UI
@@ -646,7 +646,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 
 ## 3.3.1 - January 20 2022
 
-:::warning **BREAKING CHANGE**
+:::warning[**BREAKING CHANGE**]
 
     - API: "unit" renamed to "uom" in API call to recall a Device Value
     - HA: `sensor.boiler_boiler_temperature` renamed to `sensor.actual_boiler_temperature`

@@ -15,7 +15,7 @@ Wenn Sie auf der Suche nach EMS-ESP-Unterstützung sind, eine Frage haben oder e
 - **Suchen** Sie den [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions), da Sie vielleicht eine Antwort auf Ihre Frage finden.
 - Als letzten Ausweg **erstellen** Sie einen [Problem Report](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) auf GitHub gemäß den folgenden Richtlinien.
 
-:::tip wichtig!
+:::tip[wichtig!]
 
     Bevor Sie ein neues GitHub-Problem erstellen, vergewissern Sie sich bitte, dass Sie entweder die neueste Stable- oder Development-Firmware-Version verwenden. Ältere Versionen werden nicht mehr unterstützt, da wir einfach nicht die Ressourcen haben, um jede Version zu unterstützen.
 

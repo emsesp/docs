@@ -12,7 +12,7 @@ De standaard 'fabrieksconfiguratie' start een WiFi Access Point met de naam `ems
 
 Nu ben je klaar om de instellingen verder te configureren. Als je niet verbonden bent met je WiFi-netwerk, doe dit dan eerst via de pagina Instellingen->Netwerk. Je kunt dit ook doen via de Console als je verbonden bent met een Serial/USB-poort en de commando's `set wifi ssid` en `set wifi password` gebruikt.
 
-Als er waarschuwingen worden weergegeven dat het niet gelukt is om verbinding te maken met de EMS-bus, of als er Tx- of Rx-fouten zijn, volg dan de [troubleshooting](Troubleshooting) handleiding.
+Als je waarschuwingen ziet dat het niet gelukt is om verbinding te maken met de EMS-bus, of als er Tx- of Rx-fouten zijn, volg dan de [troubleshooting](Troubleshooting) handleiding.
 
 :::note Als je 'Rx incomplete telegrammen' in het logboek ziet staan, raak dan niet in paniek. Sommige telegrammen kunnen gemist worden en dit wordt meestal veroorzaakt door ruis op de lijn.
 :::
@@ -113,11 +113,11 @@ Schakel deze functie in als je in VPN's draait of als je andere servers hebt dra
 - **Brokeradres**. Gebruik het IP-adres, geen FQDN.
 - **Port**. De standaardinstelling is 1883 en 8883 voor SSL.
 - **Basis**. Alle onderwerpen worden voorafgegaan door `Base`, dus dit is belangrijk. Zorg ervoor dat dit uniek is als je meer dan één EMS-ESP met dezelfde broker gebruikt.
-- **Cliënt ID**. Dit wordt intern gebruikt om EMS-ESP te identificeren met de broker en is optioneel. Merk op dat MQTT topics worden gepostfixed met de hostnaam (standaard `ems-esp`) en niet met de client ID. Gebruik dit wanneer je meerdere apparaten hebt.
+- **Cliënt ID**. Dit wordt intern gebruikt om EMS-ESP te identificeren met de broker en is optioneel. Let op MQTT topics worden gepostfixed met de hostnaam (standaard `ems-esp`) en niet met de client ID. Gebruik dit wanneer je meerdere apparaten hebt.
 - **Gebruikersnaam** en **Wachtwoord** zijn optioneel maar aanbevolen voor de veiligheid. Standaard heeft de Mosquitto MQTT broker een username/password nodig, dus let op als je de Home Assistant Add-On hier gebruikt.
 - **Set Clean Session**. Creëert een niet-persistente sessie indien ingeschakeld. Standaard en aanbevolen instelling is uitgeschakeld om het uitgeschakeld te houden bij gebruik van domoticasystemen.
 - **QoS**. Quality of Service, 0, 1 of 2. 0 is de standaardwaarde en geschikt voor meer scenario's. Een waarde van 1 geeft de garantie dat het bericht is verzonden, maar zorgt voor iets meer netwerkverkeer en overhead.
-- **Altijd vlag behouden instellen**. Schakel deze optie in als je alle berichten op de MQTT broker wilt bewaren. De standaardinstelling is uitgeschakeld.
+- **Altijd vlag behouden** instellen. Schakel deze optie in als je alle berichten op de MQTT broker wilt bewaren. De standaardinstelling is uitgeschakeld.
 - **Opmaak**. De `Nested` optie groepeert alle apparaatgegevens in een enkel MQTT topic door ingesloten JSON objecten te gebruiken zoals `dhw` in `boiler_data`, `hc1` in `thermostat_data` enz. `As individual topics` splitst dit op in afzonderlijke MQTT-onderwerpen zonder groepering, dus MQTT-onderwerpen worden `boiler_data` en `boiler_data_dhw`, `thermostat_data` en `thermostat_data_hc1` enzovoort. Hetzelfde geldt voor de Analoge en Temperatuursensoren. De standaardinstelling is genest.
 - **Publiceer opdrachtuitvoer naar een 'antwoord'-onderwerp'**. Dit neemt de uitvoer van een API commando en publiceert het resultaat in een onderwerp genaamd `response`.
 - **Publiceer topics met één waarde bij verandering**. Deze optie publiceert onmiddellijk het onderwerp en de payload voor elke bewerking en is alleen beschikbaar wanneer MQTT Discovery is uitgeschakeld.
@@ -187,7 +187,7 @@ De professionele manier is om een aparte relaisprintplaat met opto-isolatie en e
 
 ## Entiteiten aanpassen
 
-De Customization-pagina toont alle geregistreerde entiteiten en biedt de mogelijkheid om commando's en waarden uit te sluiten van publicatie via MQTT/API of te verwijderen uit WebUI-pagina's. De Apparaten en het Dashboard tonen alleen entiteiten met een waarde, terwijl de module Aanpassingen ze allemaal toont. Als een entiteit geen waarde heeft, wordt deze ondersteund door EMS-ESP, maar niet door uw boiler/thermostat/etc en wordt deze niet gepubliceerd of zichtbaar voor integraties zoals Home Assistant.
+De Customization-pagina toont alle geregistreerde entiteiten en biedt de mogelijkheid om commando's en waarden uit te sluiten van publicatie via MQTT/API of ze te verwijderen uit WebUI-pagina's. De Apparaten en het Dashboard tonen alleen entiteiten met een waarde, terwijl de module Aanpassingen ze allemaal toont. Als een entiteit geen waarde heeft, wordt deze ondersteund door EMS-ESP, maar niet door uw boiler/thermostat/etc en wordt deze niet gepubliceerd of zichtbaar voor integraties zoals Home Assistant.
 
 ![Web](/media/screenshot/web_customizations.png)
 
@@ -199,10 +199,10 @@ Gebruik de planner om commando's op specifieke intervallen aan te roepen. Een pa
 - voer elke week een periodieke systeemherstart uit (hoewel dat niet nodig zou moeten zijn!) met `system/restart` in het opdrachtveld
 - stuur een bericht naar het logboek en mqtt met de opdracht `system/message`
 - gebruik in combinatie met een aangepaste 'ram'-entiteit om gegevens op te halen via een andere API zoals `{"url":"http://server.tld/path/file", "key":"nameofkey"}` en gebruik dit als voorwaarde in de planner
-- gegevens verzenden naar een externe API, via een RESTful HTTP POST-opdracht, bijvoorbeeld `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
+- gegevens verzenden naar een externe API, via een RESTful HTTP POST-commando, bijvoorbeeld `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - gebruiken om een Home Assistant-script of -service aan te roepen wanneer een voorwaarde wordt geactiveerd, bijv. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
-:::warning HTTPS gebruiken in scheduleropdrachten HTTPS wordt alleen ondersteund op de ESP32- en ESP32-S3-varianten met PSRAM bij gebruik met `url` naar een extern eindpunt. De https zal terugvallen op het gebruik van http en kan een fout melden.
+:::warning[HTTPS gebruiken in planneropdrachten] HTTPS wordt alleen ondersteund op de ESP32- en ESP32-S3-varianten met PSRAM bij gebruik met `url` naar een extern eindpunt. De https zal terugvallen op het gebruik van http en kan een fout melden.
 :::
 
 Bij het maken van een scheduler-item is de `name` optioneel, maar het is handig om een naam toe te kennen en dan kun je het besturen via een commando (enable/disable) en de status zien in het MQTT topic `scheduler_data`.
@@ -245,26 +245,51 @@ Een On Change-trigger is een lijst met entiteiten in de indeling `<device>/<enti
 
 ![Web](/media/screenshot/web_conditions_2.png)
 
-### Webopdrachten
+HTTP/HTTPS verzoeken
 
-Het verzenden of ophalen van gegevens via een webverzoek kan worden gebruikt in een json commando:
+POSTEN of GETTEN van gegevens via HTTP/HTTPS verzoeken kan worden gebruikt door een JSON-object te verzenden als Scheduler-commando of -waarde.
 
-- GET een waarde van webserver: `{"url":"http://server.tld/path/file"}`
-- GET een json-waarde van de webserver en selecteer de sleutel: `{"url":"http://server.tld/path/file", "key":"nameofkey"}`
-- een waarde instellen met POST: Opdracht: `{"url":"http://server.tld/path/file", "header":{"content-type":"text/plain", "token":"mytoken"}` Waarde: het postbericht, als het een json is, is de content-type header ingesteld in de header, deze hoef je niet in te stellen.
+Gebruik de notatie `{"url":"<url>", ["header":"<header>"], ["method":"<method>"], ["key":"<key>"], ["keys":"<keys>"]}`,
 
-Zowel HTTP als HTTPS worden ondersteund.
+`url` is de URL van het eindpunt waarnaar moet worden opgehaald of gepost in de vorm `http://server.tld/path/file` en is verplicht. Zowel HTTP als HTTPS worden ondersteund.
 
-Voorbeelden:
+`header` is standaard `{"content-type":application/json"}` als de Scheduler `Value` een JSON-object is, anders ingesteld op `{"content-type":"text/plain"}`. Dit kan worden overschreven met een aangepaste koptekst of om een token zoals `{"content-type":"application/json", "token":"mytoken"}` in de koptekst op te nemen.
 
-- voedingstoestand van een Tasmota-stekker krijgen voorbeeld: `{"url":"http://192.168.0.100/cm?cmnd=power", "key":"power"} == off` is identiek aan `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
-- een tasmoto-stekker instellen: `{"url":"http://192.168.0.100/cm?cmnd=power%20on"}`
+`method` is standaard `GET`, maar kan worden overschreven met de methode `POST`, `PUT`, `DELETE` of `PATCH`. Als de Scheduler `Value` een JSON-object is, wordt deze automatisch ingesteld op `POST` bij het verzenden van de gegevens.
 
-### Kennisgeving
+`key` en `keys` kunnen worden gebruikt om specifieke JSON-objecten uit de geretourneerde payload te extraheren bij het uitvoeren van een GET-verzoek.
 
-Met webcommando's kan een service als [pushover](https://pushover.net) worden gebruikt om een push-bericht over gebeurtenissen te versturen. Om een ander bericht te verzenden, maak je een aangepaste entiteit in RAM met de naam `message`, of wat je maar wilt. Maak een schema On Change dat de verandering van dit bericht triggert en het pushbericht verstuurt.
+#### Voorbeelden:
 
-Nu kun je andere schema's maken met de opdracht `custom/message` en afzonderlijke tekst als gegevens gebruiken.
+#### De nieuwste EMS-ESP-versies ophalen en opslaan in een aangepast entiteitsveld
+
+Commando: `custom/latest_version` Waarde: `{"url":"https://emsesp.org/versions.json"}`
+
+`latest_version` is de naam van de aangepaste entiteit waarin de laatste EMS-ESP-versie moet worden opgeslagen, als een RAM-waarde.
+
+#### De inhoud van een aangepaste entiteit naar de Pushover notificatieservice verzenden
+
+Commando: `{"url":"https://api.pushover.net/1/messages.json"}` Waarde: `{"user":"<user id>", "token":"<token>", "message":custom/<name>}`
+
+Dit gebruikt de [Pushover](https://pushover.net) API om een bericht naar de Pushover notificatieservice te sturen.
+
+`<name>` is de naam van de aangepaste entiteit van het te verzenden bericht.
+
+#### De status van een Tasmota plug uitlezen (GET)
+
+Waarde: `{"url":"http://<tasmota IP>/cm?cmnd=Power", "key":"POWER"}`
+
+#### Kijken of een Tasmota stekker aan of uit staat (GET)
+
+Waarde: `{"url":"http://<tasmota IP>/cm?cmnd=power", "key":"power"} == off` of `{"url":"http://<tasmota IP>/cm?cmnd=power"} == {"power":"off"}`
+
+#### De voedingstoestand van een Tasmota stekker instellen (GET)
+
+Opdracht: `{"url":"http://<tasmota IP>/cm?cmnd=power%20on"}`
+
+#### Een Shelly-relais inschakelen (GET)
+
+Opdracht: `{"url":"http://<shelly IP>/relais/0?turn=on"}`
 
 ## Aangepaste entiteiten toevoegen
 

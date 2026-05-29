@@ -83,7 +83,7 @@ benutzerdefinierte Bordeinstellungen:_
   - `EMS` ist der Standard für EMS1.0-Systeme, aber auch mit den meisten anderen Busprotokollen kompatibel.
   - `EMS+` ist so konzipiert, dass es besser für EMS2.0/EMS+ Systeme funktioniert.
   - `HT3` für Heatronics3, hauptsächlich von Junkers verwendet.
-  - `Hardware` verwendet die interne ESP-Hardware, um das Telegramm zu senden. Die Telegramme werden sofort gesendet. Dies ist die schnellste und effizienteste Methode, funktioniert aber nur auf einigen Systemen.
+  - `Hardware` verwendet die interne ESP-Hardware, um das Telegramm auszusenden. Die Telegramme werden sofort gesendet. Dies ist die schnellste und effizienteste Methode, funktioniert aber nur auf einigen Systemen.
   - `Auto` prüft die empfangenen Bustelegramme, um den besten Zeitpunkt für `EMS`, `EMS+` oder `HT3` zu finden.
 - **EMS-Bus-ID**. Der EMS-ESP kann mehrere Geräte simulieren. Halten Sie sich an die Standardeinstellung `Gateway 2 (0x49)`, es sei denn, Sie verwenden mehr als eine EMS gateways/interface-Karte oder haben Konflikte mit anderen EMS-Geräten. Es ist wichtig zu beachten, dass der Serviceschlüssel (0x0B), der bis zur EMS-ESP-Version 3.8.1 als Standard verwendet wird, auch von zertifizierten service/maintenance-Technikern bei der Wartung Ihrer Heizungsanlagen verwendet wird und Konflikte verursachen könnte. Vergewissern Sie sich, dass Sie das EMS-ESP vor jeder Wartung ausschalten oder die EMS-Bus-ID ändern, bevor der Techniker eintrifft, da er sonst nicht in der Lage ist, Ihre Heizungsanlage anzuschließen und zu warten.
 - **Nur-Lesen-Modus aktivieren**. Dies deaktiviert alle ausgehenden Tx-Schreibbefehle an den EMS-Bus und versetzt EMS-ESP im Wesentlichen in den Hörmodus. Tx wird jedoch benötigt, um EMS-Geräte zu erkennen (da es einen Versionsbefehl aussendet). Wenn Sie EMS-ESP explizit in einen Lese-only/sniffer-Modus versetzen wollen, verwenden Sie `set tx_mode 0` von der Konsole aus.
@@ -92,7 +92,7 @@ benutzerdefinierte Bordeinstellungen:_
 
 ### Besondere Funktionen
 
-- der **Entwicklermodus** aktiviert erweiterte Funktionen in der WebUI, wie den Befehl Lesen aus dem Systemprotokoll und das Konfigurieren einer benutzerdefinierten Karte.
+- der **Entwicklermodus** ermöglicht erweiterte Funktionen in der WebUI, wie den Befehl Lesen aus dem Systemprotokoll und die Konfiguration einer benutzerdefinierten Karte.
 - **Kessel bei ausgeschalteter Zwangsheizung starten**.
 - **Fernbedienung bei fehlender Raumtemperatur deaktivieren**. Dies ist eine Sicherheitsfunktion, die verhindert, dass der Heizkessel startet, wenn der simulierte Raumtemperatursensor fehlt oder nicht funktioniert.
 - **Dusch-Timer aktivieren**. Aktivieren Sie diese Option, um die Dauer des Warmwassers zu messen, und es wird eine MQTT-Nachricht mit der Dauer gesendet. Der Timer startet nach einer Mindestlaufzeit von 2 Minuten.
@@ -144,7 +144,7 @@ Jeder Benutzer verfügt über ein eindeutiges Zugriffstoken (einsehbar durch Kli
 
 ## Hinzufügen von Analog- und Temperatursensoren
 
-Externe Sensoren, wie Temperatur- und Analogsensoren, können an eine Reihe von GPIO-Pins des ESP32-Chips angeschlossen werden. Wenn Sie ein BBQKees-Gateway-Board verwenden, verfügt es bereits über einen externen Stecker für Dallas-Temperatursensoren, die in der WebUI ohne zusätzliche Konfiguration sichtbar sind. BBQKees-Boards sind CE-zertifiziert und das Hinzufügen von Sensoren zu gpios würde die EMC-Konformität verletzen. Um analoge Sensoren auf eigenes Risiko hinzuzufügen, wählen Sie ein anderes Boardprofil oder verwenden Sie den Entwicklermodus, um ein benutzerdefiniertes Board zu konfigurieren.
+Externe Sensoren, wie Temperatur- und Analogsensoren, können an eine Reihe von GPIO-Pins des ESP32-Chips angeschlossen werden. Wenn Sie ein BBQKees-Gateway-Board verwenden, verfügt es bereits über einen externen Stecker für Dallas-Temperatursensoren, die in der WebUI ohne zusätzliche Konfiguration sichtbar sind. BBQKees Boards sind CE-zertifiziert und das Hinzufügen von Sensoren zu gpios würde die EMC-Konformität verletzen. Um analoge Sensoren auf eigenes Risiko hinzuzufügen, wählen Sie ein anderes Boardprofil oder verwenden Sie den Entwicklermodus, um ein benutzerdefiniertes Board zu konfigurieren.
 
 Um analoge Sensoren hinzuzufügen, klicken Sie auf `Add` und wählen Sie zwischen einem normalen digitalen in/out, einem Zähler (der on/off-Impulse zählt), einem ADC zur Spannungsmessung, einem Timer, einer Rate und PWM 0-2. Hinweis: Der Zählerwert bleibt erhalten und wird beim Neustart nicht zurückgesetzt.
 
@@ -202,7 +202,7 @@ Verwenden Sie den Scheduler, um Befehle in bestimmten Abständen aufzurufen. Ein
 - daten über einen RESTful HTTP POST-Befehl an eine externe API senden, z. B. `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - zum Aufrufen eines Home Assistant-Skripts oder -Dienstes, wenn eine Bedingung erfüllt ist, z. B. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
-:::warning Verwendung von HTTPS in Scheduler-Befehlen HTTPS wird nur auf den ESP32- und ESP32-S3-Varianten mit PSRAM unterstützt, wenn es mit `url` zu einem externen Endpunkt verwendet wird. Das https fällt auf http zurück und kann einen Fehler melden.
+:::warning[Using HTTPS in scheduler commands] HTTPS wird nur auf den ESP32- und ESP32-S3-Varianten mit PSRAM unterstützt, wenn es mit `url` zu einem externen Endpunkt verwendet wird. Das https wird auf die Verwendung von http zurückfallen und kann einen Fehler melden.
 :::
 
 Bei der Erstellung eines Scheduler-Eintrags ist das `name` optional, aber es ist nützlich, einen Namen zu vergeben. Dann kann man ihn über einen Befehl (enable/disable) steuern und den Status im MQTT-Topic `scheduler_data` sehen.
@@ -245,26 +245,51 @@ Ein On Change Trigger ist eine Liste von Entitäten im Format `<device>/<entity>
 
 ![Web](/media/screenshot/web_conditions_2.png)
 
-### Web-Befehle
+### HTTP/HTTPS Anfragen
 
-Das Senden oder Abrufen von Daten über eine Webanfrage kann in einem json-Befehl verwendet werden:
+POSTing oder GETing von Daten über HTTP/HTTPS-Anfragen können durch Senden eines JSON-Objekts als Scheduler-Befehl oder -Wert verwendet werden.
 
-- GET einen Wert vom Webserver: `{"url":"http://server.tld/path/file"}`
-- GET einen json-Wert vom Webserver und wählen Sie den Schlüssel: `{"url":"http://server.tld/path/file", "key":"nameofkey"}`
-- einen Wert mit POST setzen: Befehl: `{"url":"http://server.tld/path/file", "header":{"content-type":"text/plain", "token":"mytoken"}` Wert: die Post-Nachricht, wenn es sich um einen Json handelt, ist der Content-Type-Header in der Kopfzeile gesetzt, er muss nicht gesetzt werden.
+Verwenden Sie die Notation `{"url":"<url>", ["header":"<header>"], ["method":"<method>"], ["key":"<key>"], ["keys":"<keys>"]}`,
 
-Es werden sowohl HTTP als auch HTTPS unterstützt.
+`url` ist die URL des Endpunkts, an den geholt oder gepostet werden soll, in der Form `http://server.tld/path/file` und obligatorisch. Es werden sowohl HTTP als auch HTTPS unterstützt.
 
-Beispiele:
+`header` ist standardmäßig `{"content-type":application/json"}`, wenn der Scheduler `Value` ein JSON-Objekt ist, andernfalls ist er auf `{"content-type":"text/plain"}` gesetzt. Es kann mit einer benutzerdefinierten Kopfzeile überschrieben werden oder ein Token wie `{"content-type":"application/json", "token":"mytoken"}` in die Kopfzeile aufgenommen werden.
 
-- abrufen des Leistungsstatus eines Tasmota-Steckers Beispiel: `{"url":"http://192.168.0.100/cm?cmnd=power", "key":"power"} == off` ist identisch mit `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
-- einstellung eines Tasmoto-Steckers: `{"url":"http://192.168.0.100/cm?cmnd=power%20on"}`
+`method` ist standardmäßig `GET`, kann aber mit der Methode `POST`, `PUT`, `DELETE` oder `PATCH` überschrieben werden. Wenn der Scheduler `Value` ein JSON-Objekt ist, wird es beim Senden der Daten automatisch auf `POST` gesetzt.
 
-### Benachrichtigung
+`key` und `keys` können verwendet werden, um bestimmte JSON-Objekte aus der zurückgegebenen Nutzlast zu extrahieren, wenn eine GET-Anfrage durchgeführt wird.
 
-Mit Webbefehlen kann ein Dienst wie [pushover](https://pushover.net) verwendet werden, um eine Push-Nachricht bei Ereignissen zu senden. Um eine andere Nachricht zu senden, erstellen Sie eine benutzerdefinierte Entität in RAM mit dem Namen `message`, oder wie auch immer Sie wollen. Erstellen Sie einen Zeitplan On Change, der die Änderung dieser Nachricht auslöst und die Push-Nachricht sendet.
+#### Beispiele:
 
-Jetzt können Sie mit dem Befehl `custom/message` weitere Zeitpläne erstellen und individuelle Texte als Daten verwenden.
+#### Abrufen der neuesten EMS-ESP-Versionen und Speichern in einem benutzerdefinierten Entitätsfeld
+
+Befehl: `custom/latest_version` Wert: `{"url":"https://emsesp.org/versions.json"}`
+
+`latest_version` ist der Name der benutzerdefinierten Entität, in der die neueste EMS-ESP-Version als RAM-Wert gespeichert werden soll.
+
+#### Senden Sie den Inhalt einer benutzerdefinierten Entität an den Pushover-Benachrichtigungsdienst
+
+Befehl: `{"url":"https://api.pushover.net/1/messages.json"}` Wert: `{"user":"<user id>", "token":"<token>", "message":custom/<name>}`
+
+Dies verwendet die [Pushover](https://pushover.net) API, um eine Nachricht an den Pushover-Benachrichtigungsdienst zu senden.
+
+`<name>` ist der Name der benutzerdefinierten Entität der zu sendenden Nachricht.
+
+#### Auslesen des Zustands eines Tasmota-Steckers (GET)
+
+Wert: `{"url":"http://<tasmota IP>/cm?cmnd=Power", "key":"POWER"}`
+
+#### Um zu sehen, ob ein Tasmota-Stecker ein- oder ausgeschaltet ist (GET)
+
+Wert: `{"url":"http://<tasmota IP>/cm?cmnd=power", "key":"power"} == off` oder `{"url":"http://<tasmota IP>/cm?cmnd=power"} == {"power":"off"}`
+
+#### Einstellen des Stromversorgungsstatus eines Tasmota-Steckers (GET)
+
+Befehl: `{"url":"http://<tasmota IP>/cm?cmnd=power%20on"}`
+
+#### Einschalten eines Shelly-Relais (GET)
+
+Befehl: `{"url":"http://<shelly IP>/relais/0?turn=on"}`
 
 ## Hinzufügen von benutzerdefinierten Entitäten
 

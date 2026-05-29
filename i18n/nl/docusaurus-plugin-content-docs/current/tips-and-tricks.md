@@ -602,7 +602,8 @@ Dit is een voorbeeldgrafiek met de entiteit `Heating activated` en de temperatuu
 
 De knop die wordt gebruikt in de automatisering is een eenvoudige Aqara zigbee-knop.
 
-:::info Ik gebruik een [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) met de [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), omdat deze twee cijfers precisie biedt en ruwweg één tot twee keer per minuut wordt bijgewerkt.)  
+:::info
+Ik gebruik een [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) met de [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), omdat deze twee cijfers precisie biedt en ruwweg één tot twee keer per minuut wordt bijgewerkt.)  
  Houd er rekening mee dat thermometers met een lage resolutie en een lage updatefrequentie invloed hebben op je vermogen om snel te reageren op temperatuurveranderingen.  
  Als je wilt, kun je met tasmota en een DS18B20 of BME820 sensor een hoge resolutie thermometer bouwen die regelmatig wordt bijgewerkt.
 :::
