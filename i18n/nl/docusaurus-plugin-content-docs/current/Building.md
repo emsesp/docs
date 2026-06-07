@@ -82,7 +82,7 @@ Klik op "Code" en de "Create codespace on dev" om een codespace te starten die j
 ### De partitiestructuur
 
 | Naam | Type | Subtype | Offset | Grootte | Notities | Bestand |
-| ---------- | ---- | -------- | ------------- | ------------------ | ------------------------------- | ------------------------------ |
+| ---------- | ---- | -------- | ------------- | ------------------ | ------------------------------- | ---------------------------------- |
 | 0x0000/0x1000 | 0x8000 (32 KB) | ESP32-S3=0x1000, ESP32=0x1000 | bootloader*.bin | bootloader*
 | partities | | 0x8000 | 0x1000 (4 KB) | hetzelfde voor elk bord | partitions\*.bin |
 | - | | | | | | |
@@ -92,15 +92,17 @@ Klik op "Code" en de "Create codespace on dev" om een codespace te starten die j
 | app0 | app | ota_0 | 0x290000 | 0x490000 (4,56 MB) | OTA cyclus 1 | EMS-ESP firmware \*.bin |
 | app1 | app | ota_1 | 0x510000 | 0x490000 (4,56 MB) | OTA cyclus 2 | EMS-ESP firmware \*.bin |
 | nvs1 | data | nvs | 0xAA0000 | 0x040000 (256 KB) | aangepast voor EMS-ESP | (gegenereerd door script) |
-| spiffs | data | spiffs | 0xAA0000 | 0x200000 (2 MB) | voor LittleFS/EMS-ESP bestandssysteem | (niet gebruikt) |
+| spiffs | data | spiffs | 0xAA0000 | 0x200000 (2 MB) | voor LittleFS/EMS-ESP bestandssysteem | (optionele inhoud van gegevensmap) |
 | coredump | data | coredump | 0xCE0000 | 0x010000 (64 KB) | | | |
 
 - Referentie: [ESP-IDF Partition Tables](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/partition-tables.html)
 - Er zijn 3 plaatsen waar de EMS-ESP-firmware wordt opgeslagen:
   - `boot` wordt standaard gebruikt bij nieuwe installaties.
   - `app0` en `app1` zijn de firmwarepartities die worden gebruikt tijdens OTA-updates en wisselen tussen de twee. De firmware wordt in een van deze niet-actieve partities geladen en vervolgens wordt het apparaat opnieuw opgestart.
-- De bootloader (de zogenaamde tweede trap) is de `bootloader_dio_80m.bin` executable en wordt gebruikt om de partitietabel op offset 0x8000 te lezen en te bepalen welke partities beschikbaar zijn. Merk op dat de offset van de bootloader verschilt per chiptype. ESP32 is [0x1000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/bootloader.html#bootloader) en ESP32-S3 is [0x0000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-guides/bootloader.html#bootloader). Dit wordt afgehandeld in ons script `upload.sh` voor elk modeltype in de parameter `bootloader_address`.
-- De partitie `otadata` wordt gebruikt om een kleine applicatie te bevatten die wordt gebruikt om te bepalen welke partitie (boot, app0, app1) moet worden gebruikt. Deze bevraagt de gegevens die zijn opgeslagen in het blok `partitions`.
+- De bootloader (tweede trap genoemd) is de kleine executable die wordt gebruikt om de partitietabel op offset 0x8000 te lezen en te bepalen welke partities beschikbaar zijn. Merk op dat de offset van de bootloader verschilt per chiptype. ESP32 is [0x1000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/bootloader.html#bootloader) en ESP32-S3 is [0x0000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-guides/bootloader.html#bootloader).
+- De partitie `otadata` wordt gebruikt om een kleine applicatie te bevatten die gebruikt wordt om te bepalen welke partitie (boot, app0, app1) gebruikt moet worden. Deze bevraagt de gegevens die zijn opgeslagen in het blok `partitions`.
 - EMS-ESP kan opnieuw worden opgestart naar andere partities met het commando `restart <boot|app0|app1>`.
 - Het EMS-ESP commando Console/API `show system` toont de huidige partitie en de partitie die wordt opgestart na een herstart.
-- Bij alle board/chip-typen zijn de `boot_app0.bin` en `partitions.bin` hetzelfde bestand voor elk bord. Alleen de `bootloader.bin` is anders. Maar we bewaren lokale kopieën om alles netjes in één map te houden.
+- Bij alle board/chip-typen zijn de `boot_app0.bin` en `partitions.bin` meestal hetzelfde bestand voor elke printplaat. Alleen de `bootloader.bin` is anders.
+- Zie [EMS-ESP-Flasher-CLI](https://github.com/emsesp/EMS-ESP-Flasher-CLI/blob/main/README.md) voor meer informatie over de flasher CLI tool.
+- Zie ook https://docs.emsesp.org/Installing#manual-flashing-the-firmware voor het handmatig flashen van de firmware en de locatie van de .bin-bestanden.

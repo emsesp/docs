@@ -10,7 +10,7 @@ description: Guide to building EMS-ESP firmware from source using PlatformIO and
 
 Es wird vorausgesetzt, dass Sie ein grundlegendes Verständnis für die Programmierung und Erstellung von Software für Mikrocontroller mit git haben, wie node und package.json funktionieren und auch einige Kenntnisse des PlatformIO-Frameworks für die Erstellung von Espressif IDF- und Arduino-Projekten.
 
-Sie können entweder den [dev container](https://containers.dev/) verwenden (siehe unten) oder alles lokal einrichten. Bei der Ausführung unter Windows wird dringend empfohlen, eine WSL-Linux-Umgebung zu verwenden, da sie viel schneller kompilieren kann als eine native Windows-Umgebung.
+Sie können entweder den [dev container](https://containers.dev/) verwenden (siehe unten) oder alles lokal einrichten. Bei der Ausführung unter Windows wird dringend empfohlen, eine WSL-Linux-Umgebung zu verwenden, da diese viel schneller kompilieren kann als eine native Windows-Umgebung.
 
 Stellen Sie sicher, dass Sie die folgenden Softwarepakete installiert haben:
 
@@ -61,7 +61,7 @@ Sie können EMS-ESP auch ohne ESP32 betreiben (wir nennen das "standalone"). Die
 pio run -e standalone -t exec
 ```
 
-Wenn das Standalone-Programm läuft, sehen Sie die EMS-ESP-Konsole. Von hier aus können Sie den Befehl `test` verwenden, um Tests durchzuführen. `test general` ist ein allgemeiner Test, der einen Standardkessel und einen Thermostat mit allen Standardentitäten einrichtet. Alle Tests sind in der Datei `test/test.cpp` fest kodiert und können leicht angepasst werden.
+Wenn das Standalone-Programm läuft, sehen Sie die EMS-ESP-Konsole. Von hier aus können Sie den Befehl `test` verwenden, um Tests durchzuführen. `test general` ist ein allgemeiner Test, der einen Standardkessel und einen Thermostat mit all seinen Standardentitäten einrichtet. Alle Tests sind in der Datei `test/test.cpp` fest kodiert und können leicht angepasst werden.
 
 Es gibt auch eine Reihe von Unit-Tests, die auch von der pio-Umgebung aus mit `pio run -e native-test -t exec` ausgeführt werden können. Dies funktioniert nativ auf jeder Plattform und erfordert keine zusätzlichen Einstellungen.
 
@@ -82,9 +82,9 @@ Klicken Sie auf "Code" und "Create codespace on dev", um einen Codespace zu star
 ### Die Partitionsstruktur
 
 | Name | Typ | Untertyp | Versatz | Größe | Anmerkungen | Datei |
-| ---------- | ---- | -------- | ------------- | ------------------ | ------------------------------- | ------------------------------ |
+| ---------- | ---- | -------- | ------------- | ------------------ | ------------------------------- | ---------------------------------- |
 | bootloader | | 0x0000/0x1000 | 0x8000 (32 KB) | ESP32-S3=0x1000, ESP32=0x1000 | bootloader\*.bin |
-| Partitionen | | 0x8000 | 0x1000 (4 KB) | gleich für jede Karte | partitions\*.bin |
+| Partitionen | | 0x8000 | 0x1000 (4 KB) | für jede Karte gleich | partitions\*.bin |
 | - | | | | | | |
 | nvs | data | nvs | 0x9000 | 0x5000 (20 KB) | reserviert für ESP32 | |
 | otadata | data | ota | 0xE000 | 0x2000 (8 KB) | gleich für jede Karte | boot_app0\*.bin |
@@ -92,15 +92,17 @@ Klicken Sie auf "Code" und "Create codespace on dev", um einen Codespace zu star
 | app0 | app | ota_0 | 0x290000 | 0x490000 (4,56 MB) | OTA-Zyklus 1 | EMS-ESP-Firmware \*.bin |
 | app1 | app | ota_1 | 0x510000 | 0x490000 (4,56 MB) | OTA-Zyklus 2 | EMS-ESP-Firmware \*.bin |
 | nvs1 | data | nvs | 0xAA0000 | 0x040000 (256 KB) | benutzerdefiniert für EMS-ESP | (durch Skript erzeugt) |
-| spiffs | data | spiffs | 0xAA0000 | 0x200000 (2 MB) | für LittleFS/EMS-ESP Dateisystem | (nicht verwendet) |
+| spiffs | data | spiffs | 0xAA0000 | 0x200000 (2 MB) | für LittleFS/EMS-ESP Dateisystem | (optionaler Inhalt des Datenordners) |
 | coredump | data | coredump | 0xCE0000 | 0x010000 (64 KB) | | |
 
 - Referenz: [ESP-IDF Partition Tables](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/partition-tables.html)
 - Es gibt 3 Orte, an denen die EMS-ESP-Firmware gespeichert wird:
   - `boot` ist der Standard, der bei Neuinstallationen verwendet wird.
   - `app0` und `app1` sind die Firmware-Partitionen, die bei OTA-Updates verwendet werden, und wechseln zwischen diesen beiden Partitionen. Die Firmware wird in eine dieser nicht aktiven Partitionen geladen und dann wird das Gerät neu gebootet.
-- Der Bootloader (zweite Stufe genannt) ist die ausführbare Datei `bootloader_dio_80m.bin` und wird verwendet, um die Partitionstabelle am Offset 0x8000 zu lesen und festzustellen, welche Partitionen verfügbar sind. Beachten Sie, dass der Offset des Bootloaders für jeden Chiptyp unterschiedlich ist. ESP32 ist [0x1000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/bootloader.html#bootloader) und ESP32-S3 ist [0x0000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-guides/bootloader.html#bootloader). Dies wird in unserem Skript `upload.sh` für jeden Modelltyp im Parameter `bootloader_address` behandelt.
+- Der Bootloader (zweite Stufe genannt) ist die kleine ausführbare Datei, die dazu dient, die Partitionstabelle am Offset 0x8000 zu lesen und festzustellen, welche Partitionen verfügbar sind. Beachten Sie, dass der Offset des Bootloaders für jeden Chiptyp unterschiedlich ist. ESP32 ist [0x1000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/bootloader.html#bootloader) und ESP32-S3 ist [0x0000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-guides/bootloader.html#bootloader).
 - Die Partition `otadata` wird für eine kleine Anwendung verwendet, die bestimmt, welche Partition (boot, app0, app1) zu verwenden ist. Sie wird die im `partitions`-Block gespeicherten Daten abfragen.
 - EMS-ESP kann mit dem Befehl `restart <boot|app0|app1>` auf anderen Partitionen neu gestartet werden.
 - Der EMS-ESP-Befehl Console/API `show system` zeigt die aktuelle Partition und die Partition, die nach einem Neustart gebootet wird.
-- Bei allen board/chip-Typen sind `boot_app0.bin` und `partitions.bin` für jede Karte die gleiche Datei. Nur `bootloader.bin` ist anders. Aber wir behalten lokale Kopien, um in einem einzigen Ordner Ordnung zu halten.
+- Bei allen board/chip-Typen sind `boot_app0.bin` und `partitions.bin` in der Regel die gleiche Datei für jede Karte. Nur die `bootloader.bin`-Datei ist anders.
+- Siehe [EMS-ESP-Flasher-CLI](https://github.com/emsesp/EMS-ESP-Flasher-CLI/blob/main/README.md) für weitere Informationen über das Flasher-CLI-Tool.
+- Siehe auch https://docs.emsesp.org/Installing#manual-flashing-the-firmware für das manuelle Flashen der Firmware und den Speicherort der .bin-Dateien.
