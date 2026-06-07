@@ -10,11 +10,12 @@ import { StableVersion, DevVersion, FirmwareLink } from '@site/src/components/La
 
 Er zijn een aantal manieren om de firmware op je ESP32-apparaat te installeren en bij te werken:
 
-1. Als je EMS-ESP al hebt draaien, ga dan naar de Instellingen->Versie pagina in de WebUI en je kunt ervoor kiezen om de laatste firmware versie te downloaden en handmatig te installeren door drag&dropping in het upload vak of laat EMS-ESP automatisch updaten. Dit is de aanbevolen methode voor de meeste gebruikers.
-2. De [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases) gebruiken. Dit is een native toepassing voor Windows, MacOS en Linux. Je ESP32-apparaat moet psychisch verbonden zijn met je computer via de USB- of seriële poort. Deze methode is handig als je een schone installatie wilt uitvoeren en alle configuratie-instellingen opnieuw wilt instellen.
-3. Met [EMS-ESP Web Installer](https://install.emsesp.org/), een online installatieprogramma dat ondersteuning biedt, moet het EMS-ESP-apparaat worden aangesloten via de poort USB/Serial.
-4. Flash de firmware handmatig met de [guide](#manual-flashing) hieronder.
-5. Voor ontwikkelaars: bouw de firmware vanaf de broncode en upload deze direct door de handleiding op [Building](Building.md) te volgen.
+- Als je EMS-ESP al hebt draaien, ga dan naar de Instellingen->Versie pagina in de WebUI en je kunt ervoor kiezen om te downloaden en automatisch te upgraden naar de nieuwste firmware versie of de versie handmatig installeren door het .bin bestand in het uploadvak te slepen.
+- De [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases) gebruiken. Dit is een native toepassing voor Windows, MacOS en Linux. Je ESP32-apparaat moet psychisch verbonden zijn met je computer via de USB- of seriële poort. Deze methode is handig als je een schone installatie wilt uitvoeren en alle configuratie-instellingen opnieuw wilt instellen.
+- Met [EMS-ESP Web Installer](https://install.emsesp.org/), een online installatieprogramma dat ondersteuning biedt, moet het EMS-ESP-apparaat worden aangesloten via de poort USB/Serial.
+- Gebruik [EMS-ESP Flasher CLI](https://github.com/emsesp/EMS-ESP-Flasher-CLI/blob/main/README.md), een commandoregeltool voor Windows, MacOS en Linux. Dit hulpprogramma spreekt voor zich en is de meest flexibele methode om elke versie van de stabiele of ontwikkelingsfirmware te downloaden.
+- Flash de firmware handmatig met de [guide](#manual-flashing) hieronder.
+- Ervaren ontwikkelaars kunnen de firmware vanaf de broncode bouwen en direct uploaden door de handleiding op [Building](Building.md) te volgen.
 
 ## De juiste firmwareversie kiezen
 
@@ -118,5 +119,5 @@ Als je een aangepaste firmware gebruikt of de firmware handmatig wilt flashen, k
 - Misschien staat je probleem al vermeld in de [FAQ](FAQ.md).
 - Kom in contact met de EMS-ESP-community via ons kanaal [Discord](https://discord.gg/GP9DPSgeJq). Dit is een goede plek om algemene vragen te stellen en te chatten met andere gebruikers. Je hebt hier meer kans op snelle reacties.
 - Zoek in bestaande open en gesloten [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) en [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) omdat uw probleem mogelijk al is opgelost, misschien in een latere versie.
-- Maak een [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) aan op het EMS-ESP-project. Zorg ervoor dat u de vereiste ondersteuningsinformatie vermeldt, zodat het probleem zo snel mogelijk kan worden opgelost.
+- Maak een [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) aan op het EMS-ESP-project. Zorg ervoor dat u de vereiste ondersteuningsinformatie toevoegt, zodat het probleem zo snel mogelijk kan worden opgelost.
 - Ga naar de pagina [Getting Support](Support.md) voor meer informatie.

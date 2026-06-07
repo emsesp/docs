@@ -10,11 +10,12 @@ import { StableVersion, DevVersion, FirmwareLink } from '@site/src/components/La
 
 Es gibt eine Reihe von Möglichkeiten, die Firmware auf Ihrem ESP32-Gerät zu installieren und zu aktualisieren:
 
-1. Wenn Sie EMS-ESP bereits laufen haben, gehen Sie auf die Seite Einstellungen->Version in der WebUI und Sie können entweder die neueste Firmware-Version herunterladen und manuell per Drag&Drop in das Upload-Feld installieren oder EMS-ESP die automatische Aktualisierung für Sie durchführen lassen. Dies ist für die meisten Benutzer die empfohlene Methode.
-2. Verwendung des [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). Dies ist eine native Anwendung für Windows, MacOS und Linux. Ihr ESP32-Gerät muss über den USB- oder seriellen Anschluss mit Ihrem Computer verbunden sein. Diese Methode ist nützlich, wenn Sie eine saubere Installation durchführen und alle Konfigurationseinstellungen zurücksetzen möchten.
-3. Mit dem [EMS-ESP Web Installer](https://install.emsesp.org/), einer Online-Installationsunterstützung, die den Anschluss des EMS-ESP-Geräts über den USB/Serial-Port erfordert.
-4. Flashen Sie die Firmware manuell mit Hilfe des unten stehenden [guide](#manual-flashing).
-5. Für Entwickler, die die Firmware aus dem Quellcode erstellen und direkt hochladen, indem sie der Anleitung unter [Building](Building.md) folgen.
+- Wenn Sie EMS-ESP bereits im Einsatz haben, gehen Sie auf die Seite Einstellungen->Version in der WebUI und wählen Sie entweder den Download und das automatische Upgrade auf die neueste Firmware-Version oder installieren Sie die Version manuell, indem Sie die .bin-Datei in das Upload-Feld ziehen.
+- Verwendung des [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). Dies ist eine native Anwendung für Windows, MacOS und Linux. Ihr ESP32-Gerät muss über den USB- oder seriellen Anschluss mit Ihrem Computer verbunden sein. Diese Methode ist nützlich, wenn Sie eine saubere Installation durchführen und alle Konfigurationseinstellungen zurücksetzen möchten.
+- Mit dem [EMS-ESP Web Installer](https://install.emsesp.org/), einer Online-Installationsunterstützung, die den Anschluss des EMS-ESP-Geräts über den USB/Serial-Port erfordert.
+- Mit dem [EMS-ESP Flasher CLI](https://github.com/emsesp/EMS-ESP-Flasher-CLI/blob/main/README.md), einem Befehlszeilentool für Windows, MacOS und Linux. Dieses Tool ist selbsterklärend und die flexibelste Methode, um jede Version der stabilen oder Entwicklungs-Firmware-Releases herunterzuladen.
+- Flashen Sie die Firmware manuell mit Hilfe des unten stehenden [guide](#manual-flashing).
+- Erfahrene Entwickler können die Firmware aus dem Quellcode erstellen und direkt hochladen, indem sie die Anleitung unter [Building](Building.md) befolgen.
 
 ## Auswahl der richtigen Firmware-Version
 
@@ -26,7 +27,7 @@ Sie können wählen, ob Sie die aktuelle _Stable_ oder die neueste _Development_
 
 ## Aktualisierung von Versionen vor v3.7
 
-Es wird empfohlen, immer auf die neueste Version der Firmware zu aktualisieren. Wenn Sie ein Upgrade von einer Version vor v3.7 (v3.6.4 oder v3.6.5) durchführen, sollten Sie vor dem Upgrade ein Backup Ihrer Konfigurationseinstellungen erstellen, für den Fall, dass der Flash-Vorgang fehlschlägt. Dies kann über die EMS-ESP-Webschnittstelle erfolgen. Wenn Sie Probleme mit einer der oben beschriebenen Flash-Methoden haben, löschen Sie das EMS-ESP und beginnen Sie mit einer Neuinstallation, und laden Sie dann Ihre gespeicherten Einstellungen hoch. Wenn Sie ein Upgrade von v3.7 oder höher durchführen, können Sie das Upgrade ohne Sicherung Ihrer Konfigurationseinstellungen durchführen.
+Es wird empfohlen, immer auf die neueste Version der Firmware zu aktualisieren. Wenn Sie ein Upgrade von einer Version vor v3.7 (v3.6.4 oder v3.6.5) durchführen, sollten Sie vor dem Upgrade ein Backup Ihrer Konfigurationseinstellungen erstellen, für den Fall, dass der Flash-Vorgang fehlschlägt. Dies kann über die EMS-ESP-Webschnittstelle erfolgen. Wenn Sie Probleme mit einer der oben beschriebenen Flash-Methoden haben, löschen Sie das EMS-ESP und beginnen Sie mit einer Neuinstallation, und laden Sie dann Ihre gespeicherten Einstellungen hoch. Wenn Sie ein Upgrade von v3.7 oder später durchführen, können Sie das Upgrade ohne Sicherung Ihrer Konfigurationseinstellungen durchführen.
 
 ## Wie die Binärdateien der Firmware benannt sind
 
