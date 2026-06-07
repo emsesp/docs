@@ -1818,3 +1818,8 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x002A,20.5,CUS system error,0,1,1,---,""
 0x002A,20.6,CUS system error,0,1,1,---,""
 0x002A,20.7,CUS system error,0,1,1,---,""
+0x00D1,0-1,Outdoor temperature measured value,-32768,32767,0.1,°C,"Range: -40 to 50°C  **Note**: In case telegram 0x00D1 offset 2 is supported, the priority of the outdoor temperature reported with this bus variable shall be:     1) Wired sensor at ACU     2) Externally wired sensor (e.g. at module)     3) RF (over coordinator)     4) Internet (over gateway), NA_OPEN = -32768, NA_SHORT = 32767"
+0x00D1,2,Outdoor temperature source,0,3,1,enum,"Defines the source of the outdoor temperature broadcasted with telegram 0x00D1 offset 0-1., WIRED_AT_CU = 0, WIRED_AT_MODULE = 1, RF = 2, INTERNET = 3"
+0x01D1,0-1,Outdoor temperature measured value (from module),-32768,32767,0.1,°C,"Range: -40 to 50°C  Externally wired sensor (e.g. at module), NA_OPEN = -32768, NA_SHORT = 32767"
+0x01D1,2-3,Outdoor temperature measured value (from RF),-32768,32767,0.1,°C,"Range: -40 to 50°C  Wireless sensor via RF coordinator, NA_OPEN = -32768, NA_SHORT = 32767"
+0x01D1,4-5,Outdoor temperature measured value (from Internet),-32768,32767,0.1,°C,"Range: -40 to 50°C via Internet from e.g. weather service, NA_OPEN = -32768, NA_SHORT = 32767"

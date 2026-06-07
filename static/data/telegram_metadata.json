@@ -642,5 +642,25 @@
     "distribution" : "BROADCAST-ON-CHANGE, BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST",
     "notes" : "",
     "type" : "info"
+  },
+  "0x00D1" : {
+    "name" : "NSC CU Interface Outdoor Temperature",
+    "usedIn" : "tbd",
+    "description" : "The outdoor sensor (measured) value is broadcasted with this datatype to the system.  If no valid outdoor temperature value is measured, it is not allowed to send this datatype! Exception: If outdoor temperature sensor was once present and is now missing (e.g. due to broken wire or sensor), signal may be sent with value for [NA_OPEN] or [NA_SHORT] once. The receiver (=user) of the signal may then raise an error. If the CU has multiple outdoor temperature values to choose from and the one with the highest priority goes missing, the value with the next highest priority shall be chosen and be distributed.  **Notes**: - The CU will broadcast the outdoor temperature with the highest priority in telegram 0x00D1 offset 0-1 and also indicate the source of that value in telegram 0x00D1 offset 2. This value shall always be used for control functions. - There is only one RF OT sensor and one internet OT and one external (at module) wired OT sensor allowed. - Bus members who have outdoor temperature information have to send it via broadcast using the \"External Outdoor Temperature Measurement\" datatype (telegram 0x01D1):      - telegram 0x01D1 offset 0-1: External Wired Sensor      - telegram 0x01D1 offset 2-3: RF Sensor      - telegram 0x01D1 offset 4-5: Internet  **Important**: All currently produced CUs (as of 01/2019) do not implement telegram 0x01D1 and the priority algorithm that comes with it. They also do not support telegram 0x01D1 offset 2.  **Note: Distribution** - Broadcasted every 1 minute, *if sensor is available*. - Broadcasted on power-up, *if sensor is available*. - If telegram 0x01D1 offset 2 is supported, it should be broadcasted together with telegram 0x01D1 offset 0-1.  *Note on EMS1 (backward compatibility)*: The outdoor temperature is measured and broadcasted to the system by the appliance (telegram 0x0019 offset 0-offset 1). However, outdoor temperature measurement is not a function of the appliance, and the interface must allow that the deployment could be changed in the future (e.g. using an RF based outdoor sensor). Therefore, new interfaces for outdoor temperature measurement were defined in EMS2.",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-ON-REQUEST, BROADCAST-ON-POWER-UP",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x01D1" : {
+    "name" : "External Outdoor Temperature Measurement",
+    "usedIn" : "tbd",
+    "description" : "The externally measured outdoor sensor value is broadcasted with this datatype.  If no valid outdoor temperature value is measured, it is not allowed to send this datatype! Exception: If outdoor temperature sensor was once present and is now missing (e.g. due to broken wire or sensor), signal may be sent with value for [NA_OPEN] or [NA_SHORT] once. The receiver (=user) of the signal may then raise an error. If the CU has multiple outdoor temperature values to choose from and the one with the highest priority goes missing, the value with the next highest priority shall be chosen and be distributed. See more details about this in telegram 0x00D1.  **Important**: All currently produced CUs (as of 01/2019) do not implement telegram 0x01D1 and the priority algorithm that comes with it.  **Note: Distribution** - Each module shall broadcast only the bus variable corresponding to the connected sensor. E.g. a RF coordinator may broadcast telegram 0x01D1 offset 2-3 only, in case it detected an RF OT sensor. - Broadcasted every 1 minute, *if sensor is available*. - Broadcasted on power-up, *if sensor is available*.",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-ON-REQUEST, BROADCAST-ON-POWER-UP",
+    "notes" : "",
+    "type" : "info"
   }
 }
