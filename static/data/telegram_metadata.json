@@ -602,5 +602,15 @@
     "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
     "notes" : "",
     "type" : "info"
+  },
+  "0x048A" : {
+    "name" : "Pool Configuration Parameters",
+    "usedIn" : "tbd",
+    "description" : "Pool Configuration Parameters",
+    "class" : "Parameter",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }
