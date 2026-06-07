@@ -672,5 +672,15 @@
     "distribution" : "UNICAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-WRITE-REQUEST, UNICAST-ON-REQUEST",
     "notes" : "",
     "type" : "info"
+  },
+  "0x00D2" : {
+    "name" : "Sink Source Interface Heat System Output",
+    "usedIn" : "tbd",
+    "description" : "Heat request (system output). This is the EMS data type used to request for heating on the system output. This request affects the global season optimizer.  **Important**: - The complete payload must be transmitted together. - See also rules for priority handling and transmission/reception of telegram 0x00D2 and telegram 0x00D6. - If the HC1 is controlled via the appliance, a controller must use telegram 0x00D2 instead of telegram 0x02E0.  **Notes: Distribution** - This data type is sent with unicast to the owner typically every minute.  - The heat request becomes invalid if the request is not repeated within 4 min.",
+    "class" : "Control",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "UNICAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }
