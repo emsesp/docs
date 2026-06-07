@@ -632,6 +632,15 @@
     "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
     "notes" : "",
     "type" : "info"
-  
+  },
+  "0x002A" : {
+    "name" : "EMS HTIII Service Tool Monitor Service Functions",
+    "usedIn" : "tbd",
+    "description" : "This block contains monitor values of Heatronic III service function to be used by a service tool like Netcom",
+    "class" : "Monitor",
+    "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution" : "BROADCAST-ON-CHANGE, BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }
