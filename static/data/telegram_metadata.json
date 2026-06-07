@@ -612,5 +612,15 @@
     "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
     "notes" : "",
     "type" : "info"
+  },
+  "0x0486" : {
+    "name" : "HP E21 Parameters External Inputs",
+    "usedIn" : "tbd",
+    "description" : "HP 21 Parameters External Inputs",
+    "class" : "Parameter",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "UNICAST-WRITE-REQUEST, BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }
