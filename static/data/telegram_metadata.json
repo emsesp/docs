@@ -632,6 +632,75 @@
     "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
     "notes" : "",
     "type" : "info"
-  
+  },
+  "0x002A" : {
+    "name" : "EMS HTIII Service Tool Monitor Service Functions",
+    "usedIn" : "tbd",
+    "description" : "This block contains monitor values of Heatronic III service function to be used by a service tool like Netcom",
+    "class" : "Monitor",
+    "emsCategory" : "EMS1.0 and EMS2.0: detail in bus variable description",
+    "distribution" : "BROADCAST-ON-CHANGE, BROADCAST-ON-POWER-UP, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x00D1" : {
+    "name" : "NSC CU Interface Outdoor Temperature",
+    "usedIn" : "tbd",
+    "description" : "The outdoor sensor (measured) value is broadcasted with this datatype to the system.  If no valid outdoor temperature value is measured, it is not allowed to send this datatype! Exception: If outdoor temperature sensor was once present and is now missing (e.g. due to broken wire or sensor), signal may be sent with value for [NA_OPEN] or [NA_SHORT] once. The receiver (=user) of the signal may then raise an error. If the CU has multiple outdoor temperature values to choose from and the one with the highest priority goes missing, the value with the next highest priority shall be chosen and be distributed.  **Notes**: - The CU will broadcast the outdoor temperature with the highest priority in telegram 0x00D1 offset 0-1 and also indicate the source of that value in telegram 0x00D1 offset 2. This value shall always be used for control functions. - There is only one RF OT sensor and one internet OT and one external (at module) wired OT sensor allowed. - Bus members who have outdoor temperature information have to send it via broadcast using the \"External Outdoor Temperature Measurement\" datatype (telegram 0x01D1):      - telegram 0x01D1 offset 0-1: External Wired Sensor      - telegram 0x01D1 offset 2-3: RF Sensor      - telegram 0x01D1 offset 4-5: Internet  **Important**: All currently produced CUs (as of 01/2019) do not implement telegram 0x01D1 and the priority algorithm that comes with it. They also do not support telegram 0x01D1 offset 2.  **Note: Distribution** - Broadcasted every 1 minute, *if sensor is available*. - Broadcasted on power-up, *if sensor is available*. - If telegram 0x01D1 offset 2 is supported, it should be broadcasted together with telegram 0x01D1 offset 0-1.  *Note on EMS1 (backward compatibility)*: The outdoor temperature is measured and broadcasted to the system by the appliance (telegram 0x0019 offset 0-offset 1). However, outdoor temperature measurement is not a function of the appliance, and the interface must allow that the deployment could be changed in the future (e.g. using an RF based outdoor sensor). Therefore, new interfaces for outdoor temperature measurement were defined in EMS2.",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-ON-REQUEST, BROADCAST-ON-POWER-UP",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x01D1" : {
+    "name" : "External Outdoor Temperature Measurement",
+    "usedIn" : "tbd",
+    "description" : "The externally measured outdoor sensor value is broadcasted with this datatype.  If no valid outdoor temperature value is measured, it is not allowed to send this datatype! Exception: If outdoor temperature sensor was once present and is now missing (e.g. due to broken wire or sensor), signal may be sent with value for [NA_OPEN] or [NA_SHORT] once. The receiver (=user) of the signal may then raise an error. If the CU has multiple outdoor temperature values to choose from and the one with the highest priority goes missing, the value with the next highest priority shall be chosen and be distributed. See more details about this in telegram 0x00D1.  **Important**: All currently produced CUs (as of 01/2019) do not implement telegram 0x01D1 and the priority algorithm that comes with it.  **Note: Distribution** - Each module shall broadcast only the bus variable corresponding to the connected sensor. E.g. a RF coordinator may broadcast telegram 0x01D1 offset 2-3 only, in case it detected an RF OT sensor. - Broadcasted every 1 minute, *if sensor is available*. - Broadcasted on power-up, *if sensor is available*.",
+    "class" : "Monitor",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-ON-REQUEST, BROADCAST-ON-POWER-UP",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x02E0" : {
+    "name" : "Heat request HC1 via appliance (system output)",
+    "usedIn" : "tbd",
+    "description" : "Heat request HC1 via appliance (system output). If HC1 is controlled by the appliance this data type is used to request for heating on the system output of the appliance. This request affects the global season optimizer.  **Important**: - The complete payload must be transmitted together. - See also rules for priority handling and transmission/reception of telegram 0x00D2 and telegram 0x00D6. - If the HC1 is controlled via a module, a controller must use telegram 0x00D2 instead of telegram 0x02E0.  **Notes**: - This data type is sent from the controller to the appliance. - Layout as telegram 0x00D2 but **no** ``MAX function`` needed, because there is only *one* requester (typically the system controller)!",
+    "class" : "Control",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "UNICAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-WRITE-REQUEST, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x00D2" : {
+    "name" : "Sink Source Interface Heat System Output",
+    "usedIn" : "tbd",
+    "description" : "Heat request (system output). This is the EMS data type used to request for heating on the system output. This request affects the global season optimizer.  **Important**: - The complete payload must be transmitted together. - See also rules for priority handling and transmission/reception of telegram 0x00D2 and telegram 0x00D6. - If the HC1 is controlled via the appliance, a controller must use telegram 0x00D2 instead of telegram 0x02E0.  **Notes: Distribution** - This data type is sent with unicast to the owner typically every minute.  - The heat request becomes invalid if the request is not repeated within 4 min.",
+    "class" : "Control",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "UNICAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x00D6" : {
+    "name" : "Sink Source Interface Cool System Output",
+    "usedIn" : "tbd",
+    "description" : "Cool request (system output). This is the EMS data type used to request for cooling on the system output.  This request affects the global season optimizer.   **Important**: - The complete payload must be transmitted together. - See also rules for priority handling and transmission/reception of telegram 0x00D2 and telegram 0x00D6. - If the HC1 is controlled via the appliance, a controller must use telegram 0x04F2 instead of telegram 0x00D6.  **Notes: Distribution** - This data type is sent with unicast to the owner typically every minute.  - The cool request becomes invalid if the request is not repeated within 4 min.",
+    "class" : "Control",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "UNICAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-WRITE-REQUEST, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
+  },
+  "0x04F2" : {
+    "name" : "Cool request HC1 via appliance (system output)",
+    "usedIn" : "tbd",
+    "description" : "Cool request HC1 via appliance (system output). If HC1 is controlled via the appliance this data type is used to request for cooling on the system output of the appliance. This request affects the global season optimizer.  **Important**: - The complete payload must be transmitted together. - See also rules for priority handling and transmission/reception of telegram 0x00D2 and telegram 0x00D6.- If the HC1 is controlled via a module, a controller must use telegram 0x00D6 instead of telegram 0x04F2.  **Notes**: - This data type is sent from the controller to the appliance. - Layout as telegram 0x00D6 but **no** ``MAX function``/``MIN function`` needed, because there is only *one* requester (typically the system controller)!",
+    "class" : "Control",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "UNICAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-WRITE-REQUEST, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }
