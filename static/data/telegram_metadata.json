@@ -662,5 +662,15 @@
     "distribution" : "BROADCAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-ON-REQUEST, BROADCAST-ON-POWER-UP",
     "notes" : "",
     "type" : "info"
+  },
+  "0x02E0" : {
+    "name" : "Heat request HC1 via appliance (system output)",
+    "usedIn" : "tbd",
+    "description" : "Heat request HC1 via appliance (system output). If HC1 is controlled by the appliance this data type is used to request for heating on the system output of the appliance. This request affects the global season optimizer.  **Important**: - The complete payload must be transmitted together. - See also rules for priority handling and transmission/reception of telegram 0x00D2 and telegram 0x00D6. - If the HC1 is controlled via a module, a controller must use telegram 0x00D2 instead of telegram 0x02E0.  **Notes**: - This data type is sent from the controller to the appliance. - Layout as telegram 0x00D2 but **no** ``MAX function`` needed, because there is only *one* requester (typically the system controller)!",
+    "class" : "Control",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "UNICAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-WRITE-REQUEST, UNICAST-ON-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }
