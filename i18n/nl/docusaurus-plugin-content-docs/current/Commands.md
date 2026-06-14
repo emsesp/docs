@@ -16,22 +16,28 @@ Er zijn 3 methoden waarop commando's kunnen worden aangeroepen:
 
 ## Definities
 
-:::info[Belangrijke definities]
+:::info[Belangrijke definities]]
 
 - `<device>` is de korte naam. Deze kan zijn:
+  - een EMS-apparaat en ondersteunde apparaten zijn onder andere: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
+    - het EMS-ESP-systeem zelf geïdentificeerd als `system`
+    - de Dallas-temperatuursensoren als `temperaturesensor`
+    - aangepaste analoge sensoren als `analogsensor`
+    - alle aangepaste EMS-telegram entiteiten als `custom`
+  - `<command>` is de naam van een van beide
+    - een algemene opdracht, of
+    - een EMS-apparaatentiteit die ook wel `<entity>` wordt genoemd. Zie de pagina [Supported Devices](All-Entities) voor de volledige lijst
+  - `<id>` is een optionele identifier en heeft verschillende betekenissen, afhankelijk van de context
+  - `<data>` wordt gebruikt om de te lezen of te schrijven waarde weer te geven. Het kan een enkele waarde zijn van elk type (geheel getal, zweven, tekenreeks of booleaans) of een JSON-object {} tekenreeks die meerdere key/values-paren bevat zoals:
+    - **"cmd"** is de `<command>`. De sleutel **"cmd"** kan ook worden vervangen door **"entity"**.
+    - **"value"** is de waarde en kan een tekststring tussen aanhalingstekens, een geheel getal, een float of een booleaans zijn. **"data"** is een alias die ook kan worden gebruikt in plaats van de sleutel.
+    - **"hc"**, **"wwc"** en **"id"** worden allemaal gebruikt om een waarde weer te geven of in de context van een EMS-apparaat een verwarmings- of warmwatercircuit.
 
-    - een EMS-apparaat en ondersteunde apparaten zijn onder andere: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation` * het EMS- en ESP-systeem zelf geïdentificeerd als `system` * de Dallas temperatuursensoren als `temperaturesensor` * aangepaste analoge sensoren als `analogsensor`ESP-systeem zelf geïdentificeerd als `system` * de Dallas-temperatuursensoren als `temperaturesensor` * alle aangepaste analoge sensoren als `analogsensor` * alle aangepaste entiteiten van het EMS-telegram als `custom`
-    - `<command>` is de naam van * een algemene opdracht of * een EMS-apparaatentiteit die ook wel `<entity>` wordt genoemd. Zie de pagina [Supported Devices](All-Entities) voor de volledige lijst
-    - `<id>` is een optionele identifier en heeft verschillende betekenissen, afhankelijk van de context
-    - `<data>` wordt gebruikt om de te lezen of te schrijven waarde weer te geven. Het kan een enkele waarde zijn van elk type (geheel getal, zweven, tekenreeks of booleaans) of een JSON-object {} tekenreeks die meerdere key/values-paren bevat zoals:
+  - Een booleaanse waarde kan in vele vormen worden weergegeven:
+    - als een Ware waarde, "TRUE", "ja", waar, "waar", "aan", 1
+    - als een False waarde, "FALSE", "no", false, "false", "off", 0
 
-        * **"cmd"** is de `<command>`. De sleutel **"cmd"** kan ook worden vervangen door **"entity"**. * **"value"** is de waarde en kan een tekststring tussen aanhalingstekens, een geheel getal, een float of een booleaans zijn. **"data"** is een alias die ook kan worden gebruikt in plaats van de sleutel. * **"hc"**, **"wwc"** en **"id"** worden allemaal gebruikt om een waarde weer te geven of in de context van een EMS-apparaat een verwarmings- of warmwatercircuit.
-
-    - Een booleaanse waarde kan in vele vormen worden weergegeven:
-
-        * als een True waarde, "TRUE", "ja", true, "true", "aan", 1 * als een False waarde, "FALSE", "nee", false, "false", "uit", 0
-
-    - Het bearer Access Token (JWT) wordt gebruikt om HTTP-verzoeken te verifiëren en kan worden verkregen via de `Settings->Security->Manage Users`-pagina van de WebUI en vervolgens te klikken op het sleutelpictogram voor de gebruiker die beheerdersrechten heeft (`is Admin` ingesteld). Het token wordt gegenereerd met een combinatie van de gebruikersnaam en een geheime sleutel die het supergebruikerswachtwoord (su) is dat te vinden is op de `Settings->Security->Security Settings`-pagina van de WebUI. Deze string moet worden opgenomen in de HTTP-header als `"Authorization: Bearer {ACCESS_TOKEN}"`. Het token heeft geen vervaldatum.
+  - Het bearer Access Token (JWT) wordt gebruikt om HTTP-verzoeken te verifiëren en kan worden verkregen via de `Settings->Security->Manage Users`-pagina van de WebUI en vervolgens te klikken op het sleutelpictogram voor de gebruiker die beheerdersrechten heeft (`is Admin` ingesteld). Het token wordt gegenereerd met een combinatie van de gebruikersnaam en een geheime sleutel die het supergebruikerswachtwoord (su) is dat te vinden is op de `Settings->Security->Security Settings`-pagina van de WebUI. Deze string moet worden opgenomen in de HTTP-header als `"Authorization: Bearer {ACCESS_TOKEN}"`. Het token heeft geen vervaldatum.
 
 :::
 
@@ -63,7 +69,7 @@ Dingen om op te merken:
 Het URL-pad is `http://<hostname>/api/<device>/`
 
 | `endpoint` | `HTTP method` | `action` | `authentication required?` | `post body` |
-| --------------- | ----------- | ------------------------------------------------------------------ | ------------------------ | --------- |
+| --------------- | ------------- | ------------------------------------------------------------------ | -------------------------- | ----------- |
 | `info` | `GET` | voert de huidige informatie over het EMS-apparaat uit in verbose | no | |
 | `values` | `GET` | voert de huidige informatie over het EMS-apparaat in een kort formaat uit | no | |
 | _(empty)_ | `GET` | hetzelfde als `values` hierboven | nee |
@@ -102,7 +108,7 @@ Het URL-pad is `http://<hostname>/api/custom/`
 
 Het URL-pad is `http://<hostname>/api/temperaturesensor/`
 
-| Eindpunt | HTTP-methode | Actie | Verificatie vereist? | post body |
+| Eindpunt: HTTP-methode: actie: Verificatie vereist? | post body |
 | -------------- | ----------- | --------------------------------------------------------------- | ------------------------ | --------- |
 | leeg | `GET` | uitgangen aangesloten namen en waarden van Dallas temperatuursensor | geen | |
 | `info` | `GET` | voert alle details uit over de aangesloten Dallas temperatuursensoren | nee | |
@@ -126,9 +132,9 @@ Het URL-pad is `http://<hostname>/api/analogsensor/`
 
 Het URL-pad is `http://<hostname>/api/system/<endpoint>`
 
-| Eindpunt | HTTP-methode | Actie | Verificatie vereist? | post body |
-| ------------------------ | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------ |
-`info` of leeg | `GET` | voert de huidige systeeminformatie uit | nee |
+| Eindpunt: HTTP-methode: actie: Verificatie vereist? | post body |
+| ------------------------ | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------- |
+`info` `values`of leeg | `GET` | voert huidige systeeminformatie uit | nee |
 | `fetch` | `GET` | forceert bij het verversen van alle apparaatwaarden | no | |
 | `restart` | `GET` | herstart EMS-ESP | ja | |
 | `format` | `GET` | EMS-ESP van fabrieksinstellingen teruggezet | ja | |
@@ -141,18 +147,21 @@ Het URL-pad is `http://<hostname>/api/system/<endpoint>`
 | `read` | `GET` | vraagt een specifiek EMS-apparaat en een typeID op | ja | `<deviceID> <type ID> [offset] [length]` |
 `response` | `GET` | voert het laatste antwoord van EMS-ESP uit | no | |
 | `entities` | `GET` | somt alle ingeschakelde entiteiten op | nee | |
+| `sendmail` | `POST` | stuur een e-mail | ja | `{"to":"<email>", "subject":"<subject>", "body":"<body>"}` |
+| `txpause` | `POST` | pause/resume de overdracht van de EMS-bus | ja | `<bool>` |
+| `led` | `POST` | LED-patroon | ja | `[color]:[pattern]` |
 | `mqtt/enabled` | `GET` | enable/disable MQTT | ja | `<bool>` |
 | `ap/enabled` | `GET` | enable/disable Toegangspunt | ja | `<bool>` |
+| `ntp/enabled` | `GET` | enable/disable NTP | ja | `<bool>` |
+| `syslog/enabled` | `GET` | enable/disable Syslog | ja | `<bool>` |
 | `settings/analogenabled` | `GET` | enable/disable analoge sensor | ja | `<bool>` |
 | `settings/hideled` | `GET` | enable/disable LED | ja | `<bool>` |
 | `settings/showeralert` | `GET` | enable/disable douche waarschuwing | ja | `<bool>` |
 | `settings/showertimer` | `GET` | enable/disable douchetimer | ja | `<bool>` |
-| `syslog/enabled` | `GET` | enable/disable syslog | yes | `<bool>` |
 
 ### Voorbeelden
 
-:::tip
-In deze voorbeelden is de URL `http://ems-esp.local/api/`, maar pas deze aan naar je eigen hostnaam. Wijzig ook het toegangstoken voor de drager in je eigen token zoals beschreven in de sectie [Definitions](#definities).
+:::tip In deze voorbeelden is de URL `http://ems-esp.local/api/`, maar pas deze aan naar je eigen hostnaam. Wijzig ook het toegangstoken voor de drager in je eigen token zoals beschreven in de sectie [Definitions](#definities).
 :::
 
 #### ...via de opdrachtregel
@@ -246,7 +255,7 @@ Nog een paar voorbeelden:
 | onderwerp | lading | actie |
 | --------------------------------- | ----------------------------------------- | ---------------------------------------------------------------- |
 | `ems-esp/boiler` | `{"cmd":"heatingactivated", "data":"on"}` | verwarming aanzetten in boiler |
-| `ems-esp/boiler/heatingactivated` | `{"data":"on"}` | desinfectie van warm water in boiler inschakelen (gelijk aan bovenstaande opdracht) |
+| `ems-esp/boiler/heatingactivated` | `{"data":"on"}` | DHW desinfecteren in boiler inschakelen (gelijk aan bovenstaande opdracht) |
 | `ems-esp/boiler` | `{"cmd":"dhw.disinfecting", "data":"on"}` | DHW desinfecteren in boiler inschakelen |
 
 Je kunt in Status - System Log controleren of de opdracht door EMS-ESP is geaccepteerd.
@@ -264,8 +273,7 @@ En de volgende nepopdracht wordt niet geaccepteerd:\Onderwerp:`ems-esp/boiler` C
 [mqtt] MQTT command failed with error no values in boiler (Error)
 ```
 
-:::note
-Je kunt de MQTT-commando's eenvoudig testen met [MQTT Explorer](https://www.mqtt-explorer.com). Maak gewoon verbinding met de MQTT broker en publiceer de payload naar het onderwerp.
+:::note Je kunt de MQTT-commando's eenvoudig testen met [MQTT Explorer](https://www.mqtt-explorer.com). Maak gewoon verbinding met de MQTT broker en publiceer de payload naar het onderwerp.
 :::
 
 Met Home Assistant kunnen ook thermostaatcommando's worden verzonden om individuele verwarmingscircuits te regelen via het verzenden van een modustring of temperatuurnummer naar een onderwerp `thermostat_hc<n>`.

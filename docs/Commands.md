@@ -19,28 +19,25 @@ There are 3 methods commands can be invoked:
 :::info[Important Definitions]
 
 - `<device>` is the short-name. It can be either:
+  - a EMS Device and supported devices include: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
+    - the EMS-ESP system itself identified as `system`
+    - the Dallas temperature sensors as `temperaturesensor`
+    - any custom Analog sensors as `analogsensor`
+    - any EMS telegram custom entities as `custom`
+  - `<command>` is the name of either
+    - a generic command, or
+    - an EMS device entity also referred to as an `<entity>`. See the [Supported Devices](All-Entities) page for the complete list
+  - `<id>` is an optional identifier and has different meanings depending on the context
+  - `<data>` is used to represent the value to read or write. It can be either a single value as any type (integer, float, string or boolean) or a JSON object {} string containing multiple key/values pairs as:
+    - **"cmd"** is the `<command>`. The key **"cmd"** may also be substituted for **"entity"**.
+    - **"value"** is the value and can be either a text string in quotes, an integer, float of boolean. **"data"** is an alias that can also be used instead for the key.
+    - **"hc"**, **"wwc"** and **"id"** are all are used to represent a value or in the context of an EMS Device a heating or warm water circuit.
 
-    - a EMS Device and supported devices include: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
-        * the EMS-ESP system itself identified as `system`
-        * the Dallas temperature sensors as `temperaturesensor`
-        * any custom Analog sensors as `analogsensor`
-        * any EMS telegram custom entities as `custom`
-    - `<command>` is the name of either
-        * a generic command, or
-        * an EMS device entity also referred to as an `<entity>`. See the [Supported Devices](All-Entities) page for the complete list
-    - `<id>` is an optional identifier and has different meanings depending on the context
-    - `<data>` is used to represent the value to read or write. It can be either a single value as any type (integer, float, string or boolean) or a JSON object {} string containing multiple key/values pairs as:
+  - A boolean value can be represented in many forms:
+    - as a True value, "TRUE", "yes", true, "true", "on", 1
+    - as a False value, "FALSE", "no", false, "false", "off", 0
 
-        * **"cmd"** is the `<command>`. The key **"cmd"** may also be substituted for **"entity"**.
-        * **"value"** is the value and can be either a text string in quotes, an integer, float of boolean. **"data"** is an alias that can also be used instead for the key.
-        * **"hc"**, **"wwc"** and **"id"** are all are used to represent a value or in the context of an EMS Device a heating or warm water circuit.
-
-    - A boolean value can be represented in many forms:
-
-        * as a True value, "TRUE", "yes", true, "true", "on", 1
-        * as a False value, "FALSE", "no", false, "false", "off", 0
-
-    - The bearer Access Token (JWT) is used to authenticate HTTP requests and can be obtained from the WebUI's `Settings->Security->Manage Users` page and then clicking on the key icon for the user that has admin privileges (`is Admin` set). The token is generated using a combination of the username and a secret key which is the super user (su) password found in the WebUI's `Settings->Security->Security Settings` page. This string must be included in the HTTP header as `"Authorization: Bearer {ACCESS_TOKEN}"`. Note the token has no expiry date.
+  - The bearer Access Token (JWT) is used to authenticate HTTP requests and can be obtained from the WebUI's `Settings->Security->Manage Users` page and then clicking on the key icon for the user that has admin privileges (`is Admin` set). The token is generated using a combination of the username and a secret key which is the super user (su) password found in the WebUI's `Settings->Security->Security Settings` page. This string must be included in the HTTP header as `"Authorization: Bearer {ACCESS_TOKEN}"`. Note the token has no expiry date.
 
 :::
 
@@ -135,28 +132,32 @@ The URL path is `http://<hostname>/api/analogsensor/`
 
 The URL path is `http://<hostname>/api/system/<endpoint>`
 
-| endpoint                 | HTTP method | action                                                                                            | authentication required? | post body                                        |
-| ------------------------ | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------ |
-| `info` or blank          | `GET`       | outputs current system information                                                                | no                       |                                                  |
-| `fetch`                  | `GET`       | forces at refresh of all device values                                                            | no                       |                                                  |
-| `restart`                | `GET`       | restarts EMS-ESP                                                                                  | yes                      |                                                  |
-| `format`                 | `GET`       | factory reset's EMS-ESP                                                                           | yes                      |                                                  |
-| `commands`               | `GET`       | lists the available system commands                                                               | no                       |                                                  |
-| `send`                   | `POST`      | send telegram to the EMS bus                                                                      | yes                      | `"XX XX...XX"`                                   |
-| `message`                | `POST`      | send a message to the log and MQTT. The message can also a logic command as used in the Scheduler | yes                      | `".."` or `'{"value":"system/settings/locale"}'` |
-| `publish`                | `POST`      | MQTT publish all values, and optional HA-configuration or specific for a device                   | no                       | `[ha] \| [device]`                               |
-| `watch`                  | `POST`      | watch incoming telegrams                                                                          | no                       | `<on \|off \| raw \| <type-id(hex)>`             |
-| `values`                 | `GET`       | outputs all values in short format                                                                | no                       |                                                  |
-| `read`                   | `GET`       | queries a specific EMS device and a typeID                                                        | yes                      | `<deviceID> <type ID> [offset] [length]`         |
-| `response`               | `GET`       | outputs the last response from EMS-ESP                                                            | no                       |                                                  |
-| `entities`               | `GET`       | lists all enabled entities                                                                        | no                       |                                                  |
-| `mqtt/enabled`           | `GET`       | enable/disable MQTT                                                                               | yes                      | `<bool>`                                         |
-| `ap/enabled`             | `GET`       | enable/disable Access Point                                                                       | yes                      | `<bool>`                                         |
-| `settings/analogenabled` | `GET`       | enable/disable analog sensor                                                                      | yes                      | `<bool>`                                         |
-| `settings/hideled`       | `GET`       | enable/disable LED                                                                                | yes                      | `<bool>`                                         |
-| `settings/showeralert`   | `GET`       | enable/disable shower alert                                                                       | yes                      | `<bool>`                                         |
-| `settings/showertimer`   | `GET`       | enable/disable shower timer                                                                       | yes                      | `<bool>`                                         |
-| `syslog/enabled`         | `GET`       | enable/disable syslog                                                                             | yes                      | `<bool>`                                         |
+| endpoint                 | HTTP method | action                                                                                            | authentication required? | post body                                                  |
+| ------------------------ | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------- |
+| `info` `values`or blank  | `GET`       | outputs current system information                                                                | no                       |                                                            |
+| `fetch`                  | `GET`       | forces at refresh of all device values                                                            | no                       |                                                            |
+| `restart`                | `GET`       | restarts EMS-ESP                                                                                  | yes                      |                                                            |
+| `format`                 | `GET`       | factory reset's EMS-ESP                                                                           | yes                      |                                                            |
+| `commands`               | `GET`       | lists the available system commands                                                               | no                       |                                                            |
+| `send`                   | `POST`      | send telegram to the EMS bus                                                                      | yes                      | `"XX XX...XX"`                                             |
+| `message`                | `POST`      | send a message to the log and MQTT. The message can also a logic command as used in the Scheduler | yes                      | `".."` or `'{"value":"system/settings/locale"}'`           |
+| `publish`                | `POST`      | MQTT publish all values, and optional HA-configuration or specific for a device                   | no                       | `[ha] \| [device]`                                         |
+| `watch`                  | `POST`      | watch incoming telegrams                                                                          | no                       | `<on \|off \| raw \| <type-id(hex)>`                       |
+| `values`                 | `GET`       | outputs all values in short format                                                                | no                       |                                                            |
+| `read`                   | `GET`       | queries a specific EMS device and a typeID                                                        | yes                      | `<deviceID> <type ID> [offset] [length]`                   |
+| `response`               | `GET`       | outputs the last response from EMS-ESP                                                            | no                       |                                                            |
+| `entities`               | `GET`       | lists all enabled entities                                                                        | no                       |                                                            |
+| `sendmail`               | `POST`      | send an email                                                                                     | yes                      | `{"to":"<email>", "subject":"<subject>", "body":"<body>"}` |
+| `txpause`                | `POST`      | pause/resume the transmission of the EMS bus                                                      | yes                      | `<bool>`                                                   |
+| `led`                    | `POST`      | LED pattern                                                                                       | yes                      | `[color]:[pattern]`                                        |
+| `mqtt/enabled`           | `GET`       | enable/disable MQTT                                                                               | yes                      | `<bool>`                                                   |
+| `ap/enabled`             | `GET`       | enable/disable Access Point                                                                       | yes                      | `<bool>`                                                   |
+| `ntp/enabled`            | `GET`       | enable/disable NTP                                                                                | yes                      | `<bool>`                                                   |
+| `syslog/enabled`         | `GET`       | enable/disable Syslog                                                                             | yes                      | `<bool>`                                                   |
+| `settings/analogenabled` | `GET`       | enable/disable analog sensor                                                                      | yes                      | `<bool>`                                                   |
+| `settings/hideled`       | `GET`       | enable/disable LED                                                                                | yes                      | `<bool>`                                                   |
+| `settings/showeralert`   | `GET`       | enable/disable shower alert                                                                       | yes                      | `<bool>`                                                   |
+| `settings/showertimer`   | `GET`       | enable/disable shower timer                                                                       | yes                      | `<bool>`                                                   |
 
 ### Examples
 

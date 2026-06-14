@@ -11,7 +11,7 @@ EMS-ESP verfügt über eine Befehls-API, die zum Lesen und Schreiben von Werten 
 Es gibt 3 Methoden, mit denen Befehle aufgerufen werden können:
 
 - über den [**Console**](#konsole) mittels Telnet oder seriell
-- über [**HTTP**](#http) mit RESTful API-Aufrufen
+- über [**HTTP**](#http) mit RESTful-API-Aufrufen
 - über [**MQTT**](#mqtt) über Themen und ihre Nutzlasten
 
 ## Definitionen
@@ -19,25 +19,31 @@ Es gibt 3 Methoden, mit denen Befehle aufgerufen werden können:
 :::info[Wichtige Definitionen]
 
 - `<device>` ist der Kurzname. Er kann entweder sein:
+  - a EMS Device und unterstützte Geräte sind: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
+    - das EMS-ESP-System selbst, identifiziert als `system`
+    - die Dallas-Temperatursensoren als `temperaturesensor`
+    - beliebige analoge Sensoren als `analogsensor`
+    - alle benutzerdefinierten EMS-Telegrammelemente als `custom`
+  - `<command>` ist der Name eines der folgenden Elemente
+    - ein allgemeiner Befehl, oder
+    - eine EMS-Geräteeinheit, die auch als `<entity>` bezeichnet wird. Siehe die Seite [Supported Devices](All-Entities) für die vollständige Liste
+  - `<id>` ist ein optionaler Bezeichner und hat je nach Kontext unterschiedliche Bedeutungen
+  - `<data>` wird verwendet, um den zu lesenden oder zu schreibenden Wert darzustellen. Es kann entweder ein einzelner Wert beliebigen Typs (Integer, Float, String oder Boolean) oder ein JSON-Objekt {} String mit mehreren key/values-Paaren sein:
+    - **"cmd "** ist das `<command>`. Der Schlüssel **"cmd "** kann auch durch **"entity "** ersetzt werden.
+    - **"value "** ist der Wert und kann entweder eine in Anführungszeichen gesetzte Zeichenkette, eine Ganzzahl, eine Fließkommazahl oder ein Boolescher Wert sein. **"data "** ist ein Alias, der auch für den Schlüssel verwendet werden kann.
+    - **"hc "**, **"wwc "** und **"id "** werden alle verwendet, um einen Wert oder im Zusammenhang mit einem EMS-Gerät einen Heiz- oder Warmwasserkreislauf darzustellen.
 
-    - ein EMS-Gerät und folgende Geräte werden unterstützt: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation` * das EMS-ESP-System selbst als `system` * die Dallas-Temperatursensoren als `temperaturesensor` * alle benutzerdefinierten Analogsensoren als `analogsensor` * alle benutzerdefinierten EMS-Telegramm-Entitäten als `custom`
-    - `<command>` ist der Name entweder * eines generischen Befehls oder * einer EMS-Geräteeinheit, die auch als `<entity>` bezeichnet wird. Siehe die Seite [Supported Devices](All-Entities) für die vollständige Liste
-    - `<id>` ist ein optionaler Bezeichner und hat je nach Kontext unterschiedliche Bedeutungen
-    - `<data>` wird verwendet, um den zu lesenden oder zu schreibenden Wert darzustellen. Es kann entweder ein einzelner Wert beliebigen Typs (Integer, Float, String oder Boolean) oder ein JSON-Objekt {} String mit mehreren key/values-Paaren sein:
+  - Ein boolescher Wert kann in vielen Formen dargestellt werden:
+    - als Wahrer Wert, "WAHR", "ja", wahr, "wahr", "ein", 1
+    - als Falschwert, "FALSE", "nein", falsch, "falsch", "aus", 0
 
-        * **"cmd "** ist der `<command>`. Der Schlüssel **"cmd "** kann auch durch **"entity "** ersetzt werden. * **"value "** ist der Wert und kann entweder ein Textstring in Anführungszeichen, eine Ganzzahl, ein Float oder ein Boolean sein. ***"data "** ist ein Alias, der auch anstelle des Schlüssels verwendet werden kann. **"hc "**, **"wwc "** und **"id "** werden alle verwendet, um einen Wert oder im Zusammenhang mit einem EMS-Gerät einen Heiz- oder Warmwasserkreislauf darzustellen.
-
-    - Ein boolescher Wert kann in vielen Formen dargestellt werden:
-
-        * als wahrer Wert, "TRUE", "ja", wahr, "wahr", "ein", 1 * als falscher Wert, "FALSE", "nein", falsch, "falsch", "aus", 0
-
-    - Das Bearer Access Token (JWT) wird zur Authentifizierung von HTTP-Anfragen verwendet und kann von der Seite `Settings->Security->Manage Users` der WebUI abgerufen werden, indem man auf das Schlüsselsymbol für den Benutzer klickt, der über Administratorrechte verfügt (`is Admin`-Set). Das Token wird aus einer Kombination des Benutzernamens und eines geheimen Schlüssels generiert, der dem Superuser-Passwort (su) entspricht, das auf der Seite `Settings->Security->Security Settings` der WebUI zu finden ist. Diese Zeichenkette muss als `"Authorization: Bearer {ACCESS_TOKEN}"` in den HTTP-Header aufgenommen werden. Beachten Sie, dass das Token kein Verfallsdatum hat.
+  - Das Bearer Access Token (JWT) wird zur Authentifizierung von HTTP-Anfragen verwendet und kann von der Seite `Settings->Security->Manage Users` der WebUI abgerufen werden, indem man auf das Schlüsselsymbol für den Benutzer klickt, der über Administratorrechte verfügt (`is Admin`-Set). Das Token wird mit einer Kombination aus dem Benutzernamen und einem geheimen Schlüssel generiert, der das Superuser-Passwort (su) ist, das auf der Seite `Settings->Security->Security Settings` der WebUI zu finden ist. Diese Zeichenfolge muss in der HTTP-Kopfzeile als `"Authorization: Bearer {ACCESS_TOKEN}"` angegeben werden. Beachten Sie, dass das Token kein Verfallsdatum hat.
 
 :::
 
 ## Konsole
 
-- Befehle können mit dem Befehl `call` ausgeführt werden
+- Die Befehle können mit dem Befehl `call` ausgeführt werden
 - Sie müssen Administrator sein, um den Befehl `call` zu verwenden. Zuerst `su` und geben Sie das Passwort ein
 - Für eine Liste aller verfügbaren Befehle können Sie `show commands` verwenden
 - Die Syntax lautet `call <device> <command> [data] [id]`
@@ -52,7 +58,7 @@ Zu beachtende Punkte:
 - Die REST-API folgt dem [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
 - Der URL-Pfad beginnt immer mit `http://<hostname>/api/`
 - `<hostname>` ist entweder eine IP-Adresse oder der mDNS-Name, der standardmäßig `ems-esp.local` lautet
-- Für einige Befehle ist eine Sicherheitsauthentifizierung erforderlich, sofern sie nicht über eine EMS-ESP-Einstellung deaktiviert wurde. Die Authentifizierung erfolgt in Form eines Zugriffstokens, der über die WebUI unter Sicherheit->Benutzer verwalten und dann durch Anklicken der Schaltfläche "Schlüssel" für den Admin-Benutzer generiert wird. Die Zeichenfolge muss in den HTTP-Header wie `"Authorization: Bearer {ACCESS_TOKEN}"` aufgenommen werden. Die Token haben kein Verfallsdatum
+- Für einige Befehle ist eine Sicherheitsauthentifizierung erforderlich, sofern sie nicht über eine EMS-ESP-Einstellung deaktiviert wurde. Die Authentifizierung erfolgt in Form eines Zugriffstokens, der über die WebUI unter Sicherheit->Benutzer verwalten und dann durch Anklicken der Schaltfläche "Schlüssel" für den Administrator-Benutzer generiert wird. Der String muss im HTTP-Header wie `"Authorization: Bearer {ACCESS_TOKEN}"` enthalten sein. Die Token haben kein Verfallsdatum
 - Bei HTTP-POST-Befehlen kann ein HTTP-Body erforderlich sein. Dieser kann entweder in Form von einfachem Text oder als JSON-Objekt `<data>` vorliegen, der Content-Type-Header muss in beiden Fällen auf `application/json` gesetzt werden.
 - HTTPS mit selbstsignierten Zertifikaten wird noch nicht unterstützt
 - Für eine vollständige Liste der Befehle verwenden Sie `http://<hostname>/api/<device>/commands`
@@ -63,7 +69,7 @@ Zu beachtende Punkte:
 Der URL-Pfad lautet `http://<hostname>/api/<device>/`
 
 | `endpoint` | `HTTP method` | `action` | `authentication required?` | `post body` |
-| --------------- | ----------- | ------------------------------------------------------------------ | ------------------------ | --------- |
+| --------------- | ------------- | ------------------------------------------------------------------ | -------------------------- | ----------- |
 | `info` | `GET` | gibt aktuelle EMS-Geräteinformationen in ausführlicher Form aus | no | |
 | `values` | `GET` | gibt aktuelle EMS-Geräteinformationen im Kurzformat aus | nein | |
 | _(empty)_ | `GET` | wie bei `values` oben | nein | |
@@ -127,8 +133,8 @@ Der URL-Pfad lautet `http://<hostname>/api/analogsensor/`
 Der URL-Pfad lautet `http://<hostname>/api/system/<endpoint>`
 
 | Endpunkt | HTTP-Methode | Aktion | Authentifizierung erforderlich? | post body |
-| ------------------------ | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------ |
-| `info` oder leer | `GET` | gibt aktuelle Systeminformationen aus | nein | |
+| ------------------------ | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------- |
+| `info` `values`oder leer | `GET` | gibt aktuelle Systeminformationen aus | nein | |
 | `fetch` | `GET` | erzwingt die Aktualisierung aller Gerätewerte | nein | | |
 | `restart` | `GET` | startet EMS-ESP neu | ja | |
 | `format` | `GET` | EMS-ESP auf Werkseinstellungen zurücksetzen | ja | |
@@ -141,18 +147,21 @@ Der URL-Pfad lautet `http://<hostname>/api/system/<endpoint>`
 | `read` | `GET` | fragt ein bestimmtes EMS-Gerät und eine TypeID ab | ja | `<deviceID> <type ID> [offset] [length]` |
 | `response` | `GET` | gibt die letzte Antwort von EMS-ESP aus | nein | |
 | `entities` | `GET` | listet alle aktivierten Entitäten auf | nein | |
+| `sendmail` | `POST` | eine E-Mail senden | ja | `{"to":"<email>", "subject":"<subject>", "body":"<body>"}` |
+| `txpause` | `POST` | pause/resume die Übertragung des EMS-Busses | ja | `<bool>` |
+| `led` | `POST` | LED-Muster | ja | `[color]:[pattern]` |
 | `mqtt/enabled` | `GET` | enable/disable MQTT | ja | `<bool>` |
 | `ap/enabled` | `GET` | enable/disable Zugangspunkt | ja | `<bool>` |
+| `ntp/enabled` | `GET` | enable/disable NTP | ja | `<bool>` |
+| `syslog/enabled` | `GET` | enable/disable Syslog | ja | `<bool>` |
 | `settings/analogenabled` | `GET` | enable/disable analoger Sensor | ja | `<bool>` |
 | `settings/hideled` | `GET` | enable/disable LED | ja | `<bool>` |
 | `settings/showeralert` | `GET` | enable/disable shower alert | yes | `<bool>` |
 | `settings/showertimer` | `GET` | enable/disable shower timer | yes | `<bool>` |
-| `syslog/enabled` | `GET` | enable/disable syslog | ja | `<bool>` |
 
 ### Beispiele
 
-:::tip
-In diesen Beispielen ist die URL `http://ems-esp.local/api/`, aber passen Sie sie an Ihren tatsächlichen Hostnamen an. Ändern Sie auch das Zugriffstoken des Trägers in Ihr eigenes, wie im Abschnitt [Definitions](#definitionen) beschrieben.
+:::tip In diesen Beispielen ist die URL `http://ems-esp.local/api/`, aber passen Sie sie an Ihren tatsächlichen Hostnamen an. Ändern Sie auch das Zugriffstoken des Trägers in Ihr eigenes, wie im Abschnitt [Definitions](#definitionen) beschrieben.
 :::
 
 #### ...über die Befehlszeile
@@ -264,8 +273,7 @@ Und der folgende gefälschte Befehl wird nicht akzeptiert:\ Thema:`ems-esp/boile
 [mqtt] MQTT command failed with error no values in boiler (Error)
 ```
 
-:::note
-Sie können die MQTT-Befehle einfach mit [MQTT Explorer](https://www.mqtt-explorer.com) testen. Verbinden Sie sich einfach mit dem MQTT-Broker und veröffentlichen Sie die Nutzlast im Thema.
+:::note Sie können die MQTT-Befehle einfach mit [MQTT Explorer](https://www.mqtt-explorer.com) testen. Verbinden Sie sich einfach mit dem MQTT-Broker und veröffentlichen Sie die Nutzlast im Thema.
 :::
 
 Mit Home Assistant können Thermostatbefehle auch zur Steuerung einzelner Heizkreise gesendet werden, indem ein Modus-String oder eine Temperaturnummer an ein Thema `thermostat_hc<n>` gesendet wird.

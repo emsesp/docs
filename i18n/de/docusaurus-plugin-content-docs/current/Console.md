@@ -13,12 +13,10 @@ Sie können auch über einen seriellen USB-Anschluss mit einer Baudrate von 1152
 Die Konsole gibt Ihnen mehr Einblick in den EMS-Bus-Verkehr, die MQTT-Warteschlangen und die vollständigen Geräteinformationen, die erfasst werden. Sie verhält sich ähnlich wie eine Unix/Linux-Shell. Einige der am häufigsten verwendeten Befehle sind:
 
 - `help` oder `F1` listet die Befehle und Schlüsselwörter auf. Dies funktioniert in jedem Kontext.
-- `exit` beendet die Konsole oder beendet den aktuellen Kontext. `CTRL-D` tut dasselbe.
+- `exit` wird die Konsole verlassen. `CTRL-D` tut dasselbe.
 - `CTRL-U` für Rückgängig machen oder Löschen der Zeile.
 - `<TAB>` für die automatische Vervollständigung
-- `system`, um das Systemmenü aufzurufen. Verwenden Sie `exit` oder CTRL-D, um zurückzukehren.
-- `su` wechselt in den "Superuser" oder Admin-Modus. Das Standardpasswort ist `ems-esp-neo` und kann mit `passwd` aus dem Systemmenü oder über die Weboberfläche geändert werden (genannt geheimes Passwort). Im su-Modus wechselt die Eingabeaufforderung von `- `su` wechselt in den "Superuser" oder Admin-Modus. Das Standardpasswort ist `ems-esp-neo` und kann mit `passwd` aus dem Systemmenü oder über die Weboberfläche geändert werden (genannt geheimes Passwort). Im su-Modus wechselt die Eingabeaufforderung von  zu `#`.
-- Einige Einstellungen können in der Konsole geändert werden. Der Befehl `set` führt sie auf.
+- `su` wechselt in den "Superuser" oder Admin-Modus. Das Standardpasswort ist `ems-esp-neo` und kann mit `passwd` aus dem Systemmenü oder über die Weboberfläche (genannt geheimes Passwort) geändert werden. Im su-Modus wechselt die Eingabeaufforderung von `- `su` wechselt in den "Superuser" oder Admin-Modus. Das Standardpasswort ist `ems-esp-neo` und kann mit `passwd` aus dem Systemmenü oder über die Weboberfläche (genannt geheimes Passwort) geändert werden. Im su-Modus wechselt die Eingabeaufforderung von  zu `#`.
 - `show` oder `F2` zeigt die Daten an, die dem jeweiligen Kontext entsprechen, in dem Sie sich befinden. Im Stammverzeichnis werden alle EMS-Geräteinformationen und alle externen Dallas-Temperatursensoren angezeigt.
 - `show commands` oder `call` listet alle Befehle auf, die mit dem Befehl `call` aufgerufen werden können. Siehe [Commands](Commands).
 - `log` legt die Protokollierungsstufe fest. `log off` deaktiviert die Protokollierung. Verwenden Sie `log debug` für Debugging-Befehle und -Aktionen, `log all` umfasst die Telegramme wie `watch on`. Dies wird beim nächsten Öffnen der Konsole zurückgesetzt.
@@ -32,7 +30,7 @@ Die Eingabe von `help` führt die verfügbaren Befehle auf. Einige Administratio
 exit
 help
 log [level]
-show [system | users | devices | log | ems | values | mqtt | commands
+show [system | users | devices | log | ems | values | mqtt | commands]
 su
 passwd
 restart [partitionname]
@@ -44,8 +42,7 @@ set wifi ssid <name>
 set board_profile <name>
 set bus_id <deviceID>
 set tx_mode <n>
-set service <ap | mqtt | ntp> <enable | disable>
-scan [deep]
+scan
 read <deviceID> <type ID> [offset] [length]
 watch [off | on | raw | unknown] [ID]
 call [device] [cmd] [data] [id|hc]
