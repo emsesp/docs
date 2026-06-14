@@ -13,12 +13,10 @@ Je hebt ook toegang tot de console via een seriële USB-poort, met baud 115200. 
 De console geeft je meer inzicht in het EMS busverkeer, MQTT wachtrijen en de volledige apparaatinformatie die wordt vastgelegd. Het gedraagt zich als een Unix/Linux shell. Enkele van de meest voorkomende commando's zijn:
 
 - in `help` of `F1` staan de opdrachten en trefwoorden. Dit werkt in elke context.
-- `exit` sluit de console af of verlaat de huidige context. `CTRL-D` doet hetzelfde.
+- `exit` sluit de console af. `CTRL-D` doet hetzelfde.
 - `CTRL-U` voor Ongedaan maken of de regel wissen.
 - `<TAB>` voor automatisch aanvullen
-- `system` om het systeemmenu te openen. Gebruik `exit` of CTRL-D om terug te keren.
 - `su` schakelt over naar de "supergebruiker" of beheerdersmodus. Het standaard wachtwoord is `ems-esp-neo` en kan worden gewijzigd met `passwd` vanuit het systeemmenu of via de webinterface (geheim wachtwoord genoemd). In su-modus schakelt de opdrachtprompt van `- `su` schakelt over naar de "supergebruiker" of beheerdersmodus. Het standaard wachtwoord is `ems-esp-neo` en kan worden gewijzigd met `passwd` vanuit het systeemmenu of via de webinterface (geheim wachtwoord genoemd). In su-modus schakelt de opdrachtprompt van  naar `#`.
-- Sommige instellingen kunnen in de console worden gewijzigd. De opdracht `set` geeft ze weer.
 - `show` of `F2` toont de gegevens die specifiek zijn voor de context waarin je je bevindt. Vanuit de root worden alle EMS-apparaatgegevens en alle externe Dallas-temperatuursensoren getoond.
 - `show commands` of `call` geeft een lijst met alle opdrachten die kunnen worden aangeroepen met de opdracht `call`. Zie [Commands](Commands).
 - `log` stelt het logboekniveau in. `log off` schakelt het loggen uit. Gebruik `log debug` voor het debuggen van commando's en acties, `log all` bevat de telegrammen zoals `watch on`. Dit wordt de volgende keer dat de console wordt geopend gereset.
@@ -32,7 +30,7 @@ Als je `help` typt, worden de beschikbare opdrachten opgesomd. Sommige beheeropd
 exit
 help
 log [level]
-show [system | users | devices | log | ems | values | mqtt | commands
+show [system | users | devices | log | ems | values | mqtt | commands]
 su
 passwd
 restart [partitionname]
@@ -44,8 +42,7 @@ set wifi ssid <name>
 set board_profile <name>
 set bus_id <deviceID>
 set tx_mode <n>
-set service <ap | mqtt | ntp> <enable | disable>
-scan [deep]
+scan
 read <deviceID> <type ID> [offset] [length]
 watch [off | on | raw | unknown] [ID]
 call [device] [cmd] [data] [id|hc]
