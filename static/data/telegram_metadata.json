@@ -702,5 +702,15 @@
     "distribution" : "UNICAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-WRITE-REQUEST, UNICAST-ON-REQUEST",
     "notes" : "",
     "type" : "info"
+  },
+  "0x0467-0x046E" : {
+    "name" : "NSC RoomTemp Cooling Control Parameters HCn",
+    "usedIn" : "tbd",
+    "description" : "NSC RoomTemp Cooling Control Parameters HC1, HC2, ... HC8",
+    "class" : "Parameter",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }
