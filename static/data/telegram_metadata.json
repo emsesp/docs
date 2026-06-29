@@ -712,5 +712,15 @@
     "distribution" : "BROADCAST-ON-CHANGE, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
     "notes" : "",
     "type" : "info"
+  },
+  "0x047B-0x0482" : {
+    "name" : "NSC Measured Remote Dewpoint Temp and Relative Humidity for HCn",
+    "usedIn" : "tbd",
+    "description" : "NSC Measured Remote Dewpoint Temp and Relative Humidity for HC1, HC2, ... HC8",
+    "class" : "Control",
+    "emsCategory" : "EMS2.0",
+    "distribution" : "UNICAST-PERIODICALLY; distribution duration = 60s; timeout = 240s, UNICAST-ON-REQUEST, UNICAST-WRITE-REQUEST",
+    "notes" : "",
+    "type" : "info"
   }
 }

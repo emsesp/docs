@@ -1849,3 +1849,6 @@ Telegram_ID,Offset,Variable_Name,Min,Max,Resolution,Unit,Comment
 0x0467-0x046E,3,Cooling Room Temp Hysteresis,1,10,1,K,""
 0x0467-0x046E,4,Cooling Safety Margin,2,10,1,K,""
 0x0467-0x046E,5,Use Dew Point For Cooling Control,-1,0,1,bool,"YES = -1, NO = 0"
+0x047B-0x0482,0,Room temp sensor low resolution dew point value remote controller,0,255,1,°C,"INVALID = 255"
+0x047B-0x0482,1,Humidity sensor value for relative humidity,0,255,1,%,"INVALID = 255"
+0x047B-0x0482,2-3,High resolution dew point temp,0,65535,0.1,°C,"INVALID = 65535"
