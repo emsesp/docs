@@ -7,6 +7,36 @@ description: Complete changelog of EMS-ESP major version releases and feature up
 
 This lists the Change Log for only the rolled-up major versions since v3's primary release in March 2021. For a list of all releases and their fixes, changes and new features see the [latest dev Change Log](https://github.com/emsesp/EMS-ESP32/blob/dev/CHANGELOG_LATEST.md).
 
+## 3.8.3 - August 2 2026
+
+**Added**
+
+- KM300 at address 0x4A [#3084](https://github.com/emsesp/EMS-ESP32/issues/3084)
+
+**Fixed**
+
+- signed value for solarInfuence [#3077](https://github.com/emsesp/EMS-ESP32/issues/3077)
+- set bin file upload limit to 1M again [#3086](https://github.com/emsesp/EMS-ESP32/issues/3086)
+- check arithmetric operations on strings [#3127](https://github.com/emsesp/EMS-ESP32/discussions/3127)
+- prevent system crash during WiFi network discovery on ESP32-S3 hardware [#3128](https://github.com/emsesp/EMS-ESP32/pull/3128)
+- fix setting date/time on Junkers thermostats
+- offset of hpminflowtemp [#3144](https://github.com/emsesp/EMS-ESP32/issues/3144)
+- water circulation command [#3149](https://github.com/emsesp/EMS-ESP32/pull/3149)
+- start scheduler after customEntities, delay scheduler loop after startup, handling of `system/restart` command [#3146](https://github.com/emsesp/EMS-ESP32/issues/3146)
+- possible memory leaks fixed.
+- repeated startup schedules compute value
+- call `system/message` called from scheduler processes compute twice
+- water module SM100/200 as dhw1/dhw2 [#3164](https://github.com/emsesp/EMS-ESP32/issues/3164)
+
+**Changed**
+
+- call compute value direct, enlarge TCP stack [#3127](https://github.com/emsesp/EMS-ESP32/discussions/3127)
+- Dewtemperature for Easycontrol calculated by ems-esp [#3135](https://github.com/emsesp/EMS-ESP32/issues/3135)
+- add option for sync thermostat to ntp, allow different time zones [#3148](https://github.com/emsesp/EMS-ESP32/discussions/3148), **defaults to sync**.
+- block too many GET requests [mentioned in #3104](https://github.com/emsesp/EMS-ESP32/issues/3104)
+- set 10 sec timeout for http requests [#3104](https://github.com/emsesp/EMS-ESP32/issues/3104)
+- language code "cs" [#3161](https://github.com/emsesp/EMS-ESP32/issues/3161)
+
 ## 3.8.2 - May 12 2026
 
 **Added**
