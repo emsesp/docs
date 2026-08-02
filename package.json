@@ -18,7 +18,7 @@
     "translate-ui": "node scripts/translate-ui.js"
   },
   "dependencies": {
-    "@docsearch/core": "^4.6.3",
+    "@docsearch/core": "^4.7.0",
     "@docusaurus/core": "^3.10.2",
     "@docusaurus/faster": "^3.10.2",
     "@docusaurus/plugin-google-gtag": "^3.10.2",
@@ -31,8 +31,8 @@
     "clsx": "^2.1.1",
     "copy-text-to-clipboard": "^3.2.2",
     "prism-react-renderer": "^2.4.1",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.10.2",

@@ -5363,22 +5363,22 @@ uint8
 uint8
 | hc1.heatoffdelay | heat-off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 48 | 1 | 1 |
 uint8
-| hc1.instantstart | instant start | uint8 (&gt;=1&lt;=10) | K | true | HC | 49 | 1 | 1 |
-| hc1.boost | boost mode | boolean |   | true | HC | 50 | 1 | 1 |
+| hc1.coolondelay | cooling on delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 49 | 1 | 1 |
 uint8
-| hc1.boosttime | boost time | uint8 (&gt;=0&lt;=0) | hours | true | HC | 51 | 1 | 1 |
+| hc1.cooloffdelay | cooling off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 50 | 1 | 1 |
+uint8
+| hc1.instantstart | instant start | uint8 (&gt;=1&lt;=10) | K | true | HC | 51 | 1 | 1 |
 uint8
 | hc1.coolstart | cooling starttemp | uint8 (&gt;=20&lt;=35) | C | true | HC | 52 | 1 | 1 |
+| hc1.boost | boost mode | boolean |   | true | HC | 53 | 1 | 1 |
 uint8
-| hc1.coolondelay | cooling on delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 53 | 1 | 1 |
-uint8
-| hc1.cooloffdelay | cooling off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 54 | 1 | 1 |
+| hc1.boosttime | boost time | uint8 (&gt;=0&lt;=0) | hours | true | HC | 54 | 1 | 1 |
 | hc1.switchprogmode | switch program mode | enum |   | true | HC | 55 | 1 | 1 |
 int8
 | hc1.redthreshold | reduction threshold | int8 (&gt;=12&lt;=22) | C | true | HC | 56 | 1 | 1/2 |
-uint8
-| hc1.solarinfl | solar influence | uint8 (&gt;=-5&lt;=4294967295) | C | true | HC | 57 | 1 | 1 |
-| hc1.currsolarinfl | current solar influence | uint8 | C | false | HC | 58 | 1 | 1/10 |
+int8
+| hc1.solarinfl | solar influence | int8 (&gt;=-5&lt;=0) | C | true | HC | 57 | 1 | 1 |
+| hc1.currsolarinfl | current solar influence | int8 | C | false | HC | 58 | 1 | 1/10 |
 | hc1.heatingpid | heating PID | enum |   | true | HC | 59 | 1 | 1 |
 | hc1.pumpopt | pump optimization | boolean |   | true | HC | 60 | 1 | 1 |
 uint8
@@ -5972,22 +5972,22 @@ uint8
 uint8
 | hc1.heatoffdelay | heat-off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 48 | 1 | 1 |
 uint8
-| hc1.instantstart | instant start | uint8 (&gt;=1&lt;=10) | K | true | HC | 49 | 1 | 1 |
-| hc1.boost | boost mode | boolean |   | true | HC | 50 | 1 | 1 |
+| hc1.coolondelay | cooling on delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 49 | 1 | 1 |
 uint8
-| hc1.boosttime | boost time | uint8 (&gt;=0&lt;=0) | hours | true | HC | 51 | 1 | 1 |
+| hc1.cooloffdelay | cooling off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 50 | 1 | 1 |
+uint8
+| hc1.instantstart | instant start | uint8 (&gt;=1&lt;=10) | K | true | HC | 51 | 1 | 1 |
 uint8
 | hc1.coolstart | cooling starttemp | uint8 (&gt;=20&lt;=35) | C | true | HC | 52 | 1 | 1 |
+| hc1.boost | boost mode | boolean |   | true | HC | 53 | 1 | 1 |
 uint8
-| hc1.coolondelay | cooling on delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 53 | 1 | 1 |
-uint8
-| hc1.cooloffdelay | cooling off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 54 | 1 | 1 |
+| hc1.boosttime | boost time | uint8 (&gt;=0&lt;=0) | hours | true | HC | 54 | 1 | 1 |
 | hc1.switchprogmode | switch program mode | enum |   | true | HC | 55 | 1 | 1 |
 int8
 | hc1.redthreshold | reduction threshold | int8 (&gt;=12&lt;=22) | C | true | HC | 56 | 1 | 1/2 |
-uint8
-| hc1.solarinfl | solar influence | uint8 (&gt;=-5&lt;=4294967295) | C | true | HC | 57 | 1 | 1 |
-| hc1.currsolarinfl | current solar influence | uint8 | C | false | HC | 58 | 1 | 1/10 |
+int8
+| hc1.solarinfl | solar influence | int8 (&gt;=-5&lt;=0) | C | true | HC | 57 | 1 | 1 |
+| hc1.currsolarinfl | current solar influence | int8 | C | false | HC | 58 | 1 | 1/10 |
 | hc1.heatingpid | heating PID | enum |   | true | HC | 59 | 1 | 1 |
 | hc1.pumpopt | pump optimization | boolean |   | true | HC | 60 | 1 | 1 |
 uint8
@@ -6124,22 +6124,22 @@ uint8
 uint8
 | hc1.heatoffdelay | heat-off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 48 | 1 | 1 |
 uint8
-| hc1.instantstart | instant start | uint8 (&gt;=1&lt;=10) | K | true | HC | 49 | 1 | 1 |
-| hc1.boost | boost mode | boolean |   | true | HC | 50 | 1 | 1 |
+| hc1.coolondelay | cooling on delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 49 | 1 | 1 |
 uint8
-| hc1.boosttime | boost time | uint8 (&gt;=0&lt;=0) | hours | true | HC | 51 | 1 | 1 |
+| hc1.cooloffdelay | cooling off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 50 | 1 | 1 |
+uint8
+| hc1.instantstart | instant start | uint8 (&gt;=1&lt;=10) | K | true | HC | 51 | 1 | 1 |
 uint8
 | hc1.coolstart | cooling starttemp | uint8 (&gt;=20&lt;=35) | C | true | HC | 52 | 1 | 1 |
+| hc1.boost | boost mode | boolean |   | true | HC | 53 | 1 | 1 |
 uint8
-| hc1.coolondelay | cooling on delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 53 | 1 | 1 |
-uint8
-| hc1.cooloffdelay | cooling off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 54 | 1 | 1 |
+| hc1.boosttime | boost time | uint8 (&gt;=0&lt;=0) | hours | true | HC | 54 | 1 | 1 |
 | hc1.switchprogmode | switch program mode | enum |   | true | HC | 55 | 1 | 1 |
 int8
 | hc1.redthreshold | reduction threshold | int8 (&gt;=12&lt;=22) | C | true | HC | 56 | 1 | 1/2 |
-uint8
-| hc1.solarinfl | solar influence | uint8 (&gt;=-5&lt;=4294967295) | C | true | HC | 57 | 1 | 1 |
-| hc1.currsolarinfl | current solar influence | uint8 | C | false | HC | 58 | 1 | 1/10 |
+int8
+| hc1.solarinfl | solar influence | int8 (&gt;=-5&lt;=0) | C | true | HC | 57 | 1 | 1 |
+| hc1.currsolarinfl | current solar influence | int8 | C | false | HC | 58 | 1 | 1/10 |
 | hc1.heatingpid | heating PID | enum |   | true | HC | 59 | 1 | 1 |
 | hc1.pumpopt | pump optimization | boolean |   | true | HC | 60 | 1 | 1 |
 uint8
@@ -6291,22 +6291,22 @@ uint8
 uint8
 | hc1.heatoffdelay | heat-off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 48 | 1 | 1 |
 uint8
-| hc1.instantstart | instant start | uint8 (&gt;=1&lt;=10) | K | true | HC | 49 | 1 | 1 |
-| hc1.boost | boost mode | boolean |   | true | HC | 50 | 1 | 1 |
+| hc1.coolondelay | cooling on delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 49 | 1 | 1 |
 uint8
-| hc1.boosttime | boost time | uint8 (&gt;=0&lt;=0) | hours | true | HC | 51 | 1 | 1 |
+| hc1.cooloffdelay | cooling off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 50 | 1 | 1 |
+uint8
+| hc1.instantstart | instant start | uint8 (&gt;=1&lt;=10) | K | true | HC | 51 | 1 | 1 |
 uint8
 | hc1.coolstart | cooling starttemp | uint8 (&gt;=20&lt;=35) | C | true | HC | 52 | 1 | 1 |
+| hc1.boost | boost mode | boolean |   | true | HC | 53 | 1 | 1 |
 uint8
-| hc1.coolondelay | cooling on delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 53 | 1 | 1 |
-uint8
-| hc1.cooloffdelay | cooling off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 54 | 1 | 1 |
+| hc1.boosttime | boost time | uint8 (&gt;=0&lt;=0) | hours | true | HC | 54 | 1 | 1 |
 | hc1.switchprogmode | switch program mode | enum |   | true | HC | 55 | 1 | 1 |
 int8
 | hc1.redthreshold | reduction threshold | int8 (&gt;=12&lt;=22) | C | true | HC | 56 | 1 | 1/2 |
-uint8
-| hc1.solarinfl | solar influence | uint8 (&gt;=-5&lt;=4294967295) | C | true | HC | 57 | 1 | 1 |
-| hc1.currsolarinfl | current solar influence | uint8 | C | false | HC | 58 | 1 | 1/10 |
+int8
+| hc1.solarinfl | solar influence | int8 (&gt;=-5&lt;=0) | C | true | HC | 57 | 1 | 1 |
+| hc1.currsolarinfl | current solar influence | int8 | C | false | HC | 58 | 1 | 1/10 |
 | hc1.heatingpid | heating PID | enum |   | true | HC | 59 | 1 | 1 |
 | hc1.pumpopt | pump optimization | boolean |   | true | HC | 60 | 1 | 1 |
 uint8
@@ -6410,6 +6410,21 @@ int8
 int8
 | pvlowercool | lower cooling with PV | int8 (&gt;=-5&lt;=0) | K | true | DEVICE_DATA | 63 | 1 | 1 |
 | absent | absent | boolean |   | true | DEVICE_DATA | 64 | 1 | 1 |
+| hpoperatingmode | heatpump operating mode | enum |   | true | DEVICE_DATA | 89 | 1 | 1 |
+uint8
+| summertemp | summer temperature | uint8 (&gt;=10&lt;=30) | C | true | DEVICE_DATA | 90 | 1 | 1 |
+uint8
+| instantstart | instant start | uint8 (&gt;=1&lt;=10) | K | true | DEVICE_DATA | 91 | 1 | 1 |
+uint8
+| coolstart | cooling starttemp | uint8 (&gt;=20&lt;=35) | C | true | DEVICE_DATA | 92 | 1 | 1 |
+uint8
+| heatondelay | heat-on delay | uint8 (&gt;=1&lt;=48) | hours | true | DEVICE_DATA | 93 | 1 | 1/4 |
+uint8
+| heatoffdelay | heat-off delay | uint8 (&gt;=1&lt;=48) | hours | true | DEVICE_DATA | 94 | 1 | 1/4 |
+uint8
+| coolondelay | cooling on delay | uint8 (&gt;=1&lt;=48) | hours | true | DEVICE_DATA | 95 | 1 | 1/4 |
+uint8
+| cooloffdelay | cooling off delay | uint8 (&gt;=1&lt;=48) | hours | true | DEVICE_DATA | 96 | 1 | 1/4 |
 int16
 | hc1.seltemp | selected room temperature | int16 (&gt;=0&lt;=30) | C | true | HC | 0 | 1 | 1/2 |
 | hc1.currtemp | current room temperature | int16 | C | false | HC | 1 | 1 | 1/10 |
@@ -6480,27 +6495,15 @@ uint8
 | hc1.control | control device | enum |   | true | HC | 44 | 1 | 1 |
 | hc1.remotetemp | room temperature from remote | cmd | C | true | HC | 45 | 1 | 1/10 |
 | hc1.remotehum | room humidity from remote | cmd | % | true | HC | 46 | 1 | 1 |
+| hc1.boost | boost mode | boolean |   | true | HC | 53 | 1 | 1 |
 uint8
-| hc1.heatondelay | heat-on delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 47 | 1 | 1 |
-uint8
-| hc1.heatoffdelay | heat-off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 48 | 1 | 1 |
-uint8
-| hc1.instantstart | instant start | uint8 (&gt;=1&lt;=10) | K | true | HC | 49 | 1 | 1 |
-| hc1.boost | boost mode | boolean |   | true | HC | 50 | 1 | 1 |
-uint8
-| hc1.boosttime | boost time | uint8 (&gt;=0&lt;=0) | hours | true | HC | 51 | 1 | 1 |
-uint8
-| hc1.coolstart | cooling starttemp | uint8 (&gt;=20&lt;=35) | C | true | HC | 52 | 1 | 1 |
-uint8
-| hc1.coolondelay | cooling on delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 53 | 1 | 1 |
-uint8
-| hc1.cooloffdelay | cooling off delay | uint8 (&gt;=1&lt;=48) | hours | true | HC | 54 | 1 | 1 |
+| hc1.boosttime | boost time | uint8 (&gt;=0&lt;=0) | hours | true | HC | 54 | 1 | 1 |
 | hc1.switchprogmode | switch program mode | enum |   | true | HC | 55 | 1 | 1 |
 int8
 | hc1.redthreshold | reduction threshold | int8 (&gt;=12&lt;=22) | C | true | HC | 56 | 1 | 1/2 |
-uint8
-| hc1.solarinfl | solar influence | uint8 (&gt;=-5&lt;=4294967295) | C | true | HC | 57 | 1 | 1 |
-| hc1.currsolarinfl | current solar influence | uint8 | C | false | HC | 58 | 1 | 1/10 |
+int8
+| hc1.solarinfl | solar influence | int8 (&gt;=-5&lt;=0) | C | true | HC | 57 | 1 | 1 |
+| hc1.currsolarinfl | current solar influence | int8 | C | false | HC | 58 | 1 | 1/10 |
 | hc1.heatingpid | heating PID | enum |   | true | HC | 59 | 1 | 1 |
 | hc1.pumpopt | pump optimization | boolean |   | true | HC | 60 | 1 | 1 |
 uint8
@@ -8143,7 +8146,7 @@ uint8
 | datetime | date/time | string |   | false | DEVICE_DATA | 0 | 13 | 1 |
 | outdoortemp | outside temperature | int16 | C | false | DEVICE_DATA | 13 | 1 | 1/10 |
 | src1.currtemp | current room temperature | int16 | C | false | SRC | 0 | 1 | 1/10 |
-| src1.airhumidity | relative air humidity | int8 | % | false | SRC | 1 | 1 | 1 |
+| src1.airhumidity | relative air humidity | uint8 | % | false | SRC | 1 | 1 | 1 |
 | src1.dewtemperature | dew point temperature | int16 | C | false | SRC | 2 | 1 | 1/10 |
 uint8
 | src1.seltemp | selected room temperature | uint8 (&gt;=5&lt;=30) | C | true | SRC | 3 | 1 | 1/2 |
@@ -8353,70 +8356,40 @@ uint8
 | shortname | fullname | type | uom | writeable | tag type | register offset | register count | scale factor |
 |-|-|-|-|-|-|-|-|-|
 | dhw.temp | current temperature | uint16 | C | false | DHW | 1 | 1 | 1/10 |
-| dhw.storagetemp1 | storage intern temperature | uint16 | C | false | DHW | 16 | 1 | 1/10 |
-| dhw.coldtemp | cold water | uint16 | C | false | DHW | 17 | 1 | 1/10 |
-| dhw.temp5 | temperature 5 | uint16 | C | false | DHW | 18 | 1 | 1/10 |
-| dhw.rettemp | return temperature | uint16 | C | false | DHW | 19 | 1 | 1/10 |
+| dhw.tempstatus | temperature switch in assigned dhw (MC1) | int8 |   | false | DHW | 11 | 1 | 1 |
 | dhw.pump | pump | boolean |   | false | DHW | 4 | 1 | 1 |
 uint8
 | dhw.maxtemp | maximum temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 12 | 1 | 1 |
+int8
+| dhw.difftemp | start differential temperature | int8 (&gt;=0&lt;=0) | C | true | DHW | 13 | 1 | 1 |
 uint8
-| dhw.seltemp | selected temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 0 | 1 | 1 |
+| dhw.disinfectiontemp | disinfection temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 8 | 1 | 1 |
 uint8
 | dhw.redtemp | reduced temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 14 | 1 | 1 |
 uint8
-| dhw.hottemp | extra hot temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 20 | 1 | 1 |
-uint8
-| dhw.dailytemp | daily temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 21 | 1 | 1 |
-uint8
-| dhw.disinfectiontemp | disinfection temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 8 | 1 | 1 |
+| dhw.requiredtemp | required temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 15 | 1 | 1 |
 | dhw.circ | circulation active | boolean |   | true | DHW | 9 | 1 | 1 |
 | dhw.circmode | circulation pump mode | enum |   | true | DHW | 10 | 1 | 1 |
-| dhw.circtc | circulation time controlled | boolean |   | true | DHW | 22 | 1 | 1 |
-| dhw.keepwarm | keep warm | boolean |   | true | DHW | 23 | 1 | 1 |
-| dhw.status2 | status 2 | enum |   | false | DHW | 24 | 1 | 1 |
-| dhw.pumpmod | pump modulation | uint8 | % | false | DHW | 25 | 1 | 1 |
-| dhw.flow | flow rate | uint16 | l/min | false | DHW | 26 | 1 | 1/10 |
-uint8
-| dhw.valvereturn | return valve | uint8 (&gt;=0&lt;=0) | % | true | DHW | 27 | 1 | 1 |
-uint8
-| dhw.deltatret | temp. diff. return valve | uint8 (&gt;=0&lt;=0) | K | true | DHW | 28 | 1 | 1 |
-| dhw.errordisp | error display | enum |   | true | DHW | 29 | 1 | 1 |
 
 ### SM200, MS200
 
 | shortname | fullname | type | uom | writeable | tag type | register offset | register count | scale factor |
 |-|-|-|-|-|-|-|-|-|
 | dhw.temp | current temperature | uint16 | C | false | DHW | 1 | 1 | 1/10 |
-| dhw.storagetemp1 | storage intern temperature | uint16 | C | false | DHW | 16 | 1 | 1/10 |
-| dhw.coldtemp | cold water | uint16 | C | false | DHW | 17 | 1 | 1/10 |
-| dhw.temp5 | temperature 5 | uint16 | C | false | DHW | 18 | 1 | 1/10 |
-| dhw.rettemp | return temperature | uint16 | C | false | DHW | 19 | 1 | 1/10 |
+| dhw.tempstatus | temperature switch in assigned dhw (MC1) | int8 |   | false | DHW | 11 | 1 | 1 |
 | dhw.pump | pump | boolean |   | false | DHW | 4 | 1 | 1 |
 uint8
 | dhw.maxtemp | maximum temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 12 | 1 | 1 |
+int8
+| dhw.difftemp | start differential temperature | int8 (&gt;=0&lt;=0) | C | true | DHW | 13 | 1 | 1 |
 uint8
-| dhw.seltemp | selected temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 0 | 1 | 1 |
+| dhw.disinfectiontemp | disinfection temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 8 | 1 | 1 |
 uint8
 | dhw.redtemp | reduced temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 14 | 1 | 1 |
 uint8
-| dhw.hottemp | extra hot temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 20 | 1 | 1 |
-uint8
-| dhw.dailytemp | daily temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 21 | 1 | 1 |
-uint8
-| dhw.disinfectiontemp | disinfection temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 8 | 1 | 1 |
+| dhw.requiredtemp | required temperature | uint8 (&gt;=0&lt;=0) | C | true | DHW | 15 | 1 | 1 |
 | dhw.circ | circulation active | boolean |   | true | DHW | 9 | 1 | 1 |
 | dhw.circmode | circulation pump mode | enum |   | true | DHW | 10 | 1 | 1 |
-| dhw.circtc | circulation time controlled | boolean |   | true | DHW | 22 | 1 | 1 |
-| dhw.keepwarm | keep warm | boolean |   | true | DHW | 23 | 1 | 1 |
-| dhw.status2 | status 2 | enum |   | false | DHW | 24 | 1 | 1 |
-| dhw.pumpmod | pump modulation | uint8 | % | false | DHW | 25 | 1 | 1 |
-| dhw.flow | flow rate | uint16 | l/min | false | DHW | 26 | 1 | 1/10 |
-uint8
-| dhw.valvereturn | return valve | uint8 (&gt;=0&lt;=0) | % | true | DHW | 27 | 1 | 1 |
-uint8
-| dhw.deltatret | temp. diff. return valve | uint8 (&gt;=0&lt;=0) | K | true | DHW | 28 | 1 | 1 |
-| dhw.errordisp | error display | enum |   | true | DHW | 29 | 1 | 1 |
 
 ## Devices of type \_pool
 
