@@ -29,7 +29,7 @@ Het beste overzicht van bekende telegrammen is te vinden in [Norberts1](https://
 
 Voor verschillende brands/devices gebruikt Bosch soms verschillende uitdrukkingen voor dezelfde waarde. Misschien wisselen ze van ontwikkelaars, of willen ze reverse engineering juist bemoeilijken!
 
-Als je een instelling zoekt, log dan de telegrammen voor het apparaat (alles loggen of <device-id> in de gaten houden) en wijzig de instelling op de thermostaat naar een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je naar een meting zoekt, registreer dan het apparaat, bekijk de waarde op de thermostaat en wacht op wijzigingen; noteer de old/new-waarden en de tijd. Controleer vervolgens het logboek op dit tijdstempel (of 10 sec / 1 min later) en de waarde in een telegram. Voor de zekerheid kun je het beste meerdere changes/values-waarden noteren.
+Als je een instelling zoekt, log dan de telegrammen voor het apparaat (alles loggen of &lt;device-id&gt; in de gaten houden) en wijzig de instelling op de thermostaat naar een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je naar een meting zoekt, registreer dan het apparaat, bekijk de waarde op de thermostaat en wacht op wijzigingen; noteer de old/new-waarden en de tijd. Controleer vervolgens het logboek op dit tijdstempel (of 10 sec / 1 min later) en de waarde in een telegram. Voor de zekerheid kun je het beste meerdere changes/values-waarden noteren.
 
 ## Kan EMS-ESP een thermostaat simuleren?
 

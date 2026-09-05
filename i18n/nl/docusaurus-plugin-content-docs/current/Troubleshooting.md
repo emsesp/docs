@@ -114,7 +114,7 @@ Als je het telegram hebt gelokaliseerd, zoek dan de offset en gebruik de `Custom
 
 Merk op dat niet alle EMS-apparaten toestaan dat hun gegevens worden gepubliceerd op de EMS-bus, bijvoorbeeld de slimme thermostaten zoals de Nefit Easy en Buderus Easy Control CT200 die alleen de huidige kamer- en setpointtemperaturen verzenden als alleen-lezen attributen.
 
-Zie dit artikel over [Decoding EMS Telegrams](FAQ#wat-is-een-ems-telegram) voor meer informatie.
+Zie dit artikel over [Decoding EMS Telegrams](FAQ#wat-zijn-ems-telegrammen) voor meer informatie.
 
 ### Veel Rx-fouten
 

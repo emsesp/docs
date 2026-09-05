@@ -10,7 +10,7 @@ description: Common questions and answers about EMS-ESP including factory reset,
 
 Wenn Sie einen GPIO-Taster konfiguriert haben (der auf allen BBQKees-Boards standardmäßig aktiviert ist), wird durch 10 Sekunden langes Drücken und anschließendes Loslassen ein Werksreset durchgeführt. EMS-ESP startet anschließend im Access-Point-Modus neu.
 
-## Was sind EMS-Telegramme?
+## Was ist ein EMS Telegram?
 
 Verfasst von MichaelDvP in [this article](https://github.com/emsesp/EMS-ESP32/discussions/1612#discussioncomment-8408868):
 
@@ -35,7 +35,7 @@ Wenn Sie eine Einstellung suchen, protokollieren Sie die Telegramme für das Ger
 
 Zum Teil. Wie die Leute von [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) es treffend formuliert haben:
 
-:::Tipp[Warum einen Thermostat verwenden?]
+:::tip[Warum einen Thermostat verwenden?]
 
     - Die Thermostathersteller haben jahrelange Forschungsarbeit geleistet, um die Heizcharakteristika zu ermitteln, die eine möglichst effiziente und komfortable Beheizung eines Hauses ermöglichen.
     - Der Thermostat verfügt über eine Bedienoberfläche, mit der die Nutzer vertraut sind, sodass auch andere Haushaltsmitglieder den Sollwert weiterhin einstellen können.
