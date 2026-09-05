@@ -93,6 +93,15 @@ See [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/2025)
 
 That will not work. The Boiler works with `selflowtemp` as target and modulates the burner to hold the `flowtemp`. If `flowtemp` is higher than selected on min burn power, the boiler shut off, waits the min period and `flowtemp` is down to `selflowtemp` -   hysteresis and starts again. Raising the `burnminpower` will only result in more on/off cycles in mild conditions.
 
+## How to conserve energy of the ESP32 chip
+
+If you're concerned about the energy consumption of the ESP32 chip and need to reduce the heat consumption you can apply some of these settings:
+- `Underclock CPU speed` in the **Application Settings/Hardware section**
+- If you're using WiFi enable `WiFi Sleep Mode`, select `use lower WiFi bandwidth` and lower the transmit `Tx power` to around 8.5 dBm in the **Network Settings/WiFi section**
+- If you're using Ethernet enable `Force 10Mbit half-duplex` in the **Network Settings/Ethernet section**
+
+Note this will reduce the performance of the ESP32 chip and may cause stability issues.
+
 ## Upgrading the firmware
 
 When upgrading or downgrading between EMS-ESP versions, EMS-ESP will handle any migrations of the settings to maintain compatibility with the new version installed.

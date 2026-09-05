@@ -4,102 +4,116 @@ title: Frequently Asked Questions
 description: Common questions and answers about EMS-ESP including factory reset, EMS telegrams, and troubleshooting
 ---
 
-# FAQ
+# Veelgestelde vragen
 
-## Hoe reset ik de EMS-ESP in de fabriek?
+## Hoe zet je de EMS-ESP terug naar de fabrieksinstellingen?
 
-Als je een GPIO-knop hebt geconfigureerd (standaard ingeschakeld op alle BBQKees boards), voer je een fabrieksreset uit door deze 10 seconden ingedrukt te houden en los te laten. EMS-ESP zal opnieuw opstarten in Access Point-modus.
+Als je een GPIO-knop hebt geconfigureerd (standaard ingeschakeld op alle BBQKees-kaarten), kun je door deze knop 10 seconden ingedrukt te houden en vervolgens los te laten een fabrieksreset uitvoeren. EMS-ESP start dan opnieuw op in de Access Point-modus.
 
-## Wat is een EMS Telegram?
+## Wat zijn EMS-telegrammen?
 
 Geschreven door MichaelDvP in [this article](https://github.com/emsesp/EMS-ESP32/discussions/1612#discussioncomment-8408868):
 
-Het beste overzicht van bekende telegrammen is van [Norberts1](https://github.com/norberts1/hometop_HT3/blob/master/HT3/docu/HT_EMS_Bus_messages.pdf) en de [EMS-Wiki](https://emswiki.thefischer.net/doku.php). In het algemeen kunnen we zeggen:
+Het beste overzicht van bekende telegrammen is te vinden in [Norberts1](https://github.com/norberts1/hometop_HT3/blob/master/HT3/docu/HT_EMS_Bus_messages.pdf) en [EMS-Wiki](https://emswiki.thefischer.net/doku.php). In het algemeen kunnen we zeggen:
 
-- meetwaarden worden periodiek uitgezonden 10 sec / 1 min
-- instellingen worden alleen uitgezonden na een wijziging
-- het wijzigen van een instelling van een apparaat via de UI van thermostaat resulteert in een bericht thermostaat -w-> apparaat met alleen deze waarde
-- sommige apparaten zenden snel veranderende waarden uit als enkele waarden
-- gemeten temperaturen zijn normaal 2 bytes (SHORT) met factor 0,1 (bijv. 01 23 -> 0x0123 -> dez 291 -> 29,1°C)
-- luchttemperatuurinstellingen zijn vaak factor 0,5 als enkele byte (INT) (bijv. 0x2D -> dez 45 -> 22,5°C)
-- watertemperatuurinstellingen zijn meestal enkele bytes (UINT) (bijv. 0x3C -> 60°C), differentiële waarden (hysteresis in Kelvin) zijn getekend (INT)
-- procentuele instellingen zijn enkele bytes (UINT) (0x64 -> 100%)
-- on/off toestanden of instellingen kunnen een enkele byte zijn met on/off 0xFF/0x00, of 0x01/0x00 of een enkele bit in een byte samen met 7 andere toestanden
-- tijden en energie is meestal 3 of 4 bytes met of zonder factor
+- de meetwaarden worden periodiek uitgezonden (om de 10 seconden / om de 1 minuut)
+- instellingen worden pas verzonden nadat er een wijziging is aangebracht
+- als je een instelling van een apparaat wijzigt via de gebruikersinterface van de thermostaat, verschijnt er een bericht van de thermostaat naar het apparaat met alleen deze waarde
+- sommige apparaten verzenden snel veranderende waarden als afzonderlijke waarden
+- gemeten temperaturen zijn doorgaans 2 bytes (SHORT) met een factor 0,1 (bijv. 01 23 -> 0x0123 -> dez 291 -> 29,1 °C)
+- instellingen voor de luchttemperatuur worden vaak weergegeven als een factor 0,5 in de vorm van een enkele byte (INT) (bijv. 0x2D -> dez 45 -> 22,5 °C)
+- De instellingen voor de watertemperatuur zijn doorgaans van één byte (UINT) (bijv. 0x3C -> 60 °C), terwijl de differentiaalwaarden (hysterese in Kelvin) met teken worden weergegeven (INT)
+- de procentuele instellingen bestaan uit één byte (UINT) (0x64 -> 100%)
+- on/off-toestanden of -instellingen kunnen bestaan uit één byte met on/off, 0xFF/0x00 of 0x01/0x00, of uit één bit in een byte in combinatie met 7 andere toestanden
+- de tijd en energie bedragen doorgaans 3 of 4 bytes, met of zonder factor
 
-Voor verschillende brands/devices gebruikt Bosch soms verschillende uitdrukkingen voor dezelfde waarde. Misschien wisselen ontwikkelaars of willen ze reverse engineering moeilijk maken!
+Voor verschillende brands/devices gebruikt Bosch soms verschillende uitdrukkingen voor dezelfde waarde. Misschien wisselen ze van ontwikkelaars, of willen ze reverse engineering juist bemoeilijken!
 
-Als je een instelling zoekt, log dan de telegrammen voor het apparaat (log all of kijk naar &lt;device-id&gt;) en verander de instelling op de thermostaat in een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je een meting zoekt, log het apparaat en bekijk de waarde op de thermostaat en wacht op veranderingen, noteer old/new waarden en tijd. Controleer vervolgens het log voor deze tijdstempel (of 10 sec / 1 min later) en de waarde binnen een telegram. Het beste is om meer changes/values te hebben om zeker te zijn.
+Als je een instelling zoekt, log dan de telegrammen voor het apparaat (alles loggen of <device-id> in de gaten houden) en wijzig de instelling op de thermostaat naar een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je naar een meting zoekt, registreer dan het apparaat, bekijk de waarde op de thermostaat en wacht op wijzigingen; noteer de old/new-waarden en de tijd. Controleer vervolgens het logboek op dit tijdstempel (of 10 sec / 1 min later) en de waarde in een telegram. Voor de zekerheid kun je het beste meerdere changes/values-waarden noteren.
 
 ## Kan EMS-ESP een thermostaat simuleren?
 
-Gedeeltelijk. Zoals de mensen van [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) het mooi zeggen:
+Gedeeltelijk. Zoals de mensen van [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) het zo treffend verwoordden:
 
 :::tip[Waarom een thermostaat gebruiken?]
 
-    - De fabrikanten van thermostaten hebben jarenlang onderzoek gedaan naar de verwarmingskenmerken voor de meest efficiënte en comfortabele manier om een huis te verwarmen.
-    - De thermostaat biedt een bedieningsinterface waarmee mensen vertrouwd zijn, zodat andere leden van het huishouden nog steeds de instelwaarde kunnen aanpassen.
-    - Het biedt een handige behuizing voor de kamertemperatuursensor, die nodig is tenzij je een verwarmingscurve gebruikt die alleen gebaseerd is op de buitentemperatuur.
+    - De fabrikanten van thermostaten hebben jarenlang onderzoek gedaan om de verwarmingskenmerken te bepalen die zorgen voor de meest efficiënte en comfortabele manier om een huis te verwarmen.
+    - De thermostaat heeft een bedieningsinterface waarmee mensen vertrouwd zijn, zodat andere leden van het huishouden het instelpunt nog steeds kunnen aanpassen.
+    - Het biedt een handige behuizing voor de kamertemperatuursensor, die nodig is tenzij je een verwarmingscurve gebruikt die uitsluitend op de buitentemperatuur is gebaseerd.
 
 :::
 
-Zoals **MichaelDvP** aangeeft _"is een thermostaat een slim elektronisch apparaat. Je kunt de gewenste kamertemperatuur invoeren en de thermostaat berekent aan de hand van een aantal parameters en metingen de benodigde flowtemp voor deze kamertemperatuur en stuurt deze naar de ketel. Dit gebeurt in een regelkring en wordt vaak bijgewerkt."_
+Zoals **MichaelDvP** opmerkt: _"Een thermostaat is een slim elektronisch apparaat. Je kunt de gewenste kamertemperatuur instellen, waarna het apparaat op basis van bepaalde parameters en metingen de benodigde aanvoertemperatuur voor die kamertemperatuur berekent en deze naar de ketel doorgeeft. Dit gebeurt in een regelkring en wordt regelmatig bijgewerkt."_
 
-En **mtc716** zei _"Een thermostaat maakt een warmtecurve die constant wordt aangepast aan de omgevingstemperaturen en die wordt gebruikt om in te schatten welke watertemperatuur nodig is om de kamertemperatuur omhoog te brengen. Er zijn enkele goede artikelen op het net te vinden over hoe je de warmtecurve correct instelt. De belangrijkste parameters die je nodig hebt zijn de "ontwerptemp", dat is de temperatuur van het verwarmingswater bij een minimale buitentemperatuur. Verder heb je de "comforttemp" nodig zoals eerder uitgelegd en de "temp-offset" die een parallelle verschuiving in de verwarmingscurve veroorzaakt."_
+En **mtc716** zei: _"Een thermostaat stelt een verwarmingscurve op die voortdurend wordt aangepast aan de buitentemperatuur en die wordt gebruikt om te bepalen welke watertemperatuur nodig is om de kamertemperatuur te verhogen. Er zijn op internet een aantal goede artikelen te vinden over hoe je de verwarmingscurve correct instelt. De belangrijkste parameters die je nodig hebt, zijn de ‘ontwerptemperatuur’, dat is de temperatuur van het verwarmingswater bij de laagste buitentemperatuur. Verder heb je de ‘comforttemperatuur’ nodig, zoals eerder uitgelegd, en de ‘temperatuurofset’, die zorgt voor een parallelle verschuiving in de verwarmingscurve.”_
 
-Bovendien, zoals **MichaelDvP** zegt "Als je een softwaregestuurde thermostaat wilt bouwen, kun je verschillende methoden gebruiken:"
+Bovendien zegt **MichaelDvP**: "Als je een softwaregestuurde thermostaat wilt bouwen, kun je verschillende methoden gebruiken:"
 
-- gecontroleerde buitentemperatuur: definieer een verwarmingscurve voor je gebouw. Dit is een lineaire interpolatie tussen een minimale buitentemperatuur voor jouw regio (typisch 11°C voor midden-Europa) met maximale flowtemp (designtemp ~76°C voor radiatoren, 40°C voor vloer) en het werkelijke setpoint voor de ruimte (bijv. 21°C) voor buiten en flowtemp. Je kunt een offset toevoegen. selfflowtemp = offset + setpoint + (designtemp- setpoint) * (setpoint - outdoortemp) / (setpoint - minoutdoor)
-- kamergestuurd, geschakeld: meet de kamertemperatuur en schakel de ketel met verwarming uit voor kamertemperatuur > setpoint. Voeg een hysteresis toe om veel schakelen te voorkomen
-- ruimtegestuurd, dynamisch Hier moet je een PID-regeling berekenen. Een beetje buiten het bereik van de ems-esp planner. Maar misschien wel mogelijk. Bij HA kun je kijken naar Een slimme thermostaat implementeren (met SAT). Zie [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
-- geregeld door slimme TRV's: Als je de opening van de TRV's kunt aflezen, maak dan een eenvoudige I-regeling. Als een TRV volledig open is: verhoog de flowtemp, als de meest open TRV onder 90% opening is: verlaag de flowtemp. Opwarmen is een langzaam proces, dus increase/decrease voorzichtig.
+- op basis van de buitentemperatuur:
+  stel een verwarmingscurve in voor uw gebouw. Dit is een lineaire interpolatie tussen een minimale buitentemperatuur voor uw regio (doorgaans -11 °C voor Midden-Europa) en de maximale aanvoertemperatuur (ontwerptemperatuur ~76 °C voor radiatoren, 40 °C voor vloerverwarming) en de actuele kamerstelwaarde (bijv. 21 °C) voor de buitentemperatuur en de aanvoertemperatuur. U kunt een offset toevoegen.
+  selflowtemp = offset + instelwaarde + (ontwerptemperatuur - instelwaarde) * (instelwaarde - buitentemperatuur) / (instelwaarde - minimale buitentemperatuur)
+- kamerregeling, schakelregeling:
+  meet de kamertemperatuur en schakel de ketel in, waarbij ‘verwarming uit’ wordt geactiveerd als de kamertemperatuur hoger is dan de instelwaarde. Voeg een hysterese toe om te veel schakelen te voorkomen
+- kamergestuurd, dynamisch
+  Hiervoor moet je een PID-regeling berekenen. Dat valt een beetje buiten het toepassingsgebied van de ems-esp-scheduler. Maar misschien is het wel mogelijk. Op HA kun je het artikel ‘Een slimme thermostaat implementeren (met SAT)’ raadplegen. Zie [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
+- aangestuurd door slimme thermostaatventielen (TRV’s):
+  Als u de openingsgraad van de thermostaatkranen kunt aflezen, maak dan een eenvoudige I-regeling. Als een thermostaatkraan volledig openstaat: verhoog de aanvoertemperatuur; als de meest geopende thermostaatkraan minder dan 90% openstaat: verlaag de aanvoertemperatuur. Verwarmen is een langzaam proces, dus increase/decrease zorgvuldig.
 
-Lees meer over deze discussies:
+Lees voor meer informatie ook eens deze discussies:
 
 - [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/discussions/965)
 - [Thermostat emulation](https://github.com/emsesp/EMS-ESP32/issues/151)
 - [Changing the boiler heating directly](tips-and-tricks#de-verwarming-van-de-ketel-regelen)
 - [Implementing a smart thermostat (using SAT)](https://github.com/emsesp/EMS-ESP32/issues/2103)
 
-## Wat zijn busprotocollen en Tx-modi?
+## Wat zijn busprotocollen en verzendmodi?
 
-Protocol en timing zijn verschillende dingen, je kiest de tx-modus die het beste werkt.
+Protocol en timing zijn twee verschillende zaken; je kiest de zendmodus die het beste werkt.
 
-HT3 is de elektronica van Junkers en het HT3-protocol is hetzelfde als EMS, alleen is in het eerste byte (verzender) het hoogste bit ingesteld. Elk telegram dat we versturen begint met 0B in een Buderus-systeem, maar met 8B in Junkers. Dit maakt de apparaten van de verschillende merken incompatibel. EMS-ESP controleert de bus bij het starten en selecteert automatisch het juiste protocol. Ook Junkers gebruikt een ander telegram numbers/orders. Bosch gelabelde modules gebruiken dezelfde telegramnummers als Buderus, maar een andere adressering dan Junkers, dus ook niet compatibel. Je kunt geen Junkers- of Buderus-modules aansluiten op een Bosch-verwarmingssysteem.
+HT3 is de elektronica van Junkers en het HT3-protocol is hetzelfde als dat van EMS, alleen is in de eerste byte (afzender) het hoogste bit ingesteld. Elk telegram dat we verzenden, begint in een Buderus-systeem met 0B, maar bij Junkers met 8B. Hierdoor zijn de apparaten van de verschillende merken niet compatibel. EMS-ESP controleert de bus bij het opstarten en selecteert automatisch het juiste protocol. Ook gebruikt Junkers een ander telegram numbers/orders. Modules van het merk Bosch gebruiken dezelfde telegramnummers als Buderus, maar adresseren net als Junkers, waardoor ze eveneens incompatibel zijn. U kunt geen Junkers- of Buderus-modules aansluiten op een Bosch-verwarmingssysteem.
 
-Tx-mode is de verzendtijd: De client-apparaten verzenden via stroommodulatie, de master via spanningsmodulatie. Dit maakt full duplex (hardwaremodus) mogelijk, maar afhankelijk van de lijnimpedantie beïnvloedt de stroomopname ook de spanning. Tijdens het verzenden herhaalt de master elke byte die door het apparaat is verzonden om deze naar de andere apparaten te publiceren. Met een Tx-modus van "EMS" wachten we op de master-byte voordat we de volgende verzenden. De oudere Junkers lijken een lagere time-out te hebben, dus we moeten de volgende byte starten voordat de master-echo is voltooid ("HT3"). "EMS+" is minder kritisch en we kunnen iets langer dan één byte wachten om de spanning te stabiliseren na het verzenden.
+De Tx-modus bepaalt de verzendtiming: de client-apparaten verzenden via stroommodulatie, de master via spanningsmodulatie. Dit maakt full-duplex mogelijk (hardwaremodus), maar afhankelijk van de lijnimpedantie beïnvloedt de stroomopname ook de spanning. Tijdens het verzenden herhaalt de master elke byte die door het apparaat wordt verzonden, om deze naar de andere apparaten door te geven. Bij een Tx-modus van "EMS" wachten we op de master-byte voordat we de volgende verzenden. De oudere Junkers-modellen lijken een kortere time-out te hebben, dus moeten we met de volgende byte beginnen voordat de echo van de master is voltooid („HT3“). „EMS+“ is minder kritisch en we kunnen iets langer dan één byte wachten, zodat de spanning na het verzenden kan stabiliseren.
 
-## Kun je meerdere instanties van EMS-ESP draaien?
+## Kun je meerdere exemplaren van EMS-ESP draaien?
 
 Ja, dat kan. Houd rekening met de volgende instellingen:
 
-- (Instellingen->MQTT Instellingen) MQTT `Entity ID format` is ingesteld op "Meerdere instanties, korte naam"
-- (Instellingen->MQTT Instellingen) MQTT `Client ID` moet uniek zijn om conflicten in de MQTT broker te voorkomen
-- (Instellingen->MQTT Instellingen) MQTT `Base` is uniek (wees er zeker van). Stel dit meestal in op de hostnaam.
+- (Instellingen->MQTT-instellingen) MQTT `Entity ID format` is ingesteld op "Meerdere instanties, korte naam"
+- (Instellingen->MQTT-instellingen) MQTT `Client ID` moet uniek zijn om conflicten met de MQTT-broker te voorkomen
+- (Instellingen->MQTT-instellingen) MQTT `Base` is uniek (zorg daar maar voor). Stel dit meestal in op de hostnaam.
 - (Instellingen->Netwerkinstellingen) `Hostname` is uniek, om netwerkconflicten te voorkomen
-- (Instellingen->Toepassingsinstellingen) `EMS BUS ID` zijn verschillend (niet beide 0x0B)
+- (Instellingen -> Toepassingsinstellingen) `EMS BUS ID` zijn verschillend (niet beide 0x0B)
 
-## Waarom hebben EMS-telegrammen in de modus `raw watch` een hoger type 0x100 dan in de modus `raw`?
+## Waarom hebben EMS-telegrammen in de `raw watch`-modus een type 0x100 dat hoger is dan in de `raw`-modus?
 
 Zie [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/2025)
 
-## Moet ik het minBurnPower verhogen naar 10-20% in koude winters, zodat er altijd een thermische basisvoorraad is?
+## Moet ik de minBurnPower in koude winters verhogen tot tussen de 10 en 20%, zodat er altijd een minimale warmtetoevoer is?
 
 (antwoord van [MichaelDvP](https://github.com/MichaelDvP))
 
-Dat werkt niet. De ketel werkt met `selflowtemp` als doel en moduleert de brander om de `flowtemp` vast te houden. Als `flowtemp` hoger is dan het geselecteerde min. brandvermogen, schakelt de ketel uit, wacht de min. periode en `flowtemp` is gedaald tot `selflowtemp` - hysterese en begint opnieuw. Het verhogen van `burnminpower` zal alleen resulteren in meer on/off cycli in milde omstandigheden.
+Dat gaat niet werken. De ketel werkt met `selflowtemp` als streefwaarde en regelt de brander zo dat de `flowtemp` wordt gehandhaafd. Als `flowtemp` hoger is dan de geselecteerde minimale verbrandingscapaciteit, schakelt de ketel uit, wacht de minimale periode af en als `flowtemp` is gedaald tot `selflowtemp` –  hysterese – en start hij opnieuw. Het verhogen van de `burnminpower` zal bij milde omstandigheden alleen maar leiden tot meer on/off-cycli.
 
-## De firmware upgraden
+## Hoe je energie kunt besparen met de ESP32-chip
 
-Bij het upgraden of downgraden tussen EMS-ESP-versies, zal EMS-ESP eventuele migraties van de instellingen afhandelen om compatibiliteit te behouden met de nieuwe geïnstalleerde versie.
+Als je je zorgen maakt over het energieverbruik van de ESP32-chip en de warmteontwikkeling wilt verminderen, kun je enkele van deze instellingen toepassen:
+- `Underclock CPU speed` in de **sectie Application Settings/Hardware**
+- Als je wifi gebruikt, schakel dan `WiFi Sleep Mode` in, selecteer `use lower WiFi bandwidth` en verlaag het zendvermogen `Tx power` tot ongeveer 8,5 dBm in het **gedeelte Netwerk Settings/WiFi**
+- Als je Ethernet gebruikt, schakel dan `Force 10Mbit half-duplex` in de **sectie Netwerk Settings/Ethernet** in
 
-Lees altijd de [ChangeLog](Version-Release-History.md) voor de release-opmerkingen en opmerkingen over eventuele wijzigingen voordat u een upgrade uitvoert.
+Let op: dit zal de prestaties van de ESP32-chip verminderen en kan stabiliteitsproblemen veroorzaken.
+
+## De firmware bijwerken
+
+Bij het upgraden of downgraden tussen verschillende versies van EMS-ESP zorgt EMS-ESP ervoor dat de instellingen worden gemigreerd, zodat de compatibiliteit met de nieuw geïnstalleerde versie gewaarborgd blijft.
+
+Lees vóór het upgraden altijd de [ChangeLog](Version-Release-History.md) voor de release-opmerkingen en informatie over eventuele ingrijpende wijzigingen.
 
 :::warning
-### Migreren naar v3.9
+### Overstappen naar versie 3.9
 :::
 
-In versie 3.9 van de EMS-ESP-firmware hebben we de ESP32-kern geoptimaliseerd en een efficiënter bestandssysteem gebruikt. Dit betekent helaas dat u de instellingen handmatig moet uploaden nadat de installatie is voltooid. Het is belangrijk dat je eerst een back-up van je instellingen en aanpassingen downloadt voordat je de upgrade start. Dit kan worden gedaan vanaf de pagina Download/Upload in de WebUI en er wordt een voor mensen leesbaar JSON-bestand aangemaakt.
+In versie 3.9 van de EMS-ESP-firmware hebben we de ESP32-kern geoptimaliseerd en een efficiënter bestandssysteem geïmplementeerd. Dit betekent helaas dat u de instellingen na voltooiing van de installatie handmatig moet uploaden. Het is belangrijk dat u eerst een back-up van uw instellingen en aanpassingen downloadt voordat u de upgrade start. Dit kun je doen via de pagina Download/Upload in de WebUI, waarna er één voor mensen leesbaar JSON-bestand wordt aangemaakt. 
 
-Wanneer EMS-ESP opstart zal het worden gereset naar de standaard fabrieksinstellingen en je moet dan handmatig je opgeslagen instellingen uploaden door het back-up JSON bestand te selecteren dat je zojuist hebt gemaakt en te uploaden op de Download/Upload pagina. Als je WiFi gebruikt, maak dan verbinding met het EMS-ESP Access Point en open een browser naar http://192.168.4.1.
+Wanneer de EMS-ESP opstart, wordt deze teruggezet naar de standaard fabrieksinstellingen. U moet dan uw opgeslagen instellingen handmatig uploaden door het zojuist aangemaakte JSON-back-upbestand te selecteren en dit te uploaden op de pagina Download/Upload. Als u wifi gebruikt, maak dan verbinding met het EMS-ESP-toegangspunt en open een browser naar http://192.168.4.1.
 
