@@ -9,7 +9,7 @@ description: Common questions and answers about EMS-ESP including factory reset,
 
 If you have a GPIO Button configured (enabled by default on all BBQKees boards) pressing this for 10 seconds and releasing will perform a factory reset. EMS-ESP will restart in Access Point mode.
 
-## What is an EMS Telegrams?
+## What is an EMS Telegram?
 
 Written by MichaelDvP in [this article](https://github.com/emsesp/EMS-ESP32/discussions/1612#discussioncomment-8408868):
 

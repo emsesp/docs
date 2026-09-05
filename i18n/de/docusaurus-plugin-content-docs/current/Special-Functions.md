@@ -52,7 +52,7 @@ Um die Funktion zu beenden, gehen Sie wie folgt vor:
 
 Der Fernthermostat bleibt im Dashboard des EMS-ESP-Geräts erhalten, weist jedoch keine Entitäten auf.
 
-:::Tipp[Anmerkungen]
+:::tip[Anmerkungen]
 
 - Wenn der Regler auf `roomthermostat` eingestellt ist und der erste Temperaturwert für `remotetemp` nicht innerhalb einer Minute gesendet wird, zeigt der Hauptthermostat wahrscheinlich eine Fehlermeldung an.
 - Die Fernbedienungsfunktion des Thermostats funktioniert nur, wenn ein Hauptthermostat vorhanden ist, das die Fernbedienung unterstützt, und keine anderen Fernbedienungen für diesen Heizkreis aktiv sind.
@@ -60,7 +60,7 @@ Der Fernthermostat bleibt im Dashboard des EMS-ESP-Geräts erhalten, weist jedoc
 - Außerdem können Sie nicht zwei physische Fernbedienungen an einen Heizkreis anschließen.
   :::
 
-:::Warnung[Haftungsausschluss]
+:::warning[Haftungsausschluss]
 Durch die Fernsteuerung der Luftfeuchtigkeit können Sie eine Wärmepumpe so einstellen, dass sie auch dann mit dem Kühlen beginnt, wenn die Luftfeuchtigkeit unter dem tatsächlichen Taupunkt liegt. Dies kann zu Kondenswasserbildung an Rohrleitungen und auf dem Boden führen und in der Folge das System beschädigen. Die Nutzung erfolgt auf eigene Gefahr!
 :::
 

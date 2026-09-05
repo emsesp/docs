@@ -113,7 +113,7 @@ When you have located the telegram, find the offset and use the `Custom Entities
 
 Note that not all EMS devices allow their data to be published on the EMS bus, for example the smart thermostats like the Nefit Easy and Buderus Easy Control CT200 which only transmits the current room and setpoint temperatures as read-only attributes.
 
-See this article on [Decoding EMS Telegrams](FAQ#what-is-an-ems-telegrams) for more information.
+See this article on [Decoding EMS Telegrams](FAQ#what-is-an-ems-telegram) for more information.
 
 ### Many Rx errors
 

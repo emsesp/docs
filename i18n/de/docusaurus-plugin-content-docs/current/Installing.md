@@ -14,7 +14,7 @@ Es gibt eine Reihe von Möglichkeiten, die Firmware auf Ihrem ESP32-Gerät zu in
 - Verwendung des [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). Dies ist eine native Anwendung für Windows, MacOS und Linux. Ihr ESP32-Gerät muss über den USB- oder seriellen Anschluss mit Ihrem Computer verbunden sein. Diese Methode ist nützlich, wenn Sie eine saubere Installation durchführen und alle Konfigurationseinstellungen zurücksetzen möchten.
 - Mit dem [EMS-ESP Web Installer](https://install.emsesp.org/), einer Online-Installationsunterstützung, die den Anschluss des EMS-ESP-Geräts über den USB/Serial-Port erfordert.
 - Mit dem [EMS-ESP Flasher CLI](https://github.com/emsesp/EMS-ESP-Flasher-CLI/blob/main/README.md), einem Befehlszeilentool für Windows, MacOS und Linux. Dieses Tool ist selbsterklärend und die flexibelste Methode, um jede Version der stabilen oder Entwicklungs-Firmware-Releases herunterzuladen.
-- Flashen Sie die Firmware manuell mit Hilfe des unten stehenden [guide](#manual-flashing).
+- Flashen Sie die Firmware manuell mit Hilfe des unten stehenden.
 - Erfahrene Entwickler können die Firmware aus dem Quellcode erstellen und direkt hochladen, indem sie die Anleitung unter [Building](Building.md) befolgen.
 
 ## Auswahl der richtigen Firmware-Version

@@ -114,7 +114,7 @@ Wenn Sie das Telegramm gefunden haben, suchen Sie den Offset und verwenden Sie d
 
 Beachten Sie, dass nicht alle EMS-Geräte die Veröffentlichung ihrer Daten auf dem EMS-Bus zulassen, z. B. die intelligenten Thermostate wie Nefit Easy und Buderus Easy Control CT200, die nur die aktuelle Raum- und Solltemperatur als schreibgeschützte Attribute übermitteln.
 
-Weitere Informationen finden Sie in diesem Artikel über [Decoding EMS Telegrams](FAQ#was-ist-ein-ems-telegramm).
+Weitere Informationen finden Sie in diesem Artikel über [Decoding EMS Telegrams](FAQ#was-ist-ein-ems-telegram).
 
 ### Viele Rx-Fehler
 

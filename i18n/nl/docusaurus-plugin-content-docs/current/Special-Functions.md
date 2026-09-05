@@ -60,7 +60,7 @@ De thermostaat op afstand blijft zichtbaar in het dashboard van het EMS-ESP-appa
 - Je kunt ook niet twee fysieke afstandsbedieningen aansluiten op één verwarmingscircuit.
   :::
 
-:::waarschuwing[Disclaimer]
+:::warning[Disclaimer]
 Door de luchtvochtigheid op afstand in te stellen, kun je een warmtepomp zo instellen dat deze begint te koelen, zelfs als de temperatuur onder het werkelijke dauwpunt ligt. Dit kan condensvorming op leidingen en de vloer veroorzaken, met schade aan het systeem tot gevolg. Gebruik op eigen risico!
 :::
 

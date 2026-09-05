@@ -14,7 +14,7 @@ There are a number of ways to install and update the firmware on your ESP32 devi
 - Using the [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). This is a native application for Windows, MacOS and Linux. Your ESP32 device needs to be psychically connected to your computer via the USB or Serial port. This method is useful if you want a clean install and reset all the configuration settings.
 - Using the [EMS-ESP Web Installer](https://install.emsesp.org/) which is an online installer supporting that requires the EMS-ESP device to be connected via the USB/Serial port.
 - Using the [EMS-ESP Flasher CLI](https://github.com/emsesp/EMS-ESP-Flasher-CLI/blob/main/README.md) which is a command line tool for Windows, MacOS and Linux. This tool is self explanatory and the most flexible method to download any version of the stable or development firmware releases.
-- Flash the firmware manually using the [guide](#manual-flashing) below.
+- Flash the firmware manually (see instructions below).
 - For experienced developers, build the firmware from the source code and upload directly by following the the guide at [Building](Building.md).
 
 ## Choosing the right firmware version

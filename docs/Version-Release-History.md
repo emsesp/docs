@@ -15,9 +15,9 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 
 **Fixed**
 
-- signed value for solarInfuence [#3077](https://github.com/emsesp/EMS-ESP32/issues/3077)
+- signed value for solarInfluence [#3077](https://github.com/emsesp/EMS-ESP32/issues/3077)
 - set bin file upload limit to 1M again [#3086](https://github.com/emsesp/EMS-ESP32/issues/3086)
-- check arithmetric operations on strings [#3127](https://github.com/emsesp/EMS-ESP32/discussions/3127)
+- check arithmetic operations on strings [#3127](https://github.com/emsesp/EMS-ESP32/discussions/3127)
 - prevent system crash during WiFi network discovery on ESP32-S3 hardware [#3128](https://github.com/emsesp/EMS-ESP32/pull/3128)
 - fix setting date/time on Junkers thermostats
 - offset of hpminflowtemp [#3144](https://github.com/emsesp/EMS-ESP32/issues/3144)
@@ -50,7 +50,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - 2.nd freshwater module (dhw4, dhw5) [#2991](https://github.com/emsesp/EMS-ESP32/issues/2991)
 - full system backup and restore
 - auto-logic to set ht3/ems+ tx-mode
-- polariity for digital_in sensors [#3070](https://github.com/emsesp/EMS-ESP32/discussions/3070)
+- polarity for digital_in sensors [#3070](https://github.com/emsesp/EMS-ESP32/discussions/3070)
 
 **Fixed**
 
