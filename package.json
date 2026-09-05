@@ -18,7 +18,7 @@
     "translate-ui": "node scripts/translate-ui.js"
   },
   "dependencies": {
-    "@docsearch/core": "^4.7.0",
+    "@docsearch/core": "^5.0.5",
     "@docusaurus/core": "^3.10.2",
     "@docusaurus/faster": "^3.10.2",
     "@docusaurus/plugin-google-gtag": "^3.10.2",
