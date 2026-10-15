@@ -6,7 +6,7 @@ description: Access EMS-ESP console via Telnet or USB Serial for advanced monito
 
 # Console
 
-EMS-ESP has a telnet server that enables clients to connect using a telnet client such as [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) or natively via the OS like this example with [Windows](https://www.technipages.com/windows-10-enable-telnet). The port is 23.
+EMS-ESP has a telnet server that enables clients to connect using a telnet client such as [PuTTY](https://www.putty.org/) or natively via the OS like this example with [Windows](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/telnet). The port is 23.
 
 You can also access the console via a USB Serial port, using baud 115200. You will need to press CTRL-D to open the Serial console.
 

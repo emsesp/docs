@@ -10,7 +10,7 @@ description: Complete guide to configuring EMS-ESP including first-time setup, W
 
 The default 'factory' configuration will start an WiFi Access Point called `ems-esp`. Connect to this using the WPA password `ems-esp-neo`. When prompted with a login screen (captive portal) sign-in with the username `admin` and password `admin`. These can be modified later. If you have an Ethernet board then you can connect directly to it's IP address or via `http://ems-esp` or `http://ems-esp.local`.
 
-Now you're ready to further configure the settings. If not connected to your WiFi network, do this first from the Settings->Network page. You can also do this via the the Console when connected to a Serial/USB port and using the commands `set wifi ssid` and `set wifi password`.
+Now you're ready to further configure the settings. If not connected to your WiFi network, do this first from the Settings->Network page. You can also do this via the Console when connected to a Serial/USB port and using the commands `set wifi ssid` and `set wifi password`.
 
 If you're seeing warnings that it failed to connect to the EMS bus, or there are Tx or Rx errors then follow the [troubleshooting](Troubleshooting) guide.
 
@@ -127,7 +127,7 @@ Enable this function when running in VPNs or you have other servers (like Grafan
   - **Discovery type**. Choose between "Home Assistant" and two protocols for "Domoticz". `Domoticz (latest)` will use Numbers, Switches, Select and other modern types, while `Domoticz` will just use Sensors for everything and also remove any templating conditions.
   - **Entity ID format**: There are 3 options. The first `single instance, long names` uses the older `< v3.5` format. The default and recommended setting for all new installs is the 2nd option called `Single instance, short name` which uses the EMS-ESP device entity name, which is fixed and can be seen in the `Settings->Customization` page. The last option must be used when running more than one version of the EMS-ESP firmware as it makes each unique by prefixing all MQTT topics with the base name.
   - **Input Number Format**: (HA only) Select box or slider mode. Sliders will only be used for number entities with a range less than 100.
-- **Publish Intervals**. This section is per device and sets how frequent an MQTT message is sent. When set to 0 EMS-ESP will send data automatically when there is a noticeable change, which could be within a few seconds.
+- **Publish Intervals**. This section is per device and sets how frequently an MQTT message is sent. When set to 0 EMS-ESP will send data automatically when there is a noticeable change, which could be within a few seconds.
 
 ## NTP Setup
 
@@ -306,6 +306,6 @@ Command: `{"url":"http://<shelly IP>/relais/0?turn=on"}`
 
 Custom Entities is an advanced and powerful way to extend EMS-ESP by adding your own EMS entities that extracts data from a specific EMS telegram. This is useful when EMS-ESP doesn't yet support a specific entity, or when you want to extract data from a telegram that is not yet supported. Another common use case is for debugging or watching specific behavior when changing parameters on an EMS device.
 
-For example, a modern Heat Pump may have new features that are not included in EMS-ESP. Here you would use the `watch` command to view the incoming EMS traffic in combination with manual adjusting specific parameters and when you have located the specific telegram and the offset, create a Custom Entity to fine-tune the type and verify the the value. Then request it to be included in the next EMS-ESP release update.
+For example, a modern Heat Pump may have new features that are not included in EMS-ESP. Here you would use the `watch` command to view the incoming EMS traffic in combination with manual adjusting specific parameters and when you have located the specific telegram and the offset, create a Custom Entity to fine-tune the type and verify the value. Then request it to be included in the next EMS-ESP release update.
 
 ![Web](/media/screenshot/web_customentities.png)

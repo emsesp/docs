@@ -190,7 +190,7 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 - change enum_heatingtype for remote control [#2268](https://github.com/emsesp/EMS-ESP32/issues/2268)
 - system service commands [#2182](https://github.com/emsesp/EMS-ESP32/issues/2182)
 - read 0x02A5 for thermostat CT200 [#2277](https://github.com/emsesp/EMS-ESP32/issues/2277)
-- add "duplicate" option to Custom Entities [#2266](https://github.com/emsesp/EMS-ESP32/discussion/2266)
+- add "duplicate" option to Custom Entities [#2266](https://github.com/emsesp/EMS-ESP32/discussions/2266)
 - mask bits for bool custom entities
 - thermostat `reduce threshold` [#2288](https://github.com/emsesp/EMS-ESP32/issues/2288)
 - thermostat `absent` [#1957](https://github.com/emsesp/EMS-ESP32/issues/1957)

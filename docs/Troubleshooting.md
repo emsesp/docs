@@ -141,7 +141,7 @@ Note on some systems with for example a gateway or controller attached, any chan
 
 It may occur in some scenarios that EMS changes will be overwritten or ignored by another connected EMS device. For example when using `heatingactivated` to turn off the heating. A solution here is to send 0 to `boiler/selflowtemp` every few seconds.
 
-Certain boilers with manual temperature knobs/dials will override any EMS-ESP settings. To change a temperature value via EMS-ESP make sure the value you are sending is less than what the boiler is psychically set to via the dial. The boiler will reset itself to the dialed in value every 2 minutes so use EMS-ESP's Scheduler to reset the temperature value automatically every minute.
+Certain boilers with manual temperature knobs/dials will override any EMS-ESP settings. To change a temperature value via EMS-ESP make sure the value you are sending is less than what the boiler is physically set to via the dial. The boiler will reset itself to the dialed in value every 2 minutes so use EMS-ESP's Scheduler to reset the temperature value automatically every minute.
 
 ### Incorrect values are shown from a specific device
 

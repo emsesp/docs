@@ -10,18 +10,18 @@ import { StableVersion, DevVersion, FirmwareLink } from '@site/src/components/La
 
 There are a number of ways to install and update the firmware on your ESP32 device:
 
-- If you have EMS-ESP already running, go to the Settings->Version page in the WebUI and you can either choose to download and automatically upgrade to the latest firmware version and manually install the version by drag&dropping the .bin file into the upload box.
-- Using the [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). This is a native application for Windows, MacOS and Linux. Your ESP32 device needs to be psychically connected to your computer via the USB or Serial port. This method is useful if you want a clean install and reset all the configuration settings.
-- Using the [EMS-ESP Web Installer](https://install.emsesp.org/) which is an online installer supporting that requires the EMS-ESP device to be connected via the USB/Serial port.
+- If you have EMS-ESP already running, go to the Settings->Version page in the WebUI and you can either choose to download and automatically upgrade to the latest firmware version, or manually install a version by drag-and-dropping the .bin file into the upload box.
+- Using the [EMS-ESP Flash Tool](https://github.com/emsesp/EMS-ESP-Flasher/releases). This is a native application for Windows, MacOS and Linux. Your ESP32 device needs to be physically connected to your computer via the USB or Serial port. This method is useful if you want a clean install and reset all the configuration settings.
+- Using the [EMS-ESP Web Installer](https://install.emsesp.org/) which is an online installer that requires the EMS-ESP device to be connected via the USB/Serial port.
 - Using the [EMS-ESP Flasher CLI](https://github.com/emsesp/EMS-ESP-Flasher-CLI/blob/main/README.md) which is a command line tool for Windows, MacOS and Linux. This tool is self explanatory and the most flexible method to download any version of the stable or development firmware releases.
 - Flash the firmware manually (see instructions below).
-- For experienced developers, build the firmware from the source code and upload directly by following the the guide at [Building](Building.md).
+- For experienced developers, build the firmware from the source code and upload directly by following the guide at [Building](Building.md).
 
 ## Choosing the right firmware version
 
 The latest stable version of the firmware is <StableVersion /> and the latest development version is <DevVersion />.
 
-There are pre-built firmware binaries for the ESP32 and ESP32-S3 chips sets. There are variations of these based on the allocated flash size (4MB, 16MB) and whether the board has additional PSRAM present. For other chip sets, such as the ESP32-C3, the firmware can be manually built from the source using PlatformIO.
+There are pre-built firmware binaries for the ESP32 and ESP32-S3 chipsets. There are variations of these based on the allocated flash size (4MB, 16MB) and whether the board has additional PSRAM present. For other chipsets, such as the ESP32-C3, the firmware can be manually built from the source using PlatformIO.
 
 You can choose either to use the current _Stable_ or latest _Development_ version. The Stable versions are typically updated within a few months, or patched when a critical issue is found. The Development versions (with the word `dev` in the filename) are updated more frequently, but may contain bugs. This is recommended for advanced users who want to test out new features. You can switch from Stable to Development at any time via the EMS-ESP Web interface.
 
@@ -46,7 +46,7 @@ Determine the correct type of your ESP32 device and download the latest stable v
 | ESP32     | 4MB         |         | <FirmwareLink variant="ESP32-4MB" />     |
 | ESP32     | 16MB        |         | <FirmwareLink variant="ESP32-16MB" />    |
 
-If using a [BBQKees Electronics Gateway](https://bbqkees-electronics.nl) board, follow this guide to ensure you are select the correct firmware:
+If using a [BBQKees Electronics Gateway](https://bbqkees-electronics.nl) board, follow this guide to ensure you select the correct firmware:
 
 | `Model`               | `Release Year`   | `Has PSRAM?` | `Firmware file`                          |
 | --------------------- | ---------------- | ------------ | ---------------------------------------- |
@@ -57,7 +57,7 @@ If using a [BBQKees Electronics Gateway](https://bbqkees-electronics.nl) board, 
 | Gateway S32 V2        | >02-22 &lt;01-23 | No           | <FirmwareLink variant="ESP32-16MB" />    |
 | Gateway S32 V1        | >02-21 &lt;02-22 | No           | <FirmwareLink variant="ESP32-4MB" />     |
 
-MD5-Checksums are also available for every release. They have the same filename as the image-file, but ends with `.md5`.
+MD5-Checksums are also available for every release. They have the same filename as the image-file, but end with `.md5`.
 They can be found at the [GitHub-Release-Page](https://github.com/emsesp/EMS-ESP32/releases).
 You can optionally upload them **before** the bin-image-file using the EMS-ESP-web-installer so they will be evaluated before the installation.
 
@@ -119,7 +119,7 @@ If you are using a custom firmware or you want to manually flash the firmware, y
 - If you run into issues during the installation process, please refer to the [Troubleshooting](Troubleshooting.md).
 - If you're using a BBQKees Electronics EMS gateway board and have connectivity questions, refer to the [EMS Gateway Wiki](https://bbqkees-electronics.nl/wiki/).
 - Maybe your problem is already listed in the [FAQ](FAQ.md).
-- Get in touch with the EMS-ESP community via our [Discord](https://discord.gg/GP9DPSgeJq) channel. This is a good place for asking general questions and chatting with other users. You have better chances to getting fast responses here.
+- Get in touch with the EMS-ESP community via our [Discord](https://discord.gg/GP9DPSgeJq) channel. This is a good place for asking general questions and chatting with other users. You have a better chance of getting fast responses here.
 - Search in existing open and closed [GitHub issues](https://github.com/emsesp/EMS-ESP32/issues) and [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) as your issue may already be addressed, perhaps in a later version.
 - Create a [Problem Report/Change Request](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) on the EMS-ESP project. Do make sure you include the required Support Information so the issue can be addressed as quickly as possible.
 - Go to the [Getting Support](Support.md) page for further information.

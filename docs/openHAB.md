@@ -29,7 +29,7 @@ Documentation has been created for openHab version 3.x
 
 ### Installation
 
-EMS-ESP creates retained MQTT messages prefixed with `homeassistant/` for each device and their values (called entities) based on the Home Assistant (HA) Discovery protocol. To allow auto discovery in openHAB the [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/) and the [HomeAssistant MQTT Components Binding](https://www.openhab.org/addons/bindings/mqtt.homeassistant/) has to be installed. Additionally `JINJA` and `JSONPath` transformations are needed to map all entities and features. In EMS-ESP enable the Discovery option from the MQTT Settings page.
+EMS-ESP creates retained MQTT messages prefixed with `homeassistant/` for each device and their values (called entities) based on the Home Assistant (HA) Discovery protocol. To allow auto discovery in openHAB the [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/) and the [HomeAssistant MQTT Components Binding](https://www.openhab.org/addons/bindings/homeassistant/) has to be installed. Additionally `JINJA` and `JSONPath` transformations are needed to map all entities and features. In EMS-ESP enable the Discovery option from the MQTT Settings page.
 
 Objects in HA are mapped to `Things`, Component+Node to `ChannelGroup` and Component Features to `Channels`. More information can be found in the binding specification.
 

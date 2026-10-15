@@ -90,7 +90,7 @@ Beispiele:
 | `http://ems-esp.local/api/thermostat` | `{"cmd":"mode", "data":"auto"}` | setzt den Thermostatmodus auf Auto für Heizkreis 1 |
 | `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | setzt die gewählte Raumtemperatur auf 23 Grad für Heizkreis 3 |
 | `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | setzt die gewählte Raumtemperatur auf 20,5 Grad für Heizkreis 2 |
-| `http://ems-esp.local/api` | `{"device":"thermostat", cmd":"seltemp", "data":23, "hc":3}` | stellt die gewählte Raumtemperatur des Hauptthermostats auf Heizkreis 3 ein |
+| `http://ems-esp.local/api` | `{"device":"thermostat", "cmd":"seltemp", "data":23, "hc":3}` | stellt die gewählte Raumtemperatur des Hauptthermostats auf Heizkreis 3 ein |
 
 ### Abrufen und Schreiben in benutzerdefinierte Entitäten
 
