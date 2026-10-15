@@ -66,13 +66,13 @@ The tables below shows which types are broadcasted regularly by the boiler (in t
 
 Telegrams can only be sent after the Master (boiler) sends a poll to the receiving device. The response can be a read command to request data or a write command to send data. At the end of the transmission a poll response is sent from the client (`<ID> <BRK>`) to say we're all done and free up the bus for other clients.
 
-When executing a request to read data the `[src]` is our device `(0x0B)` and the `[dest]` must have has it's MSB (8th bit) set. Say we were requesting data from the thermostat we would use `[dest] = 0x97` since RC20 has an ID of 0x17. In emsesp-logs this request is shown with `R`` between`[src]`and`[dst]`: _"Me(0x0B) R Thermostat(0x17)..."_.
+When executing a request to read data the `[src]` is our device `(0x0B)` and the `[dest]` must have its MSB (8th bit) set. Say we were requesting data from the thermostat we would use `[dest] = 0x97` since RC20 has an ID of 0x17. In emsesp-logs this request is shown with `R` between `[src]` and `[dst]`: _"Me(0x0B) R Thermostat(0x17)..."_.
 
-Following a write request, the `[dest]` doesn't have the 8th bit set and after this write request the destination device will send either a single byte 0x01 for success or 0x04 for failure. In emsesp-logs this write is shown with with `W` between `[src]` and `[dst]`: _"Me(0x0B) W Thermostat(0x17)..."_.
+Following a write request, the `[dest]` doesn't have the 8th bit set and after this write request the destination device will send either a single byte 0x01 for success or 0x04 for failure. In emsesp-logs this write is shown with `W` between `[src]` and `[dst]`: _"Me(0x0B) W Thermostat(0x17)..."_.
 
 ### Fetching EMS telegrams
 
-Not all telegrams are broadcasted frequently, a lot of setting telegrams are only broadcasted partial if there is a change. To get all values from a telegram EMS-ESP has send a read request to the device and the device reply's the telegram only to emsesp, this we call "fetching a telegram".
+Not all telegrams are broadcast frequently; a lot of setting telegrams are only broadcast partially if there is a change. To get all values from a telegram EMS-ESP has to send a read request to the device and the device replies with the telegram only to emsesp; this we call "fetching a telegram".
 
 In `system/info` the devices listed with the handlers (type-ids that are processed):
 

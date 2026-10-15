@@ -88,9 +88,9 @@ Examples:
 | `http://ems-esp.local/api/thermostat/hc2/seltemp` | `{"data":22}`                                                | sets the selected room temperature of the master thermostat on heating circuit 2 |
 | `http://ems-esp.local/api/thermostat/mode`        | `'auto'`                                                     | sets the thermostat mode to auto for heating circuit 1                           |
 | `http://ems-esp.local/api/thermostat`             | `{"cmd":"mode", "data":"auto"}`                              | sets the thermostat mode to auto for heating circuit 1                           |
-| `http://ems-esp.local/api/thermostat`             | `{"cmd":"seltemp", "data":23, "hc":3}`                       | sets the selected room temperature to 23 degrees for for heating circuit 3       |
-| `http://ems-esp.local/api/thermostat/hc2`         | `{"cmd":"seltemp", "data":20.5}`                             | sets the selected room temperature to 20.5 degrees for for heating circuit 2     |
-| `http://ems-esp.local/api`                        | `{"device":"thermostat", cmd":"seltemp", "data":23, "hc":3}` | sets the selected room temperature of the master thermostat on heating circuit 3 |
+| `http://ems-esp.local/api/thermostat`             | `{"cmd":"seltemp", "data":23, "hc":3}`                        | sets the selected room temperature to 23 degrees for heating circuit 3           |
+| `http://ems-esp.local/api/thermostat/hc2`         | `{"cmd":"seltemp", "data":20.5}`                              | sets the selected room temperature to 20.5 degrees for heating circuit 2         |
+| `http://ems-esp.local/api`                        | `{"device":"thermostat", "cmd":"seltemp", "data":23, "hc":3}` | sets the selected room temperature of the master thermostat on heating circuit 3 |
 
 ### Fetching and writing to custom entities
 
@@ -101,7 +101,7 @@ The URL path is `http://<hostname>/api/custom/`
 | blank or `info`      | `GET`       | outputs all custom entities and their values             | no                       |           |
 | `commands`           | `GET`       | lists the available custom entity commands               | no                       |           |
 | `<name>`             | `GET`       | outputs all characteristics for a specific custom entity | no                       |           |
-| `<name>/<attribute>` | `GET`       | outputs for a attribute of a specific custom entity      | no                       |           |
+| `<name>/<attribute>` | `GET`       | outputs an attribute of a specific custom entity         | no                       |           |
 | `<name>`             | `POST`      | updates a custom entity value, for writing               | yes                      | `<data>`  |
 
 ### Fetching Temperature Sensor information

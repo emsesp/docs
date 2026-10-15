@@ -8,7 +8,7 @@ import TelegramsTable from '@site/src/components/TelegramsTable';
 
 # EMS Telegrams
 
-This page contains a a complete list of all EMS telegrams supported by EMS-ESP.
+This page contains a complete list of all EMS telegrams supported by EMS-ESP.
 
 [Download the full CSV file](/data/dump_telegrams.csv)
 

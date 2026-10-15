@@ -90,7 +90,7 @@ Voorbeelden:
 | `http://ems-esp.local/api/thermostat` | `{"cmd":"mode", "data":"auto"}` | stelt de thermostaatmodus in op auto voor verwarmingscircuit 1 |
 | `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | stelt de geselecteerde kamertemperatuur in op 23 graden voor verwarmingscircuit 3 |
 | `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | stelt de geselecteerde kamertemperatuur in op 20,5 graden voor verwarmingscircuit 2 |
-| `http://ems-esp.local/api` | `{"device":"thermostat", cmd":"seltemp", "data":23, "hc":3}` | stelt de geselecteerde ruimtetemperatuur in van de hoofdthermostaat op verwarmingscircuit 3 |
+| `http://ems-esp.local/api` | `{"device":"thermostat", "cmd":"seltemp", "data":23, "hc":3}` | stelt de geselecteerde ruimtetemperatuur in van de hoofdthermostaat op verwarmingscircuit 3 |
 
 ### Aangepaste entiteiten ophalen en schrijven
 

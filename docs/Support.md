@@ -9,16 +9,16 @@ If you are looking for EMS-ESP support, have a question or suggestion here are t
 
 - If you're using a BBQKees gateway board and having trouble connecting it, go first to [BBQKees' EMS Gateway Documentation](https://bbqkees-electronics.nl/wiki/).
 - Look through the [Troubleshooting](Troubleshooting.md) section for solutions to common problems.
-- Try reaching out to the **EMS-ESP Community** on [Discord](https://discord.gg/GP9DPSgeJq). This is a good place for asking general questions and chatting with other users. You have better chances to getting fast responses here.
+- Try reaching out to the **EMS-ESP Community** on [Discord](https://discord.gg/GP9DPSgeJq). This is a good place for asking general questions and chatting with other users. You have a better chance of getting fast responses here.
 - Search through existing **[GitHub issues](https://github.com/emsesp/EMS-ESP32/issues)**, both open and closed, as your issue may already be resolved.
 - **Search** the [GitHub discussions](https://github.com/emsesp/EMS-ESP32/discussions) as you might find an answer to your question.
 - As a last resort, **create** a [Problem Report](https://github.com/emsesp/EMS-ESP32/issues/new?template=bug_report.md) on GitHub following the guidelines below.
 
 :::tip[Important!]
 
-    Before creating a new GitHub issue, please make sure you have are using either the latest Stable or Development firmware version. Versions older than these are no longer supported as we simply don't have the resources to support every version.
+    Before creating a new GitHub issue, please make sure you are using either the latest Stable or Development firmware version. Versions older than these are no longer supported as we simply don't have the resources to support every version.
 
-    Users running BBQKees certified gateway boards get priority support. This is because they have a warranty and we want to make sure they get the best support possible. Users that have built their own EMS gateway boards or are using an unsolicited clone circuit will get limited support as it most cases we've found it's hardware related issues.
+    Users running BBQKees certified gateway boards get priority support. This is because they have a warranty and we want to make sure they get the best support possible. Users that have built their own EMS gateway boards or are using an unofficial clone circuit will get limited support as in most cases we've found it's hardware related issues.
 
     When creating a new GitHub issue make sure that you provide the following information:
 
