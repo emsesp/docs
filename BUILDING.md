@@ -180,6 +180,27 @@ pnpm build && pnpm serve --locale de
 - ✅ Sidebar labels
 - ✅ Button labels
 
+### Filling in missing firmware translations
+
+`translations/locale_translations.h` holds the translations used by the EMS-ESP firmware. Any language that is empty is filled in with DeepL, using the English text as the source:
+
+```sh
+# List what would be translated, without calling DeepL or writing anything
+pnpm translate-locale -- --dry-run
+
+# Translate all missing entries, for all languages
+pnpm translate-locale
+
+# Only one language (can be repeated)
+pnpm translate-locale -- --locale nl
+```
+
+- Existing translations are never changed.
+- Every generated translation has a `*` added to the end (e.g. `"fabrieksinstelling*"`) so it is clear it was machine translated and should be reviewed. Remove the `*` once checked.
+- Like the Translation Editor, only entries under a `// * <section>` header are processed. Use `--include-ignored` to also process entries after a plain comment.
+- `EMS-ESP`, `%d`-style codes and `{...}`/`<...>` placeholders are not translated.
+- Use `--file <path>` to work on a different locale file.
+
 ## Searching
 
 ### Algolia

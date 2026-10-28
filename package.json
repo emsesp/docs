@@ -15,7 +15,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "translate": "node scripts/translate.js",
-    "translate-ui": "node scripts/translate-ui.js"
+    "translate-ui": "node scripts/translate-ui.js",
+    "translate-locale": "node scripts/translate-locale.js"
   },
   "dependencies": {
     "@docsearch/core": "^5.1.2",
