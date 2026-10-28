@@ -58,6 +58,7 @@ The remote thermostat will remain in the EMS-ESP device dashboard but will have 
 - The remote thermostat function is only working if there is a master thermostat allowing remotes, and no other remotes active for this heating circuit.
 - All EMS devices have unique device-ids so if there is a remote thermostat present that device-id can not be used for emulation.
 - You also can't connect two physical remotes for one heating circuit.
+- For emulating remote thermostat there is a log of a real thermostat needed to copy the right commands. If it does not work, try anther remote option. If non works, sorry, you can't use the function.
   :::
 
 :::warning[Disclaimer]
