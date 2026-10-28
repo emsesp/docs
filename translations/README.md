@@ -1,0 +1,1 @@
+These are example translation files for the Translation Editor.
