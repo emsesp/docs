@@ -1,0 +1,179 @@
+.root {
+  width: 100%;
+  padding: 0.75rem 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.fileName {
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-color-emphasis-700);
+}
+
+.empty {
+  padding: 1.5rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.filters select,
+.pager select {
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+.search {
+  flex: 1 1 260px;
+  max-width: 420px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.pager {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* scroll container so the header and the ID column can both stay put */
+.tableWrap {
+  overflow: auto;
+  max-height: calc(100vh - var(--ifm-navbar-height) - 250px);
+  min-height: 300px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: max-content;
+  min-width: 100%;
+  margin: 0;
+  display: table;
+  font-size: 0.85rem;
+}
+
+.table th,
+.table td {
+  padding: 0;
+  border: 0;
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-color);
+  vertical-align: middle;
+}
+
+.table th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 0.5rem;
+  text-align: left;
+  background: var(--ifm-color-emphasis-100);
+  white-space: nowrap;
+}
+
+.table tbody tr:nth-child(even) td {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.stickyCol {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 190px;
+  max-width: 260px;
+}
+
+.table th.stickyCol {
+  z-index: 3;
+}
+
+.keyCell {
+  padding: 0.25rem 0.5rem !important;
+}
+
+.key {
+  font-family: var(--ifm-font-family-monospace);
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.meta {
+  font-size: 0.72rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 210px;
+  padding: 0.4rem 0.5rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.input:focus {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: -2px;
+  background: var(--ifm-background-color);
+}
+
+.cellEmpty,
+.table tbody tr:nth-child(even) td.cellEmpty {
+  background: rgba(255, 80, 80, 0.12);
+}
+
+.cellChanged,
+.table tbody tr:nth-child(even) td.cellChanged {
+  background: rgba(255, 200, 0, 0.28);
+}
+
+.rowEdited .stickyCol {
+  box-shadow: inset 4px 0 0 var(--ifm-color-warning);
+}
+
+.missingCount {
+  margin-left: 0.4rem;
+  padding: 0 0.35rem;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  background: rgba(255, 80, 80, 0.25);
+}
