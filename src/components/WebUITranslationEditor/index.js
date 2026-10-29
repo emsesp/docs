@@ -537,6 +537,7 @@ export default function WebUITranslationEditor() {
         <div
           className={clsx(
             'alert',
+            base.status,
             status.type === 'error' && 'alert--danger',
             status.type === 'warn' && 'alert--warning',
             status.type === 'ok' && 'alert--success',

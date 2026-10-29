@@ -1,0 +1,55 @@
+.root {
+  position: relative;
+  display: inline-block;
+}
+
+/* same look as the native selects in the filter bar */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font: inherit;
+  cursor: pointer;
+}
+
+.arrow {
+  margin-left: auto;
+  font-size: 0.8em;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  z-index: 20; /* above the sticky table cells */
+  min-width: 100%;
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 4px;
+  background: var(--ifm-background-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+.option {
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+.active {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.selected {
+  font-weight: 600;
+}

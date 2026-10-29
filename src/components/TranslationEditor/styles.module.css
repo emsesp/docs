@@ -16,6 +16,14 @@
   color: var(--ifm-color-emphasis-700);
 }
 
+/* compact version of the Infima alert used for the status banner */
+div.status {
+  padding: 0.25rem 0.6rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
 .empty {
   padding: 1.5rem;
   color: var(--ifm-color-emphasis-700);
@@ -69,6 +77,8 @@
 
 /* scroll container so the header and the ID column can both stay put */
 .tableWrap {
+  --id-col-width: 220px;
+  --key-col-color: #3d9be9;
   overflow: auto;
   max-height: calc(100vh - var(--ifm-navbar-height) - 250px);
   min-height: 300px;
@@ -114,16 +124,37 @@
   position: sticky;
   left: 0;
   z-index: 1;
-  min-width: 190px;
-  max-width: 260px;
+  /* fixed width, the second sticky column needs to know where to stop */
+  width: var(--id-col-width);
+  min-width: var(--id-col-width);
+  max-width: var(--id-col-width);
 }
 
-.table th.stickyCol {
+/* second sticky column (the first language, EN) sits right next to the ID column */
+.stickyCol2 {
+  position: sticky;
+  left: var(--id-col-width);
+  z-index: 1;
+  box-shadow: 2px 0 3px -1px rgba(0, 0, 0, 0.25);
+}
+
+.table th.stickyCol,
+.table th.stickyCol2 {
   z-index: 3;
 }
 
 .keyCell {
   padding: 0.25rem 0.5rem !important;
+}
+
+/* light blue text for the first (ID) column */
+.keyCell .key,
+.table th.stickyCol {
+  color: var(--key-col-color);
+}
+
+[data-theme='dark'] .tableWrap {
+  --key-col-color: #7cc4ff;
 }
 
 .key {
@@ -156,14 +187,35 @@
   background: var(--ifm-background-color);
 }
 
-.cellEmpty,
+.table td.cellEmpty,
 .table tbody tr:nth-child(even) td.cellEmpty {
   background: rgba(255, 80, 80, 0.12);
 }
 
-.cellChanged,
+.table td.cellChanged,
 .table tbody tr:nth-child(even) td.cellChanged {
   background: rgba(255, 200, 0, 0.28);
+}
+
+/* sticky cells must be opaque, otherwise the scrolling cells show through */
+.table td.stickyCol2.cellEmpty {
+  background: linear-gradient(rgba(255, 80, 80, 0.12), rgba(255, 80, 80, 0.12)),
+    var(--ifm-background-color);
+}
+
+.table td.stickyCol2.cellChanged {
+  background: linear-gradient(rgba(255, 200, 0, 0.28), rgba(255, 200, 0, 0.28)),
+    var(--ifm-background-color);
+}
+
+.table tbody tr:nth-child(even) td.stickyCol2.cellEmpty {
+  background: linear-gradient(rgba(255, 80, 80, 0.12), rgba(255, 80, 80, 0.12)),
+    var(--ifm-color-emphasis-100);
+}
+
+.table tbody tr:nth-child(even) td.stickyCol2.cellChanged {
+  background: linear-gradient(rgba(255, 200, 0, 0.28), rgba(255, 200, 0, 0.28)),
+    var(--ifm-color-emphasis-100);
 }
 
 .rowEdited .stickyCol {
