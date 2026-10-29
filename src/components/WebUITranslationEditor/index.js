@@ -16,6 +16,7 @@ import {
 } from './parser'
 import { createZip } from './zip'
 import LanguageFlag from '../LanguageFlag'
+import FlagSelect from '../FlagSelect'
 // same look as the entity translation editor
 import base from '../TranslationEditor/styles.module.css'
 import extra from './styles.module.css'
@@ -194,6 +195,7 @@ export default function WebUITranslationEditor() {
 
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState('')
+  const [showLang, setShowLang] = useState('')
   const [modifiedOnly, setModifiedOnly] = useState(false)
   const [pageSize, setPageSize] = useState(100)
   const [page, setPage] = useState(0)
@@ -204,6 +206,15 @@ export default function WebUITranslationEditor() {
 
   const rows = table?.rows ?? []
   const langs = table?.langs ?? []
+
+  // columns to show: all languages, or EN (kept as reference) plus the chosen one
+  const shownLangs = useMemo(
+    () =>
+      showLang && langs.includes(showLang)
+        ? langs.filter((l) => l === 'en' || l === showLang)
+        : langs,
+    [langs, showLang],
+  )
 
   const editedCount = useMemo(() => rows.filter((r) => r.edited).length, [rows])
   const dirty = editedCount > 0
@@ -322,7 +333,7 @@ export default function WebUITranslationEditor() {
     setStatus({
       type: warnings.length ? 'warn' : 'info',
       text:
-        `Loaded ${built.langs.length} languages (${built.langs.join(', ')}) and ${built.rows.length} keys` +
+        `Loaded  ${built.rows.length} entries, languages: ${built.langs.join(', ')}` +
         (warnings.length ? ` Warning: ${warnings.join('; ')}.` : ''),
     })
   }, [])
@@ -564,7 +575,8 @@ export default function WebUITranslationEditor() {
             >
               https://github.com/emsesp/EMS-ESP32/tree/dev/interface/src/i18n
             </a>
-            &nbsp;and place it in your WebUI folder.
+            &nbsp;and place it in your WebUI folder for testing, or commit back
+            to the GitHub repository.
           </p>
           {!hasFSA && (
             <p>
@@ -614,6 +626,19 @@ export default function WebUITranslationEditor() {
                 </option>
               </optgroup>
             </select>
+            <FlagSelect
+              value={showLang}
+              onChange={setShowLang}
+              title="Choose which language column to show (EN is always shown as the reference)"
+              options={[
+                { value: '', label: 'All languages' },
+                ...langs.map((l) => ({
+                  value: l,
+                  code: l,
+                  label: `Only ${l.toUpperCase()}`,
+                })),
+              ]}
+            />
             <label>
               <input
                 type="checkbox"
@@ -642,19 +667,22 @@ export default function WebUITranslationEditor() {
               <thead>
                 <tr>
                   <th className={base.stickyCol}>Key</th>
-                  {langs.map((l, i) => (
-                    <th key={l}>
-                      <LanguageFlag code={l} />
-                      {missingPerLang[i] > 0 && (
-                        <span
-                          className={base.missingCount}
-                          title={`${missingPerLang[i]} empty ${l} translations`}
-                        >
-                          {missingPerLang[i]}
-                        </span>
-                      )}
-                    </th>
-                  ))}
+                  {shownLangs.map((l) => {
+                    const missing = missingPerLang[langs.indexOf(l)]
+                    return (
+                      <th key={l}>
+                        <LanguageFlag code={l} />
+                        {missing > 0 && (
+                          <span
+                            className={base.missingCount}
+                            title={`${missing} empty ${l} translations`}
+                          >
+                            {missing}
+                          </span>
+                        )}
+                      </th>
+                    )
+                  })}
                 </tr>
               </thead>
               <tbody>
@@ -663,13 +691,13 @@ export default function WebUITranslationEditor() {
                     key={row.id}
                     row={row}
                     index={index}
-                    langs={langs}
+                    langs={shownLangs}
                     dispatch={dispatch}
                   />
                 ))}
                 {visible.length === 0 && (
                   <tr>
-                    <td colSpan={langs.length + 1}>
+                    <td colSpan={shownLangs.length + 1}>
                       <div className={base.empty}>No matching keys.</div>
                     </td>
                   </tr>

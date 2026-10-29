@@ -80,7 +80,7 @@ pnpm update --latest
 
 ## Development
 
-### Testing locally
+### Testing locally - one locale only
 
 ```bash
 pnpm fast
@@ -94,10 +94,10 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 ## Building
 
-To create a production build:
+To create a production build and test all languages:
 
 ```bash
-pnpm build
+pnpm build && pnpm serve
 ```
 
 This generates static content into the `build` directory for all languages and can be served using any static contents hosting service.

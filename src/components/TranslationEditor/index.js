@@ -236,7 +236,7 @@ export default function TranslationEditor() {
       setStatus({
         type: 'info',
         text:
-          `Loaded ${n} entries, languages ${loaded.languages.join(', ')}` +
+          `Loaded ${n} entries, languages: ${loaded.languages.join(', ')}` +
           (loaded.unparsed
             ? `. WARNING: ${loaded.unparsed} translation line(s) could not be parsed and will be kept as-is.`
             : ''),
