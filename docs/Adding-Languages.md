@@ -5,9 +5,9 @@ description: Guide to adding new language translations to EMS-ESP WebUI and docu
 ---
 # Adding Languages
 
-Use the [Entity Translation Editor](/translation-editor) to add or edit language translations for entities used in MQTT, API and system operations. It shows every entity and its translations in a table, highlights missing translations, and lets you save your changes straight back to the file.
+Use the [Entity Translation Editor](/entity-translation-editor) to add or edit language translations for entities used in MQTT, API and system operations. It shows every entity and its translations in a table, highlights missing translations, and lets you save your changes straight back to the file. Commit back to the GitHub repository when done.
 
-Use the [WebUI Translation Editor](/webui-translation-editor) to edit the translations of the WebUI itself. Download the `i18n` folder from [here](https://github.com/emsesp/EMS-ESP32/tree/dev/interface/src/i18n). All languages are shown side by side in one table, with checks for empty translations.
+Use the [WebUI Translation Editor](/webui-translation-editor) to edit the translations of the WebUI itself. Download the `i18n` folder from [here](https://github.com/emsesp/EMS-ESP32/tree/dev/interface/src/i18n). All languages are shown side by side in one table, with checks for empty translations. Make the changes, save and commit back to the GitHub repository.
 
 ## Adding Manually
 

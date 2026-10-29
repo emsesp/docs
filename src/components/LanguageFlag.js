@@ -15,10 +15,11 @@ const FLAG_FILES = {
   it: 'IT',
   sk: 'SK',
   cs: 'CS',
+  hu: 'HU',
 };
 
-/** flag image followed by the upper-case language code */
-export default function LanguageFlag({code}) {
+/** flag image followed by the upper-case language code (or `label` when given) */
+export default function LanguageFlag({code, label}) {
   const file = FLAG_FILES[code.toLowerCase()];
   const src = useBaseUrl(file ? `/img/flags/${file}.svg` : '/');
   return (
@@ -38,7 +39,7 @@ export default function LanguageFlag({code}) {
           }}
         />
       )}
-      {code.toUpperCase()}
+      {label ?? code.toUpperCase()}
     </span>
   );
 }

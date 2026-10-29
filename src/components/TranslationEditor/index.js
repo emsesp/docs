@@ -10,6 +10,7 @@ import React, {
 import clsx from 'clsx'
 import { parseLocaleFile, serializeLocaleFile } from './parser'
 import LanguageFlag from '../LanguageFlag'
+import FlagSelect from '../FlagSelect'
 import styles from './styles.module.css'
 
 const PAGE_SIZES = [50, 100, 250, 500]
@@ -42,7 +43,7 @@ function reducer(state, action) {
 
 // ---------------------------------------------------------------- row
 
-const Row = memo(function Row({ entry, index, languages, dispatch }) {
+const Row = memo(function Row({ entry, index, languages, columns, dispatch }) {
   return (
     <tr className={clsx(entry.edited && styles.rowEdited)}>
       <td className={clsx(styles.stickyCol, styles.keyCell)}>
@@ -51,13 +52,15 @@ const Row = memo(function Row({ entry, index, languages, dispatch }) {
           {entry.word ? 'word' : `mqtt: ${entry.mqtt}`}
         </div>
       </td>
-      {languages.map((code, col) => {
+      {columns.map((col) => {
+        const code = languages[col]
         const value = entry.values[col] ?? ''
         const changed = value !== entry.origValues[col]
         return (
           <td
             key={code}
             className={clsx(
+              col === 0 && styles.stickyCol2,
               changed && styles.cellChanged,
               value === '' && styles.cellEmpty,
             )}
@@ -121,6 +124,7 @@ export default function TranslationEditor() {
   const [search, setSearch] = useState('')
   const [section, setSection] = useState('')
   const [missingLang, setMissingLang] = useState('')
+  const [showLang, setShowLang] = useState('')
   const [modifiedOnly, setModifiedOnly] = useState(false)
   const [pageSize, setPageSize] = useState(100)
   const [page, setPage] = useState(0)
@@ -162,6 +166,16 @@ export default function TranslationEditor() {
         entries.filter((e) => (e.entry.values[col] ?? '') === '').length,
     )
   }, [doc, entries])
+
+  // columns (language indexes) to show: all, or EN (kept as reference) plus the chosen language
+  const columns = useMemo(() => {
+    if (!doc) {
+      return []
+    }
+    const all = doc.languages.map((_, i) => i)
+    const only = showLang ? doc.languages.indexOf(showLang) : -1
+    return only < 0 ? all : [...new Set([0, only])]
+  }, [doc, showLang])
 
   const filtered = useMemo(() => {
     if (!doc) {
@@ -222,7 +236,7 @@ export default function TranslationEditor() {
       setStatus({
         type: 'info',
         text:
-          `Loaded ${n} entries, languages ${loaded.languages.join(', ')}` +
+          `Loaded ${n} entries, languages: ${loaded.languages.join(', ')}` +
           (loaded.unparsed
             ? `. WARNING: ${loaded.unparsed} translation line(s) could not be parsed and will be kept as-is.`
             : ''),
@@ -386,6 +400,7 @@ export default function TranslationEditor() {
         <div
           className={clsx(
             'alert',
+            styles.status,
             status.type === 'error' && 'alert--danger',
             status.type === 'ok' && 'alert--success',
             status.type === 'info' && 'alert--info',
@@ -442,18 +457,32 @@ export default function TranslationEditor() {
                 </option>
               ))}
             </select>
-            <select
+            <FlagSelect
               value={missingLang}
-              onChange={(e) => setMissingLang(e.target.value)}
+              onChange={setMissingLang}
               title="Only show entries without a translation for a language"
-            >
-              <option value="">Any translation status</option>
-              {doc.languages.map((code, i) => (
-                <option key={code} value={code}>
-                  Missing {code.toUpperCase()} ({missingPerLang[i]})
-                </option>
-              ))}
-            </select>
+              options={[
+                { value: '', label: 'Any translation status' },
+                ...doc.languages.map((code, i) => ({
+                  value: code,
+                  code,
+                  label: `Missing ${code.toUpperCase()} (${missingPerLang[i]})`,
+                })),
+              ]}
+            />
+            <FlagSelect
+              value={showLang}
+              onChange={setShowLang}
+              title="Choose which language column to show (EN is always shown as the reference)"
+              options={[
+                { value: '', label: 'All languages' },
+                ...doc.languages.map((code) => ({
+                  value: code,
+                  code,
+                  label: `Only ${code.toUpperCase()}`,
+                })),
+              ]}
+            />
             <label>
               <input
                 type="checkbox"
@@ -482,19 +511,25 @@ export default function TranslationEditor() {
               <thead>
                 <tr>
                   <th className={styles.stickyCol}>ID</th>
-                  {doc.languages.map((code, i) => (
-                    <th key={code}>
-                      <LanguageFlag code={code} />
-                      {missingPerLang[i] > 0 && (
-                        <span
-                          className={styles.missingCount}
-                          title={`${missingPerLang[i]} entries have no ${code} translation`}
-                        >
-                          {missingPerLang[i]}
-                        </span>
-                      )}
-                    </th>
-                  ))}
+                  {columns.map((i) => {
+                    const code = doc.languages[i]
+                    return (
+                      <th
+                        key={code}
+                        className={clsx(i === 0 && styles.stickyCol2)}
+                      >
+                        <LanguageFlag code={code} />
+                        {missingPerLang[i] > 0 && (
+                          <span
+                            className={styles.missingCount}
+                            title={`${missingPerLang[i]} entries have no ${code} translation`}
+                          >
+                            {missingPerLang[i]}
+                          </span>
+                        )}
+                      </th>
+                    )
+                  })}
                 </tr>
               </thead>
               <tbody>
@@ -504,12 +539,13 @@ export default function TranslationEditor() {
                     entry={entry}
                     index={index}
                     languages={doc.languages}
+                    columns={columns}
                     dispatch={dispatch}
                   />
                 ))}
                 {visible.length === 0 && (
                   <tr>
-                    <td colSpan={doc.languages.length + 1}>
+                    <td colSpan={columns.length + 1}>
                       <div className={styles.empty}>No matching entries.</div>
                     </td>
                   </tr>
