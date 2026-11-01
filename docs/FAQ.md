@@ -107,3 +107,24 @@ Note this will reduce the performance of the ESP32 chip and may cause stability 
 When upgrading or downgrading between EMS-ESP versions, EMS-ESP will handle any migrations of the settings to maintain compatibility with the new version installed.
 
 Always read the [ChangeLog](Version-Release-History.md) for the release notes and notes of any breaking changes before upgrading.
+
+### Upgrading from 3.8.x to 3.9.x
+
+:::warning[No factory reset needed]
+
+When you install 3.9.x from the Web UI of a 3.8.x version, the dialog says the upgrade requires a factory reset. This is no longer the case, so ignore that part of the message. Your settings are kept and migrated.
+
+:::
+
+Before you upgrade:
+
+1. **Make a System Backup** in Settings > Download/Upload. After the upgrade, passwords are stored hashed and 3.8.x can't read them, so going back to 3.8.x needs this backup, otherwise a factory reset.
+2. **Note which integrations use the API**, such as Home Assistant REST sensors, Node-RED or scripts. Their access tokens stop working after the upgrade.
+
+After the upgrade:
+
+1. **Set new passwords if you still use the factory ones.** An admin who signs in with a factory password must set a new admin password before the Web UI can be used, plus a new access point password if no WiFi network is set.
+2. **Create an API key for each integration** in Security > API Keys and send it as `Authorization: Bearer <key>`. Pick "Read" for integrations that only read values, "Read and Write" for ones that change settings or values.
+3. **Check what guest users can do.** Only admins can change the Scheduler, Commands, Custom Entities and Modules. Commands from before the upgrade can still be run by guests; for new Commands, tick "Guests may run this command" if they should.
+
+You don't need to upload your backup after the upgrade. Keep it in case you want to go back to 3.8.x. The full list of breaking changes is in the [ChangeLog](Version-Release-History.md).
