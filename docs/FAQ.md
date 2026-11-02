@@ -128,3 +128,30 @@ After the upgrade:
 3. **Check what guest users can do.** Only admins can change the Scheduler, Commands, Custom Entities and Modules. Commands from before the upgrade can still be run by guests; for new Commands, tick "Guests may run this command" if they should.
 
 You don't need to upload your backup after the upgrade. Keep it in case you want to go back to 3.8.x. The full list of breaking changes is in the [ChangeLog](Version-Release-History.md).
+
+### Firmware not signed by EMS-ESP
+
+From 3.9.0, EMS-ESP only installs firmware that is signed by EMS-ESP. This applies to uploading a firmware file in the Web UI, installing a version from the Web UI's version list, uploading in the Recovery app and uploading a filesystem image. All official releases and development builds from [GitHub](https://github.com/emsesp/EMS-ESP32/releases) are signed. Anything else is refused with "This firmware is not signed by EMS-ESP" and nothing is installed.
+
+You'll usually see this when:
+
+- **you go back to a version older than 3.8.6.** Only 3.8.6 and newer are signed. Use the 3.8.6 files from its [release page](https://github.com/emsesp/EMS-ESP32/releases/tag/v3.8.6), or allow one unsigned upload as described below.
+- **you install a build that isn't from EMS-ESP**, such as one you built yourself or a community build.
+- **the file was changed or damaged**, for example by a browser or download manager. Download it again from the release page.
+
+#### Allowing one unsigned upload
+
+You need physical access to the device, so this can't be done over the network:
+
+1. Connect the device to a computer with a USB cable and open the serial console at 115200 baud. See [Console](Console.md) for how.
+2. Type `su` and sign in with the username and password of a Web UI admin user.
+3. Type `allow unsigned`.
+4. Upload the firmware in the Web UI as usual.
+
+This allows one upload only. It ends after that upload or when the device restarts. It doesn't work over telnet or in the Web UI's console.
+
+Flashing over USB with the [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher) or esptool is never checked, so that also works.
+
+#### Building your own firmware
+
+If you install your own builds often, you can sign them with your own key so the device accepts them without `allow unsigned`. The steps are in [Installing your own build](https://github.com/emsesp/EMS-ESP32/blob/dev/CONTRIBUTING.md#installing-your-own-build).
