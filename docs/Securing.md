@@ -68,8 +68,10 @@ In the Settings pages:
 
 ## Physical access
 
-Anyone who can reach the gateway's USB port can flash other firmware or use the serial console. Keep the gateway somewhere other people can't easily get to it.
+Anyone who can reach the gateway's USB port can read its flash, flash other firmware or use the serial console. Gateways ship without secure boot or flash encryption, so that you can always install any firmware you want. Keep the gateway somewhere other people can't easily get to it.
+
+Before you sell or give away a gateway, do a factory reset (Factory Reset on the Version page, the `system/format` command, or a long press of the button). From 3.9.0 this erases all settings, including passwords and keys, from the flash.
 
 ## Reporting a security problem
 
-If you think you've found a security problem in EMS-ESP, please don't open a public issue. Use the [Contact Form](https://emsesp.org/About/#-contact) instead, as described in [SECURITY.md](https://github.com/emsesp/EMS-ESP32/blob/dev/SECURITY.md).
+If you think you've found a security problem in EMS-ESP, please don't open a public issue. Report it privately on GitHub with [Report a vulnerability](https://github.com/emsesp/EMS-ESP32/security/advisories/new), or use the [Contact Form](https://emsesp.org/About/#-contact). [SECURITY.md](https://github.com/emsesp/EMS-ESP32/blob/dev/SECURITY.md) explains what to include, which versions get security fixes and how fixes are published.
