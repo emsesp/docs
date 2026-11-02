@@ -157,3 +157,21 @@ Flashing over USB with the [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-F
 #### Building your own firmware
 
 If you install your own builds often, you can sign them with your own key so the device accepts them without `allow unsigned`. The steps are in [Installing your own build](https://github.com/emsesp/EMS-ESP32/blob/dev/CONTRIBUTING.md#installing-your-own-build).
+
+### Why am I asked for my password again?
+
+From 3.9.0, the Web UI asks for your password again before changes that could take over or lock you out of the device:
+
+- uploading or installing firmware, also the Recovery app, and switching to the other firmware partition
+- restoring a backup, or downloading one with passwords and keys
+- a factory reset
+- adding, changing or removing users and passwords, and creating or revoking API keys
+- turning on CORS, adding allowed host names, turning on the API bypass, or turning on telnet
+
+Once entered, you aren't asked again for 5 minutes on that browser. Signing in again or restarting EMS-ESP ends this.
+
+Scripts that make these changes with a Web UI sign-in get HTTP status 428. They need to send the password first with `POST /rest/confirmPassword` and the body `{"password":"..."}`, using the same token. Integrations with API keys and MQTT are not affected.
+
+### Installing firmware from a URL
+
+From 3.9.0, firmware can only be installed from a URL of an EMS-ESP release on GitHub, starting with `https://github.com/emsesp/EMS-ESP32/releases/`. The Web UI's version list always uses these. For any other file, download it and upload it in the Web UI instead.
