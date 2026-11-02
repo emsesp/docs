@@ -108,11 +108,11 @@ When upgrading or downgrading between EMS-ESP versions, EMS-ESP will handle any 
 
 Always read the [ChangeLog](Version-Release-History.md) for the release notes and notes of any breaking changes before upgrading.
 
-### Upgrading from 3.8.x to 3.9.x
+### Upgrading from 3.8.x to 3.10.x
 
 :::warning[No factory reset needed]
 
-When you install 3.9.x from the Web UI of a 3.8.x version, the dialog says the upgrade requires a factory reset. This is no longer the case, so ignore that part of the message. Your settings are kept and migrated.
+When you install a 3.9.0 development build from the Web UI of a 3.8.x version, the dialog says the upgrade requires a factory reset. This is not the case, so ignore that part of the message. Your settings are kept and migrated. Upgrading to 3.10.0 doesn't show this message.
 
 :::
 
@@ -131,7 +131,7 @@ You don't need to upload your backup after the upgrade. Keep it in case you want
 
 ### Official and custom builds
 
-From 3.9.0, EMS-ESP checks whether firmware is an official build when you upload a firmware file in the Web UI, install a version from the Web UI's version list or upload in the Recovery app. Official releases and development builds from [GitHub](https://github.com/emsesp/EMS-ESP32/releases) are signed by EMS-ESP and install straight away. The Version page shows "Official build" next to the version.
+From 3.10.0, EMS-ESP checks whether firmware is an official build when you upload a firmware file in the Web UI, install a version from the Web UI's version list or upload in the Recovery app. Official releases and development builds from [GitHub](https://github.com/emsesp/EMS-ESP32/releases) are signed by EMS-ESP and install straight away. The Version page shows "Official build" next to the version.
 
 Anything else is a custom build, for example one you built yourself, a community build, a version older than 3.8.6, or a filesystem image. The Web UI then says "This is not an official EMS-ESP build" before anything is installed. Click "Install anyway" to install it, or leave it if you didn't expect this. The Version page then shows "Custom build".
 
@@ -143,7 +143,7 @@ If you build your own firmware, see [Installing your own build](https://github.c
 
 ### Why am I asked for my password again?
 
-From 3.9.0, the Web UI asks for your password again before changes that could take over or lock you out of the device:
+From 3.10.0, the Web UI asks for your password again before changes that could take over or lock you out of the device:
 
 - uploading or installing firmware, also the Recovery app, and switching to the other firmware partition
 - restoring a backup, or downloading one with passwords and keys
@@ -157,4 +157,4 @@ Scripts that make these changes with a Web UI sign-in get HTTP status 428. They 
 
 ### Installing firmware from a URL
 
-From 3.9.0, firmware can only be installed from a URL of an EMS-ESP release on GitHub, starting with `https://github.com/emsesp/EMS-ESP32/releases/`. The Web UI's version list always uses these. For any other file, download it and upload it in the Web UI instead.
+From 3.10.0, firmware can only be installed from a URL of an EMS-ESP release on GitHub, starting with `https://github.com/emsesp/EMS-ESP32/releases/`. The Web UI's version list always uses these. For any other file, download it and upload it in the Web UI instead.

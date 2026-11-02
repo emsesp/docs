@@ -29,7 +29,7 @@ Then only allow what is needed:
 
 ## Passwords and accounts
 
-- Give the admin user a strong password that you don't use anywhere else. From 3.9.0 the factory passwords must be changed before the Web UI can be used.
+- Give the admin user a strong password that you don't use anywhere else. From 3.10.0 the factory passwords must be changed before the Web UI can be used.
 - If no WiFi network is set, EMS-ESP starts its own access point. Give it its own password as well.
 - Only create the users you need. A guest user can see values but not change settings.
 - Integrations such as Home Assistant, Node-RED or scripts should use an **API key** (**Settings > Security > API Keys**), not a user's password. Use a "Read" key when the integration only reads values, and a "Read and Write" key only when it needs to change things. Revoke keys you no longer use.
@@ -39,7 +39,7 @@ Then only allow what is needed:
 
 In the Settings pages:
 
-- **Telnet** is off by default from 3.9.0. Leave it off unless you need it, because telnet isn't encrypted.
+- **Telnet** is off by default from 3.10.0. Leave it off unless you need it, because telnet isn't encrypted.
 - **Allow API calls without an access token** gives anyone on your network guest rights. Use API keys instead.
 - **CORS** is only needed when a web page on another address calls the API. If you enable it, set the exact address of that page, not `*`.
 - **Modbus** and **Syslog**, if you don't use them.
@@ -70,7 +70,7 @@ In the Settings pages:
 
 Anyone who can reach the gateway's USB port can read its flash, flash other firmware or use the serial console. Gateways ship without secure boot or flash encryption, so that you can always install any firmware you want. Keep the gateway somewhere other people can't easily get to it.
 
-Before you sell or give away a gateway, do a factory reset (Factory Reset on the Version page, the `system/format` command, or a long press of the button). From 3.9.0 this erases all settings, including passwords and keys, from the flash.
+Before you sell or give away a gateway, do a factory reset (Factory Reset on the Version page, the `system/format` command, or a long press of the button). From 3.10.0 this erases all settings, including passwords and keys, from the flash.
 
 ## Reporting a security problem
 
