@@ -129,34 +129,17 @@ After the upgrade:
 
 You don't need to upload your backup after the upgrade. Keep it in case you want to go back to 3.8.x. The full list of breaking changes is in the [ChangeLog](Version-Release-History.md).
 
-### Firmware not signed by EMS-ESP
+### Official and custom builds
 
-From 3.9.0, EMS-ESP only installs firmware that is signed by EMS-ESP. This applies to uploading a firmware file in the Web UI, installing a version from the Web UI's version list, uploading in the Recovery app and uploading a filesystem image. All official releases and development builds from [GitHub](https://github.com/emsesp/EMS-ESP32/releases) are signed. Anything else is refused with "This firmware is not signed by EMS-ESP" and nothing is installed.
+From 3.9.0, EMS-ESP checks whether firmware is an official build when you upload a firmware file in the Web UI, install a version from the Web UI's version list or upload in the Recovery app. Official releases and development builds from [GitHub](https://github.com/emsesp/EMS-ESP32/releases) are signed by EMS-ESP and install straight away. The Version page shows "Official build" next to the version.
 
-You'll usually see this when:
+Anything else is a custom build, for example one you built yourself, a community build, a version older than 3.8.6, or a filesystem image. The Web UI then says "This is not an official EMS-ESP build" before anything is installed. Click "Install anyway" to install it, or leave it if you didn't expect this. The Version page then shows "Custom build".
 
-- **you go back to a version older than 3.8.6.** Only 3.8.6 and newer are signed. Use the 3.8.6 files from its [release page](https://github.com/emsesp/EMS-ESP32/releases/tag/v3.8.6), or allow one unsigned upload as described below.
-- **you install a build that isn't from EMS-ESP**, such as one you built yourself or a community build.
-- **the file was changed or damaged**, for example by a browser or download manager. Download it again from the release page.
+Only install a custom build if you trust where it came from. If you expected an official build, the file may have been changed or damaged, for example by a browser or download manager. Download it again from the release page.
 
-#### Allowing one unsigned upload
+Flashing over USB with the [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher) or esptool isn't checked.
 
-You need physical access to the device, so this can't be done over the network:
-
-1. Connect the device to a computer with a USB cable and open the serial console at 115200 baud. See [Console](Console.md) for how.
-2. Type `su` and sign in with the username and password of a Web UI admin user.
-3. Type `allow unsigned`.
-4. Upload the firmware in the Web UI as usual.
-
-This allows one upload only. It ends after that upload or when the device restarts. It doesn't work over telnet or in the Web UI's console. While it's on, the upload pages show a warning.
-
-The Version page shows "Official build" next to the version when the running firmware is signed by EMS-ESP, and "Custom build" otherwise.
-
-Flashing over USB with the [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher) or esptool is never checked, so that also works.
-
-#### Building your own firmware
-
-If you install your own builds often, you can sign them with your own key so the device accepts them without `allow unsigned`. The steps are in [Installing your own build](https://github.com/emsesp/EMS-ESP32/blob/dev/CONTRIBUTING.md#installing-your-own-build).
+If you build your own firmware, see [Installing your own build](https://github.com/emsesp/EMS-ESP32/blob/dev/CONTRIBUTING.md#installing-your-own-build).
 
 ### Why am I asked for my password again?
 
