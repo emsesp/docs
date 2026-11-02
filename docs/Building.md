@@ -30,6 +30,8 @@ Then to build the firmware run `pio run -e <your_environment_name>` or just `pio
 
 To upload the firmware to your ESP32 device you can use the `pio run -e upload` command. There are two ways to upload the firmware: via USB or via OTA. To use OTA make sure `upload_protocol` is commented out in your `pio_local.ini` file and then PlatformIO will automatically detect the USB (you can also specific using the `upload_port` parameter). When using OTA set `upload_protocol` to `custom` and `custom_emsesp_ip` to the IP address of your EMS-ESP device. This is fastest way to upload the firmware to your device but obviously needs EMS-ESP to be running and accessible.
 
+From 3.9.0, a firmware you build yourself is not an official EMS-ESP build. Uploading it with `pio run -t upload` installs it without asking, and the Version page shows "Custom build". When you upload it in the Web UI instead, click "Install anyway". See [Official and custom builds](FAQ.md#official-and-custom-builds).
+
 ## Testing locally
 
 ### WebUI development
