@@ -148,7 +148,9 @@ You need physical access to the device, so this can't be done over the network:
 3. Type `allow unsigned`.
 4. Upload the firmware in the Web UI as usual.
 
-This allows one upload only. It ends after that upload or when the device restarts. It doesn't work over telnet or in the Web UI's console.
+This allows one upload only. It ends after that upload or when the device restarts. It doesn't work over telnet or in the Web UI's console. While it's on, the upload pages show a warning.
+
+The Version page shows "Official build" next to the version when the running firmware is signed by EMS-ESP, and "Custom build" otherwise.
 
 Flashing over USB with the [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher) or esptool is never checked, so that also works.
 
