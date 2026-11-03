@@ -8,11 +8,11 @@ description: Guide to building EMS-ESP firmware from source using PlatformIO and
 
 ## Vereisten
 
-Er wordt aangenomen dat je een basiskennis hebt van coderen en het bouwen van software voor microcontrollers met behulp van git, hoe node en package.json werken en ook enige kennis van het PlatformIO framework voor het bouwen van Espressif IDF en Arduino projecten.
+Er wordt van uitgegaan dat je beschikt over basiskennis van het programmeren en ontwikkelen van software voor microcontrollers met behulp van Git, dat je weet hoe Node en package.json werken, en dat je enige kennis hebt van het PlatformIO-framework voor het ontwikkelen van Espressif IDF- en Arduino-projecten.
 
-Je kunt de [dev container](https://containers.dev/) gebruiken (zie hieronder) of alles lokaal instellen. Als je op Windows draait, wordt het sterk aangeraden om een WSL Linux omgeving te gebruiken, omdat deze veel sneller compileert dan op Windows.
+Je kunt ofwel de [dev container](https://containers.dev/) gebruiken (zie hieronder), of alles lokaal instellen. Bij gebruik op Windows wordt het ten zeerste aanbevolen om een WSL-Linux-omgeving te gebruiken, aangezien het compileren daar veel sneller verloopt dan op het standaard Windows-systeem.
 
-Zorg ervoor dat de volgende softwarepakketten geïnstalleerd zijn:
+Zorg ervoor dat de volgende softwarepakketten zijn geïnstalleerd:
 
 - [Node.js](https://nodejs.org)
 - [pnpm](https://pnpm.io/installation)
@@ -20,89 +20,91 @@ Zorg ervoor dat de volgende softwarepakketten geïnstalleerd zijn:
 
 ## De firmware bouwen
 
-Maak eerst een lokaal PlatformIO-configuratiebestand door het voorbeeldbestand `pio_local.ini_example` te kopiëren naar `pio_local.ini` en pas het aan uw behoeften aan, bijvoorbeeld door het doelbord waarvoor u wilt bouwen in te stellen met `default_envs` of debug-informatie toe te voegen met `my_build_flags`.
+Maak eerst een lokaal PlatformIO-configuratiebestand aan door het voorbeeldbestand `pio_local.ini_example` naar `pio_local.ini` te kopiëren en dit aan te passen aan je behoeften, bijvoorbeeld door met `default_envs` het doelbord in te stellen waarvoor je wilt bouwen of door met `my_build_flags` debug-informatie toe te voegen.
 
-Voordat je de firmware bouwt, moet je eerst de distributiebestanden voor WebUI maken door `pio run -e build-webUI` uit te voeren vanuit de hoofdmap of `pnpm build-webUI ` vanuit de map `interface`. Hierdoor wordt het bestand `src/ESP32React/WWWData.h` gemaakt dat door de firmware wordt gebruikt.
+Voordat je de firmware compileert, moet je eerst de distributiebestanden voor de WebUI aanmaken door ofwel `pio run -e build-webUI` vanuit de hoofdmap uit te voeren, ofwel `pnpm build-webUI ` vanuit de map `interface`. Hierdoor wordt het bestand `src/ESP32React/WWWData.h` aangemaakt, dat door de firmware wordt gebruikt.
 
-Voer vervolgens `pio run -e <your_environment_name>` uit om de firmware te bouwen, of alleen `pio run` als je een standaardomgeving hebt ingesteld in je `pio_local.ini`-bestand.
+Voer vervolgens `pio run -e <your_environment_name>` uit om de firmware te bouwen, of gewoon `pio run` als je een standaardomgeving hebt ingesteld in je `pio_local.ini`-bestand.
 
 ## De firmware uploaden
 
-Om de firmware te uploaden naar je ESP32-apparaat kun je het `pio run -e upload` commando gebruiken. Er zijn twee manieren om de firmware te uploaden: via USB of via OTA. Als je OTA wilt gebruiken, zorg er dan voor dat `upload_protocol` is uitgecommentarieerd in je `pio_local.ini` bestand en dan zal PlatformIO automatisch de USB detecteren (je kunt ook specifiek de `upload_port` parameter gebruiken). Bij gebruik van OTA stel je `upload_protocol` in op `custom` en `custom_emsesp_ip` op het IP-adres van je EMS-ESP apparaat. Dit is de snelste manier om de firmware naar je apparaat te uploaden, maar uiteraard moet EMS-ESP actief en toegankelijk zijn.
+Om de firmware naar je ESP32-apparaat te uploaden, kun je het `pio run -e upload`-commando gebruiken. Er zijn twee manieren om de firmware te uploaden: via USB of via OTA. Om OTA te gebruiken, moet je ervoor zorgen dat `upload_protocol` is uitgecommentarieerd in je `pio_local.ini`-bestand; PlatformIO detecteert dan automatisch de USB (je kunt dit ook specifiek aangeven met de parameter `upload_port`). Als je OTA gebruikt, stel dan `upload_protocol` in op `custom` en `custom_emsesp_ip` op het IP-adres van je EMS-ESP-apparaat. Dit is de snelste manier om de firmware naar je apparaat te uploaden, maar hiervoor moet EMS-ESP uiteraard actief en bereikbaar zijn.
+
+Volgens 3.10.0 is firmware die je zelf samenstelt geen officiële EMS-ESP-build. Als je deze uploadt met `pio run -t upload`, wordt deze zonder te vragen geïnstalleerd en wordt op de versiepagina "Aangepaste build" weergegeven. Als je deze in plaats daarvan via de webinterface uploadt, klik dan op "Toch installeren". Zie [Official and custom builds](FAQ#standaard-en-aangepaste-configuraties).
 
 ## Lokaal testen
 
-### WebUI-ontwikkeling
+### Ontwikkeling van web-UI’s
 
-De WebUI kan in realtime worden ontwikkeld en getest met behulp van namaakgegevens uit het bestand `/mock-api/restServer.ts`. Dit is handig wanneer je wijzigingen aanbrengt in de WebUI, vertalingen test of het gedrag bekijkt wanneer testgegevens veranderen.
+De WebUI kan in realtime worden ontwikkeld en getest met behulp van fictieve voorbeeldgegevens uit het bestand `/mock-api/restServer.ts`. Dit is handig bij het aanbrengen van wijzigingen in de WebUI, het testen van vertalingen of het observeren van het gedrag wanneer de testgegevens veranderen.
 
-Je moet een extra softwarepakket installeren, [bun](https://bun.com/docs/installation).
+U moet een extra softwarepakket installeren, [bun](https://bun.com/docs/installation).
 
-De mock API-dataservice bouwen:
+Om de mock-API-gegevensservice te bouwen:
 
 ```sh
 cd mock-api
 pnpm install
 ```
 
-en dan vanuit de map `interface` uitvoeren:
+en voer vervolgens vanuit de map `interface` het volgende uit:
 
 ```sh
 pnpm standalone
 ```
 
-Dit opent een browservenster met URL `http://localhost:3000`.
+Hierdoor wordt een browservenster geopend met de URL `http://localhost:3000`.
 
-### Offline simuleren, zonder ESP32-microcontroller
+### Offline simuleren, zonder een ESP32-microcontroller
 
-Je kunt EMS-ESP ook uitvoeren zonder ESP32 (wat we 'standalone' noemen). De PlatformIO-omgeving heeft twee `native` type omgevingen die `emsesp` uitvoerbare bestanden bouwen die compatibel zijn met Linux, Windows en Max OSX.
+Je kunt EMS-ESP ook zonder een ESP32 draaien (wat we ‘standalone’ noemen). De PlatformIO-omgeving beschikt over twee omgevingen van het type `native` waarmee je uitvoerbare bestanden van het type `emsesp` kunt bouwen die compatibel zijn met Linux, Windows en macOS.
 
 ```sh
 pio run -e standalone -t exec
 ```
 
-Als de standalone draait, zie je de EMS-ESP Console. Vanaf hier kun je het `test` commando gebruiken om testen uit te voeren. `test general` is een generieke test die een standaard boiler en thermostaat opzet met alle standaard entiteiten. Alle tests zijn hard gecodeerd in het bestand `test/test.cpp` en kunnen eenvoudig worden aangepast.
+Wanneer de standalone-versie draait, zie je de EMS-ESP-console. Van hieruit kun je het `test`-commando gebruiken om tests uit te voeren. `test general` is een algemene test die een standaardboiler en -thermostaat met alle standaardentiteiten instelt. Alle tests zijn hardgecodeerd in het bestand `test/test.cpp` en kunnen eenvoudig worden aangepast.
 
-Er is ook een set Unit Tests die ook vanuit de pio-omgeving kunnen worden uitgevoerd met `pio run -e native-test -t exec`. Dit werkt op elk platform en vereist geen extra instellingen.
+Er is ook een reeks unit-tests die vanuit de pio-omgeving kunnen worden uitgevoerd, net als `pio run -e native-test -t exec`. Dit werkt standaard op elk platform en vereist geen extra configuratie.
 
 ### Een ontwikkelcontainer gebruiken
 
-Je kunt de dev container lokaal gebruiken of een codespace op github opzetten. Als je de dev container gebruikt en de standalone UI draait, moet je het standalone-devcontainer script draaien in plaats van het standaard standalone script. Anders is je vite-poort niet toegankelijk vanaf je machine.
+Je kunt de dev-container lokaal gebruiken of een codespace op GitHub opzetten. Als je de dev-container gebruikt en de standalone UI uitvoert, moet je het script `standalone-devcontainer` uitvoeren in plaats van het standaard `standalone`-script. Anders is je Vite-poort niet toegankelijk vanaf je computer.
 
 ```sh
 pnpm standalone-devcontainer
 ```
 
-#### GitHub-codeerruimte
+#### GitHub Codespace
 
-Klik op "Code" en de "Create codespace on dev" om een codespace te starten die je kunt gebruiken om te ontwikkelen zonder lokaal iets te installeren.
+Klik op ‘Code’ en vervolgens op ‘Codespace aanmaken op dev’ om een codespace te starten die je kunt gebruiken voor het ontwikkelen, zonder dat je lokaal iets hoeft te installeren.
 
 ![Codespace start](/media/screenshot/codespace_start.jpg)
 
 ### De partitiestructuur
 
-| Naam | Type | Subtype | Offset | Grootte | Notities | Bestand |
+| Naam | Type | Subtype  | Offset | Grootte | Opmerkingen | Bestand |
 | ---------- | ---- | -------- | ------------- | ------------------ | ------------------------------- | ---------------------------------- |
-| 0x0000/0x1000 | 0x8000 (32 KB) | ESP32-S3=0x1000, ESP32=0x1000 | bootloader*.bin | bootloader*
-| partities | | 0x8000 | 0x1000 (4 KB) | hetzelfde voor elk bord | partitions\*.bin |
+| bootloader | | | 0x0000/0x1000 | 0x8000 (32 KB)     | ESP32-S3=0x1000, ESP32=0x1000   | bootloader\*.bin |
+| partities | | | 0x8000 | 0x1000 (4 KB) | hetzelfde voor elk bord | partities\*.bin |
 | - | | | | | | |
-| nvs | data | nvs | 0x9000 | 0x5000 (20 KB) | gereserveerd voor ESP32 | |
-| otadata | data | ota | 0xE000 | 0x2000 (8 KB) | hetzelfde voor elk bord | boot_app0*.bin |
-| app | fabriek | 0x10000 | 0x480000 (4,5 MB) | standaard opstartpartitie | EMS-ESP-firmware \*.bin/loader |
-| app0 | app | ota_0 | 0x290000 | 0x490000 (4,56 MB) | OTA cyclus 1 | EMS-ESP firmware \*.bin |
-| app1 | app | ota_1 | 0x510000 | 0x490000 (4,56 MB) | OTA cyclus 2 | EMS-ESP firmware \*.bin |
-| nvs1 | data | nvs | 0xAA0000 | 0x040000 (256 KB) | aangepast voor EMS-ESP | (gegenereerd door script) |
-| spiffs | data | spiffs | 0xAA0000 | 0x200000 (2 MB) | voor LittleFS/EMS-ESP bestandssysteem | (optionele inhoud van gegevensmap) |
-| coredump | data | coredump | 0xCE0000 | 0x010000 (64 KB) | | | |
+| nvs | gegevens | nvs | 0x9000 | 0x5000 (20 KB)     | gereserveerd voor ESP32 | |
+| otadata    | data | ota | 0xE000 | 0x2000 (8 KB) | hetzelfde voor elk bord | boot_app0\*.bin |
+| opstart | app  | fabrieksinstellingen  | 0x10000 | 0x480000 (4,5 MB)  | standaard opstartpartitie | EMS-ESP-firmware \*.bin/loader     |
+| app0 | app  | ota_0    | 0x290000 | 0x490000 (4,56 MB) | OTA-cyclus 1 | EMS-ESP-firmware \*.bin |
+| app1 | app  | ota_1    | 0x510000 | 0x490000 (4,56 MB) | OTA-cyclus 2 | EMS-ESP-firmware \*.bin |
+| nvs1 | gegevens | nvs | 0xAA0000 | 0x040000 (256 KB)  | op maat voor EMS-ESP | (gegenereerd door script) |
+| spiffs     | data | spiffs   | 0xAA0000 | 0x200000 (2 MB)    | voor het LittleFS/EMS-ESP-bestandssysteem | (optionele inhoud van de map ‘data’) |
+| coredump   | gegevens | coredump | 0xCE0000 | 0x010000 (64 KB)   | | |
 
 - Referentie: [ESP-IDF Partition Tables](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/partition-tables.html)
-- Er zijn 3 plaatsen waar de EMS-ESP-firmware wordt opgeslagen:
-  - `boot` wordt standaard gebruikt bij nieuwe installaties.
-  - `app0` en `app1` zijn de firmwarepartities die worden gebruikt tijdens OTA-updates en wisselen tussen de twee. De firmware wordt in een van deze niet-actieve partities geladen en vervolgens wordt het apparaat opnieuw opgestart.
-- De bootloader (tweede trap genoemd) is de kleine executable die wordt gebruikt om de partitietabel op offset 0x8000 te lezen en te bepalen welke partities beschikbaar zijn. Merk op dat de offset van de bootloader verschilt per chiptype. ESP32 is [0x1000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/bootloader.html#bootloader) en ESP32-S3 is [0x0000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-guides/bootloader.html#bootloader).
-- De partitie `otadata` wordt gebruikt om een kleine applicatie te bevatten die gebruikt wordt om te bepalen welke partitie (boot, app0, app1) gebruikt moet worden. Deze bevraagt de gegevens die zijn opgeslagen in het blok `partitions`.
-- EMS-ESP kan opnieuw worden opgestart naar andere partities met het commando `restart <boot|app0|app1>`.
-- Het EMS-ESP commando Console/API `show system` toont de huidige partitie en de partitie die wordt opgestart na een herstart.
-- Bij alle board/chip-typen zijn de `boot_app0.bin` en `partitions.bin` meestal hetzelfde bestand voor elke printplaat. Alleen de `bootloader.bin` is anders.
-- Zie [EMS-ESP-Flasher-CLI](https://github.com/emsesp/EMS-ESP-Flasher-CLI/blob/main/README.md) voor meer informatie over de flasher CLI tool.
-- Zie ook https://docs.emsesp.org/Installing#manual-flashing-the-firmware voor het handmatig flashen van de firmware en de locatie van de .bin-bestanden.
+- Er zijn 3 locaties waar de EMS-ESP-firmware is opgeslagen:
+  - `boot` is de standaardinstelling bij nieuwe installaties.
+  - `app0` en `app1` zijn de firmwarepartities die bij OTA-updates worden gebruikt; het systeem schakelt tussen deze twee partities. De firmware wordt in een van deze niet-actieve partities geladen, waarna het apparaat opnieuw wordt opgestart.
+- De bootloader (ook wel ‘second stage’ genoemd) is het kleine uitvoerbare bestand dat wordt gebruikt om de partitietabel op offset 0x8000 te lezen en te bepalen welke partities beschikbaar zijn. Let op: de offset van de bootloader verschilt per chiptype. ESP32 is [0x1000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/bootloader.html#bootloader) en ESP32-S3 is [0x0000](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-guides/bootloader.html#bootloader).
+- De partitie `otadata` wordt gebruikt om een kleine toepassing op te slaan waarmee wordt bepaald welke partitie (boot, app0, app1) moet worden gebruikt. Deze toepassing haalt de gegevens op die zijn opgeslagen in het `partitions`-blok.
+- EMS-ESP kan met het commando `restart <boot|app0|app1>` opnieuw worden opgestart op andere partities.
+- Met het EMS-ESP-commando Console/API `show system` worden de huidige partitie en de partitie weergegeven die na een herstart zal worden opgestart.
+- Bij alle board/chip-types zijn de `boot_app0.bin` en `partitions.bin` doorgaans hetzelfde bestand voor elk bord. Alleen de `bootloader.bin` is anders.
+- Zie [EMS-ESP-Flasher-CLI](https://github.com/emsesp/EMS-ESP-Flasher-CLI/blob/main/README.md) voor meer informatie over de CLI-tool ‘flasher’.
+- Zie ook https://docs.emsesp.org/Installing#manual-flashing-the-firmware voor informatie over het handmatig flashen van de firmware en de locatie van de .bin-bestanden.

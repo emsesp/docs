@@ -4,157 +4,161 @@ title: Configuring EMS-ESP
 description: Complete guide to configuring EMS-ESP including first-time setup, WiFi, application settings, and customization options
 ---
 
-# Bestätigen
+# Konfigurieren
 
-## Erstmalige Einrichtung
+## Ersteinrichtung
 
-In der Werkskonfiguration wird ein WiFi-Zugangspunkt namens `ems-esp` eingerichtet. Verbinden Sie sich mit diesem mit dem WPA-Passwort `ems-esp-neo`. Wenn Sie zu einem Anmeldebildschirm (Captive Portal) aufgefordert werden, melden Sie sich mit dem Benutzernamen `admin` und dem Passwort `admin` an. Diese können später geändert werden. Wenn Sie eine Ethernet-Karte haben, können Sie sich direkt mit deren IP-Adresse oder über `http://ems-esp` oder `http://ems-esp.local` verbinden.
+Die standardmäßige „Werkskonfiguration“ startet einen WLAN-Zugangspunkt namens `ems-esp`. Stellen Sie eine Verbindung zu diesem Zugangspunkt mit dem WPA-Passwort `ems-esp-neo` her. Wenn ein Anmeldebildschirm (Captive Portal) angezeigt wird, melden Sie sich mit dem Benutzernamen `admin` und dem Passwort `admin` an. Diese Angaben können später geändert werden. Wenn Sie über eine Ethernet-Karte verfügen, können Sie eine Verbindung direkt über deren IP-Adresse oder über `http://ems-esp` bzw. `http://ems-esp.local` herstellen.
 
-Jetzt können Sie die Einstellungen weiter konfigurieren. Wenn Sie nicht mit Ihrem WiFi-Netzwerk verbunden sind, tun Sie dies zuerst auf der Seite Einstellungen->Netzwerk. Sie können dies auch über die Konsole tun, wenn Sie mit einem Serial/USB-Port verbunden sind und die Befehle `set wifi ssid` und `set wifi password` verwenden.
+Nun können Sie mit der weiteren Konfiguration der Einstellungen fortfahren. Falls noch keine Verbindung zu Ihrem WLAN-Netzwerk besteht, stellen Sie diese zunächst über die Seite „Einstellungen -> Netzwerk“ her. Sie können dies auch über die Konsole tun, wenn Sie mit einem Serial/USB-Port verbunden sind und die Befehle `set wifi ssid` und `set wifi password` verwenden.
 
-Wenn Sie Warnungen erhalten, dass die Verbindung zum EMS-Bus fehlgeschlagen ist oder Tx- oder Rx-Fehler vorliegen, folgen Sie der Anleitung [troubleshooting](Troubleshooting).
+Wenn Warnmeldungen angezeigt werden, dass keine Verbindung zum EMS-Bus hergestellt werden konnte, oder wenn Tx- oder Rx-Fehler auftreten, befolgen Sie bitte die Anleitung unter [troubleshooting](Troubleshooting).
 
-:::note Wenn Sie im Protokoll die Meldung "Rx unvollständige Telegramme" sehen, geraten Sie nicht in Panik. Einige Telegramme können verpasst werden, und dies wird in der Regel durch Rauschstörungen auf der Leitung verursacht.
+:::note
+Wenn im Protokoll „Rx incomplete telegrams“ angezeigt wird, geraten Sie nicht in Panik. Es kann vorkommen, dass einige Telegramme übersehen werden, was in der Regel auf Störsignale auf der Leitung zurückzuführen ist.
 :::
 
-Im folgenden Abschnitt werden einige der wichtigsten Einstellungen beschrieben, die über die WebUI im Abschnitt Einstellungen vorgenommen werden können. Die meisten sind selbsterklärend, daher werden hier nur die wichtigsten beschrieben.
+Im folgenden Abschnitt werden einige der wichtigsten Einstellungen beschrieben, die über die Web-Benutzeroberfläche im Bereich „Einstellungen“ angepasst werden können. Die meisten sind selbsterklärend, daher werden hier nur die wichtigsten beschrieben.
 
 ## Anwendungseinstellungen
 
 ### Dienstleistungen
 
-- **Umgehung der Access Token-Autorisierung bei API-Aufrufen**. Für RESTful-Schreibbefehle über HTTP POST ist das Zugriffs-Token erforderlich. Dies geschieht aus Sicherheitsgründen, um zu verhindern, dass jemand die Geräteeinstellungen ändert. Wenn Sie dieses Flag setzen, ist die API offen. Nicht empfohlen!
-- **Telnet-Konsole aktivieren**. Diese Option ist standardmäßig aktiviert und ermöglicht Benutzern die Verbindung mit dem unsicheren Telnet-Server an Port 23.
-- **Modbus aktivieren**. Diese Funktion ist standardmäßig ausgeschaltet und ermöglicht es dem Benutzer, eine Verbindung zum Modbus-TCP-Server herzustellen (Standard-Port 502). Aufgrund von Speicherbeschränkungen ist diese Funktion nur auf Karten mit zusätzlichem PSRAM verfügbar.
+- **Umgehung der Autorisierung per Zugriffstoken bei API-Aufrufen**. Für RESTful-Schreibbefehle über HTTP-POST ist das Zugriffstoken erforderlich. Dies dient aus Sicherheitsgründen dazu, zu verhindern, dass Unbefugte die Geräteeinstellungen ändern. Durch Setzen dieses Flags wird die API geöffnet. Nicht empfohlen!
+- **Telnet-Konsole aktivieren**. Diese Option ist standardmäßig aktiviert und ermöglicht es Benutzern, eine Verbindung zum ungesicherten Telnet-Server auf Port 23 herzustellen.
+- **Modbus aktivieren**. Diese Option ist standardmäßig deaktiviert und ermöglicht es Benutzern, eine Verbindung zum Modbus-TCP-Server herzustellen (Standardport 502). Aufgrund von Speicherbeschränkungen ist diese Funktion nur auf Platinen mit zusätzlichem PSRAM verfügbar.
 - **Syslog aktivieren**:
-  - **IP** ist die IP-Adresse eines Syslog-Servers für die Erfassung von Fernprotokollen. Leer lassen, wenn Sie SysLog nicht verwenden. Hinweis: EMS-ESP verwendet das Standardprotokoll [RFC5424](https://datatracker.ietf.org/doc/html/rfc5424). Stellen Sie daher sicher, dass Ihr Syslog-Server für die Verarbeitung dieser Nachrichten eingerichtet ist und nicht für RFC3164 (BSD Syslog).
-  - **Port** bei Verwendung einer alternativen Portnummer. Der Standardwert ist 514. Und es wird UDP (nicht TCP) verwendet.
-  - mit **Protokollebene** wird die maximale Protokollebene für gemeldete Nachrichten festgelegt. Die höchste Stufe ist DEBUG, bei der sehr viele Protokolldaten gesendet werden, daher ist Vorsicht geboten.
-  - **Intervall markieren** sendet eine spezielle `mark`-Nachricht an das SysLog. Dies ist nützlich für die Zeitmessung von Ereignissen.
+  - **IP** ist die IP-Adresse eines Syslog-Servers zur Erfassung von Remote-Protokollen. Lassen Sie das Feld leer, wenn Sie Syslog nicht verwenden. Hinweis: EMS-ESP verwendet das Standardprotokoll [RFC5424](https://datatracker.ietf.org/doc/html/rfc5424). Stellen Sie daher sicher, dass Ihr Syslog-Server für die Verarbeitung dieser Nachrichten konfiguriert ist und nicht beispielsweise für RFC3164 (BSD Syslog).
+  - **Port**, falls eine andere Portnummer verwendet wird. Der Standardwert ist 514. Es wird UDP (nicht TCP) verwendet.
+  - **Protokollstufe** legt die maximale Protokollstufe für gemeldete Meldungen fest. Die höchste Stufe ist „DEBUG“, bei der eine große Menge an Protokolldaten gesendet wird; verwenden Sie diese daher mit Bedacht.
+  - **Mark Interval** sendet eine spezielle `mark`-Meldung an das SysLog. Dies ist nützlich, um Ereignisse zeitlich zu erfassen.
 
 ### Sensoren
 
-- **Analoge Sensoren aktivieren**. Damit kann jeder GPIO Signale erfassen, egal ob es sich um einen digitalen I/O, einen Impulszähler oder einen ADC handelt, der mv misst. Es sind noch viele weitere Optionen verfügbar. Beachten Sie, dass der `Factor` ein Teiler ist.
-- **1-Draht-Parasitenstrom aktivieren**. Wählen Sie diese Option, wenn Sie (Dallas-)Temperatursensoren mit parasitärer Leistung verwenden.
+- **Analoge Sensoren aktivieren**. Dadurch kann jeder GPIO-Pin Signale erfassen, egal ob es sich um einen digitalen I/O, einen Impulszähler oder einen ADC zur Messung von mV handelt. Es stehen außerdem noch viele weitere Optionen zur Verfügung. Beachten Sie, dass `Factor` ein Teiler ist.
+- **1-Wire-Parasitenstrom aktivieren**. Wählen Sie diese Option, wenn Sie (Dallas-)Temperatursensoren mit Parasitenstrom verwenden.
 
 ### Formatierungsoptionen
 
-- **Sprache**. Hier wird die Sprache festgelegt, die für die Namen der EMS-Geräteeinheiten, die in den WebUI-Geräten und im Dashboard angezeigt werden, und auch für die MQTT-Erkennung verwendet wird. Die Standardeinstellung ist Englisch. Wenn Sie den Home Assistant verwenden und die Sprache umstellen, müssen Sie eventuell die vorherigen EMS-ESP MQTT-Einträge entfernen (unter HA-Einstellungen->Geräte & Dienste->MQTT) und EMS-ESP neu starten, um sicherzugehen.
-- **Boolean Format Dashboard**. So werden boolesche Werte in der WebUI und in MQTT-Payloads angezeigt.
-- **Boolean Format API/MQTT**. So werden boolesche Werte in den MQTT-Payloads und der API-JSON-Ausgabe geschrieben.
-- **Enum Format API/MQTT**. Dies ist die Art und Weise, wie Listenwerte in den MQTT-Payloads und API JSON dargestellt werden, entweder durch den Wert oder die Indexposition innerhalb der Liste. Bei der Verwendung von Home Assitant werden für einige Entitäten keine Werte, sondern ganze Zahlen angezeigt, z. B. statt `off, hot, cold` wird `0, 1, 2` angezeigt.
-- **Umrechnung der Temperaturwerte in Fahrenheit**. Für unsere US-Freunde.
-- **EMS-Telegramme hexadezimal protokollieren** schreibt die Telegramme im Rohformat überall als hexadezimale Werte hin.
+- **Sprache**. Hiermit wird die Sprache festgelegt, die für die Namen der EMS-Geräteentitäten verwendet wird, wie sie in der WebUI unter „Geräte“ und im Dashboard angezeigt werden, sowie für die MQTT-Erkennung. Die Standardeinstellung ist Englisch. Wenn Sie Home Assistant verwenden und die Sprache wechseln, müssen Sie möglicherweise die bisherigen EMS-ESP-MQTT-Einträge (unter „Einstellungen“ -> „Geräte & Dienste“ -> „MQTT“ in HA) entfernen und EMS-ESP sicherheitshalber neu starten.
+- **Dashboard zum Booleschen Format**. So werden boolesche Werte in der WebUI und in MQTT-Nutzdaten dargestellt.
+- **Boolesches Format API/MQTT**. So werden boolesche Werte in den MQTT-Nutzdaten und in der JSON-Ausgabe der API dargestellt.
+- **Enum-Format API/MQTT**. So werden Listenwerte in den MQTT-Nutzdaten und im API-JSON dargestellt – entweder anhand ihres Werts oder anhand ihrer Indexposition innerhalb der Liste. Bei Verwendung von Home Assistant werden die Werte jedoch nicht angezeigt, sondern für einige Entitäten Ganzzahlen, z. B. wird anstelle von `off, hot, cold` `0, 1, 2` angezeigt.
+- **Temperaturwerte in Fahrenheit umrechnen**. Für unsere Freunde in den USA.
+- **EMS-Telegramme im Hexadezimalformat protokollieren** schreibt die Telegramme überall im Rohformat als Hexadezimalwerte.
 
 ### Hardware-Einstellungen
 
-- **Board Profile**. Board-Profile sind vorkonfigurierte GPIO-Einstellungen für eine Reihe von gängigen ESP32-Entwicklungsboards und EMS-Gateway-Schaltungen. Die folgenden Profile sind verfügbar:
+- **Board-Profil**. Board-Profile sind vorkonfigurierte GPIO-Einstellungen für eine Reihe gängiger ESP32-Entwicklungsboards und EMS-Gateway-Schaltungen. Folgende Profile stehen zur Verfügung:
 
 | `profile name` | `based on board` | `led` | `dallas` | `rx` | `tx` | `button` | `phy_type` | `eth_power` | `eth_phy_addr` | `eth_clock_mode` |
 | -------------- | ---------------------- | ----- | -------- | ---- | ---- | -------- | ---------- | ----------- | -------------- | ---------------------------- |
-| S32 | BBQKees Gateway S32 | 2 | 18 | 23 | 5 | 0 | | | | | |
-| E32 | BBQKees Gateway E32 | 2 | 4 | 5 | 17 | 33 | LAN8720 | 16 | 1 | Eingang zu GPIO0 |
-| E32V2 | BBQKees Gateway E32 V2 | 2 | 14 | 4 | 5 | 34 | LAN8720 | 15 | 0 | Ausgang von GPIO0 |
-| S32S3 | BBQKees Gateway S3 | 2 | 18 | 5 | 17 | 0 | | | | | |
-| MH-ET | MH-ET Live D1 Mini | 2 | 18 | 23 | 5 | 0 | | | | | |
-| NODEMCU | NodeMCU 32S | 2 | 18 | 23 | 5 | 0 | | | | | |
-| LOLIN | Lolin D32 | 2 | 18 | 17 | 16 | 0 | | | | | |
-| OLIMEX | Olimex ESP32-EVB | 0 | 0 | 36 | 4 | 34 | LAN8720 | -1 | 0 | Eingang zu GPIO0 |
-| OLIMEXPOE | Olimex ESP32-POE | 0 | 0 | 36 | 4 | 34 | LAN8720 | 12 | 0 | Ausgang von GPIO17, invertiert |
-| C3MINI | Lolin C3 Mini | 7 | 1 | 4 | 5 | 9 | | | | | |
-s2MINI | Lolin S2 Mini | 15 | 7 | 11 | 12 | 0 | | | | | |
-| S3MINI | Liligo S3 | 17 | 18 | 8 | 5 | 0 | | | | | |
+| S32 | BBQKees Gateway S32    | 2     | 18 | 23   | 5    | 0 | | | | |
+| E32 | BBQKees Gateway E32    | 2     | 4 | 5    | 17   | 33 | LAN8720    | 16 | 1 | Eingang an GPIO0 |
+| E32V2 | BBQKees Gateway E32 V2 | 2     | 14 | 4    | 5    | 34 | LAN8720    | 15 | 0 | Ausgang von GPIO0 |
+| S32S3 | BBQKees Gateway S3     | 2     | 18 | 5    | 17   | 0 | | | | |
+| MH-ET | MH-ET Live D1 Mini     | 2     | 18 | 23   | 5    | 0 | | | | |
+| NODEMCU | NodeMCU 32S | 2     | 18 | 23   | 5    | 0 | | | | |
+| LOLIN | Lolin D32 | 2     | 18 | 17   | 16   | 0 | | | | |
+| OLIMEX | Olimex ESP32-EVB | 0     | 0 | 36   | 4    | 34 | LAN8720    | -1 | 0 | Eingang an GPIO0 |
+| OLIMEXPOE | Olimex ESP32-POE | 0     | 0 | 36   | 4    | 34 | LAN8720    | 12 | 0 | Ausgang von GPIO17, invertiert |
+| C3MINI | Lolin C3 Mini | 7     | 1 | 4    | 5    | 9 | | | | |
+| S2MINI | Lolin S2 Mini | 15    | 7 | 11   | 12   | 0 | | | | |
+| S3MINI | Liligo S3 | 17    | 18 | 8    | 5    | 0 | | | | |
 
-Um ein eigenes Board zu konfigurieren, aktivieren Sie zuerst `Developer mode`. Wenn Sie `Custom` wählen, werden die folgenden zusätzlichen Einstellungen angezeigt, mit denen Sie die GPIOs manuell konfigurieren können, um Ihr eigenes Board anzupassen. Sie können auch jederzeit `Custom` wählen, um die aktuellen Board-Profileinstellungen anzuzeigen, ohne zu speichern.
+Um ein benutzerdefiniertes Board zu konfigurieren, aktivieren Sie zunächst `Developer mode`. Wenn Sie `Custom` auswählen, werden die folgenden zusätzlichen Einstellungen angezeigt, mit denen Sie die GPIOs manuell an Ihr eigenes Board anpassen können. Sie können auch jederzeit `Custom` auswählen, um die aktuellen Einstellungen des Board-Profils anzuzeigen, ohne diese zu speichern.
 
-benutzerdefinierte Bordeinstellungen:_
+_Benutzerdefinierte Board-Einstellungen:_
 
-- **Rx GPIO**. Dies ist der GPIO-Pin, dem das Rx-Signal zugewiesen ist. Standardmäßig ist dies GPIO 23, aber es kann fast jeder freie Pin sein. Verbinden Sie diesen GPIO-Pin mit dem RX-Anschluss auf der EMS-Schnittstellenkarte.
-- **Tx GPIO**. Dies ist der GPIO-Pin, dem das Tx-Signal zugewiesen ist. Standardmäßig ist dies GPIO 5, aber es kann fast jeder freie Pin sein. Verbinden Sie diesen GPIO-Pin mit dem TX-Anschluss auf der EMS-Schnittstellenkarte.
-- **Taste GPIO**. Dies ist der GPIO-Pin, dem die Taste zugewiesen ist. Es ist ein Pull-up. Die Taste wird für verschiedene Funktionen verwendet. Ein einfacher Klick bewirkt nichts, ein Doppelklick führt einen WiFi-Reset durch und stellt die Verbindung zum AP wieder her, ein langes Drücken für 10 Sekunden und Loslassen führt einen Factory-Reset durch und ein sehr langes Drücken für mindestens 20 Sekunden ohne Loslassen startet den EMS-ESP neu und bringt ihn auf die ursprüngliche Boot-Partition.
-- **Temperatur GPIO**. Dies ist der Pin, an den externe Temperatursensoren angeschlossen werden. Die Dallas-Chips DS1822, DS18S20, DS18B20, DS1825 werden einschließlich ihrer parasitären Varianten unterstützt und können auch auf einer einzigen Leitung verkettet werden, bis zu 100 Sensoren.
-- **LED GPIO**. Dies ist der Pin für die LED, standardmäßig für die Onboard-LED auf dem ESP-Devboard.
-- **Eth PHY Typ**. Dies ist der Typ des verwendeten Ethernet-Chips.
+- **Rx GPIO**. Dies ist der GPIO-Pin, dem das Rx-Signal zugewiesen ist. Standardmäßig ist dies GPIO 23, es kann jedoch fast jeder freie Pin sein. Verbinden Sie diesen GPIO-Pin mit dem RX-Anschluss auf der EMS-Schnittstellenplatine.
+- **Tx GPIO**. Dies ist der GPIO-Pin, dem das Tx-Signal zugewiesen ist. Standardmäßig ist dies GPIO 5, es kann jedoch fast jeder freie Pin sein. Verbinden Sie diesen GPIO-Pin mit dem TX-Anschluss auf der EMS-Schnittstellenplatine.
+- **GPIO-Pin der Taste**. Dies ist der GPIO-Pin, dem die Taste zugewiesen ist. Es handelt sich um einen Pull-up-Pin. Die Taste wird für verschiedene Funktionen verwendet. Ein einmaliges Drücken hat keine Auswirkung, ein doppeltes Drücken führt zu einem WLAN-Reset und einer erneuten Verbindung zum AP, ein 10 Sekunden langes Drücken und Loslassen führt zu einem Werksreset und ein sehr langes Drücken von mindestens 20 Sekunden ohne Loslassen führt zu einem Neustart des EMS-ESP auf die ursprüngliche Boot-Partition.
+- **Temperatur-GPIO**. An diesem Pin werden externe Temperatursensoren angeschlossen. Die Dallas-Chips DS1822, DS18S20, DS18B20 und DS1825 werden einschließlich ihrer Parasit-Varianten unterstützt und können zudem in einer Daisy-Chain-Konfiguration an eine einzige Leitung angeschlossen werden – bis zu 100 Sensoren.
+- **LED GPIO**. Dies ist der Pin für die LED; standardmäßig ist die integrierte LED auf dem ESP-Entwicklungsboard ausgewählt.
+- **Eth-PHY-Typ**. Dies ist der Typ des verwendeten Ethernet-Chips.
 
-:::note Auf ESP32-Entwicklungsplatinen gibt es oft auch Pins mit der Bezeichnung RX und TX. Diese sind jedoch normalerweise mit dem USB-Chip verbunden und können nicht für die EMS-Schnittstellenschaltung verwendet werden.
+:::note
+Auf ESP32-Entwicklungsboards gibt es oft auch Pins mit der Bezeichnung „RX“ und „TX“. Diese sind jedoch in der Regel mit dem USB-Chip verbunden und können nicht für die EMS-Schnittstellenschaltung verwendet werden.
 :::
 
-- **EMS Tx-Modus**. Der Tx-Modus ist der Modus, in dem EMS-ESP Telegramme auf dem EMS-Bus sendet. Wählen Sie den Modus, der für Ihr System am besten geeignet ist, und achten Sie auf Tx-Fehler im Web Dashboard und `show ems` in der Konsole. Das Ändern des Wertes hat sofortige Auswirkungen.
-  - `EMS` ist der Standard für EMS1.0-Systeme, aber auch mit den meisten anderen Busprotokollen kompatibel.
-  - `EMS+` ist so konzipiert, dass es besser für EMS2.0/EMS+ Systeme funktioniert.
-  - `HT3` für Heatronics3, hauptsächlich von Junkers verwendet.
-  - `Hardware` verwendet die interne ESP-Hardware, um das Telegramm auszusenden. Die Telegramme werden sofort gesendet. Dies ist die schnellste und effizienteste Methode, funktioniert aber nur auf einigen Systemen.
-  - `Auto` prüft die empfangenen Bustelegramme, um den besten Zeitpunkt für `EMS`, `EMS+` oder `HT3` zu finden.
-- **EMS-Bus-ID**. Der EMS-ESP kann mehrere Geräte simulieren. Halten Sie sich an die Standardeinstellung `Gateway 2 (0x49)`, es sei denn, Sie verwenden mehr als eine EMS gateways/interface-Karte oder haben Konflikte mit anderen EMS-Geräten. Es ist wichtig zu beachten, dass der Serviceschlüssel (0x0B), der bis zur EMS-ESP-Version 3.8.1 als Standard verwendet wird, auch von zertifizierten service/maintenance-Technikern bei der Wartung Ihrer Heizungsanlagen verwendet wird und Konflikte verursachen könnte. Vergewissern Sie sich, dass Sie das EMS-ESP vor jeder Wartung ausschalten oder die EMS-Bus-ID ändern, bevor der Techniker eintrifft, da er sonst nicht in der Lage ist, Ihre Heizungsanlage anzuschließen und zu warten.
-- **Nur-Lesen-Modus aktivieren**. Dies deaktiviert alle ausgehenden Tx-Schreibbefehle an den EMS-Bus und versetzt EMS-ESP im Wesentlichen in den Hörmodus. Tx wird jedoch benötigt, um EMS-Geräte zu erkennen (da es einen Versionsbefehl aussendet). Wenn Sie EMS-ESP explizit in einen Lese-only/sniffer-Modus versetzen wollen, verwenden Sie `set tx_mode 0` von der Konsole aus.
-- **LED ausblenden**. Schaltet die LED im normalen Betriebsmodus aus. Die LED wird weiterhin beim Booten oder bei Verbindungsproblemen angezeigt.
-- **Untertaktete CPU-Geschwindigkeit**. Untertaktet den ESP auf 160Mhz, spart Strom und Wärme und verlängert die Lebensdauer des Chips auf Kosten der Leistung und Reaktionszeit. Ein Neustart des EMS-ESP ist erforderlich.
+- **EMS-Tx-Modus**. Der Tx-Modus ist der Modus, in dem EMS-ESP Telegramme über den EMS-Bus sendet. Wählen Sie den Modus, der für Ihr System am besten geeignet ist, und achten Sie auf Tx-Fehler im Web-Dashboard und `show ems` in der Konsole. Die Änderung des Werts wird sofort wirksam.
+  - `EMS` ist die Standardeinstellung für EMS1.0-Systeme, ist aber auch mit den meisten anderen Busprotokollen kompatibel.
+  - `EMS+` ist so konzipiert, dass es auf EMS2.0/EMS+-Systemen besser funktioniert.
+  - `HT3` für Heatronics3, das vor allem von Junkers verwendet wird.
+  - `Hardware` nutzt die interne Hardware des ESP, um das Telegramm zu versenden. Telegramme werden sofort versendet. Dies ist die schnellste und effizienteste Methode, funktioniert jedoch nur auf bestimmten Systemen.
+  - `Auto` überprüft die empfangenen Bus-Telegramme, um den optimalen Zeitpunkt für `EMS`, `EMS+` oder `HT3` zu ermitteln.
+- **EMS-Bus-ID**. Das EMS-ESP kann mehrere Geräte simulieren. Behalten Sie die Standardeinstellung `Gateway 2 (0x49)` bei, es sei denn, Sie verwenden mehr als eine EMS-gateways/interface-Karte oder es treten Konflikte mit anderen EMS-Geräten auf. Beachten Sie bitte, dass der Service-Schlüssel (0x0B), der bis zur EMS-ESP-Version 3.8.1 als Standard verwendet wird, auch von zertifizierten service/maintenance-Technikern bei der Wartung Ihrer Heizungsanlagen verwendet wird und zu Konflikten führen könnte. Stellen Sie sicher, dass Sie das EMS-ESP vor jeglichen Wartungsarbeiten ausschalten oder die EMS-Bus-ID ändern, bevor die Techniker eintreffen; andernfalls können diese keine Verbindung herstellen und Ihr Heizungssystem nicht warten.
+- **Schalten Sie den schreibgeschützten Modus ein**. Dadurch werden alle ausgehenden Tx-Schreibbefehle an den EMS-Bus deaktiviert, wodurch der EMS-ESP im Wesentlichen in den Abhörmodus versetzt wird. Tx wird jedoch benötigt, um EMS-Geräte zu erkennen (da es einen Versionsbefehl sendet). Wenn Sie den EMS-ESP explizit in einen Lese-only/sniffer-Modus versetzen möchten, verwenden Sie `set tx_mode 0` über die Konsole.
+- **LED ausblenden**. Schaltet die LED im normalen Betriebsmodus aus. Die LED leuchtet weiterhin beim Hochfahren oder bei Verbindungsproblemen.
+- **CPU-Taktfrequenz herabsetzen**. Senkt die Taktfrequenz des ESP auf 160 MHz, wodurch Strom und Wärme eingespart werden und die Lebensdauer des Chips verlängert wird – allerdings auf Kosten der Leistung und der Reaktionszeit. Ein Neustart von EMS-ESP ist erforderlich.
 
-### Besondere Funktionen
+### Sonderfunktionen
 
-- der **Entwicklermodus** ermöglicht erweiterte Funktionen in der WebUI, wie den Befehl Lesen aus dem Systemprotokoll und die Konfiguration einer benutzerdefinierten Karte.
-- **Kessel bei ausgeschalteter Zwangsheizung starten**.
-- **Fernbedienung bei fehlender Raumtemperatur deaktivieren**. Dies ist eine Sicherheitsfunktion, die verhindert, dass der Heizkessel startet, wenn der simulierte Raumtemperatursensor fehlt oder nicht funktioniert.
-- **Dusch-Timer aktivieren**. Aktivieren Sie diese Option, um die Dauer des Warmwassers zu messen, und es wird eine MQTT-Nachricht mit der Dauer gesendet. Der Timer startet nach einer Mindestlaufzeit von 2 Minuten.
-- **Brausealarm aktivieren**. Diese Funktion ist etwas experimentell und funktioniert möglicherweise nicht bei allen Heizkesseln. Nach 7 Minuten (konfigurierbar), in denen das heiße Wasser läuft, sendet der Kessel eine Warnung aus, indem er 10 Sekunden lang kaltes Wasser ausgibt (ebenfalls konfigurierbar). Der Kessel geht in den Testmodus, um diesen Vorgang auszuführen, daher ist Vorsicht geboten!
+- Im **Entwicklermodus** werden erweiterte Funktionen in der Web-Benutzeroberfläche aktiviert, wie beispielsweise der Befehl „Read“ aus dem Systemprotokoll und die Konfiguration einer benutzerdefinierten Platine.
+- **Den Heizkessel bei ausgeschalteter Zwangsheizung starten**.
+- **Fernbedienung bei fehlender Raumtemperatur deaktivieren**. Dies ist eine Sicherheitsfunktion, die verhindert, dass der Heizkessel anspringt, wenn der simulierte Raumtemperatursensor fehlt oder nicht funktioniert.
+- **Dusch-Timer aktivieren**. Aktivieren Sie diese Option, um die Laufzeit des Warmwassers zu messen; daraufhin wird eine MQTT-Nachricht mit der Dauer gesendet. Der Timer startet erst nach einer Mindestlaufzeit von 2 Minuten.
+- **Duschwarnung aktivieren**. Diese Funktion ist noch im Versuchsstadium und funktioniert möglicherweise nicht bei allen Heizkesseln. Nach 7 Minuten (einstellbar) laufendem Warmwasser wird eine Warnung ausgegeben, indem 10 Sekunden lang (ebenfalls einstellbar) kaltes Wasser fließt. Der Heizkessel wechselt für diesen Vorgang in den Testmodus – bitte mit Vorsicht verwenden!
 
 ## Netzwerkeinrichtung
 
-Auf der Seite Netzwerk können Sie den EMS-ESP mit Ihrem Heimnetzwerk verbinden. Sie können zwischen WiFi und Ethernet wählen, wenn die Hardwarekarte dies unterstützt. Hinweis: WiFi muss 2.4GHz/WPA2 sein. Es wird keine Verbindung zu einem 5GHz WifFi-Zugangspunkt hergestellt.
+Auf der Seite „Netzwerk“ können Sie EMS-ESP mit Ihrem Heimnetzwerk verbinden. Sie können zwischen WLAN und Ethernet wählen, sofern die Hardwarekarte dies unterstützt. Bitte beachten Sie, dass das WLAN 2.4GHz/WPA2 sein muss. Eine Verbindung zu einem 5-GHz-WLAN-Zugangspunkt ist nicht möglich.
 
 ### CORS (Cross-Origin Resource Sharing)
 
-Wenn CORS aktiviert ist, werden jeder Webanforderung neue HTTP-Header hinzugefügt, damit die Web-API `fetch`- und `XMLHttpRequest`-Anforderungen über verschiedene Domänen hinweg stellen kann. Sie deaktiviert die Preflight-Prüfung, die standardmäßig der Politik des gleichen Ursprungs folgt. Siehe [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) für weitere Einzelheiten. Es gibt auch ein Browser-Addon "CORS unblock", das auf die gleiche Weise funktioniert.
+Wenn CORS aktiviert ist, werden jeder Webanfrage neue HTTP-Header hinzugefügt, damit die Web-API `fetch`- und `XMLHttpRequest`-Anfragen über verschiedene Domänen hinweg stellen kann. Dadurch wird die Pre-Flight-Prüfung deaktiviert, die standardmäßig der Same-Origin-Richtlinie folgt. Weitere Informationen finden Sie unter [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). Es gibt außerdem ein Browser-Add-on namens „CORS unblock“, das auf dieselbe Weise funktioniert.
 
-Aktivieren Sie diese Funktion, wenn Sie in VPNs arbeiten oder andere Server (z.B. Grafana) auf anderen Domains laufen, die Aufrufe an die API von EMS-ESP tätigen.
+Aktivieren Sie diese Funktion, wenn Sie über ein VPN arbeiten oder wenn andere Server (wie z. B. Grafana) auf anderen Domänen laufen, die Aufrufe an die EMS-ESP-API senden.
 
 ## MQTT-Einrichtung
 
 - **Broker-Adresse**. Verwenden Sie die IP-Adresse, nicht einen FQDN.
-- **Port**. Der Standardwert ist 1883 und 8883 für SSL.
-- **Basis**. Allen Themen ist das Präfix `Base` vorangestellt, daher ist dies wichtig. Vergewissern Sie sich, dass dies eindeutig ist, wenn Sie mehr als ein EMS-ESP mit demselben Broker verwenden.
-- **Kunden-ID**. Diese wird intern zur Identifizierung von EMS-ESP mit dem Broker verwendet und ist optional. Hinweis: MQTT-Themen werden mit dem Hostnamen (Standard `ems-esp`) und nicht mit der Client-ID versehen. Zu verwenden, wenn mehrere Geräte vorhanden sind.
-- **Benutzername** und **Passwort** sind optional, werden aber aus Sicherheitsgründen empfohlen. Standardmäßig benötigt der Mosquitto MQTT-Broker ein username/password, also achten Sie darauf, wenn Sie das Home Assistant Add-On hier verwenden.
-- **Saubere Sitzung**. Erzeugt eine nicht-persistente Sitzung, wenn aktiviert. Die Standardeinstellung und empfohlene Einstellung ist deaktiviert, damit sie bei der Verwendung von Hausautomatisierungssystemen deaktiviert bleibt.
-- **QoS**. Dienstgüte, 0, 1 oder 2. 0 ist die Standardeinstellung und für die meisten Szenarien geeignet. Ein Wert von 1 garantiert, dass die Nachricht gesendet wurde, verursacht aber etwas mehr Netzwerkverkehr und Overhead.
-- **Immer das Retain Flag setzen**. Aktivieren Sie diese Option, wenn Sie alle Nachrichten auf dem MQTT-Broker aufbewahren möchten. Standard ist deaktiviert.
-- **Formatierung**. Mit der Option `Nested` werden alle Gerätedaten in einem einzigen MQTT-Topic zusammengefasst, indem eingebettete JSON-Objekte wie `dhw` in `boiler_data`, `hc1` in `thermostat_data` usw. verwendet werden. `As individual topics` teilt dies in separate MQTT-Themen ohne Gruppierung auf, so dass MQTT-Themen zu `boiler_data` und `boiler_data_dhw`, `thermostat_data` und `thermostat_data_hc1` usw. werden. Das Gleiche gilt für die Analog- und Temperatursensoren. Die Standardeinstellung ist verschachtelt.
-- **Befehlsausgabe in einem 'Antwort'-Thema veröffentlichen'**. Dies nimmt die Ausgabe eines API-Befehls und veröffentlicht das Ergebnis in einem Thema namens `response`.
-- **Einzelwertthemen bei Änderung veröffentlichen**. Diese Option veröffentlicht sofort das Topic und den Payload für jede Operation und ist nur verfügbar, wenn MQTT Discovery deaktiviert ist.
-- **MQTT Discovery aktivieren** aktiviert die Integration über MQTT Discovery, die vollständig von Home Assistant und teilweise von Domoticz unterstützt wird.
-  - **Erkennungstyp**. Wählen Sie zwischen "Home Assistant" und zwei Protokollen für "Domoticz". `Domoticz (latest)` verwendet Zahlen, Schalter, Auswahl und andere moderne Typen, während `Domoticz` nur Sensoren für alles verwendet und auch alle Template-Bedingungen entfernt.
-  - **Format der Entitäts-ID**: Es gibt 3 Optionen. Die erste `single instance, long names` verwendet das ältere `< v3.5`-Format. Die Standardeinstellung und empfohlene Einstellung für alle neuen Installationen ist die zweite Option namens `Single instance, short name`, die den EMS-ESP-Gerätenamen verwendet, der festgelegt ist und auf der Seite `Settings->Customization` zu sehen ist. Die letzte Option muss verwendet werden, wenn mehr als eine Version der EMS-ESP-Firmware verwendet wird, da sie jede Version eindeutig macht, indem sie allen MQTT-Themen den Basisnamen vorangestellt wird.
-  - **Eingabezahlenformat**: (nur HA) Wählen Sie den Modus Box oder Schieberegler. Schieberegler werden nur für Zahleneinheiten mit einem Bereich von weniger als 100 verwendet.
-- **Veröffentlichungsintervalle**. Dieser Abschnitt gilt pro Gerät und legt fest, wie häufig eine MQTT-Nachricht gesendet wird. Wenn der Wert 0 eingestellt ist, sendet EMS-ESP automatisch Daten, wenn eine merkliche Änderung eintritt, was innerhalb weniger Sekunden der Fall sein kann.
+- **Port**. Die Standardwerte sind 1883 und 8883 für SSL.
+- **TLS aktivieren** verschlüsselt die Verbindung zum Broker. **Überprüfen Sie den Broker anhand** eines CA-Zertifikats oder des SHA-1-Fingerabdrucks des Broker-Zertifikats, damit EMS-ESP nur eine Verbindung zu Ihrem Broker herstellt. Siehe [Securing your gateway](Securing.md#mqtt).
+- **Basis**. Allen Betreffzeilen wird das Präfix `Base` vorangestellt, daher ist dies wichtig. Achten Sie darauf, dass dieses Präfix eindeutig ist, wenn Sie mehr als einen EMS-ESP mit demselben Broker verwenden.
+- **Client-ID**. Diese wird intern verwendet, um EMS-ESP beim Broker zu identifizieren, und ist optional. Hinweis: MQTT-Themen werden mit dem Hostnamen (Standard: `ems-esp`) und nicht mit der Client-ID ergänzt. Verwenden Sie diese Option, wenn Sie mehrere Geräte haben.
+- **Benutzername** und **Passwort** sind optional, werden jedoch aus Sicherheitsgründen empfohlen. Standardmäßig erfordert der Mosquitto-MQTT-Broker ein username/password; achten Sie daher darauf, wenn Sie hier das Home Assistant-Add-on verwenden.
+- **„Clean Session“ aktivieren**. Erzeugt bei Aktivierung eine nicht persistente Sitzung. Die Standardeinstellung und empfohlene Einstellung ist „deaktiviert“, damit diese Option bei der Nutzung von Hausautomationssystemen deaktiviert bleibt.
+- **QoS**. Quality of Service, 0, 1 oder 2. 0 ist die Standardeinstellung und eignet sich für die meisten Szenarien. Der Wert 1 garantiert, dass die Nachricht gesendet wurde, verursacht jedoch etwas mehr Netzwerkverkehr und Overhead.
+- **Stellen Sie das „Retain Flag“ immer ein**. Aktivieren Sie diese Option, wenn Sie alle Nachrichten auf dem MQTT-Broker dauerhaft speichern möchten. Standardmäßig ist diese Option deaktiviert.
+- **Formatierung**. Die Option `Nested` fasst alle Gerätedaten mithilfe eingebetteter JSON-Objekte wie `dhw` in `boiler_data`, `hc1` in `thermostat_data` usw. zu einem einzigen MQTT-Thema zusammen. `As individual topics` teilt diese ohne Gruppierung in separate MQTT-Themen auf, sodass die MQTT-Themen zu `boiler_data` und `boiler_data_dhw`, `thermostat_data` und `thermostat_data_hc1` usw. werden. Das Gleiche gilt für die Analog- und Temperatursensoren. Die Standardeinstellung ist „verschachtelt“.
+- **Befehlsausgabe in einem „response“-Topic veröffentlichen**. Dabei wird die Ausgabe eines API-Befehls entnommen und das Ergebnis in einem Topic namens `response` veröffentlicht.
+- **Einzelwert-Themen bei Änderung veröffentlichen**. Diese Option veröffentlicht das Thema und die Nutzdaten für jeden Vorgang sofort und ist nur verfügbar, wenn MQTT Discovery deaktiviert ist.
+- **MQTT Discovery aktivieren**: Aktiviert die Integration über MQTT Discovery, die von Home Assistant vollständig und von Domoticz teilweise unterstützt wird.
+  - **Erkennungstyp**. Wählen Sie zwischen „Home Assistant“ und zwei Protokollen für „Domoticz“. `Domoticz (latest)` verwendet Zahlen, Schalter, Auswahlfelder und andere moderne Typen, während `Domoticz` für alles lediglich Sensoren verwendet und zudem alle Vorlagenbedingungen entfernt.
+  - **Format der Entitäts-ID**: Es gibt 3 Optionen. Die erste Option `single instance, long names` verwendet das ältere `< v3.5`-Format. Die Standard- und empfohlene Einstellung für alle Neuinstallationen ist die zweite Option namens `Single instance, short name`, die den EMS-ESP-Geräte-Entity-Namen verwendet, der fest vorgegeben ist und auf der Seite `Settings->Customization` eingesehen werden kann. Die letzte Option muss verwendet werden, wenn mehr als eine Version der EMS-ESP-Firmware ausgeführt wird, da sie jede Version eindeutig macht, indem allen MQTT-Themen der Basisname vorangestellt wird.
+  - **Zahlenformat für Eingaben**: (nur HA) Wählen Sie den Modus „Auswahlfeld“ oder „Schieberegler“. Schieberegler werden nur für Zahlenwerte mit einem Bereich unter 100 verwendet.
+- **Sendeintervalle**. Dieser Abschnitt gilt pro Gerät und legt fest, wie oft eine MQTT-Nachricht gesendet wird. Bei der Einstellung 0 sendet EMS-ESP Daten automatisch, sobald eine merkliche Änderung auftritt, was innerhalb weniger Sekunden der Fall sein kann.
 
 ## NTP-Einrichtung
 
-- Der **NTP-Server** ist standardmäßig `time.google.com`. Dieser kann auf einen lokalen NTP-Server oder einen bestimmten Server, wie `pool.ntp.org`, geändert werden.
-- Die **Zeitzone** ist standardmäßig "Europe/Amsterdam". Diese kann auf eine der [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)-Zeitzonen geändert werden.
+- Der Standard-**NTP-Server** ist `time.google.com`. Dieser kann auf einen lokalen NTP-Server oder einen bestimmten Server, wie beispielsweise `pool.ntp.org`, geändert werden.
+- Die Standard-**Zeitzone** lautet „Europe/Amsterdam“. Diese kann auf eine beliebige der [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)-Zeitzonen geändert werden.
 
 ## Benutzer und Rollen verwalten
 
-Auf der Seite Sicherheit können Sie das Standardkennwort für das Captive Portal und die Telnet-CLI ändern. Außerdem können Sie hier HTTPS für das Captive Portal und den MQTT-Broker aktivieren.
+Auf der Seite „Sicherheit“ können Sie das Standardpasswort für das Captive Portal und die Telnet-CLI ändern. Außerdem können Sie dort HTTPS für das Captive Portal und den MQTT-Broker aktivieren.
 
-Auf der Seite Benutzer können Sie zusätzliche Benutzer für das Captive Portal und Telnet CLI erstellen. Der Standardbenutzer ist `admin` mit dem Passwort `admin`.
+Auf der Seite „Benutzer“ können Sie weitere Benutzer für das Captive Portal und die Telnet-CLI anlegen. Der Standardbenutzer lautet `admin` mit dem Passwort `admin`.
 
-Jeder Benutzer verfügt über ein eindeutiges Zugriffstoken (einsehbar durch Klicken auf das Schlüsselsymbol), das für RESTful-Schreibbefehle über HTTP POST verwendet wird. Dies geschieht aus Sicherheitsgründen, um zu verhindern, dass jemand die Geräteeinstellungen ändert.
+Jeder Benutzer verfügt über ein eindeutiges Zugriffstoken (das durch Klicken auf das Schlüsselsymbol angezeigt wird), das für RESTful-Schreibbefehle über HTTP-POST verwendet wird. Dies dient aus Sicherheitsgründen dazu, zu verhindern, dass Unbefugte die Geräteeinstellungen ändern.
 
 ![Web](/media/screenshot/web_users.png)
 
 ## Hinzufügen von Analog- und Temperatursensoren
 
-Externe Sensoren, wie Temperatur- und Analogsensoren, können an eine Reihe von GPIO-Pins des ESP32-Chips angeschlossen werden. Wenn Sie ein BBQKees-Gateway-Board verwenden, verfügt es bereits über einen externen Stecker für Dallas-Temperatursensoren, die in der WebUI ohne zusätzliche Konfiguration sichtbar sind. BBQKees Boards sind CE-zertifiziert und das Hinzufügen von Sensoren zu gpios würde die EMC-Konformität verletzen. Um analoge Sensoren auf eigenes Risiko hinzuzufügen, wählen Sie ein anderes Boardprofil oder verwenden Sie den Entwicklermodus, um ein benutzerdefiniertes Board zu konfigurieren.
+Externe Sensoren, wie Temperatur- und Analogsensoren, können an verschiedene GPIO-Pins des ESP32-Chips angeschlossen werden. Bei Verwendung eines BBQKees-Gateway-Boards steht bereits ein externer Anschluss für Dallas-Temperatursensoren zur Verfügung, deren Werte ohne zusätzliche Konfiguration in der WebUI angezeigt werden. BBQKees-Boards sind CE-zertifiziert; das Anschließen von Sensoren an die GPIOs führt zu einer Verletzung der EMV-Konformität. Wenn Sie analoge Sensoren auf eigenes Risiko anschließen möchten, wählen Sie ein anderes Board-Profil oder nutzen Sie den Entwicklermodus, um ein benutzerdefiniertes Board zu konfigurieren.
 
-Um analoge Sensoren hinzuzufügen, klicken Sie auf `Add` und wählen Sie zwischen einem normalen digitalen in/out, einem Zähler (der on/off-Impulse zählt), einem ADC zur Spannungsmessung, einem Timer, einer Rate und PWM 0-2. Hinweis: Der Zählerwert bleibt erhalten und wird beim Neustart nicht zurückgesetzt.
+Um analoge Sensoren hinzuzufügen, klicken Sie auf `Add` und wählen Sie zwischen einem normalen digitalen Sensor in/out, einem Zähler (der on/off Impulse zählt), einem ADC zur Spannungsmessung, einem Timer, einem Rate-Sensor und PWM 0-2. Beachten Sie, dass der Zählerstand gespeichert wird und beim Neustart nicht zurückgesetzt wird.
 
 ![Web](/media/screenshot/web_sensor.png)
 
-:::warning Seien Sie vorsichtig, wenn Sie einen GPIO auswählen, damit er nicht mit den anderen verwendeten GPIOs kollidiert (Sie können CUSTOM board profile wählen, um Ihre aktuelle Konfiguration zu sehen).
+:::warning
+Achten Sie bei der Auswahl eines GPIO-Pins darauf, dass es nicht zu Konflikten mit anderen bereits verwendeten GPIO-Pins kommt (Sie können das Board-Profil „CUSTOM“ auswählen, um Ihre aktuelle Konfiguration anzuzeigen).
 
-    EMS-ESP ist an den Niederspannungsbus Ihrer Heizung angeschlossen und jede Überspannung kann die EMS-ESP-Platine und möglicherweise Ihre Heizgeräte beschädigen. Versorgen Sie externe Geräte niemals direkt über die EMS-ESP-Platine.
+    Das EMS-ESP ist an den Niederspannungsbus Ihrer Heizungsanlage angeschlossen. Jede Überspannung kann die EMS-ESP-Platine und möglicherweise auch Ihre Heizgeräte beschädigen. Schließen Sie externe Geräte niemals direkt an die EMS-ESP-Platine an.
 
-    ESP32 Entwicklungsplatinen unterscheiden sich in ihrer verfügbaren Pin-Konfiguration. Normalerweise können Sie 1, 6-11, 12, 14, 15, 20, 24, 28-31 und 40+ nicht verwenden. Siehe diese Links [here](https://diyprojects.io/esp32-how-to-use-gpio-digital-io-arduino-code/#.YFpVEq9KhjG) und [here](https://nodemcu.readthedocs.io/en/dev-esp32/modules/gpio/).
+    ESP32-Entwicklungsboards unterscheiden sich hinsichtlich ihrer verfügbaren Pin-Konfiguration. In der Regel können die Pins 1, 6–11, 12, 14, 15, 20, 24, 28–31 und 40+ nicht verwendet werden. Siehe dazu diese Links [here](https://diyprojects.io/esp32-how-to-use-gpio-digital-io-arduino-code/#.YFpVEq9KhjG) und [here](https://nodemcu.readthedocs.io/en/dev-esp32/modules/gpio/).
 
 :::
 
@@ -166,135 +170,143 @@ Die folgenden GPIOs werden empfohlen:
 - DAC-Ausgang: `25, 26`
 - PWM-Ausgang: `13, 19, 21, 22, 25, 26, 27, 33, 37, 38`
 
-Grenzwerte:
+Einschränkungen:
 
-- ADC: max. Eingang 3,3V, Anzeige in MilliVolt
-- DAC 8bit, Wertebereich 0..255 für 0V-3.3V Ausgang, Konfigurieren als `Digital out` auf gpio 25 oder 26 (ESP32), 17, 18 (ESP32S2), nicht verfügbar für ESP32S3, ESP32C3
-- PWM 0-2: maximale Frequenz 5000Hz, Auflösung 13bits. Jeder Kanal kann nur für einen Gpio verwendet werden.
-- Pulse ist ein digitaler Ausgang für einen einzelnen Impuls mit einstellbarer Länge. Bei der Einstellung auf `on` per Befehl geht der Sensor nach Beendigung des Impulses auf `off`.
-- Counter/timer/rate auslösen: `high->low edge with 15 ms debounce. Only for low pulse rates < 30Hz.`
-- Zähler 0-2, Frequ 0-2: Hochgeschwindigkeits-Eingänge für 1 Hz bis 100kHz Signale, keine Entprellung, RC-Filter für verrauschte Signale verwenden. Interruptgesteuert, jeder Kanal kann nur für einen Gpio verwendet werden.
+- ADC: max. Eingangsspannung 3,3 V, wird in Millivolt angezeigt
+- 8-Bit-DAC, Wertebereich 0..255 bei 0 V–3,3 V Ausgang, Konfiguration als `Digital out` an GPIO 25 oder 26 (ESP32), 17, 18 (ESP32S2), nicht verfügbar für ESP32S3, ESP32C3
+- PWM 0–2: maximale Frequenz 5000 Hz, Auflösung 13 Bit. Jeder Kanal kann nur für einen GPIO verwendet werden.
+- „Pulse“ ist ein digitaler Ausgang für einen einzelnen Impuls mit einstellbarer Dauer. Bei der Einstellung auf `on` per Befehl wechselt der Sensor nach Beendigung des Impulses in den Zustand `off`.
+- Counter/timer/rate-Trigger: `high->low edge with 15 ms debounce. Only for low pulse rates < 30Hz.`
+- Zähler 0–2, Frequenz 0–2: Hochgeschwindigkeitseingänge für Signale von 1 Hz bis 100 kHz, keine Entprellung, bei verrauschten Signalen RC-Filter verwenden. Interruptgesteuert, jeder Kanal kann nur für einen GPIO verwendet werden.
 
-Die Zähler werden auf reboot/update gespeichert und jede Stunde an nvs. I Fall von Abstürzen, Stromausfällen, kann der Wert nach niedriger sein.
+Die Zählerstände werden in reboot/update gespeichert und stündlich an nvs übertragen. Bei Systemabstürzen oder Stromausfällen kann der Wert danach niedriger sein.
 
-### Steuerrelais
+### Steuerung von Relais
 
-Ein häufiger Anwendungsfall ist die Steuerung eines Relais zum Schalten on/off eines Geräts. Dies kann durch Hinzufügen eines digitalen Ausgangssensors und anschließendes Erstellen eines Befehls zu dessen Steuerung erfolgen. Der Befehl kann dem Dashboard hinzugefügt und so geplant werden, dass on/off zu bestimmten Zeiten geschaltet wird.
+Ein häufiger Anwendungsfall ist die Steuerung eines Relais zum Ein- und Ausschalten on/off eines Geräts. Dies kann erreicht werden, indem ein digitaler Ausgangssensor hinzugefügt und anschließend ein Befehl zu dessen Steuerung erstellt wird. Der Befehl kann zum Dashboard hinzugefügt und so geplant werden, dass er on/off zu bestimmten Zeiten ausführt.
 
-Erstellen Sie einen analogen Sensor mit dem Typ "Digitaler Ausgang".
+Erstellen Sie einen analogen Sensor vom Typ „Digitalausgang“.
 
-Der professionelle Weg ist die Verwendung einer separaten Relaisplatine mit Opto-Isolation und einer Flyback-Diode. Die Relaisplatine wird dann von einer separaten Stromversorgung gespeist und das Relais wird wie oben beschrieben an den digitalen Ausgang des EMS-ESP angeschlossen. Die Relaisplatine wird dann an das Gerät angeschlossen, das Sie steuern möchten. Auf diese Weise ist das Gerät vollständig vom EMS-ESP isoliert und die Relaiskarte kann die höhere Spannung und den höheren Strom verarbeiten.
+Die professionelle Vorgehensweise besteht darin, eine separate Relaisplatine mit Optokopplung und einer Rückflussdiode zu verwenden. Die Relaisplatine wird dann über ein separates Netzteil mit Strom versorgt, und das Relais wird wie oben beschrieben an den digitalen Ausgang des EMS-ESP angeschlossen. Die Relaisplatine wird anschließend an das Gerät angeschlossen, das Sie steuern möchten. Auf diese Weise ist das Gerät vollständig vom EMS-ESP isoliert, und die Relaisplatine kann die höheren Spannungs- und Stromwerte bewältigen.
 
 ## Entitäten anpassen
 
-Die Seite "Anpassung" zeigt alle registrierten Entitäten und ermöglicht es, Befehle und Werte von der Veröffentlichung über MQTT/API auszuschließen oder sie von den WebUI-Seiten zu entfernen. Die Geräte und das Dashboard zeigen nur Entitäten mit Wert, während das Anpassungsmodul alle Entitäten anzeigt. Wenn eine Entität keinen Wert hat, wird sie von EMS-ESP unterstützt, aber nicht von Ihrem boiler/thermostat/etc und wird nicht veröffentlicht oder für Integrationen wie Home Assistant sichtbar.
+Auf der Seite „Anpassung“ werden alle registrierten Entitäten angezeigt. Dort können Sie Befehle und Werte von der Veröffentlichung über MQTT/API ausschließen oder sie aus den WebUI-Seiten entfernen. Unter „Geräte“ und im Dashboard werden nur Entitäten mit einem Wert angezeigt, während das Modul „Anpassung“ alle Entitäten anzeigt. Wenn eine Entität keinen Wert hat, wird sie zwar von EMS-ESP unterstützt, jedoch nicht von Ihrem boiler/thermostat/etc, und wird daher nicht veröffentlicht und ist für Integrationen wie Home Assistant nicht sichtbar.
 
 ![Web](/media/screenshot/web_customizations.png)
 
-## Planen von Aktionen
+## Maßnahmen planen
 
-Verwenden Sie den Scheduler, um Befehle in bestimmten Abständen aufzurufen. Ein paar Beispiele:
+Verwenden Sie den Scheduler, um Befehle in bestimmten Intervallen auszuführen. Hier einige Beispiele:
 
-- stellen Sie die Warmwassertemperatur morgens und abends auf einen höheren Wert ein
-- jede Woche einen Neustart des Systems durchführen (obwohl das nicht nötig sein sollte!), indem Sie `system/restart` in das Feld Befehl eingeben
-- mit dem Befehl `system/message` eine Nachricht an das Protokoll und an mqtt senden
-- verwendung in Kombination mit einer benutzerdefinierten "ram"-Einheit zum Abrufen von Daten über eine andere API wie `{"url":"http://server.tld/path/file", "key":"nameofkey"}` und Verwendung dieser als Bedingung im Scheduler
-- daten über einen RESTful HTTP POST-Befehl an eine externe API senden, z. B. `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
-- zum Aufrufen eines Home Assistant-Skripts oder -Dienstes, wenn eine Bedingung erfüllt ist, z. B. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
+- Stellen Sie die Warmwassertemperatur morgens und abends auf einen höheren Wert ein.
+- Führen Sie jede Woche einen Systemneustart durch (auch wenn das eigentlich nicht nötig sein sollte!), indem Sie im Feld „Befehl“ `system/restart` eingeben.
+- Sende eine Nachricht an das Protokoll und an MQTT mithilfe des Befehls `system/message`
+- in Kombination mit einer benutzerdefinierten „ram“-Entität verwenden, um Daten über eine andere API wie `{"url":"http://server.tld/path/file", "key":"nameofkey"}` abzurufen, und dies als Bedingung im Scheduler nutzen
+- Daten über einen RESTful-HTTP-POST-Befehl an eine externe API senden, zum Beispiel `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
+- Wird verwendet, um ein Home Assistant-Skript oder einen Dienst aufzurufen, wenn eine Bedingung ausgelöst wird, z. B. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
-:::warning[Using HTTPS in scheduler commands] HTTPS wird nur auf den ESP32- und ESP32-S3-Varianten mit PSRAM unterstützt, wenn es mit `url` zu einem externen Endpunkt verwendet wird. Das https wird auf die Verwendung von http zurückfallen und kann einen Fehler melden.
+:::Warnung[Verwendung von HTTPS in Scheduler-Befehlen]
+HTTPS wird nur bei den ESP32- und ESP32-S3-Varianten mit PSRAM unterstützt, wenn `url` für die Kommunikation mit einem externen Endpunkt verwendet wird. In diesem Fall wird von HTTPS auf HTTP zurückgegriffen, was möglicherweise zu einer Fehlermeldung führt.
 :::
 
-Bei der Erstellung eines Scheduler-Eintrags ist das `name` optional, aber es ist nützlich, einen Namen zu vergeben. Dann kann man ihn über einen Befehl (enable/disable) steuern und den Status im MQTT-Topic `scheduler_data` sehen.
+Beim Anlegen eines Scheduler-Eintrags ist das `name` optional, es ist jedoch sinnvoll, einen Namen zu vergeben. So können Sie den Eintrag über einen Befehl (enable/disable) steuern und den Status im MQTT-Thema `scheduler_data` einsehen.
 
 ![Web](/media/screenshot/web_scheduler.png)
 
-Der Scheduler kann auch verwendet werden, um regelmäßig Werte auf der Grundlage eines anderen Entitätswerts oder sogar einer benutzerdefinierten benutzerdefinierten Entität (Variable) einzustellen. Um beispielsweise die Vorlauftemperatur des Heizkessels jede Minute auf der Grundlage einer vom Benutzer verwalteten Entität einzustellen, die von außen gesteuert wird (z. B. im Home Assistant), würde dies folgendermaßen aussehen:
+Der Scheduler kann auch dazu verwendet werden, Werte in regelmäßigen Abständen auf der Grundlage eines Werts einer anderen Entität oder sogar einer benutzerdefinierten Entität (Variablen) festzulegen. Um beispielsweise die Vorlauftemperatur des Heizkessels jede Minute auf der Grundlage einer vom Benutzer verwalteten Entität festzulegen, die extern gesteuert wird (z. B. in Home Assistant), würde dies wie folgt aussehen:
 
-![Web](/media/screenshot/web_scheduler_custom.png) ![Web](/media/screenshot/web_scheduler_flowtemp.png)
+![Web](/media/screenshot/web_scheduler_custom.png)
+![Web](/media/screenshot/web_scheduler_flowtemp.png)
 
 ### Bedingungen
 
-In **Version 3.7** wurde der Scheduler erweitert, um bedingte Anweisungen und Formeln zu unterstützen, die in den `Command` and/or `Value`-Feldern für die Typen Timer, On Change und Condition verwendet werden können.
+Der in **Version 3.7** eingeführte Scheduler wurde erweitert und unterstützt nun bedingte Anweisungen und Formeln, die in den Feldern `Command` and/or `Value` für die Typen „Timer“, „On Change“ und „Condition“ verwendet werden können.
 
-Bedingungen haben eine strenge Syntax (siehe unten) und werden alle 10 Sekunden ausgewertet. Die Bedingung wird nur ausgeführt, wenn die Bedingung von falsch auf wahr wechselt. Dies ist eine leistungsstarke neue Funktion, die es beispielsweise ermöglicht, einen Zeitplan auf der Grundlage einer Bedingung festzulegen oder einen Wert auf der Grundlage einer Bedingung festzulegen.
+Bedingungen unterliegen einer strengen Syntax (siehe unten) und werden alle 10 Sekunden ausgewertet. Die Bedingung wird nur ausgeführt, wenn sich ihr Wert von „falsch“ auf „wahr“ ändert. Dies ist eine leistungsstarke neue Funktion, mit der Sie beispielsweise einen Zeitplan auf der Grundlage einer Bedingung festlegen oder einen Wert basierend auf einer Bedingung setzen können.
 
-Beachten Sie die folgenden Regeln:
+Beachten Sie bitte die folgenden Regeln:
 
-- eine Bedingung muss ein logischer Wert `0` oder `1` sein, die Bedingung ist `true` nur für `1`, ein arithmetisches Ergebnis `1` wird auch als `true` interpretiert Fahrplanbefehl ausgeführt für `3 > 2, 3 - 2` Fahrplanbefehl nicht ausgeführt für `3 < 2`, `3 + 2`
-- leerzeichen sind nicht erforderlich, machen die Formel aber besser lesbar
-- EMS-ESP-Werte werden mit `<device>/<entity>` oder `<device>/<entity>/value` angesprochen. Das `<entity>` kann zusätzliche Präfixe wie `<hc2>` enthalten.
-- Die Einstellungen des Benutzers für Boolean-Format (`0/1`, `off/on`, `OFF/ON` oder `false/true`) und Enum-Format (value/index) werden bei der Auswertung von bool und enums verwendet. Überprüfen Sie den richtigen Wert, bevor Sie einen Zeitplan festlegen, indem Sie die API direkt abfragen. Gehen Sie zum Beispiel zu `http://ems-esp.local/api/thermostat`, um zu sehen, ob das Gebäude "mittel" ist, und erstellen Sie dann die Regel mit `thermostat/building == medium`.
-- zeichenfolgen, die Sonderzeichen enthalten, müssen in Anführungszeichen gesetzt werden, z. B. `boiler/pumpmode == "delta-P2"`, um einen Berechnungsfehler bei Delta minus P2 zu vermeiden.
-- alle Zeichenfolgen werden in Kleinbuchstaben umgewandelt (vor v3.7.2)
-- befehle, denen ein Trennzeichen (`/`) folgt, müssen in Klammern gesetzt werden, z.B. `(boiler/seltemp)/2`
-- bedingungsbefehl wird nur bei einem Wechsel der Bedingung von `false` zu `true` ausgeführt. Wenn die Bedingung wahr bleibt, wird der Befehl nicht wiederholt
-- ein Befehl Wert kann auch eine Formel sein
-- erlaubte Operationen:
-  - arithmetik: `+` `-` `*` `/` `%`
-  - funktionen: `round` `abs` `int` `exp` `log` `sqrt` `pow`, `hex`
-  - logik: `==` `!=` `<=` `>=` `<` `>` `&&` `||`
-  - präfix: `!` (nicht) und `-` (Negation)
-  - bedingte Operationen: `<cond1> ? <expr1> : <expr2>` Beispiele:
-    - (zulässig vor v3.7.2) `<cond> ? 5 + <expr1> : 5 + <expr2>`
-    - (erlaubt seit v3.7.2) `5 + (<cond> ? <expr1> : <expr2>)` und kaskadierte Bedingungen `<cond1> ? <cond2> ? <expr1> : <expr2> : <cond3> ? <expr3> : <expr4>`
+- Eine Bedingung muss ein logischer Wert `0` oder `1` sein; die Bedingung lautet nur für `1` `true`, ein arithmetisches Ergebnis `1` wird ebenfalls als `true` interpretiert
+  Der Befehl „schedule“ wird für `3 > 2, 3 - 2` ausgeführt.
+  Der Befehl „schedule“ wird für `3 < 2` und `3 + 2` nicht ausgeführt.
+- Leerzeichen sind nicht erforderlich, machen die Formel aber übersichtlicher
+- Auf EMS-ESP-Werte wird über `<device>/<entity>` oder `<device>/<entity>/value` zugegriffen. Das `<entity>` kann zusätzliche Präfixe wie `<hc2>` enthalten.
+- Die Einstellungen des Benutzers für das Boolesche Format (`0/1`, `off/on`, `OFF/ON` oder `false/true`) und das Enum-Format (value/index) werden bei der Auswertung von Booleschen Werten und Enums verwendet. Überprüfen Sie den richtigen Wert, bevor Sie einen Zeitplan festlegen, indem Sie die API direkt abfragen. Gehen Sie beispielsweise zu `http://ems-esp.local/api/thermostat`, um zu sehen, ob der Aufbau „mittel“ ist, und erstellen Sie dann die Regel mit `thermostat/building == medium`.
+- Zeichenfolgen, die Sonderzeichen enthalten, müssen in Anführungszeichen gesetzt werden, z. B. `boiler/pumpmode == "delta-P2"`, um einen Berechnungsfehler bei „delta minus P2“ zu vermeiden.
+- Alle Zeichenfolgen werden in Kleinbuchstaben umgewandelt (vor v3.7.2)
+- Befehle, auf die ein Trennzeichen folgt (`/`), müssen in Klammern gesetzt werden, z. B. `(boiler/seltemp)/2`
+- Der Befehl „condition“ wird nur ausgeführt, wenn sich die Bedingung von `false` zu `true` ändert. Bleibt die Bedingung wahr, wird der Befehl nicht wiederholt.
+- Ein Befehlswert kann auch eine Formel sein
+- zulässige Operationen:
+  - Arithmetik: `+` `-` `*` `/` `%`
+  - Funktionen: `round` `abs` `int` `exp` `log` `sqrt` `pow`, `hex`
+  - Logik: `==` `!=` `<=` `>=` `<` `>` `&&` `||`
+  - Präfix: `!` (nicht) und `-` (Negation)
+  - Bedingte Operationen: `<cond1> ? <expr1> : <expr2>` Beispiele:
+    - (vor v3.7.2 zulässig) `<cond> ? 5 + <expr1> : 5 + <expr2>`
+    - (zulässig seit v3.7.2) `5 + (<cond> ? <expr1> : <expr2>)` und kaskadierende Bedingungen `<cond1> ? <cond2> ? <expr1> : <expr2> : <cond3> ? <expr3> : <expr4>`
 
-Ein On Change Trigger ist eine Liste von Entitäten im Format `<device>/<entity>`, zum Beispiel `boiler/outdoortemp custom/setpoint`. Da sich Entitäten nie gleichzeitig ändern, sind logische Operationen wie `&&` hier nicht sinnvoll. Beachten Sie, dass die Verwendung von `system` als `<device>` nicht unterstützt wird.
+Ein „On Change“-Trigger ist eine Liste von Entitäten im Format `<device>/<entity>`, zum Beispiel `boiler/outdoortemp custom/setpoint`.
+Da sich Entitäten niemals gleichzeitig ändern, sind logische Operatoren wie `&&` hier nicht sinnvoll. Beachten Sie, dass die Verwendung von `system` als `<device>` nicht unterstützt wird.
 
 ![Web](/media/screenshot/web_conditions_1.png)
 
 ![Web](/media/screenshot/web_conditions_2.png)
 
-### HTTP/HTTPS Anfragen
+### HTTP/HTTPS-Anfragen
 
-POSTing oder GETing von Daten über HTTP/HTTPS-Anfragen können durch Senden eines JSON-Objekts als Scheduler-Befehl oder -Wert verwendet werden.
+Das Senden oder Abrufen von Daten über HTTP/HTTPS-Anfragen ist möglich, indem ein JSON-Objekt als Scheduler-Befehl oder -Wert gesendet wird.
 
 Verwenden Sie die Notation `{"url":"<url>", ["header":"<header>"], ["method":"<method>"], ["key":"<key>"], ["keys":"<keys>"]}`,
 
-`url` ist die URL des Endpunkts, an den geholt oder gepostet werden soll, in der Form `http://server.tld/path/file` und obligatorisch. Es werden sowohl HTTP als auch HTTPS unterstützt.
+`url` ist die URL des Endpunkts, von dem Daten abgerufen oder an den Daten gesendet werden sollen, im Format `http://server.tld/path/file`, und ist obligatorisch. Sowohl HTTP als auch HTTPS werden unterstützt.
 
-`header` ist standardmäßig `{"content-type":application/json"}`, wenn der Scheduler `Value` ein JSON-Objekt ist, andernfalls ist er auf `{"content-type":"text/plain"}` gesetzt. Es kann mit einer benutzerdefinierten Kopfzeile überschrieben werden oder ein Token wie `{"content-type":"application/json", "token":"mytoken"}` in die Kopfzeile aufgenommen werden.
+`header` ist standardmäßig `{"content-type":application/json"}`, wenn der Scheduler `Value` ein JSON-Objekt ist; andernfalls wird der Wert auf `{"content-type":"text/plain"}` gesetzt. Dies kann durch einen benutzerdefinierten Header überschrieben werden oder indem ein Token wie `{"content-type":"application/json", "token":"mytoken"}` in den Header aufgenommen wird.
 
-`method` ist standardmäßig `GET`, kann aber mit der Methode `POST`, `PUT`, `DELETE` oder `PATCH` überschrieben werden. Wenn der Scheduler `Value` ein JSON-Objekt ist, wird es beim Senden der Daten automatisch auf `POST` gesetzt.
+`method` ist standardmäßig `GET`, kann jedoch mit den Methoden `POST`, `PUT`, `DELETE` oder `PATCH` überschrieben werden. Wenn der Scheduler `Value` ein JSON-Objekt ist, wird er beim Senden der Daten automatisch auf `POST` gesetzt.
 
-`key` und `keys` können verwendet werden, um bestimmte JSON-Objekte aus der zurückgegebenen Nutzlast zu extrahieren, wenn eine GET-Anfrage durchgeführt wird.
+Mit `key` und `keys` lassen sich bei der Ausführung einer GET-Anfrage bestimmte JSON-Objekte aus der zurückgegebenen Nutzlast extrahieren.
 
 #### Beispiele:
 
-#### Abrufen der neuesten EMS-ESP-Versionen und Speichern in einem benutzerdefinierten Entitätsfeld
+#### Die neuesten EMS-ESP-Versionen abrufen und in einem benutzerdefinierten Entitätsfeld speichern
 
-Befehl: `custom/latest_version` Wert: `{"url":"https://emsesp.org/versions.json"}`
+Befehl: `custom/latest_version`
+Wert: `{"url":"https://emsesp.org/versions.json"}`
 
-`latest_version` ist der Name der benutzerdefinierten Entität, in der die neueste EMS-ESP-Version als RAM-Wert gespeichert werden soll.
+`latest_version` ist der Name der benutzerdefinierten Entität, in der die aktuellste EMS-ESP-Version als RAM-Wert gespeichert wird.
 
-#### Senden Sie den Inhalt einer benutzerdefinierten Entität an den Pushover-Benachrichtigungsdienst
+#### Den Inhalt einer benutzerdefinierten Entität an den Pushover-Benachrichtigungsdienst senden
 
-Befehl: `{"url":"https://api.pushover.net/1/messages.json"}` Wert: `{"user":"<user id>", "token":"<token>", "message":custom/<name>}`
+Befehl: `{"url":"https://api.pushover.net/1/messages.json"}`
+Wert: `{"user":"<user id>", "token":"<token>", "message":custom/<name>}`
 
-Dies verwendet die [Pushover](https://pushover.net) API, um eine Nachricht an den Pushover-Benachrichtigungsdienst zu senden.
+Hierbei wird die [Pushover](https://pushover.net)-API verwendet, um eine Nachricht an den Pushover-Benachrichtigungsdienst zu senden.
 
 `<name>` ist der Name der benutzerdefinierten Entität der zu sendenden Nachricht.
 
-#### Auslesen des Zustands eines Tasmota-Steckers (GET)
+#### Den Status eines Tasmota-Steckers auslesen (GET)
 
 Wert: `{"url":"http://<tasmota IP>/cm?cmnd=Power", "key":"POWER"}`
 
-#### Um zu sehen, ob ein Tasmota-Stecker ein- oder ausgeschaltet ist (GET)
+#### Um zu prüfen, ob ein Tasmota-Stecker ein- oder ausgeschaltet ist (GET)
 
-Wert: `{"url":"http://<tasmota IP>/cm?cmnd=power", "key":"power"} == off` oder `{"url":"http://<tasmota IP>/cm?cmnd=power"} == {"power":"off"}`
+Wert: `{"url":"http://<tasmota IP>/cm?cmnd=power", "key":"power"} == off`
+oder `{"url":"http://<tasmota IP>/cm?cmnd=power"} == {"power":"off"}`
 
-#### Einstellen des Stromversorgungsstatus eines Tasmota-Steckers (GET)
+#### Einstellen des Energiezustands eines Tasmota-Steckers (GET)
 
 Befehl: `{"url":"http://<tasmota IP>/cm?cmnd=power%20on"}`
 
-#### Einschalten eines Shelly-Relais (GET)
+#### Ein Shelly-Relais einschalten (GET)
 
 Befehl: `{"url":"http://<shelly IP>/relais/0?turn=on"}`
 
-## Hinzufügen von benutzerdefinierten Entitäten
+## Hinzufügen benutzerdefinierter Entitäten
 
-Custom Entities ist eine fortschrittliche und leistungsfähige Möglichkeit, EMS-ESP um eigene EMS-Entitäten zu erweitern, die Daten aus einem bestimmten EMS-Telegramm extrahieren. Dies ist nützlich, wenn EMS-ESP eine bestimmte Entität noch nicht unterstützt, oder wenn Sie Daten aus einem Telegramm extrahieren möchten, das noch nicht unterstützt wird. Ein weiterer häufiger Anwendungsfall ist die Fehlersuche oder die Beobachtung eines bestimmten Verhaltens beim Ändern von Parametern in einem EMS-Gerät.
+„Custom Entities“ ist eine fortschrittliche und leistungsstarke Möglichkeit, EMS-ESP zu erweitern, indem Sie eigene EMS-Entitäten hinzufügen, die Daten aus einem bestimmten EMS-Telegramm extrahieren. Dies ist nützlich, wenn EMS-ESP eine bestimmte Entität noch nicht unterstützt oder wenn Sie Daten aus einem Telegramm extrahieren möchten, das noch nicht unterstützt wird. Ein weiterer häufiger Anwendungsfall ist das Debuggen oder Beobachten bestimmter Verhaltensweisen beim Ändern von Parametern an einem EMS-Gerät.
 
-Eine moderne Wärmepumpe kann zum Beispiel neue Funktionen haben, die in EMS-ESP nicht enthalten sind. In diesem Fall würden Sie den `watch`-Befehl verwenden, um den eingehenden EMS-Verkehr in Kombination mit der manuellen Anpassung spezifischer Parameter einzusehen. Wenn Sie das spezifische Telegramm und den Offset gefunden haben, erstellen Sie eine benutzerdefinierte Entität, um den Typ fein abzustimmen und den Wert zu überprüfen. Beantragen Sie dann die Aufnahme in das nächste EMS-ESP-Release-Update.
+Beispielsweise kann eine moderne Wärmepumpe über neue Funktionen verfügen, die nicht in EMS-ESP enthalten sind. In diesem Fall würden Sie den Befehl `watch` verwenden, um den eingehenden EMS-Datenverkehr anzuzeigen, und gleichzeitig bestimmte Parameter manuell anpassen. Sobald Sie das betreffende Telegramm und den Offset ermittelt haben, erstellen Sie eine benutzerdefinierte Entität, um den Typ genau abzustimmen und den Wert zu überprüfen. Beantragen Sie anschließend, dass dies in das nächste EMS-ESP-Release-Update aufgenommen wird.
 
 ![Web](/media/screenshot/web_customentities.png)

@@ -114,6 +114,7 @@ Enable this function when running in VPNs or you have other servers (like Grafan
 
 - **Broker Address**. Use the IP address, not a FQDN.
 - **Port**. The default is 1883 and 8883 for SSL.
+- **Enable TLS** encrypts the connection to the broker. **Check the broker with** a CA certificate or the SHA-1 fingerprint of the broker's certificate, so EMS-ESP only connects to your broker. See [Securing your gateway](Securing.md#mqtt).
 - **Base**. All topics are prefixed with the `Base` so this is important. Make sure this is unique when using more than one EMS-ESP with the same broker.
 - **Client ID**. This is used internally to identify EMS-ESP with the broker and is optional. Note MQTT topics will be postfixed with the hostname (default `ems-esp`) and not the client ID. Use when having multiple devices.
 - **Username** and **Password** are optional but recommended for security. By default Mosquitto MQTT broker requires a username/password so pay attention if using the Home Assistant Add-On here.

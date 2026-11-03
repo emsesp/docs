@@ -16,6 +16,7 @@ const sidebars = {
     'Getting-Started',
     'Installing',
     'Configuring',
+    'Securing',
     'WebUI',
     'MQTT',
     'Commands',

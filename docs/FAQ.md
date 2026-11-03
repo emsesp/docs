@@ -108,11 +108,11 @@ When upgrading or downgrading between EMS-ESP versions, EMS-ESP will handle any 
 
 Always read the [ChangeLog](Version-Release-History.md) for the release notes and notes of any breaking changes before upgrading.
 
-### Upgrading from 3.8.x to 3.9.x
+### Upgrading from 3.8.x to 3.10.x
 
 :::warning[No factory reset needed]
 
-When you install 3.9.x from the Web UI of a 3.8.x version, the dialog says the upgrade requires a factory reset. This is no longer the case, so ignore that part of the message. Your settings are kept and migrated.
+When you install a 3.9.0 development build from the Web UI of a 3.8.x version, the dialog says the upgrade requires a factory reset. This is not the case, so ignore that part of the message. Your settings are kept and migrated. Upgrading to 3.10.0 doesn't show this message.
 
 :::
 
@@ -126,5 +126,36 @@ After the upgrade:
 1. **Set new passwords if you still use the factory ones.** An admin who signs in with a factory password must set a new admin password before the Web UI can be used, plus a new access point password if no WiFi network is set.
 2. **Create an API key for each integration** in Security > API Keys and send it as `Authorization: Bearer <key>`. Pick "Read" for integrations that only read values, "Read and Write" for ones that change settings or values.
 3. **Check what guest users can do.** Only admins can change the Scheduler, Commands, Custom Entities and Modules. Commands from before the upgrade can still be run by guests; for new Commands, tick "Guests may run this command" if they should.
+4. **Check the Scheduler and Commands for entries you didn't create.** Before 3.10.0, guest users and calls without a token could add them, and they are kept by the upgrade. Scheduler entries run with admin rights. Delete anything you don't recognise, and untick "Guests may run this command" on Commands guests don't need.
 
 You don't need to upload your backup after the upgrade. Keep it in case you want to go back to 3.8.x. The full list of breaking changes is in the [ChangeLog](Version-Release-History.md).
+
+### Official and custom builds
+
+From 3.10.0, EMS-ESP checks whether firmware is an official build when you upload a firmware file in the Web UI, install a version from the Web UI's version list or upload in the Recovery app. Official releases and development builds from [GitHub](https://github.com/emsesp/EMS-ESP32/releases) are signed by EMS-ESP and install straight away. The Version page shows "Official build" next to the version.
+
+Anything else is a custom build, for example one you built yourself, a community build, a version older than 3.10.0, or a filesystem image. The Web UI then says "This is not an official EMS-ESP build" before anything is installed. Click "Install anyway" to install it, or leave it if you didn't expect this. The Version page then shows "Custom build".
+
+Only install a custom build if you trust where it came from. If you expected an official build, the file may have been changed or damaged, for example by a browser or download manager. Download it again from the release page.
+
+Flashing over USB with the [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher) or esptool isn't checked.
+
+If you build your own firmware, see [Installing your own build](https://github.com/emsesp/EMS-ESP32/blob/dev/CONTRIBUTING.md#installing-your-own-build).
+
+### Why am I asked for my password again?
+
+From 3.10.0, the Web UI asks for your password again before changes that could take over or lock you out of the device:
+
+- uploading or installing firmware, also the Recovery app, and switching to the other firmware partition
+- restoring a backup, or downloading one with passwords and keys
+- a factory reset
+- adding, changing or removing users and passwords, and creating or revoking API keys
+- turning on CORS, adding allowed host names, turning on the API bypass, or turning on telnet
+
+Once entered, you aren't asked again for 5 minutes on that browser. Signing in again or restarting EMS-ESP ends this.
+
+Scripts that make these changes with a Web UI sign-in get HTTP status 428. They need to send the password first with `POST /rest/confirmPassword` and the body `{"password":"..."}`, using the same token. Integrations with API keys and MQTT are not affected.
+
+### Installing firmware from a URL
+
+From 3.10.0, firmware can only be installed from a URL of an EMS-ESP release on GitHub, starting with `https://github.com/emsesp/EMS-ESP32/releases/`. The Web UI's version list always uses these. For any other file, download it and upload it in the Web UI instead.
