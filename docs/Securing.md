@@ -49,7 +49,7 @@ In the Settings pages:
 
 From 3.10.0, EMS-ESP protects your boiler and thermostat from automations that write too often, for example one that sends the flow temperature on every sensor update. In Application Settings, next to read-only mode:
 
-- **Skip a write that repeats the value sent in the last minute** (on by default). Writing the same value to the same entity again within a minute isn't sent to the boiler, but the caller still gets OK. `45`, `45.0` and `"45"` count as the same value, as do `on`, `1` and `true`.
+- **Protect the EMS devices from repeated and frequent writes** (on by default) turns on everything below. Writing the same value to the same entity again within a minute isn't sent to the boiler, but the caller still gets OK. `45`, `45.0` and `"45"` count as the same value, as do `on`, `1` and `true`. Turning it off asks for your password.
 - **Max #writes per minute** (default 10) counts the writes to each entity, for example `boiler/selflowtemp` or `thermostat/hc1/seltemp`, in a minute. All entities together are limited to 120 writes a minute. Set it to 0 to turn the limit off, which asks for your password.
 - **Refuse writes over the limit** (off by default). When off, writes over the limit are still sent and a warning is logged once a minute. When on, they are refused: the API returns HTTP 429 with how long to wait, MQTT sends an error response and Modbus returns "server device busy".
 
