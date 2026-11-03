@@ -159,3 +159,71 @@ Scripts that make these changes with a Web UI sign-in get HTTP status 428. They 
 ### Installing firmware from a URL
 
 From 3.10.0, firmware can only be installed from a URL of an EMS-ESP release on GitHub, starting with `https://github.com/emsesp/EMS-ESP32/releases/`. The Web UI's version list always uses these. For any other file, download it and upload it in the Web UI instead.
+
+## What to do when EMS-ESP crashes
+
+From 3.10.0, when EMS-ESP crashes (a panic, `abort()`, stack overflow or watchdog), the ESP32 saves a crash dump in its flash before it restarts. The dump survives the restart and is kept until the next crash replaces it, or until you erase it.
+
+Only boards with 16MB or 32MB flash have room for a crash dump, the 4MB boards don't. A brownout, a power cut or a normal restart doesn't write a dump.
+
+### Reporting a crash
+
+After the restart, EMS-ESP writes `Crash dump found: ...` to the System Log, and `/api/system/info` shows the same summary as `coredump` in the `system` section. For example:
+
+```text
+task=async_tcp pc=0x400d1234 cause=28 vaddr=0x00000000 bt=0x400d1234 0x400d5678 0x400e9abc sha=1a2b3c4d5 reason=LoadProhibited
+```
+
+Copy this line into a [GitHub issue](https://github.com/emsesp/EMS-ESP32/issues), together with the EMS-ESP version and your board, and what was happening just before the crash. The developers can turn the addresses into the place in the code where it crashed.
+
+Then erase the dump so the next crash is clearly a new one: run `call system coredump` in the console, or send `POST /api/system/coredump` as an admin.
+
+| Field    | Meaning                                                                          |
+| -------- | -------------------------------------------------------------------------------- |
+| `task`   | the task that crashed                                                            |
+| `pc`     | the address in the firmware where it crashed                                     |
+| `cause`  | the exception cause on the ESP32, e.g. 28 = LoadProhibited, 29 = StoreProhibited |
+| `vaddr`  | the memory address that was accessed, near 0 usually means a null pointer        |
+| `bt`     | the backtrace, the crashing function first and its callers after it              |
+| `sha`    | the start of the SHA256 of the firmware that crashed                             |
+| `reason` | the panic reason, e.g. the `abort()` or watchdog message                         |
+
+On the C3 and C6 there is no backtrace, only `ra` (return address), `mcause` and `mtval`.
+
+### Decoding a crash dump yourself
+
+Decoding needs the `firmware.elf` of the exact build that crashed. If you build EMS-ESP yourself, each build keeps a gzipped copy as `build/elf/<variant>-<sha>.elf.gz`, where `<sha>` matches the `sha` in the crash summary. Unpack it with `gunzip -k`. These files are about 20 MB each, so delete old ones now and then.
+
+Turn the addresses from the summary into function, file and line:
+
+```bash
+# ESP32, use xtensa-esp32s3-elf-addr2line for the S3 and xtensa-esp32s2-elf-addr2line for the S2
+~/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-addr2line -pfiaC \
+  -e .pio/build/s_16M_P/firmware.elf 0x400d1234 0x400d5678 0x400e9abc
+
+# C3/C6, pass the pc and ra
+~/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-addr2line -pfiaC \
+  -e .pio/build/c3_mini_4M/firmware.elf 0x42001234 0x42005678
+```
+
+For the stacks and registers of every task, connect the board with USB and let `esp-coredump` read and decode the dump in one step:
+
+```bash
+~/.platformio/penv/bin/esp-coredump --port /dev/ttyUSB0 info_corefile .pio/build/s_16M_P/firmware.elf
+```
+
+Or save the dump first and decode it later:
+
+```bash
+# 16MB layout: 0xFF0000, 32MB layout: 0x1FF0000
+~/.platformio/penv/bin/esptool.py --port /dev/ttyUSB0 read_flash 0xFF0000 0x10000 coredump.bin
+~/.platformio/penv/bin/esp-coredump info_corefile -t raw -c coredump.bin .pio/build/s_16M_P/firmware.elf
+```
+
+Use `dbg_corefile` instead of `info_corefile` to open the dump in GDB. For other partition layouts, find the offset of the `coredump` partition with `python gen_esp32part.py .pio/build/<env>/partitions.bin`.
+
+The panic handler also prints the backtrace to the serial port. For a crash that's hard to reproduce, leave a serial monitor logging to a file, which also shows what happened just before the crash:
+
+```bash
+pio device monitor -e s_16M_P -f esp32_exception_decoder -f log2file
+```
