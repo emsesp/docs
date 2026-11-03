@@ -35,7 +35,7 @@ Wenn Sie nach einer Einstellung suchen, protokollieren Sie die Telegramme für d
 
 Zum Teil. Wie die Leute von [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/standalone.html#intro) es treffend formuliert haben:
 
-:::Tipp[Wozu dient ein Thermostat?]
+:::tip[Wozu dient ein Thermostat?]
 
     - Die Thermostathersteller haben jahrelange Forschungsarbeit geleistet, um die Heizcharakteristika für die effizienteste und komfortabelste Art der Beheizung eines Hauses zu ermitteln.
     - Der Thermostat verfügt über eine Bedienoberfläche, mit der die Nutzer vertraut sind, sodass auch andere Haushaltsmitglieder den Sollwert weiterhin einstellen können.
@@ -111,7 +111,7 @@ Lesen Sie vor dem Upgrade stets den [ChangeLog](Version-Release-History.md), um 
 
 ### Upgrade von 3.8.x auf 3.10.x
 
-:::Warnung[Kein Zurücksetzen auf die Werkseinstellungen erforderlich]
+:::warning[Kein Zurücksetzen auf die Werkseinstellungen erforderlich]
 
 Wenn Sie eine 3.9.0-Entwicklungsversion über die Web-Benutzeroberfläche einer 3.8.x-Version installieren, wird im Dialogfeld angezeigt, dass für das Upgrade ein Zurücksetzen auf die Werkseinstellungen erforderlich ist. Dies ist jedoch nicht der Fall, ignorieren Sie diesen Teil der Meldung daher bitte. Ihre Einstellungen bleiben erhalten und werden migriert. Beim Upgrade auf 3.10.0 wird diese Meldung nicht angezeigt.
 

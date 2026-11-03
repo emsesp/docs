@@ -30,7 +30,7 @@ Voer vervolgens `pio run -e <your_environment_name>` uit om de firmware te bouwe
 
 Om de firmware naar je ESP32-apparaat te uploaden, kun je het `pio run -e upload`-commando gebruiken. Er zijn twee manieren om de firmware te uploaden: via USB of via OTA. Om OTA te gebruiken, moet je ervoor zorgen dat `upload_protocol` is uitgecommentarieerd in je `pio_local.ini`-bestand; PlatformIO detecteert dan automatisch de USB (je kunt dit ook specifiek aangeven met de parameter `upload_port`). Als je OTA gebruikt, stel dan `upload_protocol` in op `custom` en `custom_emsesp_ip` op het IP-adres van je EMS-ESP-apparaat. Dit is de snelste manier om de firmware naar je apparaat te uploaden, maar hiervoor moet EMS-ESP uiteraard actief en bereikbaar zijn.
 
-Volgens 3.10.0 is firmware die je zelf samenstelt geen officiële EMS-ESP-build. Als je deze uploadt met `pio run -t upload`, wordt deze zonder te vragen geïnstalleerd en wordt op de versiepagina "Aangepaste build" weergegeven. Als je deze in plaats daarvan via de webinterface uploadt, klik dan op "Toch installeren". Zie [Official and custom builds](FAQ#standaard-en-aangepaste-configuraties).
+Volgens 3.10.0 is firmware die je zelf samenstelt geen officiële EMS-ESP-build. Als je deze uploadt met `pio run -t upload`, wordt deze zonder te vragen geïnstalleerd en wordt op de versiepagina "Aangepaste build" weergegeven. Als je deze in plaats daarvan via de webinterface uploadt, klik dan op "Toch installeren". Zie [Official and custom builds](FAQ#standaard--en-aangepaste-configuraties).
 
 ## Lokaal testen
 

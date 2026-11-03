@@ -25,6 +25,8 @@
     "i18n/**",
     "**/*.svg",
     "**/*.html",
-    "BUILDING.md"
+    "BUILDING.md",
+    "**/*.h",
+    "translations/**"
   ]
 }
