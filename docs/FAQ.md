@@ -134,7 +134,7 @@ You don't need to upload your backup after the upgrade. Keep it in case you want
 
 From 3.10.0, EMS-ESP checks whether firmware is an official build when you upload a firmware file in the Web UI, install a version from the Web UI's version list or upload in the Recovery app. Official releases and development builds from [GitHub](https://github.com/emsesp/EMS-ESP32/releases) are signed by EMS-ESP and install straight away. The Version page shows "Official build" next to the version.
 
-Anything else is a custom build, for example one you built yourself, a community build, a version older than 3.8.6, or a filesystem image. The Web UI then says "This is not an official EMS-ESP build" before anything is installed. Click "Install anyway" to install it, or leave it if you didn't expect this. The Version page then shows "Custom build".
+Anything else is a custom build, for example one you built yourself, a community build, a version older than 3.10.0, or a filesystem image. The Web UI then says "This is not an official EMS-ESP build" before anything is installed. Click "Install anyway" to install it, or leave it if you didn't expect this. The Version page then shows "Custom build".
 
 Only install a custom build if you trust where it came from. If you expected an official build, the file may have been changed or damaged, for example by a browser or download manager. Download it again from the release page.
 
