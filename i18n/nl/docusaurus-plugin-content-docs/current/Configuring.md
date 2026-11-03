@@ -206,7 +206,7 @@ Gebruik de planner om op gezette tijden opdrachten uit te voeren. Enkele voorbee
 - gegevens verzenden naar een externe API via een RESTful HTTP POST-commando, bijvoorbeeld `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - gebruik dit om een Home Assistant-script of -service aan te roepen wanneer aan een voorwaarde wordt voldaan, bijvoorbeeld `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
-:::waarschuwing[Gebruik van HTTPS in scheduler-opdrachten]
+:::warning[Gebruik van HTTPS in scheduler-opdrachten]
 HTTPS wordt alleen ondersteund op de ESP32- en ESP32-S3-varianten met PSRAM bij gebruik van `url` naar een extern eindpunt. Het https-verkeer zal dan terugvallen op http en er kan een foutmelding worden weergegeven.
 :::
 

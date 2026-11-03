@@ -206,7 +206,7 @@ Verwenden Sie den Scheduler, um Befehle in bestimmten Intervallen auszuführen. 
 - Daten über einen RESTful-HTTP-POST-Befehl an eine externe API senden, zum Beispiel `{"url":"http://192.168.0.100/cm?cmnd=power"} == {"power":"off"}`
 - Wird verwendet, um ein Home Assistant-Skript oder einen Dienst aufzurufen, wenn eine Bedingung ausgelöst wird, z. B. `{ "url":"http://<ha ip>/api/services/script/my_script", "header":{"authorization":"Bearer <ha key>", "Content-Type":"application/json"} }`
 
-:::Warnung[Verwendung von HTTPS in Scheduler-Befehlen]
+:::warning[Verwendung von HTTPS in Scheduler-Befehlen]
 HTTPS wird nur bei den ESP32- und ESP32-S3-Varianten mit PSRAM unterstützt, wenn `url` für die Kommunikation mit einem externen Endpunkt verwendet wird. In diesem Fall wird von HTTPS auf HTTP zurückgegriffen, was möglicherweise zu einer Fehlermeldung führt.
 :::
 

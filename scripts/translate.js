@@ -222,11 +222,12 @@ function protectPatterns(text) {
   });
 
   // Protect Docusaurus admonitions - opening tags only (not the title)
-  // Example: ":::warning Important Disclaimer" -> "<XADMO0X> Important Disclaimer"
-  // After translation: "<XADMO0X> Wichtiger Haftungsausschluss" 
-  // After restoration: ":::warning Wichtiger Haftungsausschluss" ✓
-  // This allows titles to be translated while keeping the syntax intact
-  protectedText = protectedText.replace(/^:::(note|warning|tip|info|caution|danger)(?=\s|$)/gmi, (match) => {
+  // Supports: :::warning Title, :::tip[Title], and bare :::info
+  // Example: ":::tip[Why use a Thermostat?]" -> "<XADMO0X>[Why use a Thermostat?]"
+  // After translation: "<XADMO0X>[Wozu dient ein Thermostat?]"
+  // After restoration: ":::tip[Wozu dient ein Thermostat?]" ✓
+  // This allows titles to be translated while keeping the directive type intact
+  protectedText = protectedText.replace(/^:::(note|warning|tip|info|caution|danger)(?=\s|$|\[)/gmi, (match) => {
     const placeholder = `<XADMO${protectedItems.length}X>`;
     protectedItems.push({ original: match, type: 'admonition_open' });
     return placeholder;
@@ -361,6 +362,8 @@ function restorePatterns(translatedText, protectedItems) {
  * Note: Docusaurus preserves umlauts in anchor IDs, so we must match that behavior
  */
 function generateAnchorId(text) {
+  // Match github-slugger (used by Docusaurus): keep existing hyphens and do not
+  // collapse doubles. "Standaard- en ..." → "standaard--en-..."
   return text
     .toLowerCase()
     // Docusaurus preserves umlauts, so we don't convert them
@@ -368,7 +371,6 @@ function generateAnchorId(text) {
     // This preserves ü, ö, ä, ß and other Unicode letters
     .replace(/[^\p{L}\p{N}\s-]/gu, '') // Remove special chars but keep Unicode letters/numbers
     .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .replace(/-+/g, '-') // Replace multiple hyphens with single
     .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
 }
 

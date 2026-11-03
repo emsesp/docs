@@ -16,7 +16,7 @@ Er zijn 3 methoden waarop commando's kunnen worden aangeroepen:
 
 ## Definities
 
-:::info[Belangrijke definities]]
+:::info[Belangrijke definities]
 
 - `<device>` is de korte naam. Deze kan zijn:
   - een EMS-apparaat en ondersteunde apparaten zijn onder andere: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
