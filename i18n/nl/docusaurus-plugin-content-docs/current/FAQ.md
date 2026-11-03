@@ -29,7 +29,7 @@ Het beste overzicht van bekende telegrammen is afkomstig van [Norberts1](https:/
 
 Voor verschillende brands/devices gebruikt Bosch soms verschillende uitdrukkingen voor dezelfde waarde. Misschien is er een wisseling van ontwikkelaars geweest, of willen ze reverse engineering juist bemoeilijken!
 
-Als je een instelling zoekt, registreer dan de telegrammen voor het apparaat (alles registreren of <device-id> in de gaten houden) en wijzig de instelling op de thermostaat naar een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je naar een meting zoekt, registreer dan het apparaat, bekijk de waarde op de thermostaat en wacht op veranderingen; noteer de old/new-waarden en de tijd. Controleer vervolgens het logboek op dit tijdstempel (of 10 sec / 1 min later) en de waarde in een telegram. Het is het beste om meer changes/values te hebben om zeker te zijn.
+Als je een instelling zoekt, registreer dan de telegrammen voor het apparaat (log all of watch &lt;device-id&gt;) en wijzig de instelling op de thermostaat naar een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je naar een meting zoekt, registreer dan het apparaat, bekijk de waarde op de thermostaat en wacht op veranderingen; noteer de old/new-waarden en de tijd. Controleer vervolgens het logboek op dit tijdstempel (of 10 sec / 1 min later) en de waarde in een telegram. Het is het beste om meer changes/values te hebben om zeker te zijn.
 
 ## Kan EMS-ESP een thermostaat simuleren?
 
@@ -51,7 +51,7 @@ Bovendien zegt **MichaelDvP**: "Als je een softwaregestuurde thermostaat wilt bo
 
 - op basis van de buitentemperatuur:
   stel een verwarmingscurve in voor uw gebouw. Dit is een lineaire interpolatie tussen een minimale buitentemperatuur voor uw regio (doorgaans -11 °C voor Midden-Europa) en de maximale aanvoertemperatuur (ontwerptemperatuur ~76 °C voor radiatoren, 40 °C voor vloerverwarming) en de werkelijke kamerstreefwaarde (bijv. 21 °C) voor de buitentemperatuur en de aanvoertemperatuur. U kunt een offset toevoegen.
-  selflowtemp = offset + instelpunt + (ontwerptemperatuur - instelpunt) * (instelpunt - buitentemperatuur) / (instelpunt - minimale buitentemperatuur)
+  selflowtemp = offset + instelpunt + (ontwerptemperatuur - instelpunt) \* (instelpunt - buitentemperatuur) / (instelpunt - minimale buitentemperatuur)
 - kamergestuurd, geschakeld:
   meet de kamertemperatuur en schakel de ketel in wanneer de verwarming is uitgeschakeld en de kamertemperatuur hoger is dan de instelwaarde. Voeg een hysterese toe om te veel schakelingen te voorkomen
 - kamerregeling, dynamisch
@@ -92,11 +92,12 @@ Zie [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/2025)
 
 (antwoord van [MichaelDvP](https://github.com/MichaelDvP))
 
-Dat gaat niet werken. De ketel werkt met `selflowtemp` als streefwaarde en regelt de brander zo dat de `flowtemp` wordt gehandhaafd. Als `flowtemp` hoger is dan de geselecteerde minimale verbrandingscapaciteit, schakelt de ketel uit, wacht de minimale periode af en als `flowtemp` is gedaald tot `selflowtemp` –   hysterese – en start hij opnieuw. Het verhogen van de `burnminpower` leidt onder milde omstandigheden alleen maar tot meer on/off-cycli.
+Dat gaat niet werken. De ketel werkt met `selflowtemp` als streefwaarde en regelt de brander zo dat de `flowtemp` wordt gehandhaafd. Als `flowtemp` hoger is dan de geselecteerde minimale verbrandingscapaciteit, schakelt de ketel uit, wacht de minimale periode af en als `flowtemp` is gedaald tot `selflowtemp` – hysterese – en start hij opnieuw. Het verhogen van de `burnminpower` leidt onder milde omstandigheden alleen maar tot meer on/off-cycli.
 
 ## Hoe je energie kunt besparen op de ESP32-chip
 
 Als je je zorgen maakt over het energieverbruik van de ESP32-chip en de warmteontwikkeling wilt verminderen, kun je enkele van deze instellingen toepassen:
+
 - `Underclock CPU speed` in de **sectie Application Settings/Hardware**
 - Als je wifi gebruikt, schakel dan `WiFi Sleep Mode` in, selecteer `use lower WiFi bandwidth` en verlaag het zendvermogen `Tx power` tot ongeveer 8,5 dBm in het **gedeelte Netwerk Settings/WiFi**
 - Als je Ethernet gebruikt, schakel dan `Force 10Mbit half-duplex` in de **sectie Netwerk Settings/Ethernet** in
@@ -111,7 +112,7 @@ Lees vóór het upgraden altijd de [ChangeLog](Version-Release-History.md) voor 
 
 ### Upgraden van 3.8.x naar 3.10.x
 
-:::waarschuwing[Geen fabrieksreset nodig]
+:::warning[Geen fabrieksreset nodig]
 
 Wanneer je een 3.9.0-ontwikkelingsversie installeert via de webinterface van een 3.8.x-versie, wordt in het dialoogvenster aangegeven dat voor de upgrade een fabrieksreset nodig is. Dit is niet het geval, dus negeer dat deel van het bericht. Uw instellingen blijven behouden en worden overgezet. Bij het upgraden naar 3.10.0 verschijnt dit bericht niet.
 

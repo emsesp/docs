@@ -64,7 +64,7 @@ Op de instellingenpagina's:
 ## Firmware
 
 - Installeer officiële builds via de [EMS-ESP releases](https://github.com/emsesp/EMS-ESP32/releases), via de versielijst in de webinterface of met de [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher). Op de pagina ‘Versie’ wordt bij deze builds ‘Officiële build’ weergegeven.
-- Klik bij een aangepaste versie alleen op "Toch installeren" als je zeker weet dat de bron betrouwbaar is. Zie [Official and custom builds](FAQ#standaard-en-aangepaste-configuraties).
+- Klik bij een aangepaste versie alleen op "Toch installeren" als je zeker weet dat de bron betrouwbaar is. Zie [Official and custom builds](FAQ#standaard--en-aangepaste-configuraties).
 - Houd EMS-ESP up-to-date, want beveiligingsupdates worden in nieuwe versies uitgebracht.
 
 ## Fysieke toegang
