@@ -126,6 +126,7 @@ After the upgrade:
 1. **Set new passwords if you still use the factory ones.** An admin who signs in with a factory password must set a new admin password before the Web UI can be used, plus a new access point password if no WiFi network is set.
 2. **Create an API key for each integration** in Security > API Keys and send it as `Authorization: Bearer <key>`. Pick "Read" for integrations that only read values, "Read and Write" for ones that change settings or values.
 3. **Check what guest users can do.** Only admins can change the Scheduler, Commands, Custom Entities and Modules. Commands from before the upgrade can still be run by guests; for new Commands, tick "Guests may run this command" if they should.
+4. **Check the Scheduler and Commands for entries you didn't create.** Before 3.10.0, guest users and calls without a token could add them, and they are kept by the upgrade. Scheduler entries run with admin rights. Delete anything you don't recognise, and untick "Guests may run this command" on Commands guests don't need.
 
 You don't need to upload your backup after the upgrade. Keep it in case you want to go back to 3.8.x. The full list of breaking changes is in the [ChangeLog](Version-Release-History.md).
 
