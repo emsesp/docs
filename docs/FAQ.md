@@ -176,6 +176,13 @@ task=async_tcp pc=0x400d1234 cause=28 vaddr=0x00000000 bt=0x400d1234 0x400d5678 
 
 Copy this line into a [GitHub issue](https://github.com/emsesp/EMS-ESP32/issues), together with the EMS-ESP version and your board, and what was happening just before the crash. The developers can turn the addresses into the place in the code where it crashed.
 
+If you can, also attach the full crash dump to the issue. Download it as an admin:
+
+- in EMS-ESP: **Settings > Download/Upload**, button **Crash Dump**. It's only shown when there is a dump. Scripts can use `GET /rest/coredump`.
+- in the EMS-ESP Recovery: the **Crash Dump** section on the dashboard, after signing in. It also shows the summary line. This helps when EMS-ESP crashed so often that the board started the Recovery instead.
+
+Both save a `coredump.bin` file.
+
 Then erase the dump so the next crash is clearly a new one: run `call system coredump` in the console, or send `POST /api/system/coredump` as an admin.
 
 | Field    | Meaning                                                                          |
@@ -206,13 +213,19 @@ Turn the addresses from the summary into function, file and line:
   -e .pio/build/c3_mini_4M/firmware.elf 0x42001234 0x42005678
 ```
 
-For the stacks and registers of every task, connect the board with USB and let `esp-coredump` read and decode the dump in one step:
+For the stacks and registers of every task, decode the downloaded `coredump.bin` with the `firmware.elf`:
+
+```bash
+~/.platformio/penv/bin/esp-coredump info_corefile -t raw -c coredump.bin .pio/build/s_16M_P/firmware.elf
+```
+
+Or connect the board with USB and let `esp-coredump` read and decode the dump in one step:
 
 ```bash
 ~/.platformio/penv/bin/esp-coredump --port /dev/ttyUSB0 info_corefile .pio/build/s_16M_P/firmware.elf
 ```
 
-Or save the dump first and decode it later:
+Or save the dump over USB into a file, and decode that later:
 
 ```bash
 # 16MB layout: 0xFF0000, 32MB layout: 0x1FF0000

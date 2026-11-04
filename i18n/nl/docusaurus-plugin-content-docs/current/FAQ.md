@@ -23,13 +23,13 @@ Het beste overzicht van bekende telegrammen is afkomstig van [Norberts1](https:/
 - gemeten temperaturen zijn doorgaans 2 bytes (SHORT) met een factor 0,1 (bijv. 01 23 -> 0x0123 -> dez 291 -> 29,1 °C)
 - instellingen voor de luchttemperatuur worden vaak weergegeven als een factor 0,5 in de vorm van een enkel byte (INT) (bijv. 0x2D -> dez 45 -> 22,5 °C)
 - instellingen voor de watertemperatuur zijn doorgaans van één byte (UINT) (bijv. 0x3C -> 60 °C), terwijl differentiaalwaarden (hysterese in Kelvin) met teken worden weergegeven (INT)
-- de procentuele instellingen zijn van één byte (UINT) (0x64 -> 100%)
+- De procentuele instellingen zijn van één byte (UINT) (0x64 -> 100%)
 - on/off-toestanden of -instellingen kunnen bestaan uit één byte met on/off, 0xFF/0x00 of 0x01/0x00, of uit één bit in een byte in combinatie met 7 andere toestanden
 - de tijd en energie bedragen doorgaans 3 of 4 bytes, met of zonder factor
 
-Voor verschillende brands/devices gebruikt Bosch soms verschillende uitdrukkingen voor dezelfde waarde. Misschien is er een wisseling van ontwikkelaars geweest, of willen ze reverse engineering juist bemoeilijken!
+Voor verschillende brands/devices gebruikt Bosch soms verschillende uitdrukkingen voor dezelfde waarde. Misschien omdat er van ontwikkelaar is gewisseld, of omdat ze reverse engineering graag bemoeilijken!
 
-Als je een instelling zoekt, registreer dan de telegrammen voor het apparaat (log all of watch &lt;device-id&gt;) en wijzig de instelling op de thermostaat naar een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je naar een meting zoekt, registreer dan het apparaat, bekijk de waarde op de thermostaat en wacht op veranderingen; noteer de old/new-waarden en de tijd. Controleer vervolgens het logboek op dit tijdstempel (of 10 sec / 1 min later) en de waarde in een telegram. Het is het beste om meer changes/values te hebben om zeker te zijn.
+Als je een instelling zoekt, registreer dan de telegrammen voor het apparaat en wijzig de instelling op de thermostaat naar een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je naar een meting zoekt, registreer dan het apparaat, bekijk de waarde op de thermostaat en wacht op veranderingen; noteer de old/new-waarden en de tijd. Controleer vervolgens het logboek op dit tijdstempel (of 10 sec / 1 min later) en de waarde in een telegram. Het is het beste om meer changes/values te hebben om zeker te zijn.
 
 ## Kan EMS-ESP een thermostaat simuleren?
 
@@ -53,11 +53,11 @@ Bovendien zegt **MichaelDvP**: "Als je een softwaregestuurde thermostaat wilt bo
   stel een verwarmingscurve in voor uw gebouw. Dit is een lineaire interpolatie tussen een minimale buitentemperatuur voor uw regio (doorgaans -11 °C voor Midden-Europa) en de maximale aanvoertemperatuur (ontwerptemperatuur ~76 °C voor radiatoren, 40 °C voor vloerverwarming) en de werkelijke kamerstreefwaarde (bijv. 21 °C) voor de buitentemperatuur en de aanvoertemperatuur. U kunt een offset toevoegen.
   selflowtemp = offset + instelpunt + (ontwerptemperatuur - instelpunt) \* (instelpunt - buitentemperatuur) / (instelpunt - minimale buitentemperatuur)
 - kamergestuurd, geschakeld:
-  meet de kamertemperatuur en schakel de ketel in wanneer de verwarming is uitgeschakeld en de kamertemperatuur hoger is dan de instelwaarde. Voeg een hysterese toe om te veel schakelingen te voorkomen
+  meet de kamertemperatuur en schakel de ketel in wanneer de verwarming is uitgeschakeld en de kamertemperatuur hoger is dan de instelwaarde. Voeg een hysterese toe om veelvuldig schakelen te voorkomen
 - kamerregeling, dynamisch
-  Hier moet je een PID-regeling berekenen. Dat valt een beetje buiten het toepassingsgebied van de ems-esp-scheduler. Maar misschien is het wel mogelijk. Op HA kun je het artikel ‘Implementing a smart thermostat (using SAT)’ raadplegen. Zie [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
+  Hier moet je een PID-regeling berekenen. Dat valt een beetje buiten het toepassingsgebied van de ems-esp-scheduler. Maar misschien is het wel mogelijk. Op HA kun je het artikel „Een slimme thermostaat implementeren (met behulp van SAT)” raadplegen. Zie [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
 - aangestuurd door slimme thermostaatventielen (TRV’s):
-  Als u de openingsgraad van de thermostaatkranen kunt aflezen, stel dan een eenvoudige I-regeling in. Als een thermostaatkraan volledig openstaat: verhoog de aanvoertemperatuur; als de meest geopende thermostaatkraan minder dan 90% openstaat: verlaag de aanvoertemperatuur. Verwarmen is een langzaam proces, dus increase/decrease zorgvuldig.
+  Als u de openingsgraad van de thermostaatkranen kunt aflezen, stel dan een eenvoudige I-regeling in. Als een thermostaatkraan volledig openstaat: verhoog de aanvoertemperatuur; als de meest geopende thermostaatkraan minder dan 90% openstaat: verlaag de aanvoertemperatuur. Verwarmen is een langzaam proces, dus ga increase/decrease zorgvuldig te werk.
 
 Lees voor meer informatie ook eens deze discussies:
 
@@ -68,19 +68,19 @@ Lees voor meer informatie ook eens deze discussies:
 
 ## Wat zijn busprotocollen en zendmodi?
 
-Protocol en timing zijn twee verschillende zaken; je kiest de zendmodus die het beste werkt.
+Protocol en timing zijn twee verschillende zaken; je kiest de verzendmodus die het beste werkt.
 
 HT3 is de elektronica van Junkers en het HT3-protocol is hetzelfde als dat van EMS, alleen is in de eerste byte (afzender) het hoogste bit ingesteld. Elk telegram dat we verzenden, begint in een Buderus-systeem met 0B, maar bij Junkers met 8B. Hierdoor zijn de apparaten van de verschillende merken niet compatibel. EMS-ESP controleert de bus bij het opstarten en selecteert automatisch het juiste protocol. Ook gebruikt Junkers een ander telegram numbers/orders. Modules van het merk Bosch gebruiken dezelfde telegramnummers als Buderus, maar adresseren net als Junkers, waardoor ze eveneens incompatibel zijn. U kunt geen Junkers- of Buderus-modules aansluiten op een Bosch-verwarmingssysteem.
 
 De Tx-modus bepaalt de verzendtiming: de client-apparaten verzenden via stroommodulatie, de master via spanningsmodulatie. Dit maakt full-duplex mogelijk (hardwaremodus), maar afhankelijk van de lijnimpedantie beïnvloedt de stroomopname ook de spanning. Tijdens het verzenden herhaalt de master elke byte die door het apparaat wordt verzonden, om deze naar de andere apparaten door te geven. Bij een Tx-modus van "EMS" wachten we op de master-byte voordat we de volgende verzenden. De oudere Junkers lijken een kortere time-out te hebben, dus moeten we met de volgende byte beginnen voordat de echo van de master is voltooid („HT3“). „EMS+“ is minder kritisch en we kunnen iets langer dan één byte wachten om het voltage na het verzenden te laten stabiliseren.
 
-## Kun je meerdere exemplaren van EMS-ESP tegelijk draaien?
+## Kun je meerdere exemplaren van EMS-ESP draaien?
 
 Ja, dat kan. Houd rekening met de volgende instellingen:
 
 - (Instellingen->MQTT-instellingen) MQTT `Entity ID format` is ingesteld op "Meerdere instanties, korte naam"
 - (Instellingen->MQTT-instellingen) MQTT `Client ID` moet uniek zijn om conflicten met de MQTT-broker te voorkomen
-- (Instellingen->MQTT-instellingen) MQTT `Base` is uniek (zorg daar maar voor). Stel dit meestal in op de hostnaam.
+- (Instellingen->MQTT-instellingen) MQTT `Base` is uniek (let daar goed op). Stel dit meestal in op de hostnaam.
 - (Instellingen->Netwerkinstellingen) `Hostname` is uniek, om netwerkconflicten te voorkomen
 - (Instellingen -> Toepassingsinstellingen) `EMS BUS ID` zijn verschillend (niet beide 0x0B)
 
@@ -92,7 +92,7 @@ Zie [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/2025)
 
 (antwoord van [MichaelDvP](https://github.com/MichaelDvP))
 
-Dat gaat niet werken. De ketel werkt met `selflowtemp` als streefwaarde en regelt de brander zo dat de `flowtemp` wordt gehandhaafd. Als `flowtemp` hoger is dan de geselecteerde minimale verbrandingscapaciteit, schakelt de ketel uit, wacht de minimale periode af en als `flowtemp` is gedaald tot `selflowtemp` – hysterese – en start hij opnieuw. Het verhogen van de `burnminpower` leidt onder milde omstandigheden alleen maar tot meer on/off-cycli.
+Dat gaat niet werken. De ketel werkt met `selflowtemp` als streefwaarde en regelt de brander zo dat de `flowtemp` wordt gehandhaafd. Als `flowtemp` hoger is dan de geselecteerde minimale verbrandingscapaciteit, schakelt de ketel uit, wacht de minimale periode af en als `flowtemp` is gedaald tot `selflowtemp` – hysterese – en start hij opnieuw. Het verhogen van de `burnminpower` leidt alleen maar tot meer on/off-cycli bij milde omstandigheden.
 
 ## Hoe je energie kunt besparen op de ESP32-chip
 
@@ -136,7 +136,7 @@ Je hoeft je back-up na de upgrade niet te uploaden. Bewaar deze voor het geval j
 
 Vanaf 3.10.0 controleert EMS-ESP of de firmware een officiële build is wanneer je een firmwarebestand uploadt via de webinterface, een versie installeert vanuit de versielijst van de webinterface of een bestand uploadt via de Recovery-app. Officiële releases en ontwikkelingsversies van [GitHub](https://github.com/emsesp/EMS-ESP32/releases) zijn ondertekend door EMS-ESP en worden direct geïnstalleerd. Op de pagina ‘Versie’ wordt naast de versie ‘Officiële versie’ weergegeven.
 
-Al het andere is een aangepaste build, bijvoorbeeld een die je zelf hebt samengesteld, een community-build, een versie die ouder is dan 3.10.0, of een bestandssysteem-image. De webinterface geeft dan de melding „Dit is geen officiële EMS-ESP-build“ weer voordat er iets wordt geïnstalleerd. Klik op „Toch installeren“ om het te installeren, of laat het staan als je dit niet had verwacht. Op de pagina „Versie“ wordt dan „Aangepaste build“ weergegeven.
+Al het andere is een aangepaste build, bijvoorbeeld een die je zelf hebt samengesteld, een community-build, een versie die ouder is dan 3.10.0, of een bestandssysteem-image. De webinterface geeft dan de melding „Dit is geen officiële EMS-ESP-build“ weer voordat er iets wordt geïnstalleerd. Klik op „Toch installeren“ om de build te installeren, of laat het staan als je dit niet had verwacht. Op de versiepagina wordt dan „Aangepaste build“ weergegeven.
 
 Installeer een aangepaste versie alleen als je zeker weet dat deze uit een betrouwbare bron afkomstig is. Als je een officiële versie verwachtte, is het bestand mogelijk gewijzigd of beschadigd, bijvoorbeeld door een browser of downloadmanager. Download het dan opnieuw vanaf de releasepagina.
 
@@ -154,10 +154,91 @@ Vanaf 3.10.0 vraagt de webinterface opnieuw om je wachtwoord voordat wijzigingen
 - gebruikers en wachtwoorden toevoegen, wijzigen of verwijderen, en API-sleutels aanmaken of intrekken
 - CORS inschakelen, toegestane hostnamen toevoegen, de API-bypass inschakelen of telnet inschakelen
 
-Zodra je je gegevens hebt ingevoerd, hoef je deze in die browser gedurende 5 minuten niet opnieuw in te voeren. Dit wordt beëindigd als je je opnieuw aanmeldt of EMS-ESP opnieuw opstart.
+Zodra je je gegevens hebt ingevoerd, wordt er gedurende 5 minuten niet opnieuw om gevraagd in die browser. Als je je opnieuw aanmeldt of EMS-ESP opnieuw opstart, wordt dit beëindigd.
 
 Scripts die deze wijzigingen doorvoeren via een aanmelding via de webinterface, krijgen HTTP-status 428. Ze moeten het wachtwoord eerst verzenden met `POST /rest/confirmPassword` en de body met `{"password":"..."}`, waarbij hetzelfde token wordt gebruikt. Integraties met API-sleutels en MQTT ondervinden hier geen hinder van.
 
 ### Firmware installeren via een URL
 
 Vanaf 3.10.0 kan firmware alleen worden geïnstalleerd via een URL van een EMS-ESP-release op GitHub, die begint met `https://github.com/emsesp/EMS-ESP32/releases/`. De versielijst van de webinterface maakt hier altijd gebruik van. Alle andere bestanden moet je downloaden en vervolgens via de webinterface uploaden.
+
+## Wat te doen als EMS-ESP vastloopt
+
+Vanaf 3.10.0 slaat de ESP32, wanneer EMS-ESP crasht (een paniekfout, `abort()`, stackoverflow of watchdog), een crashdump op in het flashgeheugen voordat het apparaat opnieuw opstart. De dump blijft na de herstart behouden en wordt bewaard totdat deze bij de volgende crash wordt vervangen, of totdat je deze wist.
+
+Alleen kaarten met 16 MB of 32 MB flashgeheugen bieden ruimte voor een crashdump; de kaarten met 4 MB hebben die ruimte niet. Bij een spanningsdaling, een stroomstoring of een normale herstart wordt er geen dump opgeslagen.
+
+### Een crash melden
+
+Na de herstart schrijft EMS-ESP `Crash dump found: ...` naar het systeemlogboek, en `/api/system/info` toont hetzelfde overzicht als `coredump` in de sectie `system`. Bijvoorbeeld:
+
+```text
+task=async_tcp pc=0x400d1234 cause=28 vaddr=0x00000000 bt=0x400d1234 0x400d5678 0x400e9abc sha=1a2b3c4d5 reason=LoadProhibited
+```
+
+Kopieer deze regel naar een [GitHub issue](https://github.com/emsesp/EMS-ESP32/issues), samen met de EMS-ESP-versie en je bord, en beschrijf wat er vlak voor de crash gebeurde. De ontwikkelaars kunnen aan de hand van de adressen achterhalen op welke plek in de code de crash plaatsvond.
+
+Voeg, indien mogelijk, ook de volledige crashdump toe aan het probleem. Download deze als beheerder:
+
+- in EMS-ESP: **Instellingen > Download/Upload**, knop **Crash Dump**. Deze wordt alleen weergegeven als er een dump is. Scripts kunnen `GET /rest/coredump` gebruiken.
+- in de EMS-ESP Recovery: het gedeelte **Crash Dump** op het dashboard, nadat je bent ingelogd. Hier wordt ook de samenvattingsregel weergegeven. Dit is handig wanneer EMS-ESP zo vaak is gecrasht dat het bord in plaats daarvan de Recovery-modus heeft gestart.
+
+Beide slaan een `coredump.bin`-bestand op.
+
+Wis vervolgens de dump, zodat de volgende crash duidelijk een nieuwe is: voer `call system coredump` uit in de console, of verstuur `POST /api/system/coredump` als beheerder.
+
+| Veld     | Betekenis                                                                                                      |
+| -------- | -------------------------------------------------------------------------------------------------------------- |
+| `task`   | de taak die vastliep                                                                                           |
+| `pc`     | het adres in de firmware waar het programma is vastgelopen                                                     |
+| `cause`  | de oorzaak van de uitzondering op de ESP32, bijv. 28 = LoadProhibited, 29 = StoreProhibited                    |
+| `vaddr`  | het geheugenadres waartoe toegang is verkregen; een waarde dicht bij 0 duidt meestal op een null-pointer       |
+| `bt`     | de backtrace, met eerst de functie die de crash veroorzaakte en daarna de functies die deze hebben aangeroepen |
+| `sha`    | het begin van de SHA256-hash van de firmware die is gecrasht                                                   |
+| `reason` | de reden voor de paniek, bijvoorbeeld het `abort()`- of watchdog-bericht                                       |
+
+Op de C3 en C6 is er geen backtrace, alleen `ra` (retouradres), `mcause` en `mtval`.
+
+### Een crashdump zelf ontcijferen
+
+Voor het decoderen is het `firmware.elf`-bestand van de exacte build nodig die is gecrasht. Als je EMS-ESP zelf bouwt, wordt van elke build een gzipped kopie bewaard als `build/elf/<variant>-<sha>.elf.gz`, waarbij `<sha>` overeenkomt met het `sha`-bestand in het crashverslag. Pak het uit met `gunzip -k`. Deze bestanden zijn elk ongeveer 20 MB groot, dus verwijder af en toe de oude bestanden.
+
+Zet de adressen uit het overzicht om in functie, bestand en regel:
+
+```bash
+# ESP32, use xtensa-esp32s3-elf-addr2line for the S3 and xtensa-esp32s2-elf-addr2line for the S2
+~/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-addr2line -pfiaC \
+  -e .pio/build/s_16M_P/firmware.elf 0x400d1234 0x400d5678 0x400e9abc
+
+# C3/C6, pass the pc and ra
+~/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-addr2line -pfiaC \
+  -e .pio/build/c3_mini_4M/firmware.elf 0x42001234 0x42005678
+```
+
+Decodeer voor de stacks en registers van elke taak de gedownloade `coredump.bin` met de `firmware.elf`:
+
+```bash
+~/.platformio/penv/bin/esp-coredump info_corefile -t raw -c coredump.bin .pio/build/s_16M_P/firmware.elf
+```
+
+Of sluit het bord aan via USB en laat `esp-coredump` de dump in één stap lezen en decoderen:
+
+```bash
+~/.platformio/penv/bin/esp-coredump --port /dev/ttyUSB0 info_corefile .pio/build/s_16M_P/firmware.elf
+```
+
+Of sla de dump via USB op in een bestand en decodeer dat later:
+
+```bash
+# 16MB layout: 0xFF0000, 32MB layout: 0x1FF0000
+~/.platformio/penv/bin/esptool.py --port /dev/ttyUSB0 read_flash 0xFF0000 0x10000 coredump.bin
+~/.platformio/penv/bin/esp-coredump info_corefile -t raw -c coredump.bin .pio/build/s_16M_P/firmware.elf
+```
+
+Gebruik `dbg_corefile` in plaats van `info_corefile` om de dump in GDB te openen. Voor andere partitie-indelingen moet je de offset van de `coredump`-partitie met behulp van `python gen_esp32part.py .pio/build/<env>/partitions.bin` opzoeken.
+
+De paniekhandler geeft ook de backtrace weer via de seriële poort. Bij een crash die moeilijk te reproduceren is, kun je een seriële monitor laten loggen naar een bestand; hierin wordt ook weergegeven wat er vlak voor de crash gebeurde:
+
+```bash
+pio device monitor -e s_16M_P -f esp32_exception_decoder -f log2file
+```
