@@ -6,7 +6,7 @@ description: Common questions and answers about EMS-ESP including factory reset,
 
 # Häufig gestellte Fragen
 
-## Wie führt man einen Werksreset des EMS-ESP durch?
+## Wie setzt man das EMS-ESP auf die Werkseinstellungen zurück?
 
 Wenn Sie einen GPIO-Taster konfiguriert haben (auf allen BBQKees-Boards standardmäßig aktiviert), wird durch 10 Sekunden langes Drücken und anschließendes Loslassen ein Werksreset durchgeführt. EMS-ESP wird im Access-Point-Modus neu gestartet.
 
@@ -21,7 +21,7 @@ Den besten Überblick über bekannte Telegramme bieten [Norberts1](https://githu
 - Wenn eine Einstellung eines Geräts über die Benutzeroberfläche des Thermostats geändert wird, erscheint die Meldung „Thermostat -w-> Gerät“ mit ausschließlich diesem Wert.
 - Manche Geräte senden sich schnell ändernde Werte als Einzelwerte
 - Die gemessenen Temperaturen werden normalerweise als 2 Bytes (SHORT) mit dem Faktor 0,1 angegeben (z. B. 01 23 -> 0x0123 -> dez 291 -> 29,1 °C)
-- Lufttemperaturwerte werden oft mit dem Faktor 0,5 als Einzelbyte (INT) angegeben (z. B. 0x2D → Dez. 45 → 22,5 °C)
+- Lufttemperaturwerte werden oft mit dem Faktor 0,5 als Einzelbyte (INT) angegeben (z. B. 0x2D -> Dez. 45 -> 22,5 °C)
 - Die Einstellungen für die Wassertemperatur sind in der Regel ein Byte (UINT) (z. B. 0x3C -> 60 °C), Differenzwerte (Hysterese in Kelvin) sind vorzeichenbehaftet (INT)
 - Prozentangaben werden als Einzelbyte (UINT) angegeben (0x64 -> 100 %)
 - on/off-Zustände oder -Einstellungen können aus einem einzelnen Byte bestehen, das on/off, 0xFF/0x00 oder 0x01/0x00 enthält, oder aus einem einzelnen Bit in einem Byte zusammen mit 7 weiteren Zuständen
@@ -53,7 +53,7 @@ Außerdem sagt **MichaelDvP**: „Wenn Sie einen softwaregesteuerten Thermostat 
   Legen Sie eine Heizkurve für Ihr Gebäude fest. Dabei handelt es sich um eine lineare Interpolation zwischen einer Mindestaußentemperatur für Ihre Region (typischerweise -11 °C für Mitteleuropa) mit maximaler Vorlauftemperatur (Auslegungstemperatur ~76 °C für Heizkörper, 40 °C für Fußbodenheizungen) und dem tatsächlichen Raum-Sollwert (z. B. 21 °C) für Außentemperatur und Vorlauftemperatur. Sie können einen Offset hinzufügen.
   selflowtemp = Offset + Sollwert + (Auslegungstemperatur – Sollwert) * (Sollwert – Außentemperatur) / (Sollwert – minimale Außentemperatur)
 - raumgesteuert, geschaltet:
-  Die Raumtemperatur messen und den Heizkessel einschalten, wobei die Heizungsabschaltung aktiviert ist, wenn die Raumtemperatur den Sollwert überschreitet. Um häufiges Ein- und Ausschalten zu vermeiden, eine Hysterese hinzufügen.
+  Die Raumtemperatur messen und den Heizkessel einschalten, wobei die Heizungsabschaltung aktiviert ist, wenn die Raumtemperatur den Sollwert überschreitet. Um häufiges Ein- und Ausschalten zu vermeiden, eine Hysterese einbauen.
 - raumgesteuert, dynamisch
   Hier muss eine PID-Regelung berechnet werden. Das geht etwas über den Rahmen des ems-esp-Schedulers hinaus. Aber vielleicht ist es möglich. Bei HA kannst du unter „Implementierung eines intelligenten Thermostats (mit SAT)“ nachlesen. Siehe [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
 - Steuerung über intelligente Thermostatventile (TRVs):
@@ -63,14 +63,14 @@ Wenn Sie mehr darüber erfahren möchten, lesen Sie doch einmal diese Beiträge:
 
 - [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/discussions/965)
 - [Thermostat emulation](https://github.com/emsesp/EMS-ESP32/issues/151)
-- [Changing the boiler heating directly](tips-and-tricks#steuerung-der-kesselheizung)
+- [Changing the boiler heating directly](tips-and-tricks#steuerung-der-heizkesselheizung)
 - [Implementing a smart thermostat (using SAT)](https://github.com/emsesp/EMS-ESP32/issues/2103)
 
 ## Was sind Busprotokolle und Übertragungsmodi?
 
 Protokoll und Timing sind zwei verschiedene Dinge; man wählt den Übertragungsmodus, der am besten funktioniert.
 
-HT3 ist die Elektronik von Junkers, und das HT3-Protokoll entspricht dem EMS-Protokoll, lediglich im ersten Byte (Absender) ist das höchste Bit gesetzt. Jedes von uns gesendete Telegramm beginnt in einem Buderus-System mit 0B, bei Junkers hingegen mit 8B. Dies führt dazu, dass die Geräte der verschiedenen Marken nicht miteinander kompatibel sind. EMS-ESP überprüft den Bus beim Start und wählt automatisch das richtige Protokoll aus. Außerdem verwendet Junkers ein anderes Telegramm numbers/orders. Module der Marke Bosch verwenden zwar dieselben Telegrammnummern wie Buderus, adressieren jedoch wie Junkers, sodass auch sie inkompatibel sind. Sie können keine Junkers- oder Buderus-Module an eine Bosch-Heizungsanlage anschließen.
+HT3 ist die Elektronik von Junkers, und das HT3-Protokoll entspricht dem EMS-Protokoll, nur dass im ersten Byte (Absender) das höchste Bit gesetzt ist. Jedes von uns gesendete Telegramm beginnt in einem Buderus-System mit 0B, bei Junkers hingegen mit 8B. Dies führt dazu, dass die Geräte der verschiedenen Marken nicht miteinander kompatibel sind. EMS-ESP überprüft den Bus beim Start und wählt automatisch das richtige Protokoll aus. Außerdem verwendet Junkers ein anderes Telegramm numbers/orders. Module der Marke Bosch verwenden zwar dieselben Telegrammnummern wie Buderus, adressieren jedoch wie Junkers, sind also ebenfalls nicht kompatibel. Sie können keine Junkers- oder Buderus-Module an eine Bosch-Heizungsanlage anschließen.
 
 Der Tx-Modus bestimmt das Sende-Timing: Die Client-Geräte senden mittels Strommodulation, der Master mittels Spannungsmodulation. Dies ermöglicht Vollduplex (Hardware-Modus), allerdings beeinflusst der je nach Leitungsimpedanz aufgenommene Strom auch die Spannung. Beim Senden wiederholt der Master jedes vom Gerät gesendete Byte, um es an die anderen Geräte weiterzugeben. Im Tx-Modus „EMS“ warten wir auf das Master-Byte, bevor wir das nächste senden. Die älteren Junkers-Geräte scheinen eine kürzere Zeitüberschreitung zu haben, daher müssen wir mit dem nächsten Byte beginnen, bevor das Master-Echo abgeschlossen ist („HT3“). „EMS+“ ist weniger kritisch, und wir können etwas länger als ein Byte warten, damit sich die Spannung nach dem Senden stabilisieren kann.
 
@@ -105,37 +105,84 @@ Beachten Sie, dass dies die Leistung des ESP32-Chips beeinträchtigt und zu Stab
 
 ## Aktualisierung der Firmware
 
-Bei einem Upgrade oder Downgrade zwischen verschiedenen EMS-ESP-Versionen übernimmt EMS-ESP die Migration der Einstellungen, um die Kompatibilität mit der neu installierten Version zu gewährleisten.
+Bei einem Upgrade oder Downgrade zwischen verschiedenen EMS-ESP-Versionen übernimmt EMS-ESP die Migration der Einstellungen, um die Kompatibilität mit der neu installierten Version zu gewährleisten. Eine Rückkehr von 3.10.0 zu einer älteren Version bildet hier eine Ausnahme; siehe [Going back to an older version](#zurück-zu-einer-älteren-version).
 
-Lesen Sie vor einem Upgrade stets die [ChangeLog](Version-Release-History.md), um sich über die Versionshinweise und etwaige Änderungen, die Kompatibilitätsprobleme verursachen könnten, zu informieren.
+Lesen Sie vor einem Upgrade stets den [ChangeLog](Version-Release-History.md) mit den Versionshinweisen und Informationen zu etwaigen kompatibilitätsbeeinträchtigenden Änderungen.
 
 ### Upgrade von 3.8.x auf 3.10.x
 
 :::warning[Kein Zurücksetzen auf die Werkseinstellungen erforderlich]
 
-Wenn Sie eine 3.9.0-Entwicklungsversion über die Web-Benutzeroberfläche einer 3.8.x-Version installieren, wird im Dialogfeld angezeigt, dass für das Upgrade ein Zurücksetzen auf die Werkseinstellungen erforderlich ist. Dies ist jedoch nicht der Fall, ignorieren Sie diesen Teil der Meldung daher. Ihre Einstellungen bleiben erhalten und werden migriert. Beim Upgrade auf 3.10.0 wird diese Meldung nicht angezeigt.
+Wenn Sie eine 3.9.0-Entwicklungsversion über die Web-Benutzeroberfläche einer 3.8.x-Version installieren, wird im Dialogfeld angezeigt, dass für das Upgrade ein Zurücksetzen auf die Werkseinstellungen erforderlich ist. Dies ist jedoch nicht der Fall, ignorieren Sie diesen Teil der Meldung daher bitte. Ihre Einstellungen bleiben erhalten und werden migriert. Beim Upgrade auf 3.10.0 wird diese Meldung nicht angezeigt.
 
 :::
 
 Bevor Sie das Upgrade durchführen:
 
-1. **Erstellen Sie eine Systemsicherung** unter „Einstellungen“ > Download/Upload. Nach dem Upgrade werden Passwörter in gehashter Form gespeichert, und die Version 3.8.x kann diese nicht lesen. Für einen Rückfall auf die Version 3.8.x ist diese Sicherung daher erforderlich; andernfalls ist ein Zurücksetzen auf die Werkseinstellungen erforderlich.
-2. **Beachten Sie, welche Integrationen die API nutzen**, beispielsweise Home Assistant REST-Sensoren, Node-RED oder Skripte. Deren Zugriffstoken funktionieren nach dem Upgrade nicht mehr.
+1. **Erstellen Sie eine Systemsicherung** unter „Einstellungen“ > Download/Upload. Nach dem Upgrade werden Passwörter in gehashter Form gespeichert und können von älteren Versionen nicht gelesen werden. Für einen Rückfall auf 3.8.x oder 3.9.x ist diese Sicherung daher erforderlich.
+2. **Beachten Sie, welche Integrationen die API nutzen**, wie z. B. Home Assistant-REST-Sensoren, Prometheus, Node-RED, Dashboards oder Skripte, einschließlich solcher, die Werte nur ohne Token auslesen. Nach dem Upgrade ist für jeden Aufruf von `/api` ein API-Schlüssel erforderlich, und Zugriffstoken funktionieren nicht mehr.
 
 Nach dem Upgrade:
 
 1. **Legen Sie neue Passwörter fest, falls Sie noch die werkseitigen Passwörter verwenden.** Ein Administrator, der sich mit einem werkseitigen Passwort anmeldet, muss ein neues Administratorpasswort festlegen, bevor die Web-Benutzeroberfläche genutzt werden kann, sowie ein neues Passwort für den Zugangspunkt, falls noch kein WLAN-Netzwerk eingerichtet ist.
-2. **Erstellen Sie für jede Integration einen API-Schlüssel** unter „Sicherheit“ > „API-Schlüssel“ und senden Sie diesen als `Authorization: Bearer <key>`. Wählen Sie „Lesen“ für Integrationen, die nur Werte auslesen, und „Lesen und Schreiben“ für solche, die Einstellungen oder Werte ändern.
+2. **Erstellen Sie für jede Integration einen API-Schlüssel** unter „Sicherheit“ > „API-Schlüssel“ und senden Sie diesen als `Authorization: Bearer <key>`. Wählen Sie „Lesen“ für Integrationen, die nur Werte auslesen, und „Lesen und Schreiben“ für solche, die Einstellungen oder Werte ändern. Um einen Wert in einem Browser auszulesen, öffnen Sie die `/api`-Adresse und melden Sie sich an, wenn der Browser Sie dazu auffordert.
 3. **Prüfen Sie, welche Aktionen Gastbenutzer ausführen dürfen.** Nur Administratoren können den Scheduler, Befehle, benutzerdefinierte Entitäten und Module ändern. Befehle, die bereits vor dem Upgrade vorhanden waren, können weiterhin von Gastbenutzern ausgeführt werden; bei neuen Befehlen aktivieren Sie das Kontrollkästchen „Gastbenutzer dürfen diesen Befehl ausführen“, falls dies gewünscht ist.
 4. **Überprüfen Sie den Scheduler und die Befehle auf Einträge, die Sie nicht erstellt haben.** Vor 3.10.0 konnten Gastbenutzer und Aufrufe ohne Token solche Einträge hinzufügen, und diese werden beim Upgrade beibehalten. Planer-Einträge werden mit Administratorrechten ausgeführt. Löschen Sie alle Einträge, die Sie nicht erkennen, und deaktivieren Sie bei Befehlen, die Gäste nicht benötigen, die Option „Gäste dürfen diesen Befehl ausführen“.
 
-Sie müssen Ihr Backup nach dem Upgrade nicht hochladen. Bewahren Sie es auf, falls Sie wieder auf 3.8.x zurückwechseln möchten. Die vollständige Liste der kompatibilitätsbrechenden Änderungen finden Sie unter [ChangeLog](Version-Release-History.md).
+#### Home Assistant
+
+Geräte, die Home Assistant über MQTT Discovery erkennt, funktionieren weiterhin – hier sind keine Änderungen erforderlich. Lediglich die Teile Ihrer Konfiguration, die `/api` direkt aufrufen, wie beispielsweise `rest`-Sensoren und `rest_command`, benötigen einen API-Schlüssel:
+
+1. Erstellen Sie unter „Sicherheit > API-Schlüssel“ einen Schlüssel für Home Assistant. Wählen Sie „Lesen“, wenn Sie nur `rest`-Sensoren verwenden, und „Lesen und Schreiben“, wenn Sie auch `rest_command` zum Ändern von Werten nutzen.
+2. Fügen Sie den Schlüssel als Header zu jedem `rest`-Sensor und jedem `rest_command` hinzu, der EMS-ESP aufruft, auch zu denen, die nur lesen:
+
+   ```yaml
+   headers:
+     authorization: 'Bearer emsesp_...'
+   ```
+
+3. Entfernen Sie alle `?access_token=...`-Angaben aus den URLs, da ein solches Token in der URL nicht mehr funktioniert.
+4. Starten Sie Home Assistant neu oder laden Sie die REST-Entitäten neu.
+
+Vollständige Beispiele finden Sie unter [Home Assistant](Home-Assistant#einen-wert-über-die-api-auslesen).
+
+#### ioBroker
+
+Der [ioBroker ems-esp adapter](https://github.com/tp1de/ioBroker.ems-esp) (7.0.8 und ältere Versionen) liest Werte aus, ohne einen Schlüssel zu senden, und sendet das Token erst, wenn sich ein Wert ändert. Der API-Schlüssel wird an zwei Stellen benötigt:
+
+1. Erstellen Sie unter „Sicherheit > API-Schlüssel“ einen Schlüssel mit „Lese- und Schreibzugriff“ für ioBroker.
+2. Ändern Sie in den Adapter-Einstellungen die EMS-ESP-Adresse so, dass sie den Schlüssel enthält, zum Beispiel `http://iobroker:emsesp_...@192.168.1.10`. Der Name vor dem `:` kann beliebig sein. Dadurch kann der Adapter Werte auslesen.
+3. Fügen Sie denselben Schlüssel in das Feld „EMS-ESP-Zugriffstoken“ des Adapters ein und ersetzen Sie damit das alte Zugriffstoken. Dadurch kann der Adapter Werte ändern.
+4. Speichern Sie die Änderungen und starten Sie die Adapterinstanz neu.
+
+Sie müssen Ihr Backup nach dem Upgrade nicht hochladen. Bewahren Sie es auf, falls Sie wieder auf 3.8.x oder 3.9.x zurückwechseln möchten. Die vollständige Liste der inkompatiblen Änderungen finden Sie unter [ChangeLog](Version-Release-History.md).
+
+### Zurück zu einer älteren Version
+
+Ab 3.10.0 werden Passwörter in gehashtem Format gespeichert. Ältere Versionen interpretieren den gespeicherten Hash so, als wäre er das Passwort selbst. Daher funktioniert Ihr übliches Passwort nach einem Downgrade auf 3.8.x oder 3.9.x nicht mehr.
+
+Der einfachste Weg zurück ist, die vor dem Upgrade erstellte Systemsicherung wiederherzustellen: Installieren Sie die ältere Version, führen Sie einen Werksreset durch, melden Sie sich mit dem werkseitigen `admin`-Benutzer an und laden Sie die Sicherung unter „Einstellungen“ > Download/Upload hoch.
+
+Wenn Sie keine solche Sicherung haben oder Ihre Einstellungen ohne Zurücksetzen auf die Werkseinstellungen beibehalten möchten, melden Sie sich über die serielle Konsole (USB) an:
+
+1. Stellen Sie eine Verbindung zur seriellen Konsole her und geben Sie `su` ein. Das Passwort lautet `ems-esp-neo`, da 3.10.0 das Superuser-Passwort aus den Einstellungen entfernt hat.
+2. Geben Sie `show users` ein. Das Passwort jedes Benutzers wird als langer Text angezeigt, der mit `$pbkdf2-sha2562. Geben Sie `show users` ein. Das Passwort jedes Benutzers wird als langer Text angezeigt, der mit  beginnt.
+3. Melden Sie sich mit diesem Benutzernamen und dem gesamten Text – von `$pbkdf2-sha2563. Melden Sie sich mit diesem Benutzernamen und dem gesamten Text – von  bis zum Ende – als Passwort bei der Web-Benutzeroberfläche an.
+4. Legen Sie unter „Sicherheit > Benutzer“ für jeden Benutzer ein neues Passwort fest und ändern Sie unter „Sicherheit > Einstellungen“ das Superuser-Passwort.
+
+Andernfalls können Sie durch ein Zurücksetzen auf die Werkseinstellungen wieder Zugriff erhalten, dabei werden jedoch alle Einstellungen gelöscht.
+
+:::warning[Ältere Versionen weisen bekannte Sicherheitslücken auf]
+
+In den Versionen vor 3.10.0 wurden die in 3.10.0 behobenen Sicherheitsprobleme bereits behoben. Wechseln Sie nur dann zu einer älteren Version zurück, wenn es unbedingt notwendig ist, deaktivieren Sie Telnet und führen Sie so bald wie möglich wieder ein Upgrade durch.
+
+:::
 
 ### Offizielle und benutzerdefinierte Builds
 
-Ab 3.10.0 prüft EMS-ESP, ob es sich bei der Firmware um einen offiziellen Build handelt, wenn Sie eine Firmware-Datei über die Web-Benutzeroberfläche hochladen, eine Version aus der Versionsliste der Web-Benutzeroberfläche installieren oder diese über die Recovery-App hochladen. Offizielle Releases und Entwicklungsversionen von [GitHub](https://github.com/emsesp/EMS-ESP32/releases) sind von EMS-ESP signiert und werden sofort installiert. Auf der Seite „Version“ wird neben der Versionsnummer „Offizieller Build“ angezeigt.
+Ab 3.10.0 prüft EMS-ESP, ob es sich bei der Firmware um einen offiziellen Build handelt, wenn Sie eine Firmware-Datei über die Web-Benutzeroberfläche hochladen, eine Version aus der Versionsliste der Web-Benutzeroberfläche installieren oder diese über die Recovery-App hochladen. Offizielle Releases und Entwicklungsversionen von [GitHub](https://github.com/emsesp/EMS-ESP32/releases) sind von EMS-ESP signiert und werden sofort installiert. Auf der Seite „Version“ wird neben der Versionsnummer „Offizielle Version“ angezeigt.
 
-Alles andere ist ein benutzerdefinierter Build, zum Beispiel einer, den Sie selbst erstellt haben, ein Community-Build, eine Version, die älter ist als 3.10.0, oder ein Dateisystem-Image. Die Web-Benutzeroberfläche zeigt dann vor der Installation die Meldung „Dies ist kein offizieller EMS-ESP-Build“ an. Klicken Sie auf „Trotzdem installieren“, um die Installation fortzusetzen, oder lassen Sie es sein, wenn Sie dies nicht erwartet haben. Auf der Versionsseite wird dann „Benutzerdefinierte Version“ angezeigt.
+Alles andere ist ein benutzerdefinierter Build, zum Beispiel einer, den Sie selbst erstellt haben, ein Community-Build, eine Version, die älter ist als 3.10.0, oder ein Dateisystem-Image. Die Web-Benutzeroberfläche zeigt dann vor der Installation die Meldung „Dies ist kein offizieller EMS-ESP-Build“ an. Klicken Sie auf „Trotzdem installieren“, um die Installation fortzusetzen, oder lassen Sie es sein, wenn Sie dies nicht erwartet haben. Auf der Seite „Version“ wird dann „Benutzerdefinierte Version“ angezeigt.
 
 Installieren Sie eine benutzerdefinierte Version nur, wenn Sie der Quelle vertrauen. Wenn Sie eine offizielle Version erwartet haben, wurde die Datei möglicherweise verändert oder beschädigt, beispielsweise durch einen Browser oder einen Download-Manager. Laden Sie sie erneut von der Release-Seite herunter.
 
@@ -151,11 +198,11 @@ Bei 3.10.0 fordert die Web-Benutzeroberfläche Sie erneut zur Eingabe Ihres Pass
 - ein Backup wiederherstellen oder eines mit Passwörtern und Schlüsseln herunterladen
 - ein Zurücksetzen auf die Werkseinstellungen
 - Hinzufügen, Ändern oder Entfernen von Benutzern und Passwörtern sowie Erstellen oder Widerrufen von API-Schlüsseln
-- CORS aktivieren, zulässige Hostnamen hinzufügen, den API-Bypass aktivieren oder Telnet aktivieren
+- CORS aktivieren, zulässige Hostnamen hinzufügen oder Telnet aktivieren
 
 Nach der Eingabe werden Sie in diesem Browser 5 Minuten lang nicht erneut dazu aufgefordert. Eine erneute Anmeldung oder ein Neustart von EMS-ESP beendet diesen Vorgang.
 
-Skripte, die diese Änderungen über eine Web-UI-Anmeldung vornehmen, erhalten den HTTP-Status 428. Sie müssen das Passwort zunächst mit `POST /rest/confirmPassword` und den Hauptteil `{"password":"..."}` unter Verwendung desselben Tokens senden. Integrationen mit API-Schlüsseln und MQTT sind davon nicht betroffen.
+Skripte, die diese Änderungen über eine Web-UI-Anmeldung vornehmen, erhalten den HTTP-Status 428. Sie müssen das Passwort zunächst mit `POST /rest/confirmPassword` und den Hauptteil mit `{"password":"..."}` senden, wobei dasselbe Token verwendet werden muss. Integrationen mit API-Schlüsseln und MQTT sind davon nicht betroffen.
 
 ### Firmware über eine URL installieren
 
@@ -192,8 +239,8 @@ Löschen Sie anschließend den Speicherauszug, damit der nächste Absturz eindeu
 | `pc`     | die Adresse in der Firmware, an der der Absturz auftrat |
 | `cause`  | die Ursache der Ausnahme auf dem ESP32, z. B. 28 = LoadProhibited, 29 = StoreProhibited |
 | `vaddr`  | die Speicheradresse, auf die zugegriffen wurde; ein Wert nahe 0 bedeutet in der Regel einen Nullzeiger |
-| `bt`     | der Backtrace, wobei die zum Absturz führende Funktion an erster Stelle steht und danach die Funktionen, die sie aufgerufen haben |
-| `sha`    | der Anfang des SHA256-Hashwerts der Firmware, bei der es zum Absturz kam |
+| `bt`     | der Backtrace, wobei die zum Absturz führende Funktion an erster Stelle steht und danach ihre Aufrufer folgen |
+| `sha`    | der Anfang des SHA256-Hashwerts der Firmware, die abgestürzt ist |
 | `reason` | der Grund für die Panik, z. B. die `abort()`- oder Watchdog-Meldung |
 
 Bei C3 und C6 gibt es keinen Backtrace, sondern nur `ra` (Rückkehradresse), `mcause` und `mtval`.
@@ -220,7 +267,7 @@ Dekodiere für die Stacks und Register jeder Aufgabe das heruntergeladene `cored
 ~/.platformio/penv/bin/esp-coredump info_corefile -t raw -c coredump.bin .pio/build/s_16M_P/firmware.elf
 ```
 
-Oder schließen Sie die Platine über USB an und lassen Sie `esp-coredump` den Speicherauszug in einem Schritt lesen und dekodieren:
+Oder schließen Sie die Platine über USB an und lassen Sie `esp-coredump` den Dump in einem Schritt lesen und dekodieren:
 
 ```bash
 ~/.platformio/penv/bin/esp-coredump --port /dev/ttyUSB0 info_corefile .pio/build/s_16M_P/firmware.elf
@@ -236,7 +283,7 @@ Oder speichern Sie den Dump über USB in einer Datei und dekodieren Sie diese sp
 
 Verwenden Sie `dbg_corefile` anstelle von `info_corefile`, um den Speicherauszug in GDB zu öffnen. Bei anderen Partitionslayouts ermitteln Sie den Offset der `coredump`-Partition mithilfe von `python gen_esp32part.py .pio/build/<env>/partitions.bin`.
 
-Der Panik-Handler gibt außerdem den Backtrace über den seriellen Port aus. Bei einem schwer reproduzierbaren Absturz sollten Sie einen seriellen Monitor verwenden, der die Daten in eine Datei protokolliert; so können Sie auch nachvollziehen, was unmittelbar vor dem Absturz geschehen ist:
+Der Panik-Handler gibt außerdem den Backtrace über den seriellen Port aus. Bei einem schwer reproduzierbaren Absturz sollten Sie einen seriellen Monitor verwenden, der die Daten in eine Datei protokolliert; so können Sie auch nachvollziehen, was unmittelbar vor dem Absturz passiert ist:
 
 ```bash
 pio device monitor -e s_16M_P -f esp32_exception_decoder -f log2file

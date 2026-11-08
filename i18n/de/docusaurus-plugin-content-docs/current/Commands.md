@@ -6,63 +6,64 @@ description: Complete command reference for controlling EMS-ESP via Console, MQT
 
 # Befehle
 
-EMS-ESP verfügt über eine Befehls-API, die zum Lesen und Schreiben von Werten in das EMS-Gerät und zum Aufrufen bestimmter Befehle verwendet werden kann.
+EMS-ESP verfügt über eine Befehls-API, mit der Werte auf dem EMS-Gerät gelesen und geschrieben sowie bestimmte Befehle aufgerufen werden können.
 
-Es gibt 3 Methoden, mit denen Befehle aufgerufen werden können:
+Es gibt drei Möglichkeiten, Befehle aufzurufen:
 
-- über den [**Console**](#konsole) mittels Telnet oder seriell
-- über [**HTTP**](#http) mit RESTful-API-Aufrufen
-- über [**MQTT**](#mqtt) über Themen und ihre Nutzlasten
+- über den [**Console**](#konsole) per Telnet oder serieller Schnittstelle
+- über [**HTTP**](#http) mithilfe von RESTful-API-Aufrufen
+- über [**MQTT**](#mqtt) über Themen und deren Inhalte
 
-## Definitionen
+## Begriffsbestimmungen
 
 :::info[Wichtige Definitionen]
 
-- `<device>` ist der Kurzname. Er kann entweder sein:
-  - a EMS Device und unterstützte Geräte sind: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
-    - das EMS-ESP-System selbst, identifiziert als `system`
+- `<device>` ist die Kurzbezeichnung. Es kann sich dabei entweder um Folgendes handeln:
+  - Ein EMS-Gerät und unterstützte Geräte sind unter anderem: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
+    - das EMS-ESP-System selbst, das als `system` identifiziert wurde
     - die Dallas-Temperatursensoren als `temperaturesensor`
-    - beliebige analoge Sensoren als `analogsensor`
-    - alle benutzerdefinierten EMS-Telegrammelemente als `custom`
-  - `<command>` ist der Name eines der folgenden Elemente
-    - ein allgemeiner Befehl, oder
-    - eine EMS-Geräteeinheit, die auch als `<entity>` bezeichnet wird. Siehe die Seite [Supported Devices](All-Entities) für die vollständige Liste
+    - beliebige benutzerdefinierte Analogsensoren als `analogsensor`
+    - alle benutzerdefinierten Entitäten in EMS-Telegrammen als `custom`
+  - `<command>` ist entweder der Name von
+    - ein allgemeiner Befehl oder
+    - eine EMS-Geräteentität, die auch als `<entity>` bezeichnet wird. Eine vollständige Liste finden Sie auf der Seite [Supported Devices](All-Entities)
   - `<id>` ist ein optionaler Bezeichner und hat je nach Kontext unterschiedliche Bedeutungen
-  - `<data>` wird verwendet, um den zu lesenden oder zu schreibenden Wert darzustellen. Es kann entweder ein einzelner Wert beliebigen Typs (Integer, Float, String oder Boolean) oder ein JSON-Objekt {} String mit mehreren key/values-Paaren sein:
-    - **"cmd "** ist das `<command>`. Der Schlüssel **"cmd "** kann auch durch **"entity "** ersetzt werden.
-    - **"value "** ist der Wert und kann entweder eine in Anführungszeichen gesetzte Zeichenkette, eine Ganzzahl, eine Fließkommazahl oder ein Boolescher Wert sein. **"data "** ist ein Alias, der auch für den Schlüssel verwendet werden kann.
-    - **"hc "**, **"wwc "** und **"id "** werden alle verwendet, um einen Wert oder im Zusammenhang mit einem EMS-Gerät einen Heiz- oder Warmwasserkreislauf darzustellen.
+  - `<data>` wird verwendet, um den zu lesenden oder zu schreibenden Wert darzustellen. Dabei kann es sich entweder um einen einzelnen Wert beliebigen Typs (Ganzzahl, Gleitkommazahl, Zeichenkette oder Boolescher Wert) oder um eine JSON-Objekt-Zeichenkette {} handeln, die mehrere key/values-Paare enthält, wie zum Beispiel:
+    - **„cmd“** ist das `<command>`. Der Schlüssel **„cmd“** kann auch durch **„entity“** ersetzt werden.
+    - **„value“** ist der Wert und kann entweder eine Textzeichenfolge in Anführungszeichen, eine Ganzzahl, eine Gleitkommazahl oder ein Boolescher Wert sein. **„data“** ist ein Alias, der ebenfalls anstelle des Schlüssels verwendet werden kann.
+    - **„hc“**, **„wwc“** und **„id“** werden alle verwendet, um einen Wert oder – im Zusammenhang mit einem EMS-Gerät – einen Heiz- oder Warmwasserkreislauf zu bezeichnen.
 
-  - Ein boolescher Wert kann in vielen Formen dargestellt werden:
-    - als Wahrer Wert, "WAHR", "ja", wahr, "wahr", "ein", 1
-    - als Falschwert, "FALSE", "nein", falsch, "falsch", "aus", 0
+  - Ein boolescher Wert kann auf vielfältige Weise dargestellt werden:
+    - als Wahrheitswert: „TRUE“, „yes“, true, „true“, „on“, 1
+    - als „False“-Wert: „FALSE“, „no“, false, „false“, „off“, 0
 
-  - Das Bearer Access Token (JWT) wird zur Authentifizierung von HTTP-Anfragen verwendet und kann von der Seite `Settings->Security->Manage Users` der WebUI abgerufen werden, indem man auf das Schlüsselsymbol für den Benutzer klickt, der über Administratorrechte verfügt (`is Admin`-Set). Das Token wird mit einer Kombination aus dem Benutzernamen und einem geheimen Schlüssel generiert, der das Superuser-Passwort (su) ist, das auf der Seite `Settings->Security->Security Settings` der WebUI zu finden ist. Diese Zeichenfolge muss in der HTTP-Kopfzeile als `"Authorization: Bearer {ACCESS_TOKEN}"` angegeben werden. Beachten Sie, dass das Token kein Verfallsdatum hat.
+  - Der API-Schlüssel dient zur Authentifizierung von HTTP-Anfragen. Erstellen Sie einen solchen Schlüssel auf der Seite `Settings->Security->API Keys` der WebUI: Ein „Lese“-Schlüssel ermöglicht das Auslesen von Werten und das Ausführen von Befehlen, die auch Gäste ausführen dürfen; ein „Lese- und Schreib“-Schlüssel ermöglicht darüber hinaus das Ändern von Werten und Einstellungen. Senden Sie ihn im HTTP-Header als `"Authorization: Bearer {API_KEY}"`. Ab 3.10.0 ist er für jeden Aufruf von `/api` erforderlich, auch für Lesevorgänge.
 
 :::
 
 ## Konsole
 
-- Die Befehle können mit dem Befehl `call` ausgeführt werden
-- Sie müssen Administrator sein, um den Befehl `call` zu verwenden. Zuerst `su` und geben Sie das Passwort ein
-- Für eine Liste aller verfügbaren Befehle können Sie `show commands` verwenden
+- Befehle können mit dem Befehl `call` ausgeführt werden
+- Um den Befehl `call` verwenden zu können, müssen Sie Administrator sein. Geben Sie zunächst `su` ein und geben Sie das Passwort ein.
+- Eine Liste aller verfügbaren Befehle finden Sie unter `show commands`
 - Die Syntax lautet `call <device> <command> [data] [id]`
-- Für eine vollständige Liste der Befehle verwenden Sie `call <device> commands`
+- Eine vollständige Liste der Befehle finden Sie unter `call <device> commands`
 
-Weitere Informationen über die Verwendung der Telnet-Konsole finden Sie im Abschnitt [**Console**](Console).
+Weitere Informationen zur Verwendung der Telnet-Konsole finden Sie im Abschnitt [**Console**](Console).
 
 ## HTTP
 
-Zu beachtende Punkte:
+Zu beachten:
 
 - Die REST-API folgt dem [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
 - Der URL-Pfad beginnt immer mit `http://<hostname>/api/`
-- `<hostname>` ist entweder eine IP-Adresse oder der mDNS-Name, der standardmäßig `ems-esp.local` lautet
-- Für einige Befehle ist eine Sicherheitsauthentifizierung erforderlich, sofern sie nicht über eine EMS-ESP-Einstellung deaktiviert wurde. Die Authentifizierung erfolgt in Form eines Zugriffstokens, der über die WebUI unter Sicherheit->Benutzer verwalten und dann durch Anklicken der Schaltfläche "Schlüssel" für den Administrator-Benutzer generiert wird. Der String muss im HTTP-Header wie `"Authorization: Bearer {ACCESS_TOKEN}"` enthalten sein. Die Token haben kein Verfallsdatum
-- Bei HTTP-POST-Befehlen kann ein HTTP-Body erforderlich sein. Dieser kann entweder in Form von einfachem Text oder als JSON-Objekt `<data>` vorliegen, der Content-Type-Header muss in beiden Fällen auf `application/json` gesetzt werden.
+- `<hostname>` ist entweder eine IP-Adresse oder der mDNS-Name, dessen Standardwert `ems-esp.local` ist
+- Für jeden Aufruf ist ein API-Schlüssel erforderlich, der in der Web-Benutzeroberfläche unter „Sicherheit“ → „API-Schlüssel“ erstellt wird und im HTTP-Header wie `"Authorization: Bearer {API_KEY}"` angegeben werden muss. Aufrufe ohne diesen Schlüssel führen zu einem HTTP-Fehler 401. Zum Ändern von Werten oder Einstellungen ist ein Schlüssel mit „Lese- und Schreibrechten“ erforderlich.
+- Um einen Wert in einem Browser anzuzeigen, öffnen Sie dessen Adresse, zum Beispiel `http://ems-esp.local/api/boiler/curflowtemp`, und melden Sie sich mit Ihrem EMS-ESP-Benutzernamen und -Passwort an, wenn der Browser Sie dazu auffordert. Dabei werden nur Werte ausgelesen, auch für Administratoren. Tools, die nur einen Benutzernamen und ein Passwort unterstützen, können einen API-Schlüssel als Passwort verwenden, unabhängig vom Benutzernamen, zum Beispiel `http://user:emsesp_...@ems-esp.local/api/boiler`. Der Schlüssel behält dort seine Berechtigungen, außer im Browser, wo er nur Lesezugriff hat.
+- Bei HTTP-POST-Befehlen kann ein HTTP-Body erforderlich sein. Dieser kann entweder als Klartext oder als JSON-Objekt `<data>` vorliegen; in beiden Fällen muss der Content-Type-Header auf `application/json` gesetzt sein.
 - HTTPS mit selbstsignierten Zertifikaten wird noch nicht unterstützt
-- Für eine vollständige Liste der Befehle verwenden Sie `http://<hostname>/api/<device>/commands`
-- die Verwendung von GET-Befehlen im Stil der ems-esp v2-api wird weiterhin unterstützt (`http://<hostname>/api?device=<device>&id=<id>&cmd=<cmd>`)
+- Eine vollständige Liste der Befehle finden Sie unter `http://<hostname>/api/<device>/commands`
+- Die Verwendung von GET-Befehlen im Stil der ems-esp v2-API wird weiterhin unterstützt (`http://<hostname>/api?device=<device>&id=<id>&cmd=<cmd>`)
 
 ### Lesen und Schreiben von EMS-Geräteinformationen
 
@@ -70,120 +71,118 @@ Der URL-Pfad lautet `http://<hostname>/api/<device>/`
 
 | `endpoint` | `HTTP method` | `action` | `authentication required?` | `post body` |
 | --------------- | ------------- | ------------------------------------------------------------------ | -------------------------- | ----------- |
-| `info` | `GET` | gibt aktuelle EMS-Geräteinformationen in ausführlicher Form aus | no | |
+| `info` | `GET` | gibt aktuelle EMS-Geräteinformationen im ausführlichen Modus aus | nein | |
 | `values` | `GET` | gibt aktuelle EMS-Geräteinformationen im Kurzformat aus | nein | |
-| _(empty)_ | `GET` | wie bei `values` oben | nein | |
-| `commands` | `GET` | listet die verfügbaren Befehlsentitäten zum Aufrufen auf | no | |
+| _(empty)_ | `GET` | wie `values` oben | nein | |
+| `commands` | `GET` | listet die verfügbaren Befehlsentitäten auf, die aufgerufen werden können | nein | |
 | `entities` | `GET` | listet alle aktivierten Entitäten auf | nein | |
-| `{entity}` | `GET` | gibt Details zu einer bestimmten Einheit aus, zum Lesen | nein | |
-| `{entity}/{hc}` | `GET` | wie der Lesebefehl oben, aber für einen bestimmten Heizkreis | nein | |
-| `{entity}` | `POST` | aktualisiert einen Entitätswert, zum Schreiben | ja | `<data>` |
-| `{entity}/{hc}` | `POST` | wie der Schreibbefehl oben, aber für einen bestimmten Heizkreis | ja | `<data>` |
+| `{entity}` | `GET` | gibt Details zu einer bestimmten Entität zur Lektüre aus | nein | |
+| `{entity}/{hc}` | `GET` | entspricht dem obigen Befehl „read“, gilt jedoch für einen bestimmten Heizkreis  | nein | |
+| `{entity}` | `POST` | aktualisiert einen Entitätswert beim Schreiben | ja | `<data>`    |
+| `{entity}/{hc}` | `POST` | entspricht dem obigen Befehl „write“, gilt jedoch für einen bestimmten Heizkreis | ja | `<data>`    |
 
 Beispiele:
 
-| URL | Post Body | Aktion |
+| URL | Beitragstext | Aktion |
 | ------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------- |
-| `http://ems-esp.local/api/thermostat/seltemp` | `22` | stellt die gewählte Raumtemperatur des Masterthermostats auf Heizkreis 1 ein |
-| `http://ems-esp.local/api/thermostat/hc2/seltemp` | `{"data":22}` | stellt die gewählte Raumtemperatur des Hauptthermostats auf Heizkreis 2 ein |
-| `http://ems-esp.local/api/thermostat/mode` | `'auto'` | setzt den Thermostatmodus auf Auto für Heizkreis 1 |
-| `http://ems-esp.local/api/thermostat` | `{"cmd":"mode", "data":"auto"}` | setzt den Thermostatmodus auf Auto für Heizkreis 1 |
-| `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | setzt die gewählte Raumtemperatur auf 23 Grad für Heizkreis 3 |
-| `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | setzt die gewählte Raumtemperatur auf 20,5 Grad für Heizkreis 2 |
-| `http://ems-esp.local/api` | `{"device":"thermostat", "cmd":"seltemp", "data":23, "hc":3}` | stellt die gewählte Raumtemperatur des Hauptthermostats auf Heizkreis 3 ein |
+| `http://ems-esp.local/api/thermostat/seltemp`     | `22` | legt die gewählte Raumtemperatur des Hauptthermostats für Heizkreis 1 fest |
+| `http://ems-esp.local/api/thermostat/hc2/seltemp` | `{"data":22}` | legt die gewählte Raumtemperatur des Hauptthermostats für Heizkreis 2 fest |
+| `http://ems-esp.local/api/thermostat/mode` | `'auto'` | stellt den Thermostatmodus für den Heizkreis 1 auf „Auto“ ein |
+| `http://ems-esp.local/api/thermostat` | `{"cmd":"mode", "data":"auto"}` | stellt den Thermostatmodus für den Heizkreis 1 auf „Auto“ ein |
+| `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | stellt die ausgewählte Raumtemperatur für den Heizkreis 3 auf 23 Grad ein |
+| `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | stellt die ausgewählte Raumtemperatur für den Heizkreis 2 auf 20,5 Grad ein |
+| `http://ems-esp.local/api` | `{"device":"thermostat", "cmd":"seltemp", "data":23, "hc":3}` | legt die gewählte Raumtemperatur des Hauptthermostats für Heizkreis 3 fest |
 
-### Abrufen und Schreiben in benutzerdefinierte Entitäten
+### Abrufen und Schreiben von benutzerdefinierten Entitäten
 
 Der URL-Pfad lautet `http://<hostname>/api/custom/`
 
-| Endpunkt | HTTP-Methode | Aktion | Authentifizierung erforderlich? | post body |
+| Endpunkt | HTTP-Methode | Aktion | Authentifizierung erforderlich? | POST-Inhalt |
 | -------------------- | ----------- | -------------------------------------------------------- | ------------------------ | --------- |
-| leer oder `info` | `GET` | gibt alle benutzerdefinierten Elemente und ihre Werte aus | nein | |
+| leer oder `info` | `GET` | gibt alle benutzerdefinierten Entitäten und deren Werte aus | nein | |
 | `commands` | `GET` | listet die verfügbaren Befehle für benutzerdefinierte Entitäten auf | nein | |
-| `<name>` | `GET` | gibt alle Merkmale für eine bestimmte benutzerdefinierte Einheit aus | nein | |
-| `<name>/<attribute>` | `GET` | Ausgaben für ein Attribut einer bestimmten benutzerdefinierten Einheit | nein | |
-| `<name>` | `POST` | aktualisiert einen benutzerdefinierten Entity-Wert, zum Schreiben | ja | `<data>` |
+| `<name>` | `GET` | gibt alle Eigenschaften einer bestimmten benutzerdefinierten Entität aus | nein | |
+| `<name>/<attribute>` | `GET` | gibt ein Attribut einer bestimmten benutzerdefinierten Entität aus | nein | |
+| `<name>` | `POST` | aktualisiert den Wert einer benutzerdefinierten Entität beim Schreiben | ja | `<data>`  |
 
-### Abruf von Temperatursensor-Informationen
+### Abrufen von Informationen zum Temperatursensor
 
 Der URL-Pfad lautet `http://<hostname>/api/temperaturesensor/`
 
-| Endpunkt | HTTP-Methode | Aktion | Authentifizierung erforderlich? | post body |
+| Endpunkt | HTTP-Methode | Aktion | Authentifizierung erforderlich? | POST-Inhalt |
 | -------------- | ----------- | --------------------------------------------------------------- | ------------------------ | --------- |
-| leer | `GET` | Ausgänge verbunden Dallas Temperatursensornamen und Messwerte | nein | |
+| leer | `GET` | gibt die Namen und Messwerte der angeschlossenen Dallas-Temperatursensoren aus  | nein | |
 | `info` | `GET` | gibt alle Details zu den angeschlossenen Dallas-Temperatursensoren aus | nein | |
-| `<name>` | `GET` | gibt alle Merkmale für einen bestimmten Temperatursensor aus | nein | |
+| `<name>` | `GET` | gibt alle Eigenschaften für einen bestimmten Temperatursensor aus  | nein | |
 | `<name>/value` | `GET` | gibt den Wert eines bestimmten Temperatursensors aus | nein | |
 
 ### Steuerung der analogen Sensoren
 
 Der URL-Pfad lautet `http://<hostname>/api/analogsensor/`
 
-| Endpunkt | HTTP-Methode | Aktion | Authentifizierung erforderlich? | post body |
+| Endpunkt   | HTTP-Methode | Aktion | Authentifizierung erforderlich? | POST-Inhalt |
 | ---------- | ----------- | ------------------------------------------------------------------ | ------------------------ | ------------------------------ |
 | leer | `GET` | gibt analoge Sensoren und deren Messwerte aus | nein | |
-| `info` | `GET` | gibt alle Details zu den angeschlossenen analogen Sensoren aus | nein | |
-| `<name>` | `GET` | gibt alle Merkmale für einen bestimmten analogen Sensor aus | nein | |
-| `commands` | `GET` | listet die verfügbaren Systembefehle auf | no | |
-| `setvalue` | `POST` | value/offset des Zählers oder des Ausgangspins setzen, +/- Zeichen korrigiert Wert | ja | `{"value":<val>, "id":<gpio>}` |
-| `<name>` | `POST` | value/offset des Zählers oder des Ausgangspins setzen, +/- Zeichen korrigiert Wert | ja | `{"value":<val>}` |
+| `info`     | `GET` | gibt alle Details zu den angeschlossenen analogen Sensoren aus | nein | |
+| `<name>`   | `GET` | gibt alle Eigenschaften eines bestimmten analogen Sensors aus | nein | |
+| `commands` | `GET` | listet die verfügbaren Systembefehle auf | nein | |
+| `setvalue` | `POST` | Einstellung value/offset des Zähler- oder Ausgangspins, +/- Vorzeichen korrigiert den Wert | ja | `{"value":<val>, "id":<gpio>}` |
+| `<name>`   | `POST` | Einstellung value/offset des Zähler- oder Ausgangspins, +/- Vorzeichen korrigiert den Wert | ja | `{"value":<val>}` |
 
-### System-Befehle
+### Systembefehle
 
 Der URL-Pfad lautet `http://<hostname>/api/system/<endpoint>`
 
-| Endpunkt | HTTP-Methode | Aktion | Authentifizierung erforderlich? | post body |
+| Endpunkt | HTTP-Methode | Aktion | Authentifizierung erforderlich? | POST-Inhalt |
 | ------------------------ | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------- |
-| `info` `values`oder leer | `GET` | gibt aktuelle Systeminformationen aus | nein | |
-| `fetch` | `GET` | erzwingt die Aktualisierung aller Gerätewerte | nein | | |
-| `restart` | `GET` | startet EMS-ESP neu | ja | |
-| `format` | `GET` | EMS-ESP auf Werkseinstellungen zurücksetzen | ja | |
-| `commands` | `GET` | listet die verfügbaren Systembefehle auf | no | |
-| `send` | `POST` | Telegramm auf den EMS-Bus senden | ja | `"XX XX...XX"` |
-| `message` | `POST` | eine Nachricht an das Protokoll und MQTT senden. Die Nachricht kann auch ein logischer Befehl sein, wie er im Scheduler verwendet wird | ja | `".."` oder `'{"value":"system/settings/locale"}'` |
-| `publish` | `POST` | MQTT veröffentlichen alle Werte, und optional HA-Konfiguration oder spezifisch für ein Gerät | no | `[ha] \| [device]` |
-| `watch` | `POST` | eingehende Telegramme beobachten | nein | `<on \|off \| raw \| <type-id(hex)>` |
+| `info` `values`oder leer  | `GET` | gibt aktuelle Systeminformationen aus | nein | |
+| `fetch` | `GET` | Erzwingt beim Aktualisieren aller Gerätewerte | nein | |
+| `restart` | `GET` | EMS-ESP neu starten | ja | |
+| `format` | `GET` | EMS-ESP bei Werksrücksetzung | ja | |
+| `commands` | `GET` | listet die verfügbaren Systembefehle auf | nein | |
+| `send` | `POST` | Telegramm an den EMS-Bus senden | ja | `"XX XX...XX"` |
+| `message` | `POST` | Eine Nachricht an das Protokoll und an MQTT senden. Die Nachricht kann auch ein Logikbefehl sein, wie er im Scheduler verwendet wird | ja | `".."` oder `'{"value":"system/settings/locale"}'` |
+| `publish` | `POST` | MQTT-Veröffentlichung aller Werte sowie optionaler HA-Konfiguration oder gerätespezifischer Daten | nein | `[ha] \| [device]` |
+| `watch` | `POST` | eingehende Telegramme überwachen | nein | `<on \|off \| raw \| <type-id(hex)>` |
 | `values` | `GET` | gibt alle Werte im Kurzformat aus | nein | |
-| `read` | `GET` | fragt ein bestimmtes EMS-Gerät und eine TypeID ab | ja | `<deviceID> <type ID> [offset] [length]` |
+| `read` | `GET` | fragt ein bestimmtes EMS-Gerät und eine Typ-ID ab | ja | `<deviceID> <type ID> [offset] [length]` |
 | `response` | `GET` | gibt die letzte Antwort von EMS-ESP aus | nein | |
 | `entities` | `GET` | listet alle aktivierten Entitäten auf | nein | |
-| `sendmail` | `POST` | eine E-Mail senden | ja | `{"to":"<email>", "subject":"<subject>", "body":"<body>"}` |
+| `sendmail` | `POST` | E-Mail senden | ja | `{"to":"<email>", "subject":"<subject>", "body":"<body>"}` |
 | `txpause` | `POST` | pause/resume die Übertragung des EMS-Busses | ja | `<bool>` |
 | `led` | `POST` | LED-Muster | ja | `[color]:[pattern]` |
 | `mqtt/enabled` | `GET` | enable/disable MQTT | ja | `<bool>` |
 | `ap/enabled` | `GET` | enable/disable Zugangspunkt | ja | `<bool>` |
 | `ntp/enabled` | `GET` | enable/disable NTP | ja | `<bool>` |
 | `syslog/enabled` | `GET` | enable/disable Syslog | ja | `<bool>` |
-| `settings/analogenabled` | `GET` | enable/disable analoger Sensor | ja | `<bool>` |
+| `settings/analogenabled` | `GET` | enable/disable Analogsensor | ja | `<bool>` |
 | `settings/hideled` | `GET` | enable/disable LED | ja | `<bool>` |
-| `settings/showeralert` | `GET` | enable/disable shower alert | yes | `<bool>` |
-| `settings/showertimer` | `GET` | enable/disable shower timer | yes | `<bool>` |
+| `settings/showeralert`   | `GET` | enable/disable Duschalarm | ja | `<bool>` |
+| `settings/showertimer`   | `GET` | enable/disable Dusch-Timer | ja | `<bool>` |
 
 ### Beispiele
 
-:::tip In diesen Beispielen ist die URL `http://ems-esp.local/api/`, aber passen Sie sie an Ihren tatsächlichen Hostnamen an. Ändern Sie auch das Zugriffstoken des Trägers in Ihr eigenes, wie im Abschnitt [Definitions](#definitionen) beschrieben.
+:::tip
+In diesen Beispielen lautet die URL `http://ems-esp.local/api/`, passen Sie diese jedoch an Ihren tatsächlichen Hostnamen an. Ändern Sie außerdem den API-Schlüssel wie im Abschnitt [Definitions](#begriffsbestimmungen) beschrieben in Ihren eigenen.
 :::
 
 #### ...über die Befehlszeile
 
 ```bash
-# Most GETs do not need authentication
-% curl http://ems-esp.local/api/thermostat/seltemp
+# GETs need an API key too, a "Read" key is enough
+% curl http://ems-esp.local/api/thermostat/seltemp -H 'Authorization: Bearer emsesp_...'
 
-# POSTs (with -d) need authentication tokens
+# POSTs (with -d) that change a value need a "Read and Write" key
 % curl http://ems-esp.local/api/thermostat/seltemp \
   -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0' \
+  -H 'Authorization: Bearer emsesp_...' \
   -d '{ "value" : 22.5 }'
 
-# GET with authentication using query parameter with token
-% curl http://ems-esp.local/api/system/publish\?access_token\="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0"
-
-# GET to restart EMS-ESP
-curl http://ems-esp.local/api/system/restart -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0'
+# GET to restart EMS-ESP, needs a "Read and Write" key
+curl http://ems-esp.local/api/system/restart -H 'Authorization: Bearer emsesp_...'
 
 # This example will get the system info, via a GET request
-curl -X GET ${emsesp_url}/api/system/info
+curl -X GET -H "Authorization: Bearer ${emsesp_token}" ${emsesp_url}/api/system/info
 
 # This example will execute a read command on product ID 8 and type ID 1
 curl -X POST \
@@ -201,14 +200,14 @@ curl -X POST \
 
 ```
 
-#### ...unter Verwendung eines Python-Skripts
+#### … mithilfe eines Python-Skripts
 
 ```python
 import requests
 import json
 
 url = "http://ems-esp.local/api/thermostat/temp"
-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0"
+token = "emsesp_..."  # a "Read and Write" API key
 body = json.dumps({ "value": 22.5 })
 headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
 
@@ -219,26 +218,28 @@ print(response.json())
 
 ## MQTT
 
-MQTT verwendet das gleiche Format wie die API, jedoch mit einigen Unterschieden. Für das **Topic** wird `<hostname>` durch den MQTT-Basisnamen ersetzt, wie er in den Einstellungen definiert ist (Standard ist `ems-esp`). Das `<device>` folgt den gleichen Namen wie oben auf dieser Seite aufgeführt. Zum Beispiel `ems-esp/thermostat/<entity>` oder `ems-esp/custom/<name>`.
+MQTT verwendet dasselbe Format wie die API, allerdings mit einigen Unterschieden. Beim **Topic** wird `<hostname>` durch den in den Einstellungen definierten MQTT-Basennamen ersetzt (Standard ist `ems-esp`). Das `<device>` folgt denselben Namen, wie sie oben auf dieser Seite aufgeführt sind. Zum Beispiel `ems-esp/thermostat/<entity>` oder `ems-esp/custom/<name>`.
 
-Der MQTT **Payload** ist derselbe wie der oben beschriebene und in der API verwendete `<data>` und kann ein JSON-Objekt oder ein String sein.
+Die MQTT-**Nutzlast** entspricht dem oben beschriebenen und in der API verwendeten `<data>` und kann ein JSON-Objekt oder eine Zeichenkette sein.
+
+Was MQTT tun kann, wird in den MQTT-Einstellungen unter „Über MQTT empfangene Befehle“ festgelegt: „Aus, nur Werte lesen“, „Werte ändern und Befehle ausführen“ (Standardeinstellung) oder „Alles, auch Systembefehle“. Befehle wie `system/send` oder `system/restart` erfordern die Einstellung „Alles“. Ein Werksreset (`system/format`) und das Löschen des Absturz-Dumps (`system/coredump`) werden über MQTT niemals akzeptiert. Veröffentlichen Sie Befehle ohne das Retain-Flag; gespeicherte Befehle werden ignoriert.
 
 Beispiele:
 
-| Thema | Nutzlast | Aktion |
+| Thema | Nutzdaten | Aktion |
 | ------------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ems-esp/system/send` | `XX XX...XX` | send raw ems-command |
-| `ems-esp/thermostat/seltemp` | | holt die seltemp Entitätswerte und veröffentlicht sie im Thema `ems-esp/response` |
-| `ems-esp/thermostat/seltemp` | `23` | Ändern der gewählten Solltemperatur auf 23 Grad am Hauptthermostat auf hc1 |
-| `ems-esp/thermostat/mode` | `auto` | setzt den Thermostatmodus auf auto für hc1 |
-| `ems-esp/thermostat` | `{"cmd":"mode","value":"heat","id":1}` | stellt den Thermostatmodus auf Heizen für hc1 |
-| `ems-esp/custom/myCustomEntity` | `7` | setzt den Wert des EMS-ESP Custom Entity namens `myCustomEntity` auf 7 |
+| `ems-esp/system/send` | `XX XX...XX` | Ems-Befehl im Rohformat senden (erfordert „Alles, auch Systembefehle“) |
+| `ems-esp/thermostat/seltemp`    | | ruft die Werte der Entität „seltemp“ ab und veröffentlicht sie im Thema `ems-esp/response`     |
+| `ems-esp/thermostat/seltemp`    | `23` | Die ausgewählte Solltemperatur am Hauptthermostat „hc1“ auf 23 Grad ändern |
+| `ems-esp/thermostat/mode` | `auto` | stellt den Thermostatmodus für hc1 auf „Auto“ ein |
+| `ems-esp/thermostat` | `{"cmd":"mode","value":"heat","id":1}` | stellt den Thermostatmodus für hc1 auf „Heizen“ ein |
+| `ems-esp/custom/myCustomEntity` | `7` | legt den Wert der benutzerdefinierten EMS-ESP-Entität mit dem Namen `myCustomEntity` auf 7 fest |
 
-### Veröffentlichungsbefehle
+### Befehle zum Veröffentlichen
 
-EMS-ESP "abonniert" über MQTT bestimmte Themen, die von den angeschlossenen EMS-Geräten abhängen. Zum Beispiel `boiler`, `thermostat` usw.
+EMS-ESP abonniert über MQTT bestimmte Themen, je nach den angeschlossenen EMS-Geräten. Zum Beispiel `boiler`, `thermostat` usw.
 
-Über diese MQTT-Themen können unter Verwendung des Payload-Formats Befehle an EMS-ESP gesendet werden:
+Befehle können über diese MQTT-Themen im folgenden Payload-Format an EMS-ESP gesendet werden:
 
 ```json
 {"cmd":"<cmd>", "data":<data>, "id":<n>}
@@ -246,38 +247,41 @@ EMS-ESP "abonniert" über MQTT bestimmte Themen, die von den angeschlossenen EMS
 
 wobei
 
-- `cmd` ist einer der in [Commands](Commands) aufgeführten Befehle und **_muss_** als String in Anführungszeichen gesetzt werden. Der Schlüssel `entity` kann auch anstelle von `cmd` verwendet werden.
-- `data` (oder `value`) enthält den Wert für den Befehl und kann entweder ein String oder ein numerischer Wert sein.
-- `id` wird als allgemeiner Indikator verwendet. `hc`, `wwc`, `ahs` und `hs` sind weitere unterstützte Aliasnamen. Mit `hc` wird zum Beispiel ein bestimmter Heizkreislauf angegeben. Es kann sowohl ein numerischer Wert als auch ein String verwendet werden.
+- `cmd` ist einer der in [Commands](Commands) aufgeführten Befehle und **muss** als Zeichenkette in Anführungszeichen gesetzt werden. Anstelle von `cmd` kann auch der Schlüssel `entity` verwendet werden.
+- `data` (oder `value`) enthält den Wert für den Befehl und kann entweder eine Zeichenkette oder ein numerischer Wert sein.
+- `id` wird als generischer Bezeichner verwendet. `hc`, `wwc`, `ahs` und `hs` sind weitere unterstützte Aliase. Bei `hc` beispielsweise wird damit ein bestimmter Heizkreis bezeichnet. Es können sowohl numerische Werte als auch Zeichenfolgen verwendet werden.
 
-Einige weitere Beispiele:
+Noch ein paar Beispiele:
 
-| Thema | Nutzlast | Aktion |
+| Thema | Nutzdaten | Aktion |
 | --------------------------------- | ----------------------------------------- | ---------------------------------------------------------------- |
-| `ems-esp/boiler` | `{"cmd":"heatingactivated", "data":"on"}` | Heizung einschalten im Kessel aktiviert |
-| `ems-esp/boiler/heatingactivated` | `{"data":"on"}` | Einschalten der Warmwasserdesinfektion im Kessel (entspricht dem obigen Befehl) |
-| `ems-esp/boiler` | `{"cmd":"dhw.disinfecting", "data":"on"}` | Einschalten der Warmwasserdesinfektion im Kessel |
+| `ems-esp/boiler` | `{"cmd":"heatingactivated", "data":"on"}` | Heizung im Heizkessel einschalten |
+| `ems-esp/boiler/heatingactivated` | `{"data":"on"}` | Warmwasser-Desinfektion im Heizkessel aktivieren (entspricht dem obigen Befehl) |
+| `ems-esp/boiler` | `{"cmd":"dhw.disinfecting", "data":"on"}` | Warmwasser-Desinfektion im Heizkessel aktivieren |
 
-Ob der Befehl von EMS-ESP akzeptiert wurde, können Sie im Protokoll unter Status - System Log nachsehen.
+Unter „Status – Systemprotokoll“ können Sie im Protokoll nachsehen, ob der Befehl von EMS-ESP akzeptiert wurde.
 
-Der erste Befehl in der obigen Tabelle war gültig und wurde daher akzeptiert:\ Thema:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"on"}`
+Der erste Befehl in der obigen Tabelle war gültig und wurde daher akzeptiert:\
+Thema:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"on"}`
 
 ```
 [command] Called command boiler/heatingactivated (heating activated) with value on
 ```
 
-Und der folgende gefälschte Befehl wird nicht akzeptiert:\ Thema:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"5000"}`
+Und der folgende ungültige Befehl wird nicht akzeptiert:\
+Thema:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"5000"}`
 
 ```
 [command] Command failed: no values in boiler
 [mqtt] MQTT command failed with error no values in boiler (Error)
 ```
 
-:::note Sie können die MQTT-Befehle einfach mit [MQTT Explorer](https://www.mqtt-explorer.com) testen. Verbinden Sie sich einfach mit dem MQTT-Broker und veröffentlichen Sie die Nutzlast im Thema.
+:::note
+Mit [MQTT Explorer](https://www.mqtt-explorer.com) lassen sich die MQTT-Befehle ganz einfach testen. Stellen Sie einfach eine Verbindung zum MQTT-Broker her und veröffentlichen Sie die Nutzdaten unter dem entsprechenden Topic.
 :::
 
-Mit Home Assistant können Thermostatbefehle auch zur Steuerung einzelner Heizkreise gesendet werden, indem ein Modus-String oder eine Temperaturnummer an ein Thema `thermostat_hc<n>` gesendet wird.
+Mit Home Assistant können auch Thermostatbefehle gesendet werden, um einzelne Heizkreise zu steuern, indem eine Moduszeichenfolge oder ein Temperaturwert an ein Thema `thermostat_hc<n>` gesendet wird.
 
-Je nach mqtt-Einstellungen gibt es auch direkte Abonnements für jeden Wert wie `boiler/wwtemp`, `thermostat/hc1/daytemp`, usw. Thermostate, die nur einen einzigen Heizkreis unterstützen, abonnieren `/thermostat/daytemp`.
+Je nach MQTT-Einstellungen gibt es auch direkte Abonnements für jeden Wert wie `boiler/wwtemp`, `thermostat/hc1/daytemp` usw. Thermostate, die nur einen einzigen Heizkreis unterstützen, abonnieren `/thermostat/daytemp`.
 
-Sie können auch MQTT verwenden, um eine spezifische Leseanforderung zu senden, und die Telegrammantwort wird in einem Topic namens `response` zurückgegeben. Wenn Sie zum Beispiel die Nutzdaten `{"cmd":"send", "data":"0B 88 19 19 02"}` an `ems-esp/system` senden, wird ein Topic `response` mit den Daten `{"src":"08","dest":"0B","type":"19","offset":"19","data":"7D 00","value":32000}` veröffentlicht.
+Sie können MQTT auch verwenden, um eine bestimmte Leseanfrage zu senden; die Telegramm-Antwort wird dann in einem Topic namens `response` zurückgegeben. Wenn Sie beispielsweise die Nutzlast `{"cmd":"send", "data":"0B 88 19 19 02"}` an `ems-esp/system` senden, wird ein Topic `response` mit den Daten `{"src":"08","dest":"0B","type":"19","offset":"19","data":"7D 00","value":32000}` veröffentlicht.

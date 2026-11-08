@@ -6,27 +6,27 @@ description: Community-contributed tips, tricks, and code snippets for advanced 
 
 # Tips en trucs
 
-**Hieronder vindt u een verzameling nuttige tips, trucs en code die door de community zijn ingezonden:**
+**Hieronder vind je een verzameling handige tips, trucs en code die door de community zijn ingezonden:**
 
 ## De verwarming van de ketel regelen
 
 _(by Oderik)_
 
-In een heel eenvoudige opstelling levert een ketel warmte aan één verwarmingscircuit. Als `heating activated` `on` is, handhaaft de ketel de `selected flow temperature` door de brander en de warmtepomp te regelen.
+In een heel eenvoudige opstelling voorziet een ketel één verwarmingscircuit van warmte. Als `heating activated` gelijk is aan `on`, houdt de ketel de `selected flow temperature` op peil door de brander en de warmtepomp te regelen.
 
-Zodra de `current flow temperature` de `selected flow temperature` + `temperature hysteresis off` overschrijdt, stopt de verwarming totdat de `current flow temperature` onder de `selected flow temperature` + `temperature hysteresis on` komt (wat meestal een negatieve waarde is).
+Zodra de `current flow temperature` de `selected flow temperature` + `temperature hysteresis off` overschrijdt, wordt de verwarming uitgeschakeld totdat de `current flow temperature` onder de `selected flow temperature` + `temperature hysteresis on` daalt (wat doorgaans een negatieve waarde is).
 
-Om de verwarming te activeren moet je dus `heatingactivated` instellen op `on` en een geschikte `flowtemp` instellen. Deze laatste moet worden afgeleid van de `heating temperature setting` die kan worden ingesteld met de fysieke dial/control op de ketel. Deze moet worden beschouwd als de maximale aanvoertemperatuur. Je kunt ook een lagere aanvoertemperatuur gebruiken om de kamertemperatuur constant te houden als de eerste verwarming klaar is.
+Om de verwarming in te schakelen, moet u dus `heatingactivated` instellen op `on` en een geschikte waarde voor `flowtemp` instellen. Deze laatste moet worden afgeleid van de `heating temperature setting`, die kan worden ingesteld met behulp van de fysieke dial/control op de ketel. Deze waarde moet worden beschouwd als de maximale aanvoertemperatuur. U kunt ook een lagere aanvoertemperatuur gebruiken om een constante kamertemperatuur te handhaven zodra de initiële opwarming is voltooid.
 
 Aanvullende informatie van Michael:
 
-Je kunt de flowtemp met EMS-ESP direct op de ketel instellen zonder een thermostaat te gebruiken. Veel gebruikers doen dit. Enkele tips:
+Je kunt de aanvoertemperatuur met EMS-ESP rechtstreeks op de ketel instellen zonder een thermostaat te gebruiken. Veel gebruikers doen dit. Enkele tips:
 
-- de flowtemp-waarde op het bedieningspaneel moet hoger worden ingesteld omdat de temperatuur die via de EMS-bus wordt verzonden alleen wordt geaccepteerd als deze een lagere waarde heeft
-- je moet minstens elke minuut een waarde sturen om de flowtemp te handhaven, anders valt de ketel automatisch terug naar het hogere setpoint van het bedieningspaneel.
-- Er is een speciale EMS-ESP-entiteit genaamd `forceheatingoff` die de flowtemp-waarde elke minuut automatisch op 0 zet voor de ketel. Andere gebruikers gebruiken liever een on/off regelaar.
+- de flowtemp-waarde op het bedieningspaneel moet hoger worden ingesteld, aangezien de via de EMS-bus verzonden temperatuur alleen wordt geaccepteerd als deze een lagere waarde heeft
+- je moet minstens elke minuut een waarde doorgeven om de aanvoertemperatuur op peil te houden; anders schakelt de ketel automatisch terug naar het hogere instelpunt dat via het bedieningspaneel is ingesteld.
+- Er is een speciale EMS-ESP-entiteit met de naam `forceheatingoff` die de flowtemp-waarde elke minuut automatisch op 0 zet voor de boiler. Andere gebruikers geven er de voorkeur aan om in plaats daarvan een on/off-regelaar te gebruiken.
 
-De boiler heeft een speciale logica. Hij laadt niet bij op afroep zoals de meeste mensen verwachten. Hij controleert de huidige temperatuur en laadt alleen bij als deze buiten het instelbereik ligt (instelpunt-hysterese). Als dhw is ingesteld op automatisch opladen, zal het nooit werken, alleen in de dhw eco-modus en lage dhw opslagtemperatuur. Voor gewoon bijladen moet je de thermostaat-laadfunctie gebruiken. Die zet het dhw setpoint tijdelijk op een hogere waarde, zodat de ketel een herlading activeert, en dan terug naar het oude setpoint.
+De boiler ‘OneTime’ werkt volgens een speciale logica. Hij vult de boiler niet bij op verzoek, zoals de meeste mensen verwachten. Hij controleert de huidige temperatuur en vult de boiler alleen bij als deze buiten het instelpuntbereik valt (instelpunt-hysterese). Als de warmwatervoorziening is ingesteld op automatisch bijvullen, werkt dit nooit; het werkt alleen in de warmwater-eco-modus en bij een lage warmwateropslagtemperatuur. Om alleen bij te vullen, moet u de bijvulfunctie van de thermostaat gebruiken. Daarmee wordt het instelpunt voor warm water tijdelijk op een hogere waarde ingesteld, zodat de ketel een bijvulcyclus start, waarna het instelpunt weer wordt teruggezet naar de oude waarde.
 
 ## Gegevens ophalen via REST met PHP
 
@@ -35,18 +35,19 @@ _(by flohse123)_
 ```php
 <?php
 $ch = curl_init("http://<myIP>/api?device=thermostat&cmd=info");
+curl_setopt($ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer <your Read API key>"]);
 curl_exec($ch);
 curl_close($ch);
 ?>
 ```
 
-## De aanvoertemperatuur aanpassen op basis van het feit of CH of DHW wordt verwarmd
+## De aanvoertemperatuur aanpassen naargelang er verwarming of warm water wordt verwarmd
 
 _(by IanC)_
 
-Uit de Discord post die IanC zei:
+In het Discord-bericht zei IanC:
 
-met een Worcester Bosch ketel uit ~2012 wordt de verwarming van het huis geregeld door een EvoHome systeem dat weet welke delen van het huis hoeveel warmte nodig hebben, maar het kan alleen een on/off relais gebruiken om de ketel te regelen voor ruimte- en waterverwarming. Dit betekent dat het de aanvoertemperatuur niet rechtstreeks kan regelen en deze is in het verleden ingesteld op continu 65C via de draaiknop aan de voorkant van de ketel om waterverwarming mogelijk te maken wanneer dat nodig is. Ik ben erg blij dat ik EMS-ESP aan mijn systeem heb toegevoegd om de aanvoertemperatuur te regelen. Ik heb een eenvoudig C-programma geschreven dat op mijn OpenWrt internetrouter draait en dat EvoHome-berichten afluistert om nuttige informatie over de benodigde hoeveelheid warmte voor ruimte en water op te slaan in eenvoudige txt-bestanden in /tmp.. Vervolgens plan ik elke 4 minuten een shellscript dat een aantal stappen gebruikt om een aanvoertemperatuur te selecteren: begin met een voor het weer gecompenseerde waarde op basis van de buitentemperatuur van de online service; pas deze aan met maximaal 25% naar boven of beneden op basis van de vraag naar ruimteverwarming van EvoHome; indien nodig overschrijf ik deze waarde om warm water te verwarmen. De geselecteerde aanvoertemperatuur en een maximaal branderniveau worden vervolgens via krul naar een BBQKees-apparaat gestuurd waarop EMS-ESP draait, dat op zijn beurt de ketel regelt. Tot nu toe lijkt het te werken zoals bedoeld zonder verlies van comfort in huis, maar met veel lagere aanvoertemperaturen die worden waargenomen om te proberen de ketel te laten werken in de condensatiezone. Het is erg moeilijk om te zeggen of het invloed heeft op het gasverbruik - wat ik graag zou willen :-). De grootste uitdaging die ik nog steeds zie, is hoe ik kan voorkomen dat EvoHome frequente on/off cycli van de ketel veroorzaakt terwijl het nog steeds probeert om TPI debietregeling te gebruiken
+_"Met een Worcester Bosch-ketel uit circa 2012 wordt de verwarming van het huis geregeld door een EvoHome-systeem dat weet welke delen van het huis hoeveel warmte nodig hebben, maar het kan alleen een on/off-relais gebruiken om de ketel aan te sturen voor ruimteverwarming en warmwatervoorziening. Dit betekent dat het de aanvoertemperatuur niet rechtstreeks kan regelen, en in het verleden werd deze via een draaiknop aan de voorkant van de ketel continu ingesteld op 65 °C om waterverwarming mogelijk te maken wanneer dat nodig was. Ik ben erg blij dat ik EMS-ESP aan mijn systeem heb toegevoegd om de aanvoertemperaturen te helpen beheren. Ik heb een eenvoudig C-programma geschreven dat op mijn OpenWrt-internetrouter draait en dat EvoHome-berichten afluistert om nuttige informatie over de benodigde hoeveelheid warmte voor ruimteverwarming en warm water vast te leggen in eenvoudige txt-bestanden in /tmp.. Vervolgens plan ik elke 4 minuten een shellscript in dat in een paar stappen een aanvoertemperatuur selecteert : begin met een weersgecompenseerde waarde op basis van de buitentemperatuur van een online dienst; pas deze naar boven of beneden aan met maximaal 25% op basis van de EvoHome-vraag naar ruimteverwarming; overschrijf dit indien nodig om warm water te verwarmen. De geselecteerde aanvoertemperatuur en een maximaal branderniveau worden vervolgens via curl verzonden naar een BBQKees-apparaat waarop EMS-ESP draait, dat op zijn beurt de ketel aanstuurt. Tot nu toe lijkt het te werken zoals bedoeld, zonder dat dit ten koste gaat van het wooncomfort, maar met veel lagere aanvoertemperaturen om de ketel aan te moedigen in de condensatiezone te werken. Het is erg moeilijk te zeggen of dit invloed heeft op het gasverbruik – wat ik wel graag zou willen :-). De grootste uitdaging die ik nog zie, is hoe ik kan voorkomen dat EvoHome frequente on/off-cycli van de ketel veroorzaakt terwijl het nog steeds probeert gebruik te maken van TPI-aansturing van de aanvoertemperatuur."_
 
 ![1.5.0](/media/examples/ian_setflowtemp.png)
 
@@ -151,11 +152,11 @@ flowtemp=$(min $flowtemp $MAXFLOW)
 set_flowtemp $flowtemp
 ```
 
-## Home Assistant sensorsjabloon voor alle statusnummers van een GB192-ketel
+## Home Assistant-sensorsjabloon voor alle statusnummers op een GB192-ketel
 
-(door tefracky van [this comment](https://github.com/emsesp/EMS-ESP32/issues/938#issuecomment-1417592878)
+(door tefracky van [this comment](https://github.com/emsesp/EMS-ESP32/issues/938#issuecomment-1417592878))
 
-Hier is de sensor in het nieuwe Home-Assistant sjabloonformaat voor alle statusnummers voor de Buderus GB192i-19 in het Duits:
+Hier is de sensor in het nieuwe Home-Assistant-sjabloonformaat voor alle statusnummers van de Buderus GB192i-19 in het Duits:
 
 ```yaml title="Service code number text for Buderus GB192i-19"
 - name: 'Heizungsstatus'
@@ -305,11 +306,11 @@ Hier is de sensor in het nieuwe Home-Assistant sjabloonformaat voor alle statusn
     {{ message }}
 ```
 
-## Een aangepast klimaatcomponent gebruiken in Home Assistant
+## Een aangepaste Climate-component gebruiken in Home Assistant
 
 _(by elRadix)_ van [this comment](https://github.com/emsesp/EMS-ESP32/discussions/790#discussioncomment-4895520)
 
-Dit voorbeeld stelt 2 klimaatentiteiten in voor dhw met hun modus en verwarmingsklimaat met behulp van een aangepaste HACS-kaart in HA genaamd [simple thermostat](https://github.com/nervetattoo/simple-thermostat) zoals:
+In dit voorbeeld worden twee klimaatentiteiten voor warm water ingesteld, inclusief hun modus en verwarmingsklimaat, met behulp van een aangepaste HACS-kaart in HA met de naam [simple thermostat](https://github.com/nervetattoo/simple-thermostat), bijvoorbeeld:
 
 ![customha](/media/examples/ha_custom_climate.jpg)
 
@@ -422,23 +423,23 @@ view_layout:
   position: main
 ```
 
-## De on/off van de warmtepomp automatiseren in Home Assistant
+## Het on/off van de warmtepomp automatiseren in Home Assistant
 
-`waengr` op ons Discord-kanaal postte een [message](https://discord.com/channels/816637840644505620/816958041345884180/1287897271148609566) over het automatiseren van een eenvoudige schakelaar om de warmtepomp in en uit te schakelen. Hij verwijst naar GitHub kwesties [1600](https://github.com/emsesp/EMS-ESP32/discussions/1600) en [1717](https://github.com/emsesp/EMS-ESP32/issues/1717).
+`waengr` heeft op ons Discord-kanaal een [message](https://discord.com/channels/816637840644505620/816958041345884180/1287897271148609566) geplaatst over hoe je een eenvoudige schakelaar kunt automatiseren om de warmtepomp in en uit te schakelen. Hij verwijst naar GitHub-issues [1600](https://github.com/emsesp/EMS-ESP32/discussions/1600) en [1717](https://github.com/emsesp/EMS-ESP32/issues/1717).
 
-In zijn eigen woorden, dit is wat hij deed:
+Volgens zijn eigen woorden heeft hij het volgende gedaan:
 
-"Ik analyseerde de binaire invoerstring zoals voorgesteld, die door EMS-ESP werd geleverd in `text.boiler_hpin1opt` zoals weergegeven in de Home Assistant. Ik veranderde de toggles op de UI van de pomp en zag de string veranderen. Daarna veranderde ik handmatig de string in de Home Assistant en zag de UI van de pomp veranderen. Tweerichtingscommunicatie is dus mogelijk!
+"Ik heb de binaire invoerreeks geanalyseerd zoals voorgesteld; deze werd door EMS-ESP geleverd in `text.boiler_hpin1opt`, zoals weergegeven in Home Assistant. Ik heb de schakelaars op de gebruikersinterface van de pomp omgezet en gekeken hoe de string veranderde. Vervolgens heb ik de string handmatig gewijzigd in Home Assistant en gekeken hoe de gebruikersinterface van de pomp veranderde. Bidirectionele communicatie is dus mogelijk!
 
-Ik heb nog niet alle opties geprobeerd, maar hier zijn een paar opmerkingen:
+Ik heb nog niet alle opties uitgeprobeerd, maar hier zijn alvast een paar opmerkingen:
 
-- Ik dacht dat ik slim was door vooruit te denken, dus bij het selecteren van "Kompressorbetr. sperren" (compressorwerking blokkeren) heb ik ook "Zuheizerbetr. sperren" (hulpverwarming blokkeren) geselecteerd. Maar - ik maak geen grapje - ALLEEN de bijverwarming ging aan en verspilde een hoop stroom (in ieder geval voor een paar minuten).
-- "Heizbetrieb sperren" (blokverwarming) schakelt ook de circulatiepomp uit, wat ik niet wil omdat ik een buffervat van 500 liter heb.
-- "EVU-Sperrzeit 1" (bloktijd 1 van het energiebedrijf) werkt tot nu toe goed (waar zijn de andere EVU-Sperrzeit voor?)
+- Ik dacht dat ik slim was door vooruit te denken, dus toen ik "Kompressorbetr. sperren" (compressorblokkering) selecteerde, heb ik ook "Zuheizerbetr. sperren" (hulpverwarming blokkeren) geselecteerd. MAAR – ik meen het echt – ALLEEN de bijverwarming ging aan en verspilde veel stroom (in ieder geval een paar minuten lang).
+- Met „Heizbetrieb sperren“ (verwarmingsmodus uitschakelen) wordt ook de circulatiepomp uitgeschakeld, en dat is niet wat ik wil, aangezien ik een buffertank van 500 liter heb.
+- "EVU-Sperrzeit 1" (blokkeertijd 1 van het energiebedrijf) werkt tot nu toe prima (waar dienen de andere EVU-Sperrzeiten dan voor?)
 
-De volgende stap was het veranderen van de string met automatiseringen.
+Vervolgens was het aan de beurt om de reeks met automatiseringen aan te passen.
 
-Voorlopig ga ik uit van vaste tijden: Een verwarmingsperiode tijdens de nacht wanneer we laag tarief hebben en dan nog een rond de middag wanneer ik misschien wat overtollig PV-vermogen heb. Later kan ik het koppelen aan de werkelijke PV-productie. Ik verander alleen de eerste bit, die is om de altijd uitgeschakelde ingang "Eingang invertiert" (ingang omkeren) om te keren, zoals voorgesteld. De tweede bit is "EVU-Sperrzeit 1".
+Voorlopig houd ik het bij vaste tijden: een verwarmingsperiode ’s nachts, wanneer het dagtarief geldt, en vervolgens nog een rond het middaguur, wanneer ik mogelijk wat overtollige PV-stroom heb. Later kan ik nog wat experimenteren om het systeem af te stemmen op de daadwerkelijke PV-productie. Ik pas alleen het eerste deel aan, namelijk het omkeren van de altijd uitgeschakelde ingang „Eingang invertiert“ (ingangsomkering), zoals voorgesteld. Het tweede deel is „EVU-Sperrzeit 1“.
 
 ```yaml
 automation heating:
@@ -472,41 +473,47 @@ automation heating:
           value: '110000000000000'
 ```
 
-Hier is mijn work-in-progress dashboard in Home Assistant:
+Dit is mijn dashboard in Home Assistant, dat nog in ontwikkeling is:
 
 ![Dashboard](/media/screenshot/PV_HA_dash.png)
 
-- links: `text.boiler_hpin1opt` en de bovenstaande automatiseringen om het te veranderen in "aan" en "uit".
-- rechtsboven: een handgetekend schema waarin ik een aantal van de meer dan 200 waarden uit EMS-ESP in kaart probeer te brengen.
-- rechtsonder: de 200+ waarden.
+- links: `text.boiler_hpin1opt` en de hierboven genoemde automatiseringen om dit in te stellen op "aan" en "uit".
+- rechtsboven: een handgetekend schema waarin ik probeer een aantal van de meer dan 200 waarden uit EMS-ESP in kaart te brengen.
+- rechtsonder: de waarden boven de 200.
 
-Het volgende dat hij onderzoekt is hoe hij een duidelijke vermogensmeting (in W) kan krijgen van hoeveel stroom de warmtepomp op dit moment gebruikt.
+Vervolgens gaat hij onderzoeken hoe hij een duidelijke vermogensmeting (in W) kan krijgen van het vermogen dat de warmtepomp op dit moment verbruikt.
 
-## Eenvoudige trigger voor extra warm water in Home Assistant
+## Eenvoudige trigger voor extra warmwaterkosten in Home Assistant
 
 _(by oliof)_
 
-Hier is een eenvoudige automatisering die extra warm water inschakelt door te dubbelklikken op een knop op basis van Zigbee. Deze trigger kan desgewenst eenvoudig worden vervangen door een spraakcommando of een gescande QR-code.
+Hier volgt een eenvoudige automatisering waarmee je extra warm water kunt in- of uitschakelen door te dubbelklikken op een Zigbee-knop. Deze trigger kan desgewenst eenvoudig worden vervangen door een spraakopdracht of een gescande QR-code.
 
 ![image](https://github.com/user-attachments/assets/da3795fd-5bba-411c-a533-49fe5efc70c3)
 
-## Laaglastoptimalisatie van een Buderus GB172 gasketel
+## Optimalisatie bij lage belasting van een Buderus GB172-gasketel
 
 _(by oliof with additional input by tz)_
 
-Als je begint met het afstellen van je ketel, zul je waarschijnlijk situaties krijgen waarbij de ketel zelfs bij de laagste modulatiestand te veel warmte produceert. In die gevallen kan het de moeite waard zijn om een extra regeling te overwegen die de ketel enige tijd uitschakelt als de gewenste temperatuur is bereikt. Hier is een mogelijke implementatie die in principe een tweepuntsregeling is. Thermische traagheid zal de schakelingen redelijk ver uit elkaar houden zonder extra vertraging of tijdslimieten op de meeste verwarmingssystemen, maar het is eenvoudig om deze toe te voegen als u het aantal inschakelingen wilt verminderen.
+Wanneer u begint met het afstellen van uw ketel, zult u hoogstwaarschijnlijk te maken krijgen met situaties waarin de ketel te veel warmte produceert,
+zelfs op de laagste modulatiesnelheid. In die gevallen kan het de moeite waard zijn om een extra regelingsschema te overwegen dat
+de ketel voor enige tijd uitschakelt wanneer de streeftemperatuur is bereikt. Hier volgt een mogelijke implementatie die
+in feite een tweepuntsregelaar is. Door de thermische traagheid zullen de schakelingen bij de meeste verwarmingssystemen redelijk ver uit elkaar liggen zonder extra vertraging
+of tijdslimieten, maar deze kun je eenvoudig toevoegen als je het aantal inschakelmomenten wilt verminderen.
 
-Deze optimalisatie bij lage belasting kan het gasverbruik met 15-20% verminderen met weinig verandering in het temperatuurcomfort.
+Deze optimalisatie bij lage belasting kan het gasverbruik met 15-20% verminderen, zonder dat dit noemenswaardige gevolgen heeft voor het temperatuurcomfort.
 
 ### Vereisten
 
-- Een thermometer die met hoge resolutie en hoge frequentie werkt.
+- Een thermometer met hoge resolutie en frequente bijwerking.
 - Deze thermometer instellen als een [Remote Thermostat](https://emsesp.org/Special-Functions/#remote-thermostats).
-- Een ketel waarbij het instellen van `Heating Activated` op `off` het verwarmen feitelijk uitschakelt. Dit lijkt te gelden voor gasketels, maar zal waarschijnlijk niet werken voor warmtepompen. Maak in dat geval gebruik van de entiteit `forceheatingoff`.
+- Een verwarmingsketel waarbij het instellen van `Heating Activated` op `off` de verwarming daadwerkelijk uitschakelt. Dit lijkt te gelden voor gasketels, maar zal hoogstwaarschijnlijk
+  niet werken bij warmtepompen. Gebruik in dat geval de entiteit `forceheatingoff`.
 
 ### Afgeleide sensoren en automatiseringen
 
-Een van de nadelen van een thermometer met hoge resolutie is dat er wat ruis op de temperatuurmetingen zit. Je kunt een filter gebruiken om een vloeiende curve te krijgen (met enige vertraging). Bijvoorbeeld (uittreksel uit `configuration.yaml` van HomeAssistant):
+Een van de nadelen van een thermometer met hoge resolutie is dat er enige ruis in de temperatuurmetingen zit. Je kunt een filter gebruiken
+om een vloeiende curve te krijgen (met enige vertraging). Bijvoorbeeld (fragment uit de `configuration.yaml` van HomeAssistant):
 
 ```yaml
 sensor:
@@ -525,13 +532,13 @@ sensor:
        precision: 2
 ```
 
-In de volgende afbeelding zie je de ruisende ruwe temperaturen en de gefilterde temperaturen. Pas de `lowpass` `time_constant` van het `lowpass` filter en de `simple_moving_average` `window_size` van het `window_size` filter aan om de curve desgewenst dichter te laten aansluiten.
+In de onderstaande afbeelding zie je de ruwe temperaturen met ruis en de gefilterde temperatuur. Pas indien gewenst de `lowpass`-filter `time_constant` en de `simple_moving_average`-filter `window_size` aan om de curve zo goed mogelijk te laten aansluiten.
 
 ![image](https://github.com/user-attachments/assets/cfe1cf9c-d825-4693-80ce-28e8684b9ecf)
 
-Met de gefilterde sensor is het nu mogelijk om de automatiseringen zo in te stellen dat de verwarming wordt uit- en ingeschakeld als de referentietemperatuur van de kamer een drempel passeert. Het `temperature` attribuut van de thermostaat wordt gebruikt als drempelwaarde, zodat je de doeltemperatuur nog steeds op de gebruikelijke manier kunt aanpassen.
+Met de gefilterde sensor is het nu mogelijk om automatiseringen in te stellen waarmee de verwarming wordt in- en uitgeschakeld zodra de referentiekamertemperatuur een drempelwaarde overschrijdt. Het `temperature`-attribuut van de thermostaat wordt als drempelwaarde gebruikt, zodat je de streeftemperatuur nog steeds op de gebruikelijke manier kunt aanpassen.
 
-Vanaf HA 2025.01 is het met de numerieke trigger van de Home Assistant alleen mogelijk om waarden met enkele precisie te triggeren. Omdat we onze tweepuntsregeling dichter bij het instelpunt willen houden, gebruiken we een aangepaste sjabloontrigger:
+Vanaf HA 2025.01 kunnen bij de numerieke trigger van Home Assistant alleen waarden met enkele precisie als trigger worden gebruikt. Omdat we onze tweepuntsregeling dichter bij het instelpunt willen houden, gebruiken we een aangepaste sjabloontrigger:
 
 ```yaml
 alias: Deactivate Heating
@@ -563,9 +570,14 @@ actions:
 mode: single
 ```
 
-Houd er rekening mee dat we de verwarming een klein beetje onder de ingestelde temperatuur uitschakelen, zodat we er niet te veel boven afwijken. De `-0.02`-waarde moet waarschijnlijk worden afgestemd op je verwarmingssysteem en voorkeuren. Met de gefilterde sensor hebben we het `for:`-blok misschien niet strikt nodig, maar het is nog een kleine veiligheid om er iets in te hebben. Er is een extra vertraging van 5 minuten voor de activering om bouncing te voorkomen. Pas aan indien nodig voor je systeem (mogelijk niet nodig met de gefilterde referentietemperatuur).
+Houd er rekening mee dat we de verwarming iets onder de ingestelde temperatuur uitschakelen, zodat we daar niet te ver boven uitkomen.
+De `-0.02`-waarde moet waarschijnlijk worden aangepast aan uw verwarmingssysteem en voorkeuren. Met de gefilterde sensor hebben we het
+`for:`-blok misschien niet strikt nodig, maar het is een extra veiligheidsmaatregel om daar iets in te hebben. Er is een extra vertraging van 5
+minuten voordat het systeem in werking treedt, om schommelingen te voorkomen. Pas dit indien nodig aan voor uw systeem (dit is mogelijk niet nodig bij de
+gefilterde referentietemperatuur).
 
-De automatisering om de verwarming weer te activeren volgt hetzelfde patroon (met een andere fudgefactor van `-0.05` die je naar behoefte moet aanpassen):
+De automatisering om de verwarming weer in te schakelen volgt hetzelfde patroon (met een andere aanpassingsfactor van `-0.05`, die je
+naar eigen behoefte moet aanpassen):
 
 ```yaml
 alias: Activate Heating
@@ -596,29 +608,33 @@ actions:
 mode: single
 ```
 
-Dit is een voorbeeldgrafiek met de entiteit `Heating activated` en de temperatuur van de referentieruimte met een doeltemperatuur van 20,5°C, gewijzigd in 20°C tegen het einde van de weergegeven tijdsperiode. Zoals u kunt zien, ondanks het primitieve regelalgoritme, is de temperatuurafwijking ruwweg +-0,1K met lange perioden waarin het verwarmingssysteem uit is (op andere momenten daalde de afwijking tot ruwweg -0,25K, maar herstelde zich nog steeds vrij snel. YMMV).
+Dit is een voorbeeldgrafiek waarin de `Heating activated`-entiteit en de temperatuur in de referentieruimte worden weergegeven, met een streeftemperatuur van
+20,5 °C, die tegen het einde van de weergegeven periode is aangepast naar 20 °C. Zoals u kunt zien, bedraagt de temperatuurafwijking, ondanks het primitieve regelalgoritme,
+ongeveer ±0,1 K, waarbij het verwarmingssysteem gedurende lange perioden uitgeschakeld was (op andere momenten daalde de afwijking tot ongeveer -0,25 K, maar herstelde zich nog steeds vrij snel. YMMV).
 
 ![image](https://github.com/user-attachments/assets/76cdbdcd-2010-493b-85f8-4253220888d9)
 
-De knop die wordt gebruikt in de automatisering is een eenvoudige Aqara zigbee-knop.
+De knop die in de automatisering wordt gebruikt, is een eenvoudige Aqara Zigbee-knop.
 
 :::info
-Ik gebruik een [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) met de [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), omdat deze twee cijfers precisie biedt en ruwweg één tot twee keer per minuut wordt bijgewerkt.)  
- Houd er rekening mee dat thermometers met een lage resolutie en een lage updatefrequentie invloed hebben op je vermogen om snel te reageren op temperatuurveranderingen.  
- Als je wilt, kun je met tasmota en een DS18B20 of BME820 sensor een hoge resolutie thermometer bouwen die regelmatig wordt bijgewerkt.
+Ik gebruik een [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) in combinatie met de [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), omdat deze een nauwkeurigheid van twee cijfers biedt en ongeveer één tot twee keer per minuut wordt bijgewerkt.  
+ Houd er rekening mee dat thermometers met een lage resolutie en een lage bijwerkfrequentie uw vermogen om snel op temperatuurveranderingen te reageren, zullen beïnvloeden.  
+ Als u dat wilt, kunt u met Tasmota en een DS18B20- of BME820-sensor een thermometer met hoge resolutie bouwen die regelmatig wordt bijgewerkt.
 :::
 
 ## Optimaliseren voor warmtepompen
 
-Matthias heeft zijn Bosch/Buderus warmtepomp op [his blog](https://bosch-buderus-wp.github.io/xps/matthias) gedocumenteerd en laat zelfs zien hoe je AI kunt gebruiken om een MCP/LLM in te stellen om de warmtepomp te regelen. Zie [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) voor meer details.
+Matthias heeft zijn installatie van de Bosch/Buderus-warmtepomp op [his blog](https://bosch-buderus-wp.github.io/xps/matthias) gedocumenteerd en laat zelfs zien hoe je met behulp van AI een MCP/LLM kunt instellen om de warmtepomp aan te sturen.
+Zie [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai) voor meer informatie.
 
-Er is ook een [metrics-page](https://bosch-buderus-wp.github.io/metrics/) waar warmtepompwaarden worden opgeslagen en gevisualiseerd. Als je [contribute, read this further information](https://bosch-buderus-wp.github.io/metrics/howto).
+Er is ook een [metrics-page](https://bosch-buderus-wp.github.io/metrics/) waar de waarden van de warmtepomp worden opgeslagen en weergegeven.
+Als je wilt, kun je [contribute, read this further information](https://bosch-buderus-wp.github.io/metrics/howto).
 
-`txpause` gebruiken om het busverkeer tijdelijk uit te schakelen
+## `txpause` gebruiken om het busverkeer tijdelijk uit te schakelen
 
-_(by DiZil1)_ van https://github.com/emsesp/EMS-ESP32/discussions/1953#discussiegesprek-15387910
+_(by DiZil1)_ van https://github.com/emsesp/EMS-ESP32/discussions/1953#discussioncomment-15387910
 
-"Om je wat context te geven waarom dit zo belangrijk voor me is en niet alleen leuk om te hebben. Ik moet dit nauwlettend in de gaten houden omdat, in mijn opstelling, A31 fouten de neiging hebben om na verloop van tijd te escaleren tot kritieke blokkeringsfouten, waardoor uiteindelijk het verwarmingssysteem wordt uitgeschakeld."
+"Om je wat achtergrondinformatie te geven over waarom dit voor mij zo belangrijk is en niet zomaar een leuke extra: ik moet dit nauwlettend in de gaten houden, omdat A31-fouten in mijn opstelling na verloop van tijd vaak escaleren tot kritieke, blokkerende fouten, waardoor het verwarmingssysteem uiteindelijk wordt uitgeschakeld."
 
 ```yaml
 # =========================

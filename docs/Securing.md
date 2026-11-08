@@ -40,7 +40,6 @@ Then only allow what is needed:
 In the Settings pages:
 
 - **Telnet** is off by default from 3.10.0. Leave it off unless you need it, because telnet isn't encrypted.
-- **Allow API calls without an access token** gives anyone on your network guest rights. Use API keys instead.
 - **CORS** is only needed when a web page on another address calls the API. If you enable it, set the exact address of that page, not `*`.
 - **Modbus** and **Syslog**, if you don't use them.
 - **Read-only mode** stops EMS-ESP from sending any changes to your heating system. Use it if you only want to read values.
@@ -69,6 +68,7 @@ Writes from the Web UI, the API, MQTT, Modbus, the Scheduler and Commands all co
     When the broker gets a new certificate, update the fingerprint.
   - **Nothing, not checked**: the connection is encrypted, but EMS-ESP doesn't check that it's talking to your broker. The MQTT settings page and the log warn about this.
 - Anything that can publish to EMS-ESP's MQTT topics can change your heating settings. Use the broker's access control lists to limit who can publish to them.
+- **Commands received over MQTT** sets what those publishes may do: "Off, only read values", "Change values and run Commands" (the default, enough for Home Assistant) or "Everything, also system commands" such as restarts and raw telegrams. Choosing "Everything" asks for your password. A factory reset or erasing the crash dump is never accepted over MQTT, and commands published with the retain flag are ignored, so a stray retained command can't run again on every reconnect.
 
 ## Firmware
 

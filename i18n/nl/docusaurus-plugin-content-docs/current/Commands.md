@@ -4,151 +4,152 @@ title: Commands and API Reference
 description: Complete command reference for controlling EMS-ESP via Console, MQTT, and REST API
 ---
 
-# Opdrachten
+# Commando's
 
-EMS-ESP heeft een commando-API die gebruikt kan worden om waarden te lezen en te schrijven naar het EMS-apparaat en om specifieke commando's op te roepen.
+EMS-ESP beschikt over een commando-API waarmee waarden van het EMS-apparaat kunnen worden gelezen en er waarden naar kunnen worden geschreven, en waarmee specifieke commando’s kunnen worden uitgevoerd.
 
-Er zijn 3 methoden waarop commando's kunnen worden aangeroepen:
+Er zijn 3 manieren waarop commando’s kunnen worden uitgevoerd:
 
-- via de [**Console**](#console) met Telnet of Serieel
+- via de [**Console**](#console) via Telnet of een seriële verbinding
 - via [**HTTP**](#http) met behulp van RESTful API-aanroepen
-- via [**MQTT**](#mqtt) via onderwerpen en hun payloads
+- via [**MQTT**](#mqtt) via onderwerpen en hun inhoud
 
 ## Definities
 
 :::info[Belangrijke definities]
 
-- `<device>` is de korte naam. Deze kan zijn:
-  - een EMS-apparaat en ondersteunde apparaten zijn onder andere: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
-    - het EMS-ESP-systeem zelf geïdentificeerd als `system`
-    - de Dallas-temperatuursensoren als `temperaturesensor`
-    - aangepaste analoge sensoren als `analogsensor`
-    - alle aangepaste EMS-telegram entiteiten als `custom`
-  - `<command>` is de naam van een van beide
-    - een algemene opdracht, of
-    - een EMS-apparaatentiteit die ook wel `<entity>` wordt genoemd. Zie de pagina [Supported Devices](All-Entities) voor de volledige lijst
-  - `<id>` is een optionele identifier en heeft verschillende betekenissen, afhankelijk van de context
-  - `<data>` wordt gebruikt om de te lezen of te schrijven waarde weer te geven. Het kan een enkele waarde zijn van elk type (geheel getal, zweven, tekenreeks of booleaans) of een JSON-object {} tekenreeks die meerdere key/values-paren bevat zoals:
+- `<device>` is de korte naam. Dit kan het volgende zijn:
+  - een EMS-apparaat en ondersteunde apparaten zijn onder meer: `boiler` `thermostat` `mixer` `heatpump` `solar` `gateway` `switch` `controller` `pump` `generic` `heatsource` `ventilation`
+    - het EMS-ESP-systeem zelf, geïdentificeerd als `system`
+    - de temperatuursensoren van Dallas als `temperaturesensor`
+    - eventuele aangepaste analoge sensoren als `analogsensor`
+    - alle aangepaste entiteiten van EMS-telegrammen als `custom`
+  - `<command>` is de naam van ofwel
+    - een algemeen commando, of
+    - een EMS-apparaatentiteit, ook wel aangeduid als `<entity>`. Zie de [Supported Devices](All-Entities)-pagina voor de volledige lijst
+  - `<id>` is een optionele identificatie en heeft verschillende betekenissen, afhankelijk van de context
+  - `<data>` wordt gebruikt om de waarde weer te geven die moet worden gelezen of geschreven. Dit kan een afzonderlijke waarde van elk type zijn (geheel getal, drijvende-kommagetal, tekenreeks of booleaanse waarde) of een JSON-object {} in de vorm van een tekenreeks die meerdere key/values-paren bevat, zoals:
     - **"cmd"** is de `<command>`. De sleutel **"cmd"** kan ook worden vervangen door **"entity"**.
-    - **"value"** is de waarde en kan een tekststring tussen aanhalingstekens, een geheel getal, een float of een booleaans zijn. **"data"** is een alias die ook kan worden gebruikt in plaats van de sleutel.
-    - **"hc"**, **"wwc"** en **"id"** worden allemaal gebruikt om een waarde weer te geven of in de context van een EMS-apparaat een verwarmings- of warmwatercircuit.
+    - **"value"** is de waarde en kan bestaan uit een tekstreeks tussen aanhalingstekens, een geheel getal, een drijvende-kommagetal of een booleaanse waarde. **"data"** is een alias die ook in plaats van de sleutel kan worden gebruikt.
+    - **"hc"**, **"wwc"** en **"id"** worden allemaal gebruikt om een waarde aan te duiden of, in de context van een EMS-apparaat, een verwarmings- of warmwatercircuit.
 
-  - Een booleaanse waarde kan in vele vormen worden weergegeven:
-    - als een Ware waarde, "TRUE", "ja", waar, "waar", "aan", 1
-    - als een False waarde, "FALSE", "no", false, "false", "off", 0
+  - Een booleaanse waarde kan op verschillende manieren worden weergegeven:
+    - als een True-waarde: "TRUE", "yes", true, "true", "on", 1
+    - als een 'False'-waarde: "FALSE", "no", false, "false", "off", 0
 
-  - Het bearer Access Token (JWT) wordt gebruikt om HTTP-verzoeken te verifiëren en kan worden verkregen via de `Settings->Security->Manage Users`-pagina van de WebUI en vervolgens te klikken op het sleutelpictogram voor de gebruiker die beheerdersrechten heeft (`is Admin` ingesteld). Het token wordt gegenereerd met een combinatie van de gebruikersnaam en een geheime sleutel die het supergebruikerswachtwoord (su) is dat te vinden is op de `Settings->Security->Security Settings`-pagina van de WebUI. Deze string moet worden opgenomen in de HTTP-header als `"Authorization: Bearer {ACCESS_TOKEN}"`. Het token heeft geen vervaldatum.
+  - De API-sleutel dient voor de authenticatie van HTTP-verzoeken. Maak er een aan op de `Settings->Security->API Keys`-pagina van de WebUI: met een "Read"-sleutel kun je waarden lezen en commando’s uitvoeren die gasten ook mogen uitvoeren; met een "Read and Write"-sleutel kun je bovendien waarden en instellingen wijzigen. Verzend deze in de HTTP-header als `"Authorization: Bearer {API_KEY}"`. Vanaf 3.10.0 is deze vereist voor elke aanroep naar `/api`, inclusief leesverzoeken.
 
 :::
 
 ## Console
 
-- Opdrachten kunnen worden uitgevoerd met de opdracht `call`
-- Je moet admin zijn om de opdracht `call` te gebruiken. Voer eerst `su` in en voer het wachtwoord in
-- Voor een lijst met alle beschikbare commando's kun je `show commands` gebruiken
+- Commando's kunnen worden uitgevoerd met behulp van het `call`-commando
+- Je moet beheerder zijn om het commando `call` te kunnen gebruiken. Voer eerst `su` in en voer vervolgens het wachtwoord in
+- Voor een overzicht van alle beschikbare opdrachten kun je `show commands` gebruiken
 - De syntaxis is `call <device> <command> [data] [id]`
 - Gebruik `call <device> commands` voor een volledige lijst met opdrachten
 
-Zie de sectie [**Console**](Console) voor meer informatie over het gebruik van de Telnet Console.
+Raadpleeg het gedeelte [**Console**](Console) voor meer informatie over het gebruik van de Telnet-console.
 
 ## HTTP
 
-Dingen om op te merken:
+Belangrijke punten:
 
-- De REST API volgt de [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
+- De REST-API volgt de [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
 - Het URL-pad begint altijd met `http://<hostname>/api/`
-- `<hostname>` is een IP-adres of de mDNS-naam, die standaard `ems-esp.local` is
-- Sommige commando's vereisen beveiligingsauthenticatie, tenzij deze is uitgeschakeld via een EMS-ESP-instelling. De authenticatie is in de vorm van een Access Token die wordt gegenereerd via de WebUI's Security->Manage Users en dan te klikken op de key knop voor de admin gebruiker. De string moet worden opgenomen in de HTTP-header zoals `"Authorization: Bearer {ACCESS_TOKEN}"`. De tokens hebben geen vervaldatum
-- Bij HTTP POST commando's kan een HTTP body nodig zijn. Dit kan in de vorm van platte tekst of als een JSON object `<data>`, de Content-Type-header moet in beide gevallen worden ingesteld op `application/json`.
-- HTTPS met zelfondertekende certificaten worden nog niet ondersteund
+- `<hostname>` is ofwel een IP-adres ofwel de mDNS-naam; de standaardwaarde is `ems-esp.local`
+- Voor elke aanroep is een API-sleutel nodig, die je kunt aanmaken in de WebUI onder Beveiliging -> API-sleutels, en die in de HTTP-header moet worden opgenomen, bijvoorbeeld als `"Authorization: Bearer {API_KEY}"`. Aanroepen zonder deze sleutel krijgen een HTTP 401-foutmelding. Voor het wijzigen van waarden of instellingen is een sleutel met "Lees- en schrijfrechten" vereist.
+- Om een waarde in een browser te bekijken, open je het adres ervan, bijvoorbeeld `http://ems-esp.local/api/boiler/curflowtemp`, en log je in met je EMS-ESP-gebruikersnaam en wachtwoord wanneer de browser daarom vraagt. Hiermee kun je alleen waarden inzien, ook voor beheerders. Tools die alleen een gebruikersnaam en wachtwoord ondersteunen, kunnen een API-sleutel als wachtwoord gebruiken, in combinatie met een willekeurige gebruikersnaam, bijvoorbeeld `http://user:emsesp_...@ems-esp.local/api/boiler`. De sleutel behoudt daar zijn rechten, behalve in een browser, waar deze alleen leest
+- Bij HTTP POST-commando's kan een HTTP-body vereist zijn. Deze kan de vorm aannemen van platte tekst of een JSON-object `<data>`; in beide gevallen moet de Content-Type-header worden ingesteld op `application/json`.
+- HTTPS met zelfondertekende certificaten wordt nog niet ondersteund
 - Gebruik `http://<hostname>/api/<device>/commands` voor een volledige lijst met opdrachten
-- het gebruik van GET-opdrachten in ems-esp v2-api-stijl wordt nog steeds ondersteund (`http://<hostname>/api?device=<device>&id=<id>&cmd=<cmd>`)
+- het gebruik van GET-commando's in de stijl van de ems-esp v2-api wordt nog steeds ondersteund (`http://<hostname>/api?device=<device>&id=<id>&cmd=<cmd>`)
 
-### EMS-apparaatinformatie lezen en schrijven
+### Informatie over EMS-apparaten lezen en schrijven
 
 Het URL-pad is `http://<hostname>/api/<device>/`
 
 | `endpoint` | `HTTP method` | `action` | `authentication required?` | `post body` |
 | --------------- | ------------- | ------------------------------------------------------------------ | -------------------------- | ----------- |
-| `info` | `GET` | voert de huidige informatie over het EMS-apparaat uit in verbose | no | |
-| `values` | `GET` | voert de huidige informatie over het EMS-apparaat in een kort formaat uit | no | |
-| _(empty)_ | `GET` | hetzelfde als `values` hierboven | nee |
-| `commands` | `GET` | somt de beschikbare commando-entiteiten op om op te roepen | no | |
-| `entities` | `GET` | somt alle ingeschakelde entiteiten op | nee | |
-| `{entity}` | `GET` | geeft details van een specifieke entiteit weer, om te lezen | nee | |
-| `{entity}/{hc}` | `GET` | hetzelfde als de bovenstaande leesopdracht, maar dan voor een specifiek verwarmingscircuit | no | |
-| `{entity}` | `POST` | werkt een entiteitswaarde bij, om te schrijven | ja | `<data>` |
-| `{entity}/{hc}` | `POST` | Hetzelfde als de schrijfopdracht hierboven, maar dan voor een specifiek verwarmingscircuit | ja | `<data>` |
+| `info` | `GET` | geeft gedetailleerde informatie over het huidige EMS-apparaat weer | nee | |
+| `values` | `GET` | geeft de huidige EMS-apparaatgegevens weer in beknopte vorm | nee | |
+| _(empty)_ | `GET` | hetzelfde als `values` hierboven | nee | |
+| `commands` | `GET` | geeft een overzicht van de beschikbare opdrachtentiteiten die kunnen worden aangeroepen | nee | |
+| `entities` | `GET` | geeft een overzicht van alle ingeschakelde entiteiten | nee | |
+| `{entity}` | `GET` | geeft details weer van een specifieke entiteit, ter informatie | nee | |
+| `{entity}/{hc}` | `GET` | hetzelfde als het bovenstaande ‘read’-commando, maar dan voor een specifiek verwarmingscircuit  | nee | |
+| `{entity}` | `POST` | werkt de waarde van een entiteit bij, voor het schrijven | ja | `<data>`    |
+| `{entity}/{hc}` | `POST` | hetzelfde als het bovenstaande ‘write’-commando, maar dan voor een specifiek verwarmingscircuit | ja | `<data>`    |
 
 Voorbeelden:
 
 | URL | berichttekst | actie |
 | ------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------- |
-| `http://ems-esp.local/api/thermostat/seltemp` | `22` | stelt de geselecteerde ruimtetemperatuur van de hoofdthermostaat in op verwarmingscircuit 1 |
-| `http://ems-esp.local/api/thermostat/hc2/seltemp` | `{"data":22}` | stelt de geselecteerde ruimtetemperatuur in van de hoofdthermostaat op verwarmingscircuit 2 |
-| `http://ems-esp.local/api/thermostat/mode` | `'auto'` | stelt de thermostaatmodus in op auto voor verwarmingscircuit 1 |
-| `http://ems-esp.local/api/thermostat` | `{"cmd":"mode", "data":"auto"}` | stelt de thermostaatmodus in op auto voor verwarmingscircuit 1 |
+| `http://ems-esp.local/api/thermostat/seltemp`     | `22` | stelt de geselecteerde kamertemperatuur van de hoofdthermostaat op verwarmingscircuit 1 in |
+| `http://ems-esp.local/api/thermostat/hc2/seltemp` | `{"data":22}` | stelt de geselecteerde kamertemperatuur van de hoofdthermostaat op verwarmingscircuit 2 in |
+| `http://ems-esp.local/api/thermostat/mode` | `'auto'` | stelt de thermostaatmodus voor verwarmingscircuit 1 in op 'auto' |
+| `http://ems-esp.local/api/thermostat` | `{"cmd":"mode", "data":"auto"}` | stelt de thermostaatmodus voor verwarmingscircuit 1 in op 'auto' |
 | `http://ems-esp.local/api/thermostat` | `{"cmd":"seltemp", "data":23, "hc":3}` | stelt de geselecteerde kamertemperatuur in op 23 graden voor verwarmingscircuit 3 |
 | `http://ems-esp.local/api/thermostat/hc2` | `{"cmd":"seltemp", "data":20.5}` | stelt de geselecteerde kamertemperatuur in op 20,5 graden voor verwarmingscircuit 2 |
-| `http://ems-esp.local/api` | `{"device":"thermostat", "cmd":"seltemp", "data":23, "hc":3}` | stelt de geselecteerde ruimtetemperatuur in van de hoofdthermostaat op verwarmingscircuit 3 |
+| `http://ems-esp.local/api` | `{"device":"thermostat", "cmd":"seltemp", "data":23, "hc":3}` | stelt de geselecteerde kamertemperatuur van de hoofdthermostaat op verwarmingscircuit 3 in |
 
-### Aangepaste entiteiten ophalen en schrijven
+### Gegevens ophalen uit en opslaan in aangepaste entiteiten
 
 Het URL-pad is `http://<hostname>/api/custom/`
 
-| Eindpunt | HTTP-methode | Actie | Verificatie vereist? | post body |
+| eindpunt | HTTP-methode | actie | authenticatie vereist? | post-body |
 | -------------------- | ----------- | -------------------------------------------------------- | ------------------------ | --------- |
-| blanco of `info` | `GET` | voert alle aangepaste entiteiten en hun waarden uit | nee | |
-| `commands` | `GET` | geeft een overzicht van de beschikbare aangepaste entiteitopdrachten | no | |
-| `<name>` | `GET` | voert alle kenmerken voor een specifieke aangepaste entiteit uit | nee | |
-| `<name>/<attribute>` | `GET` | uitvoer voor een kenmerk van een specifieke aangepaste entiteit | nee | |
-| `<name>` | `POST` | werkt een aangepaste entiteitswaarde bij, om te schrijven | ja | `<data>` |
+| leeg of `info` | `GET` | geeft alle aangepaste entiteiten en hun waarden weer | nee | |
+| `commands` | `GET` | geeft een overzicht van de beschikbare commando's voor aangepaste entiteiten | nee | |
+| `<name>` | `GET` | geeft alle kenmerken van een specifieke aangepaste entiteit weer | nee | |
+| `<name>/<attribute>` | `GET` | geeft een attribuut van een specifieke aangepaste entiteit weer | nee | |
+| `<name>` | `POST` | werkt de waarde van een aangepaste entiteit bij, voor het schrijven | ja | `<data>`  |
 
-### Informatie over temperatuursensor ophalen
+### Informatie over de temperatuursensor ophalen
 
 Het URL-pad is `http://<hostname>/api/temperaturesensor/`
 
-| Eindpunt: HTTP-methode: actie: Verificatie vereist? | post body |
+| eindpunt | HTTP-methode | actie | authenticatie vereist? | post-body |
 | -------------- | ----------- | --------------------------------------------------------------- | ------------------------ | --------- |
-| leeg | `GET` | uitgangen aangesloten namen en waarden van Dallas temperatuursensor | geen | |
-| `info` | `GET` | voert alle details uit over de aangesloten Dallas temperatuursensoren | nee | |
-| `<name>` | `GET` | voert alle kenmerken voor een specifieke temperatuursensor uit | nee | |
-| `<name>/value` | `GET` | voert de waarde van een specifieke temperatuursensor uit | geen | |
+| leeg | `GET` | geeft de namen en meetwaarden weer van aangesloten Dallas-temperatuursensoren  | nee | |
+| `info` | `GET` | geeft alle gegevens weer van de aangesloten Dallas-temperatuursensoren | nee | |
+| `<name>` | `GET` | geeft alle kenmerken van een specifieke temperatuursensor weer  | nee | |
+| `<name>/value` | `GET` | geeft de waarde van een specifieke temperatuursensor weer | nee | |
 
-### De analoge sensoren besturen
+### De analoge sensoren aansturen
 
 Het URL-pad is `http://<hostname>/api/analogsensor/`
 
-| Eindpunt | HTTP-methode | Actie | Verificatie vereist? | post body |
+| eindpunt   | HTTP-methode | actie | authenticatie vereist? | post-body |
 | ---------- | ----------- | ------------------------------------------------------------------ | ------------------------ | ------------------------------ |
-| blank | `GET` | voert analoge sensoren en hun meetwaarden uit | no | |
-| `info` | `GET` | voert alle details uit over de aangesloten analoge sensoren | nee | |
-| `<name>` | `GET` | voert alle kenmerken voor een specifieke analoge sensor uit | nee | |
-| `commands` | `GET` | geeft een overzicht van de beschikbare systeemopdrachten | no | |
-| `setvalue` | `POST` | stel value/offset van teller of uitgangspen in, +/- teken corrigeert waarde | ja | `{"value":<val>, "id":<gpio>}` |
-| `<name>` | `POST` | stel value/offset van teller of uitgangspen in, +/- teken corrigeert waarde | ja | `{"value":<val>}` |
+| leeg | `GET` | geeft analoge sensoren en hun meetwaarden weer | nee | |
+| `info`     | `GET` | geeft alle gegevens van de aangesloten analoge sensoren weer | nee | |
+| `<name>`   | `GET` | geeft alle kenmerken van een specifieke analoge sensor weer | nee | |
+| `commands` | `GET` | geeft een overzicht van de beschikbare systeemopdrachten | nee | |
+| `setvalue` | `POST` | stel value/offset in voor de teller- of uitgangspen; het teken +/- corrigeert de waarde | ja | `{"value":<val>, "id":<gpio>}` |
+| `<name>`   | `POST` | stel value/offset in voor de teller- of uitgangspen; het teken +/- corrigeert de waarde | ja | `{"value":<val>}` |
 
 ### Systeemopdrachten
 
 Het URL-pad is `http://<hostname>/api/system/<endpoint>`
 
-| Eindpunt: HTTP-methode: actie: Verificatie vereist? | post body |
+| eindpunt | HTTP-methode | actie | authenticatie vereist? | post-body |
 | ------------------------ | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------- |
-`info` `values`of leeg | `GET` | voert huidige systeeminformatie uit | nee |
-| `fetch` | `GET` | forceert bij het verversen van alle apparaatwaarden | no | |
-| `restart` | `GET` | herstart EMS-ESP | ja | |
-| `format` | `GET` | EMS-ESP van fabrieksinstellingen teruggezet | ja | |
-| `commands` | `GET` | geeft een overzicht van de beschikbare systeemopdrachten | no | |
-| `send` | `POST` | telegram naar de EMS-bus sturen | ja | `"XX XX...XX"` |
-| `message` | `POST` | een bericht naar het logboek en MQTT sturen. Het bericht kan ook een logisch commando zijn zoals gebruikt in de Scheduler | yes | `".."` of `'{"value":"system/settings/locale"}'` |
-| `publish` | `POST` | MQTT publiceert alle waarden en optionele HA-configuratie of specifiek voor een apparaat | no | `[ha] \| [device]` |
+| `info` `values`of leeg  | `GET` | geeft de huidige systeeminformatie weer | nee | |
+| `fetch` | `GET` | dwingt bij het vernieuwen van alle apparaatwaarden | nee | |
+| `restart` | `GET` | EMS-ESP opnieuw opstarten | ja | |
+| `format` | `GET` | EMS-ESP na fabrieksreset | ja | |
+| `commands` | `GET` | geeft een overzicht van de beschikbare systeemopdrachten | nee | |
+| `send` | `POST` | een telegram naar de EMS-bus verzenden | ja | `"XX XX...XX"` |
+| `message` | `POST` | een bericht naar het logboek en MQTT verzenden. Het bericht kan ook een logische opdracht zijn, zoals gebruikt in de Scheduler | ja | `".."` of `'{"value":"system/settings/locale"}'` |
+| `publish` | `POST` | MQTT publiceert alle waarden, en optioneel de HA-configuratie of apparaatspecifieke gegevens | nee | `[ha] \| [device]` |
 | `watch` | `POST` | inkomende telegrammen bekijken | nee | `<on \|off \| raw \| <type-id(hex)>` |
-| `values` | `GET` | voert alle waarden in kort formaat uit | nee |
-| `read` | `GET` | vraagt een specifiek EMS-apparaat en een typeID op | ja | `<deviceID> <type ID> [offset] [length]` |
-`response` | `GET` | voert het laatste antwoord van EMS-ESP uit | no | |
-| `entities` | `GET` | somt alle ingeschakelde entiteiten op | nee | |
-| `sendmail` | `POST` | stuur een e-mail | ja | `{"to":"<email>", "subject":"<subject>", "body":"<body>"}` |
-| `txpause` | `POST` | pause/resume de overdracht van de EMS-bus | ja | `<bool>` |
+| `values` | `GET` | geeft alle waarden weer in beknopte vorm | nee | |
+| `read` | `GET` | vraagt informatie op over een specifiek EMS-apparaat en een type-ID | ja | `<deviceID> <type ID> [offset] [length]` |
+| `response` | `GET` | geeft het laatste antwoord van EMS-ESP weer | nee | |
+| `entities` | `GET` | geeft een overzicht van alle ingeschakelde entiteiten | nee | |
+| `sendmail` | `POST` | een e-mail sturen | ja | `{"to":"<email>", "subject":"<subject>", "body":"<body>"}` |
+| `txpause` | `POST` | pause/resume de overdracht via de EMS-bus | ja | `<bool>` |
 | `led` | `POST` | LED-patroon | ja | `[color]:[pattern]` |
 | `mqtt/enabled` | `GET` | enable/disable MQTT | ja | `<bool>` |
 | `ap/enabled` | `GET` | enable/disable Toegangspunt | ja | `<bool>` |
@@ -156,34 +157,32 @@ Het URL-pad is `http://<hostname>/api/system/<endpoint>`
 | `syslog/enabled` | `GET` | enable/disable Syslog | ja | `<bool>` |
 | `settings/analogenabled` | `GET` | enable/disable analoge sensor | ja | `<bool>` |
 | `settings/hideled` | `GET` | enable/disable LED | ja | `<bool>` |
-| `settings/showeralert` | `GET` | enable/disable douche waarschuwing | ja | `<bool>` |
-| `settings/showertimer` | `GET` | enable/disable douchetimer | ja | `<bool>` |
+| `settings/showeralert`   | `GET` | enable/disable douchewaarschuwing | ja | `<bool>` |
+| `settings/showertimer`   | `GET` | enable/disable douchetimer | ja | `<bool>` |
 
 ### Voorbeelden
 
-:::tip In deze voorbeelden is de URL `http://ems-esp.local/api/`, maar pas deze aan naar je eigen hostnaam. Wijzig ook het toegangstoken voor de drager in je eigen token zoals beschreven in de sectie [Definitions](#definities).
+:::tip
+In deze voorbeelden is de URL `http://ems-esp.local/api/`, maar pas deze aan aan je eigen hostnaam. Wijzig ook de API-sleutel in je eigen sleutel, zoals beschreven in de paragraaf [Definitions](#definities).
 :::
 
 #### ...via de opdrachtregel
 
 ```bash
-# Most GETs do not need authentication
-% curl http://ems-esp.local/api/thermostat/seltemp
+# GETs need an API key too, a "Read" key is enough
+% curl http://ems-esp.local/api/thermostat/seltemp -H 'Authorization: Bearer emsesp_...'
 
-# POSTs (with -d) need authentication tokens
+# POSTs (with -d) that change a value need a "Read and Write" key
 % curl http://ems-esp.local/api/thermostat/seltemp \
   -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0' \
+  -H 'Authorization: Bearer emsesp_...' \
   -d '{ "value" : 22.5 }'
 
-# GET with authentication using query parameter with token
-% curl http://ems-esp.local/api/system/publish\?access_token\="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0"
-
-# GET to restart EMS-ESP
-curl http://ems-esp.local/api/system/restart -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0'
+# GET to restart EMS-ESP, needs a "Read and Write" key
+curl http://ems-esp.local/api/system/restart -H 'Authorization: Bearer emsesp_...'
 
 # This example will get the system info, via a GET request
-curl -X GET ${emsesp_url}/api/system/info
+curl -X GET -H "Authorization: Bearer ${emsesp_token}" ${emsesp_url}/api/system/info
 
 # This example will execute a read command on product ID 8 and type ID 1
 curl -X POST \
@@ -208,7 +207,7 @@ import requests
 import json
 
 url = "http://ems-esp.local/api/thermostat/temp"
-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0"
+token = "emsesp_..."  # a "Read and Write" API key
 body = json.dumps({ "value": 22.5 })
 headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
 
@@ -219,26 +218,28 @@ print(response.json())
 
 ## MQTT
 
-MQTT gebruikt hetzelfde formaat als de API, maar met een paar verschillen. Voor het **onderwerp** wordt de `<hostname>` vervangen door de MQTT Basisnaam zoals gedefinieerd in de Instellingen (standaard is `ems-esp`). De `<device>` volgt dezelfde namen als bovenaan deze pagina. Bijvoorbeeld `ems-esp/thermostat/<entity>` of `ems-esp/custom/<name>`.
+MQTT gebruikt hetzelfde formaat als de API, maar met enkele verschillen. Voor het **topic** wordt `<hostname>` vervangen door de MQTT-basenaam zoals gedefinieerd in de instellingen (standaard is `ems-esp`). De `<device>` volgt dezelfde namen als vermeld bovenaan deze pagina. Bijvoorbeeld `ems-esp/thermostat/<entity>` of `ems-esp/custom/<name>`.
 
-De MQTT **payload** is hetzelfde als de `<data>` zoals hierboven beschreven en gebruikt in de API, en kan een JSON-object of een string zijn.
+De MQTT **payload** is dezelfde als de hierboven beschreven `<data>` die in de API wordt gebruikt, en kan een JSON-object of een tekenreeks zijn.
+
+Wat MQTT kan doen, wordt ingesteld in de MQTT-instellingen onder „Via MQTT ontvangen commando’s“: „Uit, alleen waarden lezen“, „Waarden wijzigen en commando’s uitvoeren“ (de standaardinstelling) of „Alles, ook systeemcommando’s“. `system/...`-commando’s, zoals `system/send` of `system/restart`, vereisen de instelling „Alles“. Een fabrieksreset (`system/format`) en het wissen van de crashdump (`system/coredump`) worden nooit via MQTT geaccepteerd. Publiceer commando's zonder de retain-vlag; bewaarde commando's worden genegeerd.
 
 Voorbeelden:
 
-| onderwerp | lading | actie |
+| onderwerp | inhoud | actie |
 | ------------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ems-esp/system/send` | `XX XX...XX` | verstuur onbewerkte ems-commando |
-`ems-esp/thermostat/seltemp` | | Haalt de waarden van de seltemp entiteit op en publiceert deze in het onderwerp `ems-esp/response` |
-| `ems-esp/thermostat/seltemp` | `23` | verander de geselecteerde insteltemperatuur naar 23 graden op de hoofdthermostaat op hc1 |
-| `ems-esp/thermostat/mode` | `auto` | zet de thermostaatmodus op auto voor hc1 |
-| `ems-esp/thermostat` | `{"cmd":"mode","value":"heat","id":1}` | zet de thermostaatmodus op verwarmen voor hc1 |
-`ems-esp/custom/myCustomEntity` | `7` | stelt de waarde van de EMS-ESP Custom Entity met de naam `myCustomEntity` in op 7 |
+| `ems-esp/system/send` | `XX XX...XX` | een onbewerkt ems-commando verzenden (hiervoor is "Alles, ook systeemcommando's" vereist) |
+| `ems-esp/thermostat/seltemp`    | | haalt de waarden van de entiteit seltemp op en publiceert deze in het topic `ems-esp/response`     |
+| `ems-esp/thermostat/seltemp`    | `23` | stel de geselecteerde insteltemperatuur op de hoofdthermostaat op hc1 in op 23 graden |
+| `ems-esp/thermostat/mode` | `auto` | stelt de thermostaatmodus voor hc1 in op 'auto' |
+| `ems-esp/thermostat` | `{"cmd":"mode","value":"heat","id":1}` | stelt de thermostaatmodus voor hc1 in op verwarmen |
+| `ems-esp/custom/myCustomEntity` | `7` | stelt de waarde van de EMS-ESP-aangepaste entiteit met de naam `myCustomEntity` in op 7 |
 
-### Publicatieopdrachten
+### Opdrachten voor publiceren
 
-EMS-ESP zal MQTT 'abonneren' op specifieke onderwerpen, afhankelijk van de aangesloten EMS-apparaten. Bijvoorbeeld `boiler`, `thermostat` enz.
+EMS-ESP zal via MQTT een ‘subscribe’ uitvoeren op specifieke onderwerpen, afhankelijk van de aangesloten EMS-apparaten. Bijvoorbeeld `boiler`, `thermostat` enz.
 
-Commando's kunnen naar EMS-ESP gestuurd worden via deze MQTT topics door gebruik te maken van het payload formaat:
+Commando's kunnen via deze MQTT-onderwerpen naar EMS-ESP worden verzonden met behulp van het volgende payload-formaat:
 
 ```json
 {"cmd":"<cmd>", "data":<data>, "id":<n>}
@@ -246,38 +247,41 @@ Commando's kunnen naar EMS-ESP gestuurd worden via deze MQTT topics door gebruik
 
 waarbij
 
-- `cmd` is een van de opdrachten die worden vermeld in de [Commands](Commands) en **_moet_** tussen aanhalingstekens staan als een String. De sleutel `entity` kan ook worden gebruikt in plaats van `cmd`.
-- `data` (of `value`) bevat de waarde voor de opdracht en kan een String of numerieke waarde zijn.
-- `id` wordt gebruikt als algemene indicator. `hc`, `wwc`, `ahs` en `hs` zijn andere ondersteunde aliassen. Met `hc` wordt bijvoorbeeld een specifiek verwarmingscircuit aangegeven. Je kunt zowel een numerieke waarde als een tekenreeks gebruiken.
+- `cmd` is een van de commando’s die in [Commands](Commands) worden vermeld en **moet** als tekenreeks tussen aanhalingstekens worden geplaatst. In plaats van `cmd` kan ook de sleutel `entity` worden gebruikt.
+- `data` (of `value`) bevat de waarde voor het commando en kan zowel een tekenreeks als een numerieke waarde zijn.
+- `id` wordt gebruikt als algemene aanduiding. `hc`, `wwc`, `ahs` en `hs` zijn andere ondersteunde aliassen. Bijvoorbeeld: `hc` wordt gebruikt om een specifiek verwarmingscircuit aan te duiden. Er kan zowel een numerieke waarde als een tekenreeks worden gebruikt.
 
-Nog een paar voorbeelden:
+Nog enkele voorbeelden:
 
-| onderwerp | lading | actie |
+| onderwerp | inhoud | actie |
 | --------------------------------- | ----------------------------------------- | ---------------------------------------------------------------- |
-| `ems-esp/boiler` | `{"cmd":"heatingactivated", "data":"on"}` | verwarming aanzetten in boiler |
-| `ems-esp/boiler/heatingactivated` | `{"data":"on"}` | DHW desinfecteren in boiler inschakelen (gelijk aan bovenstaande opdracht) |
-| `ems-esp/boiler` | `{"cmd":"dhw.disinfecting", "data":"on"}` | DHW desinfecteren in boiler inschakelen |
+| `ems-esp/boiler` | `{"cmd":"heatingactivated", "data":"on"}` | verwarming in de ketel inschakelen |
+| `ems-esp/boiler/heatingactivated` | `{"data":"on"}` | de desinfectie van warm water in de ketel inschakelen (komt overeen met het bovenstaande commando) |
+| `ems-esp/boiler` | `{"cmd":"dhw.disinfecting", "data":"on"}` | de desinfectie van warm water in de ketel inschakelen |
 
-Je kunt in Status - System Log controleren of de opdracht door EMS-ESP is geaccepteerd.
+Je kunt in Status - Systeemlogboek controleren of de opdracht door EMS-ESP is geaccepteerd.
 
-De eerste opdracht in de bovenstaande tabel was geldig en werd dus geaccepteerd:\Onderwerp:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"on"}`
+Het eerste commando in de bovenstaande tabel was geldig en werd daarom geaccepteerd:\
+Onderwerp:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"on"}`
 
 ```
 [command] Called command boiler/heatingactivated (heating activated) with value on
 ```
 
-En de volgende nepopdracht wordt niet geaccepteerd:\Onderwerp:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"5000"}`
+En de volgende ongeldige opdracht wordt niet geaccepteerd:\
+Onderwerp:`ems-esp/boiler` Command/payload: `{"cmd":"heatingactivated", "data":"5000"}`
 
 ```
 [command] Command failed: no values in boiler
 [mqtt] MQTT command failed with error no values in boiler (Error)
 ```
 
-:::note Je kunt de MQTT-commando's eenvoudig testen met [MQTT Explorer](https://www.mqtt-explorer.com). Maak gewoon verbinding met de MQTT broker en publiceer de payload naar het onderwerp.
+:::note
+Je kunt de MQTT-commando's eenvoudig testen met [MQTT Explorer](https://www.mqtt-explorer.com). Maak gewoon verbinding met de MQTT-broker en publiceer de payload naar het topic.
 :::
 
-Met Home Assistant kunnen ook thermostaatcommando's worden verzonden om individuele verwarmingscircuits te regelen via het verzenden van een modustring of temperatuurnummer naar een onderwerp `thermostat_hc<n>`.
+Met Home Assistant kunnen ook thermostaatopdrachten worden verzonden om afzonderlijke verwarmingscircuits te regelen door een modusreeks of een temperatuurwaarde naar een topic `thermostat_hc<n>` te sturen.
 
-Afhankelijk van de mqtt-instellingen zijn er ook directe abonnementen voor elke waarde, zoals `boiler/wwtemp`, `thermostat/hc1/daytemp`, enz. Thermostaten die slechts één verwarmingscircuit ondersteunen, abonneren zich op `/thermostat/daytemp`.
+Afhankelijk van de MQTT-instellingen zijn er ook directe abonnementen voor elke waarde, zoals `boiler/wwtemp`, `thermostat/hc1/daytemp`, enz. Thermostaten die slechts één verwarmingscircuit ondersteunen, zullen zich abonneren op `/thermostat/daytemp`.
 
-Je kunt MQTT ook gebruiken om een specifiek leesverzoek te sturen, waarna het telegramantwoord wordt teruggestuurd in een topic met de naam `response`. Als je bijvoorbeeld de payload `{"cmd":"send", "data":"0B 88 19 19 02"}` naar `ems-esp/system` stuurt, wordt een topic `response` gepubliceerd met de gegevens `{"src":"08","dest":"0B","type":"19","offset":"19","data":"7D 00","value":32000}`.
+Je kunt MQTT ook gebruiken om een specifiek leesverzoek te versturen; het Telegram-antwoord wordt dan teruggestuurd in een topic met de naam `response`. Als je bijvoorbeeld de payload `{"cmd":"send", "data":"0B 88 19 19 02"}` naar `ems-esp/system` verstuurt, wordt er een topic `response` gepubliceerd met de gegevens `{"src":"08","dest":"0B","type":"19","offset":"19","data":"7D 00","value":32000}`.

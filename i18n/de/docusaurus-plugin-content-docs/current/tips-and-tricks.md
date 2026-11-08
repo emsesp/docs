@@ -6,47 +6,48 @@ description: Community-contributed tips, tricks, and code snippets for advanced 
 
 # Tipps und Tricks
 
-**Nachfolgend finden Sie eine Sammlung nützlicher Tipps, Tricks und Codes, die von der Community eingereicht wurden:**
+**Im Folgenden finden Sie eine Sammlung nützlicher Tipps, Tricks und Code-Beispiele, die von der Community eingereicht wurden:**
 
-## Steuerung der Kesselheizung
+## Steuerung der Heizkesselheizung
 
 _(by Oderik)_
 
-In einem sehr einfachen Fall versorgt ein Heizkessel einen Heizkreis mit Wärme. Wenn `heating activated` `on` ist, hält der Heizkessel `selected flow temperature` aufrecht, indem er den Brenner und die Wärmepumpe reguliert.
+In einer sehr einfachen Konfiguration versorgt ein Heizkessel einen Heizkreis mit Wärme. Wenn `heating activated` gleich `on` ist, hält der Heizkessel die `selected flow temperature` aufrecht, indem er den Brenner und die Wärmepumpe regelt.
 
-Sobald `current flow temperature` den Wert `selected flow temperature` + `temperature hysteresis off` übersteigt, wird die Erwärmung gestoppt, bis `current flow temperature` unter `selected flow temperature` + `temperature hysteresis on` fällt (was normalerweise ein negativer Wert ist).
+Sobald der Wert von `current flow temperature` den Wert von `selected flow temperature` + `temperature hysteresis off` überschreitet, wird die Heizung abgeschaltet, bis der Wert von `current flow temperature` unter den Wert von `selected flow temperature` + `temperature hysteresis on` fällt (was in der Regel ein negativer Wert ist).
 
-Um die Heizung zu aktivieren, müssen Sie also `heatingactivated` auf `on` setzen und ein entsprechendes `flowtemp` einstellen. Letztere sollte von der `heating temperature setting` abgeleitet werden, die über die physikalische dial/control am Kessel eingestellt werden kann. Sie sollte als maximale Vorlauftemperatur betrachtet werden. Sie können auch eine niedrigere Vorlauftemperatur verwenden, um eine konstante Raumtemperatur zu erhalten, sobald die erste Erwärmung erfolgt ist.
+Um die Heizung zu aktivieren, müssen Sie daher `heatingactivated` auf `on` einstellen und einen geeigneten Wert für `flowtemp` festlegen. Letzterer sollte sich aus dem `heating temperature setting` ableiten, der über den physikalischen Regler dial/control am Heizkessel eingestellt werden kann. Er sollte als maximale Vorlauftemperatur betrachtet werden. Sie können auch eine niedrigere Vorlauftemperatur verwenden, um nach Abschluss der anfänglichen Aufheizung eine konstante Raumtemperatur aufrechtzuerhalten.
 
-Zusätzliche Informationen von Michael:
+Weitere Informationen von Michael:
 
-Sie können die Vorlauftemperatur mit EMS-ESP direkt am Kessel einstellen, ohne einen Thermostat zu verwenden. Viele Benutzer tun dies. Einige Hinweise:
+Mit EMS-ESP können Sie die Vorlauftemperatur direkt am Heizkessel einstellen, ohne einen Thermostat zu verwenden. Viele Nutzer gehen so vor. Hier einige Hinweise:
 
-- der Flowtemp-Wert am Bedienfeld muss höher eingestellt werden, da die über den EMS-Bus gesendete Temperatur nur akzeptiert wird, wenn sie einen niedrigeren Wert hat
-- sie müssen mindestens jede Minute einen Wert senden, um die Vorlauftemperatur aufrechtzuerhalten, da der Kessel sonst automatisch auf den höheren Sollwert vom Bedienfeld zurückfällt.
-- Es gibt eine spezielle EMS-ESP-Entität namens `forceheatingoff`, die den Flowtemp-Wert für den Kessel automatisch jede Minute auf 0 setzt. Andere Benutzer ziehen es vor, stattdessen ein on/off-Steuerelement zu verwenden.
+- Der Flowtemp-Wert am Bedienfeld muss höher eingestellt werden, da die über den EMS-Bus übermittelte Temperatur nur akzeptiert wird, wenn sie einen niedrigeren Wert aufweist
+- Sie müssen mindestens einmal pro Minute einen Wert übermitteln, um die Vorlauftemperatur aufrechtzuerhalten; andernfalls wechselt der Heizkessel automatisch auf den höheren Sollwert, der über das Bedienfeld eingestellt wurde.
+- Es gibt eine spezielle EMS-ESP-Einheit namens `forceheatingoff`, die den Wert für die Vorlauftemperatur automatisch jede Minute auf 0 für den Heizkessel einstellt. Andere Nutzer ziehen es hingegen vor, stattdessen ein on/off-Regelelement zu verwenden.
 
-Die einmalige Aufladung des Heizkessels hat eine besondere Logik. Er lädt nicht auf Abruf nach, wie die meisten Leute erwarten. Er prüft die aktuelle Temperatur und lädt nur nach, wenn sie außerhalb des Sollwertbereichs liegt (Sollwert-Hysterese). Wenn dhw auf automatisches Nachladen eingestellt ist, wird es nie funktionieren, nur im dhw-Eco-Modus und bei niedriger dhw-Speichertemperatur. Zum Nachladen müssen Sie die Thermostat-Ladefunktion verwenden. Dadurch wird der dhw-Sollwert vorübergehend auf einen höheren Wert gesetzt, so dass der Kessel eine Nachladung auslöst und dann wieder auf den alten Sollwert zurückgeht.
+Der Boiler „OneTime“ verfügt über eine spezielle Logik. Er lädt nicht bei Bedarf nach, wie die meisten Menschen erwarten. Er überprüft die aktuelle Temperatur und lädt nur nach, wenn diese außerhalb des Sollwertbereichs (Sollwert-Hysterese) liegt. Wenn die Warmwasserversorgung auf automatische Nachladung eingestellt ist, funktioniert dies nie, sondern nur im Warmwasser-Eco-Modus und bei niedriger Warmwasserspeichertemperatur. Um eine Nachladung auszulösen, müssen Sie die Nachladefunktion des Thermostats verwenden. Dadurch wird der Warmwasser-Sollwert vorübergehend auf einen höheren Wert gesetzt, sodass der Heizkessel eine Nachladung auslöst, und anschließend wieder auf den alten Sollwert zurückgesetzt.
 
-## Abrufen von Daten über REST mit PHP
+## Daten über REST mit PHP abrufen
 
 _(by flohse123)_
 
 ```php
 <?php
 $ch = curl_init("http://<myIP>/api?device=thermostat&cmd=info");
+curl_setopt($ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer <your Read API key>"]);
 curl_exec($ch);
 curl_close($ch);
 ?>
 ```
 
-## Anpassung der Vorlauftemperatur in Abhängigkeit davon, ob CH oder DHW geheizt wird
+## Anpassung der Vorlauftemperatur je nachdem, ob die Zentralheizung oder das Warmwasser erwärmt wird
 
 _(by IanC)_
 
-Aus dem Discord-Posting von IanC:
+In einem Discord-Beitrag schrieb IanC:
 
-bei einem ~2012 Worcester Bosch-Kessel wird die Heizung des Hauses von einem EvoHome-System gesteuert, das weiß, welche Teile des Hauses wie viel Wärme benötigen, aber es kann nur ein on/off-Relais verwenden, um den Kessel für die Raum- und Wasserheizung zu steuern. Das bedeutet, dass es die Vorlauftemperatur nicht direkt regeln kann. Bisher wurde diese über den Drehregler an der Vorderseite des Kessels kontinuierlich auf 65 °C eingestellt, um bei Bedarf eine Warmwasserbereitung zu ermöglichen. Ich bin sehr froh, dass ich EMS-ESP in mein System eingebaut habe, um die Vorlauftemperaturen zu steuern. Ich habe ein einfaches C-Programm geschrieben, das auf meinem OpenWrt-Internet-Router läuft und EvoHome-Nachrichten abhört, um nützliche Informationen über die für Raum und Wasser benötigte Wärmemenge in einfachen txt-Dateien unter /tmp. zu erfassen. Ich plane dann alle 4 Minuten ein Shell-Skript, das in mehreren Schritten eine Vorlauftemperatur auswählt: Ich beginne mit einem witterungsbereinigten Wert, der auf der Außentemperatur des Online-Dienstes basiert; ich passe diesen Wert um bis zu 25 % an, je nach dem Wärmebedarf von EvoHome; falls erforderlich, setze ich ihn außer Kraft, um Warmwasser zu erwärmen. Die gewählte Vorlauftemperatur und die maximale Brennerstufe werden dann über Curl an ein BBQKees-Gerät mit EMS-ESP gesendet, das wiederum den Kessel steuert. Bislang scheint das System wie vorgesehen zu funktionieren, ohne dass der Komfort im Haus beeinträchtigt wird, wobei jedoch viel niedrigere Vorlauftemperaturen beobachtet werden, um den Betrieb des Kessels in der Brennwertzone zu fördern. Es ist sehr schwer zu sagen, ob sich das auf den Gasverbrauch auswirkt - was ich mir wünschen würde :-). Die größte Herausforderung, die ich immer noch sehe, ist, wie ich verhindern kann, dass EvoHome häufige on/off-Zyklen des Kessels verursacht, während es immer noch versucht, die TPI-Durchflussregelung zu verwenden
+_„Bei einem Worcester-Bosch-Heizkessel aus dem Jahr ~2012 wird die Hausheizung über ein EvoHome-System gesteuert, das erkennt, welche Bereiche des Hauses wie viel Wärme benötigen; allerdings kann es zur Steuerung des Heizkessels für Raum- und Warmwasserbereitung nur ein on/off-Relais verwenden. Das bedeutet, dass es die Vorlauftemperatur nicht direkt regeln kann; diese wurde bisher über einen Drehregler an der Vorderseite des Heizkessels dauerhaft auf 65 °C eingestellt, um bei Bedarf Warmwasser bereitzustellen. Ich bin sehr froh, mein System um EMS-ESP erweitert zu haben, um die Vorlauftemperaturen besser steuern zu können. Ich habe ein einfaches C-Programm geschrieben, das auf meinem OpenWrt-Internetrouter läuft und die EvoHome-Nachrichten abfängt, um nützliche Informationen darüber zu erfassen, wie viel Wärme für Raum- und Warmwasserbereitung benötigt wird, und diese in einfachen TXT-Dateien unter /tmp. zu speichern. Anschließend plane ich alle 4 Minuten ein Shell-Skript ein, das in wenigen Schritten eine Vorlauftemperatur : Zunächst wird ein wetterkompensierter Wert auf Basis der Außentemperatur aus einem Online-Dienst verwendet; dieser wird je nach EvoHome-Raumwärmebedarf um bis zu 25 % nach oben oder unten angepasst; falls erforderlich, wird dieser Wert zur Warmwasserbereitung außer Kraft gesetzt. Die ausgewählte Vorlauftemperatur und eine maximale Brennerstufe werden dann per curl an ein BBQKees-Gerät gesendet, auf dem EMS-ESP läuft, das wiederum den Heizkessel steuert. Bislang scheint es wie beabsichtigt zu funktionieren, ohne dass der Wohnkomfort beeinträchtigt wird, wobei jedoch deutlich niedrigere Vorlauftemperaturen beobachtet werden, um den Betrieb des Heizkessels im Brennwertbereich zu fördern. Es ist sehr schwer zu sagen, ob sich dies auf den Gasverbrauch auswirkt – was ich mir allerdings wünschen würde :-). Die größte Herausforderung besteht für mich nach wie vor darin, zu verhindern, dass EvoHome häufige on/off-Zyklen des Heizkessels auslöst, während es weiterhin versucht, die TPI-Durchflussregelung zu nutzen."_
 
 ![1.5.0](/media/examples/ian_setflowtemp.png)
 
@@ -151,11 +152,11 @@ flowtemp=$(min $flowtemp $MAXFLOW)
 set_flowtemp $flowtemp
 ```
 
-## Home Assistant-Sensorvorlage für alle Statusnummern auf einem GB192-Kessel
+## Home Assistant-Sensorvorlage für alle Statusnummern eines GB192-Heizkessels
 
 (von tefracky aus [this comment](https://github.com/emsesp/EMS-ESP32/issues/938#issuecomment-1417592878)
 
-Hier ist der Sensor im neuen Home-Assistant-Vorlagenformat für alle Statusnummern für den Buderus GB192i-19 in Deutsch:
+Hier ist der Sensor im neuen Home-Assistant-Vorlagenformat für alle Statuszahlen des Buderus GB192i-19 auf Deutsch:
 
 ```yaml title="Service code number text for Buderus GB192i-19"
 - name: 'Heizungsstatus'
@@ -305,11 +306,11 @@ Hier ist der Sensor im neuen Home-Assistant-Vorlagenformat für alle Statusnumme
     {{ message }}
 ```
 
-## Verwendung einer benutzerdefinierten Klimakomponente im Home Assistant
+## Verwendung einer benutzerdefinierten Klimakomponente in Home Assistant
 
 _(by elRadix)_ von [this comment](https://github.com/emsesp/EMS-ESP32/discussions/790#discussioncomment-4895520)
 
-Dieses Beispiel richtet 2 Klimaeinheiten für dhw mit ihrem Modus und Heizungsklima unter Verwendung einer benutzerdefinierten HACS-Karte in HA namens [simple thermostat](https://github.com/nervetattoo/simple-thermostat) ein:
+In diesem Beispiel werden mithilfe einer benutzerdefinierten HACS-Karte in HA mit dem Namen [simple thermostat](https://github.com/nervetattoo/simple-thermostat) zwei Klimakomponenten für die Warmwasserversorgung mit ihrem Betriebsmodus und ihrem Heizklima eingerichtet, und zwar wie folgt:
 
 ![customha](/media/examples/ha_custom_climate.jpg)
 
@@ -422,23 +423,23 @@ view_layout:
   position: main
 ```
 
-## Automatisieren der on/off der Wärmepumpe im Home Assistant
+## Automatisierung des on/off der Wärmepumpe in Home Assistant
 
-`waengr` hat in unserem Discord-Kanal einen [message](https://discord.com/channels/816637840644505620/816958041345884180/1287897271148609566) gepostet, wie man einen einfachen Schalter zum Ein- und Ausschalten der Wärmepumpe automatisieren kann. Er verweist auf die GitHub-Ausgaben [1600](https://github.com/emsesp/EMS-ESP32/discussions/1600) und [1717](https://github.com/emsesp/EMS-ESP32/issues/1717).
+`waengr` hat in unserem Discord-Kanal einen [message](https://discord.com/channels/816637840644505620/816958041345884180/1287897271148609566)-Beitrag darüber gepostet, wie man einen einfachen Schalter zum Ein- und Ausschalten der Wärmepumpe automatisieren kann. Er verweist dabei auf die GitHub-Issues [1600](https://github.com/emsesp/EMS-ESP32/discussions/1600) und [1717](https://github.com/emsesp/EMS-ESP32/issues/1717).
 
-Nach seinen eigenen Worten hat er dies getan:
+Nach seinen eigenen Worten hat er Folgendes getan:
 
-"Ich analysierte den binären Eingangsstring wie vorgeschlagen, der von EMS-ESP in `text.boiler_hpin1opt` im Home Assistant angezeigt wurde. Ich änderte die Kippschalter auf der Benutzeroberfläche der Pumpe und beobachtete, wie sich der String änderte. Dann änderte ich die Zeichenfolge manuell im Home Assistant und beobachtete, wie sich die Benutzeroberfläche der Pumpe änderte. Die bidirektionale Kommunikation ist also möglich!
+„Ich habe mich daran gehalten, die binäre Eingabezeichenfolge wie vorgeschlagen zu analysieren, die von EMS-ESP im `text.boiler_hpin1opt` bereitgestellt wurde, wie in Home Assistant angezeigt. Ich habe die Schalter auf der Benutzeroberfläche der Pumpe umgelegt und beobachtet, wie sich die Zeichenfolge änderte. Anschließend habe ich die Zeichenfolge in Home Assistant manuell geändert und beobachtet, wie sich die Benutzeroberfläche der Pumpe entsprechend änderte. Die bidirektionale Kommunikation ist also möglich!
 
-Ich habe noch nicht alle Optionen ausprobiert, aber hier sind ein paar Kommentare:
+Ich habe noch nicht alle Optionen ausprobiert, aber hier sind ein paar Anmerkungen:
 
-- Ich dachte, ich wäre schlau, indem ich vorausschauend dachte, also habe ich bei der Auswahl "Kompressorbetr. sperren" auch "Zuheizerbetr. sperren" ausgewählt. ABER - ohne Scheiß - NUR der Zuheizer ging tatsächlich an und verschwendete eine Menge Strom (zumindest für ein paar Minuten).
-- "Heizbetrieb sperren" schaltet auch die Umwälzpumpe ab, was ich nicht will, da ich einen 500-Liter-Pufferspeicher habe.
-- "EVU-Sperrzeit 1" funktioniert soweit ganz gut (wofür sind die anderen EVU-Sperrzeiten?)
+- Ich hielt mich für schlau, weil ich vorausgedacht hatte, und habe daher bei der Auswahl von „Kompressorbetr. sperren“ (Kompressorbetrieb sperren) auch „Zuheizerbetr. sperren“ (Zusatzheizbetrieb sperren) ausgewählt. ABER – ich verarsch dich nicht – tatsächlich ging NUR die Zusatzheizung an und verschwendete eine Menge Strom (zumindest für ein paar Minuten).
+- Die Option „Heizbetrieb sperren“ schaltet auch die Umwälzpumpe ab, was ich jedoch nicht möchte, da ich einen 500-Liter-Pufferspeicher habe.
+- „EVU-Sperrzeit 1“ funktioniert bisher gut (wofür sind die anderen EVU-Sperrzeiten gedacht?)
 
-Als Nächstes wurde die Zeichenkette mit Automatismen geändert.
+Als Nächstes ging es darum, die Saite mithilfe von Automatisierungen zu wechseln.
 
-Im Moment arbeite ich mit festen Zeiten: Eine Heizperiode in der Nacht, wenn wir einen niedrigen Tarif haben, und dann eine weitere um die Mittagszeit, wenn ich vielleicht etwas überschüssige PV-Leistung habe. Später kann ich das System an die tatsächliche PV-Produktion koppeln. Ich ändere nur das erste Bit, das den immer ausgeschalteten Eingang invertiert" (Eingang invertiert"), wie vorgeschlagen. Das zweite Bit ist "EVU-Sperrzeit 1".
+Vorerst halte ich mich an feste Zeiten: Eine Heizphase in der Nacht, wenn wir den Niedertarif haben, und dann eine weitere gegen Mittag, wenn ich möglicherweise überschüssigen PV-Strom habe. Später kann ich dann daran herumprobieren, das System an die tatsächliche PV-Produktion anzupassen. Ich ändere gerade den ersten Teil, nämlich die Umkehrung des Eingangs „Eingang invertiert“, der immer ausgeschaltet ist, wie vorgeschlagen. Der zweite Teil ist „EVU-Sperrzeit 1“.
 
 ```yaml
 automation heating:
@@ -472,41 +473,47 @@ automation heating:
           value: '110000000000000'
 ```
 
-Hier sehen Sie mein in Arbeit befindliches Dashboard in Home Assistant:
+Hier ist mein Dashboard in Home Assistant, an dem ich gerade arbeite:
 
 ![Dashboard](/media/screenshot/PV_HA_dash.png)
 
-- links: `text.boiler_hpin1opt` und die oben genannten Automatisierungen, um sie auf "ein" und "aus" zu stellen.
-- oben rechts: ein handgezeichnetes Schema, in dem ich versuche, einige der über 200 Werte aus EMS-ESP abzubilden.
-- unten rechts: die 200+ Werte.
+- links: `text.boiler_hpin1opt` und die oben genannten Automatisierungen, um den Status auf „ein“ und „aus“ umzuschalten.
+- oben rechts: eine handgezeichnete Übersicht, in der ich versuche, einige der über 200 Werte aus EMS-ESP darzustellen.
+- unten rechts: die Werte über 200.
 
-Als Nächstes untersucht er, wie man eine klare Leistungsanzeige (in W) für den aktuellen Stromverbrauch der Wärmepumpe erhalten kann.
+Als Nächstes untersucht er, wie man einen genauen Leistungswert (in W) ermitteln kann, der angibt, wie viel Leistung die Wärmepumpe derzeit verbraucht.
 
-## Einfaches Auslösen einer zusätzlichen Warmwasserladung im Home Assistant
+## Einfacher Auslöser für die Warmwasser-Zuschlagabrechnung in Home Assistant
 
 _(by oliof)_
 
-Hier ist eine einfache Automatisierung, die zusätzliches heißes Wasser durch einen Doppelklick auf eine Zigbee-basierte Taste auslöst. Dieser Auslöser kann leicht mit einem Sprachbefehl oder einem gescannten QR-Code ausgetauscht werden, falls gewünscht.
+Hier ist eine einfache Automatisierung, die durch einen Doppelklick auf einen Zigbee-basierten Taster die Warmwasserzufuhr umschaltet. Dieser Auslöser könnte bei Bedarf problemlos durch einen Sprachbefehl oder das Scannen eines QR-Codes ersetzt werden.
 
 ![image](https://github.com/user-attachments/assets/da3795fd-5bba-411c-a533-49fe5efc70c3)
 
-## Schwachlastoptimierung eines Buderus GB172 Gaskessels
+## Optimierung eines Buderus GB172-Gaskessels im Niedriglastbetrieb
 
 _(by oliof with additional input by tz)_
 
-Wenn Sie mit der Einstellung Ihres Heizkessels beginnen, werden Sie höchstwahrscheinlich auf Situationen stoßen, in denen der Heizkessel selbst bei der niedrigsten Modulationseinstellung zu viel Wärme produziert. In solchen Fällen kann es sich lohnen, eine zusätzliche Regelung in Betracht zu ziehen, die den Heizkessel für eine gewisse Zeit abschaltet, wenn die Zieltemperatur erreicht ist. Hier ist eine mögliche Implementierung, die im Grunde ein Zweipunktregler ist. Aufgrund der thermischen Trägheit liegen die Schaltvorgänge bei den meisten Heizungsanlagen ohne zusätzliche Verzögerung oder Zeitbegrenzung relativ weit auseinander, doch lassen sich diese leicht hinzufügen, wenn man die Anzahl der Einschaltvorgänge verringern möchte.
+Wenn Sie mit der Feinabstimmung Ihres Heizkessels beginnen, werden Sie höchstwahrscheinlich in Situationen geraten, in denen der Heizkessel
+selbst bei niedrigster Modulationsstufe zu viel Wärme erzeugt. In solchen Fällen kann es sich lohnen, ein zusätzliches Regelkonzept in Betracht zu ziehen, das
+den Heizkessel für eine gewisse Zeit abschaltet, sobald die Solltemperatur erreicht ist. Hier ist eine mögliche Umsetzung, bei der
+es sich im Grunde um einen Zweipunktregler handelt. Durch die thermische Trägheit liegen die Schaltvorgänge bei den meisten Heizungsanlagen auch ohne zusätzliche Verzögerung
+oder Zeitbegrenzung in angemessenem Abstand zueinander; diese lassen sich jedoch leicht hinzufügen, wenn Sie die Anzahl der Einschaltvorgänge reduzieren möchten.
 
-Diese Schwachlastoptimierung kann den Gasverbrauch um 15-20 % senken, ohne dass sich der Temperaturkomfort ändert.
+Durch diese Optimierung bei geringer Last lässt sich der Gasverbrauch um 15–20 % senken, ohne dass sich der Temperaturkomfort nennenswert verändert.
 
-### Vorraussetzungen
+### Voraussetzungen
 
-- Ein hochauflösendes, hochfrequentes, aktualisierendes Thermometer.
-- Einrichten dieses Thermometers als [Remote Thermostat](https://emsesp.org/Special-Functions/#remote-thermostats).
-- Ein Heizkessel, bei dem die Einstellung `Heating Activated` auf `off` tatsächlich die Heizung deaktiviert. Dies scheint für Gaskessel zu gelten, wird aber wahrscheinlich nicht für Wärmepumpen funktionieren. In diesem Fall sollten Sie die Entität `forceheatingoff` verwenden.
+- Ein hochauflösendes Thermometer mit hoher Aktualisierungsfrequenz.
+- Dieses Thermometer als [Remote Thermostat](https://emsesp.org/Special-Functions/#remote-thermostats) einrichten.
+- Ein Heizkessel, bei dem die Einstellung von `Heating Activated` auf `off` die Heizung tatsächlich deaktiviert. Dies scheint bei Gaskesseln der Fall zu sein, funktioniert jedoch höchstwahrscheinlich
+  nicht bei Wärmepumpen. Verwenden Sie in diesem Fall die Entität `forceheatingoff`.
 
 ### Abgeleitete Sensoren und Automatisierungen
 
-Einer der Nachteile eines hochauflösenden Thermometers besteht darin, dass die Temperaturmessungen mit einem gewissen Rauschen behaftet sind. Sie können einen Filter verwenden, um eine glatte Kurve (mit einer gewissen Verzögerung) zu erhalten. Zum Beispiel (Auszug aus HomeAssistant's `configuration.yaml`):
+Einer der Nachteile eines hochauflösenden Thermometers ist, dass die Temperaturmesswerte ein gewisses Rauschen aufweisen. Sie können einen Filter verwenden,
+um eine geglättete Kurve zu erhalten (mit einer gewissen Verzögerung). Zum Beispiel (Auszug aus dem `configuration.yaml` von HomeAssistant):
 
 ```yaml
 sensor:
@@ -525,13 +532,13 @@ sensor:
        precision: 2
 ```
 
-Im folgenden Bild sehen Sie die verrauschten Rohtemperaturen und die gefilterte Temperatur. Passen Sie den `lowpass`-Filter `time_constant` und den `simple_moving_average`-Filter `window_size` an, um zu versuchen, die Kurve besser anzupassen, falls gewünscht.
+In der folgenden Abbildung sehen Sie die verrauschten Rohdaten der Temperaturen und die gefilterten Temperaturwerte. Passen Sie den `lowpass`-Filter `time_constant` und den `simple_moving_average`-Filter `window_size` an, um die Kurve bei Bedarf besser anzupassen.
 
 ![image](https://github.com/user-attachments/assets/cfe1cf9c-d825-4693-80ce-28e8684b9ecf)
 
-Mit dem gefilterten Sensor ist es nun möglich, die Automatisierungen so einzustellen, dass die Heizung aus- und eingeschaltet wird, wenn die Referenzraumtemperatur einen Schwellenwert überschreitet. Das `temperature`-Attribut des Thermostats wird als Schwellenwert verwendet, so dass Sie die Zieltemperatur weiterhin mit den üblichen Mitteln einstellen können.
+Mit dem gefilterten Sensor ist es nun möglich, Automatisierungen so einzurichten, dass die Heizung ein- und ausgeschaltet wird, sobald die Referenzraumtemperatur einen Schwellenwert überschreitet. Das `temperature`-Attribut des Thermostats wird als Schwellenwert verwendet, sodass Sie die Zieltemperatur weiterhin auf die gewohnte Weise einstellen können.
 
-Ab HA 2025.01 erlaubt der numerische Trigger von Home Assistant nur noch die Auslösung von Werten mit einfacher Genauigkeit. Da wir unsere Zweipunktregelung näher am Sollwert halten wollen, verwenden wir einen benutzerdefinierten Vorlagen-Trigger:
+Ab HA 2025.01 lässt der numerische Trigger von Home Assistant nur noch Werte mit einfacher Genauigkeit als Auslöser zu. Da wir unsere Zweipunktregelung näher am Sollwert halten möchten, verwenden wir einen benutzerdefinierten Vorlagen-Trigger:
 
 ```yaml
 alias: Deactivate Heating
@@ -563,9 +570,14 @@ actions:
 mode: single
 ```
 
-Bitte beachten Sie, dass wir die Heizung ein wenig unterhalb der Solltemperatur deaktivieren, damit wir nicht zu sehr nach oben abweichen. Der `-0.02`-Wert muss wahrscheinlich auf Ihr Heizsystem und Ihre Vorlieben abgestimmt werden. Mit dem gefilterten Sensor brauchen wir den `for:`-Block vielleicht nicht unbedingt, aber es ist eine weitere kleine Sicherheit, etwas in diesem Block zu haben. Es gibt eine zusätzliche 5-minütige Verzögerung vor der Auslösung, um ein Prellen zu vermeiden. Passen Sie sie nach Bedarf an Ihr System an (bei der gefilterten Referenztemperatur ist sie möglicherweise nicht erforderlich).
+Bitte beachten Sie, dass wir die Heizung bereits ein kleines bisschen unterhalb der Solltemperatur abschalten, damit wir nicht zu weit darüber hinausgehen.
+Der Wert `-0.02` muss wahrscheinlich an Ihre Heizungsanlage und Ihre Vorlieben angepasst werden. Mit dem gefilterten Sensor benötigen wir den
+`for:`-Block vielleicht nicht unbedingt, aber es ist eine weitere kleine Sicherheitsmaßnahme, dort etwas einzufügen. Es gibt eine zusätzliche Verzögerung von 5
+Minuten vor der Auslösung, um ein Schwanken zu vermeiden. Passen Sie dies nach Bedarf an Ihr System an (möglicherweise nicht erforderlich bei der
+gefilterten Referenztemperatur).
 
-Die Automatisierung zur Aktivierung der Heizung erfolgt wieder nach dem gleichen Muster (mit einem anderen Fudge-Faktor von `-0.05`, den Sie nach Ihren Bedürfnissen anpassen sollten):
+Die Automatisierung zur erneuten Aktivierung der Heizung folgt dem gleichen Muster (mit einem anderen Anpassungsfaktor von `-0.05`, den Sie
+an Ihre Bedürfnisse anpassen sollten):
 
 ```yaml
 alias: Activate Heating
@@ -596,29 +608,33 @@ actions:
 mode: single
 ```
 
-Hier ein Beispieldiagramm, das die `Heating activated`-Entität und die Temperatur des Referenzraums mit einer Zieltemperatur von 20,5 °C zeigt, die gegen Ende des dargestellten Zeitraums auf 20 °C geändert wurde. Wie Sie sehen können, beträgt die Temperaturabweichung trotz des primitiven Regelungsalgorithmus etwa +-0,1 K, wenn das Heizsystem lange Zeit ausgeschaltet ist (zu anderen Zeiten sank die Abweichung auf etwa -0,25 K, erholte sich aber trotzdem recht schnell. YMMV).
+Dies ist ein Beispieldiagramm, das die `Heating activated`-Entität und die Temperatur im Referenzraum mit einer Solltemperatur von
+20,5 °C zeigt, die gegen Ende des dargestellten Zeitraums auf 20 °C geändert wurde. Wie Sie sehen können, beträgt die Temperaturabweichung trotz des einfachen Regelalgorithmus
+etwa ±0,1 K, wobei die Heizung über lange Zeiträume ausgeschaltet war (zu anderen Zeiten sank die Abweichung auf etwa –0,25 K, erholte sich aber dennoch recht schnell. Ihre Ergebnisse können abweichen).
 
 ![image](https://github.com/user-attachments/assets/76cdbdcd-2010-493b-85f8-4253220888d9)
 
-Die für die Automatisierung verwendete Taste ist eine einfache Aqara-Zigbee-Taste.
+Der in der Automatisierung verwendete Taster ist ein einfacher Aqara-Zigbee-Taster.
 
 :::info
-Ich verwende ein [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) mit dem [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), da es eine zweistellige Genauigkeit bietet und etwa ein- bis zweimal pro Minute aktualisiert wird).  
- Bitte beachten Sie, dass Thermometer mit niedriger Auflösung und geringer Aktualisierungsfrequenz Ihre Fähigkeit beeinträchtigen, schnell auf Temperaturänderungen zu reagieren.  
- Wenn Sie möchten, können Sie mit tasmota und einem DS18B20- oder BME820-Sensor ein hochauflösendes, häufig aktualisiertes Thermometer bauen.
+Ich verwende ein [MH0-C40IN thermometer](https://pvvx.github.io/MHO_C401N/) in Kombination mit dem [pvvx firmware](https://github.com/pvvx/ATC_MiThermometer), da es eine Genauigkeit von zwei Stellen bietet und etwa ein- bis zweimal pro Minute aktualisiert wird.  
+ Bitte beachten Sie, dass Thermometer mit geringer Auflösung und niedriger Aktualisierungsfrequenz Ihre Fähigkeit beeinträchtigen, schnell auf Temperaturänderungen zu reagieren.  
+ Wenn Sie möchten, können Sie mit Tasmota und einem DS18B20- oder BME820-Sensor ein hochauflösendes, häufig aktualisiertes Thermometer bauen.
 :::
 
 ## Optimierung für Wärmepumpen
 
-Matthias hat sein Setup der Bosch/Buderus Wärmepumpe auf [his blog](https://bosch-buderus-wp.github.io/xps/matthias) dokumentiert und zeigt sogar, wie man mit Hilfe von AI eine MCP/LLM Wärmepumpe steuern kann (siehe [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai)).
+Matthias hat seine Konfiguration der Bosch/Buderus-Wärmepumpe unter [his blog](https://bosch-buderus-wp.github.io/xps/matthias) dokumentiert und zeigt sogar, wie man mithilfe von KI ein MCP/LLM einrichten kann, um die Wärmepumpe zu steuern.
+Weitere Details finden Sie unter [here](https://bosch-buderus-wp.github.io/docs/smarthome/ai).
 
-Es gibt auch einen [metrics-page](https://bosch-buderus-wp.github.io/metrics/), in dem die Werte der Wärmepumpe gespeichert und visualisiert werden. Wenn Sie [contribute, read this further information](https://bosch-buderus-wp.github.io/metrics/howto).
+Außerdem gibt es einen [metrics-page](https://bosch-buderus-wp.github.io/metrics/), in dem die Werte der Wärmepumpe gespeichert und visualisiert werden.
+Wenn Sie möchten, klicken Sie auf [contribute, read this further information](https://bosch-buderus-wp.github.io/metrics/howto).
 
-## Verwendung von `txpause` zur vorübergehenden Abschaltung des Busverkehrs
+## Vorübergehende Sperrung des Busverkehrs mithilfe von `txpause`
 
-_(by DiZil1)_ von https://github.com/emsesp/EMS-ESP32/discussions/1953#diskussionskommentar-15387910
+_(by DiZil1)_ von https://github.com/emsesp/EMS-ESP32/discussions/1953#discussioncomment-15387910
 
-"Um Ihnen zu verdeutlichen, warum dies für mich so wichtig ist und nicht nur eine nette Sache. Ich muss dies genau überwachen, denn in meinem System neigen A31-Fehler dazu, sich mit der Zeit zu kritischen Blockierfehlern auszuweiten, die schließlich zum Abschalten der Heizungsanlage führen."
+„Um Ihnen einen Einblick zu geben, warum dies für mich so wichtig ist und nicht nur ein nettes Extra: Ich muss dies genau im Auge behalten, da A31-Fehler in meiner Konfiguration dazu neigen, sich im Laufe der Zeit zu kritischen, systemblockierenden Fehlern zu entwickeln, die schließlich zum Abschalten des Heizsystems führen.“
 
 ```yaml
 # =========================

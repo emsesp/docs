@@ -37,7 +37,7 @@ There are 3 methods commands can be invoked:
     - as a True value, "TRUE", "yes", true, "true", "on", 1
     - as a False value, "FALSE", "no", false, "false", "off", 0
 
-  - The bearer Access Token (JWT) is used to authenticate HTTP requests and can be obtained from the WebUI's `Settings->Security->Manage Users` page and then clicking on the key icon for the user that has admin privileges (`is Admin` set). The token is generated using a combination of the username and a secret key which is the super user (su) password found in the WebUI's `Settings->Security->Security Settings` page. This string must be included in the HTTP header as `"Authorization: Bearer {ACCESS_TOKEN}"`. Note the token has no expiry date.
+  - The API key authenticates HTTP requests. Create one in the WebUI's `Settings->Security->API Keys` page: a "Read" key can read values and run Commands that guests may run, a "Read and Write" key can also change values and settings. Send it in the HTTP header as `"Authorization: Bearer {API_KEY}"`. From 3.10.0 every call to `/api` needs it, including reads.
 
 :::
 
@@ -58,7 +58,8 @@ Things to note:
 - The REST API follows the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification)
 - The URL path always starts with `http://<hostname>/api/`
 - `<hostname>` is either an IP address or the mDNS name, which default is `ems-esp.local`
-- Some commands require security authentication, unless disabled via an EMS-ESP setting. The authentication is in the form of an Access Token which is generated from the WebUI's Security->Manage Users and then clicking on the key button for the admin user. The string must be included in the HTTP header like `"Authorization: Bearer {ACCESS_TOKEN}"`. The tokens have no expiry date
+- Every call needs an API key, created in the WebUI's Security->API Keys, in the HTTP header like `"Authorization: Bearer {API_KEY}"`. Calls without one get HTTP 401. Changing values or settings needs a "Read and Write" key
+- To look at a value in a browser, open its address, for example `http://ems-esp.local/api/boiler/curflowtemp`, and sign in with your EMS-ESP username and password when the browser asks. This only reads values, also for admins. Tools that only support a username and password can use an API key as the password, with any username, for example `http://user:emsesp_...@ems-esp.local/api/boiler`. The key keeps its rights there, except in a browser, where it only reads
 - With HTTP POST commands an HTTP body may be required. This can be in the form of either plain text or as a JSON object `<data>`, the Content-Type-header has to be set to `application/json` in both cases.
 - HTTPS with self-signed certificates are not yet supported
 - For a complete list of commands use `http://<hostname>/api/<device>/commands`
@@ -162,29 +163,26 @@ The URL path is `http://<hostname>/api/system/<endpoint>`
 ### Examples
 
 :::tip
-In these examples the URL is `http://ems-esp.local/api/` but adjust to your actual hostname. Also the change the bearer access token to your own as described in the [Definitions](#definitions) section.
+In these examples the URL is `http://ems-esp.local/api/` but adjust to your actual hostname. Also change the API key to your own as described in the [Definitions](#definitions) section.
 :::
 
 #### ...via the command line
 
 ```bash
-# Most GETs do not need authentication
-% curl http://ems-esp.local/api/thermostat/seltemp
+# GETs need an API key too, a "Read" key is enough
+% curl http://ems-esp.local/api/thermostat/seltemp -H 'Authorization: Bearer emsesp_...'
 
-# POSTs (with -d) need authentication tokens
+# POSTs (with -d) that change a value need a "Read and Write" key
 % curl http://ems-esp.local/api/thermostat/seltemp \
   -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0' \
+  -H 'Authorization: Bearer emsesp_...' \
   -d '{ "value" : 22.5 }'
 
-# GET with authentication using query parameter with token
-% curl http://ems-esp.local/api/system/publish\?access_token\="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0"
-
-# GET to restart EMS-ESP
-curl http://ems-esp.local/api/system/restart -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0'
+# GET to restart EMS-ESP, needs a "Read and Write" key
+curl http://ems-esp.local/api/system/restart -H 'Authorization: Bearer emsesp_...'
 
 # This example will get the system info, via a GET request
-curl -X GET ${emsesp_url}/api/system/info
+curl -X GET -H "Authorization: Bearer ${emsesp_token}" ${emsesp_url}/api/system/info
 
 # This example will execute a read command on product ID 8 and type ID 1
 curl -X POST \
@@ -209,7 +207,7 @@ import requests
 import json
 
 url = "http://ems-esp.local/api/thermostat/temp"
-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ8.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsInZlcnNpb24iOiIzLjEuMWIwIn0.qeGT53Aom4rDYeIT1Pr4BSMdeWyf4_zN9ue2c51ZnM0"
+token = "emsesp_..."  # a "Read and Write" API key
 body = json.dumps({ "value": 22.5 })
 headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
 
@@ -224,11 +222,13 @@ MQTT uses the same format as the API, but with a few differences. For the **topi
 
 The MQTT **payload** is the same as the `<data>` as described above and used in the API, and can be a JSON object or a string.
 
+What MQTT may do is set in the MQTT settings with "Commands received over MQTT": "Off, only read values", "Change values and run Commands" (the default) or "Everything, also system commands". `system/...` commands, such as `system/send` or `system/restart`, need "Everything". A factory reset (`system/format`) and erasing the crash dump (`system/coredump`) are never accepted over MQTT. Publish commands without the retain flag; retained commands are ignored.
+
 Examples:
 
 | topic                           | payload                                | action                                                                                 |
 | ------------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ems-esp/system/send`           | `XX XX...XX`                           | send raw ems-command                                                                   |
+| `ems-esp/system/send`           | `XX XX...XX`                           | send raw ems-command (needs "Everything, also system commands")                        |
 | `ems-esp/thermostat/seltemp`    |                                        | fetches the seltemp entity values and publishes it in the topic `ems-esp/response`     |
 | `ems-esp/thermostat/seltemp`    | `23`                                   | change the selected setpoint temperature to 23 degrees on the master thermostat on hc1 |
 | `ems-esp/thermostat/mode`       | `auto`                                 | sets the thermostat mode to auto for hc1                                               |

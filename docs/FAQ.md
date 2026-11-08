@@ -104,7 +104,7 @@ Note this will reduce the performance of the ESP32 chip and may cause stability 
 
 ## Upgrading the firmware
 
-When upgrading or downgrading between EMS-ESP versions, EMS-ESP will handle any migrations of the settings to maintain compatibility with the new version installed.
+When upgrading or downgrading between EMS-ESP versions, EMS-ESP will handle any migrations of the settings to maintain compatibility with the new version installed. Going back from 3.10.0 to an older version is the exception, see [Going back to an older version](#going-back-to-an-older-version).
 
 Always read the [ChangeLog](Version-Release-History.md) for the release notes and notes of any breaking changes before upgrading.
 
@@ -118,17 +118,64 @@ When you install a 3.9.0 development build from the Web UI of a 3.8.x version, t
 
 Before you upgrade:
 
-1. **Make a System Backup** in Settings > Download/Upload. After the upgrade, passwords are stored hashed and 3.8.x can't read them, so going back to 3.8.x needs this backup, otherwise a factory reset.
-2. **Note which integrations use the API**, such as Home Assistant REST sensors, Node-RED or scripts. Their access tokens stop working after the upgrade.
+1. **Make a System Backup** in Settings > Download/Upload. After the upgrade, passwords are stored hashed and older versions can't read them, so going back to 3.8.x or 3.9.x needs this backup.
+2. **Note which integrations use the API**, such as Home Assistant REST sensors, Prometheus, Node-RED, dashboards or scripts, including ones that only read values without a token. After the upgrade every call to `/api` needs an API key, and access tokens stop working.
 
 After the upgrade:
 
 1. **Set new passwords if you still use the factory ones.** An admin who signs in with a factory password must set a new admin password before the Web UI can be used, plus a new access point password if no WiFi network is set.
-2. **Create an API key for each integration** in Security > API Keys and send it as `Authorization: Bearer <key>`. Pick "Read" for integrations that only read values, "Read and Write" for ones that change settings or values.
+2. **Create an API key for each integration** in Security > API Keys and send it as `Authorization: Bearer <key>`. Pick "Read" for integrations that only read values, "Read and Write" for ones that change settings or values. To read a value in a browser, open the `/api` address and sign in when the browser asks.
 3. **Check what guest users can do.** Only admins can change the Scheduler, Commands, Custom Entities and Modules. Commands from before the upgrade can still be run by guests; for new Commands, tick "Guests may run this command" if they should.
 4. **Check the Scheduler and Commands for entries you didn't create.** Before 3.10.0, guest users and calls without a token could add them, and they are kept by the upgrade. Scheduler entries run with admin rights. Delete anything you don't recognise, and untick "Guests may run this command" on Commands guests don't need.
 
-You don't need to upload your backup after the upgrade. Keep it in case you want to go back to 3.8.x. The full list of breaking changes is in the [ChangeLog](Version-Release-History.md).
+#### Home Assistant
+
+Entities that Home Assistant gets through MQTT Discovery keep working, nothing needs to change for them. Only the parts of your configuration that call `/api` directly, such as `rest` sensors and `rest_command`, need an API key:
+
+1. In Security > API Keys, create a key for Home Assistant. Pick "Read" if you only use `rest` sensors, "Read and Write" if you also use `rest_command` to change values.
+2. Add the key as a header to every `rest` sensor and `rest_command` that calls EMS-ESP, also the ones that only read:
+
+   ```yaml
+   headers:
+     authorization: 'Bearer emsesp_...'
+   ```
+
+3. Remove any `?access_token=...` from the URLs, a token in the URL no longer works.
+4. Restart Home Assistant, or reload the REST entities.
+
+See [Home Assistant](Home-Assistant.md#reading-a-value-via-the-api) for full examples.
+
+#### ioBroker
+
+The [ioBroker ems-esp adapter](https://github.com/tp1de/ioBroker.ems-esp) (7.0.8 and older) reads values without sending a key, and only sends the token when it changes a value. It needs the API key in two places:
+
+1. In Security > API Keys, create a "Read and Write" key for ioBroker.
+2. In the adapter settings, change the EMS-ESP address to include the key, for example `http://iobroker:emsesp_...@192.168.1.10`. The name before the `:` can be anything. This lets the adapter read values.
+3. Paste the same key into the adapter's EMS-ESP access token field, replacing the old access token. This lets the adapter change values.
+4. Save and restart the adapter instance.
+
+You don't need to upload your backup after the upgrade. Keep it in case you want to go back to 3.8.x or 3.9.x. The full list of breaking changes is in the [ChangeLog](Version-Release-History.md).
+
+### Going back to an older version
+
+From 3.10.0, passwords are stored hashed. Older versions read the stored hash as if it were the password itself, so after going back to 3.8.x or 3.9.x your usual password no longer works.
+
+The simplest way back is to restore the System Backup you made before upgrading: install the older version, do a factory reset, sign in with the factory `admin` user and upload the backup in Settings > Download/Upload.
+
+Without that backup, or to keep your settings without a factory reset, sign in with the serial console (USB):
+
+1. Connect to the serial console and type `su`. The password is `ems-esp-neo`, as 3.10.0 removed the Super User password from the settings.
+2. Type `show users`. Each user's password is shown as a long text starting with `$pbkdf2-sha256$`.
+3. Sign in to the Web UI with that username and the whole text as the password, from `$pbkdf2-sha256$` to the end.
+4. In Security > Users, set a new password for each user, and in Security > Settings change the Super User password.
+
+Otherwise a factory reset gets you back in, but removes all settings.
+
+:::warning[Older versions have known security issues]
+
+Versions before 3.10.0 have the security issues fixed in 3.10.0. Only go back if you need to, turn off telnet, and upgrade again as soon as you can.
+
+:::
 
 ### Official and custom builds
 
@@ -150,7 +197,7 @@ From 3.10.0, the Web UI asks for your password again before changes that could t
 - restoring a backup, or downloading one with passwords and keys
 - a factory reset
 - adding, changing or removing users and passwords, and creating or revoking API keys
-- turning on CORS, adding allowed host names, turning on the API bypass, or turning on telnet
+- turning on CORS, adding allowed host names, or turning on telnet
 
 Once entered, you aren't asked again for 5 minutes on that browser. Signing in again or restarting EMS-ESP ends this.
 

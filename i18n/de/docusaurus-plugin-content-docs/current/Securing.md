@@ -14,9 +14,9 @@ Leiten Sie niemals Ports von Ihrem Router an EMS-ESP weiter, egal ob 80 (Web-UI 
 
 Wenn Sie EMS-ESP nutzen möchten, während Sie nicht zu Hause sind, verwenden Sie stattdessen eine der folgenden Optionen:
 
-- **Ein VPN in Ihr Heimnetzwerk.** Das ist die einfachste und sicherste Methode. Viele Router verfügen über eine integrierte VPN-Funktion (zum Beispiel eine FRITZ!Box oder ein UniFi-Gateway), oder nutzen [WireGuard](https://www.wireguard.com/) bzw. [Tailscale](https://tailscale.com/). Ihr Smartphone oder Laptop verbindet sich dann so, als befände es sich zu Hause.
+- **Ein VPN in Ihr Heimnetzwerk.** Das ist die einfachste und sicherste Lösung. Viele Router verfügen über eine integrierte VPN-Funktion (zum Beispiel eine FRITZ!Box oder ein UniFi-Gateway), oder nutzen [WireGuard](https://www.wireguard.com/) bzw. [Tailscale](https://tailscale.com/). Ihr Smartphone oder Laptop verbindet sich dann so, als befände es sich zu Hause.
 - **Home Assistant.** Wenn Sie Home Assistant mit [Home Assistant Cloud](https://www.nabucasa.com/) oder Ihrem eigenen sicheren Fernzugriff nutzen, steuern Sie EMS-ESP über Home Assistant, anstatt das Gerät selbst zu öffnen.
-- **Ein Reverse-Proxy mit HTTPS.** Ein Proxy wie [Caddy](https://caddyserver.com/), [Nginx Proxy Manager](https://nginxproxymanager.com/) oder Traefik stellt Ihnen eine `https://`-Adresse mit einem echten Zertifikat zur Verfügung und leitet diese an EMS-ESP in Ihrem Netzwerk weiter. Fügen Sie den Hostnamen des Proxys unter **Einstellungen > Netzwerk > Zulässige Hostnamen** hinzu, da EMS-ESP die Anfragen sonst ablehnt. Sichern Sie den Proxy außerdem mit eigenen Anmeldedaten und halten Sie die Proxy-Software auf dem neuesten Stand.
+- **Ein Reverse-Proxy mit HTTPS.** Ein Proxy wie [Caddy](https://caddyserver.com/), [Nginx Proxy Manager](https://nginxproxymanager.com/) oder Traefik stellt Ihnen eine `https://`-Adresse mit einem echten Zertifikat zur Verfügung und leitet diese an EMS-ESP in Ihrem Netzwerk weiter. Fügen Sie den Hostnamen des Proxys unter **Einstellungen > Netzwerk > Zulässige Hostnamen** hinzu, da EMS-ESP die Anfragen andernfalls ablehnt. Sichern Sie den Proxy zudem mit eigenen Anmeldedaten und halten Sie die Proxy-Software auf dem neuesten Stand.
 
 ## Es in ein eigenes Netzwerk einbinden
 
@@ -41,10 +41,19 @@ Dann nur das zulassen, was nötig ist:
 Auf den Seiten „Einstellungen“:
 
 - **Telnet** ist ab 3.10.0 standardmäßig deaktiviert. Lassen Sie es deaktiviert, sofern Sie es nicht benötigen, da Telnet nicht verschlüsselt ist.
-- Die Option **„API-Aufrufe ohne Zugriffstoken zulassen“** gewährt jedem in Ihrem Netzwerk Gastrechte. Verwenden Sie stattdessen API-Schlüssel.
 - **CORS** wird nur benötigt, wenn eine Webseite unter einer anderen Adresse die API aufruft. Wenn Sie diese Option aktivieren, geben Sie die genaue Adresse dieser Seite an, nicht `*`.
 - **Modbus** und **Syslog**, falls Sie diese nicht nutzen.
 - Der **Schreibschutzmodus** verhindert, dass EMS-ESP Änderungen an Ihrer Heizungsanlage übermittelt. Verwenden Sie diesen Modus, wenn Sie lediglich Werte ablesen möchten.
+
+## Begrenzung der Häufigkeit, mit der Werte geschrieben werden
+
+Aus 3.10.0: EMS-ESP schützt Ihren Heizkessel und Ihren Thermostat vor Automatisierungen, die zu häufig Daten schreiben, beispielsweise solche, die bei jeder Sensoraktualisierung die Vorlauftemperatur senden. In den Anwendungseinstellungen, neben dem schreibgeschützten Modus:
+
+- **EMS-Geräte vor wiederholten und häufigen Schreibvorgängen schützen** (standardmäßig aktiviert) aktiviert alle nachfolgenden Einstellungen. Wird derselbe Wert innerhalb einer Minute erneut in dieselbe Entität geschrieben, wird dies nicht an den Kessel gesendet, der Aufrufer erhält jedoch weiterhin die Rückmeldung „OK“. `45`, `45.0` und `"45"` gelten als derselbe Wert, ebenso wie `on`, `1` und `true`. Beim Deaktivieren dieser Funktion werden Sie zur Eingabe Ihres Passworts aufgefordert.
+- **Max. Anzahl von Schreibvorgängen pro Minute** (Standardwert 10) zählt die Schreibvorgänge für jede Entität, zum Beispiel `boiler/selflowtemp` oder `thermostat/hc1/seltemp`, innerhalb einer Minute. Für alle Entitäten zusammen gilt eine Obergrenze von 120 Schreibvorgängen pro Minute. Setzen Sie den Wert auf 0, um die Begrenzung zu deaktivieren; dazu werden Sie zur Eingabe Ihres Passworts aufgefordert.
+- **Schreibvorgänge über den Grenzwert hinaus ablehnen** (standardmäßig deaktiviert). Wenn diese Option deaktiviert ist, werden Schreibvorgänge, die das Limit überschreiten, weiterhin gesendet, und es wird einmal pro Minute eine Warnung protokolliert. Wenn sie aktiviert ist, werden sie abgelehnt: Die API gibt den HTTP-Status 429 mit der Wartezeit zurück, MQTT sendet eine Fehlerantwort und Modbus gibt „Servergerät beschäftigt“ zurück.
+
+Schreibvorgänge über die Web-Benutzeroberfläche, die API, MQTT, Modbus, den Scheduler und Befehle werden alle gezählt. Befehle wie `reset`, Einstellungen unter `system/` und benutzerdefinierte Entitäten, die ausschließlich auf EMS-ESP gespeichert sind, werden nicht gezählt. `/api/system/info` zeigt an, wie viele Schreibvorgänge übersprungen (`writesSkipped`) und begrenzt (`writesLimited`) wurden.
 
 ## MQTT
 
@@ -60,6 +69,7 @@ Auf den Seiten „Einstellungen“:
     Wenn der Broker ein neues Zertifikat erhält, aktualisieren Sie den Fingerabdruck.
   - **Nichts, nicht aktiviert**: Die Verbindung ist verschlüsselt, aber EMS-ESP überprüft nicht, ob die Kommunikation tatsächlich mit Ihrem Broker stattfindet. Auf der Seite mit den MQTT-Einstellungen und im Protokoll wird darauf hingewiesen.
 - Alles, was Nachrichten an die MQTT-Themen von EMS-ESP senden kann, kann Ihre Heizungseinstellungen ändern. Nutzen Sie die Zugriffskontrolllisten des Brokers, um einzuschränken, wer dort Nachrichten veröffentlichen darf.
+- **Über MQTT empfangene Befehle** legt fest, was diese Veröffentlichungen bewirken dürfen: „Aus, nur Werte lesen“, „Werte ändern und Befehle ausführen“ (die Standardeinstellung, ausreichend für Home Assistant) oder „Alles, auch Systembefehle“ wie Neustarts und Raw-Telegramme. Bei Auswahl von „Alles“ werden Sie zur Eingabe Ihres Passworts aufgefordert. Ein Zurücksetzen auf die Werkseinstellungen oder das Löschen des Absturz-Dumps wird über MQTT niemals akzeptiert, und Befehle, die mit dem „retain“-Flag veröffentlicht werden, werden ignoriert, sodass ein versehentlich zurückbehaltener Befehl nicht bei jeder erneuten Verbindung erneut ausgeführt werden kann.
 
 ## Firmware
 
