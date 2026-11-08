@@ -69,7 +69,7 @@ The cold shot feature is available in EMS-ESP versions 3.7.0 and above.
 
 ![Home Assistant iPhone notify](/media/screenshot/ha_notify.jpg)
 
-Add to `configuration.yaml` (make sure you change the token):
+Add to `configuration.yaml`, with a "Read and Write" API key from **Settings > Security > API Keys**:
 
 ```yaml
 rest_command:
@@ -77,7 +77,7 @@ rest_command:
     url: 'http://ems-esp.local/api/{{device}}'
     method: POST
     headers:
-      authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWV9.2bHpWya2C7Q12WjNUBD6_7N3RCD7CMl-EGhyQVzFdDg'
+      authorization: 'Bearer <Your "Read and Write" API key from the UI>'
     content_type: 'application/json'
     payload: '{"entity":"{{entity}}","value":"{{value}}"}'
 ```
@@ -294,6 +294,8 @@ Although all the EMS-ESP data is available in Home Assistant as various sensor t
 sensor:
   - platform: rest
     resource: http://ems-esp.local/api/system
+    headers:
+      authorization: 'Bearer <Your "Read" API key from the UI>'
     name: emsesp_MAC
     value_template: '{{ value_json.Network.MAC }}'
 ```

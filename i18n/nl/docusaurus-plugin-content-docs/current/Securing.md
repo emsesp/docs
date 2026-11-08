@@ -14,9 +14,9 @@ Stuur nooit poorten door vanaf je router naar EMS-ESP, of het nu gaat om poort 8
 
 Als je EMS-ESP wilt gebruiken terwijl je niet thuis bent, gebruik dan in plaats daarvan een van de volgende opties:
 
-- **Een VPN-verbinding met je thuisnetwerk.** Dit is de eenvoudigste en veiligste manier. Veel routers hebben er een ingebouwd (bijvoorbeeld een FRITZ!Box of UniFi-gateway), of maak gebruik van [WireGuard](https://www.wireguard.com/) of [Tailscale](https://tailscale.com/). Je telefoon of laptop maakt dan verbinding alsof hij thuis is.
+- **Een VPN-verbinding met je thuisnetwerk.** Dit is de eenvoudigste en veiligste manier. Veel routers hebben er een ingebouwd (bijvoorbeeld een FRITZ!Box of UniFi-gateway), of maak gebruik van [WireGuard](https://www.wireguard.com/) of [Tailscale](https://tailscale.com/). Je telefoon of laptop maakt dan verbinding alsof je thuis bent.
 - **Home Assistant.** Als je Home Assistant gebruikt in combinatie met [Home Assistant Cloud](https://www.nabucasa.com/) of je eigen beveiligde toegang op afstand, bedien EMS-ESP dan via Home Assistant in plaats van het apparaat zelf te openen.
-- **Een reverse proxy met HTTPS.** Een proxy zoals [Caddy](https://caddyserver.com/), [Nginx Proxy Manager](https://nginxproxymanager.com/) of Traefik geeft je een `https://`-adres met een echt certificaat en stuurt dit door naar EMS-ESP op je netwerk. Voeg de hostnaam van de proxy toe onder **Instellingen > Netwerk > Toegestane hostnamen**, anders weigert EMS-ESP de verzoeken. Beveilig de proxy ook met een eigen login en houd de proxysoftware up-to-date.
+- **Een reverse proxy met HTTPS.** Een proxy zoals [Caddy](https://caddyserver.com/), [Nginx Proxy Manager](https://nginxproxymanager.com/) of Traefik biedt je een `https://`-adres met een echt certificaat en stuurt dit door naar EMS-ESP op je netwerk. Voeg de hostnaam van de proxy toe onder **Instellingen > Netwerk > Toegestane hostnamen**, anders weigert EMS-ESP de verzoeken. Beveilig de proxy ook met een eigen login en houd de proxysoftware up-to-date.
 
 ## Zet het op een eigen netwerk
 
@@ -41,17 +41,26 @@ Sta dan alleen toe wat nodig is:
 Op de instellingenpagina's:
 
 - **Telnet** is standaard uitgeschakeld vanaf 3.10.0. Laat het uitgeschakeld, tenzij je het nodig hebt, want Telnet is niet versleuteld.
-- **API-aanroepen zonder toegangstoken toestaan** geeft iedereen op uw netwerk gastrechten. Gebruik in plaats daarvan API-sleutels.
 - **CORS** is alleen nodig wanneer een webpagina op een ander adres de API aanroept. Als je dit inschakelt, moet je het exacte adres van die pagina opgeven, niet `*`.
 - **Modbus** en **Syslog**, als je die niet gebruikt.
 - In de **alleen-lezen-modus** stuurt EMS-ESP geen wijzigingen naar uw verwarmingssysteem. Gebruik deze modus als u alleen waarden wilt aflezen.
+
+## Beperk hoe vaak waarden worden geschreven
+
+Met 3.10.0 beschermt EMS-ESP je ketel en thermostaat tegen automatiseringen die te vaak gegevens versturen, bijvoorbeeld een automatisering die bij elke sensorupdate de aanvoertemperatuur doorgeeft. In de applicatie-instellingen, naast de modus ‘alleen-lezen’:
+
+- **Bescherm de EMS-apparaten tegen herhaaldelijk en frequent schrijven** (standaard ingeschakeld) schakelt alle onderstaande opties in. Als binnen een minuut opnieuw dezelfde waarde naar dezelfde entiteit wordt geschreven, wordt dit niet naar de ketel verzonden, maar krijgt de aanroeper nog steeds een OK-melding. `45`, `45.0` en `"45"` worden als dezelfde waarde beschouwd, net als `on`, `1` en `true`. Als u deze optie uitschakelt, wordt om uw wachtwoord gevraagd.
+- **Max. aantal schrijfbewerkingen per minuut** (standaard 10) telt het aantal schrijfbewerkingen naar elke entiteit, bijvoorbeeld `boiler/selflowtemp` of `thermostat/hc1/seltemp`, per minuut. Voor alle entiteiten samen geldt een limiet van 120 schrijfbewerkingen per minuut. Stel deze waarde in op 0 om de limiet uit te schakelen; je wordt dan gevraagd je wachtwoord in te voeren.
+- **Schrijfpogingen boven de limiet weigeren** (standaard uitgeschakeld). Als deze optie is uitgeschakeld, worden schrijfverzoeken die de limiet overschrijden nog steeds verzonden en wordt er één keer per minuut een waarschuwing geregistreerd. Als deze optie is ingeschakeld, worden ze geweigerd: de API retourneert HTTP 429 met de wachttijd, MQTT stuurt een foutmelding en Modbus retourneert "server device busy".
+
+Schrijfbewerkingen vanuit de webinterface, de API, MQTT, Modbus, de planner en commando’s tellen allemaal mee. Commando’s zoals `reset`, instellingen onder `system/` en aangepaste entiteiten die alleen op EMS-ESP worden opgeslagen, tellen niet mee. `/api/system/info` geeft aan hoeveel schrijfbewerkingen zijn overgeslagen (`writesSkipped`) en beperkt (`writesLimited`).
 
 ## MQTT
 
 - Gebruik een gebruikersnaam en wachtwoord voor je MQTT-broker en geef EMS-ESP een eigen account.
 - Als je broker TLS ondersteunt, schakel dan **TLS** in de MQTT-instellingen in (meestal poort 8883) en kies hoe EMS-ESP de broker controleert:
-  - **CA-certificaat**: plak het certificaat van de certificeringsinstantie die het certificaat van de broker heeft ondertekend, als tekst (PEM). Gebruik dit voor certificaten van Let's Encrypt of je eigen certificeringsinstantie.
-  - **Certificaatvingerafdruk**: de SHA-1-vingerafdruk van het eigen certificaat van de broker. Gebruik dit voor een zelfondertekend certificaat. Je kunt deze uitlezen met:
+  - **CA-certificaat**: plak het certificaat van de certificeringsinstantie die het certificaat van de tussenpersoon heeft ondertekend, als tekst (PEM). Gebruik dit voor certificaten van Let's Encrypt of je eigen certificeringsinstantie.
+  - **Certificaatvingerafdruk**: de SHA-1-vingerafdruk van het eigen certificaat van de broker. Gebruik dit voor een zelfondertekend certificaat. Je kunt deze opvragen met:
 
     ```bash
     openssl s_client -connect <broker>:8883 </dev/null 2>/dev/null | openssl x509 -noout -fingerprint -sha1
@@ -59,7 +68,8 @@ Op de instellingenpagina's:
 
     Zodra de broker een nieuw certificaat ontvangt, moet je de vingerafdruk bijwerken.
   - **Niets, niet aangevinkt**: de verbinding is versleuteld, maar EMS-ESP controleert niet of er daadwerkelijk verbinding is met je broker. Op de pagina met MQTT-instellingen en in het logboek wordt hierover gewaarschuwd.
-- Alles wat berichten kan versturen naar de MQTT-onderwerpen van EMS-ESP, kan je verwarmingsinstellingen wijzigen. Gebruik de toegangsbeheerlijsten van de broker om te beperken wie er berichten naar deze onderwerpen mag versturen.
+- Alles wat berichten kan verzenden naar de MQTT-onderwerpen van EMS-ESP, kan je verwarmingsinstellingen wijzigen. Gebruik de toegangsbeheerlijsten van de broker om te beperken wie er berichten naar deze onderwerpen mag verzenden.
+- **Via MQTT ontvangen commando’s** bepaalt wat die publicaties mogen doen: „Uit, alleen waarden lezen”, „Waarden wijzigen en commando’s uitvoeren” (de standaardinstelling, voldoende voor Home Assistant) of „Alles, ook systeemcommando’s” zoals herstarts en onbewerkte telegrammen. Als je "Alles" kiest, wordt om je wachtwoord gevraagd. Een fabrieksreset of het wissen van de crashdump wordt nooit via MQTT geaccepteerd, en commando's die met de retain-vlag worden gepubliceerd, worden genegeerd, zodat een verdwaald bewaard commando niet bij elke herverbinding opnieuw kan worden uitgevoerd.
 
 ## Firmware
 
@@ -71,7 +81,7 @@ Op de instellingenpagina's:
 
 Iedereen die bij de USB-poort van de gateway kan komen, kan de flashgeheugenlezen, andere firmware installeren of de seriële console gebruiken. De gateways worden geleverd zonder beveiligde opstartprocedure of flashversleuteling, zodat je altijd elke gewenste firmware kunt installeren. Bewaar de gateway op een plek waar anderen er niet gemakkelijk bij kunnen.
 
-Voordat je een gateway verkoopt of weggeeft, moet je deze terugzetten naar de fabrieksinstellingen (via ‘Factory Reset’ op de versiepagina, met het `system/format`-commando of door de knop lang ingedrukt te houden). Vanaf 3.10.0 worden hiermee alle instellingen, inclusief wachtwoorden en sleutels, uit het flashgeheugen gewist.
+Voordat je een gateway verkoopt of weggeeft, moet je deze terugzetten naar de fabrieksinstellingen (via ‘Factory Reset’ op de versiepagina, het `system/format`-commando of door de knop lang ingedrukt te houden). Vanaf 3.10.0 worden hierdoor alle instellingen, inclusief wachtwoorden en sleutels, uit het flashgeheugen gewist.
 
 ## Een beveiligingsprobleem melden
 

@@ -24,7 +24,6 @@ This next section describes some of key settings that can be adjusted via the We
 
 ### Services
 
-- **Bypass Access Token authorization on API calls**. For RESTful write commands via HTTP POST the access token is required. This is for security reasons to prevent anyone changing device settings. Setting this flag makes the API open. Not recommended!
 - **Enable Telnet Console**. This is on by default and allows users to connect to the in-secure Telnet server on port 23.
 - **Enable Modbus**. This is off by default and allows users to connect to the Modbus TCP server (default port 502). Due to memory constraints this feature is only available on boards with additional PSRAM.
 - **Enable Syslog**:
@@ -137,11 +136,9 @@ Enable this function when running in VPNs or you have other servers (like Grafan
 
 ## Managing Users and Roles
 
-The Security page allows you to change the default password for the captive portal and Telnet CLI. It also allows you to enable HTTPS for the captive portal and MQTT broker.
+The Users page allows you to create additional users for the WebUI and the Telnet console. A new install only has the `admin` user with password `admin`, and from 3.10.0 that factory password must be changed before the WebUI can be used. Admin users can change settings, guest users can only view values.
 
-The Users page allows you to create additional users for the captive portal and Telnet CLI. The default user is `admin` with password `admin`.
-
-Each user has an unique Access Token (viewable by clicking on the key icon) which is used for RESTful write commands via HTTP POST. This is for security reasons to prevent anyone changing device settings.
+Integrations such as Home Assistant, Node-RED or scripts that call the `/api` use an API key instead of a user. Create one in **Settings > Security > API Keys**: a "Read" key can read values, a "Read and Write" key can also change values and settings. See [Securing your gateway](Securing.md#passwords-and-accounts).
 
 ![Web](/media/screenshot/web_users.png)
 

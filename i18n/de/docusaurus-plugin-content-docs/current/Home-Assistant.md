@@ -4,25 +4,25 @@ title: Home Assistant Integration
 description: Integrate EMS-ESP with Home Assistant using MQTT Discovery for automatic device setup and control
 ---
 
-# Haushaltshilfe
+# Home Assistant
 
 ![logo](/media/logo/home-assistant.png)
 
-EMS-ESP verfügt über eine automatische Integration mit Home Assistant über das [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/)-Protokoll. Um diese Funktion zu nutzen, aktivieren Sie einfach die Option Discovery auf der Seite MQTT Settings.
+EMS-ESP lässt sich über das [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/)-Protokoll automatisch in Home Assistant integrieren. Um diese Funktion zu nutzen, aktivieren Sie einfach die Option „Discovery“ auf der Seite „MQTT-Einstellungen“.
 
-EMS-ESP erstellt MQTT-Nachrichten mit dem Präfix `homeassistant/` für jedes Gerät und seine Werte (sogenannte Entitäten). Zum Beispiel "`EMS-ESP Thermostat`". Sie können sehen, welche Nachrichten erstellt wurden, indem Sie im Home Assistant `Configuration->Integrations` aufrufen und die Geräte unter `MQTT` auswählen.
+EMS-ESP erstellt für jedes Gerät und dessen Werte (sogenannte Entitäten) gespeicherte MQTT-Nachrichten, denen das Präfix `homeassistant/` vorangestellt wird. Zum Beispiel „`EMS-ESP Thermostat`“. Sie können einsehen, welche Nachrichten erstellt wurden, indem Sie in Home Assistant den Bereich `Configuration->Integrations` aufrufen und dort unter `MQTT` die Geräte auswählen.
 
-Um dieses Gerät und seine Werte zu einem Home Assistant UI hinzuzufügen, klicken Sie auf die Schaltfläche "ADD TO LOVELACE".
+Um dieses Gerät und seine Werte zur Benutzeroberfläche von Home Assistant hinzuzufügen, klicken Sie auf die Schaltfläche „ADD TO LOVELACE“.
 
 ![device](/media/screenshot/ha_device.png)
 
-Sie können dann jedes dieser Geräte über die Schaltfläche "Zu Lovelace hinzufügen" zu einer neuen Lovelace-Ansicht hinzufügen und erhalten dann ein Ergebnis, das etwa so aussieht:
+Anschließend können Sie jedes dieser Geräte über die Schaltfläche „Zu Lovelace hinzufügen“ zu einer neuen Lovelace-Ansicht hinzufügen, sodass etwa folgendes Ergebnis entsteht:
 
 ![lovelace](/media/screenshot/ha_lovelace.png)
 
-## Beispiel Automatisierungen
+## Beispiele für Automatisierungen
 
-### Alarm, wenn EMS-ESP startet
+### Warnmeldung beim Start von EMS-ESP
 
 ```yaml
 alias: EMS-ESP booted
@@ -41,7 +41,7 @@ actions:
 mode: single
 ```
 
-### Warnung, wenn EMS-ESP offline geht und sich wieder mit dem WiFi-Netzwerk verbindet
+### Benachrichtigung, wenn EMS-ESP die Verbindung zum WLAN-Netzwerk verliert und sich wieder damit verbindet
 
 ```yaml
 alias: EMS-ESP Wifi Reconnected
@@ -61,15 +61,15 @@ mode: single
 
 ### Integration der Dusche
 
-Nachfolgend sind die Ergänzungen zu den HA-Dateien aufgeführt, um den Zustand der Dusche anzuzeigen, wenn die Einstellung `Shower Timer` im EMS-ESP aktiviert ist.
+Im Folgenden sind die Ergänzungen zu den HA-Dateien aufgeführt, die den Status der Dusche anzeigen, sofern die Einstellung `Shower Timer` in EMS-ESP aktiviert ist.
 
-Die Cold-Shot-Funktion ist in den EMS-ESP-Versionen 3.7.0 und höher verfügbar.
+Die „Cold Shot“-Funktion ist in den EMS-ESP-Versionen 3.7.0 und höher verfügbar.
 
 ![Home Assistant Shower](/media/screenshot/ha_shower.jpg)
 
 ![Home Assistant iPhone notify](/media/screenshot/ha_notify.jpg)
 
-Hinzufügen zu `configuration.yaml` (achten Sie darauf, das Token zu ändern):
+Fügen Sie dies zu `configuration.yaml` hinzu, mit einem API-Schlüssel mit „Lese- und Schreibzugriff“ aus **Einstellungen > Sicherheit > API-Schlüssel**:
 
 ```yaml
 rest_command:
@@ -77,12 +77,12 @@ rest_command:
     url: 'http://ems-esp.local/api/{{device}}'
     method: POST
     headers:
-      authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWV9.2bHpWya2C7Q12WjNUBD6_7N3RCD7CMl-EGhyQVzFdDg'
+      authorization: 'Bearer <Your "Read and Write" API key from the UI>'
     content_type: 'application/json'
     payload: '{"entity":"{{entity}}","value":"{{value}}"}'
 ```
 
-und stellen Sie sicher, dass Sie die yaml-Dateien wie folgt in Ihre `configuration.yaml`-Datei einfügen:
+und stellen Sie sicher, dass Sie die YAML-Dateien wie folgt in Ihre `configuration.yaml`-Datei einbinden:
 
 ```yaml
 template: !include templates.yaml
@@ -152,9 +152,9 @@ Zu `template.yaml` hinzufügen:
         endif %}"
 ```
 
-Beachten Sie, dass Sie das `timestamp_custom()` in Ihrem eigenen bevorzugten Format konfigurieren können.
+Beachten Sie, dass Sie das `timestamp_custom()` an Ihr bevorzugtes Format anpassen können.
 
-Hinzufügen einer neuen Karte zu einem bestehenden Dashboard. Ich verwende benutzerdefinierte Karten namens "mushroom", die über das HACS-Plugin installiert werden können. Eine solche Karte würde wie folgt aussehen:
+Füge eine neue Karte zu einem bestehenden Dashboard hinzu. Ich verwende benutzerdefinierte Karten namens „mushroom“, die über das HACS-Plugin installiert werden können. Eine solche Karte würde wie folgt aussehen:
 
 ```yaml
 type: vertical-stack
@@ -198,7 +198,7 @@ cards:
     icon_height: 24px
 ```
 
-### Warnung bei Änderung der Thermostat-Solltemperatur
+### Benachrichtigung bei Änderung der Thermostat-Einstelltemperatur
 
 ```yaml
 alias: Thermostat Alert
@@ -218,9 +218,9 @@ action:
 mode: single
 ```
 
-### Aktivierung der einmaligen Warmwasserladung DHW einmalig über MQTT
+### Einmalige Warmwasserbefüllung über MQTT
 
-Nachfolgend ein Beispiel für den Aufruf eines Befehls (OneTimeWater)
+Nachfolgend finden Sie ein Beispiel für den Aufruf eines Befehls (OneTimeWater)
 
 `switch`:
 
@@ -254,9 +254,9 @@ one_time_water_off:
         payload: '{"cmd":"dhw/onetime","data":0}'
 ```
 
-### Berechnung der Werte
+### Werte berechnen
 
-(aus Glitzerkugel)
+(aus „Glitter-ball“)
 
 ```yaml
 - platform: template
@@ -268,7 +268,7 @@ one_time_water_off:
       value_template: "{{ (states('sensor.flow_temperature') | float - state('sensor.return_temp') | float) | round(1) }}"
 ```
 
-### Betriebsstunden der Solarpumpe
+### Betriebszeiten der Solarpumpe
 
 (von PhillyGilly)
 
@@ -286,19 +286,21 @@ one_time_water_off:
   payload_not_available: 'offline'
 ```
 
-### Lesen eines Wertes über die API
+### Einen Wert über die API auslesen
 
-Obwohl alle EMS-ESP-Daten im Home Assistant als verschiedene Sensortypen verfügbar sind, können Sie optional auch Befehle aufrufen und Daten über die REST-API-Schnittstelle lesen. Zum Beispiel im folgenden Skript, das den HA veranlasst, die MAC-Adresse abzurufen, wenn der HA neu gestartet wird:
+Obwohl alle EMS-ESP-Daten in Home Assistant als verschiedene Sensortypen verfügbar sind, können Sie optional auch Befehle aufrufen und Daten über die REST-API-Schnittstelle abrufen. Zum Beispiel im folgenden Skript, das HA dazu veranlasst, die MAC-Adresse abzurufen, wenn HA neu gestartet wird:
 
 ```yaml
 sensor:
   - platform: rest
     resource: http://ems-esp.local/api/system
+    headers:
+      authorization: 'Bearer <Your "Read" API key from the UI>'
     name: emsesp_MAC
     value_template: '{{ value_json.Network.MAC }}'
 ```
 
-### Ändern eines Wertes über die API
+### Einen Wert über die API ändern
 
 `configuration.yaml`:
 
@@ -349,53 +351,54 @@ in den Automatisierungen:
       value: "{{ states('sensor.boiler_ww_selected_temperature') | int }}"
 ```
 
-Fügen Sie dann in der lovelace UI Ihres HA eine Entität namens `input_number.wwselected_temp` hinzu.
+Fügen Sie anschließend in der Lovelace-Benutzeroberfläche Ihres HA eine Entität namens `input_number.wwselected_temp` hinzu.
 
-In HA können Sie nun die Werte dynamisch anpassen. Zum Beispiel:
+In HA können Sie die Werte nun dynamisch anpassen. Zum Beispiel:
 
 ![Screenshot 2021-08-08 143712](https://user-images.githubusercontent.com/1230712/128632199-7815d649-40a8-4f11-99e3-eacc16bf53a4.png)
 
-Prüfen Sie, ob es funktioniert, indem Sie zu `http://ems-esp/api/boiler/dhw.seltemp` gehen
+Überprüfen Sie, ob es funktioniert, indem Sie zu `http://ems-esp/api/boiler/dhw.seltemp` wechseln.
 
-### LoveLace Section View, Kacheln und Einstellwerte über EMS-ESP
+### LoveLace-Schnittansicht, Kacheln und Einstellen von Werten über EMS-ESP
 
 _(by oliof)_
 
-Seit HA2024.12 verwendet lovelace standardmäßig Abschnittsansichten und generiert automatisch Kacheln für die meisten Entitäten. Während Kacheln auf den ersten Blick nur einfache Anzeigehilfen sind, kann ihre Funktionalität durch Hinzufügen von Features umfassend modifiziert werden. Hier ist eine grafische Anleitung zur Erstellung eines ähnlichen Steuerelements wie oben aus lovelace heraus ohne Änderungen an `configuration.yaml`
+Seit HA2024.12 verwendet Lovelace standardmäßig „Sections“-Ansichten und generiert für die meisten Entitäten automatisch „Tiles“.
+Auch wenn „Tiles“ auf den ersten Blick nur einfache Anzeigehilfen zu sein scheinen, lässt sich ihre Funktionalität durch das Hinzufügen von „Features“ umfassend anpassen. Hier finden Sie eine grafische Anleitung, wie Sie in Lovelace ein ähnliches Steuerelement wie oben erstellen können, ohne Änderungen an `configuration.yaml` vornehmen zu müssen.
 
-1. Fügen Sie in einer Abschnittsansicht eine Kachel für einen einstellbaren Wert hinzu, z. B. für die ausgewählte Warmwassertemperatur. Die Auswahl von Entitäten unterstützt die automatische Vervollständigung:
+1. Fügen Sie in einer Schnittansicht eine Kachel für einen einstellbaren Wert hinzu, beispielsweise für die ausgewählte Warmwassertemperatur. Bei der Auswahl der Elemente wird die automatische Vervollständigung unterstützt:
 
 ![image](https://github.com/user-attachments/assets/90ad3a45-e84e-497d-a975-f4313ad356c0)
 
-1. Klicken Sie auf das Häkchen und "Weiter". Daraufhin wird eine Vorschau der automatisch ausgewählten Kachel angezeigt:
+1. Klicken Sie auf das Häkchen und dann auf „Weiter“. Daraufhin wird eine Vorschau der automatisch ausgewählten Kachel angezeigt:
 
 ![image](https://github.com/user-attachments/assets/58da9622-9a5b-4df0-aeec-daabb0ba8f80)
 
-1. Klicken Sie auf Zum Dashboard hinzufügen. Dadurch wird die Kachel dem Dashboard in der Standardeinstellung hinzugefügt, die nur den Wert der Entität anzeigt:
+1. Klicken Sie auf „Zum Dashboard hinzufügen“. Dadurch wird die Kachel in ihrer Standardeinstellung zum Dashboard hinzugefügt, wobei lediglich der Wert der Entität angezeigt wird:
 
 ![image](https://github.com/user-attachments/assets/1be160cb-4527-4db4-bd12-04599eed84af)
 
-1. Bearbeiten Sie die Kachel, um die Größe anzupassen und fügen Sie ein Feature hinzu, um die numerische Eingabefunktion zu erhalten.
+1. Bearbeiten Sie die Kachel, um die Größe anzupassen, und fügen Sie ein Element hinzu, um die Funktion zur numerischen Eingabe zu aktivieren.
 
 ![image](https://github.com/user-attachments/assets/be44cc79-bdf1-4bff-b054-118d1b3c7382)
 
 ![image](https://github.com/user-attachments/assets/efb00a7b-4b92-4eaf-8aa4-6dcbc1b38a66)
 
-Wenn Sie einen Schieberegler den Schaltflächen vorziehen, können Sie `SHOW CODE EDITOR` wählen und `style: buttons` aus der Feature-Definition entfernen:
+Falls Sie einen Schieberegler den Schaltflächen vorziehen, drücken Sie `SHOW CODE EDITOR` und entfernen Sie `style: buttons` aus der Funktionsdefinition:
 
 ![image](https://github.com/user-attachments/assets/a47dfd30-d5b9-4387-b7a6-67e115ecf170)
 
-Beachten Sie, dass die Kachelkomponente, die mit HA geliefert wird, keine Mindest- und Höchstwerte festlegen kann. Verwenden Sie entweder `numeric_input`, wie im vorherigen Abschnitt beschrieben, oder schauen Sie sich [Service Call Tiles on HACS](https://github.com/Nerwyn/service-call-tile-feature) an.
+Bitte beachten Sie, dass die in HA enthaltene Tile-Komponente keine Festlegung von Minimal- und Maximalwerten zulässt. Verwenden Sie entweder `numeric_input`, wie im vorherigen Abschnitt beschrieben, oder sehen Sie sich [Service Call Tiles on HACS](https://github.com/Nerwyn/service-call-tile-feature) an.
 
-1. Klicken Sie auf Speichern und genießen Sie die von der Benutzeroberfläche erzeugte EMS-ESP-Kontrollkachel:
+1. Klicken Sie auf „Speichern“ und freuen Sie sich über Ihre von der Benutzeroberfläche generierte EMS-ESP-Steuerkachel:
 
 ![image](https://github.com/user-attachments/assets/f5a3ca3e-afa9-4f33-b004-254349b3806a)
 
-### Anzeige des Kesselstatus auf Basis des Servicecodes
+### Anzeige des Kesselfunktionszustands anhand des Servicecodes
 
 (von glitterball)
 
-Verwenden Sie eine Vorlage, um den Kesselservice-Code in eine Zeichenkette zu übersetzen.
+Verwenden Sie eine Vorlage, um den Wartungscode des Heizkessels in eine Zeichenfolge umzuwandeln.
 
 in `configuration.yaml`:
 

@@ -35,6 +35,7 @@ _(by flohse123)_
 ```php
 <?php
 $ch = curl_init("http://<myIP>/api?device=thermostat&cmd=info");
+curl_setopt($ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer <your Read API key>"]);
 curl_exec($ch);
 curl_close($ch);
 ?>
