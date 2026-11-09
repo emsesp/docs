@@ -37,7 +37,7 @@ Zum Teil. Wie die Leute von [OpenTherm Gateway (OTGW)](https://otgw.tclcode.com/
 
 :::tip[Warum einen Thermostat verwenden?]
 
-    - Die Thermostathersteller haben jahrelange Forschungsarbeit geleistet, um die Heizcharakteristika für die effizienteste und komfortabelste Art der Beheizung eines Hauses zu ermitteln.
+    - Die Thermostathersteller haben jahrelange Forschungsarbeit geleistet, um die Heizcharakteristika zu ermitteln, die eine möglichst effiziente und komfortable Beheizung eines Hauses ermöglichen.
     - Der Thermostat verfügt über eine Bedienoberfläche, mit der die Nutzer vertraut sind, sodass auch andere Haushaltsmitglieder den Sollwert weiterhin einstellen können.
     - Es bietet eine praktische Unterbringung für den Raumtemperatursensor, der erforderlich ist, sofern Sie keine Heizkurve verwenden, die ausschließlich auf der Außentemperatur basiert.
 
@@ -53,13 +53,13 @@ Außerdem sagt **MichaelDvP**: „Wenn Sie einen softwaregesteuerten Thermostat 
   Legen Sie eine Heizkurve für Ihr Gebäude fest. Dabei handelt es sich um eine lineare Interpolation zwischen einer Mindestaußentemperatur für Ihre Region (typischerweise -11 °C für Mitteleuropa) mit maximaler Vorlauftemperatur (Auslegungstemperatur ~76 °C für Heizkörper, 40 °C für Fußbodenheizungen) und dem tatsächlichen Raum-Sollwert (z. B. 21 °C) für Außentemperatur und Vorlauftemperatur. Sie können einen Offset hinzufügen.
   selflowtemp = Offset + Sollwert + (Auslegungstemperatur – Sollwert) * (Sollwert – Außentemperatur) / (Sollwert – minimale Außentemperatur)
 - raumgesteuert, geschaltet:
-  Die Raumtemperatur messen und den Heizkessel einschalten, wobei die Heizungsabschaltung aktiviert ist, wenn die Raumtemperatur den Sollwert überschreitet. Um häufiges Ein- und Ausschalten zu vermeiden, eine Hysterese einbauen.
+  Die Raumtemperatur messen und den Heizkessel einschalten, wobei die Heizungsabschaltung aktiviert ist, wenn die Raumtemperatur den Sollwert überschreitet. Um häufiges Ein- und Ausschalten zu vermeiden, eine Hysterese hinzufügen.
 - raumgesteuert, dynamisch
   Hier muss eine PID-Regelung berechnet werden. Das geht etwas über den Rahmen des ems-esp-Schedulers hinaus. Aber vielleicht ist es möglich. Bei HA kannst du unter „Implementierung eines intelligenten Thermostats (mit SAT)“ nachlesen. Siehe [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
 - Steuerung über intelligente Thermostatventile (TRVs):
   Wenn Sie den Öffnungsgrad der Thermostatventile ablesen können, richten Sie eine einfache I-Regelung ein. Ist ein Thermostatventil vollständig geöffnet: Erhöhen Sie die Vorlauftemperatur; liegt der Öffnungsgrad des am weitesten geöffneten Thermostatventils unter 90 %: Verringern Sie die Vorlauftemperatur. Das Aufheizen ist ein langsamer Prozess, gehen Sie daher increase/decrease vorsichtig vor.
 
-Wenn Sie mehr darüber erfahren möchten, lesen Sie doch einmal diese Beiträge:
+Wenn Sie mehr darüber erfahren möchten, schauen Sie sich diese Diskussionen an:
 
 - [Smart control a heating system with HA?](https://github.com/emsesp/EMS-ESP32/discussions/965)
 - [Thermostat emulation](https://github.com/emsesp/EMS-ESP32/issues/151)
@@ -97,6 +97,7 @@ Das wird nicht funktionieren. Der Heizkessel arbeitet mit `selflowtemp` als Soll
 ## So sparen Sie Energie beim ESP32-Chip
 
 Wenn Sie Bedenken hinsichtlich des Energieverbrauchs des ESP32-Chips haben und die Wärmeabgabe reduzieren möchten, können Sie einige der folgenden Einstellungen vornehmen:
+
 - `Underclock CPU speed` im **Abschnitt „Anwendung Settings/Hardware“**
 - Wenn Sie WLAN nutzen, aktivieren Sie `WiFi Sleep Mode`, wählen Sie `use lower WiFi bandwidth` aus und senken Sie die Sendeleistung `Tx power` im **Abschnitt „Netzwerk Settings/WiFi“** auf etwa 8,5 dBm.
 - Wenn Sie Ethernet verwenden, aktivieren Sie `Force 10Mbit half-duplex` im **Abschnitt „Netzwerk Settings/Ethernet“**
@@ -107,13 +108,15 @@ Beachten Sie, dass dies die Leistung des ESP32-Chips beeinträchtigt und zu Stab
 
 Bei einem Upgrade oder Downgrade zwischen verschiedenen EMS-ESP-Versionen übernimmt EMS-ESP die Migration der Einstellungen, um die Kompatibilität mit der neu installierten Version zu gewährleisten. Eine Rückkehr von 3.10.0 zu einer älteren Version bildet hier eine Ausnahme; siehe [Going back to an older version](#zurück-zu-einer-älteren-version).
 
-Lesen Sie vor einem Upgrade stets den [ChangeLog](Version-Release-History.md) mit den Versionshinweisen und Informationen zu etwaigen kompatibilitätsbeeinträchtigenden Änderungen.
+Lesen Sie vor einem Upgrade stets die [ChangeLog](Version-Release-History.md), um sich über die Versionshinweise und etwaige Änderungen, die Kompatibilitätsprobleme verursachen könnten, zu informieren.
 
 ### Upgrade von 3.8.x auf 3.10.x
 
 :::warning[Kein Zurücksetzen auf die Werkseinstellungen erforderlich]
 
-Wenn Sie eine 3.9.0-Entwicklungsversion über die Web-Benutzeroberfläche einer 3.8.x-Version installieren, wird im Dialogfeld angezeigt, dass für das Upgrade ein Zurücksetzen auf die Werkseinstellungen erforderlich ist. Dies ist jedoch nicht der Fall, ignorieren Sie diesen Teil der Meldung daher bitte. Ihre Einstellungen bleiben erhalten und werden migriert. Beim Upgrade auf 3.10.0 wird diese Meldung nicht angezeigt.
+Wenn Sie über die Web-Benutzeroberfläche einer Version 3.8.x einen Entwicklungs-Build 3.9.0 oder höher installieren, wird im Dialogfeld angezeigt, dass für das Upgrade ein Zurücksetzen auf die Werkseinstellungen erforderlich ist. Dies ist jedoch nicht der Fall, ignorieren Sie diesen Teil der Meldung daher bitte. Ihre Einstellungen bleiben erhalten und werden migriert. Beim Upgrade auf 3.10.0 wird diese Meldung nicht angezeigt.
+
+Beachten Sie außerdem, dass sich die MAC-Adresse ändert und sich wahrscheinlich auch die vom DHCP zugewiesene IP-Adresse ändert. Verwenden Sie mDNS (`name.local`) oder Ihren Router, um die neue Adresse zu ermitteln.
 
 :::
 
@@ -133,7 +136,7 @@ Nach dem Upgrade:
 
 Geräte, die Home Assistant über MQTT Discovery erkennt, funktionieren weiterhin – hier sind keine Änderungen erforderlich. Lediglich die Teile Ihrer Konfiguration, die `/api` direkt aufrufen, wie beispielsweise `rest`-Sensoren und `rest_command`, benötigen einen API-Schlüssel:
 
-1. Erstellen Sie unter „Sicherheit > API-Schlüssel“ einen Schlüssel für Home Assistant. Wählen Sie „Lesen“, wenn Sie nur `rest`-Sensoren verwenden, und „Lesen und Schreiben“, wenn Sie auch `rest_command` zum Ändern von Werten nutzen.
+1. Erstellen Sie unter „Sicherheit > API-Schlüssel“ einen Schlüssel für Home Assistant. Wählen Sie „Lesen“, wenn Sie nur `rest`-Sensoren verwenden, und „Lesen und Schreiben“, wenn Sie auch `rest_command` nutzen, um Werte zu ändern.
 2. Fügen Sie den Schlüssel als Header zu jedem `rest`-Sensor und jedem `rest_command` hinzu, der EMS-ESP aufruft, auch zu denen, die nur lesen:
 
    ```yaml
@@ -155,7 +158,7 @@ Der [ioBroker ems-esp adapter](https://github.com/tp1de/ioBroker.ems-esp) (7.0.8
 3. Fügen Sie denselben Schlüssel in das Feld „EMS-ESP-Zugriffstoken“ des Adapters ein und ersetzen Sie damit das alte Zugriffstoken. Dadurch kann der Adapter Werte ändern.
 4. Speichern Sie die Änderungen und starten Sie die Adapterinstanz neu.
 
-Sie müssen Ihr Backup nach dem Upgrade nicht hochladen. Bewahren Sie es auf, falls Sie wieder auf 3.8.x oder 3.9.x zurückwechseln möchten. Die vollständige Liste der inkompatiblen Änderungen finden Sie unter [ChangeLog](Version-Release-History.md).
+Sie müssen Ihr Backup nach dem Upgrade nicht hochladen. Bewahren Sie es auf, falls Sie wieder auf 3.8.x oder 3.9.x zurückwechseln möchten. Die vollständige Liste der kompatibilitätsbrechenden Änderungen finden Sie unter [ChangeLog](Version-Release-History.md).
 
 ### Zurück zu einer älteren Version
 
@@ -174,13 +177,13 @@ Andernfalls können Sie durch ein Zurücksetzen auf die Werkseinstellungen wiede
 
 :::warning[Ältere Versionen weisen bekannte Sicherheitslücken auf]
 
-In den Versionen vor 3.10.0 wurden die in 3.10.0 behobenen Sicherheitsprobleme bereits behoben. Wechseln Sie nur dann zu einer älteren Version zurück, wenn es unbedingt notwendig ist, deaktivieren Sie Telnet und führen Sie so bald wie möglich wieder ein Upgrade durch.
+In den Versionen vor 3.10.0 wurden die in 3.10.0 behobenen Sicherheitslücken bereits behoben. Weichen Sie nur dann auf eine ältere Version zurück, wenn es unbedingt erforderlich ist, deaktivieren Sie Telnet und führen Sie so bald wie möglich ein Upgrade durch.
 
 :::
 
 ### Offizielle und benutzerdefinierte Builds
 
-Ab 3.10.0 prüft EMS-ESP, ob es sich bei der Firmware um einen offiziellen Build handelt, wenn Sie eine Firmware-Datei über die Web-Benutzeroberfläche hochladen, eine Version aus der Versionsliste der Web-Benutzeroberfläche installieren oder diese über die Recovery-App hochladen. Offizielle Releases und Entwicklungsversionen von [GitHub](https://github.com/emsesp/EMS-ESP32/releases) sind von EMS-ESP signiert und werden sofort installiert. Auf der Seite „Version“ wird neben der Versionsnummer „Offizielle Version“ angezeigt.
+Ab 3.10.0 prüft EMS-ESP, ob es sich bei der Firmware um einen offiziellen Build handelt, wenn Sie eine Firmware-Datei über die Web-Benutzeroberfläche hochladen, eine Version aus der Versionsliste der Web-Benutzeroberfläche installieren oder diese über die Recovery-App hochladen. Offizielle Releases und Entwicklungsversionen von [GitHub](https://github.com/emsesp/EMS-ESP32/releases) sind von EMS-ESP signiert und werden sofort installiert. Auf der Seite „Version“ wird neben der Versionsnummer „Offizieller Build“ angezeigt.
 
 Alles andere ist ein benutzerdefinierter Build, zum Beispiel einer, den Sie selbst erstellt haben, ein Community-Build, eine Version, die älter ist als 3.10.0, oder ein Dateisystem-Image. Die Web-Benutzeroberfläche zeigt dann vor der Installation die Meldung „Dies ist kein offizieller EMS-ESP-Build“ an. Klicken Sie auf „Trotzdem installieren“, um die Installation fortzusetzen, oder lassen Sie es sein, wenn Sie dies nicht erwartet haben. Auf der Seite „Version“ wird dann „Benutzerdefinierte Version“ angezeigt.
 
@@ -247,7 +250,7 @@ Bei C3 und C6 gibt es keinen Backtrace, sondern nur `ra` (Rückkehradresse), `mc
 
 ### Einen Absturz-Dump selbst entschlüsseln
 
-Für die Dekodierung wird die Datei `firmware.elf` genau des Builds benötigt, bei dem der Absturz aufgetreten ist. Wenn Sie EMS-ESP selbst kompilieren, wird von jedem Build eine gzipped-Kopie unter dem Namen `build/elf/<variant>-<sha>.elf.gz` gespeichert, wobei `<sha>` mit dem Eintrag `sha` in der Absturzübersicht übereinstimmt. Entpacken Sie diese mit `gunzip -k`. Diese Dateien sind jeweils etwa 20 MB groß, löschen Sie daher ab und zu alte Dateien.
+Für die Dekodierung wird die Datei `firmware.elf` genau des Builds benötigt, bei dem der Absturz aufgetreten ist. Wenn Sie EMS-ESP selbst kompilieren, wird von jedem Build eine gzip-komprimierte Kopie unter dem Namen `build/elf/<variant>-<sha>.elf.gz` gespeichert, wobei `<sha>` mit dem Eintrag `sha` in der Absturzübersicht übereinstimmt. Entpacken Sie diese mit `gunzip -k`. Diese Dateien sind jeweils etwa 20 MB groß, löschen Sie daher ab und zu alte Dateien.
 
 Wandeln Sie die Adressen aus der Zusammenfassung in Funktions-, Datei- und Zeilenadressen um:
 
@@ -267,7 +270,7 @@ Dekodiere für die Stacks und Register jeder Aufgabe das heruntergeladene `cored
 ~/.platformio/penv/bin/esp-coredump info_corefile -t raw -c coredump.bin .pio/build/s_16M_P/firmware.elf
 ```
 
-Oder schließen Sie die Platine über USB an und lassen Sie `esp-coredump` den Dump in einem Schritt lesen und dekodieren:
+Oder schließen Sie die Platine über USB an und lassen Sie `esp-coredump` den Speicherauszug in einem Schritt lesen und dekodieren:
 
 ```bash
 ~/.platformio/penv/bin/esp-coredump --port /dev/ttyUSB0 info_corefile .pio/build/s_16M_P/firmware.elf

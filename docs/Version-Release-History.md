@@ -12,6 +12,10 @@ This lists the Change Log for only the rolled-up major versions since v3's prima
 
 This release is based on the latest Espressif/Arduino core version 3. It brings in many memory and performance optimizations, for example 25% more available memory and 30% less PSRAM fragmentation.
 
+**Breaking Changes**
+
+- The MAC Address will change, and the DHCP-assigned IP address will likely also change. Use the mDNS (`name.local`) or your router to find the new address.
+
 **Added**
 
 - user-requested LED blink [#3063](https://github.com/emsesp/EMS-ESP32/issues/3063)

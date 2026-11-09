@@ -3,6 +3,7 @@ id: FAQ
 title: Frequently Asked Questions
 description: Common questions and answers about EMS-ESP including factory reset, EMS telegrams, and troubleshooting
 ---
+
 # FAQ
 
 ## How to Factory Reset EMS-ESP?
@@ -91,11 +92,12 @@ See [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/2025)
 
 (answer from [MichaelDvP](https://github.com/MichaelDvP))
 
-That will not work. The Boiler works with `selflowtemp` as target and modulates the burner to hold the `flowtemp`. If `flowtemp` is higher than selected on min burn power, the boiler shut off, waits the min period and `flowtemp` is down to `selflowtemp` -   hysteresis and starts again. Raising the `burnminpower` will only result in more on/off cycles in mild conditions.
+That will not work. The Boiler works with `selflowtemp` as target and modulates the burner to hold the `flowtemp`. If `flowtemp` is higher than selected on min burn power, the boiler shut off, waits the min period and `flowtemp` is down to `selflowtemp` - hysteresis and starts again. Raising the `burnminpower` will only result in more on/off cycles in mild conditions.
 
 ## How to conserve energy of the ESP32 chip
 
 If you're concerned about the energy consumption of the ESP32 chip and need to reduce the heat consumption you can apply some of these settings:
+
 - `Underclock CPU speed` in the **Application Settings/Hardware section**
 - If you're using WiFi enable `WiFi Sleep Mode`, select `use lower WiFi bandwidth` and lower the transmit `Tx power` to around 8.5 dBm in the **Network Settings/WiFi section**
 - If you're using Ethernet enable `Force 10Mbit half-duplex` in the **Network Settings/Ethernet section**
@@ -112,7 +114,9 @@ Always read the [ChangeLog](Version-Release-History.md) for the release notes an
 
 :::warning[No factory reset needed]
 
-When you install a 3.9.0 development build from the Web UI of a 3.8.x version, the dialog says the upgrade requires a factory reset. This is not the case, so ignore that part of the message. Your settings are kept and migrated. Upgrading to 3.10.0 doesn't show this message.
+When you install a 3.9.0 or higher development build from the Web UI of a 3.8.x version, the dialog says the upgrade requires a factory reset. This is not the case, so ignore that part of the message. Your settings are kept and migrated. Upgrading to 3.10.0 doesn't show this message.
+
+Also note that the MAC Address will change, and the DHCP-assigned IP address will likely also change. Use the mDNS (`name.local`) or your router to find the new address.
 
 :::
 
