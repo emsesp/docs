@@ -29,7 +29,7 @@ Het beste overzicht van bekende telegrammen is afkomstig van [Norberts1](https:/
 
 Voor verschillende brands/devices gebruikt Bosch soms verschillende uitdrukkingen voor dezelfde waarde. Misschien is er een wisseling van ontwikkelaars geweest, of willen ze reverse engineering juist bemoeilijken!
 
-Als je een instelling zoekt, registreer dan de telegrammen voor het apparaat en wijzig de instelling op de thermostaat naar een andere states/values. Zoek vervolgens in het logboek naar deze waarden. Als je naar een meting zoekt, registreer dan het apparaat, bekijk de waarde op de thermostaat en wacht op veranderingen; noteer de old/new-waarden en de tijd. Controleer vervolgens het logboek op dit tijdstempel (of 10 sec / 1 min later) en de waarde in een telegram. Het is het beste om meer changes/values te hebben om zeker te zijn.
+Als je een instelling zoekt, registreer dan de telegrammen voor het apparaat (alles registreren of <device-id> in de gaten houden) en wijzig de instelling op de thermostaat naar een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je naar een meting zoekt, registreer dan het apparaat, bekijk de waarde op de thermostaat en wacht op veranderingen; noteer de old/new-waarden en de tijd. Controleer vervolgens het logboek op dit tijdstempel (of 10 sec / 1 min later) en de waarde in een telegram. Het is het beste om meer changes/values te hebben om zeker te zijn.
 
 ## Kan EMS-ESP een thermostaat simuleren?
 
@@ -51,13 +51,13 @@ Bovendien zegt **MichaelDvP**: "Als je een softwaregestuurde thermostaat wilt bo
 
 - op basis van de buitentemperatuur:
   stel een verwarmingscurve in voor uw gebouw. Dit is een lineaire interpolatie tussen een minimale buitentemperatuur voor uw regio (doorgaans -11 °C voor Midden-Europa) en de maximale aanvoertemperatuur (ontwerptemperatuur ~76 °C voor radiatoren, 40 °C voor vloerverwarming) en de werkelijke kamerstelwaarde (bijv. 21 °C) voor de buitentemperatuur en de aanvoertemperatuur. U kunt een offset toevoegen.
-  selflowtemp = offset + instelpunt + (ontwerptemperatuur - instelpunt) \* (instelpunt - buitentemperatuur) / (instelpunt - minimale buitentemperatuur)
+  selflowtemp = offset + instelpunt + (ontwerptemperatuur - instelpunt) * (instelpunt - buitentemperatuur) / (instelpunt - minimale buitentemperatuur)
 - kamergestuurd, geschakeld:
   meet de kamertemperatuur en schakel de ketel in wanneer de verwarming is uitgeschakeld en de kamertemperatuur hoger is dan de instelwaarde. Voeg een hysterese toe om te veel schakelingen te voorkomen
 - kamerregeling, dynamisch
-  Hier moet je een PID-regeling berekenen. Dat valt een beetje buiten het toepassingsgebied van de ems-esp-scheduler. Maar misschien is het wel mogelijk. Op HA kun je het artikel ‘Een slimme thermostaat implementeren (met behulp van SAT)’ raadplegen. Zie [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
+  Hier moet je een PID-regeling berekenen. Dat valt een beetje buiten het toepassingsgebied van de ems-esp-scheduler. Maar misschien is het wel mogelijk. Op HA kun je het artikel „Implementing a smart thermostat (using SAT)” raadplegen. Zie [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
 - aangestuurd door slimme thermostaatventielen (TRV’s):
-  Als u de openingsgraad van de thermostaatkranen kunt aflezen, stel dan een eenvoudige I-regeling in. Als een thermostaatkraan volledig openstaat: verhoog de aanvoertemperatuur; als de meest geopende thermostaatkraan minder dan 90% openstaat: verlaag de aanvoertemperatuur. Verwarmen is een langzaam proces, dus increase/decrease zorgvuldig.
+  Als u de openingsgraad van de thermostaatkranen kunt aflezen, stel dan een eenvoudige I-regeling in. Als een thermostaatkraan volledig openstaat: verhoog de aanvoertemperatuur; als de meest geopende thermostaatkraan minder dan 90% openstaat: verlaag de aanvoertemperatuur. Verwarmen is een langzaam proces, dus ga increase/decrease zorgvuldig te werk.
 
 Lees voor meer informatie ook eens deze discussies:
 
@@ -72,14 +72,14 @@ Protocol en timing zijn twee verschillende zaken; je kiest de zendmodus die het 
 
 HT3 is de elektronica van Junkers en het HT3-protocol is hetzelfde als dat van EMS, alleen is in de eerste byte (afzender) het hoogste bit ingesteld. Elk telegram dat we verzenden, begint in een Buderus-systeem met 0B, maar bij Junkers met 8B. Hierdoor zijn de apparaten van de verschillende merken niet compatibel. EMS-ESP controleert de bus bij het opstarten en selecteert automatisch het juiste protocol. Ook gebruikt Junkers een ander telegram numbers/orders. Modules van het merk Bosch gebruiken dezelfde telegramnummers als Buderus, maar adresseren net als Junkers, waardoor ze eveneens incompatibel zijn. U kunt geen Junkers- of Buderus-modules aansluiten op een Bosch-verwarmingssysteem.
 
-De Tx-modus bepaalt de verzendtiming: de client-apparaten verzenden via stroommodulatie, de master via spanningsmodulatie. Dit maakt full-duplex mogelijk (hardwaremodus), maar afhankelijk van de lijnimpedantie beïnvloedt de stroomopname ook de spanning. Tijdens het verzenden herhaalt de master elke byte die door het apparaat wordt verzonden, om deze naar de andere apparaten door te geven. Bij een Tx-modus van "EMS" wachten we op de master-byte voordat we de volgende verzenden. De oudere Junkers-modellen lijken een kortere time-out te hebben, dus moeten we met de volgende byte beginnen voordat de echo van de master is voltooid („HT3“). „EMS+“ is minder kritisch en we kunnen iets langer dan één byte wachten, zodat de spanning zich na het verzenden kan stabiliseren.
+De Tx-modus bepaalt de verzendtiming: de client-apparaten verzenden via stroommodulatie, de master via spanningsmodulatie. Dit maakt full-duplex mogelijk (hardwaremodus), maar afhankelijk van de lijnimpedantie beïnvloedt de stroomopname ook de spanning. Tijdens het verzenden herhaalt de master elke byte die door het apparaat wordt verzonden, om deze naar de andere apparaten door te geven. Bij een Tx-modus van "EMS" wachten we op de master-byte voordat we de volgende verzenden. De oudere Junkers lijken een kortere time-out te hebben, dus moeten we met de volgende byte beginnen voordat de echo van de master is voltooid („HT3“). „EMS+“ is minder kritisch en we kunnen iets langer dan één byte wachten om het voltage na het verzenden te laten stabiliseren.
 
 ## Kun je meerdere exemplaren van EMS-ESP draaien?
 
 Ja, dat kan. Houd rekening met de volgende instellingen:
 
 - (Instellingen->MQTT-instellingen) MQTT `Entity ID format` is ingesteld op "Meerdere instanties, korte naam"
-- (Instellingen->MQTT-instellingen) MQTT `Client ID` moet uniek zijn om conflicten met de MQTT-broker te voorkomen
+- (Instellingen->MQTT-instellingen) MQTT `Client ID` moet uniek zijn om conflicten in de MQTT-broker te voorkomen
 - (Instellingen->MQTT-instellingen) MQTT `Base` is uniek (let daar goed op). Stel dit meestal in op de hostnaam.
 - (Instellingen->Netwerkinstellingen) `Hostname` is uniek, om netwerkconflicten te voorkomen
 - (Instellingen -> Toepassingsinstellingen) `EMS BUS ID` zijn verschillend (niet beide 0x0B)
@@ -92,7 +92,7 @@ Zie [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/2025)
 
 (antwoord van [MichaelDvP](https://github.com/MichaelDvP))
 
-Dat gaat niet werken. De ketel werkt met `selflowtemp` als streefwaarde en regelt de brander zo dat de `flowtemp` wordt gehandhaafd. Als `flowtemp` hoger is dan de geselecteerde minimale verbrandingscapaciteit, schakelt de ketel uit, wacht de minimale periode af en als `flowtemp` is gedaald tot `selflowtemp` – hysterese – en start hij opnieuw. Het verhogen van de `burnminpower` leidt alleen maar tot meer on/off-cycli bij milde omstandigheden.
+Dat gaat niet werken. De ketel werkt met `selflowtemp` als streefwaarde en regelt de brander zo dat de `flowtemp` wordt gehandhaafd. Als `flowtemp` hoger is dan de geselecteerde minimale verbrandingscapaciteit, schakelt de ketel uit, wacht de minimale periode af totdat `flowtemp` is gedaald tot `selflowtemp` – hysterese – en start hij opnieuw. Het verhogen van de `burnminpower` leidt alleen maar tot meer on/off-cycli bij milde omstandigheden.
 
 ## Hoe je energie kunt besparen op de ESP32-chip
 
@@ -106,7 +106,7 @@ Let op: dit zal de prestaties van de ESP32-chip verminderen en kan stabiliteitsp
 
 ## De firmware bijwerken
 
-Bij het upgraden of downgraden tussen EMS-ESP-versies zorgt EMS-ESP ervoor dat de instellingen worden gemigreerd om de compatibiliteit met de nieuw geïnstalleerde versie te waarborgen. Het teruggaan van 3.10.0 naar een oudere versie vormt hierop een uitzondering; zie [Going back to an older version](#teruggaan-naar-een-oudere-versie).
+Bij het upgraden of downgraden tussen verschillende EMS-ESP-versies zorgt EMS-ESP ervoor dat de instellingen worden gemigreerd, zodat de compatibiliteit met de nieuw geïnstalleerde versie behouden blijft. Het teruggaan van 3.10.0 naar een oudere versie vormt hierop een uitzondering; zie [Going back to an older version](#teruggaan-naar-een-oudere-versie).
 
 Lees vóór het upgraden altijd de [ChangeLog](Version-Release-History.md) voor de release-opmerkingen en informatie over eventuele ingrijpende wijzigingen.
 
@@ -114,13 +114,15 @@ Lees vóór het upgraden altijd de [ChangeLog](Version-Release-History.md) voor 
 
 :::warning[Geen fabrieksreset nodig]
 
-Wanneer je een 3.9.0-ontwikkelingsversie installeert via de webinterface van een 3.8.x-versie, wordt in het dialoogvenster aangegeven dat voor de upgrade een fabrieksreset nodig is. Dit is niet het geval, dus negeer dat deel van het bericht. Uw instellingen blijven behouden en worden overgezet. Bij het upgraden naar 3.10.0 verschijnt dit bericht niet.
+Wanneer je een ontwikkelingsversie 3.9.0 of hoger installeert via de webinterface van een 3.8.x-versie, wordt in het dialoogvenster aangegeven dat voor de upgrade een fabrieksreset nodig is. Dit is niet het geval, dus negeer dat deel van het bericht. Uw instellingen blijven behouden en worden overgezet. Bij het upgraden naar 3.10.0 verschijnt dit bericht niet.
+
+Houd er ook rekening mee dat het MAC-adres zal veranderen en dat het door DHCP toegewezen IP-adres waarschijnlijk ook zal veranderen. Gebruik mDNS (`name.local`) of je router om het nieuwe adres te achterhalen.
 
 :::
 
 Voordat je de upgrade uitvoert:
 
-1. **Maak een systeemback-up** via Instellingen > Download/Upload. Na de upgrade worden wachtwoorden in gehasht vorm opgeslagen en kunnen oudere versies deze niet lezen; daarom is deze back-up nodig als je teruggaat naar 3.8.x of 3.9.x.
+1. **Maak een systeemback-up** via Instellingen > Download/Upload. Na de upgrade worden wachtwoorden in gehashte vorm opgeslagen en kunnen oudere versies deze niet lezen; daarom is deze back-up nodig als je terug wilt gaan naar versie 3.8.x of 3.9.x.
 2. **Let op welke integraties gebruikmaken van de API**, zoals Home Assistant REST-sensoren, Prometheus, Node-RED, dashboards of scripts, inclusief die welke alleen waarden uitlezen zonder token. Na de upgrade is voor elke aanroep naar `/api` een API-sleutel vereist, en werken toegangstokens niet meer.
 
 Na de upgrade:
@@ -143,13 +145,13 @@ Entiteiten die Home Assistant via MQTT Discovery detecteert, blijven gewoon werk
    ```
 
 3. Verwijder alle `?access_token=...` uit de URL’s; een token in de URL werkt niet meer.
-4. Start Home Assistant opnieuw op of laad de REST-entiteiten opnieuw.
+4. Start Home Assistant opnieuw op, of laad de REST-entiteiten opnieuw in.
 
 Zie [Home Assistant](Home-Assistant#een-waarde-ophalen-via-de-api) voor volledige voorbeelden.
 
 #### ioBroker
 
-De [ioBroker ems-esp adapter](https://github.com/tp1de/ioBroker.ems-esp) (7.0.8 en oudere versies) leest waarden zonder een sleutel te verzenden, en verzendt het token alleen wanneer een waarde verandert. De API-sleutel is op twee plaatsen nodig:
+De [ioBroker ems-esp adapter](https://github.com/tp1de/ioBroker.ems-esp) (7.0.8 en oudere versies) leest waarden zonder een sleutel te verzenden, en verzendt het token pas wanneer een waarde verandert. De API-sleutel is op twee plaatsen nodig:
 
 1. Maak onder Beveiliging > API-sleutels een sleutel met "Lees- en schrijftoegang" aan voor ioBroker.
 2. Wijzig in de instellingen van de adapter het EMS-ESP-adres zodanig dat het de sleutel bevat, bijvoorbeeld `http://iobroker:emsesp_...@192.168.1.10`. De naam vóór de `:` kan willekeurig zijn. Hierdoor kan de adapter waarden uitlezen.
@@ -162,20 +164,20 @@ Je hoeft je back-up na de upgrade niet te uploaden. Bewaar deze voor het geval j
 
 Vanaf 3.10.0 worden wachtwoorden in gehasht vorm opgeslagen. Oudere versies interpreteren de opgeslagen hash alsof het het wachtwoord zelf is, dus als je teruggaat naar 3.8.x of 3.9.x, werkt je gebruikelijke wachtwoord niet meer.
 
-De eenvoudigste manier om terug te gaan naar de oude situatie is door de systeemback-up te herstellen die je vóór de upgrade hebt gemaakt: installeer de oudere versie, voer een fabrieksreset uit, log in met de fabrieksgebruiker `admin` en upload de back-up via Instellingen > Download/Upload.
+De eenvoudigste manier om terug te gaan, is door de systeemback-up te herstellen die je vóór de upgrade hebt gemaakt: installeer de oudere versie, voer een fabrieksreset uit, log in met de fabrieksgebruiker `admin` en upload de back-up via Instellingen > Download/Upload.
 
 Als je die back-up niet hebt, of als je je instellingen wilt behouden zonder de telefoon terug te zetten naar de fabrieksinstellingen, log dan in via de seriële console (USB):
 
 1. Maak verbinding met de seriële console en typ `su`. Het wachtwoord is `ems-esp-neo`, aangezien 3.10.0 het Super User-wachtwoord uit de instellingen heeft verwijderd.
 2. Typ `show users`. Het wachtwoord van elke gebruiker wordt weergegeven als een lange tekst die begint met `$pbkdf2-sha2562. Typ `show users`. Het wachtwoord van elke gebruiker wordt weergegeven als een lange tekst die begint met .
-3. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van `$pbkdf2-sha2563. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van tot het einde.
+3. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van `$pbkdf2-sha2563. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van  tot het einde.
 4. Stel onder Beveiliging > Gebruikers voor elke gebruiker een nieuw wachtwoord in en wijzig onder Beveiliging > Instellingen het wachtwoord van de supergebruiker.
 
 Anders kun je met een fabrieksreset weer toegang krijgen, maar worden alle instellingen gewist.
 
 :::warning[Oudere versies hebben bekende beveiligingsproblemen]
 
-In versies ouder dan 3.10.0 zijn de beveiligingsproblemen verholpen die in 3.10.0 zijn opgelost. Ga alleen terug naar een oudere versie als dat echt nodig is, schakel Telnet uit en voer zo snel mogelijk weer een upgrade uit.
+In versies vóór 3.10.0 zijn de beveiligingsproblemen verholpen die in 3.10.0 zijn opgelost. Ga alleen terug als dat echt nodig is, schakel Telnet uit en voer zo snel mogelijk weer een upgrade uit.
 
 :::
 
@@ -234,15 +236,15 @@ Beide slaan een `coredump.bin`-bestand op.
 
 Wis vervolgens de dump, zodat de volgende crash duidelijk een nieuwe is: voer `call system coredump` uit in de console, of stuur `POST /api/system/coredump` als beheerder.
 
-| Veld     | Betekenis                                                                                                      |
-| -------- | -------------------------------------------------------------------------------------------------------------- |
-| `task`   | de taak die vastliep                                                                                           |
-| `pc`     | het adres in de firmware waar het programma is vastgelopen                                                     |
-| `cause`  | de oorzaak van de uitzondering op de ESP32, bijv. 28 = LoadProhibited, 29 = StoreProhibited                    |
-| `vaddr`  | het geheugenadres waartoe toegang is verkregen; een waarde dicht bij 0 duidt meestal op een null-pointer       |
+| Veld    | Betekenis |
+| -------- | -------------------------------------------------------------------------------- |
+| `task`   | de taak die vastliep |
+| `pc`     | het adres in de firmware waar het programma is vastgelopen |
+| `cause`  | de oorzaak van de uitzondering op de ESP32, bijv. 28 = LoadProhibited, 29 = StoreProhibited |
+| `vaddr`  | het geheugenadres waartoe toegang is verkregen; een waarde dicht bij 0 duidt meestal op een null-pointer |
 | `bt`     | de backtrace, met eerst de functie die de crash veroorzaakte en daarna de functies die deze hebben aangeroepen |
-| `sha`    | het begin van de SHA256-hash van de firmware die is gecrasht                                                   |
-| `reason` | de reden voor de paniek, bijvoorbeeld het `abort()`- of watchdog-bericht                                       |
+| `sha`    | het begin van de SHA256-hash van de firmware die is gecrasht |
+| `reason` | de reden voor de paniek, bijvoorbeeld het `abort()`- of watchdog-bericht |
 
 Op de C3 en C6 is er geen backtrace, alleen `ra` (retouradres), `mcause` en `mtval`.
 
