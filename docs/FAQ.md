@@ -170,16 +170,32 @@ You don't need to upload your backup after the upgrade. Keep it in case you want
 
 From 3.10.0, passwords are stored hashed. Older versions read the stored hash as if it were the password itself, so after going back to 3.8.x or 3.9.x your usual password no longer works.
 
-The simplest way back is to restore the System Backup you made before upgrading: install the older version, do a factory reset, sign in with the factory `admin` user and upload the backup in Settings > Download/Upload.
+#### 1. Install the older version
 
-Without that backup, or to keep your settings without a factory reset, sign in with the serial console (USB):
+Download the `.bin` for your board from the [release page](https://github.com/emsesp/EMS-ESP32/releases) and upload it in Settings > Version, or in the [Recovery App](#recovery-app). Versions before 3.10.0 aren't signed, so EMS-ESP says "This is not an official EMS-ESP build": click "Install anyway", see [Official and custom builds](#official-and-custom-builds). You can also flash it over USB with the [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher).
 
-1. Connect to the serial console and type `su`. The password is `ems-esp-neo`, as 3.10.0 removed the Super User password from the settings.
+#### 2. Sign in again
+
+**With the System Backup you made before upgrading.** It must be one made on 3.8.x or 3.9.x. A backup made on 3.10.0 doesn't help, as it has no passwords or only the hashed ones.
+
+1. Do a factory reset. You can't sign in to the Web UI yet, so use one of these:
+   - on 3.9.x with the [Recovery App](#recovery-app) (16MB boards): Recovery App 1.1.0 stays installed when you go back and still accepts your usual admin password. Hold the GPIO button for about 10 seconds to start it, sign in and click **Factory Reset**.
+   - on 3.8.x: hold the GPIO button for about 10 seconds, which does the factory reset straight away.
+   - the serial console: `su` with the password `ems-esp-neo` (see below), then `call system format`.
+2. Connect to the EMS-ESP access point, sign in with the factory `admin` user and password `admin`, and upload the backup in Settings > Download/Upload.
+
+**Without that backup, or to keep your settings without a factory reset**, sign in with the serial console over USB, see [Console](Console.md):
+
+1. Connect to the serial console at 115200 baud, press CTRL-D and type `su`. The password is `ems-esp-neo`, as 3.10.0 removed the Super User password from the settings.
 2. Type `show users`. Each user's password is shown as a long text starting with `$pbkdf2-sha256$`.
-3. Sign in to the Web UI with that username and the whole text as the password, from `$pbkdf2-sha256$` to the end.
-4. In Security > Users, set a new password for each user, and in Security > Settings change the Super User password.
+3. Sign in to the Web UI with that username and the whole text as the password, from `$pbkdf2-sha256$` to the end. Copy and paste it, it's about 120 characters.
+4. In Security > Users, set a new password for each user, and in Security > Settings change the Super User password, as `ems-esp-neo` is publicly known.
 
 Otherwise a factory reset gets you back in, but removes all settings.
+
+#### 3. Reconnect your integrations
+
+Older versions don't have API keys. Integrations such as Home Assistant REST sensors, Node-RED or scripts need an access token again: in Security > Users, click the key icon next to a user and use that token instead of the API key. Create the tokens after changing the Super User password, as changing it makes the existing tokens stop working.
 
 :::warning[Older versions have known security issues]
 

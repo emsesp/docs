@@ -8,7 +8,7 @@ description: Common questions and answers about EMS-ESP including factory reset,
 
 ## Hoe zet je de EMS-ESP terug naar de fabrieksinstellingen?
 
-Bij een fabrieksreset worden alle EMS-ESP-instellingen gewist. EMS-ESP start vervolgens opnieuw op in de Access Point-modus, waarin u zich aanmeldt met de standaardgebruiker `admin`.
+Bij een fabrieksreset worden alle EMS-ESP-instellingen gewist. EMS-ESP start vervolgens opnieuw op in de Access Point-modus, waarin u zich aanmeldt met de fabrieksgebruiker `admin`.
 
 - In de webinterface, als beheerder: klik op **Fabrieksinstellingen herstellen** op de pagina **Instellingen > Versie**.
 - Typ in de console, als beheerder: `call system format`.
@@ -29,7 +29,7 @@ Het beste overzicht van bekende telegrammen is afkomstig van [Norberts1](https:/
 - gemeten temperaturen zijn doorgaans 2 bytes (SHORT) met een factor 0,1 (bijv. 01 23 -> 0x0123 -> dez 291 -> 29,1 °C)
 - instellingen voor de luchttemperatuur worden vaak weergegeven als een factor 0,5 in de vorm van een enkel byte (INT) (bijv. 0x2D -> dez 45 -> 22,5 °C)
 - instellingen voor de watertemperatuur zijn doorgaans van één byte (UINT) (bijv. 0x3C -> 60 °C), terwijl differentiaalwaarden (hysterese in Kelvin) met teken worden weergegeven (INT)
-- de procentuele instellingen zijn van één byte (UINT) (0x64 -> 100%)
+- De procentuele instellingen zijn van één byte (UINT) (0x64 -> 100%)
 - on/off-toestanden of -instellingen kunnen bestaan uit één byte met on/off, 0xFF/0x00 of 0x01/0x00, of uit één bit in een byte in combinatie met 7 andere toestanden
 - de tijd en energie bedragen doorgaans 3 of 4 bytes, met of zonder factor
 
@@ -58,12 +58,12 @@ Bovendien zegt **MichaelDvP**: "Als je een softwaregestuurde thermostaat wilt bo
 - op basis van de buitentemperatuur:
   stel een verwarmingscurve in voor uw gebouw. Dit is een lineaire interpolatie tussen een minimale buitentemperatuur voor uw regio (doorgaans -11 °C voor Midden-Europa) en de maximale aanvoertemperatuur (ontwerptemperatuur ~76 °C voor radiatoren, 40 °C voor vloerverwarming) en de werkelijke kamerstreefwaarde (bijv. 21 °C) voor de buitentemperatuur en de aanvoertemperatuur. U kunt een offset toevoegen.
   selflowtemp = offset + instelpunt + (ontwerptemperatuur - instelpunt) * (instelpunt - buitentemperatuur) / (instelpunt - minimale buitentemperatuur)
-- kamerregeling, schakelend:
-  meet de kamertemperatuur en schakel de ketel in wanneer de verwarming is uitgeschakeld en de kamertemperatuur hoger is dan de instelwaarde. Voeg een hysterese toe om te veel schakelingen te voorkomen
+- kamergestuurd, geschakeld:
+  meet de kamertemperatuur en schakel de ketel in, waarbij ‘verwarming uit’ wordt geactiveerd als de kamertemperatuur hoger is dan de instelwaarde. Voeg een hysterese toe om veelvuldig schakelen te voorkomen
 - kamerregeling, dynamisch
   Hier moet je een PID-regeling berekenen. Dat valt een beetje buiten het toepassingsgebied van de ems-esp-scheduler. Maar misschien is het wel mogelijk. Op HA kun je het artikel „Implementing a smart thermostat (using SAT)” raadplegen. Zie [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
 - aangestuurd door slimme thermostaatventielen (TRV’s):
-  Als u de openingsgraad van de thermostaatkranen kunt aflezen, stel dan een eenvoudige I-regeling in. Als een thermostaatkraan volledig openstaat: verhoog de aanvoertemperatuur; als de meest geopende thermostaatkraan minder dan 90% openstaat: verlaag de aanvoertemperatuur. Verwarmen is een langzaam proces, dus increase/decrease zorgvuldig.
+  Als u de openingsgraad van de thermostaatkranen kunt aflezen, maak dan een eenvoudige I-regeling. Als een thermostaatkraan volledig openstaat: verhoog de aanvoertemperatuur; als de meest geopende thermostaatkraan minder dan 90% openstaat: verlaag de aanvoertemperatuur. Verwarmen is een langzaam proces, dus increase/decrease zorgvuldig.
 
 Lees voor meer informatie ook eens deze discussies:
 
@@ -78,7 +78,7 @@ Protocol en timing zijn twee verschillende zaken; je kiest de verzendmodus die h
 
 HT3 is de elektronica van Junkers en het HT3-protocol is hetzelfde als dat van EMS, alleen is in de eerste byte (afzender) het hoogste bit ingesteld. Elk telegram dat we verzenden, begint in een Buderus-systeem met 0B, maar bij Junkers met 8B. Hierdoor zijn de apparaten van de verschillende merken niet compatibel. EMS-ESP controleert de bus bij het opstarten en selecteert automatisch het juiste protocol. Ook gebruikt Junkers een ander telegram numbers/orders. Modules van het merk Bosch gebruiken dezelfde telegramnummers als Buderus, maar adresseren net als Junkers, waardoor ze eveneens incompatibel zijn. U kunt geen Junkers- of Buderus-modules aansluiten op een Bosch-verwarmingssysteem.
 
-De Tx-modus bepaalt de verzendtiming: de client-apparaten verzenden via stroommodulatie, de master via spanningsmodulatie. Dit maakt full-duplex mogelijk (hardwaremodus), maar afhankelijk van de lijnimpedantie beïnvloedt de stroomopname ook de spanning. Tijdens het verzenden herhaalt de master elke byte die door het apparaat wordt verzonden, om deze naar de andere apparaten door te geven. Bij een Tx-modus van "EMS" wachten we op de master-byte voordat we de volgende verzenden. De oudere Junkers lijken een kortere time-out te hebben, dus moeten we met de volgende byte beginnen voordat de echo van de master is voltooid („HT3“). „EMS+“ is minder kritisch en we kunnen iets langer dan één byte wachten, zodat de spanning zich na het verzenden kan stabiliseren.
+De Tx-modus bepaalt de verzendtiming: de client-apparaten verzenden via stroommodulatie, de master via spanningsmodulatie. Dit maakt full-duplex mogelijk (hardwaremodus), maar afhankelijk van de lijnimpedantie beïnvloedt de stroomopname ook de spanning. Tijdens het verzenden herhaalt de master elke byte die door het apparaat wordt verzonden, om deze naar de andere apparaten door te geven. Bij een Tx-modus van "EMS" wachten we op de master-byte voordat we de volgende verzenden. De oudere Junkers-modellen lijken een kortere time-out te hebben, dus moeten we met de volgende byte beginnen voordat de echo van de master is voltooid („HT3“). „EMS+“ is minder kritisch en we kunnen iets langer dan één byte wachten, zodat de spanning zich na het verzenden kan stabiliseren.
 
 ## Kun je meerdere exemplaren van EMS-ESP draaien?
 
@@ -86,7 +86,7 @@ Ja, dat kan. Houd rekening met de volgende instellingen:
 
 - (Instellingen->MQTT-instellingen) MQTT `Entity ID format` is ingesteld op "Meerdere instanties, korte naam"
 - (Instellingen->MQTT-instellingen) MQTT `Client ID` moet uniek zijn om conflicten met de MQTT-broker te voorkomen
-- (Instellingen->MQTT-instellingen) MQTT `Base` is uniek (let daar goed op). Stel dit meestal in op de hostnaam.
+- (Instellingen->MQTT-instellingen) MQTT `Base` is uniek (zorg daar maar voor). Stel dit meestal in op de hostnaam.
 - (Instellingen->Netwerkinstellingen) `Hostname` is uniek, om netwerkconflicten te voorkomen
 - (Instellingen -> Toepassingsinstellingen) `EMS BUS ID` zijn verschillend (niet beide 0x0B)
 
@@ -98,7 +98,7 @@ Zie [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/2025)
 
 (antwoord van [MichaelDvP](https://github.com/MichaelDvP))
 
-Dat gaat niet werken. De ketel werkt met `selflowtemp` als streefwaarde en regelt de brander zo dat de `flowtemp` wordt gehandhaafd. Als `flowtemp` hoger is dan de geselecteerde minimale verbrandingscapaciteit, schakelt de ketel uit, wacht de minimale periode af totdat `flowtemp` is gedaald tot `selflowtemp` – hysterese – en start hij opnieuw. Het verhogen van de `burnminpower` leidt alleen maar tot meer on/off-cycli bij milde omstandigheden.
+Dat gaat niet werken. De ketel werkt met `selflowtemp` als streefwaarde en regelt de brander zo dat de `flowtemp` wordt gehandhaafd. Als `flowtemp` hoger is dan de geselecteerde minimale verbrandingscapaciteit, schakelt de ketel uit, wacht de minimale periode af en als `flowtemp` is gedaald tot `selflowtemp` – hysterese – start hij opnieuw. Het verhogen van de `burnminpower` leidt alleen maar tot meer on/off-cycli bij milde omstandigheden.
 
 ## Hoe je energie kunt besparen op de ESP32-chip
 
@@ -118,9 +118,9 @@ Lees vóór het upgraden altijd de [ChangeLog](Version-Release-History.md) voor 
 
 ### Upgraden naar 3.10.x
 
-:::warning[Geen fabrieksreset nodig]
+:::warning[Geen fabrieksinstellingen nodig]
 
-Wanneer je een ontwikkelingsversie 3.9.0 of hoger installeert via de webinterface van een 3.8.x-versie, geeft het dialoogvenster aan dat voor de upgrade een fabrieksreset nodig is. Dit is niet het geval, dus negeer dat deel van het bericht. Uw instellingen blijven behouden en worden overgezet. Bij het upgraden naar 3.10.0 verschijnt dit bericht niet.
+Wanneer je een ontwikkelingsversie 3.9.0 of hoger installeert via de webinterface van een 3.8.x-versie, wordt in het dialoogvenster aangegeven dat voor de upgrade een fabrieksreset nodig is. Dit is niet het geval, dus negeer dat deel van het bericht. Uw instellingen blijven behouden en worden overgezet. Bij een upgrade naar 3.10.0 verschijnt dit bericht niet.
 
 Houd er ook rekening mee dat het MAC-adres zal veranderen en dat het door DHCP toegewezen IP-adres waarschijnlijk ook zal veranderen. Gebruik mDNS (`name.local`) of je router om het nieuwe adres te achterhalen.
 
@@ -128,7 +128,7 @@ Houd er ook rekening mee dat het MAC-adres zal veranderen en dat het door DHCP t
 
 Voordat je de upgrade uitvoert:
 
-1. **Maak een systeemback-up** via Instellingen > Download/Upload. Na de upgrade worden wachtwoorden in gehashte vorm opgeslagen en kunnen oudere versies deze niet lezen; daarom is deze back-up nodig als je teruggaat naar 3.8.x of 3.9.x.
+1. **Maak een systeemback-up** via Instellingen > Download/Upload. Na de upgrade worden wachtwoorden in gehashte vorm opgeslagen en kunnen oudere versies deze niet lezen; daarom is deze back-up nodig als je terug wilt gaan naar 3.8.x of 3.9.x.
 2. **Let op welke integraties gebruikmaken van de API**, zoals Home Assistant REST-sensoren, Prometheus, Node-RED, dashboards of scripts, inclusief die welke alleen waarden uitlezen zonder token. Na de upgrade is voor elke aanroep naar `/api` een API-sleutel vereist, en werken toegangstokens niet meer.
 
 Na de upgrade:
@@ -136,7 +136,7 @@ Na de upgrade:
 1. **Stel nieuwe wachtwoorden in als u nog steeds de standaardwachtwoorden gebruikt.** Een beheerder die zich aanmeldt met een standaardwachtwoord, moet een nieuw beheerderswachtwoord instellen voordat de webinterface kan worden gebruikt, en bovendien een nieuw wachtwoord voor het toegangspunt als er nog geen wifi-netwerk is ingesteld.
 2. **Maak voor elke integratie een API-sleutel aan** onder Beveiliging > API-sleutels en verstuur deze als `Authorization: Bearer <key>`. Kies "Lezen" voor integraties die alleen waarden lezen, en "Lezen en schrijven" voor integraties die instellingen of waarden wijzigen. Om een waarde in een browser te lezen, opent u het `/api`-adres en meldt u zich aan wanneer de browser daarom vraagt.
 3. **Controleer wat gastgebruikers mogen doen.** Alleen beheerders kunnen de Scheduler, Commands, Custom Entities en Modules wijzigen. Commands van vóór de upgrade kunnen nog steeds door gasten worden uitgevoerd; voor nieuwe Commands vink je "Gasten mogen deze command uitvoeren" aan als dat de bedoeling is.
-4. **Controleer de Scheduler en Commands op vermeldingen die u niet zelf hebt aangemaakt.** Vóór 3.10.0 konden gastgebruikers en oproepen zonder token deze toevoegen, en deze zijn bij de upgrade behouden gebleven. Scheduler-vermeldingen worden uitgevoerd met beheerdersrechten. Verwijder alles wat u niet herkent en schakel bij opdrachten die gasten niet nodig hebben de optie „Gasten mogen deze opdracht uitvoeren” uit.
+4. **Controleer de Scheduler en Commands op vermeldingen die u niet zelf hebt aangemaakt.** Vóór 3.10.0 konden gastgebruikers en oproepen zonder token deze toevoegen, en deze zijn bij de upgrade behouden gebleven. Scheduler-vermeldingen worden uitgevoerd met beheerdersrechten. Verwijder alles wat u niet herkent en schakel bij opdrachten die gasten niet nodig hebben de optie "Gasten mogen deze opdracht uitvoeren" uit.
 
 #### Home Assistant
 
@@ -164,22 +164,38 @@ De [ioBroker ems-esp adapter](https://github.com/tp1de/ioBroker.ems-esp) (7.0.8 
 3. Plak dezelfde sleutel in het veld ‘EMS-ESP-toegangstoken’ van de adapter en vervang daarmee het oude toegangstoken. Hierdoor kan de adapter waarden wijzigen.
 4. Sla de instellingen op en start de adapterinstantie opnieuw op.
 
-Je hoeft je back-up na de upgrade niet te uploaden. Bewaar deze voor het geval je terug wilt naar 3.8.x of 3.9.x. De volledige lijst met ingrijpende wijzigingen vind je in de [ChangeLog](Version-Release-History.md).
+Je hoeft je back-up na de upgrade niet te uploaden. Bewaar deze voor het geval je terug wilt naar versie 3.8.x of 3.9.x. De volledige lijst met ingrijpende wijzigingen vind je in de [ChangeLog](Version-Release-History.md).
 
 ### Teruggaan naar een oudere versie
 
-Vanaf 3.10.0 worden wachtwoorden in gehashte vorm opgeslagen. Oudere versies lezen de opgeslagen hash alsof het het wachtwoord zelf is, dus als je teruggaat naar 3.8.x of 3.9.x, werkt je gebruikelijke wachtwoord niet meer.
+Vanaf 3.10.0 worden wachtwoorden in gehasht vorm opgeslagen. Oudere versies interpreteren de opgeslagen hash alsof het het wachtwoord zelf is, dus als je teruggaat naar 3.8.x of 3.9.x, werkt je gebruikelijke wachtwoord niet meer.
 
-De eenvoudigste manier om terug te gaan naar de oude situatie is door de systeemback-up te herstellen die je vóór de upgrade hebt gemaakt: installeer de oudere versie, voer een fabrieksreset uit, log in met de fabrieksgebruiker `admin` en upload de back-up via Instellingen > Download/Upload.
+#### 1. Installeer de oudere versie
 
-Als je die back-up niet hebt, of als je je instellingen wilt behouden zonder de telefoon terug te zetten naar de fabrieksinstellingen, log dan in via de seriële console (USB):
+Download de `.bin` voor je bord via de [release page](https://github.com/emsesp/EMS-ESP32/releases) en upload deze via Instellingen > Versie, of via de [Recovery App](#herstel-app). Versies ouder dan 3.10.0 zijn niet ondertekend, dus EMS-ESP geeft de melding "Dit is geen officiële EMS-ESP-build": klik op "Toch installeren", zie [Official and custom builds](#standaard--en-aangepaste-configuraties). Je kunt het ook via USB flashen met de [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher).
 
-1. Maak verbinding met de seriële console en typ `su`. Het wachtwoord is `ems-esp-neo`, aangezien 3.10.0 het Super User-wachtwoord uit de instellingen heeft verwijderd.
+#### 2. Meld je opnieuw aan
+
+**Met de systeemback-up die je vóór de upgrade hebt gemaakt.** Deze moet zijn gemaakt op versie 3.8.x of 3.9.x. Een back-up die is gemaakt op 3.10.0 helpt niet, omdat deze geen wachtwoorden bevat of alleen de gehashte versies ervan.
+
+1. Voer een fabrieksreset uit. Je kunt nog geen aanmelding uitvoeren via de webinterface, dus gebruik een van de volgende methoden:
+   - in versie 3.9.x met de [Recovery App](#herstel-app) (16 MB-kaarten): de Recovery-app 1.1.0 blijft geïnstalleerd wanneer je teruggaat en accepteert nog steeds je gebruikelijke beheerderswachtwoord. Houd de GPIO-knop ongeveer 10 seconden ingedrukt om het programma te starten, log in en klik op **Factory Reset**.
+   - bij versie 3.8.x: houd de GPIO-knop ongeveer 10 seconden ingedrukt, waarna het apparaat onmiddellijk naar de fabrieksinstellingen wordt teruggezet.
+   - de seriële console: `su` met het wachtwoord `ems-esp-neo` (zie hieronder), en vervolgens `call system format`.
+2. Maak verbinding met het EMS-ESP-toegangspunt, log in met de standaardgebruikersnaam `admin` en het standaardwachtwoord `admin`, en upload de back-up via Instellingen > Download/Upload.
+
+**Als je die back-up niet hebt, of als je je instellingen wilt behouden zonder de fabrieksinstellingen te herstellen**, log dan in via de seriële console via USB; zie [Console](Console.md):
+
+1. Maak verbinding met de seriële console op 115200 baud, druk op CTRL-D en typ `su`. Het wachtwoord is `ems-esp-neo`, aangezien 3.10.0 het Super User-wachtwoord uit de instellingen heeft verwijderd.
 2. Typ `show users`. Het wachtwoord van elke gebruiker wordt weergegeven als een lange tekst die begint met `$pbkdf2-sha2562. Typ `show users`. Het wachtwoord van elke gebruiker wordt weergegeven als een lange tekst die begint met .
-3. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van `$pbkdf2-sha2563. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van  tot het einde.
-4. Stel onder Beveiliging > Gebruikers voor elke gebruiker een nieuw wachtwoord in en wijzig onder Beveiliging > Instellingen het wachtwoord van de supergebruiker.
+3. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van `$pbkdf2-sha2563. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van  tot het einde. Kopieer en plak de tekst; deze bestaat uit ongeveer 120 tekens.
+4. Stel onder Beveiliging > Gebruikers voor elke gebruiker een nieuw wachtwoord in en wijzig onder Beveiliging > Instellingen het wachtwoord van de supergebruiker, aangezien `ems-esp-neo` algemeen bekend is.
 
 Anders kun je met een fabrieksreset weer toegang krijgen, maar worden alle instellingen gewist.
+
+#### 3. Verbind je integraties opnieuw
+
+Oudere versies beschikken niet over API-sleutels. Voor integraties zoals Home Assistant REST-sensoren, Node-RED of scripts is opnieuw een toegangstoken nodig: klik in Beveiliging > Gebruikers op het sleutelpictogram naast een gebruiker en gebruik dat token in plaats van de API-sleutel. Maak de tokens aan nadat je het wachtwoord van de supergebruiker hebt gewijzigd, aangezien de bestaande tokens na deze wijziging niet meer werken.
 
 :::warning[Oudere versies hebben bekende beveiligingsproblemen]
 
@@ -195,7 +211,7 @@ Al het andere is een aangepaste build, bijvoorbeeld een die je zelf hebt samenge
 
 Installeer een aangepaste versie alleen als je zeker weet dat deze uit een betrouwbare bron afkomstig is. Als je een officiële versie verwachtte, is het bestand mogelijk gewijzigd of beschadigd, bijvoorbeeld door een browser of downloadmanager. Download het dan opnieuw vanaf de releasepagina.
 
-De optie ‘Flashen via USB met [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher) of esptool’ is niet aangevinkt.
+De optie ‘Flashen via USB met de [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher) of esptool’ is niet aangevinkt.
 
 Als je je eigen firmware bouwt, raadpleeg dan [Installing your own build](https://github.com/emsesp/EMS-ESP32/blob/dev/CONTRIBUTING.md#installing-your-own-build).
 
@@ -209,24 +225,24 @@ Vanaf 3.10.0 vraagt de webinterface opnieuw om je wachtwoord voordat wijzigingen
 - gebruikers en wachtwoorden toevoegen, wijzigen of verwijderen, en API-sleutels aanmaken of intrekken
 - CORS inschakelen, toegestane hostnamen toevoegen of telnet inschakelen
 
-Zodra je je gegevens hebt ingevoerd, hoef je deze in die browser gedurende 5 minuten niet opnieuw in te voeren. Dit wordt beëindigd als je je opnieuw aanmeldt of EMS-ESP opnieuw opstart.
+Zodra je je gegevens hebt ingevoerd, wordt er gedurende 5 minuten niet opnieuw om gevraagd in die browser. Als je je opnieuw aanmeldt of EMS-ESP opnieuw opstart, wordt dit beëindigd.
 
 Scripts die deze wijzigingen doorvoeren via een aanmelding via de webinterface, krijgen HTTP-status 428. Ze moeten het wachtwoord eerst verzenden met `POST /rest/confirmPassword` en de body met `{"password":"..."}`, waarbij hetzelfde token wordt gebruikt. Integraties met API-sleutels en MQTT ondervinden hier geen hinder van.
 
 ### Firmware installeren via een URL
 
-Vanaf 3.10.0 kan firmware alleen worden geïnstalleerd via een URL van een EMS-ESP-release op GitHub, die begint met `https://github.com/emsesp/EMS-ESP32/releases/`. De versielijst van de webinterface maakt hier altijd gebruik van. Alle andere bestanden moet je downloaden en vervolgens uploaden via de webinterface.
+Vanaf 3.10.0 kan firmware alleen worden geïnstalleerd via een URL van een EMS-ESP-release op GitHub, die begint met `https://github.com/emsesp/EMS-ESP32/releases/`. De versielijst van de webinterface maakt hier altijd gebruik van. Alle andere bestanden moet je downloaden en vervolgens via de webinterface uploaden.
 
 ### Firmware terugzetten
 
-Vanaf 3.9.1 wordt een nieuw geïnstalleerde firmware pas behouden als deze 2 minuten heeft gedraaid. Als het systeem eerder crasht of opnieuw opstart, keert de gateway terug naar de firmware die daarvoor draaide. Als er geen firmware aanwezig is, starten kaarten met de [Recovery App](#herstel-app) in plaats daarvan de Recovery App. Dit werkt op alle kaarten, ook die met 4 MB, aangezien EMS-ESP altijd twee firmwarepartities heeft (`app0` en `app1`).
+Vanaf 3.9.1 wordt een nieuw geïnstalleerde firmware pas behouden als deze 2 minuten heeft gedraaid. Als de firmware eerder crasht of opnieuw opstart, keert de gateway terug naar de firmware die daarvoor draaide. Als er geen firmware aanwezig is, starten kaarten met de [Recovery App](#herstel-app) in plaats daarvan de Recovery App. Dit werkt op alle kaarten, ook die met 4 MB, aangezien EMS-ESP altijd twee firmwarepartities heeft (`app0` en `app1`).
 
 Dit geldt voor firmware die wordt geïnstalleerd terwijl EMS-ESP of de Recovery App actief is: het uploaden van een bestand via de webinterface, het installeren van een versie uit de versielijst van de webinterface of het uploaden via de Recovery App. Het flashen via USB met de [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher) of esptool wordt niet gecontroleerd; die firmware blijft direct behouden.
 
 Elke herstart binnen de eerste 2 minuten telt mee, ook als je zelf op ‘Herstarten’ klikt, dus wacht tot de firmware is bevestigd. Er zijn twee uitzonderingen:
 
 - wanneer EMS-ESP de instellingen uit een oudere versie overzet en opnieuw opstart om ze toe te passen, wordt de nieuwe firmware als eerste behouden
-- als je binnen de eerste 2 minuten andere firmware installeert, blijft de firmware die op dat moment actief is, eerst in gebruik
+- als je binnen de eerste 2 minuten andere firmware installeert, blijft de firmware die op dat moment actief is, eerst behouden
 
 Het systeemlogboek laat zien wat er gebeurt:
 
@@ -242,15 +258,15 @@ Nadat de firmware is geverifieerd, houdt EMS-ESP crashes in de gaten: op kaarten
 
 ## Herstel-app
 
-Vanaf 3.9.0 kan op printplaten met 16 MB of 32 MB flashgeheugen de EMS-ESP Recovery App worden geïnstalleerd. Het is een kleine, afzonderlijke firmware die in een eigen deel van het flashgeheugen (de `boot`-partitie) staat, naast de twee partities waarop EMS-ESP staat (`app0` en `app1`). Als EMS-ESP niet meer opstart of als een firmware-update mislukt is, kun je met de Recovery App de gateway via een browser weer aan de praat krijgen, zonder deze via USB aan te sluiten. De 4 MB-kaarten hebben hier geen ruimte voor.
+Vanaf 3.9.0 kan op printplaten met 16 MB of 32 MB flashgeheugen de EMS-ESP Recovery App worden geïnstalleerd. Het is een kleine, afzonderlijke firmware die in een eigen deel van het flashgeheugen (de `boot`-partitie) staat, naast de twee partities waarop EMS-ESP staat (`app0` en `app1`). Als EMS-ESP niet meer opstart of als een firmware-update mislukt is, kun je met de Recovery App de gateway via een browser weer aan de praat krijgen, zonder hem via USB aan te sluiten. De 4 MB-kaarten hebben hier geen ruimte voor.
 
 EMS-ESP 3.9.0 wordt geleverd met de Recovery App 1.0.0, en 3.10.0 met de Recovery App 1.1.0. Voor functies gemarkeerd met **[3.10.0]** is de Recovery App 1.1.0 vereist, zie [What's new in 3.10.0](#wat-is-er-nieuw-in-3100).
 
-### Wat het kan
+### Wat het kan doen
 
 Nadat je je hebt aangemeld, toont de Recovery-app een dashboard waarop je het volgende kunt doen:
 
-- **Firmware uploaden**: installeer een EMS-ESP-firmware-`.bin`-bestand in een van de EMS-ESP-partities. Standaard wordt eerst een lege partitie gekozen, vervolgens een partitie waarvan de firmware niet kon worden opgestart, en anders de partitie met de oudste firmware, zodat een werkende firmware als back-up behouden blijft. U kunt de partitie ook zelf kiezen. U kunt het `.md5`-bestand ook eerst uploaden om de firmware te controleren.
+- **Firmware uploaden**: installeer een EMS-ESP-firmware-`.bin`-bestand in een van de EMS-ESP-partities. Standaard wordt eerst een lege partitie gekozen, vervolgens een partitie waarvan de firmware niet kon worden opgestart, en anders de partitie met de oudste firmware, zodat een werkende firmware als back-up behouden blijft. U kunt ook zelf de partitie kiezen. U kunt het `.md5`-bestand ook eerst uploaden om de firmware te controleren.
   - **[3.10.0]** Net als in de webinterface wordt een officiële build direct geïnstalleerd, terwijl bij een aangepaste build eerst om toestemming wordt gevraagd; zie [Official and custom builds](#standaard--en-aangepaste-configuraties).
 - **Firmware starten**: start het systeem opnieuw op met een van de geïnstalleerde EMS-ESP-firmwareversies. De tabel toont de versie en de installatiedatum van elke firmwareversie en geeft een waarschuwing als een firmwareversie eerder niet kon worden gestart.
 - **Fabrieksinstellingen herstellen**: alle EMS-ESP-instellingen wissen. Deze optie wordt niet weergegeven als het herstellen van de fabrieksinstellingen is uitgeschakeld in de EMS-ESP-instellingen.
@@ -263,7 +279,7 @@ De Recovery-app leest alleen de EMS-ESP-instellingen; deze worden nooit gewijzig
 
 ### Installeren en bijwerken
 
-Open **Instellingen > Versie** in de EMS-ESP-webinterface. Op kaarten die dit ondersteunen, is er een rij **Recovery App** met de geïnstalleerde versie, of "Niet geïnstalleerd". Klik op de installatieknop om de nieuwste versie van GitHub te downloaden. **[3.10.0]** Wanneer er een nieuwere versie beschikbaar is, kun je deze via dezelfde knop bijwerken en wordt in de rij aangegeven of de geïnstalleerde Recovery App een officiële build is. Je kunt het `EMS-ESP-Recovery-<version>-<chip>-16MB[+].bin`-bestand ook downloaden via de [release page](https://github.com/emsesp/EMS-ESP32/releases) en het uploaden zoals normale firmware. Het installeren van de Recovery App zorgt er niet voor dat EMS-ESP opnieuw opstart en heeft geen invloed op je instellingen of de geïnstalleerde EMS-ESP-firmware.
+Open **Instellingen > Versie** in de EMS-ESP-webinterface. Op kaarten die dit ondersteunen, is er een rij **Recovery App** met de geïnstalleerde versie, of "Niet geïnstalleerd". Klik op de installatieknop om de nieuwste versie van GitHub te downloaden. **[3.10.0]** Wanneer er een nieuwere versie beschikbaar is, kun je deze via dezelfde knop bijwerken en wordt in de regel aangegeven of de geïnstalleerde Recovery App een officiële build is. Je kunt het `EMS-ESP-Recovery-<version>-<chip>-16MB[+].bin`-bestand ook downloaden via de [release page](https://github.com/emsesp/EMS-ESP32/releases) en het uploaden zoals normale firmware. Het installeren van de Recovery App zorgt er niet voor dat EMS-ESP opnieuw opstart en heeft geen invloed op je instellingen of de geïnstalleerde EMS-ESP-firmware.
 
 De Recovery-app kan alleen via EMS-ESP worden geïnstalleerd, niet vanuit de Recovery-app zelf.
 
@@ -273,7 +289,7 @@ De Recovery-app start:
 
 - wanneer je op **Opnieuw opstarten in de Recovery-app** klikt op de pagina **Instellingen > Versie**
 - wanneer je de GPIO-knop ongeveer 10 seconden ingedrukt houdt, tenzij de fabrieksreset is uitgeschakeld in de EMS-ESP-instellingen
-- automatisch, wanneer EMS-ESP na het opnieuw opstarten vijf keer achter elkaar vastloopt
+- automatisch, wanneer EMS-ESP na het opnieuw opstarten vijf keer achter elkaar crasht
 - automatisch, wanneer een nieuw geïnstalleerde firmware binnen de eerste 2 minuten vastloopt of opnieuw opstart en er geen eerdere firmwareversie is om naar terug te keren, zie [Firmware rollback](#firmware-terugzetten)
 
 ### Verbinding maken
@@ -293,7 +309,7 @@ Door de gateway opnieuw op te starten of uit en weer in te schakelen, blijft dez
 
 ### Wat is er nieuw in 3.10.0
 
-De Recovery-app 1.1.0, die samen met EMS-ESP 3.10.0 is uitgebracht, biedt de volgende extra functies:
+De Recovery-app 1.1.0, uitgebracht samen met EMS-ESP 3.10.0, biedt de volgende extra functies:
 
 - een controle of de geüploade firmware een officiële EMS-ESP-build is, met de optie "Toch installeren" voor een aangepaste build
 - het gedeelte **Crash Dump**, met een overzicht van de crash en knoppen om de dump te downloaden of te wissen
@@ -312,7 +328,7 @@ Als je niet kunt inloggen op de Recovery App 1.0.0, gebruik dan de volledige opg
 
 ## Wat te doen als EMS-ESP vastloopt
 
-Vanaf 3.10.0 slaat de ESP32, wanneer EMS-ESP crasht (een paniekfout, `abort()`, stackoverflow of watchdog), een crashdump op in het flashgeheugen voordat het apparaat opnieuw opstart. De dump blijft na de herstart bewaard en wordt bewaard totdat deze bij de volgende crash wordt vervangen, of totdat je deze wist.
+Vanaf 3.10.0 slaat de ESP32, wanneer EMS-ESP crasht (een paniekfout, `abort()`, stackoverflow of watchdog), een crashdump op in het flashgeheugen voordat het apparaat opnieuw opstart. De dump blijft na de herstart behouden en wordt bewaard totdat deze bij de volgende crash wordt vervangen, of totdat je deze wist.
 
 Alleen kaarten met 16 MB of 32 MB flashgeheugen bieden ruimte voor een crashdump; de kaarten met 4 MB hebben die ruimte niet. Bij een spanningsdaling, een stroomstoring of een normale herstart wordt er geen dump opgeslagen.
 
@@ -333,7 +349,7 @@ Voeg, indien mogelijk, ook de volledige crashdump toe aan het probleem. Download
 
 Beide slaan een `coredump.bin`-bestand op.
 
-Wis vervolgens de dump, zodat de volgende crash duidelijk een nieuwe is: voer `call system coredump` uit in de console, of verstuur `POST /api/system/coredump` als beheerder.
+Wis vervolgens de dump, zodat de volgende crash duidelijk een nieuwe is: voer `call system coredump` uit in de console, of stuur `POST /api/system/coredump` als beheerder.
 
 | Veld    | Betekenis |
 | -------- | -------------------------------------------------------------------------------- |
@@ -347,7 +363,7 @@ Wis vervolgens de dump, zodat de volgende crash duidelijk een nieuwe is: voer `c
 
 Op de C3 en C6 is er geen backtrace, alleen `ra` (retouradres), `mcause` en `mtval`.
 
-### Een crashdump zelf ontcijferen
+### Zelf een crashdump ontcijferen
 
 Voor het decoderen is het `firmware.elf`-bestand van de exacte build nodig die is gecrasht. Als je EMS-ESP zelf bouwt, wordt van elke build een gzipped kopie bewaard als `build/elf/<variant>-<sha>.elf.gz`, waarbij `<sha>` overeenkomt met het `sha`-bestand in het crashverslag. Pak het uit met `gunzip -k`. Deze bestanden zijn elk ongeveer 20 MB groot, dus verwijder af en toe de oude bestanden.
 
