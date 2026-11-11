@@ -14,7 +14,7 @@ This release is based on the latest Espressif/Arduino core version 3. It brings 
 
 **Breaking Changes**
 
-- The MAC Address will change, and the DHCP-assigned IP address will likely also change. Use the mDNS (`name.local`) or your router to find the new address.
+See [this discussion](https://github.com/emsesp/EMS-ESP32/discussions/3418) for a list of breaking changes.
 
 **Added**
 
