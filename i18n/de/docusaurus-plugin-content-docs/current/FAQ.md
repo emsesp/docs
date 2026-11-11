@@ -6,9 +6,9 @@ description: Common questions and answers about EMS-ESP including factory reset,
 
 # Häufig gestellte Fragen
 
-## Wie führt man einen Werksreset des EMS-ESP durch?
+## Wie setzt man das EMS-ESP auf die Werkseinstellungen zurück?
 
-Durch ein Zurücksetzen auf die Werkseinstellungen werden alle EMS-ESP-Einstellungen gelöscht. EMS-ESP startet anschließend im Access-Point-Modus neu, in dem Sie sich mit dem werkseitig voreingestellten Benutzer `admin` anmelden.
+Durch ein Zurücksetzen auf die Werkseinstellungen werden alle EMS-ESP-Einstellungen gelöscht. EMS-ESP wird anschließend im Access-Point-Modus neu gestartet, in dem Sie sich mit dem werkseitig voreingestellten Benutzer `admin` anmelden.
 
 - Klicken Sie in der Web-Benutzeroberfläche als Administrator auf der Seite **Einstellungen > Version** auf **Werkseinstellungen zurücksetzen**.
 - Geben Sie in der Konsole als Administrator `call system format` ein.
@@ -59,7 +59,7 @@ Außerdem sagt **MichaelDvP**: „Wenn Sie einen softwaregesteuerten Thermostat 
   Legen Sie eine Heizkurve für Ihr Gebäude fest. Dabei handelt es sich um eine lineare Interpolation zwischen einer Mindestaußentemperatur für Ihre Region (typischerweise -11 °C für Mitteleuropa) mit maximaler Vorlauftemperatur (Auslegungstemperatur ~76 °C für Heizkörper, 40 °C für Fußbodenheizungen) und dem tatsächlichen Raum-Sollwert (z. B. 21 °C) für Außentemperatur und Vorlauftemperatur. Sie können einen Offset hinzufügen.
   selflowtemp = Offset + Sollwert + (Auslegungstemperatur – Sollwert) * (Sollwert – Außentemperatur) / (Sollwert – minimale Außentemperatur)
 - raumgesteuert, geschaltet:
-  Die Raumtemperatur messen und den Heizkessel einschalten, wobei die Heizungsabschaltung aktiviert ist, wenn die Raumtemperatur den Sollwert überschreitet. Um häufiges Ein- und Ausschalten zu vermeiden, eine Hysterese hinzufügen.
+  Die Raumtemperatur messen und den Heizkessel einschalten, wobei die Heizungsabschaltung aktiviert ist, wenn die Raumtemperatur den Sollwert überschreitet. Um häufiges Ein- und Ausschalten zu vermeiden, eine Hysterese einbauen.
 - raumgesteuert, dynamisch
   Hier muss eine PID-Regelung berechnet werden. Das geht etwas über den Rahmen des ems-esp-Schedulers hinaus. Aber vielleicht ist es möglich. Bei HA kannst du unter „Implementierung eines intelligenten Thermostats (mit SAT)“ nachlesen. Siehe [#2103](https://github.com/emsesp/EMS-ESP32/issues/2103)
 - Steuerung über intelligente Thermostatventile (TRVs):
@@ -114,7 +114,7 @@ Beachten Sie, dass dies die Leistung des ESP32-Chips beeinträchtigt und zu Stab
 
 Bei einem Upgrade oder Downgrade zwischen verschiedenen EMS-ESP-Versionen übernimmt EMS-ESP die Migration der Einstellungen, um die Kompatibilität mit der neu installierten Version zu gewährleisten. Eine Rückkehr von 3.10.0 zu einer älteren Version bildet hier eine Ausnahme; siehe [Going back to an older version](#zurück-zu-einer-älteren-version).
 
-Lesen Sie vor einem Upgrade stets die [ChangeLog](Version-Release-History.md), um sich über die Versionshinweise und etwaige Änderungen, die Kompatibilitätsprobleme verursachen könnten, zu informieren.
+Lesen Sie vor einem Upgrade stets den [ChangeLog](Version-Release-History.md) mit den Versionshinweisen und Informationen zu etwaigen kompatibilitätsbeeinträchtigenden Änderungen.
 
 ### Upgrade auf 3.10.x
 
@@ -128,7 +128,7 @@ Beachten Sie außerdem, dass sich die MAC-Adresse ändert und sich wahrscheinlic
 
 Bevor Sie das Upgrade durchführen:
 
-1. **Erstellen Sie eine Systemsicherung** unter „Einstellungen“ > Download/Upload. Nach dem Upgrade werden Passwörter in gehashter Form gespeichert und können von älteren Versionen nicht gelesen werden. Für einen Rückfall auf 3.8.x oder 3.9.x ist diese Sicherung daher erforderlich.
+1. **Erstellen Sie eine Systemsicherung** unter „Einstellungen“ > Download/Upload. Nach dem Upgrade werden Passwörter in gehashter Form gespeichert und können von älteren Versionen nicht gelesen werden. Für einen Rückfall auf Version 3.8.x oder 3.9.x ist diese Sicherung daher erforderlich.
 2. **Beachten Sie, welche Integrationen die API nutzen**, wie z. B. Home Assistant-REST-Sensoren, Prometheus, Node-RED, Dashboards oder Skripte, einschließlich solcher, die Werte nur ohne Token auslesen. Nach dem Upgrade ist für jeden Aufruf von `/api` ein API-Schlüssel erforderlich, und Zugriffstoken funktionieren nicht mehr.
 
 Nach dem Upgrade:
@@ -136,13 +136,13 @@ Nach dem Upgrade:
 1. **Legen Sie neue Passwörter fest, falls Sie noch die werkseitigen Passwörter verwenden.** Ein Administrator, der sich mit einem werkseitigen Passwort anmeldet, muss ein neues Administratorpasswort festlegen, bevor die Web-Benutzeroberfläche genutzt werden kann, sowie ein neues Passwort für den Zugangspunkt, falls noch kein WLAN-Netzwerk eingerichtet ist.
 2. **Erstellen Sie für jede Integration einen API-Schlüssel** unter „Sicherheit“ > „API-Schlüssel“ und senden Sie diesen als `Authorization: Bearer <key>`. Wählen Sie „Lesen“ für Integrationen, die nur Werte auslesen, und „Lesen und Schreiben“ für solche, die Einstellungen oder Werte ändern. Um einen Wert in einem Browser auszulesen, öffnen Sie die `/api`-Adresse und melden Sie sich an, wenn der Browser Sie dazu auffordert.
 3. **Prüfen Sie, welche Aktionen Gastbenutzer ausführen dürfen.** Nur Administratoren können den Scheduler, Befehle, benutzerdefinierte Entitäten und Module ändern. Befehle, die bereits vor dem Upgrade vorhanden waren, können weiterhin von Gastbenutzern ausgeführt werden; bei neuen Befehlen aktivieren Sie das Kontrollkästchen „Gastbenutzer dürfen diesen Befehl ausführen“, falls dies gewünscht ist.
-4. **Überprüfen Sie den Scheduler und die Befehle auf Einträge, die Sie nicht erstellt haben.** Vor 3.10.0 konnten Gastbenutzer und Aufrufe ohne Token solche Einträge hinzufügen, und diese werden beim Upgrade beibehalten. Planer-Einträge werden mit Administratorrechten ausgeführt. Löschen Sie alle Einträge, die Sie nicht erkennen, und deaktivieren Sie bei Befehlen, die Gäste nicht benötigen, die Option „Gäste dürfen diesen Befehl ausführen“.
+4. **Überprüfen Sie den Scheduler und die Befehle auf Einträge, die Sie nicht erstellt haben.** Vor 3.10.0 konnten Gastbenutzer und Aufrufe ohne Token solche Einträge hinzufügen, und diese bleiben nach dem Upgrade erhalten. Planer-Einträge werden mit Administratorrechten ausgeführt. Löschen Sie alle Einträge, die Sie nicht erkennen, und deaktivieren Sie bei Befehlen, die Gäste nicht benötigen, die Option „Gäste dürfen diesen Befehl ausführen“.
 
 #### Home Assistant
 
 Geräte, die Home Assistant über MQTT Discovery erkennt, funktionieren weiterhin – hier sind keine Änderungen erforderlich. Lediglich die Teile Ihrer Konfiguration, die `/api` direkt aufrufen, wie beispielsweise `rest`-Sensoren und `rest_command`, benötigen einen API-Schlüssel:
 
-1. Erstellen Sie unter „Sicherheit > API-Schlüssel“ einen Schlüssel für Home Assistant. Wählen Sie „Lesen“, wenn Sie nur `rest`-Sensoren verwenden, und „Lesen und Schreiben“, wenn Sie auch `rest_command` nutzen, um Werte zu ändern.
+1. Erstellen Sie unter „Sicherheit > API-Schlüssel“ einen Schlüssel für Home Assistant. Wählen Sie „Lesen“, wenn Sie nur `rest`-Sensoren verwenden, und „Lesen und Schreiben“, wenn Sie auch `rest_command` zum Ändern von Werten nutzen.
 2. Fügen Sie den Schlüssel als Header zu jedem `rest`-Sensor und jedem `rest_command` hinzu, der EMS-ESP aufruft, auch zu denen, die nur lesen:
 
    ```yaml
@@ -160,7 +160,7 @@ Vollständige Beispiele finden Sie unter [Home Assistant](Home-Assistant#einen-w
 Der [ioBroker ems-esp adapter](https://github.com/tp1de/ioBroker.ems-esp) (7.0.8 und ältere Versionen) liest Werte aus, ohne einen Schlüssel zu senden, und sendet das Token erst, wenn sich ein Wert ändert. Der API-Schlüssel wird an zwei Stellen benötigt:
 
 1. Erstellen Sie unter „Sicherheit > API-Schlüssel“ einen Schlüssel mit „Lese- und Schreibzugriff“ für ioBroker.
-2. Ändern Sie in den Adapter-Einstellungen die EMS-ESP-Adresse so, dass sie den Schlüssel enthält, zum Beispiel `http://iobroker:emsesp_...@192.168.1.10`. Der Name vor dem `:` kann beliebig gewählt werden. Dadurch kann der Adapter Werte auslesen.
+2. Ändern Sie in den Adapter-Einstellungen die EMS-ESP-Adresse so, dass sie den Schlüssel enthält, zum Beispiel `http://iobroker:emsesp_...@192.168.1.10`. Der Name vor dem `:` kann beliebig sein. Dadurch kann der Adapter Werte auslesen.
 3. Fügen Sie denselben Schlüssel in das Feld „EMS-ESP-Zugriffstoken“ des Adapters ein und ersetzen Sie damit das alte Zugriffstoken. Dadurch kann der Adapter Werte ändern.
 4. Speichern Sie die Änderungen und starten Sie die Adapterinstanz neu.
 
@@ -211,21 +211,44 @@ Bei 3.10.0 fordert die Web-Benutzeroberfläche Sie erneut zur Eingabe Ihres Pass
 
 Nach der Eingabe werden Sie in diesem Browser 5 Minuten lang nicht erneut dazu aufgefordert. Eine erneute Anmeldung oder ein Neustart von EMS-ESP beendet diesen Vorgang.
 
-Skripte, die diese Änderungen über eine Web-UI-Anmeldung vornehmen, erhalten den HTTP-Status 428. Sie müssen das Passwort zunächst mit `POST /rest/confirmPassword` und den Hauptteil mit `{"password":"..."}` senden, wobei dasselbe Token verwendet werden muss. Integrationen mit API-Schlüsseln und MQTT sind davon nicht betroffen.
+Skripte, die diese Änderungen über eine Web-UI-Anmeldung vornehmen, erhalten den HTTP-Status 428. Sie müssen das Passwort zunächst mit `POST /rest/confirmPassword` und den Hauptteil `{"password":"..."}` unter Verwendung desselben Tokens senden. Integrationen mit API-Schlüsseln und MQTT sind davon nicht betroffen.
 
 ### Firmware über eine URL installieren
 
 Ab 3.10.0 kann die Firmware nur noch über eine URL einer EMS-ESP-Version auf GitHub installiert werden, die mit `https://github.com/emsesp/EMS-ESP32/releases/` beginnt. Die Versionsliste der Web-Benutzeroberfläche verwendet stets diese URLs. Alle anderen Dateien sollten stattdessen heruntergeladen und über die Web-Benutzeroberfläche hochgeladen werden.
 
+### Firmware-Rollback
+
+Ab 3.9.1 wird eine neu installierte Firmware erst dann beibehalten, wenn sie 2 Minuten lang gelaufen ist. Wenn sie vorher abstürzt oder neu startet, kehrt das Gateway zur zuvor ausgeführten Firmware zurück. Ist keine vorhanden, starten Boards mit dem [Recovery App](#wiederherstellungs-app) stattdessen die Recovery-App. Dies funktioniert auf allen Boards, auch auf den 4-MB-Modellen, da EMS-ESP immer über zwei Firmware-Partitionen verfügt (`app0` und `app1`).
+
+Dies gilt für Firmware, die installiert wird, während EMS-ESP oder die Recovery-App ausgeführt wird: beim Hochladen einer Datei über die Web-Benutzeroberfläche, beim Installieren einer Version aus der Versionsliste der Web-Benutzeroberfläche oder beim Hochladen in der Recovery-App. Das Flashen über USB mit [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher) oder esptool wird nicht überprüft; diese Firmware wird sofort beibehalten.
+
+Jeder Neustart in den ersten 2 Minuten zählt, auch wenn Sie selbst auf „Neustart“ klicken. Warten Sie daher, bis die Firmware bestätigt wurde. Es gibt zwei Ausnahmen:
+
+- Wenn EMS-ESP die Einstellungen aus einer älteren Version übernimmt und neu startet, um sie zu übernehmen, behält es zunächst die neue Firmware bei
+- Wenn du innerhalb der ersten 2 Minuten eine andere Firmware installierst, bleibt die aktuell ausgeführte Firmware zunächst erhalten.
+
+Das Systemprotokoll zeigt, was passiert:
+
+| Botschaft | Bedeutung |
+| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| `New firmware, it will be confirmed after running for 120 seconds` | wird beim Start angezeigt; die neue Firmware befindet sich in der Testphase |
+| `New firmware confirmed as working` | Die 2 Minuten sind abgelaufen, die Firmware bleibt erhalten |
+| `Firmware in partition app1 failed to start and was rolled back`   | Die Firmware in `app1` (oder `app0`) hielt nicht einmal zwei Minuten durch, das Gateway wechselte wieder zur anderen zurück |
+
+Die Überprüfung erfolgt durch den Bootloader, das kleine Programm am Anfang des Flash-Speichers, das auswählt, welche Firmware gestartet werden soll. Bei der Installation der Firmware über die Web-Benutzeroberfläche wird der Bootloader niemals ersetzt, dies geschieht nur beim Flashen über USB. Gateways, die über USB mit 3.9.0 geflasht wurden, verfügen über einen Bootloader ohne Rollback-Funktion. Sie funktionieren weiterhin normal, aber ein fehlgeschlagenes Update wird nicht rückgängig gemacht. Wenn nach der Installation einer neuen Firmware über die Web-Benutzeroberfläche die erste Meldung nicht angezeigt wird, flashen Sie 3.9.1 oder eine neuere Version einmal über USB, um einen Bootloader mit Rollback zu erhalten.
+
+Nachdem die Firmware bestätigt wurde, überwacht EMS-ESP Systemabstürze: Auf Boards mit der Recovery-App startet EMS-ESP die Recovery-App, nachdem es fünfmal hintereinander zu einem Systemabsturz gekommen ist (siehe [When it starts](#wann-es-losgeht)).
+
 ## Wiederherstellungs-App
 
-Ab dem Modell 3.9.0 kann auf Boards mit 16 MB oder 32 MB Flash-Speicher die EMS-ESP Recovery App installiert werden. Es handelt sich um eine kleine, separate Firmware, die in einem eigenen Bereich des Flash-Speichers (der `boot`-Partition) neben den beiden Partitionen für EMS-ESP (`app0` und `app1`) gespeichert ist. Falls EMS-ESP nicht mehr startet oder ein Firmware-Update fehlgeschlagen ist, können Sie mit der Recovery-App das Gateway über einen Browser wieder in Betrieb nehmen, ohne es über USB anzuschließen. Auf den 4-MB-Boards ist dafür kein Platz.
+Ab 3.9.0 kann auf Boards mit 16 MB oder 32 MB Flash die EMS-ESP Recovery App installiert werden. Es handelt sich um eine kleine, separate Firmware, die in einem eigenen Bereich des Flash-Speichers (der `boot`-Partition) neben den beiden Partitionen für EMS-ESP (`app0` und `app1`) gespeichert ist. Falls EMS-ESP nicht mehr startet oder ein Firmware-Update fehlgeschlagen ist, können Sie mit der Recovery-App das Gateway über einen Browser wieder in Betrieb nehmen, ohne es über USB anzuschließen. Auf den 4-MB-Boards ist dafür kein Platz.
 
 EMS-ESP 3.9.0 wird mit der Wiederherstellungs-App 1.0.0 geliefert, und 3.10.0 mit der Wiederherstellungs-App 1.1.0. Für die mit **[3.10.0]** gekennzeichneten Funktionen ist die Recovery-App 1.1.0 erforderlich, siehe [What's new in 3.10.0](#was-ist-neu-in-3100).
 
 ### Was es kann
 
-Nach der Anmeldung zeigt die Recovery-App ein Dashboard an, auf dem Sie folgende Möglichkeiten haben:
+Nach der Anmeldung zeigt die Recovery-App ein Dashboard an, in dem Sie folgende Möglichkeiten haben:
 
 - **Firmware hochladen**: Installieren Sie eine EMS-ESP-Firmware-Datei `.bin` in einer der EMS-ESP-Partitionen. Standardmäßig wird zunächst eine leere Partition ausgewählt, dann eine, auf der die Firmware nicht gestartet werden konnte, und andernfalls die mit der ältesten Firmware, sodass eine funktionierende Firmware als Ausweichlösung erhalten bleibt. Sie können die Partition auch selbst auswählen. Sie können die `.md5`-Datei auch zunächst hochladen, um die Firmware zu überprüfen.
   - **[3.10.0]** Wie in der Web-Benutzeroberfläche wird ein offizieller Build sofort installiert, während bei einem benutzerdefinierten Build zunächst eine Bestätigung abgefragt wird, siehe [Official and custom builds](#offizielle-und-benutzerdefinierte-builds).
@@ -251,7 +274,7 @@ Die Recovery-App wird gestartet:
 - wenn Sie auf der Seite **Einstellungen > Version** auf **„Im Wiederherstellungsmodus neu starten“** klicken
 - wenn Sie die GPIO-Taste etwa 10 Sekunden lang gedrückt halten, sofern die Werksrücksetzung in den EMS-ESP-Einstellungen nicht deaktiviert ist
 - automatisch, wenn EMS-ESP nach einem Neustart fünfmal hintereinander abstürzt
-- automatisch, wenn eine neu installierte Firmware innerhalb der ersten zwei Minuten abstürzt oder neu startet und keine vorherige Firmware vorhanden ist, auf die zurückgegriffen werden kann
+- automatisch, wenn eine neu installierte Firmware innerhalb der ersten 2 Minuten abstürzt oder neu startet und keine vorherige Firmware vorhanden ist, auf die zurückgegriffen werden kann; siehe [Firmware rollback](#firmware-rollback)
 
 ### Verbindung herstellen
 
@@ -260,7 +283,7 @@ Die Recovery-App verwendet die von EMS-ESP gespeicherten Netzwerkeinstellungen:
 - Die Verbindung erfolgt über Ethernet, sofern dies auf Ihrer Platine eingerichtet ist, andernfalls über WLAN, wobei die statische IP-Adresse verwendet wird, sofern Sie eine festgelegt haben. Rufen Sie die Seite in einem Browser über die übliche IP-Adresse oder `http://<hostname>.local` auf.
 - Es wird immer auch ein Zugangspunkt gestartet, der nach Ihrem EMS-ESP-Zugangspunkt benannt ist, wobei `-recovery` hinzugefügt wird, zum Beispiel `ems-esp-recovery`, mit demselben Zugangspunkt-Passwort. Stellen Sie eine Verbindung dazu her und öffnen Sie `http://192.168.4.1` oder die IP-Adresse des Zugangspunkts, die Sie in EMS-ESP festgelegt haben.
 
-Melden Sie sich mit einem bestehenden EMS-ESP-Administrator-Benutzernamen und -Passwort an. Gastbenutzer können sich nicht anmelden. Wenn die Einstellungen nicht gelesen werden können, beispielsweise nach einem Werksreset, verwenden Sie die Werksanmeldung `admin`. In diesem Fall ist ein Werksreset nicht möglich.
+Melden Sie sich mit einem bestehenden EMS-ESP-Administrator-Benutzernamen und -Passwort an. Gastbenutzer können sich nicht anmelden. Wenn die Einstellungen nicht gelesen werden können, beispielsweise nach einem Zurücksetzen auf die Werkseinstellungen, verwenden Sie die werkseitige `admin`-Anmeldung. In diesem Fall ist das Zurücksetzen auf die Werkseinstellungen nicht möglich.
 
 **[3.10.0]** Nach mehreren fehlgeschlagenen Anmeldeversuchen fordert die Recovery-App Sie auf, einige Minuten zu warten, bevor Sie es erneut versuchen.
 
@@ -268,9 +291,9 @@ Melden Sie sich mit einem bestehenden EMS-ESP-Administrator-Benutzernamen und -P
 
 Durch einen Neustart des Gateways oder durch Aus- und Einschalten bleibt es in der Recovery-App. Um den Modus zu verlassen, klicken Sie neben einer funktionierenden EMS-ESP-Firmware auf **Firmware starten** oder laden Sie eine neue Firmware hoch, die nach dem Hochladen gestartet wird.
 
-### Was ist neu in 3.10.0
+### Was ist neu in 3.10.0?
 
-Die mit EMS-ESP 3.10.0 veröffentlichte Wiederherstellungs-App 1.1.0 bietet folgende zusätzliche Funktionen:
+Die Wiederherstellungs-App 1.1.0, die zusammen mit EMS-ESP 3.10.0 veröffentlicht wurde, bietet folgende zusätzliche Funktionen:
 
 - eine Überprüfung, ob es sich bei der hochgeladenen Firmware um eine offizielle EMS-ESP-Version handelt, mit der Option „Trotzdem installieren“ für eine benutzerdefinierte Version
 - der Abschnitt **Crash-Dump** mit einer Zusammenfassung des Absturzes und Schaltflächen zum Herunterladen oder Löschen des Dumps
@@ -326,9 +349,9 @@ Bei C3 und C6 gibt es keinen Backtrace, sondern nur `ra` (Rückkehradresse), `mc
 
 ### Einen Absturz-Dump selbst entschlüsseln
 
-Für die Dekodierung wird die Datei `firmware.elf` genau des Builds benötigt, bei dem der Absturz aufgetreten ist. Wenn Sie EMS-ESP selbst erstellen, wird von jedem Build eine gzip-komprimierte Kopie unter dem Namen `build/elf/<variant>-<sha>.elf.gz` gespeichert, wobei `<sha>` mit dem Eintrag `sha` in der Absturzübersicht übereinstimmt. Entpacken Sie diese mit `gunzip -k`. Diese Dateien sind jeweils etwa 20 MB groß, löschen Sie daher ab und zu alte Dateien.
+Für die Dekodierung wird die Datei `firmware.elf` genau des Builds benötigt, bei dem der Absturz aufgetreten ist. Wenn Sie EMS-ESP selbst kompilieren, wird von jedem Build eine gzip-komprimierte Kopie unter dem Namen `build/elf/<variant>-<sha>.elf.gz` gespeichert, wobei `<sha>` mit dem Eintrag `sha` in der Absturzübersicht übereinstimmt. Entpacken Sie diese mit `gunzip -k`. Diese Dateien sind jeweils etwa 20 MB groß, löschen Sie daher von Zeit zu Zeit alte Dateien.
 
-Wandeln Sie die Adressen aus der Übersicht in Funktions-, Datei- und Zeilenadressen um:
+Wandeln Sie die Adressen aus der Zusammenfassung in Funktions-, Datei- und Zeilenadressen um:
 
 ```bash
 # ESP32, use xtensa-esp32s3-elf-addr2line for the S3 and xtensa-esp32s2-elf-addr2line for the S2
@@ -346,7 +369,7 @@ Dekodiere für die Stacks und Register jeder Aufgabe das heruntergeladene `cored
 ~/.platformio/penv/bin/esp-coredump info_corefile -t raw -c coredump.bin .pio/build/s_16M_P/firmware.elf
 ```
 
-Oder schließen Sie die Platine über USB an und lassen Sie `esp-coredump` den Dump in einem Schritt lesen und dekodieren:
+Oder schließen Sie die Platine über USB an und lassen Sie `esp-coredump` den Speicherauszug in einem Schritt lesen und dekodieren:
 
 ```bash
 ~/.platformio/penv/bin/esp-coredump --port /dev/ttyUSB0 info_corefile .pio/build/s_16M_P/firmware.elf
@@ -362,7 +385,7 @@ Oder speichern Sie den Dump über USB in einer Datei und dekodieren Sie diese sp
 
 Verwenden Sie `dbg_corefile` anstelle von `info_corefile`, um den Speicherauszug in GDB zu öffnen. Bei anderen Partitionslayouts ermitteln Sie den Offset der `coredump`-Partition mithilfe von `python gen_esp32part.py .pio/build/<env>/partitions.bin`.
 
-Der Panik-Handler gibt außerdem den Backtrace über den seriellen Port aus. Bei einem schwer reproduzierbaren Absturz sollten Sie einen seriellen Monitor verwenden, der die Daten in eine Datei protokolliert; so können Sie auch nachvollziehen, was unmittelbar vor dem Absturz passiert ist:
+Der Panik-Handler gibt außerdem den Backtrace über den seriellen Port aus. Bei einem schwer reproduzierbaren Absturz sollten Sie einen seriellen Monitor verwenden, der die Daten in eine Datei protokolliert; so können Sie auch nachvollziehen, was unmittelbar vor dem Absturz geschehen ist:
 
 ```bash
 pio device monitor -e s_16M_P -f esp32_exception_decoder -f log2file
