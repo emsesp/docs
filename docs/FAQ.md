@@ -217,6 +217,29 @@ Scripts that make these changes with a Web UI sign-in get HTTP status 428. They 
 
 From 3.10.0, firmware can only be installed from a URL of an EMS-ESP release on GitHub, starting with `https://github.com/emsesp/EMS-ESP32/releases/`. The Web UI's version list always uses these. For any other file, download it and upload it in the Web UI instead.
 
+### Firmware rollback
+
+From 3.9.1, a newly installed firmware is only kept once it has run for 2 minutes. If it crashes or restarts before then, the gateway goes back to the firmware it ran before. If there is none, boards with the [Recovery App](#recovery-app) start the Recovery App instead. This works on all boards, also the 4MB ones, as EMS-ESP always has two firmware partitions (`app0` and `app1`).
+
+It applies to firmware installed while EMS-ESP or the Recovery App is running: uploading a file in the Web UI, installing a version from the Web UI's version list, or uploading in the Recovery App. Flashing over USB with the [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher) or esptool isn't checked, that firmware is kept straight away.
+
+Any restart in the first 2 minutes counts, also clicking Restart yourself, so wait until the firmware is confirmed. There are two exceptions:
+
+- when EMS-ESP migrates the settings from an older version and restarts to apply them, it keeps the new firmware first
+- when you install another firmware in the first 2 minutes, the one that is running is kept first
+
+The System Log shows what happens:
+
+| Message                                                            | Meaning                                                                                   |
+| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| `New firmware, it will be confirmed after running for 120 seconds` | shown at startup, the new firmware is on trial                                            |
+| `New firmware confirmed as working`                                | the 2 minutes have passed, the firmware is kept                                           |
+| `Firmware in partition app1 failed to start and was rolled back`   | the firmware in `app1` (or `app0`) didn't last 2 minutes, the gateway went back to the other one |
+
+The check is done by the bootloader, the small program at the start of the flash that picks which firmware to start. Installing firmware from the Web UI never replaces the bootloader, only flashing over USB does. Gateways that were flashed over USB with 3.9.0 have a bootloader without rollback. They keep working normally, but a failed update isn't rolled back. If you don't see the first message after installing a new firmware from the Web UI, flash 3.9.1 or newer over USB once to get a bootloader with rollback.
+
+After the firmware is confirmed, EMS-ESP keeps an eye on crashes: on boards with the Recovery App, it starts the Recovery App after crashing 5 times in a row, see [When it starts](#when-it-starts).
+
 ## Recovery App
 
 From 3.9.0, boards with 16MB or 32MB flash can have the EMS-ESP Recovery App installed. It's a small, separate firmware that lives in its own part of the flash (the `boot` partition), next to the two partitions that hold EMS-ESP (`app0` and `app1`). If EMS-ESP doesn't start anymore, or a firmware update went wrong, the Recovery App lets you get the gateway working again from a browser, without connecting it over USB. The 4MB boards don't have room for it.
@@ -251,7 +274,7 @@ The Recovery App starts:
 - when you click **Restart into Recovery App** on the **Settings > Version** page
 - when you hold the GPIO button for about 10 seconds, unless factory reset is disabled in the EMS-ESP settings
 - automatically, when EMS-ESP crashes 5 times in a row after restarting
-- automatically, when a newly installed firmware crashes or restarts within its first 2 minutes and there is no previous firmware to go back to
+- automatically, when a newly installed firmware crashes or restarts within its first 2 minutes and there is no previous firmware to go back to, see [Firmware rollback](#firmware-rollback)
 
 ### Connecting to it
 
