@@ -8,7 +8,13 @@ description: Common questions and answers about EMS-ESP including factory reset,
 
 ## How to Factory Reset EMS-ESP?
 
-If you have a GPIO Button configured (enabled by default on all BBQKees boards) pressing this for 10 seconds and releasing will perform a factory reset. EMS-ESP will restart in Access Point mode.
+A factory reset erases all EMS-ESP settings. EMS-ESP then restarts in Access Point mode, where you sign in with the factory `admin` user.
+
+- In the Web UI, as an admin: click **Factory Reset** on the **Settings > Version** page.
+- In the console, as an admin: type `call system format`.
+- With the GPIO button (enabled by default on all BBQKees boards), on boards with the [Recovery App](#recovery-app) installed: hold the button for about 10 seconds and release it. The gateway restarts into the Recovery App. Sign in there and click **Factory Reset**.
+
+None of these work if factory reset is disabled in the EMS-ESP settings.
 
 ## What is an EMS Telegram?
 
@@ -110,7 +116,7 @@ When upgrading or downgrading between EMS-ESP versions, EMS-ESP will handle any 
 
 Always read the [ChangeLog](Version-Release-History.md) for the release notes and notes of any breaking changes before upgrading.
 
-### Upgrading from 3.8.x to 3.10.x
+### Upgrading to 3.10.x
 
 :::warning[No factory reset needed]
 
@@ -210,6 +216,76 @@ Scripts that make these changes with a Web UI sign-in get HTTP status 428. They 
 ### Installing firmware from a URL
 
 From 3.10.0, firmware can only be installed from a URL of an EMS-ESP release on GitHub, starting with `https://github.com/emsesp/EMS-ESP32/releases/`. The Web UI's version list always uses these. For any other file, download it and upload it in the Web UI instead.
+
+## Recovery App
+
+From 3.9.0, boards with 16MB or 32MB flash can have the EMS-ESP Recovery App installed. It's a small, separate firmware that lives in its own part of the flash (the `boot` partition), next to the two partitions that hold EMS-ESP (`app0` and `app1`). If EMS-ESP doesn't start anymore, or a firmware update went wrong, the Recovery App lets you get the gateway working again from a browser, without connecting it over USB. The 4MB boards don't have room for it.
+
+EMS-ESP 3.9.0 comes with Recovery App 1.0.0, and 3.10.0 with Recovery App 1.1.0. Features marked **[3.10.0]** need Recovery App 1.1.0, see [What's new in 3.10.0](#whats-new-in-3100).
+
+### What it can do
+
+After signing in, the Recovery App shows a dashboard where you can:
+
+- **Upload Firmware**: install an EMS-ESP firmware `.bin` file into one of the EMS-ESP partitions. By default it picks an empty partition, then one whose firmware failed to start, and otherwise the one with the oldest firmware, so a working firmware is kept as a fallback. You can also pick the partition yourself. You can also upload the `.md5` file first to check the firmware.
+  - **[3.10.0]** As in the Web UI, an official build installs straight away and a custom build asks first, see [Official and custom builds](#official-and-custom-builds).
+- **Start Firmware**: restart into one of the installed EMS-ESP firmwares. The table shows the version and install date of each, and warns when a firmware failed to start before.
+- **Factory Reset**: erase all EMS-ESP settings. This isn't shown if factory reset is disabled in the EMS-ESP settings.
+  - **[3.10.0]** The whole filesystem partition and the crash dump are erased too, so old passwords and keys can't be read back from the flash.
+- **[3.10.0] Crash Dump**: download or erase the dump of the last crash, see [Reporting a crash](#reporting-a-crash). This section is only shown when there is a dump.
+
+It also shows why it was started, the chip, the network it's connected to and the installed firmware versions.
+
+The Recovery App only reads the EMS-ESP settings, it never changes them, except for a factory reset. It can't install a filesystem image or restore a backup.
+
+### Installing and updating it
+
+Open **Settings > Version** in the EMS-ESP Web UI. On boards that support it, there's a **Recovery App** row with the installed version, or "Not installed". Click the install button to download the latest version from GitHub. **[3.10.0]** When a newer version is available, the same button updates it, and the row shows whether the installed Recovery App is an official build. You can also download the `EMS-ESP-Recovery-<version>-<chip>-16MB[+].bin` file from the [release page](https://github.com/emsesp/EMS-ESP32/releases) and upload it like a normal firmware. Installing the Recovery App doesn't restart EMS-ESP, and doesn't touch your settings or the installed EMS-ESP firmware.
+
+The Recovery App can only be installed from EMS-ESP, not from the Recovery App itself.
+
+### When it starts
+
+The Recovery App starts:
+
+- when you click **Restart into Recovery App** on the **Settings > Version** page
+- when you hold the GPIO button for about 10 seconds, unless factory reset is disabled in the EMS-ESP settings
+- automatically, when EMS-ESP crashes 5 times in a row after restarting
+- automatically, when a newly installed firmware crashes or restarts within its first 2 minutes and there is no previous firmware to go back to
+
+### Connecting to it
+
+The Recovery App uses the network settings saved by EMS-ESP:
+
+- it connects with Ethernet if your board has it set up, otherwise with WiFi, using the static IP address if you set one. Open it in a browser with the usual IP address or `http://<hostname>.local`.
+- it always starts an access point as well, named after your EMS-ESP access point with `-recovery` added, for example `ems-esp-recovery`, with the same access point password. Connect to it and open `http://192.168.4.1`, or the access point IP address you set in EMS-ESP.
+
+Sign in with an existing EMS-ESP admin user and password. Guest users can't sign in. If the settings can't be read, for example after a factory reset, use the factory `admin` login. In that case factory reset is not available.
+
+**[3.10.0]** After several failed sign-ins, the Recovery App asks you to wait a few minutes before trying again.
+
+### Going back to EMS-ESP
+
+Restarting the gateway or powering it off and on keeps it in the Recovery App. To leave it, click **Start Firmware** next to a working EMS-ESP firmware, or upload a new firmware, which starts it after the upload.
+
+### What's new in 3.10.0
+
+Recovery App 1.1.0, released with EMS-ESP 3.10.0, adds:
+
+- a check whether uploaded firmware is an official EMS-ESP build, with "Install anyway" for a custom build
+- the **Crash Dump** section, with the crash summary and buttons to download or erase the dump
+- support for the hashed passwords of 3.10.0
+- a limit on failed sign-ins
+- a factory reset that also erases the whole filesystem partition and the crash dump
+- firmware uploads that are never left bootable if they fail a check
+
+:::warning[Update the Recovery App after upgrading to 3.10.0]
+
+From 3.10.0, EMS-ESP stores passwords hashed. Recovery App 1.0.0 from 3.9.0 can't read them, so your usual admin password doesn't work there anymore. After upgrading EMS-ESP to 3.10.0, update the Recovery App in **Settings > Version**.
+
+If you can't sign in to Recovery App 1.0.0, use the whole stored hash, starting with `$pbkdf2-sha256$`, as the password. The `show users` console command in EMS-ESP shows it, see [Going back to an older version](#going-back-to-an-older-version). If EMS-ESP doesn't start at all, flash it over USB with the [EMS-ESP Flasher](https://github.com/emsesp/EMS-ESP-Flasher).
+
+:::
 
 ## What to do when EMS-ESP crashes
 
