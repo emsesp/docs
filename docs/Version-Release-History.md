@@ -8,7 +8,7 @@ description: Complete changelog of EMS-ESP major version releases and feature up
 
 This lists the Change Log for only the rolled-up major versions since v3's primary release in March 2021. For a list of all releases and their fixes, changes and new features see the [latest dev Change Log](https://github.com/emsesp/EMS-ESP32/blob/dev/CHANGELOG_LATEST.md).
 
-## [3.9.0] 8 November 2026
+## [3.9.1] 11 November 2026
 
 This release is based on the latest Espressif/Arduino core version 3. It brings in many memory and performance optimizations, for example 25% more available memory and 30% less PSRAM fragmentation.
 
