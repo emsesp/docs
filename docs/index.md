@@ -69,7 +69,7 @@ A simple to use console, accessible via Serial/USB or Telnet for advanced operat
 
 ### 🔧 Integrations
 
-Native integration with popular home automation systems such as Home Assistant, Domoticz, IOBroker, Loxone and openHAB.
+Native integration with popular home automation systems such as Home Assistant, Domoticz, IOBroker, Loxone, openHAB and openWB.
 
 Support for Modbus and Prometheus.
 

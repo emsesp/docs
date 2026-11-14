@@ -303,6 +303,10 @@ const config = {
                 to: 'Loxone',
               },
               {
+                label: 'openWB',
+                to: 'openWB',
+              },
+              {
                 label: 'Grafana',
                 to: 'Grafana',
               },

@@ -47,6 +47,7 @@ const sidebars = {
     'Domoticz',
     'openHAB',
     'Loxone',
+    'openWB',
     'Grafana',
     'Prometheus',
     'Modbus',

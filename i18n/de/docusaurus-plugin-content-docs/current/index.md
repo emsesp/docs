@@ -2,7 +2,7 @@
 id: index
 title: EMS-ESP - ESP32 Firmware for EMS Heating Systems
 description: Open-source firmware for the Espressif ESP32 microcontroller that communicates with EMS (Energy Management System) based heating equipment from Bosch, Buderus, Nefit, Junkers, Worcester and more. Control your heating system with Home Assistant, MQTT, and Modbus.
-keywords: 
+keywords:
   - EMS-ESP
   - ESP32 heating control
   - Bosch EMS
@@ -65,7 +65,7 @@ Eine einfach zu bedienende Konsole, auf die über Serial/USB oder Telnet zugegri
 
 ### 🔧 Integrationen
 
-Native Integration in gängige Hausautomationssysteme wie Home Assistant, Domoticz, IOBroker, Loxone und openHAB.
+Native Integration in gängige Hausautomationssysteme wie Home Assistant, Domoticz, IOBroker, Loxone, openHAB und openWB.
 
 Unterstützung für Modbus und Prometheus.
 
