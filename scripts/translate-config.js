@@ -30,7 +30,7 @@ module.exports = {
     // Add more files here as needed
     'Modbus-Entity-Registers.md',
     'ems-library.md',
-    'Version-Release-History.md'
+    'Version-Release-History.md',
   ],
 
   // Skip entire directories
@@ -64,6 +64,7 @@ module.exports = {
     'Domoticz',
     'openHAB',
     'Loxone',
+    'openWB',
     'Grafana',
     'Prometheus',
 

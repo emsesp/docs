@@ -147,6 +147,10 @@
     "message": "Loxon",
     "description": "Navbar item with label Loxone"
   },
+  "item.label.openWB": {
+    "message": "openWB",
+    "description": "Navbar item with label openWB"
+  },
   "item.label.Grafana": {
     "message": "Grafana",
     "description": "Navbar item with label Grafana"
