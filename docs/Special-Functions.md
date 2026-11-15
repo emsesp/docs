@@ -26,6 +26,22 @@ Some users control the boiler without a thermostat and want to switch the boiler
 
 The function `boiler/forceheatingoff` repeats this command every minute, so the heating remains off. In the EMS-ESP settings it is possible to set the power on value of `forceheatingoff`.
 
+## Setting the Flow Temperature without a Thermostat
+
+`boiler/selflowtemp` is sent to the boiler as a normal thermostat setpoint. How the boiler reacts depends on its firmware and on whether its built-in weather compensation (`boiler/curveon`) is enabled. For example, a Buderus GB172i (EMS 1.0, outdoor sensor on the boiler, no thermostat) behaves like this ([#3447](https://github.com/emsesp/EMS-ESP32/discussions/3447)):
+
+| `curveon` | `selflowtemp` | Result |
+| --------- | ------------- | ------ |
+| off | any value | Ignored. The boiler runs at `heatingtemp` |
+| on | above the curve value | Accepted, up to `heatingtemp` |
+| on | below the curve value | Ignored. The boiler keeps its curve value |
+
+With the curve on, the boiler uses the higher of its own curve and `selflowtemp`. You can use this to set the curve a few degrees below your target as a floor, and send the real target via `selflowtemp`, for example from Home Assistant. This needs no settings writes to the boiler during normal operation.
+
+:::warning[No timeout]
+On this boiler, `selflowtemp` does not time out. The last value stays active until the boiler recalculates its curve, for example when a curve parameter or the outdoor temperature changes. If EMS-ESP or your home automation stops sending, the boiler can keep heating to the last value for a long time. Other boilers fall back to the panel setting after about a minute (see Force Heating Off above), so check how your boiler behaves before relying on either.
+:::
+
 ## Energy Measurement
 
 For gas and oil burners, Bosch does not measure the energy consumption. EMS-ESP calculates the consumption of each boiler message by burner modulation and nominal boiler power. Some gas boilers have the nominal power stored, some do not.
