@@ -35,7 +35,7 @@ Het beste overzicht van bekende telegrammen is afkomstig van [Norberts1](https:/
 
 Voor verschillende brands/devices gebruikt Bosch soms verschillende uitdrukkingen voor dezelfde waarde. Misschien is er een wisseling van ontwikkelaars geweest, of willen ze reverse engineering juist bemoeilijken!
 
-Als je een instelling zoekt, registreer dan de telegrammen voor het apparaat (alles registreren of <device-id> in de gaten houden) en wijzig de instelling op de thermostaat naar een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je naar een meting zoekt, registreer dan het apparaat, bekijk de waarde op de thermostaat en wacht op veranderingen; noteer de old/new-waarden en de tijd. Controleer vervolgens het logboek op dit tijdstempel (of 10 sec / 1 min later) en de waarde in een telegram. Het is het beste om meer changes/values te hebben om zeker te zijn.
+Als je een instelling zoekt, registreer dan de telegrammen voor het apparaat en wijzig de instelling op de thermostaat naar een andere states/values. Zoek vervolgens naar deze waarden in het logboek. Als je naar een meting zoekt, registreer dan het apparaat, bekijk de waarde op de thermostaat en wacht op veranderingen; noteer de old/new-waarden en de tijd. Controleer vervolgens het logboek op dit tijdstempel (of 10 sec / 1 min later) en de waarde in een telegram. Het is het beste om meer changes/values te hebben om zeker te zijn.
 
 ## Kan EMS-ESP een thermostaat simuleren?
 
@@ -57,7 +57,7 @@ Bovendien zegt **MichaelDvP**: "Als je een softwaregestuurde thermostaat wilt bo
 
 - op basis van de buitentemperatuur:
   stel een verwarmingscurve in voor uw gebouw. Dit is een lineaire interpolatie tussen een minimale buitentemperatuur voor uw regio (doorgaans -11 °C voor Midden-Europa) en de maximale aanvoertemperatuur (ontwerptemperatuur ~76 °C voor radiatoren, 40 °C voor vloerverwarming) en de werkelijke kamerstreefwaarde (bijv. 21 °C) voor de buitentemperatuur en de aanvoertemperatuur. U kunt een offset toevoegen.
-  selflowtemp = offset + instelpunt + (ontwerptemperatuur - instelpunt) * (instelpunt - buitentemperatuur) / (instelpunt - minimale buitentemperatuur)
+  selflowtemp = offset + instelpunt + (ontwerptemperatuur - instelpunt) \* (instelpunt - buitentemperatuur) / (instelpunt - minimale buitentemperatuur)
 - kamergestuurd, geschakeld:
   meet de kamertemperatuur en schakel de ketel in, waarbij ‘verwarming uit’ wordt geactiveerd als de kamertemperatuur hoger is dan de instelwaarde. Voeg een hysterese toe om veelvuldig schakelen te voorkomen
 - kamerregeling, dynamisch
@@ -188,7 +188,7 @@ Download de `.bin` voor je bord via de [release page](https://github.com/emsesp/
 
 1. Maak verbinding met de seriële console op 115200 baud, druk op CTRL-D en typ `su`. Het wachtwoord is `ems-esp-neo`, aangezien 3.10.0 het Super User-wachtwoord uit de instellingen heeft verwijderd.
 2. Typ `show users`. Het wachtwoord van elke gebruiker wordt weergegeven als een lange tekst die begint met `$pbkdf2-sha2562. Typ `show users`. Het wachtwoord van elke gebruiker wordt weergegeven als een lange tekst die begint met .
-3. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van `$pbkdf2-sha2563. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van  tot het einde. Kopieer en plak de tekst; deze bestaat uit ongeveer 120 tekens.
+3. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van `$pbkdf2-sha2563. Log in op de webinterface met die gebruikersnaam en de volledige tekst als wachtwoord, van tot het einde. Kopieer en plak de tekst; deze bestaat uit ongeveer 120 tekens.
 4. Stel onder Beveiliging > Gebruikers voor elke gebruiker een nieuw wachtwoord in en wijzig onder Beveiliging > Instellingen het wachtwoord van de supergebruiker, aangezien `ems-esp-neo` algemeen bekend is.
 
 Anders kun je met een fabrieksreset weer toegang krijgen, maar worden alle instellingen gewist.
@@ -233,7 +233,7 @@ Scripts die deze wijzigingen doorvoeren via een aanmelding via de webinterface, 
 
 Vanaf 3.10.0 kan firmware alleen worden geïnstalleerd via een URL van een EMS-ESP-release op GitHub, die begint met `https://github.com/emsesp/EMS-ESP32/releases/`. De versielijst van de webinterface maakt hier altijd gebruik van. Alle andere bestanden moet je downloaden en vervolgens via de webinterface uploaden.
 
-### Firmware terugzetten
+### Firmware terugzetten {/* #firmware-rollback */}
 
 Vanaf 3.9.1 wordt een nieuw geïnstalleerde firmware pas behouden als deze 2 minuten heeft gedraaid. Als de firmware eerder crasht of opnieuw opstart, keert de gateway terug naar de firmware die daarvoor draaide. Als er geen firmware aanwezig is, starten kaarten met de [Recovery App](#herstel-app) in plaats daarvan de Recovery App. Dit werkt op alle kaarten, ook die met 4 MB, aangezien EMS-ESP altijd twee firmwarepartities heeft (`app0` en `app1`).
 
@@ -246,10 +246,10 @@ Elke herstart binnen de eerste 2 minuten telt mee, ook als je zelf op ‘Herstar
 
 Het systeemlogboek laat zien wat er gebeurt:
 
-| Bericht | Betekenis |
-| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
-| `New firmware, it will be confirmed after running for 120 seconds` | wordt bij het opstarten weergegeven; de nieuwe firmware is in de proefperiode |
-| `New firmware confirmed as working` | de 2 minuten zijn verstreken, de firmware blijft behouden |
+| Bericht                                                            | Betekenis                                                                                                         |
+| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| `New firmware, it will be confirmed after running for 120 seconds` | wordt bij het opstarten weergegeven; de nieuwe firmware is in de proefperiode                                     |
+| `New firmware confirmed as working`                                | de 2 minuten zijn verstreken, de firmware blijft behouden                                                         |
 | `Firmware in partition app1 failed to start and was rolled back`   | de firmware in `app1` (of `app0`) hield het nog geen 2 minuten vol; de gateway schakelde weer over naar de andere |
 
 De controle wordt uitgevoerd door de bootloader, het kleine programmaatje aan het begin van het flashgeheugen dat bepaalt welke firmware wordt opgestart. Bij het installeren van firmware via de webinterface wordt de bootloader nooit vervangen; dat gebeurt alleen bij het flashen via USB. Gateways die via USB zijn geflashed met 3.9.0 hebben een bootloader zonder rollback-functie. Ze blijven normaal werken, maar een mislukte update wordt niet teruggedraaid. Als je het eerste bericht niet ziet na het installeren van nieuwe firmware via de webinterface, flash dan 3.9.1 of nieuwer één keer via USB om een bootloader met rollback te krijgen.
@@ -290,7 +290,7 @@ De Recovery-app start:
 - wanneer je op **Opnieuw opstarten in de Recovery-app** klikt op de pagina **Instellingen > Versie**
 - wanneer je de GPIO-knop ongeveer 10 seconden ingedrukt houdt, tenzij de fabrieksreset is uitgeschakeld in de EMS-ESP-instellingen
 - automatisch, wanneer EMS-ESP na het opnieuw opstarten vijf keer achter elkaar crasht
-- automatisch, wanneer een nieuw geïnstalleerde firmware binnen de eerste 2 minuten vastloopt of opnieuw opstart en er geen eerdere firmwareversie is om naar terug te keren, zie [Firmware rollback](#firmware-terugzetten)
+- automatisch, wanneer een nieuw geïnstalleerde firmware binnen de eerste 2 minuten vastloopt of opnieuw opstart en er geen eerdere firmwareversie is om naar terug te keren, zie [Firmware terugzetten](#firmware-rollback)
 
 ### Verbinding maken
 
@@ -351,15 +351,15 @@ Beide slaan een `coredump.bin`-bestand op.
 
 Wis vervolgens de dump, zodat de volgende crash duidelijk een nieuwe is: voer `call system coredump` uit in de console, of stuur `POST /api/system/coredump` als beheerder.
 
-| Veld    | Betekenis |
-| -------- | -------------------------------------------------------------------------------- |
-| `task`   | de taak die vastliep |
-| `pc`     | het adres in de firmware waar het programma is vastgelopen |
-| `cause`  | de oorzaak van de uitzondering op de ESP32, bijv. 28 = LoadProhibited, 29 = StoreProhibited |
-| `vaddr`  | het geheugenadres waartoe toegang is verkregen; een waarde dicht bij 0 duidt meestal op een null-pointer |
+| Veld     | Betekenis                                                                                                      |
+| -------- | -------------------------------------------------------------------------------------------------------------- |
+| `task`   | de taak die vastliep                                                                                           |
+| `pc`     | het adres in de firmware waar het programma is vastgelopen                                                     |
+| `cause`  | de oorzaak van de uitzondering op de ESP32, bijv. 28 = LoadProhibited, 29 = StoreProhibited                    |
+| `vaddr`  | het geheugenadres waartoe toegang is verkregen; een waarde dicht bij 0 duidt meestal op een null-pointer       |
 | `bt`     | de backtrace, met eerst de functie die de crash veroorzaakte en daarna de functies die deze hebben aangeroepen |
-| `sha`    | het begin van de SHA256-hash van de firmware die is gecrasht |
-| `reason` | de reden voor de paniek, bijvoorbeeld het `abort()`- of watchdog-bericht |
+| `sha`    | het begin van de SHA256-hash van de firmware die is gecrasht                                                   |
+| `reason` | de reden voor de paniek, bijvoorbeeld het `abort()`- of watchdog-bericht                                       |
 
 Op de C3 en C6 is er geen backtrace, alleen `ra` (retouradres), `mcause` en `mtval`.
 
