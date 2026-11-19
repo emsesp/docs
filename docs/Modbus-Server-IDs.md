@@ -11,19 +11,19 @@ This table shows how device types are mapped to server unit identifiers.
 | Device type      | Unit Identifier |
 | ---------------- | --------------- |
 | SYSTEM (EMS-ESP) | 1               |
-| BOILER           | 5               |
-| THERMOSTAT       | 6               |
-| MIXER            | 7               |
-| SOLAR            | 8               |
-| HEATPUMP         | 9               |
-| GATEWAY          | 10              |
-| SWITCH           | 11              |
-| CONTROLLER       | 12              |
-| CONNECT          | 13              |
-| ALERT            | 14              |
-| EXTENSION        | 15              |
-| GENERIC          | 16              |
-| HEATSOURCE       | 17              |
-| VENTILATION      | 18              |
-| WATER            | 19              |
-| POOL             | 20              |
+| BOILER           | 6               |
+| THERMOSTAT       | 7               |
+| MIXER            | 8               |
+| SOLAR            | 9               |
+| HEATPUMP         | 10               |
+| GATEWAY          | 11              |
+| SWITCH           | 12              |
+| CONTROLLER       | 13              |
+| CONNECT          | 14              |
+| ALERT            | 15              |
+| EXTENSION        | 16              |
+| GENERIC          | 17              |
+| HEATSOURCE       | 18              |
+| VENTILATION      | 19              |
+| WATER            | 20              |
+| POOL             | 21              |
